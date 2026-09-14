@@ -16,6 +16,23 @@ Each groove centreline is 407 × 23 mm overall, with R11.5 ends and a perimeter 
 
 This is why 2 mm is a useful initial choice for the long cover. Section alone does not establish a pressure rating.
 
+### Why the groove dimensions matter
+
+There is no unique physically required groove size, and the present dimensions are not constraints that procurement must preserve. Select the ring, then design its gland within the available POM, port and screw envelope.
+
+For section diameter `d`, groove depth `h` and width `b`, initial estimates are:
+
+- Axial squeeze fraction: `s = 1 − h/d` when the cover contacts the surrounding POM face. Too little squeeze loses contact margin; too much increases closure force and elastomer stress.
+- Gland fill fraction: `f ≈ πd²/(4bh)` for a rectangular section, neglecting root radii, stretch and local corner effects. Elastomer is nearly incompressible: compression makes it spread sideways. The unfilled space accommodates that shape change and allows for tolerances, thermal expansion and coolant swelling. Parker gives 60–85% as the range for most applications; it is not a universal approval criterion.
+- Ring length and groove path must match with controlled elongation. A longer path stretches the ring and reduces its section; an oversized ring can bunch or be pinched. Enclosing the gallery, leaving sound sealing lands and respecting end bend radii also constrain the path. For internal gallery pressure, check the ring at the outer groove wall rather than treating nominal centreline fit as final.
+
+| Ring section | Illustrative groove width × depth | Nominal squeeze | Approximate fill |
+|---|---|---:|---:|
+| 2 mm | 2.8 × 1.60 mm (current) | 20.0% | 70.1% |
+| 3.53 mm | 5.0 × 2.80 mm (calculation only) | 20.7% | 69.9% |
+
+The second row demonstrates that a thicker standard ring is physically plausible; it is **not a released groove specification**. It omits the selected ring's stretch and tolerances. A thicker section supplies more absolute compression allowance but requires more room, suitable bends and an assessment of closure force. There is no need to keep a 2 mm section merely because it was the original CAD choice. Neither these equations nor a stock listing establishes the required screw pitch or pressure rating.
+
 For a free circular ring, centreline circumference is π × (ID + section). Equating this to the groove path gives a zero-stretch equivalent of **265.46 mm ID × 2 mm section**. Illustrative 260, 262 and 265 × 2 mm rings would have nominal centreline elongations of 2.08%, 1.31% and 0.17%, respectively. These are dimensional candidates, not confirmed stocked EPDM products. Ring ID tolerances matter particularly for the near-zero-stretch option. Pressure moves the ring towards the outer groove wall, so this nominal centreline calculation is only an initial sizing check.
 
 ## RS UK stock checked through Computer Use
