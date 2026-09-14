@@ -3,7 +3,7 @@
 <rect width="1600" height="1100" fill="#f4f6f8"/>
 <g font-family="Arial,sans-serif" fill="#192e3f">
 <text x="65" y="70" font-size="35" font-weight="bold">RM8 / 2U coolant manifold</text>
-<text x="65" y="108" font-size="19" fill="#526777">Revision E · Eight parallel circuits · All ports G1/4 female · Millimetres</text>
+<text x="65" y="108" font-size="19" fill="#526777">Revision F · Eight parallel circuits · All ports G1/4 female · Millimetres</text>
 <text x="65" y="164" font-size="18" fill="#192e3f" text-anchor="start">FRONT / FLAT RACK FACEPLATE</text>
 <rect x="160.55499999999995" y="220" width="1278.89" height="230.54999999999998" rx="0" fill="#d1d9de" stroke="#192e3f" stroke-width="1.2"/>
 <circle cx="323.0" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
@@ -99,21 +99,21 @@
 <text x="65" y="550" font-size="18" fill="#192e3f" text-anchor="start">REAR / COVER REMOVED</text>
 <text x="65" y="578" font-size="16" fill="#526777" text-anchor="start">Two uninterrupted pockets, each with its own perimeter seal. No groups or internal plugs.</text>
 <rect x="217.0" y="615" width="1166.0" height="230.54999999999998" rx="0" fill="#e1e6e9" stroke="#192e3f" stroke-width="1.2"/>
-<rect x="257.015" y="749.0899999999999" width="1085.97" height="68.37" rx="34.185" fill="none" stroke="#333f48" stroke-width="1.2"/>
-<rect x="270.0" y="762.0749999999999" width="1060.0" height="42.4" rx="21.2" fill="#258fc6" stroke="#258fc6" stroke-width="1.2"/>
+<rect x="270.6625" y="741.5375" width="1058.675" height="83.475" rx="41.7375" fill="none" stroke="#333f48" stroke-width="1.2"/>
+<rect x="291.20000000000005" y="762.0749999999999" width="1017.5999999999999" height="42.4" rx="21.2" fill="#258fc6" stroke="#258fc6" stroke-width="1.2"/>
 <text x="800" y="788.275" font-size="16" fill="white" text-anchor="middle">SUPPLY — one common gallery</text>
-<rect x="257.015" y="643.0899999999999" width="1085.97" height="68.37" rx="34.185" fill="none" stroke="#333f48" stroke-width="1.2"/>
-<rect x="270.0" y="656.0749999999999" width="1060.0" height="42.4" rx="21.2" fill="#d66c3c" stroke="#d66c3c" stroke-width="1.2"/>
+<rect x="270.6625" y="635.5375" width="1058.675" height="83.475" rx="41.7375" fill="none" stroke="#333f48" stroke-width="1.2"/>
+<rect x="291.20000000000005" y="656.0749999999999" width="1017.5999999999999" height="42.4" rx="21.2" fill="#d66c3c" stroke="#d66c3c" stroke-width="1.2"/>
 <text x="800" y="682.275" font-size="16" fill="white" text-anchor="middle">RETURN — one common gallery</text>
-<circle cx="323.0" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="442.25" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="561.5" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="680.75" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="800.0" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="919.25" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="1038.5" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="1157.75" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="1277.0" cy="830.975" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="323.0" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="442.25" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="561.5" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="680.75" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="800.0" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="919.25" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="1038.5" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="1157.75" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="1277.0" cy="833.625" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="323.0" cy="730.275" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="442.25" cy="730.275" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="561.5" cy="730.275" r="4.3" fill="white" stroke="#758592"/>
@@ -123,15 +123,15 @@
 <circle cx="1038.5" cy="730.275" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="1157.75" cy="730.275" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="1277.0" cy="730.275" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="323.0" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="442.25" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="561.5" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="680.75" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="800.0" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="919.25" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="1038.5" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="1157.75" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
-<circle cx="1277.0" cy="629.575" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="323.0" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="442.25" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="561.5" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="680.75" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="800.0" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="919.25" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="1038.5" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="1157.75" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
+<circle cx="1277.0" cy="626.925" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="235.55000000000007" cy="783.275" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="235.55000000000007" cy="677.275" r="4.3" fill="white" stroke="#758592"/>
 <circle cx="1364.4499999999998" cy="783.275" r="4.3" fill="white" stroke="#758592"/>

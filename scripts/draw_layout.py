@@ -8,7 +8,7 @@ out=R/'output';xs=[-180+45*i for i in range(9)]
 a=['<svg xmlns="http://www.w3.org/2000/svg" width="520mm" height="145mm" viewBox="0 0 520 145">',
 '<rect width="520" height="145" fill="white"/>',
 '<g font-family="Arial,sans-serif" font-size="3.2" fill="#142c3c">',
-'<text x="19" y="9" font-size="5">RM8-2U / REV E — QD3 clearance trial, full size</text>',
+'<text x="19" y="9" font-size="5">RM8-2U / REV F — QD3 clearance trial, full size</text>',
 '<text x="19" y="16">Print at 100%, no fit-to-page. Verify the 100 mm scale before use. Large-format or tiled printing required.</text>']
 x0=260;y0=25
 # Face shown top to bottom in screen coordinates.
@@ -35,7 +35,7 @@ b=['<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="
 '<rect width="1600" height="1100" fill="#f4f6f8"/>',
 '<g font-family="Arial,sans-serif" fill="#192e3f">',
 '<text x="65" y="70" font-size="35" font-weight="bold">RM8 / 2U coolant manifold</text>',
-'<text x="65" y="108" font-size="19" fill="#526777">Revision E · Eight parallel circuits · All ports G1/4 female · Millimetres</text>']
+'<text x="65" y="108" font-size="19" fill="#526777">Revision F · Eight parallel circuits · All ports G1/4 female · Millimetres</text>']
 def text(x,y,t,size=16,colour='#192e3f',anchor='start'):
     b.append(f'<text x="{x}" y="{y}" font-size="{size}" fill="{colour}" text-anchor="{anchor}">{escape(t)}</text>')
 def rect(x,y,w,h,fill,stroke='#192e3f',radius=0):
@@ -73,10 +73,11 @@ ry=615
 rect(ox-220*s,ry,440*s,87*s,'#e1e6e9')
 for z,col in zip(p['port_rows_z'],('#258fc6','#d66c3c')):
     cy=ry+(87-z)*s
-    rect(ox-204.9*s,cy-12.9*s,409.8*s,25.8*s,'none','#333f48',12.9*s)
-    rect(ox-200*s,cy-8*s,400*s,16*s,col,col,8*s)
+    gl=p['channel_length']+2*p['seal_offset']+p['seal_groove_width']; gh=p['channel_width']+2*p['seal_offset']+p['seal_groove_width']
+    rect(ox-gl*s/2,cy-gh*s/2,gl*s,gh*s,'none','#333f48',gh*s/2)
+    rect(ox-p['channel_length']*s/2,cy-p['channel_width']*s/2,p['channel_length']*s,p['channel_width']*s,col,col,p['channel_width']*s/2)
     text(800,cy+5,'SUPPLY — one common gallery' if z<40 else 'RETURN — one common gallery',16,'white','middle')
-for z in(5.5,43.5,81.5):
+for z in(p['cover_bolt_edge_offset'],43.5,p['body_height']-p['cover_bolt_edge_offset']):
     for x in xs:
         b.append(f'<circle cx="{ox+x*s}" cy="{ry+(87-z)*s}" r="4.3" fill="white" stroke="#758592"/>')
 for x in(-213,213):

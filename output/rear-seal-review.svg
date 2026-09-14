@@ -3,13 +3,13 @@
 <rect width="1600" height="1130" fill="#f5f7f9"/>
 <g font-family="Arial,sans-serif" fill="#182d3b">
 <text x="65" y="64" font-size="36" fill="#182d3b" text-anchor="start">Rear galleries and O-ring grooves</text>
-<text x="65" y="101" font-size="20" fill="#526777" text-anchor="start">RM8 / 2U · Revision E geometry · Rear cover removed · Dimensions in mm</text>
+<text x="65" y="101" font-size="20" fill="#526777" text-anchor="start">RM8 / 2U · Revision F geometry · Rear cover removed · Dimensions in mm</text>
 <line x1="173.0" y1="151" x2="1427.0" y2="151" stroke="#607080" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
 <text x="800" y="139" font-size="18" fill="#182d3b" text-anchor="middle">440 POM body</text>
 <rect x="173.0" y="185" width="1254.0" height="247.95000000000002" rx="2" fill="#25343e" stroke="none"/>
-<rect x="216.03499999999997" y="329.21000000000004" width="1167.93" height="73.53" rx="36.765" fill="#efb542" stroke="none"/>
-<rect x="224.015" y="337.19" width="1151.97" height="57.57" rx="28.785" fill="#25343e" stroke="none"/>
-<rect x="230.0" y="343.175" width="1140.0" height="45.6" rx="22.8" fill="#28617d" stroke="none"/>
+<rect x="230.71249999999998" y="321.0875" width="1138.575" height="89.775" rx="44.8875" fill="#efb542" stroke="none"/>
+<rect x="243.53750000000002" y="333.9125" width="1112.925" height="64.125" rx="32.0625" fill="#25343e" stroke="none"/>
+<rect x="252.79999999999995" y="343.175" width="1094.4" height="45.6" rx="22.8" fill="#28617d" stroke="none"/>
 <circle cx="1313.0" cy="365.975" r="16.815" fill="#14242e"/>
 <circle cx="1184.75" cy="365.975" r="16.815" fill="#14242e"/>
 <circle cx="1056.5" cy="365.975" r="16.815" fill="#14242e"/>
@@ -20,9 +20,9 @@
 <circle cx="415.25" cy="365.975" r="16.815" fill="#14242e"/>
 <circle cx="287.0" cy="365.975" r="16.815" fill="#14242e"/>
 <text x="800" y="371.975" font-size="16" fill="#ffffff" text-anchor="middle">SUPPLY</text>
-<rect x="216.03499999999997" y="215.21" width="1167.93" height="73.53" rx="36.765" fill="#efb542" stroke="none"/>
-<rect x="224.015" y="223.19" width="1151.97" height="57.57" rx="28.785" fill="#25343e" stroke="none"/>
-<rect x="230.0" y="229.175" width="1140.0" height="45.6" rx="22.8" fill="#935849" stroke="none"/>
+<rect x="230.71249999999998" y="207.0875" width="1138.575" height="89.775" rx="44.8875" fill="#efb542" stroke="none"/>
+<rect x="243.53750000000002" y="219.9125" width="1112.925" height="64.125" rx="32.0625" fill="#25343e" stroke="none"/>
+<rect x="252.79999999999995" y="229.175" width="1094.4" height="45.6" rx="22.8" fill="#935849" stroke="none"/>
 <circle cx="1313.0" cy="251.97500000000002" r="16.815" fill="#14242e"/>
 <circle cx="1184.75" cy="251.97500000000002" r="16.815" fill="#14242e"/>
 <circle cx="1056.5" cy="251.97500000000002" r="16.815" fill="#14242e"/>
@@ -33,15 +33,15 @@
 <circle cx="415.25" cy="251.97500000000002" r="16.815" fill="#14242e"/>
 <circle cx="287.0" cy="251.97500000000002" r="16.815" fill="#14242e"/>
 <text x="800" y="257.975" font-size="16" fill="#ffffff" text-anchor="middle">RETURN</text>
-<circle cx="1313.0" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="1184.75" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="1056.5" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="928.25" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="800.0" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="671.75" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="543.5" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="415.25" cy="417.275" r="4.7025" fill="#c9d2d9"/>
-<circle cx="287.0" cy="417.275" r="4.7025" fill="#c9d2d9"/>
+<circle cx="1313.0" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="1184.75" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="1056.5" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="928.25" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="800.0" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="671.75" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="543.5" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="415.25" cy="420.125" r="4.7025" fill="#c9d2d9"/>
+<circle cx="287.0" cy="420.125" r="4.7025" fill="#c9d2d9"/>
 <circle cx="1313.0" cy="308.975" r="4.7025" fill="#c9d2d9"/>
 <circle cx="1184.75" cy="308.975" r="4.7025" fill="#c9d2d9"/>
 <circle cx="1056.5" cy="308.975" r="4.7025" fill="#c9d2d9"/>
@@ -51,46 +51,42 @@
 <circle cx="543.5" cy="308.975" r="4.7025" fill="#c9d2d9"/>
 <circle cx="415.25" cy="308.975" r="4.7025" fill="#c9d2d9"/>
 <circle cx="287.0" cy="308.975" r="4.7025" fill="#c9d2d9"/>
-<circle cx="1313.0" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="1184.75" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="1056.5" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="928.25" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="800.0" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="671.75" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="543.5" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="415.25" cy="200.675" r="4.7025" fill="#c9d2d9"/>
-<circle cx="287.0" cy="200.675" r="4.7025" fill="#c9d2d9"/>
+<circle cx="1313.0" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="1184.75" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="1056.5" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="928.25" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="800.0" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="671.75" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="543.5" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="415.25" cy="197.825" r="4.7025" fill="#c9d2d9"/>
+<circle cx="287.0" cy="197.825" r="4.7025" fill="#c9d2d9"/>
 <circle cx="1407.0500000000002" cy="365.975" r="4.7025" fill="#c9d2d9"/>
 <circle cx="1407.0500000000002" cy="251.97500000000002" r="4.7025" fill="#c9d2d9"/>
 <circle cx="192.94999999999993" cy="365.975" r="4.7025" fill="#c9d2d9"/>
 <circle cx="192.94999999999993" cy="251.97500000000002" r="4.7025" fill="#c9d2d9"/>
 <text x="800" y="475" font-size="21" fill="#182d3b" text-anchor="middle">Yellow highlights the two empty grooves; each takes one complete O-ring.</text>
-<text x="800" y="507" font-size="19" fill="#526777" text-anchor="middle">Each gallery: 400 × 16 opening · Groove centreline: 407 × 23 · Path length: 840.26</text>
+<text x="800" y="507" font-size="19" fill="#526777" text-anchor="middle">Each gallery: 384 × 16 opening · Groove centreline: 395 × 27 · Path length: 820.82</text>
 <text x="65" y="573" font-size="25" fill="#182d3b" text-anchor="start">Gland section before the cover closes</text>
-<path d="M100 690 H245 V786.0 H413.0 V690 H615 V870 H100 Z" fill="#25343e"/>
-<circle cx="329.0" cy="726.0" r="60.0" fill="#efb542" stroke="#9a7122" stroke-width="2"/>
+<path d="M100 690 H245 V802.0 H425.0 V690 H615 V870 H100 Z" fill="#25343e"/>
+<circle cx="335.0" cy="731.4" r="70.6" fill="#efb542" stroke="#9a7122" stroke-width="2"/>
 <line x1="110" y1="690" x2="610" y2="690" stroke="#607080" stroke-width="1.5" stroke-dasharray="6 5"/>
-<line x1="245" y1="616" x2="413.0" y2="616" stroke="#607080" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
-<text x="329.0" y="604" font-size="18" fill="#182d3b" text-anchor="middle">2.8 groove width</text>
-<line x1="655" y1="690" x2="655" y2="786.0" stroke="#607080" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
-<text x="675" y="744.0" font-size="18" fill="#182d3b" text-anchor="start">1.6 deep</text>
-<text x="105" y="907" font-size="20" fill="#182d3b" text-anchor="start">Ø2 ring · 0.40 nominal protrusion · 20% nominal squeeze</text>
+<line x1="245" y1="616" x2="425.0" y2="616" stroke="#607080" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<text x="335.0" y="604" font-size="18" fill="#182d3b" text-anchor="middle">4.5 groove width</text>
+<line x1="655" y1="690" x2="655" y2="802.0" stroke="#607080" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<text x="675" y="752.0" font-size="18" fill="#182d3b" text-anchor="start">2.8 deep</text>
+<text x="105" y="907" font-size="20" fill="#182d3b" text-anchor="start">Ø3.53 ring · 0.73 nominal protrusion · 21% nominal squeeze</text>
 <text x="105" y="937" font-size="17" fill="#526777" text-anchor="start">Dashed line: POM mating face / closed cover underside.</text>
 <text x="860" y="573" font-size="25" fill="#182d3b" text-anchor="start">Use a complete circular ring</text>
 <text x="860" y="619" font-size="20" fill="#182d3b" text-anchor="start">The ring bends into the capsule-shaped groove.</text>
 <text x="860" y="652" font-size="20" fill="#182d3b" text-anchor="start">No cut, splice or adhesive joint is required.</text>
-<text x="860" y="701" font-size="20" fill="#182d3b" text-anchor="start">Zero-stretch equivalent size: 265.5 ID × 2 section</text>
-<text x="860" y="747" font-size="18" fill="#526777" text-anchor="start">Candidate size</text>
-<text x="1110" y="747" font-size="18" fill="#526777" text-anchor="start">Centreline stretch</text>
-<text x="860" y="782" font-size="20" fill="#182d3b" text-anchor="start">260 × 2 mm</text>
-<text x="1110" y="782" font-size="20" fill="#182d3b" text-anchor="start">2.08%</text>
-<text x="860" y="816" font-size="20" fill="#182d3b" text-anchor="start">262 × 2 mm</text>
-<text x="1110" y="816" font-size="20" fill="#182d3b" text-anchor="start">1.31%</text>
-<text x="860" y="850" font-size="20" fill="#182d3b" text-anchor="start">265 × 2 mm</text>
-<text x="1110" y="850" font-size="20" fill="#182d3b" text-anchor="start">0.17%</text>
-<text x="860" y="904" font-size="17" fill="#926223" text-anchor="start">Size candidates are not confirmed stock selections.</text>
-<text x="860" y="935" font-size="18" fill="#182d3b" text-anchor="start">Specify EPDM, 70 Shore A, one-piece moulded.</text>
-<text x="65" y="1011" font-size="22" fill="#182d3b" text-anchor="start">2 mm remains the baseline: more compression allowance than a 1–1.5 mm section.</text>
-<text x="65" y="1045" font-size="19" fill="#526777" text-anchor="start">Select the purchased ring and its tolerances before releasing the gland dimensions.</text>
+<text x="860" y="701" font-size="20" fill="#182d3b" text-anchor="start">Selected: 253.59 mm ID × 3.53 mm section</text>
+<text x="860" y="747" font-size="19" fill="#182d3b" text-anchor="start">RS 258-0460 · EPDM · AS568-274 / BS 1806-274</text>
+<text x="860" y="787" font-size="20" fill="#182d3b" text-anchor="start">Nominal ring elongation: 1.62%</text>
+<text x="860" y="824" font-size="20" fill="#182d3b" text-anchor="start">Estimated squeeze after stretch: 20.0%</text>
+<text x="860" y="861" font-size="20" fill="#182d3b" text-anchor="start">Estimated gland fill after stretch: 76.4%</text>
+<text x="860" y="904" font-size="18" fill="#182d3b" text-anchor="start">Two complete rings; one around each gallery.</text>
+<text x="860" y="935" font-size="18" fill="#182d3b" text-anchor="start">Cover seats on the POM lands to set compression.</text>
+<text x="65" y="1011" font-size="22" fill="#182d3b" text-anchor="start">Grooves 4.5 wide × 2.8 deep · Centreline end radius 13.5 · Seal land 3.25</text>
+<text x="65" y="1045" font-size="19" fill="#526777" text-anchor="start">Nominal design checked; confirm ring tolerances, coolant and cover preload before manufacture.</text>
 <text x="65" y="1096" font-size="17" fill="#926223" text-anchor="start">REVIEW DRAWING · Cross-section enlarged · Highlights are explanatory · No pressure rating</text>
 </g></svg>

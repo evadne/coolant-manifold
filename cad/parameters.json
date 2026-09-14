@@ -1,5 +1,5 @@
 {
-  "revision": "E",
+  "revision": "F",
   "name": "RM8-2U",
   "body_width": 440.0,
   "body_depth": 40.0,
@@ -14,14 +14,14 @@
   "tap_drill_diameter": 11.8,
   "thread_major_diameter": 13.157,
   "thread_full_depth": 8.0,
-  "channel_length": 400.0,
+  "channel_length": 384.0,
   "channel_width": 16.0,
   "channel_depth": 24.0,
   "front_wall": 16.0,
-  "seal_cross_section": 2.0,
-  "seal_groove_width": 2.8,
-  "seal_groove_depth": 1.6,
-  "seal_offset": 3.5,
+  "seal_cross_section": 3.53,
+  "seal_groove_width": 4.5,
+  "seal_groove_depth": 2.8,
+  "seal_offset": 5.5,
   "rack_width": 482.6,
   "rack_hole_pitch": 465.1,
   "rack_slot_length": 10.0,
@@ -96,5 +96,17 @@
     "head_diameter_min": 7.53,
     "proud_head_review_height": 0.2
   },
-  "port_hardware_keepout_diameter": 36.0
+  "port_hardware_keepout_diameter": 36.0,
+  "cover_bolt_edge_offset": 4.5,
+  "seal_ring": {
+    "supplier": "RS PRO",
+    "stock_number": "258-0460",
+    "standard": "AS568-274 / BS 1806-274",
+    "ID": 253.59,
+    "ID_tolerance_review": 1.4,
+    "cross_section_tolerance_review": 0.1,
+    "material": "EPDM 70 ShA range; RS specification 71 IRHD",
+    "tolerance_status": "AS568 size review allowance; confirm supplied EPDM tolerances before manufacture"
+  },
+  "seal_groove_tolerance": 0.05
 }

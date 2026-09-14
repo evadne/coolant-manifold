@@ -7,13 +7,22 @@ out=R/'output';s=2.85;ox=800;oy=185
 w=p['channel_width'];L=p['channel_length'];off=p['seal_offset'];gw=p['seal_groove_width'];gd=p['seal_groove_depth'];cs=p['seal_cross_section']
 cl=L+2*off;cw=w+2*off;perimeter=2*(cl-cw)+math.pi*cw
 zero_id=perimeter/math.pi-cs
-r={'revision':p['revision'],'groove_centreline_length_mm':perimeter,'zero_stretch_equivalent_round_ring_ID_mm':zero_id,'groove_width_mm':gw,'groove_depth_mm':gd,'candidates':[],'section_comparison':[]}
-for d in (260,262,265):
- free=math.pi*(d+cs);stretch=perimeter/free-1;stretched_cs=cs/math.sqrt(1+stretch)
- r['candidates'].append({'free_ring_ID_mm':d,'cross_section_mm':cs,'centreline_stretch_percent':stretch*100,'estimated_stretched_cross_section_mm':stretched_cs,'estimated_squeeze_percent':(1-gd/stretched_cs)*100,'status':'Dimension candidate only; EPDM compound, moulded construction and supply to be confirmed'})
-for c in (1,1.5,2):
- r['section_comparison'].append({'cross_section_mm':c,'illustrative_groove_depth_for_20_percent_squeeze_mm':.8*c,'free_protrusion_mm':.2*c,'squeeze_change_from_0_05_mm_gap_percentage_points':.05/c*100})
-r['rs_candidate']={'stock_number':'258-0460','url':'https://uk.rs-online.com/web/p/gaskets-o-rings/2580460','checked_date':'2026-09-14','checked_using':'Computer Use; RS product page and delivery dialog','ID_mm':253.59,'cross_section_mm':3.53,'material':'EPDM','standard':'AS568-274 / BS 1806-274','pack_quantity':2,'price_per_bag_GBP_ex_VAT':4.92,'availability_verbatim':'24 unit(s) ready to ship','free_centreline_length_mm':math.pi*(253.59+3.53),'stretch_on_existing_centreline_percent':100*(perimeter/(math.pi*(253.59+3.53))-1),'status':'Stocked alternative only; requires a new gland design, not compatible with revision E grooves'}
+ring=p['seal_ring'];ring_id=ring['ID'];free=math.pi*(ring_id+cs);ratio=perimeter/free;installed_cs=cs/math.sqrt(ratio)
+# Review AS568 allowances, pending confirmation for the purchased EPDM batch.
+# Centreline length/height +/-0.10 mm, groove width/depth +/-0.05 mm.
+path_tol=.10*(2+math.pi-2)
+cases=[]
+for dd in (-ring['cross_section_tolerance_review'],ring['cross_section_tolerance_review']):
+ for di in (-ring['ID_tolerance_review'],ring['ID_tolerance_review']):
+  for dl in (-path_tol,path_tol):
+   d=cs+dd; elongation=(perimeter+dl)/(math.pi*(ring_id+di+d));effective=d/math.sqrt(elongation)
+   for dh in (-.05,.05):
+    for db in (-.05,.05):
+     cases.append({'squeeze_percent':100*(1-(gd+dh)/effective),'fill_percent':100*math.pi*effective**2/(4*(gw+db)*(gd+dh)),'stretch_percent':100*(elongation-1)})
+r={'revision':p['revision'],'groove_centreline_length_mm':perimeter,'groove_centreline_overall_length_mm':cl,'groove_centreline_overall_height_mm':cw,'groove_width_mm':gw,'groove_depth_mm':gd,'free_ring_ID_mm':ring_id,'ring_cross_section_mm':cs,'ring_free_centreline_length_mm':free,'centreline_stretch_percent':100*(ratio-1),'estimated_installed_cross_section_mm':installed_cs,'nominal_squeeze_before_stretch_percent':100*(1-gd/cs),'estimated_squeeze_after_stretch_percent':100*(1-gd/installed_cs),'estimated_protrusion_after_stretch_mm':installed_cs-gd,'estimated_gland_fill_after_stretch_percent':100*math.pi*installed_cs**2/(4*gw*gd),'tolerance_review':{'status':ring['tolerance_status'],'ID_plus_minus_mm':ring['ID_tolerance_review'],'cross_section_plus_minus_mm':ring['cross_section_tolerance_review'],'centreline_overall_length_and_height_plus_minus_mm':.10,'groove_width_and_depth_plus_minus_mm':.05,'squeeze_percent_range':[min(c['squeeze_percent'] for c in cases),max(c['squeeze_percent'] for c in cases)],'fill_percent_range':[min(c['fill_percent'] for c in cases),max(c['fill_percent'] for c in cases)],'stretch_percent_range':[min(c['stretch_percent'] for c in cases),max(c['stretch_percent'] for c in cases)],'excludes':'Coolant swell, thermal expansion, cover separation/creep and nonuniform deformation; neutral path taken on groove centreline'},'selected_ring':{'stock_number':ring['stock_number'],'url':'https://uk.rs-online.com/web/p/gaskets-o-rings/2580460','material':ring['material'],'standard':ring['standard'],'pack_quantity':2,'stock_checked_date':'2026-09-14','availability_verbatim':'24 unit(s) ready to ship','price_per_bag_GBP_ex_VAT':4.92}}
+assert min(c['squeeze_percent'] for c in cases)>15
+assert max(c['fill_percent'] for c in cases)<85
+assert max(c['stretch_percent'] for c in cases)<3
 (out/'analysis'/'rear-seal-sizing.json').write_text(json.dumps(r,indent=2)+'\n')
 a=['<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1130" viewBox="0 0 1600 1130">','<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#607080"/></marker></defs>','<rect width="1600" height="1130" fill="#f5f7f9"/>','<g font-family="Arial,sans-serif" fill="#182d3b">']
 def text(x,y,t,size=20,colour='#182d3b',anchor='start'):
@@ -36,14 +45,14 @@ for j,z in enumerate(p['port_rows_z']):
  for x in xs:
   a.append(f'<circle cx="{ox-x*s}" cy="{oy+(p["body_height"]-z)*s}" r="{p["tap_drill_diameter"]*s/2}" fill="#14242e"/>')
  text(800,oy+(p['body_height']-z)*s+6,'SUPPLY' if j==0 else 'RETURN',16,'#ffffff','middle')
-bolts=[(x,z) for z in (5.5,p['body_height']/2,p['body_height']-5.5) for x in xs]+[(x,z) for x in (-213,213) for z in p['port_rows_z']]
+bolts=[(x,z) for z in (p['cover_bolt_edge_offset'],p['body_height']/2,p['body_height']-p['cover_bolt_edge_offset']) for x in xs]+[(x,z) for x in (-213,213) for z in p['port_rows_z']]
 for x,z in bolts:
  a.append(f'<circle cx="{ox-x*s}" cy="{oy+(p["body_height"]-z)*s}" r="{1.65*s}" fill="#c9d2d9"/>')
 text(800,475,'Yellow highlights the two empty grooves; each takes one complete O-ring.',21,anchor='middle')
 text(800,507,f'Each gallery: {L:g} × {w:g} opening · Groove centreline: {cl:g} × {cw:g} · Path length: {perimeter:.2f}',19,'#526777','middle')
 text(65,573,'Gland section before the cover closes',25)
 # A local section, 60 pixels/mm. The round ring rests on the groove floor.
-k=60;x=245;top=690;bottom=top+gd*k;right=x+gw*k
+k=40;x=245;top=690;bottom=top+gd*k;right=x+gw*k
 path=f'M100 {top} H{x} V{bottom} H{right} V{top} H615 V870 H100 Z'
 a.append(f'<path d="{path}" fill="#25343e"/>')
 a.append(f'<circle cx="{(x+right)/2}" cy="{bottom-cs*k/2}" r="{cs*k/2}" fill="#efb542" stroke="#9a7122" stroke-width="2"/>')
@@ -55,14 +64,15 @@ text(105,937,'Dashed line: POM mating face / closed cover underside.',17,'#52677
 text(860,573,'Use a complete circular ring',25)
 text(860,619,'The ring bends into the capsule-shaped groove.',20)
 text(860,652,'No cut, splice or adhesive joint is required.',20)
-text(860,701,f'Zero-stretch equivalent size: {zero_id:.1f} ID × {cs:g} section',20)
-text(860,747,'Candidate size',18,'#526777');text(1110,747,'Centreline stretch',18,'#526777')
-for i,c in enumerate(r['candidates']):
- text(860,782+34*i,f"{c['free_ring_ID_mm']:g} × {cs:g} mm",20);text(1110,782+34*i,f"{c['centreline_stretch_percent']:.2f}%",20)
-text(860,904,'Size candidates are not confirmed stock selections.',17,'#926223')
-text(860,935,'Specify EPDM, 70 Shore A, one-piece moulded.',18)
-text(65,1011,'2 mm remains the baseline: more compression allowance than a 1–1.5 mm section.',22)
-text(65,1045,'Select the purchased ring and its tolerances before releasing the gland dimensions.',19,'#526777')
+text(860,701,f'Selected: {ring_id:g} mm ID × {cs:g} mm section',20)
+text(860,747,'RS 258-0460 · EPDM · AS568-274 / BS 1806-274',19)
+text(860,787,f'Nominal ring elongation: {100*(ratio-1):.2f}%',20)
+text(860,824,f'Estimated squeeze after stretch: {100*(1-gd/installed_cs):.1f}%',20)
+text(860,861,f'Estimated gland fill after stretch: {r["estimated_gland_fill_after_stretch_percent"]:.1f}%',20)
+text(860,904,'Two complete rings; one around each gallery.',18)
+text(860,935,'Cover seats on the POM lands to set compression.',18)
+text(65,1011,f'Grooves {gw:g} wide × {gd:g} deep · Centreline end radius {cw/2:g} · Seal land {off-gw/2:g}',22)
+text(65,1045,'Nominal design checked; confirm ring tolerances, coolant and cover preload before manufacture.',19,'#526777')
 text(65,1096,'REVIEW DRAWING · Cross-section enlarged · Highlights are explanatory · No pressure rating',17,'#926223')
 a.append('</g></svg>');(out/'rear-seal-review.svg').write_text('\n'.join(a))
 print(json.dumps(r,indent=2))

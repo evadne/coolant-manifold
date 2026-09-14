@@ -67,8 +67,10 @@
   ],
   "hydrostatic_bar_per_metre": 0.0980665,
   "current_cover_force_per_gallery_N_at_gauge_bar": {
-    "0.4": 369.89902513749007,
-    "0.8": 739.7980502749801,
-    "1.6": 1479.5961005499603
-  }
+    "0.4": 420.3422104446697,
+    "0.8": 840.6844208893394,
+    "1.6": 1681.3688417786789
+  },
+  "geometry_revision": "F",
+  "seal_centreline_projected_area_per_gallery_mm2": 10508.55526111674
 }

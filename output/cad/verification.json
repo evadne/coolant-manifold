@@ -1,5 +1,5 @@
 {
-  "revision": "E",
+  "revision": "F",
   "model": "RM8-2U",
   "mounting": "faceplate",
   "valid_manufactured_solids": 3,
@@ -13,8 +13,8 @@
     49.0,
     87.0
   ],
-  "body_volume_mm3": 1237626.2573292712,
-  "estimated_dry_mass_without_fittings_or_screws_kg": 3.305449994149668,
+  "body_volume_mm3": 1236758.2171018254,
+  "estimated_dry_mass_without_fittings_or_screws_kg": 3.3042173770266947,
   "reference_pull_ring_gaps_xy_mm": [
     21.3,
     16.3
@@ -23,9 +23,18 @@
     17,
     12
   ],
-  "seal_squeeze_nominal_percent": 20,
-  "seal_gland_fill_nominal_percent": 70.12483601762932,
-  "seal_centreline_length_mm": 840.2566310325652,
+  "seal_squeeze_nominal_percent": 20.679886685552407,
+  "seal_squeeze_after_centreline_stretch_percent": 20.041393098243653,
+  "seal_gland_fill_nominal_percent": 77.67276170062907,
+  "seal_gland_fill_after_centreline_stretch_percent": 76.43723365926589,
+  "seal_centreline_length_mm": 820.8230016469245,
+  "seal_ring_free_ID_mm": 253.59,
+  "seal_centreline_stretch_percent": 1.616395547320293,
+  "seal_compressed_envelope_width_mm": 3.4396755146669653,
+  "gallery_to_groove_land_mm": 3.25,
+  "groove_inside_end_radius_mm": 11.25,
+  "cover_thread_envelope_to_groove_min_mm": 1.1500000000000004,
+  "cover_countersink_to_outer_edge_min_mm": 0.2999999999999998,
   "rack_slot_centres_z_mm": [
     5.399999999999997,
     81.6
@@ -58,6 +67,10 @@
     "single solid per manufactured part",
     "two separate connected wet networks",
     "all 18 bores connected to intended gallery",
+    "thread-major port circles fully inside gallery openings",
+    "seal compression and fill after nominal stretch",
+    "at least 1 mm nominal cover thread-envelope to groove land",
+    "groove inside end radius at least three maximum review cord diameters",
     "no manufactured part overlap",
     "cover and body-mount screws outside galleries and seal grooves",
     "36 mm fitting overhang and raised POM seals clear faceplate",

@@ -1,4 +1,4 @@
-# RM8-2U revision E — manufacturing notes for DFM
+# RM8-2U revision F — manufacturing notes for DFM
 
 Units: mm. CAD source: `cad/parameters.json` and `scripts/build_cad.py`. STEP holes are pilot cylinders; no helical threads are modelled. Supply these notes with the STEP files. Automatic hole recognition is not enough to specify the threads.
 
@@ -9,7 +9,7 @@ Units: mm. CAD source: `cad/parameters.json` and `scripts/build_cad.py`. STEP ho
 | Body | 1 | Black unfilled Delrin / POM-H; stock grade and porosity to be agreed | CNC mill, drill, tap/thread mill |
 | Rear cover | 1 | 316L stainless, 3 finished thickness | Cut profile; machine sealing face, drill and countersink |
 | Rack faceplate | 1 | 304 or 316 stainless, 3 finished thickness | Punch or laser/waterjet cut, countersink, deburr; no bends |
-| Gallery seals | 2 | EPDM 70 Shore A, 2 mm cross-section baseline, coolant-compatible | Prefer purchased one-piece moulded rings; stock size pending, no cutting/gluing |
+| Gallery seals | 2 | RS PRO 258-0460, EPDM, 253.59 ID × 3.53 section, AS568-274 | Two complete rings (one bag); confirm one-piece moulded supply and coolant compatibility, no cutting/gluing |
 | Cover screws | 31 | Stainless M4 × 12, 90° countersunk | 9 mm nominal engagement in body |
 | Faceplate/body screws | 8 | A4 stainless M4 × 12 DIN 7991, 2.5 mm hex; Pozi alternative below | Approximately 9.02 mm nominal penetration in body with maximum listed socket head |
 | Rack fixings | 4 sets | Match rails/cage nuts, normally M6 | Purchased |
@@ -32,19 +32,21 @@ ISO 228-1 G1/4 female parallel pipe thread, 19 TPI, 55° form; nominal major dia
 
 ## Pocket and seal geometry
 
-Each capsule pocket is 400 overall length × 16 overall height, R8 ends, 24 deep from the rear. Centres (x 0,z 23.5) and(x 0,z 63.5). The front wall is 16. The intervening solid web is 24 mm high; upper and lower external walls are 15.5. End walls are 20. A Ø16 end mill can generate the pocket; smaller tools can rough and finish it.
+Each capsule pocket is 384 overall length × 16 overall height, R8 ends, 24 deep from the rear. Centres (x 0,z 23.5) and(x 0,z 63.5). The front wall is 16. The intervening solid web is 24 mm high; upper and lower external walls are 15.5. End walls are 28. A Ø16 end mill can generate the pocket; smaller tools can rough and finish it.
 
-Each gland centreline is the pocket perimeter offset outward 3.5: capsule 407 overall × 23, R11.5 ends. Gland width 2.8 ±0.05, depth 1.60 ±0.05. Nominal 2 mm cord gives 20% axial squeeze and 70.1% gland fill. These are starting values at room temperature, pending seal tolerance, coolant swell, corner behaviour and cover/plastic creep review.
+Each gland centreline is the pocket perimeter offset outward 5.5: capsule **395 overall × 27**, R13.5 ends. Centreline overall length/height ±0.10. Gland **width 4.50 ±0.05, depth 2.80 ±0.05** from the rear POM mating face. The flat steel cover seats directly on the POM lands and compresses the protruding ring; screw torque does not set the intended gap.
 
-Centreline perimeter is approximately 840.26 mm per loop. This is a path length, not an approved cord cut length or standard O-ring ID. The seal vendor must choose the continuous-loop size and any stretch. Do not assume an adhesive butt joint is a production pressure seal. STEP shows rectangular compressed envelopes; the supplied elastomer has a round section.
+The 253.59 ID × 3.53 section ring has a free centreline circumference of 807.77. Groove path is 820.82, giving 1.62% nominal elongation. A volume-conserving uniform-stretch estimate gives 3.502 installed section, **0.702 protrusion, 20.04% axial squeeze and 76.44% gland fill**. Before stretch, nominal squeeze is 20.68%. STEP seal solids are volume-equivalent rectangular compressed envelopes (3.440 wide × 2.80 deep), not actual deformed elastomer surfaces.
 
-See [rear seal and RS stock assessment](rear-seals.md). The stocked RS 258-0460 alternative has a 3.53 mm section and **does not fit these glands**; it is a procurement-led redesign candidate, not a BOM substitution. Keep revision E geometry until the ring and revised gland are selected together.
+Pocket-to-groove land is 3.25; groove inside end radius 11.25. Groove outer extent is 399.5 × 31.5. The narrowest nominal dry land to a conservative Ø4.2 cover-thread envelope is **1.15**, and outer cover countersinks remain **0.30** inside the body/cover edge. Control outer cover-hole positions to ±0.10 and countersink diameter to +0.10/0; these narrow lands and edge margins need explicit vendor DFM review rather than the general ±0.15 positional tolerance. With ±0.10 hole position, ±0.10 centreline height, ±0.05 groove width and Ø4.2 thread envelope, the simple planar land allowance reduces to about 0.975. Countersink edge allowance reduces to 0.15 before the body's edge tolerance; agree the edge datum/finished profile with the vendor.
+
+Using review allowances of ring ID ±1.40, section ±0.10, the specified groove dimensions, and a closed cover, the centreline sizing model gives **15.98–23.87% squeeze**, **69.69–83.74% fill** and **0.99–2.25% stretch**. The ring allowances follow a published AS568 size table and must be confirmed for the purchased EPDM rings. These checks exclude coolant swell, thermal effects, cover separation/creep and pressure-driven ring movement towards the outer groove wall. See [rear-seal calculations and purchase reference](rear-seals.md).
 
 Indicative DFM requirements: gland/port seal finish Ra≤1.6 µm, cover seal face Ra≤0.8 µm, mating-face flatness 0.05 across each seal perimeter. General dimensions±0.15; port positions±0.10; gland dimensions as above. These are quote requirements to confirm, not supplier guarantees. Break exposed sharp edges 0.3–0.5, except sealing edges which need a controlled small edge break. Groove root radius≤0.2 to be agreed with the seal vendor. CAD omits microscopic edge treatments.
 
 ## Cover fastening
 
-31 screw positions: the nine port-column X positions at z 5.5,43.5,81.5, plus x±213 at each gallery-centre Z. Cover clearanceØ4.5, Ø8.4 × 90° countersink from rear. Body pilotØ3.3 × 14 deep from y 40, M4 × 0.7, minimum 10 full thread. Confirm blind tapping run-out and screw bottom clearance. All heads flush.
+31 screw positions: the nine port-column X positions at z 4.5,43.5,82.5, plus x±213 at each gallery-centre Z. Cover clearanceØ4.5, Ø8.4 × 90° countersink from rear. Body pilotØ3.3 × 14 deep from y 40, M4 × 0.7, minimum 10 full thread. Confirm blind tapping run-out and screw bottom clearance. All heads flush.
 
 ## Flat rack faceplate
 
@@ -68,6 +70,6 @@ Rack slots are 10 × 7, centres X = ±232.55, Z = 5.4 and 81.6: 465.1 horizontal
 
 `output/cad/faceplate-flat.dxf` is a genuine flat profile in millimetres: DXF X/Y correspond to assembly X/Z, with origin at the faceplate's bottom centre. CUT contains the outline, eighteen Ø32 windows, eight Ø4.5 mounting holes and four rack slots. It deliberately omits countersink outlines to prevent them being cut through. Countersink the eight body mounts as a separate operation. Do not countersink the rack slots or port windows. The STEP includes the countersinks.
 
-The front plate is the rack mount; the raised POM bosses provide the independent port sealing surfaces. The retained rear cover closes the wet galleries. A separate flat bottom support plate fixed to the body is allowed by the user but is not included in revision E; its fasteners would need their own clearance and load checks.
+The front plate is the rack mount; the raised POM bosses provide the independent port sealing surfaces. The retained rear cover closes the wet galleries. A separate flat bottom support plate fixed to the body is allowed by the user but is not included in revision F; its fasteners would need their own clearance and load checks.
 
-Direct POM threads are simple for the first prototype, but torque/preload and long-term retention must be validated. No tightening torque is established here. Review faceplate bending/deflection, QD insertion forces and hose loads; support hoses independently instead of relying on the plastic ports. No operating pressure or mechanical load rating is assigned to revision E.
+Direct POM threads are simple for the first prototype, but torque/preload and long-term retention must be validated. No tightening torque is established here. Review faceplate bending/deflection, QD insertion forces and hose loads; support hoses independently instead of relying on the plastic ports. No operating pressure or mechanical load rating is assigned to revision F.

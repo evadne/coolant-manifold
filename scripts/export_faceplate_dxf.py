@@ -9,7 +9,7 @@ w=p['rack_width']/2;h=p['body_height']
 m.add_lwpolyline([(-w,0),(w,0),(w,h),(-w,h)],close=True,dxfattribs={'layer':'CUT'})
 xs=[(i-p['branch_count']/2)*p['port_pitch'] for i in range(p['branch_count']+1)]
 if BACK:
-    bolts=[(x,z) for z in (5.5,h/2,h-5.5) for x in xs]+[(x,z) for x in (-213,213) for z in p['port_rows_z']]
+    bolts=[(x,z) for z in (p['cover_bolt_edge_offset'],h/2,h-p['cover_bolt_edge_offset']) for x in xs]+[(x,z) for x in (-213,213) for z in p['port_rows_z']]
     for x,z in bolts:m.add_circle((x,z),2.25,dxfattribs={'layer':'CUT'})
 else:
     for z in p['port_rows_z']:

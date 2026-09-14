@@ -7,7 +7,7 @@
 <path d="M760 120 V660" stroke="#c76a3e" stroke-width="2" stroke-dasharray="9 6"/>
 <text x="780" y="143" fill="#b9532e" font-size="17">Rack rail mating surface</text>
 <text x="55" y="190" font-size="23" font-weight="bold">B / faceplate + POM bosses</text>
-<text x="55" y="219" font-size="17">2 steel plates / revision E</text>
+<text x="55" y="219" font-size="17">2 steel plates / revision F</text>
 <rect x="760" y="232" width="200" height="116" fill="#263540"/>
 <path d="M745 232 H760 V251 H745 Z M745 330 H760 V348 H745 Z" fill="#aebec9" stroke="#647987"/>
 <rect x="960" y="232" width="15" height="116" fill="#aebec9" stroke="#647987"/>
