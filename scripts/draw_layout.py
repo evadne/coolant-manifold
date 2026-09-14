@@ -8,7 +8,7 @@ out=R/'output';xs=[-180+45*i for i in range(9)]
 a=['<svg xmlns="http://www.w3.org/2000/svg" width="520mm" height="145mm" viewBox="0 0 520 145">',
 '<rect width="520" height="145" fill="white"/>',
 '<g font-family="Arial,sans-serif" font-size="3.2" fill="#142c3c">',
-'<text x="19" y="9" font-size="5">RM8-2U / REV B — QD3 clearance trial, full size</text>',
+'<text x="19" y="9" font-size="5">RM8-2U / REV D — QD3 clearance trial, full size</text>',
 '<text x="19" y="16">Print at 100%, no fit-to-page. Verify the 100 mm scale before use. Large-format or tiled printing required.</text>']
 x0=260;y0=25
 # Face shown top to bottom in screen coordinates.
@@ -18,14 +18,14 @@ for z in p['port_rows_z']:
     for i,x in enumerate(xs):
         c='#1673a4' if z<40 else '#b64e2b';cx=x0+x
         lab=('IN' if z<40 else 'OUT') if i==0 else ('S' if z<40 else 'R')+str(i)
-        a.append(f'<circle cx="{cx}" cy="{y}" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>')
+        a.append(f'<circle cx="{cx}" cy="{y}" r="16" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>')
         a.append(f'<circle cx="{cx}" cy="{y}" r="11.85" fill="none" stroke="{c}" stroke-width=".5"/>')
         a.append(f'<circle cx="{cx}" cy="{y}" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>')
         a.append(f'<path d="M {cx-3} {y} h6 M {cx} {y-3} v6" stroke="#52616b" stroke-width=".2"/>')
         a.append(f'<text x="{cx}" y="{y-16}" text-anchor="middle" fill="{c}">{lab}</text>')
 a.extend(['<path d="M40 130 h100 M40 127 v6 M140 127 v6" stroke="#152d40" stroke-width=".4"/>',
 '<text x="90" y="126" text-anchor="middle">100 mm calibration</text>',
-'<text x="180" y="128">Solid circles: Ø23.7 pull rings. Dashed: Ø28 faceplate windows / body envelope.</text>',
+'<text x="180" y="128">Solid circles: Ø23.7 pull rings. Dashed: Ø32 faceplate windows.</text>',
 '<text x="180" y="135">45 mm column pitch / 40 mm row pitch. Test actual mating fittings and hand access.</text>',
 '</g></svg>'])
 (out/'clearance-template-1to1.svg').write_text('\n'.join(a))
@@ -35,7 +35,7 @@ b=['<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="
 '<rect width="1600" height="1100" fill="#f4f6f8"/>',
 '<g font-family="Arial,sans-serif" fill="#192e3f">',
 '<text x="65" y="70" font-size="35" font-weight="bold">RM8 / 2U coolant manifold</text>',
-'<text x="65" y="108" font-size="19" fill="#526777">Revision B · Eight parallel circuits · All ports G1/4 female · Millimetres</text>']
+'<text x="65" y="108" font-size="19" fill="#526777">Revision D · Eight parallel circuits · All ports G1/4 female · Millimetres</text>']
 def text(x,y,t,size=16,colour='#192e3f',anchor='start'):
     b.append(f'<text x="{x}" y="{y}" font-size="{size}" fill="{colour}" text-anchor="{anchor}">{escape(t)}</text>')
 def rect(x,y,w,h,fill,stroke='#192e3f',radius=0):
@@ -51,11 +51,11 @@ for z in p['port_rows_z']:
     cy=oy+(87-z)*s
     for i,x in enumerate(xs):
         cx=ox+x*s;colour='#1673a4' if z<40 else '#b64e2b'
-        b.append(f'<circle cx="{cx}" cy="{cy}" r="{14*s}" fill="#263540" stroke="#6c808c"/>')
-        b.append(f'<circle cx="{cx}" cy="{cy}" r="{11.85*s}" fill="#c5cfd5" stroke="{colour}" stroke-width="2.5"/>')
+        b.append(f'<circle cx="{cx}" cy="{cy}" r="{16*s}" fill="#263540" stroke="#6c808c"/>')
+        b.append(f'<circle cx="{cx}" cy="{cy}" r="{14*s}" fill="#263540" stroke="{colour}" stroke-width="2.5"/>')
         b.append(f'<circle cx="{cx}" cy="{cy}" r="{6.5785*s}" fill="#263540"/>')
         lab=('IN' if z<40 else 'OUT') if i==0 else ('S' if z<40 else 'R')+str(i)
-        text(cx,cy-14*s-5,lab,13,colour,'middle')
+        text(cx,cy-16*s-5,lab,13,colour,'middle')
 for x,z in p['faceplate_mounts_xz']:
     b.append(f'<circle cx="{ox+x*s}" cy="{oy+(87-z)*s}" r="{5.2*s}" fill="#aab5bd" stroke="#71808b"/>')
 for sign in(-1,1):
@@ -84,8 +84,8 @@ for x in(-213,213):
         b.append(f'<circle cx="{ox+x*s}" cy="{ry+(87-z)*s}" r="4.3" fill="white" stroke="#758592"/>')
 text(65,890,'Clearance around the couplings',22)
 text(65,925,'Ø23.7 release rings: 21.3 horizontal gap / 16.3 vertical gap.',18)
-text(65,954,'Ø28 windows expose POM; fitting bases and O-rings seat directly on the body.',18)
-text(65,985,'Allow 100 mm service space forward of the face; verify release travel and hose bends with actual fittings.',17,'#526777')
+text(65,954,'Ø28 POM bosses / Ø32 plate windows / sealing faces 3 mm proud of steel.',18)
+text(65,985,'Integral female G1/4 ports; fittings seal on the raised POM annuli. Verify the actual O-ring footprint.',17,'#526777')
 text(65,1047,'INITIAL MODEL / FOR FEEDBACK AND VENDOR DFM — NOT PRESSURE RATED',17,'#a55432')
 text(1535,1047,'2026-09-14',16,'#526777','end')
 b.append('</g></svg>');(out/'layout.svg').write_text('\n'.join(b))

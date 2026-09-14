@@ -1,12 +1,12 @@
 # RM8-2U rack coolant manifold
 
-Initial design, revision B: eight parallel circuits, all connections on one face, black Delrin body and a flat stainless steel rack faceplate. The 2U format provides space to operate QD3 release rings without crowding adjacent fittings.
+Initial design, revision D: eight parallel circuits, all connections on one face, black Delrin body and a flat stainless steel rack faceplate. Each G1/4 female port is inside an integral cylindrical POM boss, standing 3 mm proud of the steel. The 2U format provides space to operate QD3 release rings without crowding adjacent fittings.
 
 ![Assembled manifold](output/images/assembled.png)
 
 | Parameter | Initial model |
 |---|---|
-| Bare rack envelope | 482.6 × 46 × 87 mm (width × depth × height) |
+| Bare rack envelope | 482.6 × 49 × 87 mm (width × depth × height) |
 | Ports |18 × G1/4 female BSPP, machined into Delrin |
 | Circuits |8 paired branches plus main inlet/outlet |
 | Port pitch |45 mm horizontal /40 mm vertical |
@@ -18,7 +18,7 @@ The dimensions of EK's reference manifold are 326 × 57 × 36 mm; its published 
 
 ## Alternative: one backing plate
 
-[Option C](docs/backplate.md) removes the front plate and extends the rear gallery cover to rack width, combining the rack mount and gallery closure in one flat steel part. The POM projects 43 mm forward of the rail surface; reference male QD tips project about 75.1 mm. All ports remain exposed. This interprets the user's bottom plate as a backing plate parallel to the rack face.
+[Option C](docs/backplate.md) removes the front plate and extends the rear gallery cover to rack width, combining the rack mount and gallery closure in one flat steel part. The flat POM face in Option C projects 43 mm forward of the rail surface; reference male QD tips project about 75.1 mm. All ports remain exposed. This interprets the user's bottom plate as a backing plate parallel to the rack face.
 
 - [Compare both arrangements](output/mounting-comparison.svg).
 - [Option C Blender model](output/backplate/manifold-review.blend).
@@ -34,6 +34,7 @@ The Option B faceplate files remain below and are not replaced by this alternati
 - [Editable Blender scene](output/manifold-review.blend) — CAD-derived body/cover/ears plus simplified QD3 and tube references.
 - [Assembly STEP](output/cad/manifold-assembly.step) — three manufactured components and two seal envelopes. Individual body, cover and faceplate STEP files are alongside it.
 - [Faceplate cut profile](output/cad/faceplate-flat.dxf) — flat DXF in millimetres; countersink the mounting holes separately.
+- [POM body and cylindrical port bosses](output/images/pom-body.png).
 - [Faceplate exploded view](output/images/faceplate-exploded.png).
 - [Port seating section](output/port-seating-section.svg).
 - [Dimensioned layout](output/layout.svg) — front and rear views.
@@ -44,7 +45,7 @@ The Option B faceplate files remain below and are not replaced by this alternati
 
 This is an initial model for feedback and vendor DFM, not a pressure-rated production release. STEP thread holes are pilot bores: use the thread call-outs in the manufacturing notes. QD shapes are illustrative, and actual ring travel/hand access must be trialled. Working pressure, total flow, coolant and final seal selection remain open.
 
-The 3 mm faceplate mounts to the rack. Its eighteen Ø28 mm windows let each QD seat and seal directly on POM; eight separate M5 screws attach the body. The rear gallery cover remains independent. No metal bending is required. A separate bottom support plate is permissible but is not needed for this mounting concept and is not included in revision B.
+The 3 mm faceplate mounts to the rack. Its eighteen Ø32 mm windows clear Ø28 mm POM bosses; their sealing faces stand 3 mm proud of steel; eight separate M5 screws attach the body. The rear gallery cover remains independent. The bosses are 6 mm high from the plate-supporting POM face, passing through the 3 mm faceplate. No metal bending is required. A separate bottom support plate is permissible but is not needed for this mounting concept and is not included in revision D.
 
 ## Rebuild
 

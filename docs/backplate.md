@@ -17,13 +17,13 @@ Mounting load passes from the body to the backing plate through the rear screw j
 
 The POM front stays at y = 0, body rear at y = 40, backing plate at y = 40…43. The rack's rail mating surface is y = 43. Consequently the POM face projects 43 mm ahead of the rail surface, or 40 mm ahead of the mounting plate's front face. Reference QD3-MTG4 male tips project approximately 75.1 mm ahead of the rail surface (43 + 32.1).
 
-For Option B the rail mating surface is y = 0, the POM face is flush with that plane and the male tips project about 32.1 mm. Thus Option C moves the whole fitting/service arrangement 43 mm further into the space in front of the rails. The 100 mm provisional service zone in front of the POM face becomes 143 mm in front of the rails. Connected female QDs, hose bends and a closed rack door still need an actual fit check.
+For current Option B (revision D), the rail mating surface is y = 0, raised boss ends are 6 mm ahead of it and male tips project about 38.1 mm. Thus Option C moves the fitting/service arrangement 37 mm further into the space in front of the rails. The 100 mm provisional service zone in front of the POM face becomes 143 mm in front of the rails. Connected female QDs, hose bends and a closed rack door still need an actual fit check.
 
 Both alternatives retain eight parallel circuits, a main inlet/outlet pair, 45 mm horizontal and 40 mm vertical port pitch, and an 87 mm / 2U height. There is no loss of lateral QD spacing.
 
 ## Manufacturing differences from Option B
 
-The shared G1/4, gallery, seal and general tolerance notes in `manufacturing.md` apply. For this option, replace the faceplate and rear-cover BOM rows with one backing plate; there are two manufactured solids, plus two seal envelopes in STEP.
+The shared G1/4 thread specification, gallery, rear seal and general tolerance notes in `manufacturing.md` apply. Option C does not use the raised-port features added to Option B revision D: its G1/4 seal datum stays at y = 0, with 16 mm wall to the gallery and Ø24 flat sealing lands. Ignore the boss dimensions and boss-related front machining notes for this option. For this option, replace the faceplate and rear-cover BOM rows with one backing plate; there are two manufactured solids, plus two seal envelopes in STEP.
 
 The backing plate is cut or punched flat. Its body-facing area must then meet the existing seal-face flatness and finish requirements; it is not an untouched punched blank. Deburr the rack slots and screw holes and protect the seal face. No bend allowance is needed. The same 3 mm finished thickness is retained for comparison, not selected from a completed structural analysis.
 
@@ -35,7 +35,7 @@ The DXF `output/backplate/cad/backplate-flat.dxf` contains one outline, four rac
 
 ## Assessment
 
-This is the simpler arrangement by part count and removes the need to fit QD bases through faceplate openings. It also leaves the POM face fully exposed for access and marking. Its disadvantages are the additional front projection, rear access to all body-retention screws, and use of the pressure cover as the structural rack mount. Removing the backing plate opens the galleries; this is not a detachable dry rack bracket.
+This is the simpler arrangement by part count and front-face machining and removes the need to fit QD bases through faceplate openings. It also leaves the POM face fully exposed for access and marking. Its disadvantages are the additional front projection, rear access to all body-retention screws, and use of the pressure cover as the structural rack mount. Removing the backing plate opens the galleries; this is not a detachable dry rack bracket.
 
 Plate bending near the rack fixings, seal-face distortion under hose/handling loads, screw preload, POM creep and rack-door clearance must be checked before preferring this option for manufacture. The body and fittings project in front of the rails, so pulling, side loads and impacts must be included in that review. The CAD checks establish connectivity and geometric separation, not a pressure or load rating.
 

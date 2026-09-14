@@ -9,7 +9,7 @@ Reviewed 14 September 2026. Manufacturer drawings are references, not our own de
 - [Koolance QD3-FS10X16 drawing](https://koolance.com/files/products/diagrams/qd3-fs10x16_d1.pdf): example hose-side female fitting, cached under references/qd3-fs10x16.pdf. The actual intended female variant remains to be chosen.
 - [Völkel G1/4 ×19 tap](https://voelkel.com/en/machine-tap-din-5156-form-b-hsse-g-bsp-1-4-x-19/78514): 11.8 mm core-hole recommendation. [Gühring catalogue](https://guhring.com/media/catalogs/fuomh0a2doj.pdf) gives BSP tooling/thread data. G1/4 nominal major diameter is13.157 mm, not the16.662 mm of G3/8.
 - [Penn Elcom rack panel drawing](https://www.farnell.com/datasheets/1843559.pdf):19-inch panel dimensions; [Keysight rack guide](https://docs.rs-online.com/4a5b/0900766b80e686f6.pdf) supplies nominal rack opening and mounting dimensions. One U is44.45 mm; use actual rail checks before release.
-- [Parker O-Ring Handbook](https://www.parker.com/content/dam/Parker-com/Literature/O-Ring-Division-Literature/ORD-5700.pdf): static face-seal design methodology. Revision B gland calculations are our proposed dimensions, not a validated Parker seal selection.
+- [Parker O-Ring Handbook](https://www.parker.com/content/dam/Parker-com/Literature/O-Ring-Division-Literature/ORD-5700.pdf): static face-seal design methodology. Revision D gland calculations are our proposed dimensions, not a validated Parker seal selection.
 - [Xometry acetal CNC machining](https://www.xometry.com/capabilities/cnc-machining-service/acetal/): acetal/Delrin capability, creep and stock-porosity considerations. [JLCCNC capabilities](https://jlccnc.com/): lists POM and conventional CNC/sheet-metal services. Neither supplier has reviewed or quoted this design.
 
 The reference drawings support component envelopes. They do not establish assembled QD overlap, release-ring stroke, comfortable hand clearance, manifold pressure rating or flow performance.
@@ -17,3 +17,5 @@ The reference drawings support component envelopes. They do not establish assemb
 - User sketch and follow-up in this task: use one flat stainless rack faceplate with oversized port windows, preserve direct fitting-to-POM seating, and allow an independent bottom plate attached to the body. This is the basis for revision B.
 
 - User alternative in this task: remove the front faceplate, use a single bottom/backing plate and allow POM to sit proud of the rack. Option C models a plate parallel to the rack face and records the resulting rail-relative projection explicitly.
+
+- Further user sketch/clarification: each female G1/4 port sits inside an integral cylindrical POM protrusion. Current Option B revision D puts the O-ring seating annulus 3 mm proud of the stainless faceplate. The stand-off addresses plate interference; sealing still depends on the actual fitting O-ring and thread engagement.

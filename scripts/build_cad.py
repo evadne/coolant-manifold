@@ -14,6 +14,8 @@ MESH=ROOT/'tmp'/('mesh-backplate' if BACK else 'mesh'); MESH.mkdir(parents=True,
 W,D,H=P['body_width'],P['body_depth'],P['body_height']
 xs=[(i-P['branch_count']/2)*P['port_pitch'] for i in range(P['branch_count']+1)]
 rows=P['port_rows_z']
+BH=0 if BACK else P['port_boss_height']
+FACE_Y=-BH
 def box(w,d,h,x=0,y=0,z=0):
     return cq.Workplane('XY').box(w,d,h,centered=(True,False,False)).translate((x,y,z))
 def cylinder(r,l,pos,axis):
@@ -25,13 +27,20 @@ def volume(shape):
     return sum(s.Volume() for s in shape.solids().vals())
 
 body=box(W,D,H)
+if not BACK:
+    for z in rows:
+        for x in xs:
+            body=body.union(cylinder(P['port_boss_diameter']/2,BH,(x,-BH,z),(0,1,0)))
+    roots=[e for e in body.val().Edges() if e.geomType()=='CIRCLE' and abs(e.Center().y)<1e-6]
+    assert len(roots)==2*len(xs)
+    body=body.newObject(roots).fillet(P['port_boss_root_radius'])
 voids=[]; seals=[]; grooves=[]
 for z in rows:
     channel=capsule(P['channel_length'],P['channel_width'],P['channel_depth'],z)
     fluid=channel
     for x in xs:
-        pos=(x,0,z); axis=(0,1,0)
-        bore=cylinder(P['tap_drill_diameter']/2,P['front_wall']+.1,pos,axis)
+        pos=(x,FACE_Y,z); axis=(0,1,0)
+        bore=cylinder(P['tap_drill_diameter']/2,P['front_wall']+BH+.1,pos,axis)
         body=body.cut(bore)
         cone=cq.Solid.makeCone(6.9,P['tap_drill_diameter']/2,1.0,cq.Vector(*pos),cq.Vector(*axis))
         body=body.cut(cone);fluid=fluid.union(bore)
@@ -99,25 +108,27 @@ for x,z in mounts:
     assert all(volume(fastener.intersect(v))<1e-6 for v in voids+grooves)
     for px,pz in bolts:
         assert volume(fastener.intersect(cylinder(2.1,14,(px,D,pz),(0,-1,0))))<1e-6
-# The front option must pass the fitting base; the rear option leaves the face bare.
+# Raised sealing lands clear the plate even when a fitting body overhangs the boss.
 if not BACK:
+    assert BH-T>=3
     for z in rows:
         for x in xs:
-            reference=cylinder(P['qd_male_hex_envelope']/2,T,(x,-T,z),(0,1,0))
-            assert volume(reference.intersect(mounting_plate))<1e-6
-            seal_land=cylinder(12,.01,(x,-.01,z),(0,1,0))
+            # A 36 mm body is deliberately larger than the 32 mm plate window.
+            overhang=cylinder(18,12,(x,FACE_Y,z),(0,-1,0))
+            assert volume(overhang.intersect(mounting_plate))<1e-6
+            seal_land=cylinder(P['port_boss_diameter']/2-.2,.01,(x,FACE_Y-.01,z),(0,1,0))
             assert volume(seal_land.intersect(mounting_plate))<1e-6
-            assert all(((mx-x)**2+(mz-z)**2)**.5 > 14+5.2 for mx,mz in mounts)
+            assert all(((mx-x)**2+(mz-z)**2)**.5 > P['faceplate_port_clearance']/2+5.2 for mx,mz in mounts)
 assert H<88.9
 assert min(P['port_pitch'],rows[1]-rows[0])-P['qd_clearance_diameter']>=12
 # Explicit branch bore connectivity and threaded-bore web envelope.
 for z,v in zip(rows,voids):
     for x in xs:
-        probe=cylinder(1,P['front_wall']+2,(x,0,z),(0,1,0))
+        probe=cylinder(1,P['front_wall']+BH+2,(x,FACE_Y,z),(0,1,0))
         assert volume(probe.cut(v))<1e-5
 report={'revision':P['revision'],'model':'RM8-2U','mounting':args.mounting,'valid_manufactured_solids':len(parts),'wet_networks':2,
  'branch_circuits':P['branch_count'],'ports':2*len(xs),'lid_screws_M4':len(bolts),'body_mount_screws_M5':len(mounts),
- 'assembly_envelope_mm':[P['rack_width'],D+P['lid_thickness']+(0 if BACK else T),H],'body_volume_mm3':volume(body),
+ 'assembly_envelope_mm':[P['rack_width'],D+P['lid_thickness']+BH,H],'body_volume_mm3':volume(body),
  'estimated_dry_mass_without_fittings_or_screws_kg':volume(body)*1.42e-6+sum(volume(v) for k,v in parts.items() if k!='body')*8e-6,
  'reference_pull_ring_gaps_xy_mm':[45-23.7,40-23.7],
  'conservative_28mm_envelope_gaps_mm':[17,12],
@@ -125,10 +136,12 @@ report={'revision':P['revision'],'model':'RM8-2U','mounting':args.mounting,'vali
  'seal_centreline_length_mm':2*(P['channel_length']-16)+math.pi*(16+7),
  'rack_slot_centres_z_mm':rack_z,
  'faceplate_openings_mm':None if BACK else P['faceplate_port_clearance'],
- 'nominal_radial_clearance_to_male_hex_mm':None if BACK else (P['faceplate_port_clearance']-P['qd_male_hex_envelope'])/2,
- 'pom_projection_ahead_of_rack_rail_mm':D+T if BACK else 0,
- 'reference_male_tip_ahead_of_rack_rail_mm':D+T+32.1 if BACK else 32.1,
- 'checks':['valid solids','single solid per manufactured part','two separate connected wet networks','all 18 bores connected to intended gallery','no manufactured part overlap','cover and body-mount screws outside galleries and seal grooves','unobstructed POM sealing faces' if BACK else 'male fitting envelope and POM sealing lands clear faceplate','no intersecting cover/mount screw bores','2U envelope','12 mm minimum conservative fitting gap'],
+ 'boss_to_window_radial_clearance_mm':None if BACK else (P['faceplate_port_clearance']-P['port_boss_diameter'])/2,
+ 'boss_height_from_mounting_face_mm':BH,
+ 'seal_face_proud_of_steel_mm':None if BACK else BH-T,
+ 'pom_projection_ahead_of_rack_rail_mm':D+T if BACK else BH,
+ 'reference_male_tip_ahead_of_rack_rail_mm':D+T+32.1 if BACK else BH+32.1,
+ 'checks':['valid solids','single solid per manufactured part','two separate connected wet networks','all 18 bores connected to intended gallery','no manufactured part overlap','cover and body-mount screws outside galleries and seal grooves','unobstructed POM sealing faces' if BACK else '36 mm fitting overhang and raised POM seals clear faceplate','no intersecting cover/mount screw bores','2U envelope','12 mm minimum conservative fitting gap'],
  'limitations':['No pressure or structural rating established','Threads represented by pilot bores, not helices','QD envelopes and release travel require physical trial']}
 (OUT/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
 (ROOT/'tmp'/('scene-backplate.json' if BACK else 'scene.json')).write_text(json.dumps({'parameters':P,'ports_x':xs,'cover_bolts':bolts,'faceplate_mounts':mounts}))

@@ -31,7 +31,9 @@
     81.6
   ],
   "faceplate_openings_mm": null,
-  "nominal_radial_clearance_to_male_hex_mm": null,
+  "boss_to_window_radial_clearance_mm": null,
+  "boss_height_from_mounting_face_mm": 0,
+  "seal_face_proud_of_steel_mm": null,
   "pom_projection_ahead_of_rack_rail_mm": 43.0,
   "reference_male_tip_ahead_of_rack_rail_mm": 75.1,
   "checks": [

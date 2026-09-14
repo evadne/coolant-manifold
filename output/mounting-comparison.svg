@@ -6,16 +6,17 @@
 <text x="55" y="95" font-size="18">Side-view diagrams / same rack-rail datum / front and door space to the left</text>
 <path d="M760 120 V660" stroke="#c76a3e" stroke-width="2" stroke-dasharray="9 6"/>
 <text x="780" y="143" fill="#b9532e" font-size="17">Rack rail mating surface</text>
-<text x="55" y="190" font-size="23" font-weight="bold">B / front faceplate</text>
-<text x="55" y="219" font-size="17">2 steel plates</text>
+<text x="55" y="190" font-size="23" font-weight="bold">B / faceplate + POM bosses</text>
+<text x="55" y="219" font-size="17">2 steel plates / revision D</text>
 <rect x="760" y="232" width="200" height="116" fill="#263540"/>
-<path d="M745 232 H760 V270 H745 Z M745 311 H760 V348 H745 Z" fill="#aebec9" stroke="#647987"/>
+<path d="M745 232 H760 V251 H745 Z M745 330 H760 V348 H745 Z" fill="#aebec9" stroke="#647987"/>
 <rect x="960" y="232" width="15" height="116" fill="#aebec9" stroke="#647987"/>
-<path d="M599.5 277 H718 V268 H750 V279 H775 V304 H750 V315 H718 V304 H599.5 Z" fill="#aebec9" stroke="#647987"/>
+<path d="M730 258 H760 V323 H730 Z" fill="#263540"/>
+<path transform="translate(-30 0)" d="M599.5 277 H718 V268 H750 V279 H775 V304 H750 V315 H718 V304 H599.5 Z" fill="#aebec9" stroke="#647987"/>
 <text x="830" y="296" fill="white" font-size="17">POM</text>
 <text x="982" y="285" font-size="16">Rear cover</text>
-<text x="590" y="369" font-size="16">Tip: 32.1 mm ahead of rails</text>
-<text x="775" y="395" font-size="16">POM face flush with rail plane</text>
+<text x="590" y="369" font-size="16">Tip: 38.1 mm ahead of rails</text>
+<text x="775" y="395" font-size="16">Boss face 6 mm ahead of rails</text>
 <text x="55" y="446" font-size="23" font-weight="bold">C / single backing plate</text>
 <text x="55" y="475" font-size="17">1 steel plate</text>
 <rect x="545" y="478" width="200" height="116" fill="#263540"/>

@@ -9,6 +9,7 @@ BACK=args.mounting=='backplate'
 BASE=ROOT/'output'/('backplate' if BACK else '');(BASE/'images').mkdir(parents=True,exist_ok=True)
 MESH=ROOT/'tmp'/('mesh-backplate' if BACK else 'mesh')
 S=json.loads((ROOT/'tmp'/('scene-backplate.json' if BACK else 'scene.json')).read_text());P=S['parameters']
+BH=0 if BACK else P['port_boss_height']
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=.001
 
@@ -49,12 +50,13 @@ for j,z in enumerate(P['port_rows_z']):
             qd.append(cyl('REFERENCE QD3 male '+name,x,-(start+end)/2,z,r,end-start,nickel,v))
         qd.append(cyl('Port colour band',x,-11,z,10.85,1.8,colour))
         txt=('IN' if j==0 else 'OUT') if i==0 else (f'S{i}' if j==0 else f'R{i}')
-        label(txt,x,-.12 if BACK else -P['faceplate_thickness']-.12,z+15,3.4,white if BACK else black,True)
+        label(txt,x,-.12 if BACK else -P['faceplate_thickness']-.12,z+18 if not BACK else z+15,3.4,white if BACK else black,True)
         if i in (2,6):
             females.append(cyl('REFERENCE female pull ring',x,-32,z,11.85,20,nickel))
             females.append(cyl('REFERENCE female tail',x,-49,z,10,14,black))
             females.append(cyl('REFERENCE compression hex',x,-60,z,13.28,8,nickel,6))
             females.append(cyl('REFERENCE tube',x,-89,z,8,50,black))
+for o in qd+females:o.location.y-=BH
 for x,z in S['cover_bolts']:
     cyl('M4 countersunk head reference',x,42.75,z,3.7,.5,steel)
     cyl('M4 socket reference',x,43.02,z,1.3,.06,black,6)
@@ -92,6 +94,21 @@ for o in bpy.data.objects:
 for o in females:o.hide_render=True
 cam.location=(220,440,330);cam.rotation_euler=(Vector((0,20,43))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=550
 scene.render.filepath=str(BASE/'images'/'open-galleries.png');bpy.ops.render.render(write_still=True)
+# Front inspection without fittings shows the integral female-threaded POM bosses.
+if not BACK:
+    parts['lid'].hide_render=False
+    for o in bpy.data.objects:
+        if o.name.startswith(('M4','M5 mounting')):o.hide_render=False
+    for o in qd+females:o.hide_render=True
+    cam.location=(260,-500,300);cam.rotation_euler=(Vector((0,0,43))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=560
+    scene.render.filepath=str(BASE/'images'/'bare-port-bosses.png');bpy.ops.render.render(write_still=True)
+    parts['faceplate'].hide_render=True;parts['lid'].hide_render=True
+    for o in bpy.data.objects:
+        if o.name.startswith(('M4','M5 mounting','Colour identification strip')) or (o.type=='FONT' and o.location.y<0):o.hide_render=True
+    scene.render.filepath=str(BASE/'images'/'pom-body.png');bpy.ops.render.render(write_still=True)
+    parts['faceplate'].hide_render=False
+    for o in bpy.data.objects:
+        if o.name.startswith('Colour identification strip') or (o.type=='FONT' and o.location.y<0):o.hide_render=False
 # Exploded view preserves the front option and makes the backplate attachment clear.
 parts['backplate' if BACK else 'lid'].hide_render=False
 for o in bpy.data.objects:
@@ -109,4 +126,4 @@ else:
     cam.location=(290,-500,300);target=(0,-25,43)
 cam.rotation_euler=(Vector(target)-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=610
 scene.render.filepath=str(BASE/'images'/('backplate-exploded.png' if BACK else 'faceplate-exploded.png'));bpy.ops.render.render(write_still=True)
-print('Saved editable Blender model and three review renders.')
+print(f'Saved editable Blender model and {3 if BACK else 5} review renders.')

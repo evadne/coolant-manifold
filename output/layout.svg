@@ -3,81 +3,81 @@
 <rect width="1600" height="1100" fill="#f4f6f8"/>
 <g font-family="Arial,sans-serif" fill="#192e3f">
 <text x="65" y="70" font-size="35" font-weight="bold">RM8 / 2U coolant manifold</text>
-<text x="65" y="108" font-size="19" fill="#526777">Revision B · Eight parallel circuits · All ports G1/4 female · Millimetres</text>
+<text x="65" y="108" font-size="19" fill="#526777">Revision D · Eight parallel circuits · All ports G1/4 female · Millimetres</text>
 <text x="65" y="164" font-size="18" fill="#192e3f" text-anchor="start">FRONT / FLAT RACK FACEPLATE</text>
 <rect x="160.55499999999995" y="220" width="1278.89" height="230.54999999999998" rx="0" fill="#d1d9de" stroke="#192e3f" stroke-width="1.2"/>
-<circle cx="323.0" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="323.0" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<circle cx="323.0" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="323.0" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="323.0" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="323.0" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">IN</text>
-<circle cx="442.25" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="442.25" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="323.0" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">IN</text>
+<circle cx="442.25" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="442.25" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="442.25" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="442.25" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S1</text>
-<circle cx="561.5" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="561.5" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="442.25" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S1</text>
+<circle cx="561.5" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="561.5" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="561.5" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="561.5" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S2</text>
-<circle cx="680.75" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="680.75" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="561.5" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S2</text>
+<circle cx="680.75" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="680.75" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="680.75" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="680.75" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S3</text>
-<circle cx="800.0" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="800.0" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="680.75" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S3</text>
+<circle cx="800.0" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="800.0" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="800.0" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="800.0" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S4</text>
-<circle cx="919.25" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="919.25" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="800.0" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S4</text>
+<circle cx="919.25" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="919.25" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="919.25" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="919.25" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S5</text>
-<circle cx="1038.5" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="1038.5" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="919.25" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S5</text>
+<circle cx="1038.5" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="1038.5" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="1038.5" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="1038.5" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S6</text>
-<circle cx="1157.75" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="1157.75" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="1038.5" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S6</text>
+<circle cx="1157.75" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="1157.75" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="1157.75" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="1157.75" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S7</text>
-<circle cx="1277.0" cy="388.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="1277.0" cy="388.275" r="31.402499999999996" fill="#c5cfd5" stroke="#1673a4" stroke-width="2.5"/>
+<text x="1157.75" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S7</text>
+<circle cx="1277.0" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="1277.0" cy="388.275" r="37.1" fill="#263540" stroke="#1673a4" stroke-width="2.5"/>
 <circle cx="1277.0" cy="388.275" r="17.433025" fill="#263540"/>
-<text x="1277.0" y="346.17499999999995" font-size="13" fill="#1673a4" text-anchor="middle">S8</text>
-<circle cx="323.0" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="323.0" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="1277.0" y="340.875" font-size="13" fill="#1673a4" text-anchor="middle">S8</text>
+<circle cx="323.0" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="323.0" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="323.0" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="323.0" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">OUT</text>
-<circle cx="442.25" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="442.25" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="323.0" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">OUT</text>
+<circle cx="442.25" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="442.25" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="442.25" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="442.25" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R1</text>
-<circle cx="561.5" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="561.5" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="442.25" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R1</text>
+<circle cx="561.5" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="561.5" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="561.5" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="561.5" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R2</text>
-<circle cx="680.75" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="680.75" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="561.5" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R2</text>
+<circle cx="680.75" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="680.75" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="680.75" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="680.75" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R3</text>
-<circle cx="800.0" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="800.0" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="680.75" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R3</text>
+<circle cx="800.0" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="800.0" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="800.0" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="800.0" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R4</text>
-<circle cx="919.25" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="919.25" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="800.0" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R4</text>
+<circle cx="919.25" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="919.25" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="919.25" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="919.25" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R5</text>
-<circle cx="1038.5" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="1038.5" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="919.25" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R5</text>
+<circle cx="1038.5" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="1038.5" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="1038.5" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="1038.5" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R6</text>
-<circle cx="1157.75" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="1157.75" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="1038.5" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R6</text>
+<circle cx="1157.75" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="1157.75" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="1157.75" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="1157.75" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R7</text>
-<circle cx="1277.0" cy="282.275" r="37.1" fill="#263540" stroke="#6c808c"/>
-<circle cx="1277.0" cy="282.275" r="31.402499999999996" fill="#c5cfd5" stroke="#b64e2b" stroke-width="2.5"/>
+<text x="1157.75" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R7</text>
+<circle cx="1277.0" cy="282.275" r="42.4" fill="#263540" stroke="#6c808c"/>
+<circle cx="1277.0" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="1277.0" cy="282.275" r="17.433025" fill="#263540"/>
-<text x="1277.0" y="240.17499999999998" font-size="13" fill="#b64e2b" text-anchor="middle">R8</text>
+<text x="1277.0" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R8</text>
 <circle cx="248.80000000000007" cy="426.7" r="13.78" fill="#aab5bd" stroke="#71808b"/>
 <circle cx="248.80000000000007" cy="335.275" r="13.78" fill="#aab5bd" stroke="#71808b"/>
 <circle cx="248.80000000000007" cy="243.85" r="13.78" fill="#aab5bd" stroke="#71808b"/>
@@ -138,8 +138,8 @@
 <circle cx="1364.4499999999998" cy="677.275" r="4.3" fill="white" stroke="#758592"/>
 <text x="65" y="890" font-size="22" fill="#192e3f" text-anchor="start">Clearance around the couplings</text>
 <text x="65" y="925" font-size="18" fill="#192e3f" text-anchor="start">Ø23.7 release rings: 21.3 horizontal gap / 16.3 vertical gap.</text>
-<text x="65" y="954" font-size="18" fill="#192e3f" text-anchor="start">Ø28 windows expose POM; fitting bases and O-rings seat directly on the body.</text>
-<text x="65" y="985" font-size="17" fill="#526777" text-anchor="start">Allow 100 mm service space forward of the face; verify release travel and hose bends with actual fittings.</text>
+<text x="65" y="954" font-size="18" fill="#192e3f" text-anchor="start">Ø28 POM bosses / Ø32 plate windows / sealing faces 3 mm proud of steel.</text>
+<text x="65" y="985" font-size="17" fill="#526777" text-anchor="start">Integral female G1/4 ports; fittings seal on the raised POM annuli. Verify the actual O-ring footprint.</text>
 <text x="65" y="1047" font-size="17" fill="#a55432" text-anchor="start">INITIAL MODEL / FOR FEEDBACK AND VENDOR DFM — NOT PRESSURE RATED</text>
 <text x="1535" y="1047" font-size="16" fill="#526777" text-anchor="end">2026-09-14</text>
 </g></svg>
