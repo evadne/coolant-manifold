@@ -1,0 +1,27 @@
+{
+  "revision": "I",
+  "rack": "Illustrative 42U four-post open frame",
+  "rack_units": 42,
+  "rack_pitch_mm": 44.45,
+  "mounting_height": "U31\u2013U32",
+  "manifold_bottom_world_z_mm": 1434.45,
+  "front_to_rear_mounting_planes_mm": 800,
+  "assumed_equipment_opening_mm": 450,
+  "side_elbows_and_compression_fittings": 4,
+  "tube_count": 4,
+  "tube_ID_OD_mm": [
+    10,
+    16
+  ],
+  "tube_centreline_bend_radius_mm": 80,
+  "tube_vertical_depth_lanes_mm": [
+    220,
+    300
+  ],
+  "model_scope": "Spatial illustration; rack and fittings are reference geometry, not exact commercial models. Tube tails intentionally stop without downstream equipment; not a complete hydraulic circuit. No rack-fit, hose bend-radius or structural qualification.",
+  "source_assembly": "../product-views/assembled-unmarked.blend",
+  "renders": [
+    "01-42U-rear-three-quarter.png",
+    "02-installed-manifold-rear-detail.png"
+  ]
+}

@@ -71,3 +71,5 @@ rsvg-convert output/rear-seal-review.svg -o output/images/rear-seal-review.png
 Parameters are in `cad/parameters.json`. The source defines the current faceplate/bolt pattern explicitly; changing circuit count or major dimensions also requires reviewing those patterns and the manufacturing documentation. It is not an automatically qualified product configurator.
 
 Historical Option C assets and rebuild instructions are retained in [its reference notes](docs/backplate.md).
+
+[Revision I installed in an illustrative 42U open-frame rack](docs/revision-I-rack-installation.md) — rear overview and detail with four side elbows, compression fittings and 10/16 tubes.
