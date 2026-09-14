@@ -13,6 +13,8 @@ Read the [two-page JLC manufacturability review](../output/pdf/RM10-O-M02-DFM.pd
 
 Quote the parts separately. Set **Threads YES for the body** (24 G1/4 plus six M4) and **Threads NO for the faceplate**. Select materials and manufacturing options consistent with the PDFs, and tell JLC that the two parts mate. The bundles contain matching-basename STEP/PDF files and only supported upload types. JLC requires STEP geometry and drawing call-outs for threads; the model intentionally contains tapping pilots, not helical threads. [JLC ordering guidance](https://jlccnc.com/help/article/cnc-machining-ordering-guidelines)
 
+For the intended computer coolant duty at an expected maximum liquid temperature of 50°C, **both POM-C and POM-H remain acceptable candidates**; see the [coolant-specific material assessment](pom-coolant-assessment.md).
+
 ## Material and edge requirements
 
 - Body: **black unfilled POM**, accepting POM-C or POM-H. Branded Delrin is not required. The supplier must identify its grade and stock form, provide the material datasheet, and supply material conforming to that declared grade. JLC lists POM, but its public listing does not establish the exact black stock or branded resin that will be supplied. [JLC POM listing](https://jlccnc.com/help/article/pom-cnc-machining)
