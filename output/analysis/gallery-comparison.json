@@ -1,0 +1,47 @@
+{
+  "scope": "Architecture comparison only; no CAD change or pressure qualification",
+  "current_gallery": {
+    "flow_area_mm2": 384.0,
+    "hydraulic_diameter_mm": 19.2,
+    "cavity_opening_area_mm2": 6345.061929829747,
+    "seal_centreline_length_per_gallery_mm": 840.2566310325652,
+    "seal_centreline_projected_area_per_gallery_mm2": 9247.47562843725,
+    "approx_separating_force_per_gallery_at_1_bar_N": 924.7475628437251,
+    "rear_cover_mass_kg_at_8000_kg_per_m3": 0.8982956956280991,
+    "pressure_cover_screws": 31
+  },
+  "circular_bore_candidates": [
+    {
+      "diameter_mm": 16,
+      "flow_area_mm2": 201.06192982974676,
+      "area_fraction_of_current": 0.5235987755982988,
+      "one_end_depth_over_diameter": 27.5,
+      "each_end_depth_over_diameter": 13.75,
+      "straight_friction_loss_ratio_at_equal_flow_and_equal_Darcy_factor": 4.377075133348992
+    },
+    {
+      "diameter_mm": 20,
+      "flow_area_mm2": 314.1592653589793,
+      "area_fraction_of_current": 0.818123086872342,
+      "one_end_depth_over_diameter": 22.0,
+      "each_end_depth_over_diameter": 11.0,
+      "straight_friction_loss_ratio_at_equal_flow_and_equal_Darcy_factor": 1.4342799796957972
+    },
+    {
+      "diameter_mm": 22,
+      "flow_area_mm2": 380.1327110843649,
+      "area_fraction_of_current": 0.9899289351155337,
+      "one_end_depth_over_diameter": 20.0,
+      "each_end_depth_over_diameter": 10.0,
+      "straight_friction_loss_ratio_at_equal_flow_and_equal_Darcy_factor": 0.890575022629973
+    }
+  ],
+  "illustrative_end_seals": {
+    "seal_centreline_diameter_mm": 26,
+    "closure_count_for_two_through_galleries": 4,
+    "total_seal_centreline_length_mm": 326.7256359733385,
+    "approx_force_per_closure_at_1_bar_N": 53.092915845667505,
+    "note": "Illustrative seal centre diameter, not a selected O-ring or designed gland"
+  },
+  "equal_area_bore_diameter_mm": 22.111625566165472
+}

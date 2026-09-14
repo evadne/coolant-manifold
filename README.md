@@ -42,6 +42,7 @@ The Option B faceplate files remain below and are not replaced by this alternati
 - [Rear pockets, cover removed](output/images/open-galleries.png).
 - [Manufacturing notes and BOM](docs/manufacturing.md) — thread call-outs, sealing details, fasteners and DFM requirements.
 - [Geometry verification](output/cad/verification.json).
+- [Gallery and seal architecture comparison](docs/gallery-comparison.md) — end-drilled galleries versus the current rear-milled pockets; assessment only.
 
 This is an initial model for feedback and vendor DFM, not a pressure-rated production release. STEP thread holes are pilot bores: use the thread call-outs in the manufacturing notes. QD shapes are illustrative, and actual ring travel/hand access must be trialled. Working pressure, total flow, coolant and final seal selection remain open.
 
