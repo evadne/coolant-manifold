@@ -11,7 +11,7 @@ import shutil
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument('--iteration',choices=('H','I','J','K','L'),default='H')
+parser.add_argument('--iteration',choices=('H','I','J','K','L','M'),default='H')
 args=parser.parse_args();REV=args.iteration
 P=json.loads((ROOT/f'cad/iterations/{REV}-long-bore.json').read_text())
 OUT=ROOT/f'output/long-bore-{REV}/cad';OUT.mkdir(parents=True,exist_ok=True)
@@ -186,7 +186,7 @@ report={'revision':REV,'system_pairs_with_side_feed':len(xs),'system_pairs_with_
  'side_plug_to_nearest_front_thread_envelope_mm':plug_to_branch,'body_volume_mm3':vol(body),
  'checks':['valid connected solids','two separated uninterrupted fluid networks','all front ports intersect intended gallery','four side mouths and plug positions','front usable threads precede gallery breakthrough','M4 mounts clear wet networks','no overlap of plugs with pilot-represented body or faceplate','side seal lands within POM face','front plate geometrically identical to G' if REV=='H' else 'repositioned M4 countersinks and heads clear port windows and hardware','raised port fitting keep-outs clear steel'],
  'limitations':['Deep drilling exceeds ordinary 10D guidance even from both ends; manual vendor DFM required','Nominal straight cylinder does not simulate drill wander or opposed-bore mismatch','Plugs are provisional envelopes; seal footprint and thread length need confirmation','No pressure, thermal, creep or hydraulic qualification','BSPP thread helices and plug face seals not modelled']}
-if REV in ('I','J','K','L'):
+if REV in ('I','J','K','L','M'):
  E=P['side_fitting_clearance'];projection=max(E['elbow_base_height']+E['elbow_head_height'],E['elbow_outlet_axis_from_seat_inferred']+E['compression_diameter']/2)
  report['side_fitting_review']={'equipment_width_assumption_mm':E['equipment_width_assumption'],'body_width_mm':W,'reserved_per_side_mm':(E['equipment_width_assumption']-W)/2,'drawing_inferred_projection_mm':projection,'fitted_body_width_nominal_mm':W+2*projection,'nominal_margin_each_side_mm':(E['equipment_width_assumption']-W)/2-projection,'plugged_body_width_mm':W+2*plug_spec['head_projection'],'rearward_fitting_extent_y_mm':Y+E['elbow_diameter']/2+E['compression_projection'],'front_pull_ring_gap_mm':P['port_pitch']-P['qd_female_diameter_reference'],'body_with_30mm_side_allowances_mm':W+60,'straight_insertion_exceeds_assumed_opening_with_plugs':W+2*plug_spec['head_projection']>E['equipment_width_assumption'],'mount_positions_xz_mm':P['faceplate_mounts_xz'],'status':'Nominal envelope only; rack rails, hose bends and fitting tolerances unverified'}
 (OUT/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
