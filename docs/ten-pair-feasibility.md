@@ -1,6 +1,6 @@
 # Ten front pairs in a 400–420 mm body
 
-Ten total front-facing pairs are geometrically plausible within this width range, using 40 mm horizontal pitch and the existing 40 mm vertical pitch. The outer front port centres are X = ±180 mm. This is a feasibility study, not a new manufactured-body revision; I and J remain unchanged.
+The agreed ten-pair layout uses **40 mm centre-to-centre spacing horizontally and vertically**, accepted by the user for QD3 access. Ten total front-facing pairs are geometrically plausible within the 400–420 mm body-width range. The outer front port centres are X = ±180 mm. This is a feasibility study, not a new manufactured-body revision; I and J remain unchanged.
 
 The corner rack nuts do not create a continuous obstruction along either side of the manifold. A side fitting can share a nut's lateral position while occupying different height and depth ranges. It does not need to be aligned directly behind a nut. The rack's continuous flange and folded return must be checked independently of the four local nuts.
 
@@ -12,7 +12,7 @@ The corner rack nuts do not create a continuous obstruction along either side of
 | 410 mm | 10 | 25 mm | 467.6 mm | 8.8 mm |
 | 420 mm | 10 | 30 mm | 477.6 mm | 13.8 mm |
 
-At 40 mm pitch, the existing Ø23.7 pull-ring reference leaves 16.3 mm nominal edge-to-edge clearance horizontally and vertically. This matches the existing vertical spacing; physical release-ring and finger access still need assessment. Keeping the old 45 mm horizontal pitch would require 405 mm between the outer port centres alone, plus the boss radii and edge margins, and therefore cannot support ten pairs within 400–420 mm.
+At 40 mm pitch, the existing Ø23.7 pull-ring reference leaves 16.3 mm nominal edge-to-edge clearance horizontally and vertically. This matches the existing vertical spacing. The user accepts this spacing as ample; no physical access trial is recorded. Keeping the old 45 mm horizontal pitch would require 405 mm between the outer port centres alone, plus the boss radii and edge margins, and therefore cannot support ten pairs within 400–420 mm.
 
 410 mm is a useful next candidate: ten pairs, 25 mm from each outer front port centre to the body end, and 10 mm beyond its Ø28 boss plus R1 root envelope. Proposed M4 mounts at X = −160, 0, +160 and Z = 7, 80 provide six attachment locations. Their countersink edges clear the Ø32 plate windows by 5.93 mm, and their head edges clear the Ø36 fitting keep-outs by 3.95 mm. These are layout clearances, not a fastener-load calculation.
 
