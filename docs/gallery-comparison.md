@@ -8,6 +8,21 @@ EK describes an acetal body with stainless steel end caps and brass plugs, and p
 
 ## Manufacturing and assembly
 
+Compare complete rack-mounted assemblies with the same front faceplate, rather than comparing our rack assembly with an unmounted manifold. The user's two-end-cap arrangement gives the following count; the end-cap screw quantity has not been designed here.
+
+| Component | Current rear-pocket assembly | Through-bore assembly retaining our rack faceplate |
+|---|---:|---:|
+| POM body | 1 | 1 |
+| Stainless pressure-closure plates | 1 large rear cover | 2 small end caps |
+| Stainless rack faceplate | 1 | 1 |
+| Total stainless plates | 2 | 3 |
+| Gallery O-rings | 2 large loops | 4 small rings |
+| Pressure-closure screws | 31 | Expected fewer; quantity pending cap design |
+| Faceplate/body screws | 8 | Retain 8 as the comparison assumption; recheck against bores |
+| Rack fixings | 4 sets | 4 sets |
+
+Fittings and their seals are common to both and excluded from this table. End drilling does not reduce the plate or O-ring count in this comparison. Its potential efficiency comes from smaller closures, shorter seal paths and fewer closure screws. A combined end-cap/rack bracket might change that count, but would be a separate mounting design and is not credited here. The complete manufacturing and assembly cost, including the custom rack mount, must be compared.
+
 | Criterion | Longitudinal bores and end caps | Current rear pockets and cover |
 |---|---|---|
 | Gallery access for machining | Long drills entering from the body ends | Shorter end mills entering the broad rear face |
