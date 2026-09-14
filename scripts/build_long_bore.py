@@ -4,17 +4,23 @@ Preserves revision G files. Threads are pilot/envelope call-outs, not helices.
 """
 from pathlib import Path
 import json
+import argparse
+import ezdxf
 import math
 import shutil
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
-P=json.loads((ROOT/'cad/iterations/H-long-bore.json').read_text())
-OUT=ROOT/'output/long-bore-H/cad';OUT.mkdir(parents=True,exist_ok=True)
-MESH=ROOT/'tmp/mesh-long-bore-H';MESH.mkdir(parents=True,exist_ok=True)
+parser=argparse.ArgumentParser()
+parser.add_argument('--iteration',choices=('H','I','J'),default='H')
+args=parser.parse_args();REV=args.iteration
+P=json.loads((ROOT/f'cad/iterations/{REV}-long-bore.json').read_text())
+OUT=ROOT/f'output/long-bore-{REV}/cad';OUT.mkdir(parents=True,exist_ok=True)
+MESH=ROOT/f'tmp/mesh-long-bore-{REV}';MESH.mkdir(parents=True,exist_ok=True)
 W,D,H=P['body_width'],P['body_depth'],P['body_height']
 T=P['faceplate_thickness'];BH=P['port_boss_height'];F=P['faceplate_fastener']
 R=P['gallery_diameter']/2;Y=P['gallery_axis_y'];rows=P['port_rows_z']
-xs=[(i-P['branch_count']/2)*P['port_pitch'] for i in range(P['branch_count']+1)]
+pair_count=P.get('front_pair_count',P.get('branch_count',0)+1)
+xs=[(i-(pair_count-1)/2)*P['port_pitch'] for i in range(pair_count)]
 
 def box(w,d,h,x=0,y=0,z=0):
  return cq.Workplane('XY').box(w,d,h,centered=(True,False,False)).translate((x,y,z))
@@ -26,7 +32,7 @@ body=box(W,D,H)
 for z in rows:
  for x in xs:body=body.union(cyl(P['port_boss_diameter']/2,BH,(x,-BH,z),(0,1,0)))
 roots=[e for e in body.val().Edges() if e.geomType()=='CIRCLE' and abs(e.Center().y)<1e-6]
-assert len(roots)==18
+assert len(roots)==2*len(xs)
 body=body.newObject(roots).fillet(P['port_boss_root_radius'])
 fluids=[];channels=[];side_ports=[]
 point_length=P['tap_drill_diameter']/2/math.tan(math.radians(P['front_drill_point_angle']/2))
@@ -101,7 +107,7 @@ assert P['side_seal_land_diameter']/2<min(Y,D-Y,rows[0],H-rows[-1])
 plug_to_branch=(W/2-max(abs(x) for x in xs))-plug_spec['thread_length']-P['thread_major_diameter']/2
 assert plug_to_branch>20
 
-assy=cq.Assembly(name='RM8_2U_revision_H_long_bore')
+assy=cq.Assembly(name=f'RM8_2U_revision_{REV}_long_bore')
 for name,part,col in [('body',body,(.025,.03,.035)),('faceplate',face,(.5,.53,.56))]:
  cq.exporters.export(part,str(OUT/f'{name}.step'))
  cq.exporters.export(part,str(MESH/f'{name}.stl'),tolerance=.06,angularTolerance=.12)
@@ -114,14 +120,57 @@ assy.export(str(OUT/'manifold-assembly.step'))
 cutaway=body.cut(box(W+2,D-Y+1,H+2,y=Y,z=-1))
 assert cutaway.val().isValid()
 cq.exporters.export(cutaway,str(MESH/'body-section.stl'),tolerance=.06,angularTolerance=.12)
-for i,v in enumerate(fluids):cq.exporters.export(v,str(OUT/f'fluid-network-{i+1}.step'))
-# The unchanged dry front plate is checked against G before reusing its cut profile.
-gface=cq.importers.importStep(str(ROOT/'output/cad/faceplate.step'))
-assert vol(face.cut(gface))+vol(gface.cut(face))<1e-5
-shutil.copyfile(ROOT/'output/cad/faceplate-flat.dxf',OUT/'faceplate-flat.dxf')
+for i,v in enumerate(fluids):
+ cq.exporters.export(v,str(OUT/f'fluid-network-{i+1}.step'))
+ cq.exporters.export(v,str(MESH/f'fluid-network-{i+1}.stl'),tolerance=.04,angularTolerance=.12)
+# Each iteration has its own cut profile. H also checks equivalence to frozen G.
+if REV=='H':
+ gface=cq.importers.importStep(str(ROOT/'output/cad/faceplate.step'))
+ assert vol(face.cut(gface))+vol(gface.cut(face))<1e-5
+ shutil.copyfile(ROOT/'output/cad/faceplate-flat.dxf',OUT/'faceplate-flat.dxf')
+else:
+ dxf=ezdxf.new('R2010');dxf.units=4;dxf.layers.new('CUT');m=dxf.modelspace();attr={'layer':'CUT'}
+ fw=P['rack_width']/2
+ m.add_lwpolyline([(-fw,0),(fw,0),(fw,H),(-fw,H)],close=True,dxfattribs=attr)
+ for z in rows:
+  for x in xs:m.add_circle((x,z),P['faceplate_port_clearance']/2,dxfattribs=attr)
+ for x,z in P['faceplate_mounts_xz']:m.add_circle((x,z),F['clearance_diameter']/2,dxfattribs=attr)
+ for x in [-P['rack_hole_pitch']/2,P['rack_hole_pitch']/2]:
+  for z in rack_z:
+   r=P['rack_slot_width']/2;a=(P['rack_slot_length']-P['rack_slot_width'])/2
+   m.add_lwpolyline([(x-a,z-r,0),(x+a,z-r,1),(x+a,z+r,0),(x-a,z+r,1)],format='xyb',close=True,dxfattribs=attr)
+ dxf.saveas(OUT/'faceplate-flat.dxf')
+ check=ezdxf.readfile(OUT/'faceplate-flat.dxf')
+ assert not check.audit().has_errors and len(check.modelspace().query('CIRCLE'))==2*len(xs)+len(P['faceplate_mounts_xz'])
+ # Check every screw keeps a dry, continuous head-bearing land outside port windows.
+ assert min(math.hypot(mx-x,mz-z)-F['countersink_diameter']/2-P['faceplate_port_clearance']/2 for mx,mz in P['faceplate_mounts_xz'] for x in xs for z in rows)>2
+ assert min(math.hypot(mx-x,mz-z)-F['head_diameter']/2-P['port_hardware_keepout_diameter']/2 for mx,mz in P['faceplate_mounts_xz'] for x in xs for z in rows)>2
+ assert min(P['port_pitch'],rows[1]-rows[0])-P['qd_female_diameter_reference']>=16
+ assert W/2-max(abs(x) for x in xs)-P['port_boss_diameter']/2-P['port_boss_root_radius']>=20
+ # Reference elbow+compression envelopes from supplied dimensions; no branding or knurling.
+ E=P['side_fitting_clearance'];elbows=[]
+ for i,(x,y,z) in enumerate(side_ports):
+  sign=1 if x>0 else -1
+  base=cyl(E['elbow_diameter']/2,E['elbow_base_height'],(x,y,z),(sign,0,0))
+  # Conservative rectangular head envelope; physical elbow's rounded corner is inside it.
+  head=box(E['elbow_head_height'],E['elbow_diameter'],E['elbow_diameter'],x=x+sign*(E['elbow_base_height']+E['elbow_head_height']/2),y=y-E['elbow_diameter']/2,z=z-E['elbow_diameter']/2)
+  compression=cyl(E['compression_diameter']/2,E['compression_projection'],(x+sign*E['elbow_outlet_axis_from_seat_inferred'],y+E['elbow_diameter']/2,z),(0,1,0))
+  fitting=base.union(head).union(compression)
+  # Visible tube entrance only; internal fitting geometry is not supplied.
+  fitting=fitting.cut(cyl(8,5,(x+sign*E['elbow_outlet_axis_from_seat_inferred'],y+E['elbow_diameter']/2+E['compression_projection']+.1,z),(0,-1,0)))
+  assert fitting.val().isValid() and vol(fitting.intersect(body))<1e-5 and vol(fitting.intersect(face))<1e-5
+  if REV=='I':assert max(abs(fitting.val().BoundingBox().xmin),abs(fitting.val().BoundingBox().xmax))<E['equipment_width_assumption']/2
+  cq.exporters.export(fitting,str(MESH/f'elbow-reference-{i}.stl'),tolerance=.04,angularTolerance=.12)
+  elbows.append(fitting)
+ for i,a in enumerate(elbows):
+  for b in elbows[i+1:]:assert vol(a.intersect(b))<1e-5
+ alternative=cq.Assembly(name=f'REFERENCE_{REV}_rearward_elbows_and_compression_fittings')
+ alternative.add(body,name='body');alternative.add(face,name='faceplate')
+ for i,e in enumerate(elbows):alternative.add(e,name=f'REFERENCE_fitting_{i+1}')
+ alternative.export(str(OUT/'elbow-envelope-assembly.step'))
 area=math.pi*R*R;old_area=16*24
-report={'revision':'H','parent_tag':P['parent_tag'],'wet_networks':2,'front_G1_4_ports':18,'side_G1_4_ports':4,'initial_side_plugs':4,
- 'manufactured_parts':2,'rear_plate':False,'large_gallery_O_rings':0,'plug_face_seals_required':4,'front_mount_screws_M4':8,'rear_screws':0,
+report={'revision':REV,'system_pairs_with_side_feed':len(xs),'system_pairs_with_front_feed':len(xs)-1,'parent_tag':P['parent_tag'],'wet_networks':2,'front_G1_4_ports':2*len(xs),'front_pairs':len(xs),'side_G1_4_ports':4,'initial_side_plugs':4,
+ 'manufactured_parts':2,'rear_plate':False,'large_gallery_O_rings':0,'plug_face_seals_required':4,'front_mount_screws_M4':len(P['faceplate_mounts_xz']),'rear_screws':0,
  'body_envelope_mm':[W,D,H],'rack_assembly_envelope_without_front_QDs_mm':[P['rack_width'],D+BH,H],
  'gallery_diameter_mm':2*R,'gallery_axis_y_mm':Y,'gallery_length_mm':W,'gallery_area_mm2':area,'previous_gallery_area_mm2':old_area,
  'same_local_flow_velocity_ratio_H_to_G':old_area/area,'nominal_full_bore_L_over_D':W/(2*R),
@@ -130,8 +179,11 @@ report={'revision':'H','parent_tag':P['parent_tag'],'wet_networks':2,'front_G1_4
  'front_wall_to_gallery_mm':Y-R,'rear_wall_mm':D-Y-R,'inter_gallery_web_mm':rows[1]-rows[0]-2*R,
  'front_drill_tip_y_mm':P['front_drill_cylinder_end_y']+point_length,'M4_thread_envelope_to_wet_network_min_mm':mount_clearance,
  'side_plug_to_nearest_front_thread_envelope_mm':plug_to_branch,'body_volume_mm3':vol(body),
- 'checks':['valid connected solids','two separated uninterrupted fluid networks','all eighteen front ports intersect intended gallery','four side mouths and plug positions','front usable threads precede gallery breakthrough','M4 mounts clear wet networks','no overlap of plugs with pilot-represented body or faceplate','side seal lands within POM face','front plate geometrically identical to G','raised port fitting keep-outs clear steel'],
+ 'checks':['valid connected solids','two separated uninterrupted fluid networks','all front ports intersect intended gallery','four side mouths and plug positions','front usable threads precede gallery breakthrough','M4 mounts clear wet networks','no overlap of plugs with pilot-represented body or faceplate','side seal lands within POM face','front plate geometrically identical to G' if REV=='H' else 'repositioned M4 countersinks and heads clear port windows and hardware','raised port fitting keep-outs clear steel'],
  'limitations':['Deep drilling exceeds ordinary 10D guidance even from both ends; manual vendor DFM required','Nominal straight cylinder does not simulate drill wander or opposed-bore mismatch','Plugs are provisional envelopes; seal footprint and thread length need confirmation','No pressure, thermal, creep or hydraulic qualification','BSPP thread helices and plug face seals not modelled']}
+if REV in ('I','J'):
+ E=P['side_fitting_clearance'];projection=max(E['elbow_base_height']+E['elbow_head_height'],E['elbow_outlet_axis_from_seat_inferred']+E['compression_diameter']/2)
+ report['side_fitting_review']={'equipment_width_assumption_mm':E['equipment_width_assumption'],'body_width_mm':W,'reserved_per_side_mm':(E['equipment_width_assumption']-W)/2,'drawing_inferred_projection_mm':projection,'fitted_body_width_nominal_mm':W+2*projection,'nominal_margin_each_side_mm':(E['equipment_width_assumption']-W)/2-projection,'plugged_body_width_mm':W+2*plug_spec['head_projection'],'rearward_fitting_extent_y_mm':Y+E['elbow_diameter']/2+E['compression_projection'],'front_pull_ring_gap_mm':P['port_pitch']-P['qd_female_diameter_reference'],'body_with_30mm_side_allowances_mm':W+60,'straight_insertion_exceeds_assumed_opening_with_plugs':W+2*plug_spec['head_projection']>E['equipment_width_assumption'],'mount_positions_xz_mm':P['faceplate_mounts_xz'],'status':'Nominal envelope only; rack rails, hose bends and fitting tolerances unverified'}
 (OUT/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
-(ROOT/'tmp/scene-long-bore-H.json').write_text(json.dumps({'parameters':dict(P,mounting='faceplate'),'ports_x':xs,'cover_bolts':[],'faceplate_mounts':P['faceplate_mounts_xz'],'side_plugs':side_ports},indent=2)+'\n')
+(ROOT/f'tmp/scene-long-bore-{REV}.json').write_text(json.dumps({'parameters':dict(P,mounting='faceplate'),'ports_x':xs,'cover_bolts':[],'faceplate_mounts':P['faceplate_mounts_xz'],'side_plugs':side_ports},indent=2)+'\n')
 print(json.dumps(report,indent=2))

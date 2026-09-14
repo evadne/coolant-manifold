@@ -1,5 +1,7 @@
 # RM8-2U rack coolant manifold
 
+**Latest width variants:** [I: 390 mm / 8 front pairs and J: 450 mm / 9 front pairs](docs/width-variants.md), with revised fixings, side-fitting envelopes, drawings and 50%-transparent body views. End-fed infrastructure can serve all front pairs. G and H remain preserved.
+
 **Design iterations:** [G is preserved](docs/iterations.md) under tag `revision-g-rear-cover` (`8ebd431`). [New revision H](docs/long-bore-H.md) is a separate long-bore design with four plugged G1/4 end ports, no rear plate and no large gallery seals. The baseline G files and description below remain intact.
 
 Initial design, revision G: eight parallel circuits, all connections on one face, black Delrin body and a flat stainless steel rack faceplate. Each G1/4 female port is inside an integral cylindrical POM boss, standing 3 mm proud of the steel. The 2U format provides space to operate QD3 release rings without crowding adjacent fittings.

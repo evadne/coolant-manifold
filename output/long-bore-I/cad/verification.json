@@ -1,0 +1,102 @@
+{
+  "revision": "I",
+  "system_pairs_with_side_feed": 8,
+  "system_pairs_with_front_feed": 7,
+  "parent_tag": "revision-h-long-bore",
+  "wet_networks": 2,
+  "front_G1_4_ports": 16,
+  "front_pairs": 8,
+  "side_G1_4_ports": 4,
+  "initial_side_plugs": 4,
+  "manufactured_parts": 2,
+  "rear_plate": false,
+  "large_gallery_O_rings": 0,
+  "plug_face_seals_required": 4,
+  "front_mount_screws_M4": 6,
+  "rear_screws": 0,
+  "body_envelope_mm": [
+    390.0,
+    40.0,
+    87.0
+  ],
+  "rack_assembly_envelope_without_front_QDs_mm": [
+    482.6,
+    46.0,
+    87.0
+  ],
+  "gallery_diameter_mm": 11.8,
+  "gallery_axis_y_mm": 26.0,
+  "gallery_length_mm": 390.0,
+  "gallery_area_mm2": 109.35884027146072,
+  "previous_gallery_area_mm2": 384,
+  "same_local_flow_velocity_ratio_H_to_G": 3.5113759349202986,
+  "nominal_full_bore_L_over_D": 33.050847457627114,
+  "opposed_drill_nominal_reach_with_overlap_mm": 197.0,
+  "opposed_drill_L_over_D": 16.694915254237287,
+  "front_wall_to_gallery_mm": 20.1,
+  "rear_wall_mm": 8.1,
+  "inter_gallery_web_mm": 28.2,
+  "front_drill_tip_y_mm": 29.545077652262606,
+  "M4_thread_envelope_to_wet_network_min_mm": 12.92153022471871,
+  "side_plug_to_nearest_front_thread_envelope_mm": 25.9215,
+  "body_volume_mm3": 1282980.1770920937,
+  "checks": [
+    "valid connected solids",
+    "two separated uninterrupted fluid networks",
+    "all front ports intersect intended gallery",
+    "four side mouths and plug positions",
+    "front usable threads precede gallery breakthrough",
+    "M4 mounts clear wet networks",
+    "no overlap of plugs with pilot-represented body or faceplate",
+    "side seal lands within POM face",
+    "repositioned M4 countersinks and heads clear port windows and hardware",
+    "raised port fitting keep-outs clear steel"
+  ],
+  "limitations": [
+    "Deep drilling exceeds ordinary 10D guidance even from both ends; manual vendor DFM required",
+    "Nominal straight cylinder does not simulate drill wander or opposed-bore mismatch",
+    "Plugs are provisional envelopes; seal footprint and thread length need confirmation",
+    "No pressure, thermal, creep or hydraulic qualification",
+    "BSPP thread helices and plug face seals not modelled"
+  ],
+  "side_fitting_review": {
+    "equipment_width_assumption_mm": 450.0,
+    "body_width_mm": 390.0,
+    "reserved_per_side_mm": 30.0,
+    "drawing_inferred_projection_mm": 28.8,
+    "fitted_body_width_nominal_mm": 447.6,
+    "nominal_margin_each_side_mm": 1.1999999999999993,
+    "plugged_body_width_mm": 398.0,
+    "rearward_fitting_extent_y_mm": 47.2,
+    "front_pull_ring_gap_mm": 21.3,
+    "body_with_30mm_side_allowances_mm": 450.0,
+    "straight_insertion_exceeds_assumed_opening_with_plugs": false,
+    "mount_positions_xz_mm": [
+      [
+        -178.0,
+        7.0
+      ],
+      [
+        0.0,
+        7.0
+      ],
+      [
+        178.0,
+        7.0
+      ],
+      [
+        -178.0,
+        80.0
+      ],
+      [
+        0.0,
+        80.0
+      ],
+      [
+        178.0,
+        80.0
+      ]
+    ],
+    "status": "Nominal envelope only; rack rails, hose bends and fitting tolerances unverified"
+  }
+}

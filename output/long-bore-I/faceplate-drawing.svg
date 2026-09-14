@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1060" viewBox="0 0 1600 1060">
+<rect width="1600" height="1060" fill="white"/>
+<g font-family="Arial,sans-serif" fill="#193343">
+<text x="60" y="58" font-size="30" text-anchor="start" fill="#193343">REVISION I / 390 mm POM / 8 front pairs</text>
+<text x="60" y="96" font-size="18" text-anchor="start" fill="#193343">All dimensions in mm · Initial draft for DFM · No pressure or rack-fit qualification</text>
+<text x="60" y="138" font-size="20" text-anchor="start" fill="#193343">FRONT RACK FACEPLATE / OUTSIDE FACE / 3.00 ±0.10 FINISHED STAINLESS</text>
+<rect x="148.4899999999999" y="230.0" width="1303.0200000000002" height="234.9" fill="#e7edf0" stroke="#193343"/>
+<line x1="273.5" y1="464.9" x2="273.5" y2="230.0" stroke="#79909f" stroke-width="1.3" stroke-dasharray="5 4"/>
+<line x1="1326.5" y1="464.9" x2="1326.5" y2="230.0" stroke="#79909f" stroke-width="1.3" stroke-dasharray="5 4"/>
+<circle cx="374.75" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="496.25" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="617.75" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="739.25" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="860.75" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="982.25" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="1103.75" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="1225.25" cy="401.45000000000005" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="374.75" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="496.25" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="617.75" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="739.25" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="860.75" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="982.25" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="1103.75" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="1225.25" cy="293.45" r="43.2" fill="white" stroke="#193343"/>
+<circle cx="319.4" cy="446.0" r="6.075" fill="white" stroke="#193343"/>
+<circle cx="319.4" cy="446.0" r="10.8" fill="none" stroke="#277d9b"/>
+<circle cx="800.0" cy="446.0" r="6.075" fill="white" stroke="#193343"/>
+<circle cx="800.0" cy="446.0" r="10.8" fill="none" stroke="#277d9b"/>
+<circle cx="1280.6" cy="446.0" r="6.075" fill="white" stroke="#193343"/>
+<circle cx="1280.6" cy="446.0" r="10.8" fill="none" stroke="#277d9b"/>
+<circle cx="319.4" cy="248.9" r="6.075" fill="white" stroke="#193343"/>
+<circle cx="319.4" cy="248.9" r="10.8" fill="none" stroke="#277d9b"/>
+<circle cx="800.0" cy="248.9" r="6.075" fill="white" stroke="#193343"/>
+<circle cx="800.0" cy="248.9" r="10.8" fill="none" stroke="#277d9b"/>
+<circle cx="1280.6" cy="248.9" r="6.075" fill="white" stroke="#193343"/>
+<circle cx="1280.6" cy="248.9" r="10.8" fill="none" stroke="#277d9b"/>
+<rect x="158.6149999999999" y="440.87" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<rect x="158.6149999999999" y="235.13000000000002" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<rect x="1414.3850000000002" y="440.87" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<rect x="1414.3850000000002" y="235.13000000000002" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<line x1="148.4899999999999" y1="198" x2="1451.5100000000002" y2="198" stroke="#627480" stroke-width="1.3" stroke-dasharray=""/>
+<line x1="148.4899999999999" y1="191" x2="148.4899999999999" y2="205" stroke="#627480" stroke-width="1.3" stroke-dasharray=""/>
+<line x1="1451.5100000000002" y1="191" x2="1451.5100000000002" y2="205" stroke="#627480" stroke-width="1.3" stroke-dasharray=""/>
+<text x="800.0" y="186" font-size="18" text-anchor="middle" fill="#193343">482.6 overall / rack fixing centres 465.1</text>
+<line x1="273.5" y1="519.9" x2="1326.5" y2="519.9" stroke="#627480" stroke-width="1.3" stroke-dasharray=""/>
+<line x1="273.5" y1="512.9" x2="273.5" y2="526.9" stroke="#627480" stroke-width="1.3" stroke-dasharray=""/>
+<line x1="1326.5" y1="512.9" x2="1326.5" y2="526.9" stroke="#627480" stroke-width="1.3" stroke-dasharray=""/>
+<text x="800.0" y="507.9" font-size="18" text-anchor="middle" fill="#193343">390 POM width behind faceplate</text>
+<text x="60" y="565" font-size="17" text-anchor="start" fill="#193343">16 × Ø32 +0.20/0 windows. Rows Z = 23.5 / 63.5. X = -157.5, -112.5, -67.5, -22.5, 22.5, 67.5, 112.5, 157.5</text>
+<text x="60" y="600" font-size="19" text-anchor="start" fill="#193343">6 × Ø4.5 +0.10/0 through; Ø8.0 +0.10/0 × 90° countersink, outside face.</text>
+<text x="60" y="636" font-size="18" text-anchor="start" fill="#193343">M4 centres: X = -178, 0, 178; each at Z = 7 and 80.</text>
+<text x="60" y="672" font-size="18" text-anchor="start" fill="#193343">Datum: X = 0 at width centre; Z = 0 at bottom. Plate height 87. Hole/window centres ±0.10.</text>
+<text x="60" y="708" font-size="18" text-anchor="start" fill="#193343">Four 10 × 7 rack slots, R3.5 ends: X = ±232.55; Z = 5.4 / 81.6. Other dimensions ±0.15.</text>
+<text x="60" y="759" font-size="18" text-anchor="start" fill="#193343">CUT DXF contains outline, port windows, screw through holes and rack slots only.</text>
+<text x="60" y="794" font-size="18" text-anchor="start" fill="#193343">Machine countersinks after cutting; do not laser-cut the blue countersink circles.</text>
+<text x="60" y="829" font-size="18" text-anchor="start" fill="#193343">304 or 316 stainless, dry structural plate. Deburr, flatten and inspect finished thickness.</text>
+<text x="60" y="864" font-size="18" text-anchor="start" fill="#193343">Use A4 M4 × 12 DIN 7991 socket countersunk screws; specified DIN 965 Z Pozi accepted.</text>
+<text x="60" y="899" font-size="17" text-anchor="start" fill="#193343">Dashed body edges are drawing references only. No surface text, lines or markings on the product.</text>
+<text x="60" y="1018" font-size="16" text-anchor="start" fill="#193343">REVISION I / faceplate-flat.dxf + faceplate.step</text>
+</g></svg>

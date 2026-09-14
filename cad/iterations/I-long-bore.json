@@ -1,0 +1,124 @@
+{
+  "revision": "I",
+  "name": "RM8-2U",
+  "body_width": 390.0,
+  "body_depth": 40.0,
+  "body_height": 87.0,
+  "port_pitch": 45.0,
+  "port_rows_z": [
+    23.5,
+    63.5
+  ],
+  "tap_drill_diameter": 11.8,
+  "thread_major_diameter": 13.157,
+  "thread_full_depth": 8.0,
+  "front_wall": 20.1,
+  "rack_width": 482.6,
+  "rack_hole_pitch": 465.1,
+  "rack_slot_length": 10.0,
+  "rack_slot_width": 7.0,
+  "qd_female_diameter_reference": 23.7,
+  "qd_clearance_diameter": 28.0,
+  "service_projection_front": 100.0,
+  "faceplate_thickness": 3.0,
+  "faceplate_port_clearance": 32.0,
+  "faceplate_mounts_xz": [
+    [
+      -178.0,
+      7.0
+    ],
+    [
+      0.0,
+      7.0
+    ],
+    [
+      178.0,
+      7.0
+    ],
+    [
+      -178.0,
+      80.0
+    ],
+    [
+      0.0,
+      80.0
+    ],
+    [
+      178.0,
+      80.0
+    ]
+  ],
+  "qd_male_hex_envelope": 25.404,
+  "port_boss_diameter": 28.0,
+  "port_boss_height": 6.0,
+  "port_boss_root_radius": 1.0,
+  "faceplate_fastener": {
+    "thread": "M4 x 0.7",
+    "nominal_diameter": 4.0,
+    "pitch": 0.7,
+    "length_including_head": 12.0,
+    "material": "A4 stainless steel",
+    "standard": "DIN 7991",
+    "drive": "2.5 mm hex",
+    "supplier_part": "WF14434",
+    "head_diameter": 7.96,
+    "head_height": 2.48,
+    "alternative": {
+      "standard": "DIN 965 Z",
+      "drive": "PZ2",
+      "supplier_part": "WF33490",
+      "head_diameter": 7.5,
+      "head_height": 2.2
+    },
+    "clearance_diameter": 4.5,
+    "countersink_diameter": 8.0,
+    "countersink_angle": 90.0,
+    "tap_drill_diameter": 3.3,
+    "pilot_depth": 14.0,
+    "full_thread_depth_min": 10.0,
+    "head_diameter_min": 7.53,
+    "proud_head_review_height": 0.2
+  },
+  "port_hardware_keepout_diameter": 36.0,
+  "iteration": "long-bore-I",
+  "parent_revision": "H",
+  "parent_tag": "revision-h-long-bore",
+  "gallery_diameter": 11.8,
+  "gallery_axis_y": 26.0,
+  "front_drill_cylinder_end_y": 26.0,
+  "front_drill_point_angle": 118.0,
+  "side_thread_full_depth": 8.0,
+  "side_seal_land_diameter": 22.0,
+  "side_entry_chamfer_depth": 1.0,
+  "side_entry_mouth_diameter": 13.8,
+  "opposed_drill_overlap": 4.0,
+  "side_plug_reference": {
+    "quantity": 4,
+    "thread": "G1/4 BSPP",
+    "head_diameter": 20.0,
+    "head_projection": 4.0,
+    "thread_length": 5.0,
+    "socket_across_flats": 5.0,
+    "material": "Nickel-plated brass",
+    "seal": "Supplier-fitted EPDM face seal",
+    "status": "Provisional envelope, not an exact supplier model; confirm thread length and seal footprint",
+    "candidate_family": "Koolance SCR-CP003PG-5P"
+  },
+  "side_fitting_clearance": {
+    "equipment_width_assumption": 450.0,
+    "reserved_projection_per_side": 30.0,
+    "elbow_base_height": 8.8,
+    "elbow_head_height": 18.0,
+    "elbow_diameter": 18.0,
+    "elbow_outlet_axis_from_seat_inferred": 17.8,
+    "compression_diameter": 22.0,
+    "compression_projection": 12.2,
+    "compression_male_thread_length": 5.0,
+    "outlet_direction": "Rearwards (+Y)",
+    "source": "User-supplied BP-90R and Barrow drawings; outlet centre at half the 18 mm head is inferred; no tolerance data supplied"
+  },
+  "front_pair_count": 8,
+  "pair_count_convention": "All front-facing pairs; end supply/return can free every front pair for loads",
+  "system_pairs_with_side_feed": 8,
+  "system_pairs_with_front_feed": 7
+}
