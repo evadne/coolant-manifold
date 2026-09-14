@@ -1,4 +1,4 @@
-"""Photographic studio presentation of the existing Revision M assembly.
+"""Photographic studio presentation of M or the issued O-M02 assembly.
 No CAD changes; millimetre model converted to metres for lighting/material scale.
 """
 from pathlib import Path
@@ -7,9 +7,13 @@ import bpy
 from mathutils import Vector,Matrix
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--variant',choices=['all','bare','connected'],default='all')
+parser.add_argument('--manufacturing', choices=['O-M02'])
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-OUT=ROOT/'output/long-bore-M/photorealistic';OUT.mkdir(parents=True,exist_ok=True)
-bpy.ops.wm.open_mainfile(filepath=str(ROOT/'output/long-bore-M/product-views/assembled-unmarked.blend'))
+REV=args.manufacturing or 'M'
+BASE=ROOT/('output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')
+OUT=BASE/'photorealistic';OUT.mkdir(parents=True,exist_ok=True)
+BOSS=(json.loads((ROOT/'cad/manufacturing/O-M02.json').read_text())['boss_height'] if args.manufacturing else 6)*.001
+bpy.ops.wm.open_mainfile(filepath=str(BASE/'product-views/assembled-unmarked.blend'))
 scene=bpy.context.scene
 for o in list(scene.objects):
     keep=(o.name in ('body','faceplate') or o.name.startswith(('QD3 reference /','Front M4 DIN 7991','G1-4 side plug reference')))
@@ -58,7 +62,7 @@ connected=[]
 def sleeve(name,x,z,start,end,outer,inner=0,vertices=96):
     verts=[]
     for y,r in ((start,outer),(end,outer),(start,inner),(end,inner)):
-        verts.extend([(x+r*math.cos(2*math.pi*i/vertices),-.006-y,z+r*math.sin(2*math.pi*i/vertices)) for i in range(vertices)])
+        verts.extend([(x+r*math.cos(2*math.pi*i/vertices),-BOSS-y,z+r*math.sin(2*math.pi*i/vertices)) for i in range(vertices)])
     faces=[]
     for i in range(vertices):
         j=(i+1)%vertices
@@ -95,7 +99,7 @@ area('Large diffused key',(-.35,-.48,.7),(0,0,.04),40,.65,.45,(1,.96,.9))
 area('Long top strip highlight',(.04,.12,.65),(0,0,.035),45,.70,.13,(.94,.97,1))
 area('Right soft fill',(.65,-.1,.22),(0,0,.04),35,.25,.4,(.92,.96,1))
 area('Broad frontal reflection card',(-.08,-.6,.16),(0,0,.04),4,.75,.35,(1,1,1))
-bpy.ops.object.camera_add(location=(.45,-1.15,.48));camera=bpy.context.object;camera.name='Revision M photographic front three-quarter'
+bpy.ops.object.camera_add(location=(.45,-1.15,.48));camera=bpy.context.object;camera.name=f'Revision {REV} photographic front three-quarter'
 camera.rotation_euler=(Vector((0,-.032,.044))-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.type='PERSP';camera.data.lens=72;camera.data.sensor_width=36;camera.data.clip_start=.01;camera.data.clip_end=250
 # Deep focus preserves all twenty QDs and both rack ears; no artificial focus blur.
 camera.data.dof.use_dof=False;scene.camera=camera
@@ -115,7 +119,7 @@ for variant in (['bare','connected'] if args.variant=='all' else [args.variant])
             o.hide_render=variant=='bare';o.hide_set(variant=='bare')
     for o in connected:o.hide_render=variant=='bare';o.hide_set(variant=='bare')
     stem='01-bare-ports' if variant=='bare' else '02-qd3-translucent-tubes'
-    scene.render.filepath=str(ROOT/f'tmp/M-{variant}-preview.png' if args.preview else OUT/f'{stem}.png')
+    scene.render.filepath=str(ROOT/f'tmp/{REV}-{variant}-preview.png' if args.preview else OUT/f'{stem}.png')
     bpy.ops.render.render(write_still=True)
     if not args.preview:
         for screen in bpy.data.screens:
@@ -125,7 +129,8 @@ for variant in (['bare','connected'] if args.variant=='all' else [args.variant])
         bpy.ops.wm.save_as_mainfile(filepath=str(OUT/f'{stem}.blend'))
 if not args.preview:
     (OUT/'render-notes.json').write_text(json.dumps({
-        'revision':'M','source_scene':'../product-views/assembled-unmarked.blend',
+        'revision':REV,'source_scene':'../product-views/assembled-unmarked.blend',
+        'boss_height_mm':BOSS*1000,
         'geometry_changes':'No manifold changes; converted millimetres to metres. Small shader-only edge rounding.',
         'bare':'20 front and 4 side ports unpopulated; six M4 body screws retained.',
         'connected':'20 male/female QD approximations, 20 annular 10 mm ID / 13 mm OD tube tails; four side plugs fitted.',

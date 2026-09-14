@@ -1,0 +1,13 @@
+RM10-O-M02-FACEPLATE - quotation / manufacturing review
+
+304 stainless / EN 1.4301, SUS304 equivalent. Finished thickness 3.0 +/-0.10 mm. Flat part, no bending.
+
+This plate mates with RM10-O-M02-BODY, quoted separately. Follow the matching STEP and both PDF sheets. Twenty diameter 32 clearance windows; six diameter 4.5 clearance holes with diameter 8 x 90-degree countersinks on the FRONT only; twelve 10 x 7 rack slots. No tapped holes: Threads NO.
+
+The DXF is the THROUGH-CUT profile only. Countersink mouths are not through-cuts; complete countersinks to the STEP/PDF. Control plate flatness and opening positions as specified. Retain all twelve optional rack slots.
+
+Countersinks accept the specified A4 M4 x 12 DIN 7991 socket screws, with DIN 965 Z Pozi alternative. Do not enlarge the countersinks for a different head standard. Screws are not part of this fabricated plate.
+
+As machined, no coating, bead blasting, engraving or other markings. Remove dross and raised burrs; apply the specified light external edge break without enlarging countersinks or reducing the outer-slot ligaments. Deliver clean and dry.
+
+Please return any proposed geometry, material or tolerance changes for review before manufacture.

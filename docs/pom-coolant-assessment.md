@@ -25,6 +25,8 @@ Stock integrity, sealing-land finish, thread quality, fitting loads, differentia
 
 Practical selection: accept the supplier's identified, sound unfilled POM-C or POM-H machining stock if it meets the drawing and the selected coolant's compatibility requirements. Prototype leak/thermal testing remains part of assembly qualification, not grounds to reject either polymer family at this stage.
 
+Operator decision, 15 September 2026: retain both POM families and finalise the quotation package. The operator reports cleaning an EK Pro manifold with Blitz Part 2, followed by long satisfactory service. This is relevant field experience supporting the maintenance choice; the exact EK resin grade and exposure conditions remain unspecified. Further C/H comparison does not hold up the current supplier package.
+
 ## Mayhems Blitz Part 2 / Blitz System cleaning
 
 The operator includes Blitz Part 2 in the intended maintenance regime. Treat correctly diluted, temporary Blitz System cleaning followed by thorough flushing as an intended use for either POM-C or POM-H; this does not by itself justify restricting the body to copolymer. This is an engineering expectation, not a published C/H-specific compatibility certification or an assembly test result.

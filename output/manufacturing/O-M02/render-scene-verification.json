@@ -1,0 +1,25 @@
+{
+  "issue": "O-M02",
+  "status": "PASS",
+  "method": "Reopen saved Blender scenes; inspect actual mesh bounds, QD placement and visibility",
+  "scenes": [
+    {
+      "variant": "01-bare-ports",
+      "body_depth_mm": 44.00000302121043,
+      "boss_seal_plane_y_mm": -4.000000189989805,
+      "retention_heads": 6,
+      "visible_QD_pairs": 0,
+      "visible_tubes": 0,
+      "surface_markings": false
+    },
+    {
+      "variant": "02-qd3-translucent-tubes",
+      "body_depth_mm": 44.00000302121043,
+      "boss_seal_plane_y_mm": -4.000000189989805,
+      "retention_heads": 6,
+      "visible_QD_pairs": 20,
+      "visible_tubes": 20,
+      "surface_markings": false
+    }
+  ]
+}

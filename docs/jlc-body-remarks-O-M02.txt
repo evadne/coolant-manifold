@@ -1,0 +1,13 @@
+RM10-O-M02-BODY - manual quotation / manufacturing review
+
+Black unfilled POM. POM-C or POM-H accepted; branded Delrin is not required. Please identify the actual stock grade and provide its datasheet.
+
+This body mates with RM10-O-M02-FACEPLATE, quoted separately. Follow the matching STEP and all three PDF sheets. The STEP contains tapping pilots: machine 24 G1/4 female parallel threads to ISO 228-1 and six M4 x 0.7-6H threads directly into POM. No thread inserts, NPT or tapered-thread substitutions. Threads YES.
+
+Please confirm the process and inspection method for two diameter 11.8 +0.08/0 galleries through 410 mm, including maximum 0.30 mm axis deviation and maximum 0.30 mm opposed-bore meeting step. Opposed drilling is permitted as detailed. No blind webs or wall breakthrough.
+
+Bosses are 4 mm high on the 40 mm main slab, with R1 roots and C0.5 x 45-degree lips. They project 1 mm above the separately manufactured 3 mm plate. Preserve the flat fitting sealing lands and their specified finish/flatness. Do not round or polish away these lands.
+
+External deburring only. Internal bore and cross-hole edge deburring is NOT required. Clean/flush loose chips from both continuous galleries; deliver clean and dry. No coating, bead blasting, chemical treatment, impregnation, adhesive repair or product markings. Local finishes and tolerances apply as drawn, not globally.
+
+Please identify any drawing requirement you cannot meet and return proposed changes for review before manufacture.

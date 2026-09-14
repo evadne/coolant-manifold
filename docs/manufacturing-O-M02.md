@@ -4,6 +4,8 @@ The operator-approved O layout is preserved at `980b4d4`. O-M02 implements the s
 
 ## Files for quotation
 
+The final [JLC submission handover](jlc-submission-O-M02.md) includes separate upload ZIPs, ready-to-paste part remarks and checksums. Updated [bare](../output/manufacturing/O-M02/photorealistic/01-bare-ports.png) and [connected](../output/manufacturing/O-M02/photorealistic/02-qd3-translucent-tubes.png) studio renders use the issued O-M02 STEP geometry and new sealing plane.
+
 | Part | Drawing | Upload bundle |
 |---|---|---|
 | POM body | [Three-sheet A3 PDF](../output/pdf/RM10-O-M02-BODY.pdf) | [STEP + PDF ZIP](../output/manufacturing/O-M02/RM10-O-M02-BODY.zip) |

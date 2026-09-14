@@ -1,4 +1,4 @@
-"""Unmarked assembled product views from preserved G or separate H CAD meshes.
+"""Unmarked assembled product views from revision or manufacturing CAD meshes.
 
 Run after build_cad.py. Bought-in QD3 shapes and fasteners are visual references.
 No text, identification bands, engraving, dimensions or overlays are generated.
@@ -15,6 +15,7 @@ from mathutils import Vector
 ROOT = Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
 parser.add_argument('--iteration',choices=('G','H','I','J','K','L','M','N','O'),default='G')
+parser.add_argument('--manufacturing', choices=['O-M02'])
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
 LONG=args.iteration in ('H','I','J','K','L','M','N','O')
 REV=args.iteration
@@ -27,6 +28,13 @@ assert S['parameters']['revision'] == P['revision']
 assert S['parameters']['mounting'] == 'faceplate'
 for key in P:
     assert S['parameters'][key] == P[key], key
+if args.manufacturing:
+    assert REV == 'O', 'Manufacturing detail O-M02 derives from O'
+    detail = json.loads((ROOT/'cad/manufacturing/O-M02.json').read_text())
+    P['port_boss_height'] = detail['boss_height']
+    OUT = ROOT/'output/manufacturing/O-M02/product-views'
+    OUT.mkdir(parents=True, exist_ok=True)
+    MESH = ROOT/'tmp/mesh-O-M02'
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 scene = bpy.context.scene
@@ -45,7 +53,7 @@ def material(name, colour, metallic, roughness):
     return m
 
 
-pom = material('Unmarked black Delrin', (.018, .021, .024), 0, .32)
+pom = material('Unmarked black POM', (.018, .021, .024), 0, .32)
 steel = material('Unmarked satin stainless', (.52, .55, .58), .85, .30)
 nickel = material('QD3 nickel visual reference', (.60, .62, .64), .9, .25)
 product = []
@@ -300,7 +308,9 @@ if REV in ('I','J','K','L','M','N','O'):
 scene.camera=bpy.data.objects[views[0][0]]
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'assembled-unmarked.blend'))
 (OUT/'render-manifest.json').write_text(json.dumps({
-    'revision':P['revision'],'mounting':'front rack faceplate',
+    'revision':args.manufacturing or P['revision'],'mounting':'front rack faceplate',
+    'boss_height_mm':P['port_boss_height'],
+    'boss_projection_mm':P['port_boss_height']-P['faceplate_thickness'],
     'surface_markings':False,'plate_to_POM_screw_heads_M4':len(heads),
     'QD3_male_references':2*len(S['ports_x']),'side_plug_references':4 if LONG else 0,
     'notes':'QD3 shapes, plugs and screws are visual references; CAD-derived POM and steel. No tubing, labels or markings.',

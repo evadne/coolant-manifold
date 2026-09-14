@@ -1,0 +1,16 @@
+{
+  "issue": "O-M02",
+  "source": "Issued manufacturing STEP solids",
+  "boss_height_mm": 4,
+  "slab_depth_mm": 40,
+  "boss_projection_mm": 1,
+  "body_depth_mm": 44,
+  "body_valid": true,
+  "plate_valid": true,
+  "source_sha256": {
+    "RM10-O-M02-BODY.step": "87db3c942f611e5cbb71a2cb7332af226e680b0503711ce3ed5bb0420e76cbe2",
+    "RM10-O-M02-FACEPLATE.step": "655eb198b9eb1a1a4f851354b09d3f6eb3ca4bd486a9d5c880a96ffd453e31c3"
+  },
+  "fluid_highlight": "Diagnostic voids trimmed to the new Y=-4 sealing plane",
+  "references": "Unchanged O side plugs and elbows; not supplier fitting CAD"
+}

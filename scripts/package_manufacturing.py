@@ -1,6 +1,6 @@
 """Audit PDF essentials and bundle matching supplier files, with no assemblies or notes in ZIPs."""
 from pathlib import Path
-import hashlib, json, zipfile
+import hashlib, json, zipfile, shutil
 from pypdf import PdfReader
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output/manufacturing/O-M02'
@@ -36,3 +36,32 @@ for part, extensions in [('BODY', ['step']), ('FACEPLATE', ['step', 'dxf'])]:
 paths = sorted([p for p in OUT.iterdir() if p.is_file() and p.name != 'SHA256SUMS.txt'] + list(PDF.glob('RM10-O-M02-*.pdf')))
 (OUT / 'SHA256SUMS.txt').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.relative_to(ROOT)}\n' for p in paths))
 print(json.dumps(checks, indent=2))
+
+# Separate local handover from the two individual, portal-compatible upload ZIPs.
+submission = ROOT / 'output/submission/O-M02'
+submission.mkdir(parents=True, exist_ok=True)
+copies = {
+    OUT / 'RM10-O-M02-BODY.zip': 'RM10-O-M02-BODY.zip',
+    OUT / 'RM10-O-M02-FACEPLATE.zip': 'RM10-O-M02-FACEPLATE.zip',
+    PDF / 'RM10-O-M02-DFM.pdf': 'RM10-O-M02-DFM.pdf',
+    ROOT / 'docs/jlc-submission-O-M02.md': 'README.md',
+    ROOT / 'docs/jlc-body-remarks-O-M02.txt': 'BODY-REMARKS.txt',
+    ROOT / 'docs/jlc-faceplate-remarks-O-M02.txt': 'FACEPLATE-REMARKS.txt',
+}
+for source, name in copies.items():
+    shutil.copyfile(source, submission / name)
+    assert source.read_bytes() == (submission / name).read_bytes()
+members = sorted(copies.values())
+(submission / 'SHA256SUMS.txt').write_text(''.join(
+    f'{hashlib.sha256((submission / name).read_bytes()).hexdigest()}  {name}\n'
+    for name in members))
+members.append('SHA256SUMS.txt')
+archive = submission / 'RM10-O-M02-HANDOVER.zip'
+with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
+    for name in members:
+        z.write(submission / name, name)
+with zipfile.ZipFile(archive) as z:
+    assert z.testzip() is None and set(z.namelist()) == set(members)
+    for name in members:
+        assert z.read(name) == (submission / name).read_bytes()
+print('Verified separate upload files and local handover archive:', archive)
