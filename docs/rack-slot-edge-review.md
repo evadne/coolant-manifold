@@ -32,3 +32,13 @@ The proposed nut positions were checked against K's existing four elbow/compress
 **No CAD change has been made in this assessment.** The recommendation is to replace the current outermost rack slots with these middle-hole locations in the next layout update, then update the rack render/nut placement and associated clearance checks together.
 
 [Computed assessment](../output/rack-slot-review/assessment.json) · [Reproducible check](../scripts/check_rack_slot_edges.py)
+
+## Six holes per side
+
+Providing all six universal-rail positions in each 2U side produces twelve rack-fixing holes total, at Z = 5.4, 21.275, 37.15, 49.85, 65.725 and 81.6 mm. If all twelve compatible fasteners are installed and appropriately tightened, the additional attachment points can distribute joint loads and reduce local movement. The larger vertical fixing spread can also improve resistance to an applied moment. Those are possible joint benefits, not a quantified increase in the capacity of the complete manifold mount; the plate, POM retention and rail connections still govern the load path.
+
+Unpopulated extra holes add no clamping or fastening capacity and remove material from the steel. With our 7 mm-high slots, the material between adjacent slots is 8.875 mm within each U and 5.7 mm across the centre U boundary. The outer slots still retain the same 1.9 mm top/bottom edge ligament; additional screws do not increase that dimension.
+
+All six positions cannot simultaneously use the example Ø15 mm S1940 cup washers in one plane: the two middle positions are only 12.7 mm apart, causing 2.3 mm overlap. The outer washers also retain their 2.1 mm overhang. Smaller compatible hardware could avoid the washer clash, but a circular footprint must be no more than 10.8 mm diameter to stay entirely within the current outer panel edges, before tolerances.
+
+For the current design, two middle fixings per side remain the preferred starting layout for evaluation. A fully populated six-per-side arrangement may be useful if a defined load case warrants it, but it is not an automatic structural upgrade and does not resolve the original edge-margin concern. No CAD change or load-rating claim follows from this comparison.
