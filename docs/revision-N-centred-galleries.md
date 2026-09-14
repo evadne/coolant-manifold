@@ -1,5 +1,7 @@
 # Revision N — 35 mm body with centred galleries
 
+Historical assessment, superseded by [the selected 40 mm Revision O](revision-O-centred-40mm.md) after reviewing side-elbow clearance.
+
 The POM slab is now **410 × 35 × 87 mm**, excluding its 6 mm front bosses. Overall POM depth is **41 mm**. Both Ø11.8 longitudinal galleries lie at **Y17.5**, leaving **11.6 mm nominal material ahead and behind**, away from the front branch intersections. The side ports are centred on the 35 mm end faces, with 6.5 mm front/rear edge reserve around the Ø22 sealing lands.
 
 ![Depth section](../output/long-bore-N/depth-section.png)

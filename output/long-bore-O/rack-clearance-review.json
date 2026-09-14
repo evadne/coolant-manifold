@@ -1,0 +1,52 @@
+{
+  "revision": "O",
+  "gallery_axis_y_mm": 20.0,
+  "front_flange": {
+    "minimum_distance_mm": 8.0,
+    "total_overlap_mm3": 0.0
+  },
+  "upright_return": {
+    "minimum_distance_mm": 23.19999999999999,
+    "total_overlap_mm3": 0.0
+  },
+  "optional_nut_positions": [
+    {
+      "slot_centre_z_mm": 5.4,
+      "minimum_distance_mm": 4.561797891182818,
+      "total_overlap_mm3": 0.0
+    },
+    {
+      "slot_centre_z_mm": 21.275,
+      "minimum_distance_mm": 2.0,
+      "total_overlap_mm3": 0.0
+    },
+    {
+      "slot_centre_z_mm": 37.15,
+      "minimum_distance_mm": 2.0,
+      "total_overlap_mm3": 0.0
+    },
+    {
+      "slot_centre_z_mm": 49.85,
+      "minimum_distance_mm": 2.0,
+      "total_overlap_mm3": 0.0
+    },
+    {
+      "slot_centre_z_mm": 65.725,
+      "minimum_distance_mm": 2.0,
+      "total_overlap_mm3": 0.0
+    },
+    {
+      "slot_centre_z_mm": 81.6,
+      "minimum_distance_mm": 4.561797891182812,
+      "total_overlap_mm3": 0.0
+    }
+  ],
+  "basis": "Same illustrative rack as ten-pair feasibility: front flanges Y0..3, folded returns Y3..45, cage-nut boxes 10x6x10 centred at X\u00b1232.55/Y6. Conservative rectangular elbow heads.",
+  "interpretation": "Each row tests nuts fitted at that pair of optional slots, not twelve installed nuts. A conservative envelope overlap requires exact hardware review; it is not proof of physical collision.",
+  "limitations": [
+    "No actual cage clips or screw tails",
+    "No insertion or elbow-rotation sweep",
+    "No hose routing clearance",
+    "No load assessment"
+  ]
+}

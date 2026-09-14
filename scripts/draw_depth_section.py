@@ -2,7 +2,7 @@
 import argparse,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--iteration',default='N');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--iteration',default='O');args=parser.parse_args()
 p=json.loads((ROOT/f'cad/iterations/{args.iteration}-long-bore.json').read_text())
 out=ROOT/f'output/long-bore-{args.iteration}'
 s=5.;ox=280.;oy=190.;D=p['body_depth'];H=p['body_height'];Y=p['gallery_axis_y'];R=p['gallery_diameter']/2;BH=p['port_boss_height']
@@ -13,7 +13,7 @@ def dim(x1,x2,y,label,size=18):
     line(x1,y,x2,y);line(x1,y-6,x1,y+6);line(x2,y-6,x2,y+6);text((x1+x2)/2,y-12,label,size,'middle')
 def zpos(z):return oy+(H-z)*s
 text(65,65,f'REVISION {args.iteration} / CENTRED LONGITUDINAL GALLERIES',30)
-text(65,103,'Section between front port columns; dimensions in mm. Drawing annotations only.',18)
+text(65,103,'Schematic section between front port columns; dimensions in mm.',18)
 a.append(f'<rect x="{ox}" y="{oy}" width="{D*s}" height="{H*s}" fill="#b7bfc4" stroke="#283944" stroke-width="2"/>')
 a.append(f'<rect x="{ox-3*s}" y="{oy}" width="{3*s}" height="{H*s}" fill="#718b9b"/>')
 for z in p['port_rows_z']:
@@ -39,7 +39,7 @@ text(565,431,'Dashed outlines: 6 mm boss projections.',18)
 text(565,458,'Blue strip: 3 mm stainless faceplate.',18)
 text(565,485,'White recesses: blind M4 pilot holes at X0.',18)
 text(565,539,'Side ports are centred in the body depth.',20)
-text(565,570,'Ø22 sealing lands have 6.5 mm edge reserve',18)
+text(565,570,f'Ø22 sealing lands have {min(Y,D-Y)-11:g} mm edge reserve',18)
 text(565,597,'to both the front and rear of the side face.',18)
 text(65,755,'Nominal geometry review; not a pressure or stiffness qualification.',18)
 text(65,789,'Side-elbow / optional cage-nut clearance is recorded separately in rack-clearance-review.json.',18)
