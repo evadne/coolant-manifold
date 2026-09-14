@@ -1,0 +1,56 @@
+{
+  "revision_checked": "K",
+  "plate_height_mm": 87.0,
+  "plate_thickness_mm": 3,
+  "rack_slots": [
+    {
+      "centre_x": -232.55,
+      "centre_z": 5.399999999999997,
+      "top_bottom_edge_ligament_mm": 1.8999999999999968
+    },
+    {
+      "centre_x": -232.55,
+      "centre_z": 81.6,
+      "top_bottom_edge_ligament_mm": 1.9000000000000057
+    },
+    {
+      "centre_x": 232.55,
+      "centre_z": 5.399999999999997,
+      "top_bottom_edge_ligament_mm": 1.8999999999999968
+    },
+    {
+      "centre_x": 232.55,
+      "centre_z": 81.6,
+      "top_bottom_edge_ligament_mm": 1.9000000000000057
+    }
+  ],
+  "slot_size_mm": [
+    10,
+    7
+  ],
+  "current_centres_z_mm": [
+    5.399999999999997,
+    81.6
+  ],
+  "current_minimum_vertical_edge_ligament_mm": 1.9,
+  "current_side_edge_ligament_mm": 3.75,
+  "washer_reference": {
+    "manufacturer": "Penn Elcom",
+    "part": "S1940",
+    "outer_diameter_mm": 15,
+    "url": "https://www.penn-elcom.com/slim-m6-black-plastic-cup-washer-s1940",
+    "current_panel_overhang_mm": 2.100000000000003,
+    "nominal_overlap_of_two_identical_washers_across_adjacent_U_boundary_mm": 2.3000000000000007
+  },
+  "alternative_middle_holes": {
+    "centres_z_mm": [
+      21.275,
+      65.725
+    ],
+    "vertical_bolt_spacing_mm": 44.449999999999996,
+    "vertical_slot_edge_ligament_mm": 17.775,
+    "washer_to_vertical_panel_edge_mm": 13.774999999999999,
+    "minimum_new_corner_nut_to_K_elbow_reference_mm": 8.0
+  },
+  "status": "Assessment only; existing K CAD unchanged. Edge/washer issue confirmed; no structural failure load inferred. Alternative nuts use illustrative 10x6x10 envelopes at Y6; actual clips and screw tails require checking."
+}

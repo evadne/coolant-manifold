@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="720" viewBox="0 0 1320 720"><rect width="1320" height="720" fill="white"/><g font-family="Arial,sans-serif" fill="#233746">
+<text x="50" y="48" font-size="29">RACK SLOT EDGE REVIEW — 87 mm faceplate</text>
+<text x="50" y="82" font-size="19">Right-hand end, front elevation. Orange circles: Ø15 mm washer envelopes.</text>
+<text x="120" y="135" font-size="24">Current outer holes</text>
+<rect x="180" y="175.0" width="175.0" height="435.0" fill="#dbe3e8" stroke="#36505f"/>
+<circle cx="311.25" cy="583.0" r="37.5" fill="none" stroke="#bb642c" stroke-width="2"/>
+<rect x="286.25" y="565.5" width="50.0" height="35.0" rx="17.5" fill="white" stroke="#233746"/>
+<path d="M303.25,583.0h16 M311.25,575.0v16" stroke="#637983" fill="none"/>
+<circle cx="311.25" cy="202.00000000000003" r="37.5" fill="none" stroke="#bb642c" stroke-width="2"/>
+<rect x="286.25" y="184.50000000000003" width="50.0" height="35.0" rx="17.5" fill="white" stroke="#233746"/>
+<path d="M303.25,202.00000000000003h16 M311.25,194.00000000000003v16" stroke="#637983" fill="none"/>
+<text x="380" y="215" font-size="19">1.9 mm edge ligament</text>
+<text x="380" y="250" font-size="18">2.1 mm washer overhang</text>
+<text x="710" y="135" font-size="24">Middle-hole alternative</text>
+<rect x="770" y="175.0" width="175.0" height="435.0" fill="#dbe3e8" stroke="#36505f"/>
+<circle cx="901.25" cy="503.625" r="37.5" fill="none" stroke="#bb642c" stroke-width="2"/>
+<rect x="876.25" y="486.125" width="50.0" height="35.0" rx="17.5" fill="white" stroke="#233746"/>
+<path d="M893.25,503.625h16 M901.25,495.625v16" stroke="#637983" fill="none"/>
+<circle cx="901.25" cy="281.375" r="37.5" fill="none" stroke="#bb642c" stroke-width="2"/>
+<rect x="876.25" y="263.875" width="50.0" height="35.0" rx="17.5" fill="white" stroke="#233746"/>
+<path d="M893.25,281.375h16 M901.25,273.375v16" stroke="#637983" fill="none"/>
+<text x="970" y="280" font-size="19">17.775 mm edge ligament</text>
+<text x="970" y="315" font-size="18">Washer within panel</text>
+<text x="50" y="661" font-size="19">Both use existing holes on a universal three-hole-per-U rail. Alternative not applied to CAD.</text>
+<text x="50" y="695" font-size="17">Source: K DXF; rack-hole pattern and washer dimensions checked against manufacturer documentation.</text>
+</g></svg>

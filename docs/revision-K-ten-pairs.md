@@ -32,3 +32,5 @@ K is a separate iteration. I/J parameters and outputs remain unchanged; I's orig
 rsvg-convert output/long-bore-K/front-spacing.svg -o output/long-bore-K/front-spacing.png
 /Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_product.py -- --iteration K
 ```
+
+Rack-slot follow-up: [edge review](rack-slot-edge-review.md) confirms only 1.9 mm top/bottom slot ligament and recommends evaluating the middle rack holes of each U. K's present CAD retains the original slot positions pending that layout update.
