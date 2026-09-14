@@ -1,0 +1,55 @@
+{
+  "revision": "K",
+  "mounting": "front rack faceplate",
+  "surface_markings": false,
+  "plate_to_POM_screw_heads_M4": 6,
+  "QD3_male_references": 20,
+  "side_plug_references": 4,
+  "notes": "QD3 shapes, plugs and screws are visual references; CAD-derived POM and steel. No tubing, labels or markings.",
+  "technical_section": "09-gallery-section.png",
+  "body_transparency": 0.5,
+  "body_transparency_view": "10-body-50-percent-transparent.png",
+  "side_elbow_view": "11-side-elbow-configuration.png",
+  "views": [
+    {
+      "view": "01-front-three-quarter",
+      "orthographic_scale_mm": 498.5810852050781,
+      "path": "01-front-three-quarter.png"
+    },
+    {
+      "view": "02-rear-three-quarter",
+      "orthographic_scale_mm": 495.3253173828125,
+      "path": "02-rear-three-quarter.png"
+    },
+    {
+      "view": "03-front",
+      "orthographic_scale_mm": 559.8159790039062,
+      "path": "03-front.png"
+    },
+    {
+      "view": "04-rear",
+      "orthographic_scale_mm": 559.8159790039062,
+      "path": "04-rear.png"
+    },
+    {
+      "view": "05-left",
+      "orthographic_scale_mm": 165.14186096191406,
+      "path": "05-left.png"
+    },
+    {
+      "view": "06-right",
+      "orthographic_scale_mm": 165.14186096191406,
+      "path": "06-right.png"
+    },
+    {
+      "view": "07-top",
+      "orthographic_scale_mm": 559.8159790039062,
+      "path": "07-top.png"
+    },
+    {
+      "view": "08-bottom",
+      "orthographic_scale_mm": 559.8159790039062,
+      "path": "08-bottom.png"
+    }
+  ]
+}

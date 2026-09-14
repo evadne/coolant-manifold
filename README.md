@@ -1,3 +1,5 @@
+[Revision K: ten pairs at 40 × 40 mm spacing, visual review candidate](docs/revision-K-ten-pairs.md).
+
 # RM8-2U rack coolant manifold
 
 **Latest width variants:** [I: 390 mm / 8 front pairs and J: 450 mm / 9 front pairs](docs/width-variants.md), with revised fixings, side-fitting envelopes, drawings and 50%-transparent body views. End-fed infrastructure can serve all front pairs. G and H remain preserved.

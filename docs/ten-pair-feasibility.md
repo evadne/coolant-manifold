@@ -35,3 +35,5 @@ An actual rack's folds, inward returns, cage clips, screw protrusions and adjace
 [Computed comparison](../output/ten-pair-feasibility/comparison.json) · [Evaluation script](../scripts/evaluate_ten_pair_layout.py)
 
 Run with `.venv/bin/python scripts/evaluate_ten_pair_layout.py`.
+
+The following [Revision K visual review](revision-K-ten-pairs.md) now models the 410 mm candidate. Its end allowance remains subject to review.

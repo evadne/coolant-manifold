@@ -14,9 +14,9 @@ from mathutils import Vector
 
 ROOT = Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument('--iteration',choices=('G','H','I','J'),default='G')
+parser.add_argument('--iteration',choices=('G','H','I','J','K'),default='G')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-LONG=args.iteration in ('H','I','J')
+LONG=args.iteration in ('H','I','J','K')
 REV=args.iteration
 OUT = ROOT / (f'output/long-bore-{REV}/product-views' if LONG else 'output/product-views')
 OUT.mkdir(parents=True, exist_ok=True)
@@ -248,7 +248,7 @@ if LONG:
     section.hide_render=True
     section.hide_set(True)
     bpy.data.objects['body'].hide_render=False
-if REV in ('I','J'):
+if REV in ('I','J','K'):
     # Body-only inspection: exactly 50/50 Transparent and Principled surface shaders.
     visibility={o.name:o.hide_render for o in scene.objects if o.type=='MESH'}
     body=bpy.data.objects['body']
@@ -305,8 +305,8 @@ bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'assembled-unmarked.blend'))
     'QD3_male_references':2*len(S['ports_x']),'side_plug_references':4 if LONG else 0,
     'notes':'QD3 shapes, plugs and screws are visual references; CAD-derived POM and steel. No tubing, labels or markings.',
     'technical_section':'09-gallery-section.png' if LONG else None,
-    'body_transparency':.5 if REV in ('I','J') else None,
-    'body_transparency_view':'10-body-50-percent-transparent.png' if REV in ('I','J') else None,
-    'side_elbow_view':'11-side-elbow-configuration.png' if REV in ('I','J') else None,
+    'body_transparency':.5 if REV in ('I','J','K') else None,
+    'body_transparency_view':'10-body-50-percent-transparent.png' if REV in ('I','J','K') else None,
+    'side_elbow_view':'11-side-elbow-configuration.png' if REV in ('I','J','K') else None,
     'views':report},indent=2)+'\n')
 print('Completed unmarked product views and editable Blender assembly.')
