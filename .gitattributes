@@ -3,3 +3,5 @@
 *.blend binary
 *.png binary
 *.pdf binary
+
+*.dxf binary

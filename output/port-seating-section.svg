@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+<rect width="1200" height="560" fill="#f4f6f8"/>
+<g font-family="Arial,sans-serif" fill="#192e3f">
+<text x="50" y="58" font-size="29" font-weight="bold">Option B / fitting seats through the faceplate onto POM</text>
+<text x="50" y="93" font-size="17">Section schematic — not to scale. Both the seal and the full thread engagement remain in POM.</text>
+<path d="M710 140 H1150 V430 H710 V318 H850 V252 H710 Z" fill="#263540"/>
+<path d="M650 140 H710 V200 H650 Z M650 370 H710 V430 H650 Z" fill="#aebec9" stroke="#647987"/>
+<path d="M340 249 H520 V218 H630 V227 H694 V245 H747 V326 H694 V343 H630 V352 H520 V321 H340 Z" fill="#c1ccd4" stroke="#6b8190"/>
+<rect x="697" y="239" width="13" height="10" rx="5" fill="#d78a36"/>
+<rect x="697" y="322" width="13" height="10" rx="5" fill="#d78a36"/>
+<path d="M721 252 l8 8 l-8 8 l8 8 l-8 8 l8 8 l-8 8 l8 8 l-8 8" fill="none" stroke="#263540" stroke-width="2"/>
+<path d="M610 200 H638 M610 370 H638 M619 200 V370" stroke="#526777" fill="none"/>
+<text x="598" y="190" font-size="17" text-anchor="end">Ø28 window</text>
+<path d="M603 190 L619 216" stroke="#526777"/>
+<text x="780" y="191" font-size="22" fill="white">Delrin body</text>
+<text x="785" y="366" font-size="17" fill="white">G1/4 female thread</text>
+<text x="328" y="396" font-size="19">QD3 male base / hex</text>
+<path d="M493 378 L548 350" stroke="#526777"/>
+<text x="585" y="468" font-size="18">3 mm flat stainless faceplate</text>
+<path d="M679 447 V419" stroke="#526777"/>
+<text x="850" y="470" font-size="18">O-ring on POM</text>
+<path d="M872 446 L713 328" stroke="#526777"/>
+<text x="50" y="520" font-size="17">Clear the base, not just the thread: a small thread-only opening would make the fitting stop against steel.</text>
+</g></svg>

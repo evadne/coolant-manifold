@@ -1,5 +1,5 @@
 {
-  "revision": "A",
+  "revision": "B",
   "name": "RM8-2U",
   "body_width": 440.0,
   "body_depth": 40.0,
@@ -22,12 +22,48 @@
   "seal_groove_width": 2.8,
   "seal_groove_depth": 1.6,
   "seal_offset": 3.5,
-  "bracket_thickness": 2.5,
   "rack_width": 482.6,
   "rack_hole_pitch": 465.1,
   "rack_slot_length": 10.0,
   "rack_slot_width": 7.0,
   "qd_female_diameter_reference": 23.7,
   "qd_clearance_diameter": 28.0,
-  "service_projection_front": 100.0
+  "service_projection_front": 100.0,
+  "faceplate_thickness": 3.0,
+  "faceplate_port_clearance": 28.0,
+  "faceplate_mounts_xz": [
+    [
+      -208,
+      9
+    ],
+    [
+      -208,
+      43.5
+    ],
+    [
+      -208,
+      78
+    ],
+    [
+      208,
+      9
+    ],
+    [
+      208,
+      43.5
+    ],
+    [
+      208,
+      78
+    ],
+    [
+      -67.5,
+      43.5
+    ],
+    [
+      67.5,
+      43.5
+    ]
+  ],
+  "qd_male_hex_envelope": 25.404
 }

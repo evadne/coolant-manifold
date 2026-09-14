@@ -1,4 +1,4 @@
-# RM8-2U revision A — manufacturing notes for DFM
+# RM8-2U revision B — manufacturing notes for DFM
 
 Units: mm. CAD source: `cad/parameters.json` and `scripts/build_cad.py`. STEP holes are pilot cylinders; no helical threads are modelled. Supply these notes with the STEP files. Automatic hole recognition is not enough to specify the threads.
 
@@ -8,19 +8,19 @@ Units: mm. CAD source: `cad/parameters.json` and `scripts/build_cad.py`. STEP ho
 |---|---:|---|---|
 | Body | 1 | Black unfilled Delrin / POM-H; stock grade and porosity to be agreed | CNC mill, drill, tap/thread mill |
 | Rear cover | 1 | 316L stainless, 3 finished thickness | Cut profile; machine sealing face, drill and countersink |
-| Rack ears | 1 each hand | 304 or 316 stainless, 2.5 | Profile cut, countersink and one 90° bend |
+| Rack faceplate | 1 | 304 or 316 stainless, 3 finished thickness | Punch or laser/waterjet cut, countersink, deburr; no bends |
 | Gallery seals | 2 | EPDM 70 Shore A, 2 mm cross-section, coolant-compatible | Continuous moulded or factory-vulcanised loops |
 | Cover screws | 31 | Stainless M4 × 12, 90° countersunk | 9 mm nominal engagement in body |
-| Ear screws | 8 | Stainless M5 × 12, 90° countersunk | 9.5 mm nominal engagement in body |
+| Faceplate/body screws | 8 | Stainless M5 × 12, 90° countersunk | 9 mm nominal engagement in body |
 | Rack fixings | 4 sets | Match rails/cage nuts, normally M6 | Purchased |
 | Manifold QDs | 18 | QD3-MTG4 or verified equivalent male QD / male G1/4 | Purchased; includes IN/OUT |
 | Hose QDs | 18 | Compatible QD3 female, hose connection to be selected | Purchased; 16 branch +2 trunk ends |
 
-STEP assembly contains four manufactured solids plus two compressed seal envelopes. Blender depicts simplified bought-in fittings and screws. Rack screws, exact QD internals and hose bends are not modelled. Colour labels in Blender are intended marking locations, not machined recesses in STEP.
+STEP assembly contains three manufactured solids plus two compressed seal envelopes. Blender depicts simplified bought-in fittings and screws. Rack screws, exact QD internals and hose bends are not modelled. Colour labels in Blender are intended marking locations, not machined recesses in STEP.
 
 ## Coordinates and datum convention
 
-X: rack width, zero at centre. Y: depth, front sealing face at 0 and rear body face at 40. Z: height, bottom at 0 and top at 87. The rear cover occupies y 40…43. Ears project to y−2.5, making total bare depth 45.5.
+X: rack width, zero at centre. Y: depth, front sealing face at 0 and rear body face at 40. Z: height, bottom at 0 and top at 87. The rear cover occupies y 40…43. The faceplate occupies y = −3…0, making total bare depth 46.
 
 All ports face forward: axis +Y, y=0. Both rows use x=−180, −135, −90, −45, 0, +45, +90, +135, +180. Supply z=23.5, return z=63.5. Leftmost column is IN/OUT; subsequent columns are paired branches 1…8.
 
@@ -44,12 +44,18 @@ Indicative DFM requirements: gland/port seal finish Ra≤1.6 µm, cover seal fac
 
 31 screw positions: the nine port-column X positions at z 5.5,43.5,81.5, plus x±213 at each gallery-centre Z. Cover clearanceØ4.5, Ø8.4 × 90° countersink from rear. Body pilotØ3.3 × 14 deep from y 40, M4 × 0.7, minimum 10 full thread. Confirm blind tapping run-out and screw bottom clearance. All heads flush.
 
-## Brackets
+## Flat rack faceplate
 
-2.5 mm sheet, R2.5 internal bend, finished height 87. STEP contains formed geometry. The fabricator must derive the flat pattern using its own bend allowance/K-factor and tooling; a projection of formed STEP is not a flat pattern.
+One 482.6 × 87 × 3 mm stainless plate; no bends, embossments or formed features. Eighteen Ø28 (+0.2/0) through windows centred on the G1/4 ports. Window centre positions ±0.10 relative to the mounting pattern. The faceplate should lie against the POM face without rocking; request a deburred, flattened sheet and agree flatness with the supplier. Punching can distort narrow ligaments, so laser/waterjet cutting is also acceptable.
 
-Rack width 482.6, hole spacing 465.1 across. Slots 10 wide × 7 high, centres at z 5.4 and 81.6. These align to the lowest and highest holes of the allocated 2U when the panel is centred within 88.9 mm. Slot vertical separation 76.2.
+The windows expose Ø24 POM sealing lands. Their size clears the QD3-MTG4 male base and conservative Ø25.404 hex envelope, including the hex portion within the plate's 3 mm thickness. Nominal radial clearance is 1.30 mm. Review positional tolerances and fastener play with a real fitting: no contact with the window edge is permitted before the fitting seats against POM. Thread engagement is measured from the POM face, not the front of the metal plate. No O-ring or gasket is required between this dry faceplate and the body.
 
-Each end has four attachment holes at y 12 and 30, z 9 and 78, axis X. Body pilotØ4.2 × 12 deep, M5 × 0.8, minimum 10 full thread. Ears haveØ5.5 clearance withØ10.4 × 90° outer countersinks. Flush side heads keep the rear assembly width 445 within a nominal 450.8 rack opening; validate the real rack geometry. Every attachment hole is outside the galleries and seals.
+Eight body mounting positions (X,Z): (−208,9), (−208,43.5), (−208,78), (+208,9), (+208,43.5), (+208,78), (−67.5,43.5), (+67.5,43.5). Faceplate holes Ø5.5 with Ø10.4 × 90° countersink from the front (y = −3). Body pilot Ø4.2 × 14 deep from the front, M5 × 0.8, minimum 10 mm full thread. With M5 × 12 countersunk screws, nominal POM engagement is 9 mm. Finish heads flush and confirm blind-hole bottom clearance. These mounts are separate from the pressure-cover screws and do not intersect galleries, seal grooves or rear screw bores.
 
-Direct POM threads are simple for the first prototype, but torque/preload and long-term retention must be validated. No tightening torque is established here. Review the rack ear bending strength, QD insertion forces and hose loads; support hoses independently instead of relying on the plastic ports. No operating pressure or mechanical load rating is assigned to revision A.
+Rack slots are 10 × 7, centres X = ±232.55, Z = 5.4 and 81.6: 465.1 horizontal and 76.2 vertical separation. Body width behind the rail plane is 440 mm. Verify fit and cage-nut access on the actual rack.
+
+`output/cad/faceplate-flat.dxf` is a genuine flat profile in millimetres: DXF X/Y correspond to assembly X/Z, with origin at the faceplate's bottom centre. CUT contains the outline, eighteen Ø28 windows, eight Ø5.5 mounting holes and four rack slots. It deliberately omits countersink outlines to prevent them being cut through. Countersink the eight body mounts as a separate operation. Do not countersink the rack slots or port windows. The STEP includes the countersinks.
+
+The front plate is the rack mount. The retained rear cover closes the wet galleries. A separate flat bottom support plate fixed to the body is allowed by the user but is not included in revision B; its fasteners would need their own clearance and load checks.
+
+Direct POM threads are simple for the first prototype, but torque/preload and long-term retention must be validated. No tightening torque is established here. Review faceplate bending/deflection, QD insertion forces and hose loads; support hoses independently instead of relying on the plastic ports. No operating pressure or mechanical load rating is assigned to revision B.

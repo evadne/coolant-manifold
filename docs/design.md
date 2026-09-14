@@ -1,4 +1,4 @@
-# RM8-2U coolant manifold — initial design, revision A
+# RM8-2U coolant manifold — initial design, revision B
 
 Eight parallel circuits in two rack units, with vertically paired supply and return connections on one service face. The black Delrin body, repeated G1/4 ports and satin stainless steel hardware follow the requested industrial character of EK's Pro manifold. The design prioritises access to the female QD3 release rings.
 
@@ -10,11 +10,12 @@ This initial design uses a finished 87 mm high panel, leaving 1.9 mm total clear
 
 ## Layout
 
-| Feature | Revision A |
+| Feature | Revision B |
 |---|---|
 | Delrin body | 440 wide × 40 deep × 87 high |
+| Front rack faceplate | 3 thick, eighteen Ø28 windows |
 | Rear stainless cover | 3 thick |
-| Bare rack assembly | 482.6 wide × 45.5 deep × 87 high |
+| Bare rack assembly | 482.6 wide × 46 deep × 87 high |
 | Branches | 8 parallel circuits |
 | Ports | 18 G1/4 female: 8 supply + 8 return + IN + OUT |
 | Horizontal pitch | 45 |
@@ -48,14 +49,24 @@ Reserve 100 mm unobstructed service space forward of the port face. This is a la
 
 Two continuous capsule pockets are milled from the rear of one Delrin block. Each is 400 × 16 in the XZ plane and 24 deep, leaving a 16 mm front wall. Their centres are z=23.5 and 63.5; ends are R8. All front ports drill into the appropriate pocket. There are no buried junctions or deep longitudinal drilled galleries.
 
-Each gallery has its own continuous EPDM seal beneath a 3 mm stainless steel rear cover. The rigid cover avoids a large thin plastic pressure lid. Its underside is a machined sealing face, not unfinished sheet. Separate 2.5 mm stainless steel rack ears attach with four M5 screws per side in dry regions.
+Each gallery has its own continuous EPDM seal beneath a 3 mm stainless steel rear cover. The rigid cover avoids a large thin plastic pressure lid. Its underside is a machined sealing face, not unfinished sheet. A single 3 mm flat stainless steel faceplate carries the body on the rack. Its eighteen Ø28 mm windows expose the original POM port faces. Eight dedicated front-facing M5 screws fasten the body to it; the QDs are not mounting fasteners. The previous bent ears and side mounting holes are removed. The POM outer shape, port arrangement, galleries and rear seal design are unchanged.
 
-The operations are conventional 3-axis milling with rear/front/side setups, standard threaded holes, profile cutting and one bend per ear. This is a design for vendor DFM and budget quotation, not a promise of instant-quote acceptance. Confirm branded Delrin homopolymer, stock size/porosity, sealing flatness and BSPP tooling. Generic POM offered by a vendor is not automatically Delrin.
+The operations are conventional 3-axis milling with rear/front setups, standard threaded holes, profile punching or cutting and countersinking. No metal bending is required. This is a design for vendor DFM and budget quotation, not a promise of instant-quote acceptance. Confirm branded Delrin homopolymer, stock size/porosity, sealing flatness and BSPP tooling. Generic POM offered by a vendor is not automatically Delrin.
+
+## Faceplate and fitting seating
+
+The faceplate occupies y = −3…0, with the POM sealing face at y = 0. Its windows must clear the fitting base and the portion of the hex lying within the plate thickness, not merely the nominal Ø13.157 G1/4 thread. A conservative 22 mm AF male hex has a Ø25.404 circumscribed envelope; the Ø28 opening leaves about 1.30 mm radial clearance before positional tolerances. The entire Ø24 POM sealing land is exposed.
+
+The fitting screws through the clearance window and stops against POM. Its O-ring seals there, not on stainless steel. The plate therefore consumes none of the reference 4.5 mm male thread engagement. Do not shrink the opening to a thread-clearance hole: the fitting could then bottom on steel before sealing on POM. Deburr and lightly edge-break each window to protect fitting surfaces and fingers.
+
+The plate is a dry structural rack mount, not a wet sealing component. The eight body-retention screws remain installed when fittings are changed. Hole size and fastener alignment are checked geometrically; final tolerance stack, fitting fit, screw preload, plate deflection and load capacity still require review. Keep the 45 × 40 mm port pitch.
+
+The user also permits a bottom plate fixed to the body. Such a flat support plate can be added independently if installation loads require it; it is not included in this revision. The existing rear gallery closure is retained as its own body-mounted plate. No folds or bent ears are needed for the current mounting arrangement.
 
 ## Status and open engineering work
 
 This is an initial dimensional model, not a pressure-rated production release. Working pressure, coolant, temperature, pump shut-off head and desired flow have not yet been specified. No structural FEA, seal validation, creep test or hydraulic test has been performed. QD component pressure ratings do not rate the manifold assembly.
 
-The G1/4/QD3 main pair carries the sum of all branch flows and may dominate pressure loss. Establish the required total flow before treating eight circuits as a cooling-capacity promise. There is no dedicated drain or bleed connection in revision A; draining/bleeding is via the external loop and appropriate orientation. Closed unused QDs cannot vent air.
+The G1/4/QD3 main pair carries the sum of all branch flows and may dominate pressure loss. Establish the required total flow before treating eight circuits as a cooling-capacity promise. There is no dedicated drain or bleed connection in revision B; draining/bleeding is via the external loop and appropriate orientation. Closed unused QDs cannot vent air.
 
 Before manufacture release: choose actual QDs and coolant; trial release-ring access; confirm continuous seals and gland dimensions; review plastic threads, cover flatness, preload/torque and creep; check rack and hose loads; then agree separate-gallery leak/cross-leak, thermal-cycle and pressure qualification for the intended working pressure.

@@ -1,19 +1,19 @@
 {
-  "revision": "A",
+  "revision": "B",
   "model": "RM8-2U",
-  "valid_manufactured_solids": 4,
+  "valid_manufactured_solids": 3,
   "wet_networks": 2,
   "branch_circuits": 8,
   "ports": 18,
   "lid_screws_M4": 31,
-  "bracket_screws_M5": 8,
+  "faceplate_screws_M5": 8,
   "assembly_envelope_mm": [
     482.6,
-    45.5,
+    46.0,
     87.0
   ],
-  "body_volume_mm3": 1182218.474670642,
-  "estimated_dry_mass_without_fittings_or_screws_kg": 2.771904215713168,
+  "body_volume_mm3": 1181996.8038930078,
+  "estimated_dry_mass_without_fittings_or_screws_kg": 3.303818400397227,
   "reference_pull_ring_gaps_xy_mm": [
     21.3,
     16.3
@@ -29,13 +29,18 @@
     5.399999999999997,
     81.6
   ],
+  "faceplate_openings_mm": 28.0,
+  "nominal_radial_clearance_to_male_hex_mm": 1.298,
   "checks": [
     "valid solids",
     "single solid per manufactured part",
     "two separate connected wet networks",
     "all 18 bores connected to intended gallery",
     "no manufactured part overlap",
-    "cover and ear screws outside galleries and seal grooves",
+    "cover and faceplate screws outside galleries and seal grooves",
+    "male fitting envelope and POM sealing lands clear faceplate",
+    "mounting screws clear fitting envelopes",
+    "no intersecting front/rear screw bores",
     "2U envelope",
     "12 mm minimum conservative fitting gap"
   ],
