@@ -24,3 +24,11 @@ Neither material has a general temperature-based exclusion at the proposed 50°C
 Stock integrity, sealing-land finish, thread quality, fitting loads, differential expansion against the steel plate and leak performance are more useful selection/verification issues for this design than resistance to strong chemicals. Centreline porosity is stock/process dependent; do not label all POM-C void-free or all POM-H porous. MCAM offers a specifically porosity-free copolymer stock grade and documents the mechanical benefits of its homopolymer grade. [Acetron GP / Ertacetal C](https://www.mcam.com/en/products/shapes/engineering/acetron-ertacetal/acetron-gp-pom-c), [Ertacetal H datasheet](https://www.mcam.com/mam/datasheets/GEP-Ertacetal%C2%AE%20H%20POM-H_en_US.pdf)
 
 Practical selection: accept the supplier's identified, sound unfilled POM-C or POM-H machining stock if it meets the drawing and the selected coolant's compatibility requirements. Prototype leak/thermal testing remains part of assembly qualification, not grounds to reject either polymer family at this stage.
+
+## Mayhems Blitz Part 2 / Blitz System cleaning
+
+The operator includes Blitz Part 2 in the intended maintenance regime. Treat correctly diluted, temporary Blitz System cleaning followed by thorough flushing as an intended use for either POM-C or POM-H; this does not by itself justify restricting the body to copolymer. This is an engineering expectation, not a published C/H-specific compatibility certification or an assembly test result.
+
+The current Mayhems instructions describe Blitz System as a whole-loop cleaner. For the documented 125 ml bottle, they specify adding the entire bottle to 1500 ml distilled/purified water, circulating with the pump alone for 6–12 hours, then completing four fresh-water flushes of 5–10 minutes each. Follow the instructions matching the actual bottle/version; older Part 2 dilution instructions differ. The normal 50°C coolant assumption does not authorise heating the cleaning cycle to 50°C. [Mayhems instructions, pages 6–7](https://mayhems.store/pub/media/pdf/mayhems_instructions_blitzkit.pdf)
+
+This maintenance allowance is specifically for Part 2 / Blitz System. It does not extend the whole-loop allowance to Blitz Radiator / Part 1. No geometry or drawing material change is needed.
