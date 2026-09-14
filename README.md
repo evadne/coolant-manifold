@@ -1,3 +1,5 @@
+[Revision L: six available rack-fixing positions per side](docs/revision-L-six-rack-positions.md).
+
 [Revision K: ten pairs at 40 × 40 mm spacing, visual review candidate](docs/revision-K-ten-pairs.md).
 
 # RM8-2U rack coolant manifold
