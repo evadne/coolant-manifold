@@ -1,9 +1,11 @@
-"""Unmarked, assembled Option B product views from revision G CAD meshes.
+"""Unmarked assembled product views from preserved G or separate H CAD meshes.
 
 Run after build_cad.py. Bought-in QD3 shapes and fasteners are visual references.
 No text, identification bands, engraving, dimensions or overlays are generated.
 """
 import json
+import argparse
+import sys
 import math
 from pathlib import Path
 import bpy
@@ -11,10 +13,15 @@ import bmesh
 from mathutils import Vector
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'output/product-views'
+parser=argparse.ArgumentParser()
+parser.add_argument('--iteration',choices=('G','H'),default='G')
+args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+LONG=args.iteration=='H'
+OUT = ROOT / ('output/long-bore-H/product-views' if LONG else 'output/product-views')
 OUT.mkdir(parents=True, exist_ok=True)
-P = json.loads((ROOT/'cad/parameters.json').read_text())
-S = json.loads((ROOT/'tmp/scene.json').read_text())
+P = json.loads((ROOT/('cad/iterations/H-long-bore.json' if LONG else 'cad/parameters.json')).read_text())
+S = json.loads((ROOT/('tmp/scene-long-bore-H.json' if LONG else 'tmp/scene.json')).read_text())
+MESH=ROOT/('tmp/mesh-long-bore-H' if LONG else 'tmp/mesh')
 assert S['parameters']['revision'] == P['revision']
 assert S['parameters']['mounting'] == 'faceplate'
 for key in P:
@@ -58,8 +65,8 @@ def finish(obj, mat, bevel=.1):
     return obj
 
 
-for name in ('body', 'faceplate', 'lid'):
-    bpy.ops.wm.stl_import(filepath=str(ROOT/'tmp/mesh'/f'{name}.stl'))
+for name in (('body','faceplate') if LONG else ('body','faceplate','lid')):
+    bpy.ops.wm.stl_import(filepath=str(MESH/f'{name}.stl'))
     o = bpy.context.object
     o.name = name
     # Remove coplanar tessellation edges before shading broad machined faces.
@@ -96,9 +103,20 @@ for z in P['port_rows_z']:
             fittings.append(o)
 
 
+# Four provisional end-plug envelopes in the drilled iteration.
+if LONG:
+    for i in range(4):
+        bpy.ops.wm.stl_import(filepath=str(MESH/f'side_plug_{i}.stl'))
+        o=bpy.context.object
+        o.name=f'G1-4 side plug reference {i+1}'
+        finish(o,nickel,0)
+        o.modifiers.clear()
+
 # Actual recesses in the reference screw heads, rather than black drive markings.
 heads = []
 for rear, positions in ((False,S['faceplate_mounts']),(True,S['cover_bolts'])):
+    if not positions:
+        continue
     spec = P['cover_fastener'] if rear else P['faceplate_fastener']
     outer = P['body_depth']+P['lid_thickness'] if rear else -P['faceplate_thickness']
     inward = -1 if rear else 1
@@ -122,9 +140,9 @@ for rear, positions in ((False,S['faceplate_mounts']),(True,S['cover_bolts'])):
         finish(head,steel,.025)
         heads.append(head)
 
-assert len(heads)==39 and len(fittings)==72
+assert len(heads)==(8 if LONG else 39) and len(fittings)==72
 assert not any(o.type=='FONT' for o in scene.objects)
-assert len([o for o in scene.objects if o.type=='MESH'])==114
+assert len([o for o in scene.objects if o.type=='MESH'])==(86 if LONG else 114)
 
 world=bpy.data.worlds.new('Neutral studio')
 scene.world=world
@@ -215,9 +233,27 @@ for item in report:
     scene.camera=bpy.data.objects[item['view']]
     scene.render.filepath=str(OUT/item['path'])
     bpy.ops.render.render(write_still=True)
+if LONG:
+    # Technical section only: replace the full body with a CAD-cut rear half-section.
+    bpy.ops.wm.stl_import(filepath=str(MESH/'body-section.stl'))
+    section=bpy.context.object
+    section.name='TECHNICAL SECTION - rear half removed'
+    finish(section,pom,0)
+    section.modifiers.clear()
+    bpy.data.objects['body'].hide_render=True
+    scene.camera=bpy.data.objects['02-rear-three-quarter']
+    scene.render.filepath=str(OUT/'09-gallery-section.png')
+    bpy.ops.render.render(write_still=True)
+    section.hide_render=True
+    section.hide_set(True)
+    bpy.data.objects['body'].hide_render=False
+scene.camera=bpy.data.objects[views[0][0]]
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'assembled-unmarked.blend'))
 (OUT/'render-manifest.json').write_text(json.dumps({
-    'revision':P['revision'],'mounting':'selected Option B',
+    'revision':P['revision'],'mounting':'front rack faceplate',
     'surface_markings':False,'plate_to_POM_screw_heads_M4':len(heads),
-    'QD3_male_references':18,'notes':'QD3 shapes and screws are visual references; CAD-derived POM and steel. No tubing, labels or markings.',
+    'QD3_male_references':18,'side_plug_references':4 if LONG else 0,
+    'notes':'QD3 shapes, plugs and screws are visual references; CAD-derived POM and steel. No tubing, labels or markings.',
+    'technical_section':'09-gallery-section.png' if LONG else None,
     'views':report},indent=2)+'\n')
-print('Completed eight unmarked product views and editable Blender assembly.')
+print('Completed unmarked product views and editable Blender assembly.')
