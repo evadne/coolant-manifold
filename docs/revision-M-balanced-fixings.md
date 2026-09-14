@@ -13,3 +13,19 @@ Both the countersunk steel holes and matching blind POM holes have moved. The de
 - [Parameters](../cad/iterations/M-long-bore.json), [geometry checks](../output/long-bore-M/cad/verification.json).
 
 The previous L outputs remain preserved, with its original design snapshot tagged `revision-l-six-rack-positions` at `d229d19`. Rebuild using `scripts/build_long_bore.py --iteration M`, then `scripts/render_product.py --iteration M` through Blender's script arguments.
+
+## Photographic studio views
+
+Two additional front three-quarter presentations use the same Revision M manifold geometry, with satin black POM, brushed stainless steel, nickel fitting finishes and softbox lighting. There are no surface markings.
+
+![Bare ports](../output/long-bore-M/photorealistic/01-bare-ports.png)
+
+![Connected QD approximations and translucent tubing](../output/long-bore-M/photorealistic/02-qd3-translucent-tubes.png)
+
+The bare version has all twenty front ports and all four side ports unpopulated; the six M4 body screws remain installed. The connected version has twenty approximated male/female QD3 connections, twenty short translucent tube tails with **10 mm ID and 13 mm OD**, and four side plugs. The female coupling and compression-tail envelopes are illustrative; an exact 10/13 female fitting SKU has not been selected. The tubing is shown as open-ended samples, not a completed loop. Thread bores retain the simplified CAD representation.
+
+- [Editable bare assembly](../output/long-bore-M/photorealistic/01-bare-ports.blend).
+- [Editable connected assembly](../output/long-bore-M/photorealistic/02-qd3-translucent-tubes.blend).
+- [Render settings and scope](../output/long-bore-M/photorealistic/render-notes.json).
+
+Regenerate with Blender: `blender -b --python scripts/render_photoreal_product.py`. Add `-- --preview` for reduced-resolution previews, or `-- --variant bare|connected` for one presentation. Physically based materials are visual approximations, not measured optical properties. The earlier Revision M scenes and CAD exports are preserved.
