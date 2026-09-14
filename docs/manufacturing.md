@@ -9,7 +9,7 @@ Units: mm. CAD source: `cad/parameters.json` and `scripts/build_cad.py`. STEP ho
 | Body | 1 | Black unfilled Delrin / POM-H; stock grade and porosity to be agreed | CNC mill, drill, tap/thread mill |
 | Rear cover | 1 | 316L stainless, 3 finished thickness | Cut profile; machine sealing face, drill and countersink |
 | Rack faceplate | 1 | 304 or 316 stainless, 3 finished thickness | Punch or laser/waterjet cut, countersink, deburr; no bends |
-| Gallery seals | 2 | EPDM 70 Shore A, 2 mm cross-section, coolant-compatible | Continuous moulded or factory-vulcanised loops |
+| Gallery seals | 2 | EPDM 70 Shore A, 2 mm cross-section baseline, coolant-compatible | Prefer purchased one-piece moulded rings; stock size pending, no cutting/gluing |
 | Cover screws | 31 | Stainless M4 × 12, 90° countersunk | 9 mm nominal engagement in body |
 | Faceplate/body screws | 8 | A4 stainless M4 × 12 DIN 7991, 2.5 mm hex; Pozi alternative below | Approximately 9.02 mm nominal penetration in body with maximum listed socket head |
 | Rack fixings | 4 sets | Match rails/cage nuts, normally M6 | Purchased |
@@ -37,6 +37,8 @@ Each capsule pocket is 400 overall length × 16 overall height, R8 ends, 24 deep
 Each gland centreline is the pocket perimeter offset outward 3.5: capsule 407 overall × 23, R11.5 ends. Gland width 2.8 ±0.05, depth 1.60 ±0.05. Nominal 2 mm cord gives 20% axial squeeze and 70.1% gland fill. These are starting values at room temperature, pending seal tolerance, coolant swell, corner behaviour and cover/plastic creep review.
 
 Centreline perimeter is approximately 840.26 mm per loop. This is a path length, not an approved cord cut length or standard O-ring ID. The seal vendor must choose the continuous-loop size and any stretch. Do not assume an adhesive butt joint is a production pressure seal. STEP shows rectangular compressed envelopes; the supplied elastomer has a round section.
+
+See [rear seal and RS stock assessment](rear-seals.md). The stocked RS 258-0460 alternative has a 3.53 mm section and **does not fit these glands**; it is a procurement-led redesign candidate, not a BOM substitution. Keep revision E geometry until the ring and revised gland are selected together.
 
 Indicative DFM requirements: gland/port seal finish Ra≤1.6 µm, cover seal face Ra≤0.8 µm, mating-face flatness 0.05 across each seal perimeter. General dimensions±0.15; port positions±0.10; gland dimensions as above. These are quote requirements to confirm, not supplier guarantees. Break exposed sharp edges 0.3–0.5, except sealing edges which need a controlled small edge break. Groove root radius≤0.2 to be agreed with the seal vendor. CAD omits microscopic edge treatments.
 

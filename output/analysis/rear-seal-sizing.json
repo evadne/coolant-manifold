@@ -1,0 +1,69 @@
+{
+  "revision": "E",
+  "groove_centreline_length_mm": 840.2566310325652,
+  "zero_stretch_equivalent_round_ring_ID_mm": 265.46199258915124,
+  "groove_width_mm": 2.8,
+  "groove_depth_mm": 1.6,
+  "candidates": [
+    {
+      "free_ring_ID_mm": 260,
+      "cross_section_mm": 2.0,
+      "centreline_stretch_percent": 2.084729995859247,
+      "estimated_stretched_cross_section_mm": 1.9794730960961624,
+      "estimated_squeeze_percent": 19.17040938038228,
+      "status": "Dimension candidate only; EPDM compound, moulded construction and supply to be confirmed"
+    },
+    {
+      "free_ring_ID_mm": 262,
+      "cross_section_mm": 2.0,
+      "centreline_stretch_percent": 1.311360829223962,
+      "estimated_stretched_cross_section_mm": 1.987013973293329,
+      "estimated_squeeze_percent": 19.47716415158781,
+      "status": "Dimension candidate only; EPDM compound, moulded construction and supply to be confirmed"
+    },
+    {
+      "free_ring_ID_mm": 265,
+      "cross_section_mm": 2.0,
+      "centreline_stretch_percent": 0.17303093226637145,
+      "estimated_stretched_cross_section_mm": 1.9982719329221859,
+      "estimated_squeeze_percent": 19.930817540922487,
+      "status": "Dimension candidate only; EPDM compound, moulded construction and supply to be confirmed"
+    }
+  ],
+  "section_comparison": [
+    {
+      "cross_section_mm": 1,
+      "illustrative_groove_depth_for_20_percent_squeeze_mm": 0.8,
+      "free_protrusion_mm": 0.2,
+      "squeeze_change_from_0_05_mm_gap_percentage_points": 5.0
+    },
+    {
+      "cross_section_mm": 1.5,
+      "illustrative_groove_depth_for_20_percent_squeeze_mm": 1.2000000000000002,
+      "free_protrusion_mm": 0.30000000000000004,
+      "squeeze_change_from_0_05_mm_gap_percentage_points": 3.3333333333333335
+    },
+    {
+      "cross_section_mm": 2,
+      "illustrative_groove_depth_for_20_percent_squeeze_mm": 1.6,
+      "free_protrusion_mm": 0.4,
+      "squeeze_change_from_0_05_mm_gap_percentage_points": 2.5
+    }
+  ],
+  "rs_candidate": {
+    "stock_number": "258-0460",
+    "url": "https://uk.rs-online.com/web/p/gaskets-o-rings/2580460",
+    "checked_date": "2026-09-14",
+    "checked_using": "Computer Use; RS product page and delivery dialog",
+    "ID_mm": 253.59,
+    "cross_section_mm": 3.53,
+    "material": "EPDM",
+    "standard": "AS568-274 / BS 1806-274",
+    "pack_quantity": 2,
+    "price_per_bag_GBP_ex_VAT": 4.92,
+    "availability_verbatim": "24 unit(s) ready to ship",
+    "free_centreline_length_mm": 807.7663030910077,
+    "stretch_on_existing_centreline_percent": 4.022243539651216,
+    "status": "Stocked alternative only; requires a new gland design, not compatible with revision E grooves"
+  }
+}

@@ -40,6 +40,7 @@ The Option B faceplate files remain below and are not replaced by this alternati
 - [Dimensioned layout](output/layout.svg) — front and rear views.
 - [Full-size clearance template](output/clearance-template-1to1.svg) — print 100%, calibrate against the 100 mm bar; large-format or tiled print required.
 - [Rear pockets, cover removed](output/images/open-galleries.png).
+- [Rear groove detail](output/images/rear-seal-review.png) and [stock-ring assessment](docs/rear-seals.md) — existing 2 mm glands and the RS UK stock alternative.
 - [Manufacturing notes and BOM](docs/manufacturing.md) — thread call-outs, sealing details, fasteners and DFM requirements.
 - [Geometry verification](output/cad/verification.json).
 - [Gallery and seal architecture comparison](docs/gallery-comparison.md) — end-drilled galleries versus the current rear-milled pockets; assessment only.
