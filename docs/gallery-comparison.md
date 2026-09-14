@@ -54,6 +54,8 @@ Pressure separation force is pressure multiplied by effective projected seal are
 
 The forces act in different directions and on different closure geometries; this is not a direct plate-stress comparison. Both gallery loads act on the common rear cover. One end cap covering two independently sealed bores carries both local end loads. The smaller pressure-loaded closure is a substantial advantage for stiffness and seal control. It does not remove pressure stress from the POM walls or establish a pressure rating. Loads scale linearly with pressure; 1 bar is an arithmetic example, not the proposed operating or test pressure.
 
+The subsequent [D5 pressure assessment](d5-pressure.md) estimates nominal full-speed pump-only shut-off differentials around 0.36–0.38 bar for one standard 12 V D5, 0.73–0.76 bar for two in series and 1.45–1.53 bar for four. Actual local seal pressure also depends on reservoir/fill pressure and elevation. This sets a relevant scale for the comparison without establishing a working-pressure rating.
+
 The current rear cover weighs approximately 0.90 kg at the model's assumed stainless density. The bored design replaces it with small end caps, so assembly mass should fall, but a net saving requires the revised body, caps and fasteners to be modelled. The eight dry front mounting screws and the rack faceplate remain necessary.
 
 ## Hydraulic efficiency
