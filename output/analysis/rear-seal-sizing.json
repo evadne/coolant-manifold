@@ -1,47 +1,55 @@
 {
-  "revision": "F",
-  "groove_centreline_length_mm": 820.8230016469245,
-  "groove_centreline_overall_length_mm": 395.0,
-  "groove_centreline_overall_height_mm": 27.0,
-  "groove_width_mm": 4.5,
-  "groove_depth_mm": 2.8,
-  "free_ring_ID_mm": 253.59,
-  "ring_cross_section_mm": 3.53,
-  "ring_free_centreline_length_mm": 807.7663030910077,
-  "centreline_stretch_percent": 1.616395547320293,
-  "estimated_installed_cross_section_mm": 3.501811885542613,
-  "nominal_squeeze_before_stretch_percent": 20.679886685552407,
-  "estimated_squeeze_after_stretch_percent": 20.041393098243653,
-  "estimated_protrusion_after_stretch_mm": 0.7018118855426132,
-  "estimated_gland_fill_after_stretch_percent": 76.4372336592659,
+  "revision": "G",
+  "groove_centreline_length_mm": 819.398223686155,
+  "groove_centreline_overall_length_mm": 396.0,
+  "groove_centreline_overall_height_mm": 24.0,
+  "groove_width_mm": 4.0,
+  "groove_depth_mm": 2.3,
+  "free_ring_ID_mm": 255.0,
+  "ring_cross_section_mm": 3.0,
+  "ring_free_centreline_length_mm": 810.5309046261666,
+  "centreline_stretch_percent": 1.0940136902094055,
+  "estimated_installed_cross_section_mm": 2.9837232261520463,
+  "nominal_squeeze_before_stretch_percent": 23.33333333333334,
+  "estimated_squeeze_after_stretch_percent": 22.915102183717252,
+  "estimated_protrusion_after_stretch_mm": 0.6837232261520465,
+  "estimated_gland_fill_after_stretch_percent": 76.00096803303813,
   "tolerance_review": {
-    "status": "AS568 size review allowance; confirm supplied EPDM tolerances before manufacture",
-    "ID_plus_minus_mm": 1.4,
-    "cross_section_plus_minus_mm": 0.1,
+    "status": "Polymax published ISO 3601-1 table; confirm ordered part before manufacture",
+    "ID_plus_minus_mm": 1.85,
+    "cross_section_plus_minus_mm": 0.09,
     "centreline_overall_length_and_height_plus_minus_mm": 0.1,
-    "groove_width_and_depth_plus_minus_mm": 0.05,
+    "groove_width_deviations_mm": [
+      0.0,
+      0.1
+    ],
+    "groove_depth_deviations_mm": [
+      -0.05,
+      0.0
+    ],
+    "groove_root_radius_max_mm": 0.2,
     "squeeze_percent_range": [
-      15.979310389942947,
-      23.868968937048873
+      20.215268471307212,
+      27.07494197263497
     ],
     "fill_percent_range": [
-      69.68685438755743,
-      83.74119248682484
+      69.34029367798077,
+      83.23156879314084
     ],
     "stretch_percent_range": [
-      0.9883521116966776,
-      2.2518098080236193
+      0.3010522892745504,
+      1.8989905962431664
     ],
     "excludes": "Coolant swell, thermal expansion, cover separation/creep and nonuniform deformation; neutral path taken on groove centreline"
   },
   "selected_ring": {
-    "stock_number": "258-0460",
-    "url": "https://uk.rs-online.com/web/p/gaskets-o-rings/2580460",
-    "material": "EPDM 70 ShA range; RS specification 71 IRHD",
-    "standard": "AS568-274 / BS 1806-274",
-    "pack_quantity": 2,
-    "stock_checked_date": "2026-09-14",
-    "availability_verbatim": "24 unit(s) ready to ship",
-    "price_per_bag_GBP_ex_VAT": 4.92
+    "stock_number": "255 x 3 EPDM 70 ShA",
+    "url": "https://www.polymax.co.uk/o-rings/rubber-epdm-oring/",
+    "material": "EPDM 70 ShA",
+    "standard": "Metric; supplier ISO 3601-1 tolerance table",
+    "quantity_required": 2,
+    "catalogue_checked_date": "2026-09-14",
+    "availability": "User reports cart dispatch in 5\u20137 days; stock quantity not verified",
+    "price_each_GBP_displayed": 3.37
   }
 }

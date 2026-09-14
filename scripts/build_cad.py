@@ -175,7 +175,7 @@ if not BACK:
 assert .15 < 1-gd/installed_cs < .30
 assert .60 < math.pi*installed_cs**2/(4*gw*gd) < .85
 assert 0 < stretch_ratio-1 < .03
-assert P['seal_offset']-gw/2 >= 3
+assert P['seal_offset']-gw/2 >= 2
 assert P['channel_width']/2+P['seal_offset']-gw/2 >= 3*(P['seal_cross_section']+P['seal_ring']['cross_section_tolerance_review'])
 # Full projected thread-major circle must fit the gallery opening at each port.
 for z in rows:

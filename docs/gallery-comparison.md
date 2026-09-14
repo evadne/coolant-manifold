@@ -1,6 +1,6 @@
 # Gallery and seal architecture assessment
 
-Historical 14 September 2026 assessment of revision E. Numerical geometry and quantities below describe that revision, not the revised seal glands. Revision F now uses 384 mm pockets and stock 3.53 mm rings; see [current rear seals](rear-seals.md). Numerical results are in `output/analysis/gallery-comparison.json`.
+Historical 14 September 2026 assessment of revision E. Numerical geometry and quantities below describe that revision, not the revised seal glands. Revision G now uses388 mm pockets and selected3 mm Polymax rings; see [current rear seals](rear-seals.md). Numerical results are in `output/analysis/gallery-comparison.json`.
 
 **Retain the rear-milled pockets as the current design baseline; investigate longitudinal bores as a manufacturing and assembly alternative.** Small end closures offer shorter seal paths and potentially fewer screws, but those advantages do not establish lower total cost or better reliability. The deciding procurement question is the price and capability for deep drilling this particular 440 mm POM body, alongside the cost of the complete closure and rack mounting assembly.
 

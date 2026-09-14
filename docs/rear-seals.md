@@ -1,72 +1,69 @@
-# Revision F — rear grooves for stock EPDM rings
+# Revision G — Polymax 3 mm EPDM face seals
 
-The CAD now uses **two RS PRO 258-0460 O-rings**, each **253.59 mm ID × 3.53 mm section**, in **4.5 mm-wide × 2.8 mm-deep grooves**. The stainless cover seats against the surrounding POM lands and compresses the rings. Both mounting options share this revision.
+Both CAD mounting options now use **two Polymax 255 mm ID × 3 mm section EPDM 70 ShA rings**, in **4.0 mm-wide × 2.3 mm-deep grooves**. The cover closes onto the surrounding POM lands, compressing each ring by approximately **23%**. This is partial compression, not flattening the rubber.
 
 ![Rear seal detail](../output/images/rear-seal-review.png)
 
-## Dimensions and compression
+## Supplier guide and dimensions
 
-| Feature | Revision F |
+The supplied [Polymax O-ring groove guide](https://www.polymax.co.uk/media/documents/Polymax_O-ringen_Guide.pdf) has separate radial and face-seal columns. On page 2, the row for a 3 mm ring gives:
+
+| Column | Groove depth | Groove width |
+|---|---|---|
+| Dynamic/static radial | 2.50 +0.06/0 mm | 3.90 +0.20/0 mm |
+| **Face type — applicable here** | **2.20 +0.10/0 mm** | **3.90 +0.20/0 mm** |
+
+Revision G uses **width 4.00 +0.10/0 mm** and **depth 2.30 +0/−0.05 mm**. The resulting width range 4.00–4.10 and depth range 2.25–2.30 sit within the guide's face-seal ranges. Selecting the deeper end gives less squeeze than a nominal 2.20 mm groove while retaining compression throughout the checked dimensional range.
+
+The guide also lists radius r = 0.8 mm without backup rings. The current machining specification retains a smaller groove-root radius of **0.20 mm maximum**, preserving gland volume; this detail needs supplier agreement and is not claimed to reproduce the guide's entire recommended profile. The tolerance calculation includes the volume displaced by two R0.20 root corners. STEP omits these microscopic edge treatments, as called out in the manufacturing notes. The guide's surface-finish values are labelled Rt; do not directly substitute them for the existing Ra requirements.
+
+| Feature | Revision G |
 |---|---|
-| Gallery opening | 384 × 16 mm, R8 ends, 24 mm deep |
-| Groove centreline | 395 × 27 mm overall, R13.5 ends |
-| Groove width × depth | **4.50 ±0.05 × 2.80 ±0.05 mm** |
-| Groove centreline length/height tolerance | ±0.10 mm |
-| Centreline path per ring | 820.82 mm |
-| Free ring centreline circumference | 807.77 mm |
-| Nominal centreline elongation | 1.62% |
-| Estimated installed section after elongation | 3.502 mm |
-| Estimated protrusion above POM before closure | **0.702 mm** |
-| Estimated squeeze with cover seated | **20.04%** |
-| Estimated gland fill | **76.44%** |
-| Solid POM land between gallery and groove | 3.25 mm |
-| Inside radius of groove ends | 11.25 mm |
+| Gallery opening | 388 × 16 mm, R8 ends, 24 mm deep |
+| Groove centreline | 396 × 24 mm overall, R12 ends; overall dimensions ±0.10 |
+| Groove width × depth | **4.0 × 2.3 mm**, tolerances above |
+| Centreline path per ring | 819.40 mm |
+| Free ring centreline circumference | 810.53 mm |
+| Nominal elongation | 1.09% |
+| Estimated installed section | 2.984 mm |
+| Estimated protrusion before cover closure | **0.684 mm** |
+| Estimated squeeze after cover closure | **22.92%** |
+| Approximate rectangular-gland fill | **76.00%** |
+| Gallery-to-groove POM land | 2.00 mm |
+| Inside radius of groove ends | 10.00 mm |
 
-Ring circumference is `π × (ID + section)`. A complete circular ring is laid into the capsule-shaped groove without cutting or gluing. Uniform elongation is estimated by `λ = groove path / free circumference`; conservation of elastomer volume gives `installed section ≈ free section / sqrt(λ)`.
+The 255 mm ring was compared with the user's 260 × 3 mm example. At the selected groove path, a 260 mm ring would be nominally too long; the 255 mm ring provides modest positive elongation. The path is adjusted with the ring selection rather than forcing a ring into the previous 3.53 mm-ring geometry. All eighteen G1/4 port-major circles remain inside their intended gallery openings, and the 16 × 24 mm flow section is retained. Supply and return remain uninterrupted and separate.
 
-For installed section `d`, groove depth `h` and width `b`, initial squeeze is `1 − h/d`, and rectangular-gland fill is approximately `πd²/(4bh)`. Rubber is nearly incompressible, so axial compression needs lateral room. Groove void also accommodates dimensional variation and coolant/thermal expansion. Parker gives 60–85% fill for most applications; this is general guidance, not a pressure qualification. [Parker O-Ring Handbook](https://www.parker.com/content/dam/Parker-com/Literature/O-Ring-Division-Literature/ORD-5700.pdf).
+## Compression and closing force
 
-The selected 4.5 mm width is a simple machining dimension. At 2.8 mm depth, a 4 mm width would give about 86% fill after nominal stretch and leave insufficient tolerance margin. A 5 mm width would leave less material beside the outer screw rows in this 2U envelope. No unusual custom-width cutter is needed: a smaller end mill can interpolate and finish the 4.5 mm groove.
+The screws supply the force to compress the ring until the cover reaches the POM lands. Once the faces seat, groove depth sets the intended compression. Additional torque should not be used to bend the cover or deform the POM to obtain more squeeze; nor can it compensate for a groove deeper than the ring section. The cover needs enough retained clamping force to resist fluid pressure and service loads, but that requirement is separate from selecting the initial squeeze percentage.
 
-The 2.8 mm depth deliberately remains below the ring section. A 3.5 or 4 mm-deep groove would remove almost all, or all, intended squeeze. The ring is compressed when the cover lands seat; the cover must not be held away from the POM by a spacer or screw bottoming.
+Free ring circumference is `π × (ID + section)`. For stretch ratio `λ = groove path / free circumference`, a uniform volume-conserving approximation gives `installed section ≈ free section / sqrt(λ)`. Initial squeeze is `1 − groove depth / installed section`. Rectangular-gland fill is approximately `π × installed section² / (4 × width × depth)`.
 
-## Fit and dimensional tolerance checks
+Using Polymax's published ISO 3601-1 tolerances of **±1.85 mm ID** and **±0.09 mm section**, together with the specified groove ranges, gives:
 
-The galleries shorten from 400 to 384 mm, reducing elongation of the stock ring. All eighteen G1/4 port-major-diameter circles remain fully within their intended gallery openings; the 16 × 24 mm flow section and parallel-only topology are retained. The outer cover screw rows move from z5.5/81.5 to **z4.5/82.5**. The middle row remains z43.5; four end screws remain at x±213 on the gallery rows. There are still 31 M4 cover screws.
-
-A conservative Ø4.2 cover-thread envelope leaves **1.15 mm minimum nominal dry land** to the groove. The outer Ø8.4 countersinks lie **0.30 mm inside the cover/body edge**. These are relatively narrow margins, explicitly identified for vendor review in the manufacturing notes. The assembly has no modelled hole/groove collisions; that does not establish thread strength or resistance to cracking/creep.
-
-Using ring ID ±1.40 mm and section ±0.10 mm as review allowances, plus the groove tolerances above, the centreline model gives:
-
-| Check | Calculated dimensional range |
+| Dimensional check | Calculated range |
 |---|---:|
-| Squeeze | **15.98–23.87%** |
-| Fill | **69.69–83.74%** |
-| Elongation | **0.99–2.25%** |
+| Squeeze | **20.22–27.07%** |
+| Fill, including maximum specified root radii | **69.34–83.23%** |
+| Elongation | **0.30–1.90%** |
 
-The ring allowances come from the [Techno Ad AS568 table, size274](https://www.technoad.com/engineering/dimensions/as-568-parker/); confirm that the supplied EPDM batch meets them. The calculation assumes the cover contacts the POM face and uses a uniform volume-conserving stretch approximation. It excludes coolant swell, thermal effects, cover lift, creep and local nonuniform deformation. Internal pressure pushes the ring towards the groove's outer wall; the final seal review must account for that position. Remaining dimensional squeeze is necessary for sealing, but does not by itself establish pressure capability.
+Sources: the catalogue's Tolerance tab and [Polymax large-ID tolerance table](https://www.polymax.co.uk/o-ring-tolerance-54-600id). These are dimensional checks with the cover seated, excluding coolant swell, thermal effects, cover lift/creep and nonuniform rubber deformation. Internal pressure pushes the ring towards the groove's outer wall, which the final seal review must account for. Partial compression is necessary for sealing but does not alone establish a pressure rating.
 
-STEP includes two volume-equivalent rectangular compressed seal envelopes, approximately 3.440 mm wide × 2.80 mm deep. They are review representations, not predictions of the actual deformed rubber profile. The drawing shows the circular section **before closure**.
+Cover outer screw rows return to z5.5/81.5; the middle row remains z43.5. Four end screws remain at x±213 on the gallery rows. There are still 31 M4 cover screws. Nominal dry land to a conservative Ø4.2 thread envelope is **1.90 mm**, and the outer countersinks have **1.30 mm edge margin**. These margins improve on the preceding 3.53 mm-ring layout.
 
-## RS UK purchase reference
+STEP contains two volume-equivalent rectangular compressed seal envelopes, approximately 3.040 mm wide × 2.30 mm deep. They are review representations, not predictions of the deformed rubber profile. The drawing shows the circular section before closure.
 
-Checked 14 September 2026 through Computer Use, including the product page and delivery dialog. No order was placed.
+## Polymax procurement
 
-| Item | Product-page information |
-|---|---|
-| Product | [RS PRO 258-0460](https://uk.rs-online.com/web/p/gaskets-o-rings/2580460) |
-| Standard | AS568-274 / BS 1806-274 |
-| Material | EPDM; range labelled 70 ShA, specifications list 71 IRHD |
-| Free size | 253.59 mm ID × 3.53 mm section; 260.65 mm OD |
-| Pack | Two rings, sufficient for one manifold |
-| Indicative price | £4.92 per bag excluding VAT |
-| Availability displayed | 24 unit(s) ready to ship |
-| Default-quantity delivery check | 16 September 2026 |
+The [EPDM catalogue](https://www.polymax.co.uk/o-rings/rubber-epdm-oring/) was checked through Computer Use on 14 September 2026: search ID255, CS3, material EPDM. It lists **255 × 3 mm EPDM 70 ShA at £3.37 each**. The 260 × 3 mm alternatives were also observed: 70 ShA at £3.44 and peroxide-cured 80 ShA at £3.76. The 70 ShA material is selected; do not substitute the harder compound solely because it shares the dimensions.
 
-RS uses “Bag(s)” for ordering and “unit(s)” in stock wording; do not interpret that as 24 bags. Availability is a point-in-time observation. The product is a complete O-ring; confirm one-piece moulded construction if mandatory, because the page did not explicitly establish its manufacturing/joining method. No user-cut or glued rings are specified.
+The user reports that adding rings to the cart gives **dispatch in 5–7 days**, with a **£10 minimum rubber order value** and no apparent per-size minimum quantity. These are user-observed checkout terms, not an independently checked stock quantity or evidence of manufacture to order. At the displayed unit price, **three selected rings total £10.11**, providing the two required seals and one spare. Confirm the applicable VAT/shipping/minimum-order basis and selected size's dispatch estimate at checkout. No order has been placed.
 
-Revision E's 2 mm section and 2.8 × 1.60 mm grooves are superseded. The earlier 260/262/265 × 2 mm dimensional candidates were not confirmed stocked products and are not the current selection.
+The product is listed as a complete ring. Confirm one-piece moulded construction if mandatory; the observed listing did not establish its manufacturing/joining method. No user-cut or glued seals are specified.
+
+Revision F's RS 3.53 mm rings and revision E's 2 mm concept are superseded, with their completed models retained in Git history.
 
 ## Reproduction
 
-Run `scripts/build_cad.py` for Option B and with `--mounting backplate` for Option C. Run `scripts/draw_rear_seals.py` for the dimensioned review and `output/analysis/rear-seal-sizing.json`, then rasterise `output/rear-seal-review.svg` with `rsvg-convert`. Rebuild the Blender scenes from the resulting CAD tessellations using `scripts/render_blender.py` with the corresponding mounting option.
+Run `scripts/build_cad.py` for Option B and with `--mounting backplate` for Option C. `scripts/draw_rear_seals.py` generates the review SVG and `output/analysis/rear-seal-sizing.json`; rasterise the SVG with `rsvg-convert`. Rebuild Blender scenes from the resulting CAD tessellations with `scripts/render_blender.py`, using the corresponding mounting option. The numerical checks and supplier listings are documented design inputs, not manufacturing release approval.

@@ -1,4 +1,4 @@
-# RM8-2U coolant manifold — initial design, revision F
+# RM8-2U coolant manifold — initial design, revision G
 
 Eight parallel circuits in two rack units, with vertically paired supply and return connections on one service face. The black Delrin body, repeated G1/4 ports and satin stainless steel hardware follow the requested industrial character of EK's Pro manifold. The design prioritises access to the female QD3 release rings.
 
@@ -10,7 +10,7 @@ This initial design uses a finished 87 mm high panel, leaving 1.9 mm total clear
 
 ## Layout
 
-| Feature | Revision F |
+| Feature | Revision G |
 |---|---|
 | Delrin base | 440 wide × 40 deep × 87 high |
 | Integral port bosses | Ø28 × 6 high; female G1/4; 3 proud of steel |
@@ -48,9 +48,9 @@ Reserve 100 mm unobstructed service space forward of the raised port face (106 m
 
 ## Construction and manufacture
 
-Two continuous capsule pockets are milled from the rear of one Delrin block. Each is 384 × 16 in the XZ plane and 24 deep, leaving a 16 mm front wall. Their centres are z=23.5 and 63.5; ends are R8. All front ports drill into the appropriate pocket. There are no buried junctions or deep longitudinal drilled galleries.
+Two continuous capsule pockets are milled from the rear of one Delrin block. Each is 388 × 16 in the XZ plane and 24 deep, leaving a 16 mm front wall. Their centres are z=23.5 and 63.5; ends are R8. All front ports drill into the appropriate pocket. There are no buried junctions or deep longitudinal drilled galleries.
 
-Each gallery has its own continuous EPDM seal beneath a 3 mm stainless steel rear cover. The rigid cover avoids a large thin plastic pressure lid. Its underside is a machined sealing face, not unfinished sheet. A single 3 mm flat stainless steel faceplate carries the body on the rack. Its eighteen Ø32 mm windows surround eighteen integral Ø28 mm POM bosses. Each boss is 6 mm high and its sealing face stands 3 mm in front of the steel. Eight dedicated front-facing M4 DIN 7991 screws fasten the body to it; the QDs are not mounting fasteners. The previous bent ears and side mounting holes are removed. The base envelope and port arrangement are retained. Revision F shortens the galleries from 400 to 384 and resizes the rear grooves to 4.5 wide × 2.8 deep for two RS 258-0460 rings. Groove centreline is 395 × 27; outer cover screw rows move from z5.5/81.5 to z4.5/82.5. The bosses add 6 mm of forward projection.
+Each gallery has its own continuous EPDM seal beneath a 3 mm stainless steel rear cover. The rigid cover avoids a large thin plastic pressure lid. Its underside is a machined sealing face, not unfinished sheet. A single 3 mm flat stainless steel faceplate carries the body on the rack. Its eighteen Ø32 mm windows surround eighteen integral Ø28 mm POM bosses. Each boss is 6 mm high and its sealing face stands 3 mm in front of the steel. Eight dedicated front-facing M4 DIN 7991 screws fasten the body to it; the QDs are not mounting fasteners. The previous bent ears and side mounting holes are removed. The base envelope and port arrangement are retained. Revision G uses388 mm galleries and4.0 wide ×2.3 deep rear grooves for two Polymax255×3 EPDM rings. Groove centreline is396×24; outer cover screw rows are z5.5/81.5. The bosses add 6 mm of forward projection.
 
 The operations are conventional 3-axis milling with rear/front setups, standard threaded holes, profile punching or cutting and countersinking. No metal bending is required. This is a design for vendor DFM and budget quotation, not a promise of instant-quote acceptance. Confirm branded Delrin homopolymer, stock size/porosity, sealing flatness and BSPP tooling. Generic POM offered by a vendor is not automatically Delrin.
 
@@ -66,12 +66,12 @@ A Ø36 mm illustrative fitting-body envelope, larger than the Ø32 plate window,
 
 Manufacture the body from thicker stock: mill the front background down 6 mm while leaving eighteen cylindrical islands. Finish the cylindrical walls, root fillets and flat annular ends, then drill/tap the G1/4 bores from the raised faces. This adds material removal and finishing but remains conventional front/rear 3-axis milling without undercuts. The eight mounting holes stay in the recessed background and carry the body independently of the fittings.
 
-The optional bottom/backing-plate arrangement is preserved separately as Option C. Its POM front remains flat and it has no bosses. The original recessed-port faceplate version remains in Git history; current Option B is revision F with raised ports.
+The optional bottom/backing-plate arrangement is preserved separately as Option C. Its POM front remains flat and it has no bosses. The original recessed-port faceplate version remains in Git history; current Option B is revision G with raised ports.
 
 ## Status and open engineering work
 
 This is an initial dimensional model, not a pressure-rated production release. Working pressure, coolant, temperature, pump shut-off head and desired flow have not yet been specified. No structural FEA, seal validation, creep test or hydraulic test has been performed. QD component pressure ratings do not rate the manifold assembly.
 
-The G1/4/QD3 main pair carries the sum of all branch flows and may dominate pressure loss. Establish the required total flow before treating eight circuits as a cooling-capacity promise. There is no dedicated drain or bleed connection in revision F; draining/bleeding is via the external loop and appropriate orientation. Closed unused QDs cannot vent air.
+The G1/4/QD3 main pair carries the sum of all branch flows and may dominate pressure loss. Establish the required total flow before treating eight circuits as a cooling-capacity promise. There is no dedicated drain or bleed connection in revision G; draining/bleeding is via the external loop and appropriate orientation. Closed unused QDs cannot vent air.
 
 Before manufacture release: choose actual QDs and coolant; trial release-ring access; confirm continuous seals and gland dimensions; review plastic threads, cover flatness, preload/torque and creep; check rack and hose loads; then agree separate-gallery leak/cross-leak, thermal-cycle and pressure qualification for the intended working pressure.

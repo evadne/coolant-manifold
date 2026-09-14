@@ -30,13 +30,13 @@ Hydrostatic pressure changes by approximately 0.098 bar per metre downward. For 
 
 One or two ordinary D5s therefore support a sub-bar pump-differential scenario. Four in series move the nominal pump-only shut-off estimate to about 1.5 bar. The earlier 1 bar example was a scaling illustration: it is above a single standard D5's nominal head but below the four-pump scenario.
 
-At the revision F nominal seal-centreline projected area of 10,508.56 mm² per gallery, approximate separating force per gallery is:
+At the revision G nominal seal-centreline projected area of 9,380.39 mm² per gallery, approximate separating force per gallery is:
 
 | Local gallery gauge pressure | Force on rear cover from that gallery |
 |---|---:|
-| 0.4 bar | 420 N |
-| 0.8 bar | 841 N |
-| 1.6 bar | 1,681 N |
+| 0.4 bar | 375 N |
+| 0.8 bar | 750 N |
+| 1.6 bar | 1,501 N |
 
 These values use the seal-centreline area from the gallery assessment. Do not assume both galleries simultaneously have the full pump discharge pressure: calculate each local pressure separately. They are total area loads, not screw-load distributions or proof that a particular cover thickness fails or succeeds. The long cover can be designed for these pressures; the end-cap alternative's reduced closure area remains an engineering advantage rather than a necessity established solely by pump count.
 

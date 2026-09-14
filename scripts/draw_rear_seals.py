@@ -8,18 +8,18 @@ w=p['channel_width'];L=p['channel_length'];off=p['seal_offset'];gw=p['seal_groov
 cl=L+2*off;cw=w+2*off;perimeter=2*(cl-cw)+math.pi*cw
 zero_id=perimeter/math.pi-cs
 ring=p['seal_ring'];ring_id=ring['ID'];free=math.pi*(ring_id+cs);ratio=perimeter/free;installed_cs=cs/math.sqrt(ratio)
-# Review AS568 allowances, pending confirmation for the purchased EPDM batch.
-# Centreline length/height +/-0.10 mm, groove width/depth +/-0.05 mm.
+# Supplier ISO 3601-1 allowances; centreline length/height +/-0.10 mm.
+# Width +0.10/0 and depth +0/-0.05 stay within Polymax face-gland ranges.
 path_tol=.10*(2+math.pi-2)
 cases=[]
 for dd in (-ring['cross_section_tolerance_review'],ring['cross_section_tolerance_review']):
  for di in (-ring['ID_tolerance_review'],ring['ID_tolerance_review']):
   for dl in (-path_tol,path_tol):
    d=cs+dd; elongation=(perimeter+dl)/(math.pi*(ring_id+di+d));effective=d/math.sqrt(elongation)
-   for dh in (-.05,.05):
-    for db in (-.05,.05):
-     cases.append({'squeeze_percent':100*(1-(gd+dh)/effective),'fill_percent':100*math.pi*effective**2/(4*(gw+db)*(gd+dh)),'stretch_percent':100*(elongation-1)})
-r={'revision':p['revision'],'groove_centreline_length_mm':perimeter,'groove_centreline_overall_length_mm':cl,'groove_centreline_overall_height_mm':cw,'groove_width_mm':gw,'groove_depth_mm':gd,'free_ring_ID_mm':ring_id,'ring_cross_section_mm':cs,'ring_free_centreline_length_mm':free,'centreline_stretch_percent':100*(ratio-1),'estimated_installed_cross_section_mm':installed_cs,'nominal_squeeze_before_stretch_percent':100*(1-gd/cs),'estimated_squeeze_after_stretch_percent':100*(1-gd/installed_cs),'estimated_protrusion_after_stretch_mm':installed_cs-gd,'estimated_gland_fill_after_stretch_percent':100*math.pi*installed_cs**2/(4*gw*gd),'tolerance_review':{'status':ring['tolerance_status'],'ID_plus_minus_mm':ring['ID_tolerance_review'],'cross_section_plus_minus_mm':ring['cross_section_tolerance_review'],'centreline_overall_length_and_height_plus_minus_mm':.10,'groove_width_and_depth_plus_minus_mm':.05,'squeeze_percent_range':[min(c['squeeze_percent'] for c in cases),max(c['squeeze_percent'] for c in cases)],'fill_percent_range':[min(c['fill_percent'] for c in cases),max(c['fill_percent'] for c in cases)],'stretch_percent_range':[min(c['stretch_percent'] for c in cases),max(c['stretch_percent'] for c in cases)],'excludes':'Coolant swell, thermal expansion, cover separation/creep and nonuniform deformation; neutral path taken on groove centreline'},'selected_ring':{'stock_number':ring['stock_number'],'url':'https://uk.rs-online.com/web/p/gaskets-o-rings/2580460','material':ring['material'],'standard':ring['standard'],'pack_quantity':2,'stock_checked_date':'2026-09-14','availability_verbatim':'24 unit(s) ready to ship','price_per_bag_GBP_ex_VAT':4.92}}
+   for dh in p['seal_groove_depth_deviations']:
+    for db in p['seal_groove_width_deviations']:
+     cases.append({'squeeze_percent':100*(1-(gd+dh)/effective),'fill_percent':100*math.pi*effective**2/(4*((gw+db)*(gd+dh)-(2-math.pi/2)*p['seal_root_radius_max']**2)),'stretch_percent':100*(elongation-1)})
+r={'revision':p['revision'],'groove_centreline_length_mm':perimeter,'groove_centreline_overall_length_mm':cl,'groove_centreline_overall_height_mm':cw,'groove_width_mm':gw,'groove_depth_mm':gd,'free_ring_ID_mm':ring_id,'ring_cross_section_mm':cs,'ring_free_centreline_length_mm':free,'centreline_stretch_percent':100*(ratio-1),'estimated_installed_cross_section_mm':installed_cs,'nominal_squeeze_before_stretch_percent':100*(1-gd/cs),'estimated_squeeze_after_stretch_percent':100*(1-gd/installed_cs),'estimated_protrusion_after_stretch_mm':installed_cs-gd,'estimated_gland_fill_after_stretch_percent':100*math.pi*installed_cs**2/(4*gw*gd),'tolerance_review':{'status':ring['tolerance_status'],'ID_plus_minus_mm':ring['ID_tolerance_review'],'cross_section_plus_minus_mm':ring['cross_section_tolerance_review'],'centreline_overall_length_and_height_plus_minus_mm':.10,'groove_width_deviations_mm':p['seal_groove_width_deviations'],'groove_depth_deviations_mm':p['seal_groove_depth_deviations'],'groove_root_radius_max_mm':p['seal_root_radius_max'],'squeeze_percent_range':[min(c['squeeze_percent'] for c in cases),max(c['squeeze_percent'] for c in cases)],'fill_percent_range':[min(c['fill_percent'] for c in cases),max(c['fill_percent'] for c in cases)],'stretch_percent_range':[min(c['stretch_percent'] for c in cases),max(c['stretch_percent'] for c in cases)],'excludes':'Coolant swell, thermal expansion, cover separation/creep and nonuniform deformation; neutral path taken on groove centreline'},'selected_ring':{'stock_number':ring['stock_number'],'url':ring['url'],'material':ring['material'],'standard':ring['standard'],'quantity_required':2,'catalogue_checked_date':'2026-09-14','availability':ring['availability'],'price_each_GBP_displayed':ring['price_each_GBP_displayed']}}
 assert min(c['squeeze_percent'] for c in cases)>15
 assert max(c['fill_percent'] for c in cases)<85
 assert max(c['stretch_percent'] for c in cases)<3
@@ -65,7 +65,7 @@ text(860,573,'Use a complete circular ring',25)
 text(860,619,'The ring bends into the capsule-shaped groove.',20)
 text(860,652,'No cut, splice or adhesive joint is required.',20)
 text(860,701,f'Selected: {ring_id:g} mm ID × {cs:g} mm section',20)
-text(860,747,'RS 258-0460 · EPDM · AS568-274 / BS 1806-274',19)
+text(860,747,'Polymax · Metric 255 × 3 mm · EPDM 70 ShA',19)
 text(860,787,f'Nominal ring elongation: {100*(ratio-1):.2f}%',20)
 text(860,824,f'Estimated squeeze after stretch: {100*(1-gd/installed_cs):.1f}%',20)
 text(860,861,f'Estimated gland fill after stretch: {r["estimated_gland_fill_after_stretch_percent"]:.1f}%',20)
