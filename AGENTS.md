@@ -5,3 +5,5 @@ Use millimetres and British English. The current deliverable is an initial mecha
 Generate solids with `scripts/build_cad.py`; use Blender for review scenes and renders. Keep drawings, source parameters, manufacturing notes and generated STEP consistent. Threads are call-outs with pilot-cylinder representations in STEP; do not mistake them for finished plain bores. Run the built-in geometric checks after geometry changes and visually inspect fresh renders. Do not imply validated pressure, temperature, flow, torque or ergonomic performance without evidence.
 
 Commit completed work on the current feature branch. Do not submit supplier orders or publish without the user's request.
+
+Option C is a separate alternative generated with `--mounting backplate`, retained alongside Option B under `output/backplate/`. It combines the rack mount and gallery cover in one flat rear plate, with POM proud of the rails. Do not silently replace either option. Shared thread, seal and port spacing requirements apply to both.

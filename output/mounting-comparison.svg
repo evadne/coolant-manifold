@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="760" viewBox="0 0 1300 760">
+<defs><marker id="a" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto-start-reverse"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#576d7d"/></marker></defs>
+<rect width="1300" height="760" fill="#f4f6f8"/>
+<g font-family="Arial,sans-serif" fill="#192e3f">
+<text x="55" y="58" font-size="30" font-weight="bold">Two flat-plate mounting options</text>
+<text x="55" y="95" font-size="18">Side-view diagrams / same rack-rail datum / front and door space to the left</text>
+<path d="M760 120 V660" stroke="#c76a3e" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="780" y="143" fill="#b9532e" font-size="17">Rack rail mating surface</text>
+<text x="55" y="190" font-size="23" font-weight="bold">B / front faceplate</text>
+<text x="55" y="219" font-size="17">2 steel plates</text>
+<rect x="760" y="232" width="200" height="116" fill="#263540"/>
+<path d="M745 232 H760 V270 H745 Z M745 311 H760 V348 H745 Z" fill="#aebec9" stroke="#647987"/>
+<rect x="960" y="232" width="15" height="116" fill="#aebec9" stroke="#647987"/>
+<path d="M599.5 277 H718 V268 H750 V279 H775 V304 H750 V315 H718 V304 H599.5 Z" fill="#aebec9" stroke="#647987"/>
+<text x="830" y="296" fill="white" font-size="17">POM</text>
+<text x="982" y="285" font-size="16">Rear cover</text>
+<text x="590" y="369" font-size="16">Tip: 32.1 mm ahead of rails</text>
+<text x="775" y="395" font-size="16">POM face flush with rail plane</text>
+<text x="55" y="446" font-size="23" font-weight="bold">C / single backing plate</text>
+<text x="55" y="475" font-size="17">1 steel plate</text>
+<rect x="545" y="478" width="200" height="116" fill="#263540"/>
+<rect x="745" y="478" width="15" height="116" fill="#aebec9" stroke="#647987"/>
+<path d="M384.5 523 H503 V514 H535 V525 H560 V550 H535 V561 H503 V550 H384.5 Z" fill="#aebec9" stroke="#647987"/>
+<text x="614" y="542" fill="white" font-size="17">POM</text>
+<text x="800" y="516" font-size="17">One plate mounts the body</text>
+<text x="800" y="542" font-size="17">and closes both galleries</text>
+<path d="M545 620 H760" stroke="#576d7d" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="652" y="646" font-size="17" text-anchor="middle">43 mm proud of rails</text>
+<text x="350" y="590" font-size="16" text-anchor="end">Tip: 75.1 mm</text>
+<text x="350" y="612" font-size="16" text-anchor="end">ahead of rails</text>
+<text x="55" y="704" font-size="18">Both: 8 circuits, 2U, identical port spacing, fittings seal directly on POM, no bending.</text>
+<text x="55" y="736" font-size="16" fill="#526777">Reference male fitting only. Add female couplings, release travel and hose bends; verify plate and seal behaviour under load.</text>
+</g></svg>

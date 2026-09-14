@@ -16,6 +16,19 @@ Initial design, revision B: eight parallel circuits, all connections on one face
 
 The dimensions of EK's reference manifold are 326 × 57 × 36 mm; its published 57 mm height is 12.55 mm above 1U. Our model uses 2U to prioritise servicing access. See [design reasoning](docs/design.md) and [manufacturer sources](docs/sources.md).
 
+## Alternative: one backing plate
+
+[Option C](docs/backplate.md) removes the front plate and extends the rear gallery cover to rack width, combining the rack mount and gallery closure in one flat steel part. The POM projects 43 mm forward of the rail surface; reference male QD tips project about 75.1 mm. All ports remain exposed. This interprets the user's bottom plate as a backing plate parallel to the rack face.
+
+- [Compare both arrangements](output/mounting-comparison.svg).
+- [Option C Blender model](output/backplate/manifold-review.blend).
+- [Option C STEP assembly](output/backplate/cad/manifold-assembly.step).
+- [Option C flat cut profile](output/backplate/cad/backplate-flat.dxf).
+- [Option C assembled render](output/backplate/images/assembled.png).
+- [Option C exploded rear mounting plate](output/backplate/images/backplate-exploded.png).
+
+The Option B faceplate files remain below and are not replaced by this alternative.
+
 ## Review files
 
 - [Editable Blender scene](output/manifold-review.blend) — CAD-derived body/cover/ears plus simplified QD3 and tube references.
@@ -47,3 +60,13 @@ python3 -m venv .venv
 ```
 
 Parameters are in `cad/parameters.json`. The source defines the current faceplate/bolt pattern explicitly; changing circuit count or major dimensions also requires reviewing those patterns and the manufacturing documentation. It is not an automatically qualified product configurator.
+
+To regenerate the alternative, use the same source with the mounting option:
+
+```sh
+.venv/bin/python scripts/build_cad.py --mounting backplate
+.venv/bin/python scripts/export_faceplate_dxf.py --mounting backplate
+/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py -- --mounting backplate
+```
+
+The default commands generate Option B; the flag writes Option C under `output/backplate/`.

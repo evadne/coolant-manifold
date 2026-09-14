@@ -1,8 +1,8 @@
 {
-  "revision": "B",
+  "revision": "C",
   "model": "RM8-2U",
-  "mounting": "faceplate",
-  "valid_manufactured_solids": 3,
+  "mounting": "backplate",
+  "valid_manufactured_solids": 2,
   "wet_networks": 2,
   "branch_circuits": 8,
   "ports": 18,
@@ -10,11 +10,11 @@
   "body_mount_screws_M5": 8,
   "assembly_envelope_mm": [
     482.6,
-    46.0,
+    43.0,
     87.0
   ],
-  "body_volume_mm3": 1181996.8038930078,
-  "estimated_dry_mass_without_fittings_or_screws_kg": 3.303818400397227,
+  "body_volume_mm3": 1181996.8038930045,
+  "estimated_dry_mass_without_fittings_or_screws_kg": 2.651103333561978,
   "reference_pull_ring_gaps_xy_mm": [
     21.3,
     16.3
@@ -30,10 +30,10 @@
     5.399999999999997,
     81.6
   ],
-  "faceplate_openings_mm": 28.0,
-  "nominal_radial_clearance_to_male_hex_mm": 1.298,
-  "pom_projection_ahead_of_rack_rail_mm": 0,
-  "reference_male_tip_ahead_of_rack_rail_mm": 32.1,
+  "faceplate_openings_mm": null,
+  "nominal_radial_clearance_to_male_hex_mm": null,
+  "pom_projection_ahead_of_rack_rail_mm": 43.0,
+  "reference_male_tip_ahead_of_rack_rail_mm": 75.1,
   "checks": [
     "valid solids",
     "single solid per manufactured part",
@@ -41,7 +41,7 @@
     "all 18 bores connected to intended gallery",
     "no manufactured part overlap",
     "cover and body-mount screws outside galleries and seal grooves",
-    "male fitting envelope and POM sealing lands clear faceplate",
+    "unobstructed POM sealing faces",
     "no intersecting cover/mount screw bores",
     "2U envelope",
     "12 mm minimum conservative fitting gap"

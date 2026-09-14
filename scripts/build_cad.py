@@ -1,11 +1,16 @@
 """Reproducible RM8-2U review CAD in mm. Thread call-outs in manufacturing.md."""
-import json, math
+import json, math, argparse
 from pathlib import Path
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser();parser.add_argument('--mounting',choices=('faceplate','backplate'),default='faceplate')
+args=parser.parse_args();BACK=args.mounting=='backplate'
 P=json.loads((ROOT/'cad/parameters.json').read_text())
-OUT=ROOT/'output/cad'; OUT.mkdir(parents=True,exist_ok=True)
-MESH=ROOT/'tmp/mesh'; MESH.mkdir(parents=True,exist_ok=True)
+if BACK:P['revision']='C'
+P['mounting']=args.mounting
+BASE=ROOT/'output'/('backplate' if BACK else '')
+OUT=BASE/'cad'; OUT.mkdir(parents=True,exist_ok=True)
+MESH=ROOT/'tmp'/('mesh-backplate' if BACK else 'mesh'); MESH.mkdir(parents=True,exist_ok=True)
 W,D,H=P['body_width'],P['body_depth'],P['body_height']
 xs=[(i-P['branch_count']/2)*P['port_pitch'] for i in range(P['branch_count']+1)]
 rows=P['port_rows_z']
@@ -39,30 +44,37 @@ for z in rows:
     sealouter=capsule(P['channel_length']+2*off+2,P['channel_width']+2*off+2,gd,z)
     sealinner=capsule(P['channel_length']+2*off-2,P['channel_width']+2*off-2,gd+.2,z,D+.1)
     seals.append(sealouter.cut(sealinner));voids.append(fluid)
-lid=box(W,P['lid_thickness'],H,y=D)
+lid=box(P['rack_width'] if BACK else W,P['lid_thickness'],H,y=D)
 bolts=[(x,z) for z in (5.5,H/2,H-5.5) for x in xs]+[(x,z) for x in (-213,213) for z in rows]
 for x,z in bolts:
     body=body.cut(cylinder(1.65,14,(x,D,z),(0,-1,0)))
     lid=lid.cut(cylinder(2.25,3.1,(x,D,z),(0,1,0)))
     lid=lid.cut(cq.Solid.makeCone(4.2,2.25,1.95,cq.Vector(x,D+3,z),cq.Vector(0,-1,0)))
-# Flat mounting faceplate, with the POM sealing face exposed through each window.
+# Both options use flat steel: a front mounting faceplate or a rear combined cover/mount.
 T=P['faceplate_thickness']
-faceplate=box(P['rack_width'],T,H,y=-T)
-for z in rows:
-    for x in xs:
-        faceplate=faceplate.cut(cylinder(P['faceplate_port_clearance']/2,T+.2,(x,-T-.1,z),(0,1,0)))
+if BACK:
+    mounting_plate=lid
+else:
+    mounting_plate=box(P['rack_width'],T,H,y=-T)
+    for z in rows:
+        for x in xs:
+            mounting_plate=mounting_plate.cut(cylinder(P['faceplate_port_clearance']/2,T+.2,(x,-T-.1,z),(0,1,0)))
 rack_z=[6.35-(88.9-H)/2,82.55-(88.9-H)/2]
 for sign in (-1,1):
     for z in rack_z:
-        faceplate=faceplate.cut(cq.Workplane('XZ',origin=(sign*P['rack_hole_pitch']/2,.1,z)).slot2D(P['rack_slot_length'],P['rack_slot_width']).extrude(T+.2))
+        origin_y=D+T+.1 if BACK else .1
+        mounting_plate=mounting_plate.cut(cq.Workplane('XZ',origin=(sign*P['rack_hole_pitch']/2,origin_y,z)).slot2D(P['rack_slot_length'],P['rack_slot_width']).extrude(T+.2))
 mounts=P['faceplate_mounts_xz']
 for x,z in mounts:
-    faceplate=faceplate.cut(cylinder(2.75,T+.2,(x,-T-.1,z),(0,1,0)))
-    faceplate=faceplate.cut(cq.Solid.makeCone(5.2,2.75,2.45,cq.Vector(x,-T,z),cq.Vector(0,1,0)))
-    body=body.cut(cylinder(2.1,14,(x,0,z),(0,1,0)))
-parts={'body':body,'lid':lid,'faceplate':faceplate}
+    outer_y=D+T if BACK else -T
+    body_y=D if BACK else 0
+    axis=(0,-1,0) if BACK else (0,1,0)
+    mounting_plate=mounting_plate.cut(cylinder(2.75,T+.1,(x,outer_y,z),axis))
+    mounting_plate=mounting_plate.cut(cq.Solid.makeCone(5.2,2.75,2.45,cq.Vector(x,outer_y,z),cq.Vector(*axis)))
+    body=body.cut(cylinder(2.1,14,(x,body_y,z),axis))
+parts={'body':body,'backplate':mounting_plate} if BACK else {'body':body,'lid':lid,'faceplate':mounting_plate}
 assembly=cq.Assembly(name='RM8_2U_revision_'+P['revision'])
-colours={'body':(.055,.065,.072),'lid':(.56,.59,.62),'faceplate':(.56,.59,.62)}
+colours={'body':(.055,.065,.072),'lid':(.56,.59,.62),'faceplate':(.56,.59,.62),'backplate':(.56,.59,.62)}
 for name,part in parts.items():
     assert part.val().isValid(),name
     assert len(part.solids().vals())==1,name
@@ -83,18 +95,19 @@ for x,z in bolts:
     fastener=cylinder(2.1,14,(x,D,z),(0,-1,0))
     assert all(volume(fastener.intersect(v))<1e-6 for v in voids+grooves)
 for x,z in mounts:
-    fastener=cylinder(2.5,14,(x,0,z),(0,1,0))
+    fastener=cylinder(2.5,14,(x,D if BACK else 0,z),(0,-1 if BACK else 1,0))
     assert all(volume(fastener.intersect(v))<1e-6 for v in voids+grooves)
     for px,pz in bolts:
         assert volume(fastener.intersect(cylinder(2.1,14,(px,D,pz),(0,-1,0))))<1e-6
-# The male fitting envelope passes the faceplate without losing thread engagement.
-for z in rows:
-    for x in xs:
-        reference=cylinder(P['qd_male_hex_envelope']/2,T,(x,-T,z),(0,1,0))
-        assert volume(reference.intersect(faceplate))<1e-6
-        seal_land=cylinder(12,.01,(x,-.01,z),(0,1,0))
-        assert volume(seal_land.intersect(faceplate))<1e-6
-        assert all(((mx-x)**2+(mz-z)**2)**.5 > 14+5.2 for mx,mz in mounts)
+# The front option must pass the fitting base; the rear option leaves the face bare.
+if not BACK:
+    for z in rows:
+        for x in xs:
+            reference=cylinder(P['qd_male_hex_envelope']/2,T,(x,-T,z),(0,1,0))
+            assert volume(reference.intersect(mounting_plate))<1e-6
+            seal_land=cylinder(12,.01,(x,-.01,z),(0,1,0))
+            assert volume(seal_land.intersect(mounting_plate))<1e-6
+            assert all(((mx-x)**2+(mz-z)**2)**.5 > 14+5.2 for mx,mz in mounts)
 assert H<88.9
 assert min(P['port_pitch'],rows[1]-rows[0])-P['qd_clearance_diameter']>=12
 # Explicit branch bore connectivity and threaded-bore web envelope.
@@ -102,19 +115,21 @@ for z,v in zip(rows,voids):
     for x in xs:
         probe=cylinder(1,P['front_wall']+2,(x,0,z),(0,1,0))
         assert volume(probe.cut(v))<1e-5
-report={'revision':P['revision'],'model':'RM8-2U','valid_manufactured_solids':3,'wet_networks':2,
- 'branch_circuits':P['branch_count'],'ports':2*len(xs),'lid_screws_M4':len(bolts),'faceplate_screws_M5':len(mounts),
- 'assembly_envelope_mm':[P['rack_width'],D+P['lid_thickness']+T,H],'body_volume_mm3':volume(body),
- 'estimated_dry_mass_without_fittings_or_screws_kg':volume(body)*1.42e-6+sum(volume(parts[n]) for n in ('lid','faceplate'))*8e-6,
+report={'revision':P['revision'],'model':'RM8-2U','mounting':args.mounting,'valid_manufactured_solids':len(parts),'wet_networks':2,
+ 'branch_circuits':P['branch_count'],'ports':2*len(xs),'lid_screws_M4':len(bolts),'body_mount_screws_M5':len(mounts),
+ 'assembly_envelope_mm':[P['rack_width'],D+P['lid_thickness']+(0 if BACK else T),H],'body_volume_mm3':volume(body),
+ 'estimated_dry_mass_without_fittings_or_screws_kg':volume(body)*1.42e-6+sum(volume(v) for k,v in parts.items() if k!='body')*8e-6,
  'reference_pull_ring_gaps_xy_mm':[45-23.7,40-23.7],
  'conservative_28mm_envelope_gaps_mm':[17,12],
  'seal_squeeze_nominal_percent':20,'seal_gland_fill_nominal_percent':math.pi/(2.8*1.6)*100,
  'seal_centreline_length_mm':2*(P['channel_length']-16)+math.pi*(16+7),
  'rack_slot_centres_z_mm':rack_z,
- 'faceplate_openings_mm':P['faceplate_port_clearance'],
- 'nominal_radial_clearance_to_male_hex_mm':(P['faceplate_port_clearance']-P['qd_male_hex_envelope'])/2,
- 'checks':['valid solids','single solid per manufactured part','two separate connected wet networks','all 18 bores connected to intended gallery','no manufactured part overlap','cover and faceplate screws outside galleries and seal grooves','male fitting envelope and POM sealing lands clear faceplate','mounting screws clear fitting envelopes','no intersecting front/rear screw bores','2U envelope','12 mm minimum conservative fitting gap'],
+ 'faceplate_openings_mm':None if BACK else P['faceplate_port_clearance'],
+ 'nominal_radial_clearance_to_male_hex_mm':None if BACK else (P['faceplate_port_clearance']-P['qd_male_hex_envelope'])/2,
+ 'pom_projection_ahead_of_rack_rail_mm':D+T if BACK else 0,
+ 'reference_male_tip_ahead_of_rack_rail_mm':D+T+32.1 if BACK else 32.1,
+ 'checks':['valid solids','single solid per manufactured part','two separate connected wet networks','all 18 bores connected to intended gallery','no manufactured part overlap','cover and body-mount screws outside galleries and seal grooves','unobstructed POM sealing faces' if BACK else 'male fitting envelope and POM sealing lands clear faceplate','no intersecting cover/mount screw bores','2U envelope','12 mm minimum conservative fitting gap'],
  'limitations':['No pressure or structural rating established','Threads represented by pilot bores, not helices','QD envelopes and release travel require physical trial']}
 (OUT/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
-(ROOT/'tmp/scene.json').write_text(json.dumps({'parameters':P,'ports_x':xs,'cover_bolts':bolts,'faceplate_mounts':mounts}))
+(ROOT/'tmp'/('scene-backplate.json' if BACK else 'scene.json')).write_text(json.dumps({'parameters':P,'ports_x':xs,'cover_bolts':bolts,'faceplate_mounts':mounts}))
 print(json.dumps(report,indent=2))

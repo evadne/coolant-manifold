@@ -1,9 +1,14 @@
 """Editable Blender review scene built from the CAD's exact tessellation."""
-import bpy,json,math
+import bpy,json,math,sys,argparse
 from pathlib import Path
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
-S=json.loads((ROOT/'tmp/scene.json').read_text());P=S['parameters']
+parser=argparse.ArgumentParser();parser.add_argument('--mounting',choices=('faceplate','backplate'),default='faceplate')
+args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+BACK=args.mounting=='backplate'
+BASE=ROOT/'output'/('backplate' if BACK else '');(BASE/'images').mkdir(parents=True,exist_ok=True)
+MESH=ROOT/'tmp'/('mesh-backplate' if BACK else 'mesh')
+S=json.loads((ROOT/'tmp'/('scene-backplate.json' if BACK else 'scene.json')).read_text());P=S['parameters']
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=.001
 
@@ -20,10 +25,10 @@ white=mat('Legend',(.78,.85,.88),.1,.5)
 floor=mat('Backdrop',(.065,.085,.115),0,.7)
 
 def stl(name,material):
-    bpy.ops.wm.stl_import(filepath=str(ROOT/'tmp/mesh'/f'{name}.stl'));o=bpy.context.object;o.name=name;o.data.materials.append(material)
+    bpy.ops.wm.stl_import(filepath=str(MESH/f'{name}.stl'));o=bpy.context.object;o.name=name;o.data.materials.append(material)
     mod=o.modifiers.new('Small visual edge break','BEVEL');mod.width=.18;mod.segments=2;mod.limit_method='ANGLE';mod.angle_limit=.5;mod.harden_normals=True
     o.modifiers.new('Weighted normals','WEIGHTED_NORMAL');return o
-parts={n:stl(n,black if n=='body' else steel) for n in ('body','lid','faceplate')}
+parts={n:stl(n,black if n=='body' else steel) for n in (('body','backplate') if BACK else ('body','lid','faceplate'))}
 
 def cyl(name,x,y,z,r,depth,material,vertices=64,axis='Y'):
     rot=(math.pi/2,0,0) if axis=='Y' else ((0,math.pi/2,0) if axis=='X' else (0,0,0))
@@ -44,7 +49,7 @@ for j,z in enumerate(P['port_rows_z']):
             qd.append(cyl('REFERENCE QD3 male '+name,x,-(start+end)/2,z,r,end-start,nickel,v))
         qd.append(cyl('Port colour band',x,-11,z,10.85,1.8,colour))
         txt=('IN' if j==0 else 'OUT') if i==0 else (f'S{i}' if j==0 else f'R{i}')
-        label(txt,x,-P['faceplate_thickness']-.12,z+15,3.4,black,True)
+        label(txt,x,-.12 if BACK else -P['faceplate_thickness']-.12,z+15,3.4,white if BACK else black,True)
         if i in (2,6):
             females.append(cyl('REFERENCE female pull ring',x,-32,z,11.85,20,nickel))
             females.append(cyl('REFERENCE female tail',x,-49,z,10,14,black))
@@ -54,14 +59,14 @@ for x,z in S['cover_bolts']:
     cyl('M4 countersunk head reference',x,42.75,z,3.7,.5,steel)
     cyl('M4 socket reference',x,43.02,z,1.3,.06,black,6)
 for x,z in S['faceplate_mounts']:
-    cyl('M5 faceplate head reference',x,-2.75,z,4.8,.5,steel)
-    cyl('M5 faceplate socket reference',x,-3.02,z,1.6,.06,black,6)
+    cyl('M5 mounting head reference',x,42.75 if BACK else -2.75,z,4.8,.5,steel)
+    cyl('M5 mounting socket reference',x,43.02 if BACK else -3.02,z,1.6,.06,black,6)
 label('RM8  /  PARALLEL',-110,17,87.12,5.8,white)
-label('2U   -   REV B',110,17,87.12,5.8,white)
-label('S',-224,-3.15,22,5,blue,True);label('R',-224,-3.15,62,5,red,True)
+label('2U   -   REV '+P['revision'],110,17,87.12,5.8,white)
+label('S',-211 if BACK else -224,-.15 if BACK else -3.15,22,5,blue,True);label('R',-211 if BACK else -224,-.15 if BACK else -3.15,62,5,red,True)
 # Blue/orange thin identification bars in the dry middle land; visual engraving only.
 for z,material in ((7,blue),(47,red)):
-    bpy.ops.mesh.primitive_cube_add(size=1,location=(0,-3.1,z));o=bpy.context.object;o.name='Colour identification strip';o.dimensions=(398,.12,.8);o.data.materials.append(material)
+    bpy.ops.mesh.primitive_cube_add(size=1,location=(0,-.1 if BACK else -3.1,z));o=bpy.context.object;o.name='Colour identification strip';o.dimensions=(398,.12,.8);o.data.materials.append(material)
 
 bpy.ops.mesh.primitive_plane_add(size=2500,location=(0,0,-3));ground=bpy.context.object;ground.name='Studio floor';ground.data.materials.append(floor)
 world=bpy.data.worlds.new('Studio world');scene.world=world;world.use_nodes=True;world.node_tree.nodes['Background'].inputs[0].default_value=(.23,.28,.35,1);world.node_tree.nodes['Background'].inputs[1].default_value=.5
@@ -78,24 +83,30 @@ scene.view_settings.view_transform='AgX';scene.render.image_settings.file_format
 for area in bpy.context.screen.areas:
     if area.type=='VIEW_3D':
         area.spaces.active.region_3d.view_distance=650;area.spaces.active.region_3d.view_location=(0,0,40);area.spaces.active.clip_end=10000
-bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'output'/'manifold-review.blend'))
-scene.render.filepath=str(ROOT/'output/images'/'assembled.png');bpy.ops.render.render(write_still=True)
+bpy.ops.wm.save_as_mainfile(filepath=str(BASE/'manifold-review.blend'))
+scene.render.filepath=str(BASE/'images'/'assembled.png');bpy.ops.render.render(write_still=True)
 # Rear cover removed. Actual pockets are shown, not a fictitious internal route.
-parts['lid'].hide_render=True
+parts['backplate' if BACK else 'lid'].hide_render=True
 for o in bpy.data.objects:
-    if o.name.startswith('M4'):o.hide_render=True
+    if o.name.startswith('M4') or (BACK and o.name.startswith('M5 mounting')):o.hide_render=True
 for o in females:o.hide_render=True
 cam.location=(220,440,330);cam.rotation_euler=(Vector((0,20,43))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=550
-scene.render.filepath=str(ROOT/'output/images'/'open-galleries.png');bpy.ops.render.render(write_still=True)
-# Exploded mounting detail: fittings removed, faceplate separated from the body.
-parts['lid'].hide_render=False
+scene.render.filepath=str(BASE/'images'/'open-galleries.png');bpy.ops.render.render(write_still=True)
+# Exploded view preserves the front option and makes the backplate attachment clear.
+parts['backplate' if BACK else 'lid'].hide_render=False
 for o in bpy.data.objects:
-    if o.name.startswith('M4'):o.hide_render=False
+    if o.name.startswith(('M4','M5 mounting')):o.hide_render=False
 for o in qd+females:o.hide_render=True
-parts['faceplate'].location.y-=65
-for o in bpy.data.objects:
-    if o.name.startswith('M5 faceplate') or o.name=='Colour identification strip' or o.name.startswith('Colour identification strip.') or (o.type=='FONT' and o.location.y<0):
-        o.location.y-=65
-cam.location=(290,-500,300);cam.rotation_euler=(Vector((0,-25,43))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=610
-scene.render.filepath=str(ROOT/'output/images'/'faceplate-exploded.png');bpy.ops.render.render(write_still=True)
+if BACK:
+    parts['backplate'].location.y+=65
+    for o in bpy.data.objects:
+        if o.name.startswith(('M4','M5 mounting')):o.location.y+=65
+    cam.location=(290,500,300);target=(0,40,43)
+else:
+    parts['faceplate'].location.y-=65
+    for o in bpy.data.objects:
+        if o.name.startswith(('M5 mounting','Colour identification strip')) or (o.type=='FONT' and o.location.y<0):o.location.y-=65
+    cam.location=(290,-500,300);target=(0,-25,43)
+cam.rotation_euler=(Vector(target)-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=610
+scene.render.filepath=str(BASE/'images'/('backplate-exploded.png' if BACK else 'faceplate-exploded.png'));bpy.ops.render.render(write_still=True)
 print('Saved editable Blender model and three review renders.')

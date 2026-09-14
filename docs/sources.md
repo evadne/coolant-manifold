@@ -15,3 +15,5 @@ Reviewed 14 September 2026. Manufacturer drawings are references, not our own de
 The reference drawings support component envelopes. They do not establish assembled QD overlap, release-ring stroke, comfortable hand clearance, manifold pressure rating or flow performance.
 
 - User sketch and follow-up in this task: use one flat stainless rack faceplate with oversized port windows, preserve direct fitting-to-POM seating, and allow an independent bottom plate attached to the body. This is the basis for revision B.
+
+- User alternative in this task: remove the front faceplate, use a single bottom/backing plate and allow POM to sit proud of the rack. Option C models a plate parallel to the rack face and records the resulting rail-relative projection explicitly.
