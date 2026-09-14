@@ -4,10 +4,10 @@ import json, math
 import cadquery as cq
 import ezdxf
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'output/manufacturing/O-M01'
+OUT = ROOT / 'output/manufacturing/O-M02'
 schedule = json.loads((OUT / 'feature-schedule.json').read_text())
-body = cq.importers.importStep(str(OUT / 'RM10-O-M01-BODY.step')).val()
-plate = cq.importers.importStep(str(OUT / 'RM10-O-M01-FACEPLATE.step')).val()
+body = cq.importers.importStep(str(OUT / 'RM10-O-M02-BODY.step')).val()
+plate = cq.importers.importStep(str(OUT / 'RM10-O-M02-FACEPLATE.step')).val()
 def near(a, b): return abs(a-b) < 1e-5
 def centres(faces): return {(round(f.Center().x, 4), round(f.Center().z, 4)) for f in faces}
 def expected(key): return {(v['x'], v['z']) for v in schedule[key]}
@@ -18,11 +18,11 @@ def conical(shape, diameter, ymin, ymax):
 for shape in (body, plate):
     assert shape.isValid() and len(shape.Solids()) == 1
 assert body.intersect(plate).Volume() < 1e-6
-for shape, dims in [(body, (410, 46, 87)), (plate, (482.6, 3, 87))]:
+for shape, dims in [(body, (410, 44, 87)), (plate, (482.6, 3, 87))]:
     b = shape.BoundingBox()
     assert all(near(a, v) for a, v in zip((b.xlen, b.ylen, b.zlen), dims))
-for faces, key in [(conical(body, 28, -6, -5.5), 'front_ports'),
-                   (conical(body, 13.8, -6, -5), 'front_ports'),
+for faces, key in [(conical(body, 28, -4, -3.5), 'front_ports'),
+                   (conical(body, 13.8, -4, -3), 'front_ports'),
                    (conical(body, 4.4, 0, .55), 'body_fixings'),
                    (conical(body, 3.3, 14, 14+1.65/math.tan(math.radians(59))), 'body_fixings'),
                    (conical(plate, 8, -3, -1.25), 'body_fixings')]:
@@ -37,7 +37,7 @@ for diameter, key in [(32, 'front_ports'), (4.5, 'body_fixings')]:
              and near(f.BoundingBox().xlen, diameter) and near(f.BoundingBox().zlen, diameter)]
     assert len(faces) == len(schedule[key]) and centres(faces) == expected(key)
 # DXF is a through-cut profile: countersink mouths must not become through holes.
-doc = ezdxf.readfile(OUT / 'RM10-O-M01-FACEPLATE.dxf')
+doc = ezdxf.readfile(OUT / 'RM10-O-M02-FACEPLATE.dxf')
 entities = list(doc.modelspace())
 circles = [e for e in entities if e.dxftype() == 'CIRCLE']
 assert len(circles) == 26
@@ -51,7 +51,7 @@ extents = [bbox.extents([e]) for e in polys]
 for slot in schedule['rack_slots']:
     assert any(near(b.center.x, slot['x']) and near(b.center.y, slot['z'])
                and near(b.size.x, 10) and near(b.size.y, 7) for b in extents)
-report = {'issue': 'O-M01', 'status': 'PASS', 'method': 'Independent STEP re-import and DXF entity inspection',
+report = {'issue': 'O-M02', 'status': 'PASS', 'method': 'Independent STEP re-import and DXF entity inspection',
           'checks': ['valid single solids and overall sizes', 'no nominal body/plate overlap',
                      '20 boss lips and 20 front port entries at scheduled positions',
                      'four side port entries', 'six M4 entries and drill points',

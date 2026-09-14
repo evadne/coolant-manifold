@@ -1,4 +1,4 @@
-"""A3 manufacturing sheets and A4 supplier review for approved O / detail issue O-M01.
+"""A3 manufacturing sheets and A4 supplier review for approved O / detail issue O-M02.
 Run using the bundled Python with reportlab and pypdf. Geometry comes from JSON.
 """
 from pathlib import Path
@@ -13,10 +13,13 @@ from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 from reportlab.lib import colors
 ROOT=Path(__file__).resolve().parents[1]
 p=json.loads((ROOT/'cad/iterations/O-long-bore.json').read_text())
-f=json.loads((ROOT/'cad/manufacturing/O-M01.json').read_text())
-schedule=json.loads((ROOT/'output/manufacturing/O-M01/feature-schedule.json').read_text())
+f=json.loads((ROOT/'cad/manufacturing/O-M02.json').read_text())
+schedule=json.loads((ROOT/'output/manufacturing/O-M02/feature-schedule.json').read_text())
 OUT=ROOT/'output/pdf';OUT.mkdir(exist_ok=True)
 DATE=f['issue_date']
+H=f['boss_height']
+D=40+H
+PILOT=20+H
 pdfmetrics.registerFont(TTFont('Arial','/System/Library/Fonts/Supplemental/Arial.ttf'))
 pdfmetrics.registerFont(TTFont('Arial-Bold','/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
 BLACK=colors.HexColor('#16222a');GREY=colors.HexColor('#71808b');LIGHT=colors.HexColor('#edf1f3')
@@ -79,14 +82,14 @@ def sheet(code,title,index,total,material,scale='AS SHOWN'):
     C.setPageSize(landscape(A3));C.setTitle(code);C.setAuthor('Coolant manifold rackmount project')
     rect(10,10,400,277)
     text(15,279,code,5,True);text(15,271,title,3.6)
-    text(405,280,'LAYOUT O • DETAIL ISSUE O-M01',3,True,align='right')
+    text(405,280,'LAYOUT O • DETAIL ISSUE O-M02',3,True,align='right')
     text(405,273,'Single-part machining drawing',2.8,align='right')
     rect(10,10,400,27)
     for x in (135,265,345):line(x,10,x,37)
     text(14,31,material,3,True);text(14,24,'Units: mm • DIN ISO 2768-1 m unless stated',2.55)
     text(14,17,'Dimensions at 20 °C • Do not scale drawing',2.55)
     text(140,31,'Geometry: approved Revision O',3)
-    text(140,24,'Detail issue: O-M01 • '+DATE,2.7)
+    text(140,24,'Detail issue: O-M02 • '+DATE,2.7)
     text(140,17,'No tapped holes; six countersinks only' if 'FACEPLATE' in code else 'Unmodelled helices: machine threads to this drawing',2.55)
     text(270,31,'Scale: '+scale,3);text(270,24,'Third-angle; views labelled',2.55)
     text(270,17,'No product markings',2.55)
@@ -126,8 +129,8 @@ def front_view(body=False,x0=42,y0=166,s=.68):
     return at
 
 # ---------- FACEPLATE ----------
-C=canvas.Canvas(str(OUT/'RM10-O-M01-FACEPLATE.pdf'),pagesize=landscape(A3))
-sheet('RM10-O-M01-FACEPLATE','FLAT STAINLESS RACK FACEPLATE — HOLE LOCATION SCHEDULE',1,2,'304 STAINLESS / EN 1.4301','0.68:1')
+C=canvas.Canvas(str(OUT/'RM10-O-M02-FACEPLATE.pdf'),pagesize=landscape(A3))
+sheet('RM10-O-M02-FACEPLATE','FLAT STAINLESS RACK FACEPLATE — HOLE LOCATION SCHEDULE',1,2,'304 STAINLESS / EN 1.4301','0.68:1')
 text(15,260,'20 × Ø32 +0.20/0 THRU • 6 × Ø4.5 +0.10/0 THRU with Ø8 +0.10/0 × 90° ±1° CSK • 12 × 10 × 7 slots',3.0,True)
 text(15,254,'All coordinates below: signed X from width midplane B; Z from bottom C. ±0.10 unless otherwise shown.',2.8)
 front_view()
@@ -141,7 +144,7 @@ notes(15,63,['A = flat POM-facing rear plane, Y0. B = derived width midplane, X0
               'Thickness and countersink section: sheet 2. DXF is the through-cut profile only; countersinks are in STEP/PDF.',
               'P01–P20, F1–F6 and R01–R12 are drawing IDs only. Do not engrave, print or laser-mark the part.'],2.75)
 C.showPage()
-sheet('RM10-O-M01-FACEPLATE','COUNTERSINK DETAIL, FINISH AND INSPECTION REQUIREMENTS',2,2,'304 STAINLESS / EN 1.4301','DETAIL 8:1')
+sheet('RM10-O-M02-FACEPLATE','COUNTERSINK DETAIL, FINISH AND INSPECTION REQUIREMENTS',2,2,'304 STAINLESS / EN 1.4301','DETAIL 8:1')
 text(20,259,'DETAIL A — F1–F6, section through each fixing hole',3.7,True)
 x=50;y=210;s=8
 # Two solid halves around the hole; front at x, rear at x+3s.
@@ -182,8 +185,8 @@ C.showPage();C.save()
 
 # ---------- BODY ----------
 material='BLACK UNFILLED POM / C OR H'
-C=canvas.Canvas(str(OUT/'RM10-O-M01-BODY.pdf'),pagesize=landscape(A3))
-sheet('RM10-O-M01-BODY','POM MANIFOLD — FRONT AND END PORT / FIXING LOCATIONS',1,3,material,'0.73:1')
+C=canvas.Canvas(str(OUT/'RM10-O-M02-BODY.pdf'),pagesize=landscape(A3))
+sheet('RM10-O-M02-BODY','POM MANIFOLD — FRONT AND END PORT / FIXING LOCATIONS',1,3,material,'0.73:1')
 text(15,260,'30 TAPPED FEATURES TOTAL: 20 front G 1/4 + 4 end G 1/4 + 6 M4 × 0.7. No thread inserts.',3.05,True)
 text(15,254,'Two uninterrupted Ø11.8 galleries. Long-bore process requires supplier engineering confirmation before manufacture.',2.8)
 front_view(True,27,165,.73)
@@ -193,46 +196,46 @@ rect(x,y,40*s,87*s)
 for z in p['port_rows_z']:
     circle(x+20*s,y+z*s,6.9*s);C.setDash([3,2]);circle(x+20*s,y+z*s,11*s,.12);C.setDash([])
     cross(x+20*s,y+z*s);text(x+20*s,y+z*s+9*s,'E3' if z<40 else 'E4',2.4,align='centre')
-    C.setDash([3,2]);rect(x-6*s,y+(z-14)*s,6*s,28*s);C.setDash([])
+    C.setDash([3,2]);rect(x-H*s,y+(z-14)*s,H*s,28*s);C.setDash([])
 dimh(x,x+40*s,242,'40 ±0.10',y+87*s)
 text(x+14.6,154,'RIGHT END',2.8,align='centre');text(x+14.6,148,'looking −X',2.5,align='centre')
 table(15,138,145,['FRONT PORT IDs','X ±0.10','Z ±0.10'],rows,[1.3,1,1.2])
 table(168,138,105,['M4 IDs','X ±0.10','Z ±0.10'],[[i['id'],f"{i['x']:g}",f"{i['z']:g}"] for i in schedule['body_fixings']])
 table(281,138,124,['END ID','FACE','Y / Z ±0.10'],[[i['id'],i['side'],f"20 / {i['z']:g}"] for i in schedule['end_ports']],[.6,1,1.3])
 notes(281,104,['Left face: X−205; right face: X+205.', 'Both ends have the same Y/Z coordinates.', 'Ø22 dashed rings show sealing lands;', 'they are NOT recesses or grooves.'],2.65,5)
-notes(168,92,['A = body front mounting plane Y0.', 'B = width midplane X0; C = bottom Z0.', 'Boss faces: Y−6.0 ±0.10 from A.', 'Overall depth: 46 REF including bosses.'],2.7,5)
+notes(168,92,['A = body front mounting plane Y0.', 'B = width midplane X0; C = bottom Z0.', f'Boss faces: Y−{H:.1f} ±0.10 from A.', f'Overall depth: {D:g} REF including bosses.'],2.7,5)
 notes(15,62,['20 bosses: Ø28 ±0.10, root R1.0 ±0.10, outer lip C0.5 ±0.10 × 45° ±1° (see sheet 2).',
  'Front drill/thread axes normal to A; end port axes parallel to X. All threads right-hand.',
  'Surface requirements, bore controls, inspection and manufacturing notes: sheet 3. No product markings.'],2.8)
 C.showPage()
-sheet('RM10-O-M01-BODY','PORT, BOSS AND BLIND M4 DETAILS',2,3,material,'AS SHOWN')
+sheet('RM10-O-M02-BODY','PORT, BOSS AND BLIND M4 DETAILS',2,3,material,'AS SHOWN')
 text(18,260,'DETAIL A — FRONT G 1/4 PORT / BOSS, 2:1 (20 places)',3.5,True)
 # Cross-section through front boss and gallery, local horizontal distance measured from boss face.
 x=30;y=204;s=2
-path=C.beginPath();pts=[(0,13.5),(.5,14),(5,14)]
+path=C.beginPath();pts=[(0,13.5),(.5,14),(H-1,14)]
 path.moveTo((x+pts[0][0]*s)*mm,(y+pts[0][1]*s)*mm)
 for u,v in pts[1:]:path.lineTo((x+u*s)*mm,(y+v*s)*mm)
-path.curveTo((x+5.5523*s)*mm,(y+14*s)*mm,(x+6*s)*mm,(y+14.4477*s)*mm,(x+6*s)*mm,(y+15*s)*mm)
-for u,v in [(6,18),(46,18),(46,-18),(6,-18),(6,-15)]:path.lineTo((x+u*s)*mm,(y+v*s)*mm)
-path.curveTo((x+6*s)*mm,(y-14.4477*s)*mm,(x+5.5523*s)*mm,(y-14*s)*mm,(x+5*s)*mm,(y-14*s)*mm)
+path.curveTo((x+(H-.4477)*s)*mm,(y+14*s)*mm,(x+H*s)*mm,(y+14.4477*s)*mm,(x+H*s)*mm,(y+15*s)*mm)
+for u,v in [(H,18),(D,18),(D,-18),(H,-18),(H,-15)]:path.lineTo((x+u*s)*mm,(y+v*s)*mm)
+path.curveTo((x+H*s)*mm,(y-14.4477*s)*mm,(x+(H-.4477)*s)*mm,(y-14*s)*mm,(x+(H-1)*s)*mm,(y-14*s)*mm)
 for u,v in [(.5,-14),(0,-13.5)]:path.lineTo((x+u*s)*mm,(y+v*s)*mm)
 path.close();C.setFillColor(LIGHT);C.drawPath(path,fill=1,stroke=1)
 # Void union. Draw white shapes, then outline only the meaningful boundaries.
-C.setFillColor(colors.white);C.rect(x*mm,(y-5.9*s)*mm,26*s*mm,11.8*s*mm,fill=1,stroke=0)
-C.circle((x+26*s)*mm,y*mm,5.9*s*mm,fill=1,stroke=1)
-C.rect(x*mm,(y-5.9*s)*mm,26*s*mm,11.8*s*mm,fill=1,stroke=0)
+C.setFillColor(colors.white);C.rect(x*mm,(y-5.9*s)*mm,PILOT*s*mm,11.8*s*mm,fill=1,stroke=0)
+C.circle((x+PILOT*s)*mm,y*mm,5.9*s*mm,fill=1,stroke=1)
+C.rect(x*mm,(y-5.9*s)*mm,PILOT*s*mm,11.8*s*mm,fill=1,stroke=0)
 for sign in [-1,1]:
     line(x,y+sign*6.9*s,x+1*s,y+sign*5.9*s)
-    line(x+1*s,y+sign*5.9*s,x+26*s,y+sign*5.9*s)
+    line(x+1*s,y+sign*5.9*s,x+PILOT*s,y+sign*5.9*s)
     line(x+1*s,y+sign*6.5785*s,x+9*s,y+sign*6.5785*s,.12)
-    line(x+26*s,y+sign*5.9*s,x+(26+3.54507765)*s,y,.12,[3,2])
-centreline(x-5,y,x+46*s+5,y)
-dimh(x,x+6*s,156,'6.0 ±0.10',176)
-dimh(x+6*s,x+46*s,143,'40.0 ±0.10',168)
+    line(x+PILOT*s,y+sign*5.9*s,x+(PILOT+3.54507765)*s,y,.12,[3,2])
+centreline(x-5,y,x+D*s+5,y)
+dimh(x,x+H*s,156,f'{H:.1f} ±0.10',176)
+dimh(x+H*s,x+D*s,143,'40.0 ±0.10',168)
 leader(x+.25*s,y+13.75*s,65,245,'C0.5 ±0.10 × 45° ±1°')
-leader(x+5.7*s,y+14.3*s,117,235,'R1.0 ±0.10')
-leader(x+26*s,y-5.9*s,139,164,'Ø11.8 gallery, axis Y20')
-notes(143,225,['G 1/4 — DIN EN ISO 228-1, parallel BSPP.', '19 TPI (P = 1.33684 REF); 55° thread form.', 'Entry Ø13.8 ±0.10 × 90° ±1° included.', 'Entry depth 1.0 REF to Ø11.8 pilot.', '8 MIN full-form thread length after lead-in.', 'Thread + tool run-out must end within', '16 mm of the sealing face.', 'Front pilot: Ø11.8, 26.0 ±0.20 full diameter', 'from boss face to gallery axis; 118° tip REF.', 'Protect flat seal annulus: Ø13.8 to Ø27 REF.'],2.7,5)
+leader(x+(H-.3)*s,y+14.3*s,117,235,'R1.0 ±0.10')
+leader(x+PILOT*s,y-5.9*s,139,164,'Ø11.8 gallery, axis Y20')
+notes(143,225,['G 1/4 — DIN EN ISO 228-1, parallel BSPP.', '19 TPI (P = 1.33684 REF); 55° thread form.', 'Entry Ø13.8 ±0.10 × 90° ±1° included.', 'Entry depth 1.0 REF to Ø11.8 pilot.', '8 MIN full-form thread length after lead-in.', 'Thread + tool run-out must end within', '16 mm of the sealing face.', f'Front pilot: Ø11.8, {PILOT:.1f} ±0.20 full diameter', 'from boss face to gallery axis; 118° tip REF.', 'Protect flat seal annulus: Ø13.8 to Ø27 REF.'],2.7,5)
 # End section detail with the long bore represented by a cropped axial region.
 text(267,260,'DETAIL B — END G 1/4, 2:1 (4 places)',3.4,True)
 x=285;y=202;s=2
@@ -258,19 +261,19 @@ centreline(x-4,y,x+61,y)
 dimh(x,x+14*s,65,'14 +0.50/0 FULL Ø',73)
 notes(112,115,['M4 × 0.7 - 6H, 10 MIN full-form thread after entry.', 'Ø3.3 tapping pilot, 14 +0.50/0 full-diameter depth.', '118° ±2° drill point; total tip depth ≤15.5 from A.', 'Entry Ø4.4 ±0.10 × 90° ±1° included (0.55 REF).', 'No inserts. Do not break into a coolant passage.', 'Drill depth ≠ full thread length; leave run-out space.', 'General unspecified external edges: break 0.10–0.20 max.'],2.8,6)
 C.showPage()
-sheet('RM10-O-M01-BODY','LONG-BORE SECTION, TOLERANCES AND MACHINING NOTES',3,3,material,'SECTION 0.80:1')
+sheet('RM10-O-M02-BODY','LONG-BORE SECTION, TOLERANCES AND MACHINING NOTES',3,3,material,'SECTION 0.80:1')
 text(15,259,'SECTION THROUGH ONE GALLERY AT Z23.5 — second gallery identical at Z63.5',3.5,True)
 x=40;y=207;s=.8
 rect(x,y,410*s,40*s,True)
 # Bosses in this section and the open cross-bores.
 for xx in [-180+40*i for i in range(10)]:
-    cx=x+(xx+205)*s;rect(cx-14*s,y-6*s,28*s,6*s,True)
+    cx=x+(xx+205)*s;rect(cx-14*s,y-H*s,28*s,H*s,True)
 C.setFillColor(colors.white);C.rect(x*mm,(y+14.1*s)*mm,410*s*mm,11.8*s*mm,fill=1,stroke=0)
 line(x,y+14.1*s,x+410*s,y+14.1*s)
 for xx in [-180+40*i for i in range(10)]:
     cx=x+(xx+205)*s
-    C.setFillColor(colors.white);C.rect((cx-5.9*s)*mm,(y-6*s)*mm,11.8*s*mm,26*s*mm,fill=1,stroke=0)
-    line(cx-5.9*s,y-6*s,cx-5.9*s,y+14.1*s,.18);line(cx+5.9*s,y-6*s,cx+5.9*s,y+14.1*s,.18)
+    C.setFillColor(colors.white);C.rect((cx-5.9*s)*mm,(y-H*s)*mm,11.8*s*mm,PILOT*s*mm,fill=1,stroke=0)
+    line(cx-5.9*s,y-H*s,cx-5.9*s,y+14.1*s,.18);line(cx+5.9*s,y-H*s,cx+5.9*s,y+14.1*s,.18)
 line(x,y+25.9*s,x+410*s,y+25.9*s)
 centreline(x-5,y+20*s,x+410*s+5,y+20*s)
 dimh(x,x+410*s,247,'410 ±0.20 THROUGH LENGTH',y+40*s)
@@ -297,7 +300,7 @@ notes(220,180,['DATUMS / FUNCTIONAL SURFACES',
  '   B: derived width midplane. C: bottom plane.',
  '   Front boss/thread and M4 positions: X/Z ±0.10.',
  '   Side mouth positions: Y/Z ±0.10 at each end face.',
- '9. Boss OD Ø28 ±0.10; height 6.0 ±0.10; root R1 ±0.10.',
+ f'9. Boss OD Ø28 ±0.10; height {H:.1f} ±0.10; root R1 ±0.10.',
  '   Lip C0.5 ±0.10 ×45° ±1°. Do not round the sealing face.',
  '10. Each front sealing annulus and each Ø22 end land:',
  '    Ra ≤1.6 µm, local flatness 0.05; no radial scratches.',
@@ -311,8 +314,8 @@ notes(220,180,['DATUMS / FUNCTIONAL SURFACES',
  '    this drawing does not qualify the assembled rack fit.'],2.7,5.5)
 text(15,79,'SUPPLIER DFM HOLD POINT: confirm long-bore process, alignment inspection and material grade before cutting.',2.9,True)
 notes(15,67,['STEP contains nominal tapping pilots, not thread helices. General external edge deburring is not explicitly modelled.',
- 'Boss lip chamfers, port-entry cones and M4 pilot drill points are modelled in the matching O-M01 STEP.',
- 'Operator approval applies to layout O. This detail issue adds edge / drill specifications; no pressure or structural rating is claimed.'],2.75)
+ 'Boss lip chamfers, port-entry cones and M4 pilot drill points are modelled in the matching O-M02 STEP.',
+ 'Operator approval applies to layout O. This issue uses 4 mm bosses and edge / drill details; no pressure or structural rating is claimed.'],2.75)
 C.showPage();C.save()
 
 # ---------- SUPPLIER REVIEW (A4) ----------
@@ -323,8 +326,8 @@ styles.add(ParagraphStyle(name='SubA',fontName='Arial-Bold',fontSize=11,leading=
 story=[]
 def para(t,style='BodyA'):story.append(Paragraph(t,styles[style]))
 def link(title,url):return f'<link href="{url}" color="#175c83">{title}</link>'
-para('Revision O / O-M01 — JLC manufacturability review','HeadA')
-para('Checked '+DATE+'. Operator-approved layout O is preserved. O-M01 is a detailed quotation package, not confirmation of supplier acceptance or a pressure-rated release.')
+para('Revision O / O-M02 — JLC manufacturability review','HeadA')
+para('Checked '+DATE+'. Layout O is retained with the requested 4 mm bosses (1 mm above the plate). O-M01 remains archived. O-M02 is a detailed quotation package, not confirmation of supplier acceptance or a pressure-rated release.')
 para('Conclusion','SubA')
 para('The faceplate is a plausible conventional flat CNC part. The body is geometrically machinable in principle, but JLC acceptance remains conditional on deep-hole drilling, sealing finishes and the declared POM grade. Internal edge deburring is excluded at the operator’s request; only external deburring and internal chip cleaning are required. No supplier upload or order has been made.')
 para('JLC requirements applied','SubA')
@@ -341,7 +344,7 @@ story.append(PageBreak())
 para('Fit, edge treatment and supplier questions','HeadA')
 para('Boss clearance','SubA')
 para('Retain Ø32 +0.20/0 plate windows and Ø28 ±0.10 bosses. Nominal radial clearance is 2 mm. The R1 root grows to Ø30 nominal at the POM mounting plane. At worst specified sizes (Ø28.1 and R1.1), its envelope is Ø30.3: 0.85 mm radial reserve before positional error. Independent ±0.10 X/Z coordinates on both parts consume up to 0.283 mm, leaving about 0.567 mm with aligned assembly frames. Screw-clearance registration, thermal growth and deformation are additional; perform an assembly trial. A Ø29 window would interfere with the nominal root.')
-para('Boss lips receive C0.5 ×45°. Their flat sealing annulus remains about Ø13.8–Ø27. The existing mouth chamfer is retained; do not enlarge it casually into the O-ring footprint. POM can be burred, dented or gouged at thin edges; the edge break improves handling without treating the material as inherently brittle. Sealing lands require careful finishing, not general rounding.')
+para('Boss height is 4.0 ±0.10 mm above the POM mounting plane. With a 3.0 ±0.10 mm plate, nominal projection is 1 mm (0.8–1.2 mm size stack before flatness and assembly effects). This clears the plate for fittings whose sealing shoulder seats on the POM; verify unusually recessed shoulders and tool access. Boss lips receive C0.5 ×45°. Their flat sealing annulus remains about Ø13.8–Ø27. The existing mouth chamfer is retained; do not enlarge it casually into the O-ring footprint. POM can be burred, dented or gouged at thin edges; the edge break improves handling without treating the material as inherently brittle. Sealing lands require careful finishing, not general rounding.')
 para('Faceplate countersinks','SubA')
 para('Six Ø4.5 through holes receive Ø8 ×90° countersinks on the front only. Nominal depth is 1.75 mm in 3 mm stock, leaving 1.25 mm cylindrical land. The specified DIN 7991 reference has Ø7.96 maximum head; DIN 965 Z Pozi has Ø7.5 nominal head. Inspect using the specified screw family rather than relying only on a generic “M4 countersunk” label. '+link('Hex head reference','https://www.westfieldfasteners.co.uk/A4-ScrewBolt-SHCsk-M4.html')+'; '+link('Pozi reference','https://www.westfieldfasteners.co.uk/A4-ScrewBolt-PoziCsk-M4.html'))
 para('Sheet-metal alternative','SubA')
@@ -356,8 +359,8 @@ for t in [
 ]:para('• '+t)
 para('Remaining design limits','SubA')
 para('The approved rack pattern retains 1.9 mm nominal metal at the outermost slot edges; washer overhang there remains a builder-hardware issue. The previous 2 mm elbow/nut gap uses illustrative envelopes. Actual hardware, temperature, clamp preload, creep and assembled leak/pressure behaviour have not been qualified. These findings do not prevent requesting a manual manufacturing review.')
-doc=SimpleDocTemplate(str(OUT/'RM10-O-M01-DFM.pdf'),pagesize=A4,leftMargin=17*mm,rightMargin=17*mm,topMargin=16*mm,bottomMargin=16*mm)
+doc=SimpleDocTemplate(str(OUT/'RM10-O-M02-DFM.pdf'),pagesize=A4,leftMargin=17*mm,rightMargin=17*mm,topMargin=16*mm,bottomMargin=16*mm)
 def footer(c,doc):
-    c.setFont('Arial',8);c.drawString(17*mm,9*mm,'RM10-O-M01 • Supplier review • '+DATE);c.drawRightString(193*mm,9*mm,str(doc.page))
+    c.setFont('Arial',8);c.drawString(17*mm,9*mm,'RM10-O-M02 • Supplier review • '+DATE);c.drawRightString(193*mm,9*mm,str(doc.page))
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
 print('Created faceplate (2 sheets), body (3 sheets) and supplier review PDFs.')

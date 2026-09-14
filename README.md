@@ -1,3 +1,5 @@
+[Current O-M02 manufacturing package: 4 mm bosses, projecting 1 mm above the 3 mm faceplate](docs/manufacturing-O-M02.md).
+
 [Revision O-M01: supplier drawings, STEP/DXF upload packages and JLC manufacturing review](docs/manufacturing-O-M01.md). Operator-approved O layout; black unfilled POM-C or POM-H accepted; external deburring only.
 
 [Revision O: selected 40 mm POM body with centred galleries](docs/revision-O-centred-40mm.md).
