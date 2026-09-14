@@ -2,7 +2,7 @@
 
 Initial design, revision G: eight parallel circuits, all connections on one face, black Delrin body and a flat stainless steel rack faceplate. Each G1/4 female port is inside an integral cylindrical POM boss, standing 3 mm proud of the steel. The 2U format provides space to operate QD3 release rings without crowding adjacent fittings.
 
-![Assembled manifold](output/images/assembled.png)
+![Assembled manifold](output/product-views/01-front-three-quarter.png)
 
 | Parameter | Initial model |
 |---|---|
@@ -24,7 +24,9 @@ The former combined rack/backing plate, [Option C](docs/backplate.md), is retain
 
 ## Review files
 
-- [Editable Blender scene](output/manifold-review.blend) — CAD-derived body/cover/ears plus simplified QD3 and tube references.
+- [Eight unmarked assembled product views](docs/product-views.md) — front/rear three-quarter, front, rear, left, right, top and bottom.
+- [Unmarked Blender assembly](output/product-views/assembled-unmarked.blend) — CAD-derived POM and steel, 39 M4 screw references, eighteen male QD3 references and eight named cameras.
+- [Earlier technical review scene](output/manifold-review.blend) — annotated views with illustrative hose connections.
 - [Assembly STEP](output/cad/manifold-assembly.step) — three manufactured components and two seal envelopes. Individual body, cover and faceplate STEP files are alongside it.
 - [Front plate drawing](output/faceplate-drawing.svg) and [cut DXF](output/cad/faceplate-flat.dxf).
 - [Rear sealing plate drawing](output/rear-cover-drawing.svg) and [cut DXF](output/cad/rear-cover-flat.dxf) — 31 Ø4.5 through holes; machine countersinks afterwards.
@@ -59,6 +61,7 @@ python3 -m venv .venv
 rsvg-convert output/rear-seal-review.svg -o output/images/rear-seal-review.png
 .venv/bin/python scripts/export_steel_plates.py
 /Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py
+/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_product.py
 ```
 
 Parameters are in `cad/parameters.json`. The source defines the current faceplate/bolt pattern explicitly; changing circuit count or major dimensions also requires reviewing those patterns and the manufacturing documentation. It is not an automatically qualified product configurator.
