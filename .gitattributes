@@ -1,0 +1,5 @@
+# Generated CAD and review assets are reviewed in CAD/Blender, not as text diffs.
+*.step binary
+*.blend binary
+*.png binary
+*.pdf binary

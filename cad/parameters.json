@@ -1,0 +1,33 @@
+{
+  "revision": "A",
+  "name": "RM8-2U",
+  "body_width": 440.0,
+  "body_depth": 40.0,
+  "body_height": 87.0,
+  "lid_thickness": 3.0,
+  "branch_count": 8,
+  "port_pitch": 45.0,
+  "port_rows_z": [
+    23.5,
+    63.5
+  ],
+  "tap_drill_diameter": 11.8,
+  "thread_major_diameter": 13.157,
+  "thread_full_depth": 8.0,
+  "channel_length": 400.0,
+  "channel_width": 16.0,
+  "channel_depth": 24.0,
+  "front_wall": 16.0,
+  "seal_cross_section": 2.0,
+  "seal_groove_width": 2.8,
+  "seal_groove_depth": 1.6,
+  "seal_offset": 3.5,
+  "bracket_thickness": 2.5,
+  "rack_width": 482.6,
+  "rack_hole_pitch": 465.1,
+  "rack_slot_length": 10.0,
+  "rack_slot_width": 7.0,
+  "qd_female_diameter_reference": 23.7,
+  "qd_clearance_diameter": 28.0,
+  "service_projection_front": 100.0
+}

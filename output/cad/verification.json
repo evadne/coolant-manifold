@@ -1,0 +1,47 @@
+{
+  "revision": "A",
+  "model": "RM8-2U",
+  "valid_manufactured_solids": 4,
+  "wet_networks": 2,
+  "branch_circuits": 8,
+  "ports": 18,
+  "lid_screws_M4": 31,
+  "bracket_screws_M5": 8,
+  "assembly_envelope_mm": [
+    482.6,
+    45.5,
+    87.0
+  ],
+  "body_volume_mm3": 1182218.474670642,
+  "estimated_dry_mass_without_fittings_or_screws_kg": 2.771904215713168,
+  "reference_pull_ring_gaps_xy_mm": [
+    21.3,
+    16.3
+  ],
+  "conservative_28mm_envelope_gaps_mm": [
+    17,
+    12
+  ],
+  "seal_squeeze_nominal_percent": 20,
+  "seal_gland_fill_nominal_percent": 70.12483601762932,
+  "seal_centreline_length_mm": 840.2566310325652,
+  "rack_slot_centres_z_mm": [
+    5.399999999999997,
+    81.6
+  ],
+  "checks": [
+    "valid solids",
+    "single solid per manufactured part",
+    "two separate connected wet networks",
+    "all 18 bores connected to intended gallery",
+    "no manufactured part overlap",
+    "cover and ear screws outside galleries and seal grooves",
+    "2U envelope",
+    "12 mm minimum conservative fitting gap"
+  ],
+  "limitations": [
+    "No pressure or structural rating established",
+    "Threads represented by pilot bores, not helices",
+    "QD envelopes and release travel require physical trial"
+  ]
+}

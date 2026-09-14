@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520mm" height="145mm" viewBox="0 0 520 145">
+<rect width="520" height="145" fill="white"/>
+<g font-family="Arial,sans-serif" font-size="3.2" fill="#142c3c">
+<text x="19" y="9" font-size="5">RM8-2U / REV A — QD3 clearance trial, full size</text>
+<text x="19" y="16">Print at 100%, no fit-to-page. Verify the 100 mm scale before use. Large-format or tiled printing required.</text>
+<rect x="40" y="25" width="440" height="87" fill="#f2f5f7" stroke="#152d40" stroke-width=".5"/>
+<circle cx="80" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="80" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="80" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 77 88.5 h6 M 80 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="80" y="72.5" text-anchor="middle" fill="#1673a4">IN</text>
+<circle cx="125" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="125" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="125" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 122 88.5 h6 M 125 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="125" y="72.5" text-anchor="middle" fill="#1673a4">S1</text>
+<circle cx="170" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="170" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="170" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 167 88.5 h6 M 170 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="170" y="72.5" text-anchor="middle" fill="#1673a4">S2</text>
+<circle cx="215" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="215" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="215" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 212 88.5 h6 M 215 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="215" y="72.5" text-anchor="middle" fill="#1673a4">S3</text>
+<circle cx="260" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="260" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="260" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 257 88.5 h6 M 260 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="260" y="72.5" text-anchor="middle" fill="#1673a4">S4</text>
+<circle cx="305" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="305" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="305" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 302 88.5 h6 M 305 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="305" y="72.5" text-anchor="middle" fill="#1673a4">S5</text>
+<circle cx="350" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="350" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="350" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 347 88.5 h6 M 350 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="350" y="72.5" text-anchor="middle" fill="#1673a4">S6</text>
+<circle cx="395" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="395" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="395" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 392 88.5 h6 M 395 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="395" y="72.5" text-anchor="middle" fill="#1673a4">S7</text>
+<circle cx="440" cy="88.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="440" cy="88.5" r="11.85" fill="none" stroke="#1673a4" stroke-width=".5"/>
+<circle cx="440" cy="88.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 437 88.5 h6 M 440 85.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="440" y="72.5" text-anchor="middle" fill="#1673a4">S8</text>
+<circle cx="80" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="80" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="80" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 77 48.5 h6 M 80 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="80" y="32.5" text-anchor="middle" fill="#b64e2b">OUT</text>
+<circle cx="125" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="125" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="125" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 122 48.5 h6 M 125 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="125" y="32.5" text-anchor="middle" fill="#b64e2b">R1</text>
+<circle cx="170" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="170" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="170" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 167 48.5 h6 M 170 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="170" y="32.5" text-anchor="middle" fill="#b64e2b">R2</text>
+<circle cx="215" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="215" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="215" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 212 48.5 h6 M 215 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="215" y="32.5" text-anchor="middle" fill="#b64e2b">R3</text>
+<circle cx="260" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="260" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="260" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 257 48.5 h6 M 260 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="260" y="32.5" text-anchor="middle" fill="#b64e2b">R4</text>
+<circle cx="305" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="305" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="305" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 302 48.5 h6 M 305 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="305" y="32.5" text-anchor="middle" fill="#b64e2b">R5</text>
+<circle cx="350" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="350" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="350" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 347 48.5 h6 M 350 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="350" y="32.5" text-anchor="middle" fill="#b64e2b">R6</text>
+<circle cx="395" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="395" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="395" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 392 48.5 h6 M 395 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="395" y="32.5" text-anchor="middle" fill="#b64e2b">R7</text>
+<circle cx="440" cy="48.5" r="14" fill="none" stroke="#9da8ae" stroke-width=".3" stroke-dasharray="1.5 1"/>
+<circle cx="440" cy="48.5" r="11.85" fill="none" stroke="#b64e2b" stroke-width=".5"/>
+<circle cx="440" cy="48.5" r="6.5785" fill="white" stroke="#52616b" stroke-width=".3"/>
+<path d="M 437 48.5 h6 M 440 45.5 v6" stroke="#52616b" stroke-width=".2"/>
+<text x="440" y="32.5" text-anchor="middle" fill="#b64e2b">R8</text>
+<path d="M40 130 h100 M40 127 v6 M140 127 v6" stroke="#152d40" stroke-width=".4"/>
+<text x="90" y="126" text-anchor="middle">100 mm calibration</text>
+<text x="180" y="128">Solid circles: Ø23.7 pull rings. Dashed: conservative Ø28 bodies.</text>
+<text x="180" y="135">45 mm column pitch / 40 mm row pitch. Test actual mating fittings and hand access.</text>
+</g></svg>
