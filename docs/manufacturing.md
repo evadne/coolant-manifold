@@ -2,15 +2,17 @@
 
 Units: mm. CAD source: `cad/parameters.json` and `scripts/build_cad.py`. STEP holes are pilot cylinders; no helical threads are modelled. Supply these notes with the STEP files. Automatic hole recognition is not enough to specify the threads.
 
+Selected arrangement: **Option B**. The front plate mounts the POM to the rack; the rear plate only closes and seals the channels. All 39 plate-to-POM screws are M4 × 0.7; no M3 or M5 is used in these joints. The historical Option C files are outside this scope. See [front and rear plate drafts](steel-plates.md).
+
 ## Bill of materials
 
 | Part | Qty | Material / specification | Process |
 |---|---:|---|---|
 | Body | 1 | Black unfilled Delrin / POM-H; stock grade and porosity to be agreed | CNC mill, drill, tap/thread mill |
-| Rear cover | 1 | 316L stainless, 3 finished thickness | Cut profile; machine sealing face, drill and countersink |
+| Rear cover | 1 | 316L / EN 1.4404 stainless, 3 finished thickness | Punch or laser-cut profile and through holes; finish holes, machine sealing face and countersinks |
 | Rack faceplate | 1 | 304 or 316 stainless, 3 finished thickness | Punch or laser/waterjet cut, countersink, deburr; no bends |
 | Gallery seals | 2 | Polymax 255 ID × 3 section, EPDM 70 ShA | Two complete rings; three at the displayed price meet the user-reported £10 minimum with one spare; confirm dispatch estimate, one-piece moulded supply and coolant compatibility, no cutting/gluing |
-| Cover screws | 31 | Stainless M4 × 12, 90° countersunk | 9 mm nominal engagement in body |
+| Cover screws | 31 | A4 stainless M4 × 12 DIN 7991, 2.5 mm hex; specified DIN 965 Z Pozi accepted | Approximately 9.22 mm nominal penetration with maximum listed socket head |
 | Faceplate/body screws | 8 | A4 stainless M4 × 12 DIN 7991, 2.5 mm hex; Pozi alternative below | Approximately 9.02 mm nominal penetration in body with maximum listed socket head |
 | Rack fixings | 4 sets | Match rails/cage nuts, normally M6 | Purchased |
 | Manifold QDs | 18 | QD3-MTG4 or verified equivalent male QD / male G1/4 | Purchased; includes IN/OUT |
@@ -44,9 +46,13 @@ Using the Polymax published tolerances of ring ID±1.85 and section±0.09, with 
 
 Indicative DFM requirements: gland/port seal finish Ra≤1.6 µm, cover seal face Ra≤0.8 µm, mating-face flatness 0.05 across each seal perimeter. General dimensions±0.15; port positions±0.10; gland dimensions as above. These are quote requirements to confirm, not supplier guarantees. Break exposed sharp edges 0.3–0.5, except sealing edges which need a controlled small edge break. Groove root radius≤0.2 to be agreed with the seal vendor. CAD omits microscopic edge treatments.
 
+The wetted cover remains 316L: see [material compatibility assessment](wetted-materials.md). Remove oxide/heat tint and iron contamination as applicable, clean/passivate by an agreed vendor process, rinse and dry. Inspect sealing finish and flatness after treatment. Confirm an inhibited coolant compatible with stainless, copper/brass/nickel, POM and EPDM.
+
 ## Cover fastening
 
-31 screw positions: the nine port-column X positions at z 5.5,43.5,81.5, plus x±213 at each gallery-centre Z. Cover clearanceØ4.5, Ø8.4 × 90° countersink from rear. Body pilotØ3.3 × 14 deep from y 40, M4 × 0.7, minimum 10 full thread. Confirm blind tapping run-out and screw bottom clearance. All heads flush.
+The rear plate has clearance holes only, with no threads and no rack slots. Punch or laser-cut the 31 Ø4.5 through holes, finishing them to Ø4.5 +0.10/0 as required, then machine the countersinks from the rear/outside face. Keep the POM-facing sealing surface free of countersinks and burrs. Use the same specified M4 × 12 DIN 7991 / DIN 965 Z screws as the front. Revision G retains Ø8.4 +0.10/0 rear countersinks: nominal ideal-cone recess is 0.22 mm for the Ø7.96 socket head and 0.45 mm for the Ø7.5 Pozi head. These are both M4 holes despite differing from the front Ø8.0 countersinks. Check sample head seating and blind-hole bottom clearance.
+
+31 screw positions: the nine port-column X positions at z 5.5,43.5,81.5, plus x±213 at each gallery-centre Z. Cover clearanceØ4.5, Ø8.4 × 90° countersink from rear. Body pilotØ3.3 × 14 deep from y 40, M4 × 0.7, minimum 10 full thread. Confirm blind tapping run-out and screw bottom clearance. Heads flush or recessed; inspect actual seating.
 
 ## Flat rack faceplate
 

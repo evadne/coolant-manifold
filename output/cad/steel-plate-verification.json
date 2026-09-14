@@ -1,0 +1,36 @@
+{
+  "revision": "G",
+  "mounting": "selected Option B",
+  "plates": [
+    {
+      "plate": "faceplate",
+      "screw_holes_M4": 8,
+      "through_diameter_mm": 4.5,
+      "countersink_diameter_mm": 8.0,
+      "windows": 18,
+      "rack_slots": 4,
+      "finished_STEP_volume_mm3": 81215.62663924767,
+      "checks": [
+        "DXF reopened and audited",
+        "cut circle centres and diameters match STEP",
+        "countersink surfaces match STEP",
+        "plate envelope and analytic volume match STEP"
+      ]
+    },
+    {
+      "plate": "rear-cover",
+      "screw_holes_M4": 31,
+      "through_diameter_mm": 4.5,
+      "countersink_diameter_mm": 8.4,
+      "windows": 0,
+      "rack_slots": 0,
+      "finished_STEP_volume_mm3": 112286.9619535124,
+      "checks": [
+        "DXF reopened and audited",
+        "cut circle centres and diameters match STEP",
+        "countersink surfaces match STEP",
+        "plate envelope and analytic volume match STEP"
+      ]
+    }
+  ]
+}

@@ -66,11 +66,11 @@ A Ø36 mm illustrative fitting-body envelope, larger than the Ø32 plate window,
 
 Manufacture the body from thicker stock: mill the front background down 6 mm while leaving eighteen cylindrical islands. Finish the cylindrical walls, root fillets and flat annular ends, then drill/tap the G1/4 bores from the raised faces. This adds material removal and finishing but remains conventional front/rear 3-axis milling without undercuts. The eight mounting holes stay in the recessed background and carry the body independently of the fittings.
 
-The optional bottom/backing-plate arrangement is preserved separately as Option C. Its POM front remains flat and it has no bosses. The original recessed-port faceplate version remains in Git history; current Option B is revision G with raised ports.
+Option B is selected: the front faceplate carries the POM body on the rack; the rear plate only closes and seals the galleries. All plate-to-POM screws are M4 (eight front and 31 rear). Option C, the former combined rack/backing plate with M5 retention screws, is a historical reference only. The original recessed-port faceplate version remains in Git history; selected Option B is revision G with raised ports.
 
 ## Status and open engineering work
 
-This is an initial dimensional model, not a pressure-rated production release. Working pressure, coolant, temperature, pump shut-off head and desired flow have not yet been specified. No structural FEA, seal validation, creep test or hydraulic test has been performed. QD component pressure ratings do not rate the manifold assembly.
+This is an initial dimensional model, not a pressure-rated production release. The user specifies a formulated inhibited coolant, with Mayhems X1 and Koolance 705 as candidates. Exact coolant formulation, working pressure, temperature, pump shut-off head and desired flow remain to be specified. No structural FEA, seal validation, creep test or hydraulic test has been performed. QD component pressure ratings do not rate the manifold assembly.
 
 The G1/4/QD3 main pair carries the sum of all branch flows and may dominate pressure loss. Establish the required total flow before treating eight circuits as a cooling-capacity promise. There is no dedicated drain or bleed connection in revision G; draining/bleeding is via the external loop and appropriate orientation. Closed unused QDs cannot vent air.
 

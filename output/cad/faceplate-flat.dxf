@@ -489,7 +489,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461298.9016319443
+2461298.9108796297
   9
 $TDUCREATE
  40
@@ -497,7 +497,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461298.9016319443
+2461298.9108796297
   9
 $TDUUPDATE
  40
@@ -929,11 +929,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{FF6B349E-3287-4489-9C67-3FF08F141EA5}
+{6AA4CD2C-2BA4-4D09-A3D1-41DB51162C6E}
   9
 $VERSIONGUID
   2
-{08F21AA5-3CD6-4D02-8D11-35CBA9ECFB43}
+{A505E4AA-2780-42D4-9A1D-0E098DD83886}
   9
 $EXTNAMES
 290
@@ -2091,13 +2091,13 @@ CUT
 100
 AcDbCircle
  10
--180.0
+-208.0
  20
-23.5
+9.0
  30
 0.0
  40
-16.0
+2.25
   0
 CIRCLE
   5
@@ -2111,13 +2111,13 @@ CUT
 100
 AcDbCircle
  10
--135.0
+-208.0
  20
-23.5
+43.5
  30
 0.0
  40
-16.0
+2.25
   0
 CIRCLE
   5
@@ -2131,13 +2131,13 @@ CUT
 100
 AcDbCircle
  10
--90.0
+-208.0
  20
-23.5
+78.0
  30
 0.0
  40
-16.0
+2.25
   0
 CIRCLE
   5
@@ -2151,13 +2151,13 @@ CUT
 100
 AcDbCircle
  10
--45.0
+208.0
  20
-23.5
+9.0
  30
 0.0
  40
-16.0
+2.25
   0
 CIRCLE
   5
@@ -2171,13 +2171,13 @@ CUT
 100
 AcDbCircle
  10
-0.0
+208.0
  20
-23.5
+43.5
  30
 0.0
  40
-16.0
+2.25
   0
 CIRCLE
   5
@@ -2191,377 +2191,17 @@ CUT
 100
 AcDbCircle
  10
-45.0
+208.0
  20
-23.5
+78.0
  30
 0.0
  40
-16.0
+2.25
   0
 CIRCLE
   5
 37
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-90.0
- 20
-23.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-38
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-135.0
- 20
-23.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-39
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-180.0
- 20
-23.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-3A
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
--180.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-3B
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
--135.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-3C
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
--90.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-3D
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
--45.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-3E
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-0.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-3F
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-45.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-40
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-90.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-41
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-135.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-42
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-180.0
- 20
-63.5
- 30
-0.0
- 40
-16.0
-  0
-CIRCLE
-  5
-43
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
--208.0
- 20
-9.0
- 30
-0.0
- 40
-2.25
-  0
-CIRCLE
-  5
-44
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
--208.0
- 20
-43.5
- 30
-0.0
- 40
-2.25
-  0
-CIRCLE
-  5
-45
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
--208.0
- 20
-78.0
- 30
-0.0
- 40
-2.25
-  0
-CIRCLE
-  5
-46
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-208.0
- 20
-9.0
- 30
-0.0
- 40
-2.25
-  0
-CIRCLE
-  5
-47
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-208.0
- 20
-43.5
- 30
-0.0
- 40
-2.25
-  0
-CIRCLE
-  5
-48
-330
-17
-100
-AcDbEntity
-  8
-CUT
-100
-AcDbCircle
- 10
-208.0
- 20
-78.0
- 30
-0.0
- 40
-2.25
-  0
-CIRCLE
-  5
-49
 330
 17
 100
@@ -2581,7 +2221,7 @@ AcDbCircle
   0
 CIRCLE
   5
-4A
+38
 330
 17
 100
@@ -2598,6 +2238,366 @@ AcDbCircle
 0.0
  40
 2.25
+  0
+CIRCLE
+  5
+39
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-180.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+3A
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-135.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+3B
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-90.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+3C
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-45.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+3D
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+0.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+3E
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+45.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+3F
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+90.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+40
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+135.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+41
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+180.0
+ 20
+23.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+42
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-180.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+43
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-135.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+44
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-90.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+45
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+-45.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+46
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+0.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+47
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+45.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+48
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+90.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+49
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+135.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
+  0
+CIRCLE
+  5
+4A
+330
+17
+100
+AcDbEntity
+  8
+CUT
+100
+AcDbCircle
+ 10
+180.0
+ 20
+63.5
+ 30
+0.0
+ 40
+16.0
   0
 LWPOLYLINE
   5
@@ -3745,7 +3745,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-09-14T20:38:21.913024+00:00
+1.4.4 @ 2026-09-14T20:51:40.300631+00:00
   0
 DICTIONARYVAR
   5
@@ -3757,7 +3757,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-09-14T20:38:21.914221+00:00
+1.4.4 @ 2026-09-14T20:51:40.304268+00:00
   0
 ENDSEC
   0

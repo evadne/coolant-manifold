@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1130" viewBox="0 0 1600 1130">
+<rect width="1600" height="1130" fill="white"/>
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8 0 L0 4 L8 8" fill="none" stroke="#596a75"/></marker></defs>
+<g font-family="Arial,sans-serif" fill="#193343">
+<text x="60" y="58" font-size="30" text-anchor="start" fill="#193343">RM8-2U / FRONT / RACK FACEPLATE</text>
+<text x="60" y="94" font-size="18" text-anchor="start" fill="#193343">Geometry revision G · Selected Option B · 1 required · All dimensions in mm · Do not scale</text>
+<text x="60" y="128" font-size="18" text-anchor="start" fill="#193343">304 or 316 stainless · 3.00 ±0.10 FINISHED thickness</text>
+<text x="60" y="162" font-size="17" text-anchor="start" fill="#193343">Outside face shown; countersink this face. Opposite face mates to POM.</text>
+<rect x="148.4899999999999" y="218.0" width="1303.0200000000002" height="234.9" fill="#f3f5f6" stroke="#193343" stroke-width="1.5"/>
+<circle cx="238.39999999999998" cy="428.6" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="238.39999999999998" cy="335.45" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="238.39999999999998" cy="242.3" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1361.6" cy="428.6" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1361.6" cy="335.45" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1361.6" cy="242.3" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="617.75" cy="335.45" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="982.25" cy="335.45" r="6.075" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="313.99999999999994" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="435.5" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="557.0" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="678.5" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="800.0" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="921.5" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1043.0" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1164.5" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1286.0" cy="389.45000000000005" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="313.99999999999994" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="435.5" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="557.0" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="678.5" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="800.0" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="921.5" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1043.0" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1164.5" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="1286.0" cy="281.45" r="43.2" fill="white" stroke="#193343" stroke-width="1.2"/>
+<circle cx="238.39999999999998" cy="428.6" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="233.39999999999998" y1="428.6" x2="243.39999999999998" y2="428.6" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="238.39999999999998" y1="423.6" x2="238.39999999999998" y2="433.6" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<circle cx="238.39999999999998" cy="335.45" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="233.39999999999998" y1="335.45" x2="243.39999999999998" y2="335.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="238.39999999999998" y1="330.45" x2="238.39999999999998" y2="340.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<circle cx="238.39999999999998" cy="242.3" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="233.39999999999998" y1="242.3" x2="243.39999999999998" y2="242.3" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="238.39999999999998" y1="237.3" x2="238.39999999999998" y2="247.3" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<circle cx="1361.6" cy="428.6" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="1356.6" y1="428.6" x2="1366.6" y2="428.6" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="1361.6" y1="423.6" x2="1361.6" y2="433.6" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<circle cx="1361.6" cy="335.45" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="1356.6" y1="335.45" x2="1366.6" y2="335.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="1361.6" y1="330.45" x2="1361.6" y2="340.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<circle cx="1361.6" cy="242.3" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="1356.6" y1="242.3" x2="1366.6" y2="242.3" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="1361.6" y1="237.3" x2="1361.6" y2="247.3" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<circle cx="617.75" cy="335.45" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="612.75" y1="335.45" x2="622.75" y2="335.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="617.75" y1="330.45" x2="617.75" y2="340.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<circle cx="982.25" cy="335.45" r="10.8" fill="none" stroke="#207c9a" stroke-width="1.2"/>
+<line x1="977.25" y1="335.45" x2="987.25" y2="335.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="982.25" y1="330.45" x2="982.25" y2="340.45" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<rect x="158.6149999999999" y="428.87000000000006" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<rect x="158.6149999999999" y="223.13000000000002" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<rect x="1414.3850000000002" y="428.87000000000006" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<rect x="1414.3850000000002" y="223.13000000000002" width="27.0" height="18.900000000000002" rx="9.450000000000001" fill="white" stroke="#193343"/>
+<line x1="800" y1="206.0" x2="800" y2="470.9" stroke="#596a75" stroke-width="1" stroke-dasharray="8 4"/>
+<text x="800" y="491.9" font-size="15" text-anchor="middle" fill="#193343">X = 0 / Z = 0 at bottom centre</text>
+<line x1="148.4899999999999" y1="176.0" x2="1451.5100000000002" y2="176.0" stroke="#596a75" stroke-width="1" stroke-dasharray="" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="148.4899999999999" y1="168.0" x2="148.4899999999999" y2="210.0" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<line x1="1451.5100000000002" y1="168.0" x2="1451.5100000000002" y2="210.0" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<text x="800" y="167.0" font-size="17" text-anchor="middle" fill="#193343">482.6 overall</text>
+<line x1="1479.5100000000002" y1="218.0" x2="1479.5100000000002" y2="452.9" stroke="#596a75" stroke-width="1" stroke-dasharray="" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<text x="1494.5100000000002" y="341.45" font-size="17" text-anchor="start" fill="#193343">87</text>
+<text x="60" y="525" font-size="22" text-anchor="start" fill="#193343">8 × Ø4.5 +0.10/0 THRU · Ø8 +0.10/0 × 90° countersink on outside face</text>
+<text x="60" y="555" font-size="17" text-anchor="start" fill="#193343">Black outlines = CUT DXF geometry. Blue circles = machined countersinks; not laser-cut circles.</text>
+<line x1="60" y1="578" x2="1540" y2="578" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<text x="60" y="614" font-size="21" text-anchor="start" fill="#193343">HOLE CENTRES / X, Z</text>
+<text x="60" y="647" font-size="17" text-anchor="start" fill="#193343">8 M4 holes: X = −208 and 208; Z = 9, 43.5 and 78 (6 holes)</text>
+<text x="60" y="676" font-size="17" text-anchor="start" fill="#193343">Plus X = −67.5 and 67.5; Z = 43.5 (2 holes)</text>
+<text x="60" y="705" font-size="17" text-anchor="start" fill="#193343">18 × Ø32 +0.20/0 windows: X = −180 to 180 at 45 pitch;</text>
+<text x="60" y="734" font-size="17" text-anchor="start" fill="#193343">Z = 23.5 and 63.5 (9 windows per row)</text>
+<text x="60" y="763" font-size="17" text-anchor="start" fill="#193343">4 slots: 10 × 7 overall, R3.5 ends; X = ±232.55;</text>
+<text x="60" y="792" font-size="17" text-anchor="start" fill="#193343">Z = 5.4 and 81.6. Rack fixing centres 465.1 horizontally.</text>
+<text x="1040" y="614" font-size="21" text-anchor="start" fill="#193343">TYPICAL M4 SECTION</text>
+<polygon points="1137,647 1194.0,647 1227.25,680.25 1227.25,704.0 1137,704.0" fill="#d7e0e4" stroke="#193343"/>
+<polygon points="1403,647 1346.0,647 1312.75,680.25 1312.75,704.0 1403,704.0" fill="#d7e0e4" stroke="#193343"/>
+<text x="1270" y="637" font-size="16" text-anchor="middle" fill="#193343">Ø8 / 90°</text>
+<text x="1270" y="729.0" font-size="16" text-anchor="middle" fill="#193343">Ø4.5 through</text>
+<text x="1040" y="761" font-size="17" text-anchor="start" fill="#193343">Cone depth 1.75 nominal</text>
+<text x="1040" y="788" font-size="17" text-anchor="start" fill="#193343">Straight bore 1.25 nominal</text>
+<text x="1040" y="817" font-size="17" text-anchor="start" fill="#193343">No countersink on POM-facing side</text>
+<line x1="60" y1="842" x2="1540" y2="842" stroke="#596a75" stroke-width="1" stroke-dasharray=""/>
+<text x="60" y="878" font-size="17" text-anchor="start" fill="#193343">Punch or laser-cut outline and through holes. Finish holes as needed; machine countersinks afterwards. No bending.</text>
+<text x="60" y="906" font-size="17" text-anchor="start" fill="#193343">Hole/window centres ±0.10 relative to bottom-centre datum; other dimensions ±0.15 unless specified.</text>
+<text x="60" y="934" font-size="17" text-anchor="start" fill="#193343">Deburr and flatten after cutting. External edges: break 0.3–0.5; do not enlarge specified bores or countersinks.</text>
+<text x="60" y="962" font-size="17" text-anchor="start" fill="#193343">A4 M4 × 12 DIN 7991 socket countersunk screws; specified DIN 965 Z Pozi accepted. Threads are in POM only.</text>
+<text x="60" y="990" font-size="17" text-anchor="start" fill="#193343">Dry structural plate. Eighteen windows clear the integral POM bosses; fittings seal directly on their raised ends.</text>
+<text x="60" y="1018" font-size="17" text-anchor="start" fill="#193343">Rack slots take fixings matching the actual rails/cage nuts; the M4 specification applies to plate-to-POM joints.</text>
+<text x="60" y="1090" font-size="17" text-anchor="start" fill="#a4502c">DRAFT FOR VENDOR DFM / NOT A PRESSURE OR STRUCTURAL RELEASE</text>
+<text x="1540" y="1090" font-size="16" text-anchor="end" fill="#193343">faceplate-flat.dxf + faceplate.step</text>
+</g></svg>

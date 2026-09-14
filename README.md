@@ -16,24 +16,20 @@ Initial design, revision G: eight parallel circuits, all connections on one face
 
 The dimensions of EK's reference manifold are 326 × 57 × 36 mm; its published 57 mm height is 12.55 mm above 1U. Our model uses 2U to prioritise servicing access. See [design reasoning](docs/design.md) and [manufacturer sources](docs/sources.md).
 
-## Alternative: one backing plate
+## Selected mounting arrangement — Option B
 
-[Option C](docs/backplate.md) removes the front plate and extends the rear gallery cover to rack width, combining the rack mount and gallery closure in one flat steel part. The flat POM face in Option C projects 43 mm forward of the rail surface; reference male QD tips project about 75.1 mm. All ports remain exposed. This interprets the user's bottom plate as a backing plate parallel to the rack face.
+The front faceplate fixes the POM body to the rack through eight M4 screws. The separate rear plate only closes and seals the two galleries, using 31 M4 screws. All 39 plate-to-POM screws use A4 M4 × 12 DIN 7991 socket countersunk heads as standard, accepting the specified DIN 965 Z Pozi alternative. There are no M3 or M5 fasteners in these joints. Rack fixings remain sized to the rails/cage nuts.
 
-- [Compare both arrangements](output/mounting-comparison.svg).
-- [Option C Blender model](output/backplate/manifold-review.blend).
-- [Option C STEP assembly](output/backplate/cad/manifold-assembly.step).
-- [Option C flat cut profile](output/backplate/cad/backplate-flat.dxf).
-- [Option C assembled render](output/backplate/images/assembled.png).
-- [Option C exploded rear mounting plate](output/backplate/images/backplate-exploded.png).
-
-The Option B faceplate files remain below and are not replaced by this alternative.
+The former combined rack/backing plate, [Option C](docs/backplate.md), is retained as a historical reference and is not selected.
 
 ## Review files
 
 - [Editable Blender scene](output/manifold-review.blend) — CAD-derived body/cover/ears plus simplified QD3 and tube references.
 - [Assembly STEP](output/cad/manifold-assembly.step) — three manufactured components and two seal envelopes. Individual body, cover and faceplate STEP files are alongside it.
-- [Faceplate cut profile](output/cad/faceplate-flat.dxf) — flat DXF in millimetres; countersink the mounting holes separately.
+- [Front plate drawing](output/faceplate-drawing.svg) and [cut DXF](output/cad/faceplate-flat.dxf).
+- [Rear sealing plate drawing](output/rear-cover-drawing.svg) and [cut DXF](output/cad/rear-cover-flat.dxf) — 31 Ø4.5 through holes; machine countersinks afterwards.
+- [Wetted rear-plate material assessment](docs/wetted-materials.md) — retain 316L with compatible inhibited coolant.
+- [Steel plate drafting notes](docs/steel-plates.md) — hole coordinates, finishing and matching STEP files.
 - [POM body and cylindrical port bosses](output/images/pom-body.png).
 - [Faceplate exploded view](output/images/faceplate-exploded.png).
 - [Port seating section](output/port-seating-section.svg).
@@ -48,7 +44,7 @@ The Option B faceplate files remain below and are not replaced by this alternati
 
 This is an initial model for feedback and vendor DFM, not a pressure-rated production release. STEP thread holes are pilot bores: use the thread call-outs in the manufacturing notes. QD shapes are illustrative, and actual ring travel/hand access must be trialled. Working pressure, total flow, coolant and final seal qualification remain open. The selected rings are Polymax 255 × 3 mm EPDM 70 ShA; catalogue listing verified; user reports 5–7 day cart dispatch and a £10 rubber minimum.
 
-The 3 mm faceplate mounts to the rack. Its eighteen Ø32 mm windows clear Ø28 mm POM bosses; their sealing faces stand 3 mm proud of steel; eight separate A4 M4 × 12 DIN 7991 screws attach the body, with DIN 965 Z Pozi accepted in the same countersinks. Socket heads target flush seating and Pozi heads sit lower; slight proudness is acceptable outside the fitting keep-outs. The rear gallery cover remains independent. The bosses are 6 mm high from the plate-supporting POM face, passing through the 3 mm faceplate. No metal bending is required. A separate bottom support plate is permissible but is not needed for this mounting concept and is not included in revision G.
+The 3 mm faceplate mounts to the rack. Its eighteen Ø32 mm windows clear Ø28 mm POM bosses; their sealing faces stand 3 mm proud of steel; eight separate A4 M4 × 12 DIN 7991 screws attach the body, with DIN 965 Z Pozi accepted in the same countersinks. Socket heads target flush seating and Pozi heads sit lower; slight proudness is acceptable outside the fitting keep-outs. The rear gallery cover uses 31 M4 screws solely for closure and seal clamping; it has no rack-mounting holes. The bosses are 6 mm high from the plate-supporting POM face, passing through the 3 mm faceplate. No metal bending is required.
 
 ## Rebuild
 
@@ -61,18 +57,10 @@ python3 -m venv .venv
 .venv/bin/python scripts/draw_layout.py
 .venv/bin/python scripts/draw_rear_seals.py
 rsvg-convert output/rear-seal-review.svg -o output/images/rear-seal-review.png
-.venv/bin/python scripts/export_faceplate_dxf.py
+.venv/bin/python scripts/export_steel_plates.py
 /Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py
 ```
 
 Parameters are in `cad/parameters.json`. The source defines the current faceplate/bolt pattern explicitly; changing circuit count or major dimensions also requires reviewing those patterns and the manufacturing documentation. It is not an automatically qualified product configurator.
 
-To regenerate the alternative, use the same source with the mounting option:
-
-```sh
-.venv/bin/python scripts/build_cad.py --mounting backplate
-.venv/bin/python scripts/export_faceplate_dxf.py --mounting backplate
-/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py -- --mounting backplate
-```
-
-The default commands generate Option B; the flag writes Option C under `output/backplate/`.
+Historical Option C assets and rebuild instructions are retained in [its reference notes](docs/backplate.md).

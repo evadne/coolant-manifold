@@ -60,10 +60,11 @@ for z in rows:
     seals.append(sealouter.cut(sealinner));voids.append(fluid)
 lid=box(P['rack_width'] if BACK else W,P['lid_thickness'],H,y=D)
 bolts=[(x,z) for z in (P['cover_bolt_edge_offset'],H/2,H-P['cover_bolt_edge_offset']) for x in xs]+[(x,z) for x in (-213,213) for z in rows]
+C=P['cover_fastener'];CT=P['lid_thickness']
 for x,z in bolts:
-    body=body.cut(cylinder(1.65,14,(x,D,z),(0,-1,0)))
-    lid=lid.cut(cylinder(2.25,3.1,(x,D,z),(0,1,0)))
-    lid=lid.cut(cq.Solid.makeCone(4.2,2.25,1.95,cq.Vector(x,D+3,z),cq.Vector(0,-1,0)))
+    body=body.cut(cylinder(C['tap_drill_diameter']/2,C['pilot_depth'],(x,D,z),(0,-1,0)))
+    lid=lid.cut(cylinder(C['clearance_diameter']/2,CT+.1,(x,D,z),(0,1,0)))
+    lid=lid.cut(cq.Solid.makeCone(C['countersink_diameter']/2,C['clearance_diameter']/2,(C['countersink_diameter']-C['clearance_diameter'])/2,cq.Vector(x,D+CT,z),cq.Vector(0,-1,0)))
 # Both options use flat steel: a front mounting faceplate or a rear combined cover/mount.
 T=P['faceplate_thickness']
 # Option C retains its independent M5 mounting specification.

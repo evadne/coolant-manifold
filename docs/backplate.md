@@ -1,4 +1,6 @@
-# Option C — one flat backing plate, exposed POM face
+# Historical Option C — not selected
+
+The user selected Option B: a front rack faceplate and a separate rear sealing plate, with M4 plate-to-POM screws throughout. The files and M5 mounting details below describe the former alternative only; do not use them for the selected design.
 
 This alternative implements the user's proposal to eliminate the faceplate and let the POM sit proud of the rack. Here “bottom plate” means a backing plate parallel to the vertical rack face, not a horizontal shelf. A horizontal plate alone would not present a mounting face to the vertical rack rails.
 
@@ -39,6 +41,22 @@ This is the simpler arrangement by part count and front-face machining and remov
 
 Plate bending near the rack fixings, seal-face distortion under hose/handling loads, screw preload, POM creep and rack-door clearance must be checked before preferring this option for manufacture. The body and fittings project in front of the rails, so pulling, side loads and impacts must be included in that review. The CAD checks establish connectivity and geometric separation, not a pressure or load rating.
 
-The two alternatives are preserved for user review. No variant has been ordered or designated a production release.
+This alternative is retained for historical reference only. No variant has been ordered or designated a production release.
 
 Revision G locates the outer M4 cover rows at z5.5 and81.5, retaining z43.5 and the four end positions. The regenerated backing plate DXF and STEP include this change; do not use an older hole pattern. The dry-land and edge-margin review in the manufacturing notes applies to this option too.
+
+
+## Historical files and rebuild
+
+- [Comparison at revision G](../output/mounting-comparison.svg).
+- [Blender model](../output/backplate/manifold-review.blend).
+- [STEP assembly](../output/backplate/cad/manifold-assembly.step).
+- [Cut profile](../output/backplate/cad/backplate-flat.dxf).
+
+Only if this alternative is reopened:
+
+```sh
+.venv/bin/python scripts/build_cad.py --mounting backplate
+.venv/bin/python scripts/export_faceplate_dxf.py --mounting backplate
+/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py -- --mounting backplate
+```

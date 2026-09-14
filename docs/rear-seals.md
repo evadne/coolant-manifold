@@ -1,6 +1,6 @@
 # Revision G — Polymax 3 mm EPDM face seals
 
-Both CAD mounting options now use **two Polymax 255 mm ID × 3 mm section EPDM 70 ShA rings**, in **4.0 mm-wide × 2.3 mm-deep grooves**. The cover closes onto the surrounding POM lands, compressing each ring by approximately **23%**. This is partial compression, not flattening the rubber.
+The selected Option B design uses **two Polymax 255 mm ID × 3 mm section EPDM 70 ShA rings**, in **4.0 mm-wide × 2.3 mm-deep grooves**. The cover closes onto the surrounding POM lands, compressing each ring by approximately **23%**. This is partial compression, not flattening the rubber.
 
 ![Rear seal detail](../output/images/rear-seal-review.png)
 
