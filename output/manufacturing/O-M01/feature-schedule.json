@@ -1,0 +1,314 @@
+{
+  "issue": "O-M01",
+  "datums": "A: POM mounting plane Y0 / plate POM-side plane Y0; B: width midplane X0; C: bottom Z0",
+  "front_ports": [
+    {
+      "id": "P01",
+      "x": -180,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P02",
+      "x": -140,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P03",
+      "x": -100,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P04",
+      "x": -60,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P05",
+      "x": -20,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P06",
+      "x": 20,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P07",
+      "x": 60,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P08",
+      "x": 100,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P09",
+      "x": 140,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P10",
+      "x": 180,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P11",
+      "x": -180,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P12",
+      "x": -140,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P13",
+      "x": -100,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P14",
+      "x": -60,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P15",
+      "x": -20,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P16",
+      "x": 20,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P17",
+      "x": 60,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P18",
+      "x": 100,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P19",
+      "x": 140,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "P20",
+      "x": 180,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    }
+  ],
+  "body_fixings": [
+    {
+      "id": "F1",
+      "x": -120.0,
+      "z": 7.0,
+      "thread": "M4 x 0.7 - 6H",
+      "full_thread_length_min": 10
+    },
+    {
+      "id": "F2",
+      "x": 0.0,
+      "z": 7.0,
+      "thread": "M4 x 0.7 - 6H",
+      "full_thread_length_min": 10
+    },
+    {
+      "id": "F3",
+      "x": 120.0,
+      "z": 7.0,
+      "thread": "M4 x 0.7 - 6H",
+      "full_thread_length_min": 10
+    },
+    {
+      "id": "F4",
+      "x": -120.0,
+      "z": 80.0,
+      "thread": "M4 x 0.7 - 6H",
+      "full_thread_length_min": 10
+    },
+    {
+      "id": "F5",
+      "x": 0.0,
+      "z": 80.0,
+      "thread": "M4 x 0.7 - 6H",
+      "full_thread_length_min": 10
+    },
+    {
+      "id": "F6",
+      "x": 120.0,
+      "z": 80.0,
+      "thread": "M4 x 0.7 - 6H",
+      "full_thread_length_min": 10
+    }
+  ],
+  "end_ports": [
+    {
+      "id": "E1",
+      "side": "LEFT",
+      "x": -205,
+      "y": 20,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "E2",
+      "side": "LEFT",
+      "x": -205,
+      "y": 20,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "E3",
+      "side": "RIGHT",
+      "x": 205,
+      "y": 20,
+      "z": 23.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    },
+    {
+      "id": "E4",
+      "side": "RIGHT",
+      "x": 205,
+      "y": 20,
+      "z": 63.5,
+      "thread": "G 1/4 ISO 228-1",
+      "full_thread_length_min": 8
+    }
+  ],
+  "rack_slots": [
+    {
+      "id": "R01",
+      "x": -232.55,
+      "z": 5.4,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R02",
+      "x": -232.55,
+      "z": 21.275,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R03",
+      "x": -232.55,
+      "z": 37.15,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R04",
+      "x": -232.55,
+      "z": 49.85,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R05",
+      "x": -232.55,
+      "z": 65.725,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R06",
+      "x": -232.55,
+      "z": 81.6,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R07",
+      "x": 232.55,
+      "z": 5.4,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R08",
+      "x": 232.55,
+      "z": 21.275,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R09",
+      "x": 232.55,
+      "z": 37.15,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R10",
+      "x": 232.55,
+      "z": 49.85,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R11",
+      "x": 232.55,
+      "z": 65.725,
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R12",
+      "x": 232.55,
+      "z": 81.6,
+      "length": 10,
+      "width": 7
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+89f8fdbb5c51d9eace255d319818bc69b16aec418ef26e440e33a61fc8d4919e  output/manufacturing/O-M01/RM10-O-M01-BODY.step
+8ae610dfbe32a016bf14077b0f5aa08fc0151508bff674beee9601b082c57f7c  output/manufacturing/O-M01/RM10-O-M01-BODY.zip
+6fc9636b186eea83ba9c50c56588c6d168807cbdb5251aa64dd3a951624c29b4  output/manufacturing/O-M01/RM10-O-M01-FACEPLATE.dxf
+655eb198b9eb1a1a4f851354b09d3f6eb3ca4bd486a9d5c880a96ffd453e31c3  output/manufacturing/O-M01/RM10-O-M01-FACEPLATE.step
+bc00e45dc7aeae5ad06af45259caddcf09d01c944a869d5a25e02fb5907e6860  output/manufacturing/O-M01/RM10-O-M01-FACEPLATE.zip
+ac776c526483ff3c01ae382ebf17dbaf821841e9be0435a818d1e50ba9dd9040  output/manufacturing/O-M01/export-verification.json
+93e2d0bcf6fb8f68c8323e6d37f3973389253b7739a312bcfec317f11ac38cc4  output/manufacturing/O-M01/feature-schedule.json
+93dea0d609a43ab45a49c7e35afef659137bb94cd96d2a28acda50dffd93cccd  output/manufacturing/O-M01/geometry-verification.json
+19f8919fe992d188c51873c5588326335982d556436113ab76ceaef7b7a8fb56  output/manufacturing/O-M01/package-verification.json
+a787ec8756988d4b0d01a128dc051c5e8734848cff3d681423292021d9c3ef6a  output/pdf/RM10-O-M01-BODY.pdf
+28efff79dc73112b16dfb2be811fd99dde8ebf29eddb0fe370ae00e27c8ef442  output/pdf/RM10-O-M01-DFM.pdf
+4b0cb8dfb810097f9d27788c3e7e42987ffd7e489370ded323dbbbe16b1704b9  output/pdf/RM10-O-M01-FACEPLATE.pdf

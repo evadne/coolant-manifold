@@ -1,0 +1,29 @@
+{
+  "RM10-O-M01-BODY.pdf": {
+    "pages": 3,
+    "required_notes": "PASS"
+  },
+  "RM10-O-M01-FACEPLATE.pdf": {
+    "pages": 2,
+    "required_notes": "PASS"
+  },
+  "RM10-O-M01-DFM.pdf": {
+    "pages": 2,
+    "required_notes": "PASS"
+  },
+  "RM10-O-M01-BODY.zip": {
+    "members": [
+      "RM10-O-M01-BODY.step",
+      "RM10-O-M01-BODY.pdf"
+    ],
+    "integrity": "PASS"
+  },
+  "RM10-O-M01-FACEPLATE.zip": {
+    "members": [
+      "RM10-O-M01-FACEPLATE.step",
+      "RM10-O-M01-FACEPLATE.dxf",
+      "RM10-O-M01-FACEPLATE.pdf"
+    ],
+    "integrity": "PASS"
+  }
+}

@@ -1,3 +1,5 @@
+[Revision O-M01: supplier drawings, STEP/DXF upload packages and JLC manufacturing review](docs/manufacturing-O-M01.md). Operator-approved O layout; black unfilled POM-C or POM-H accepted; external deburring only.
+
 [Revision O: selected 40 mm POM body with centred galleries](docs/revision-O-centred-40mm.md).
 
 [Revision N: 35 mm POM body with centred galleries](docs/revision-N-centred-galleries.md).
