@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="840" viewBox="0 0 1200 840"><rect width="1200" height="840" fill="#f7f9fa"/><g font-family="Arial,sans-serif" fill="#223341">
+<text x="65" y="65" text-anchor="start" font-size="30">REVISION N / CENTRED LONGITUDINAL GALLERIES</text>
+<text x="65" y="103" text-anchor="start" font-size="18">Section between front port columns; dimensions in mm. Drawing annotations only.</text>
+<rect x="280.0" y="190.0" width="175.0" height="435.0" fill="#b7bfc4" stroke="#283944" stroke-width="2"/>
+<rect x="265.0" y="190.0" width="15.0" height="435.0" fill="#718b9b"/>
+<circle cx="367.5" cy="507.5" r="29.5" fill="#c8e9f3" stroke="#186980" stroke-width="2"/>
+<rect x="250.0" y="437.5" width="30.0" height="140.0" fill="none" stroke="#72848e" stroke-width="1.5" stroke-dasharray="6 4"/>
+<path d="M327.5,507.5 L407.5,507.5" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray="5 4"/>
+<circle cx="367.5" cy="307.5" r="29.5" fill="#c8e9f3" stroke="#186980" stroke-width="2"/>
+<rect x="250.0" y="237.5" width="30.0" height="140.0" fill="none" stroke="#72848e" stroke-width="1.5" stroke-dasharray="6 4"/>
+<path d="M327.5,307.5 L407.5,307.5" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray="5 4"/>
+<rect x="280.0" y="581.75" width="70.0" height="16.5" fill="#f7f9fa"/>
+<rect x="280.0" y="216.75" width="70.0" height="16.5" fill="#f7f9fa"/>
+<path d="M367.5,175.0 L367.5,640.0" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray="7 5"/>
+<path d="M280.0,155 L455.0,155" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M280.0,149 L280.0,161" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M455.0,149 L455.0,161" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<text x="367.5" y="143" text-anchor="middle" font-size="18">35 slab</text>
+<path d="M280.0,410 L338.0,410" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M280.0,404 L280.0,416" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M338.0,404 L338.0,416" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<text x="309.0" y="398" text-anchor="middle" font-size="16">11.6</text>
+<path d="M397.0,410 L455.0,410" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M397.0,404 L397.0,416" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M455.0,404 L455.0,416" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<text x="426.0" y="398" text-anchor="middle" font-size="16">11.6</text>
+<path d="M250.0,690 L455.0,690" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M250.0,684 L250.0,696" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<path d="M455.0,684 L455.0,696" stroke="#637985" stroke-width="1.5" fill="none" stroke-dasharray=""/>
+<text x="352.5" y="678" text-anchor="middle" font-size="18">41 overall POM, including bosses</text>
+<text x="245.0" y="655.0" text-anchor="end" font-size="16">FRONT</text>
+<text x="470.0" y="655.0" text-anchor="start" font-size="16">REAR</text>
+<text x="565" y="215" text-anchor="start" font-size="24">Body: 410 × 35 × 87 mm</text>
+<text x="565" y="262" text-anchor="start" font-size="22">Two Ø11.8 galleries at Y17.5</text>
+<text x="565" y="307" text-anchor="start" font-size="22">11.6 mm ahead and 11.6 mm behind</text>
+<text x="565" y="352" text-anchor="start" font-size="18">Front branch holes interrupt the front wall</text>
+<text x="565" y="379" text-anchor="start" font-size="18">at the port columns; they are outside this section.</text>
+<text x="565" y="431" text-anchor="start" font-size="18">Dashed outlines: 6 mm boss projections.</text>
+<text x="565" y="458" text-anchor="start" font-size="18">Blue strip: 3 mm stainless faceplate.</text>
+<text x="565" y="485" text-anchor="start" font-size="18">White recesses: blind M4 pilot holes at X0.</text>
+<text x="565" y="539" text-anchor="start" font-size="20">Side ports are centred in the body depth.</text>
+<text x="565" y="570" text-anchor="start" font-size="18">Ø22 sealing lands have 6.5 mm edge reserve</text>
+<text x="565" y="597" text-anchor="start" font-size="18">to both the front and rear of the side face.</text>
+<text x="65" y="755" text-anchor="start" font-size="18">Nominal geometry review; not a pressure or stiffness qualification.</text>
+<text x="65" y="789" text-anchor="start" font-size="18">Side-elbow / optional cage-nut clearance is recorded separately in rack-clearance-review.json.</text>
+</g></svg>
