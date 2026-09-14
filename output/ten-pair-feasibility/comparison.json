@@ -1,0 +1,114 @@
+{
+  "status": "Geometric feasibility only; original I/J models unchanged",
+  "rack_basis": "The previously rendered illustrative rack: flange X225..260/Y0..3, return X257..260/Y3..45, cage nuts 10x6x10 at X\u00b1232.55/Y6/Z5.4,81.6",
+  "candidate": "410 mm body, ten pairs at 40 x 40 pitch; proposed six M4 mounts X-160/0/160, Z7/80",
+  "countersink_edge_to_port_window_mm": 5.927784324928346,
+  "head_edge_to_36mm_keepout_mm": 3.947784324928346,
+  "limitations": [
+    "Actual rail folds, cage clips, screw protrusion and other hardware are not represented fully",
+    "No fitted insertion sweep, installation-tool access or hose rotation sweep validated",
+    "Existing QD pull-ring reference dimensions; hand access requires physical check",
+    "No new machined-body CAD or pressure/structural qualification"
+  ],
+  "variants": [
+    {
+      "body_width_mm": 400,
+      "front_pairs": 10,
+      "front_ports": 20,
+      "front_pitch_horizontal_vertical_mm": [
+        40,
+        40
+      ],
+      "front_centres_x_mm": [
+        -180,
+        -140,
+        -100,
+        -60,
+        -20,
+        20,
+        60,
+        100,
+        140,
+        180
+      ],
+      "pull_ring_gap_nominal_mm": 16.3,
+      "end_port_centre_to_body_end_mm": 20.0,
+      "boss_root_to_body_end_mm": 5.0,
+      "end_full_thread_to_outer_front_drill_x_gap_mm": 6.1,
+      "fitted_width_mm": 457.6,
+      "intrusion_beyond_assumed_opening_each_side_mm": 3.8000000000000114,
+      "plugged_width_mm": 408,
+      "fitting_to_illustrative_rack_min_distances_mm": {
+        "front_flange": 14.0,
+        "upright_return": 28.19999999999999,
+        "cage_nut": 9.020670706771195
+      }
+    },
+    {
+      "body_width_mm": 410,
+      "front_pairs": 10,
+      "front_ports": 20,
+      "front_pitch_horizontal_vertical_mm": [
+        40,
+        40
+      ],
+      "front_centres_x_mm": [
+        -180,
+        -140,
+        -100,
+        -60,
+        -20,
+        20,
+        60,
+        100,
+        140,
+        180
+      ],
+      "pull_ring_gap_nominal_mm": 16.3,
+      "end_port_centre_to_body_end_mm": 25.0,
+      "boss_root_to_body_end_mm": 10.0,
+      "end_full_thread_to_outer_front_drill_x_gap_mm": 11.1,
+      "fitted_width_mm": 467.6,
+      "intrusion_beyond_assumed_opening_each_side_mm": 8.800000000000011,
+      "plugged_width_mm": 418,
+      "fitting_to_illustrative_rack_min_distances_mm": {
+        "front_flange": 14.0,
+        "upright_return": 23.19999999999999,
+        "cage_nut": 8.989438247187637
+      }
+    },
+    {
+      "body_width_mm": 420,
+      "front_pairs": 10,
+      "front_ports": 20,
+      "front_pitch_horizontal_vertical_mm": [
+        40,
+        40
+      ],
+      "front_centres_x_mm": [
+        -180,
+        -140,
+        -100,
+        -60,
+        -20,
+        20,
+        60,
+        100,
+        140,
+        180
+      ],
+      "pull_ring_gap_nominal_mm": 16.3,
+      "end_port_centre_to_body_end_mm": 30.0,
+      "boss_root_to_body_end_mm": 15.0,
+      "end_full_thread_to_outer_front_drill_x_gap_mm": 16.1,
+      "fitted_width_mm": 477.6,
+      "intrusion_beyond_assumed_opening_each_side_mm": 13.800000000000011,
+      "plugged_width_mm": 428,
+      "fitting_to_illustrative_rack_min_distances_mm": {
+        "front_flange": 14.0,
+        "upright_return": 18.19999999999999,
+        "cage_nut": 8.989438247187637
+      }
+    }
+  ]
+}
