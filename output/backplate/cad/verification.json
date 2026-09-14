@@ -30,6 +30,12 @@
     5.399999999999997,
     81.6
   ],
+  "mounting_countersink_depth_mm": 2.45,
+  "mounting_plate_straight_bore_length_mm": 0.5499999999999998,
+  "faceplate_fastener_fit": {},
+  "proud_head_review_height_mm": null,
+  "port_hardware_keepout_diameter_mm": null,
+  "head_edge_to_port_hardware_keepout_min_mm": null,
   "faceplate_openings_mm": null,
   "boss_to_window_radial_clearance_mm": null,
   "boss_height_from_mounting_face_mm": 0,

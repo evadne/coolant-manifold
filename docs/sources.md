@@ -18,4 +18,7 @@ The reference drawings support component envelopes. They do not establish assemb
 
 - User alternative in this task: remove the front faceplate, use a single bottom/backing plate and allow POM to sit proud of the rack. Option C models a plate parallel to the rack face and records the resulting rail-relative projection explicitly.
 
-- Further user sketch/clarification: each female G1/4 port sits inside an integral cylindrical POM protrusion. Current Option B revision D puts the O-ring seating annulus 3 mm proud of the stainless faceplate. The stand-off addresses plate interference; sealing still depends on the actual fitting O-ring and thread engagement.
+- Further user sketch/clarification: each female G1/4 port sits inside an integral cylindrical POM protrusion. Current Option B revision E puts the O-ring seating annulus 3 mm proud of the stainless faceplate. The stand-off addresses plate interference; sealing still depends on the actual fitting O-ring and thread engagement.
+
+- [Westfield M4 DIN 965 Z A4 Pozi](https://www.westfieldfasteners.co.uk/A4-ScrewBolt-PoziCsk-M4.html): M4 × 0.7, head Ø7.5, height 2.20, PZ2; M4 × 12 part WF33490. Accepted Option B revision E alternative.
+- [Westfield M4 DIN 7991 / ISO 10642 A4 socket countersunk](https://www.westfieldfasteners.co.uk/A4-ScrewBolt-SHCsk-M4.html): default M4 × 12 WF14434, head Ø7.53–7.96, height ≤2.48, nominal 2.5 mm hex. These supplier-listed dimensions govern the current fit assessment; confirm supplied standard and head envelope rather than assuming DIN/ISO interchangeability.

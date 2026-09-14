@@ -1,6 +1,6 @@
 # RM8-2U rack coolant manifold
 
-Initial design, revision D: eight parallel circuits, all connections on one face, black Delrin body and a flat stainless steel rack faceplate. Each G1/4 female port is inside an integral cylindrical POM boss, standing 3 mm proud of the steel. The 2U format provides space to operate QD3 release rings without crowding adjacent fittings.
+Initial design, revision E: eight parallel circuits, all connections on one face, black Delrin body and a flat stainless steel rack faceplate. Each G1/4 female port is inside an integral cylindrical POM boss, standing 3 mm proud of the steel. The 2U format provides space to operate QD3 release rings without crowding adjacent fittings.
 
 ![Assembled manifold](output/images/assembled.png)
 
@@ -45,7 +45,7 @@ The Option B faceplate files remain below and are not replaced by this alternati
 
 This is an initial model for feedback and vendor DFM, not a pressure-rated production release. STEP thread holes are pilot bores: use the thread call-outs in the manufacturing notes. QD shapes are illustrative, and actual ring travel/hand access must be trialled. Working pressure, total flow, coolant and final seal selection remain open.
 
-The 3 mm faceplate mounts to the rack. Its eighteen Ø32 mm windows clear Ø28 mm POM bosses; their sealing faces stand 3 mm proud of steel; eight separate M5 screws attach the body. The rear gallery cover remains independent. The bosses are 6 mm high from the plate-supporting POM face, passing through the 3 mm faceplate. No metal bending is required. A separate bottom support plate is permissible but is not needed for this mounting concept and is not included in revision D.
+The 3 mm faceplate mounts to the rack. Its eighteen Ø32 mm windows clear Ø28 mm POM bosses; their sealing faces stand 3 mm proud of steel; eight separate A4 M4 × 12 DIN 7991 screws attach the body, with DIN 965 Z Pozi accepted in the same countersinks. Socket heads target flush seating and Pozi heads sit lower; slight proudness is acceptable outside the fitting keep-outs. The rear gallery cover remains independent. The bosses are 6 mm high from the plate-supporting POM face, passing through the 3 mm faceplate. No metal bending is required. A separate bottom support plate is permissible but is not needed for this mounting concept and is not included in revision E.
 
 ## Rebuild
 

@@ -4,11 +4,11 @@ This alternative implements the user's proposal to eliminate the faceplate and l
 
 ## Configuration
 
-- One Delrin body, 440 × 40 × 87 mm. Port locations, galleries and seals follow Option B; eight M5 retention holes move to the rear, and the front has only its eighteen G1/4 ports.
+- One Delrin body, 440 × 40 × 87 mm. Port locations, galleries and seals follow Option B; eight M5 retention holes are on the rear, and the front has only its eighteen G1/4 ports.
 - One flat 316L stainless backing plate, 482.6 × 87 × 3 mm, with a machined sealing face. This replaces both the separate rear cover and the front rack faceplate.
 - Four 10 × 7 rack slots at X = ±232.55, Z = 5.4 / 81.6.
 - Thirty-one M4 pressure-cover screws, with the same positions and countersinks as Option B.
-- Eight independent M5 body-retention screws, accessible from the rear. Their X/Z pattern is the same as Option B, but they enter POM from y = 40, towards the front.
+- Eight independent M5 body-retention screws, accessible from the rear. Their X/Z pattern is the same as Option B, but Option C retains M5 while Option B revision E uses M4 DIN 7991. They enter POM from y = 40, towards the front.
 - Two unchanged EPDM gallery seals. No port windows and no bent metal.
 
 Mounting load passes from the body to the backing plate through the rear screw joint, then through the plate's outboard mounting regions to the rack fixings. The dedicated M5 screws provide body retention; the M4 screws distribute seal clamping. Both sets and the same plate remain mechanically coupled, so assigning them names does not isolate structural forces from the seal joint.
@@ -17,7 +17,7 @@ Mounting load passes from the body to the backing plate through the rear screw j
 
 The POM front stays at y = 0, body rear at y = 40, backing plate at y = 40…43. The rack's rail mating surface is y = 43. Consequently the POM face projects 43 mm ahead of the rail surface, or 40 mm ahead of the mounting plate's front face. Reference QD3-MTG4 male tips project approximately 75.1 mm ahead of the rail surface (43 + 32.1).
 
-For current Option B (revision D), the rail mating surface is y = 0, raised boss ends are 6 mm ahead of it and male tips project about 38.1 mm. Thus Option C moves the fitting/service arrangement 37 mm further into the space in front of the rails. The 100 mm provisional service zone in front of the POM face becomes 143 mm in front of the rails. Connected female QDs, hose bends and a closed rack door still need an actual fit check.
+For current Option B (revision E), the rail mating surface is y = 0, raised boss ends are 6 mm ahead of it and male tips project about 38.1 mm. Thus Option C moves the fitting/service arrangement 37 mm further into the space in front of the rails. The 100 mm provisional service zone in front of the POM face becomes 143 mm in front of the rails. Connected female QDs, hose bends and a closed rack door still need an actual fit check.
 
 Both alternatives retain eight parallel circuits, a main inlet/outlet pair, 45 mm horizontal and 40 mm vertical port pitch, and an 87 mm / 2U height. There is no loss of lateral QD spacing.
 

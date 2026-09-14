@@ -3,7 +3,7 @@
 <rect width="1600" height="1100" fill="#f4f6f8"/>
 <g font-family="Arial,sans-serif" fill="#192e3f">
 <text x="65" y="70" font-size="35" font-weight="bold">RM8 / 2U coolant manifold</text>
-<text x="65" y="108" font-size="19" fill="#526777">Revision D · Eight parallel circuits · All ports G1/4 female · Millimetres</text>
+<text x="65" y="108" font-size="19" fill="#526777">Revision E · Eight parallel circuits · All ports G1/4 female · Millimetres</text>
 <text x="65" y="164" font-size="18" fill="#192e3f" text-anchor="start">FRONT / FLAT RACK FACEPLATE</text>
 <rect x="160.55499999999995" y="220" width="1278.89" height="230.54999999999998" rx="0" fill="#d1d9de" stroke="#192e3f" stroke-width="1.2"/>
 <circle cx="323.0" cy="388.275" r="42.4" fill="#263540" stroke="#6c808c"/>
@@ -78,14 +78,14 @@
 <circle cx="1277.0" cy="282.275" r="37.1" fill="#263540" stroke="#b64e2b" stroke-width="2.5"/>
 <circle cx="1277.0" cy="282.275" r="17.433025" fill="#263540"/>
 <text x="1277.0" y="234.87499999999997" font-size="13" fill="#b64e2b" text-anchor="middle">R8</text>
-<circle cx="248.80000000000007" cy="426.7" r="13.78" fill="#aab5bd" stroke="#71808b"/>
-<circle cx="248.80000000000007" cy="335.275" r="13.78" fill="#aab5bd" stroke="#71808b"/>
-<circle cx="248.80000000000007" cy="243.85" r="13.78" fill="#aab5bd" stroke="#71808b"/>
-<circle cx="1351.1999999999998" cy="426.7" r="13.78" fill="#aab5bd" stroke="#71808b"/>
-<circle cx="1351.1999999999998" cy="335.275" r="13.78" fill="#aab5bd" stroke="#71808b"/>
-<circle cx="1351.1999999999998" cy="243.85" r="13.78" fill="#aab5bd" stroke="#71808b"/>
-<circle cx="621.125" cy="335.275" r="13.78" fill="#aab5bd" stroke="#71808b"/>
-<circle cx="978.875" cy="335.275" r="13.78" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="248.80000000000007" cy="426.7" r="10.6" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="248.80000000000007" cy="335.275" r="10.6" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="248.80000000000007" cy="243.85" r="10.6" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="1351.1999999999998" cy="426.7" r="10.6" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="1351.1999999999998" cy="335.275" r="10.6" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="1351.1999999999998" cy="243.85" r="10.6" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="621.125" cy="335.275" r="10.6" fill="#aab5bd" stroke="#71808b"/>
+<circle cx="978.875" cy="335.275" r="10.6" fill="#aab5bd" stroke="#71808b"/>
 <rect x="170.49249999999995" y="426.96500000000003" width="26.5" height="18.55" rx="9.275" fill="#f4f6f8" stroke="#71808b" stroke-width="1.2"/>
 <rect x="170.49249999999995" y="225.035" width="26.5" height="18.55" rx="9.275" fill="#f4f6f8" stroke="#71808b" stroke-width="1.2"/>
 <rect x="1403.0075000000002" y="426.96500000000003" width="26.5" height="18.55" rx="9.275" fill="#f4f6f8" stroke="#71808b" stroke-width="1.2"/>

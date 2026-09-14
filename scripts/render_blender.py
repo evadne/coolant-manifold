@@ -61,8 +61,14 @@ for x,z in S['cover_bolts']:
     cyl('M4 countersunk head reference',x,42.75,z,3.7,.5,steel)
     cyl('M4 socket reference',x,43.02,z,1.3,.06,black,6)
 for x,z in S['faceplate_mounts']:
-    cyl('M5 mounting head reference',x,42.75 if BACK else -2.75,z,4.8,.5,steel)
-    cyl('M5 mounting socket reference',x,43.02 if BACK else -3.02,z,1.6,.06,black,6)
+    if BACK:
+        cyl('Mounting M5 head reference',x,42.75,z,4.8,.5,steel)
+        cyl('Mounting M5 socket reference',x,43.02,z,1.6,.06,black,6)
+    else:
+        f=P['faceplate_fastener']; recess=(f['countersink_diameter']-f['head_diameter'])/2
+        y=-P['faceplate_thickness']+recess
+        cyl('Mounting M4 DIN 7991 head reference',x,y+.125,z,f['head_diameter']/2,.25,steel)
+        cyl('Mounting 2.5 mm hex drive reference',x,y-.02,z,2.5/math.sqrt(3),.03,black,6)
 label('RM8  /  PARALLEL',-110,17,87.12,5.8,white)
 label('2U   -   REV '+P['revision'],110,17,87.12,5.8,white)
 label('S',-211 if BACK else -224,-.15 if BACK else -3.15,22,5,blue,True);label('R',-211 if BACK else -224,-.15 if BACK else -3.15,62,5,red,True)
@@ -90,7 +96,7 @@ scene.render.filepath=str(BASE/'images'/'assembled.png');bpy.ops.render.render(w
 # Rear cover removed. Actual pockets are shown, not a fictitious internal route.
 parts['backplate' if BACK else 'lid'].hide_render=True
 for o in bpy.data.objects:
-    if o.name.startswith('M4') or (BACK and o.name.startswith('M5 mounting')):o.hide_render=True
+    if o.name.startswith('M4') or (BACK and o.name.startswith('Mounting')):o.hide_render=True
 for o in females:o.hide_render=True
 cam.location=(220,440,330);cam.rotation_euler=(Vector((0,20,43))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=550
 scene.render.filepath=str(BASE/'images'/'open-galleries.png');bpy.ops.render.render(write_still=True)
@@ -98,13 +104,13 @@ scene.render.filepath=str(BASE/'images'/'open-galleries.png');bpy.ops.render.ren
 if not BACK:
     parts['lid'].hide_render=False
     for o in bpy.data.objects:
-        if o.name.startswith(('M4','M5 mounting')):o.hide_render=False
+        if o.name.startswith(('M4','Mounting')):o.hide_render=False
     for o in qd+females:o.hide_render=True
     cam.location=(260,-500,300);cam.rotation_euler=(Vector((0,0,43))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=560
     scene.render.filepath=str(BASE/'images'/'bare-port-bosses.png');bpy.ops.render.render(write_still=True)
     parts['faceplate'].hide_render=True;parts['lid'].hide_render=True
     for o in bpy.data.objects:
-        if o.name.startswith(('M4','M5 mounting','Colour identification strip')) or (o.type=='FONT' and o.location.y<0):o.hide_render=True
+        if o.name.startswith(('M4','Mounting','Colour identification strip')) or (o.type=='FONT' and o.location.y<0):o.hide_render=True
     scene.render.filepath=str(BASE/'images'/'pom-body.png');bpy.ops.render.render(write_still=True)
     parts['faceplate'].hide_render=False
     for o in bpy.data.objects:
@@ -112,17 +118,17 @@ if not BACK:
 # Exploded view preserves the front option and makes the backplate attachment clear.
 parts['backplate' if BACK else 'lid'].hide_render=False
 for o in bpy.data.objects:
-    if o.name.startswith(('M4','M5 mounting')):o.hide_render=False
+    if o.name.startswith(('M4','Mounting')):o.hide_render=False
 for o in qd+females:o.hide_render=True
 if BACK:
     parts['backplate'].location.y+=65
     for o in bpy.data.objects:
-        if o.name.startswith(('M4','M5 mounting')):o.location.y+=65
+        if o.name.startswith(('M4','Mounting')):o.location.y+=65
     cam.location=(290,500,300);target=(0,40,43)
 else:
     parts['faceplate'].location.y-=65
     for o in bpy.data.objects:
-        if o.name.startswith(('M5 mounting','Colour identification strip')) or (o.type=='FONT' and o.location.y<0):o.location.y-=65
+        if o.name.startswith(('Mounting','Colour identification strip')) or (o.type=='FONT' and o.location.y<0):o.location.y-=65
     cam.location=(290,-500,300);target=(0,-25,43)
 cam.rotation_euler=(Vector(target)-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.ortho_scale=610
 scene.render.filepath=str(BASE/'images'/('backplate-exploded.png' if BACK else 'faceplate-exploded.png'));bpy.ops.render.render(write_still=True)

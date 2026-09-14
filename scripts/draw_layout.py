@@ -8,7 +8,7 @@ out=R/'output';xs=[-180+45*i for i in range(9)]
 a=['<svg xmlns="http://www.w3.org/2000/svg" width="520mm" height="145mm" viewBox="0 0 520 145">',
 '<rect width="520" height="145" fill="white"/>',
 '<g font-family="Arial,sans-serif" font-size="3.2" fill="#142c3c">',
-'<text x="19" y="9" font-size="5">RM8-2U / REV D — QD3 clearance trial, full size</text>',
+'<text x="19" y="9" font-size="5">RM8-2U / REV E — QD3 clearance trial, full size</text>',
 '<text x="19" y="16">Print at 100%, no fit-to-page. Verify the 100 mm scale before use. Large-format or tiled printing required.</text>']
 x0=260;y0=25
 # Face shown top to bottom in screen coordinates.
@@ -35,7 +35,7 @@ b=['<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="
 '<rect width="1600" height="1100" fill="#f4f6f8"/>',
 '<g font-family="Arial,sans-serif" fill="#192e3f">',
 '<text x="65" y="70" font-size="35" font-weight="bold">RM8 / 2U coolant manifold</text>',
-'<text x="65" y="108" font-size="19" fill="#526777">Revision D · Eight parallel circuits · All ports G1/4 female · Millimetres</text>']
+'<text x="65" y="108" font-size="19" fill="#526777">Revision E · Eight parallel circuits · All ports G1/4 female · Millimetres</text>']
 def text(x,y,t,size=16,colour='#192e3f',anchor='start'):
     b.append(f'<text x="{x}" y="{y}" font-size="{size}" fill="{colour}" text-anchor="{anchor}">{escape(t)}</text>')
 def rect(x,y,w,h,fill,stroke='#192e3f',radius=0):
@@ -57,7 +57,7 @@ for z in p['port_rows_z']:
         lab=('IN' if z<40 else 'OUT') if i==0 else ('S' if z<40 else 'R')+str(i)
         text(cx,cy-16*s-5,lab,13,colour,'middle')
 for x,z in p['faceplate_mounts_xz']:
-    b.append(f'<circle cx="{ox+x*s}" cy="{oy+(87-z)*s}" r="{5.2*s}" fill="#aab5bd" stroke="#71808b"/>')
+    b.append(f'''<circle cx="{ox+x*s}" cy="{oy+(87-z)*s}" r="{p['faceplate_fastener']['countersink_diameter']/2*s}" fill="#aab5bd" stroke="#71808b"/>''')
 for sign in(-1,1):
     for z in (5.4,81.6):
         rect(ox+sign*232.55*s-5*s,oy+(87-z)*s-3.5*s,10*s,7*s,'#f4f6f8','#71808b',3.5*s)

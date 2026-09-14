@@ -1,5 +1,5 @@
 {
-  "revision": "D",
+  "revision": "E",
   "name": "RM8-2U",
   "body_width": 440.0,
   "body_depth": 40.0,
@@ -68,5 +68,33 @@
   "qd_male_hex_envelope": 25.404,
   "port_boss_diameter": 28.0,
   "port_boss_height": 6.0,
-  "port_boss_root_radius": 1.0
+  "port_boss_root_radius": 1.0,
+  "faceplate_fastener": {
+    "thread": "M4 x 0.7",
+    "nominal_diameter": 4.0,
+    "pitch": 0.7,
+    "length_including_head": 12.0,
+    "material": "A4 stainless steel",
+    "standard": "DIN 7991",
+    "drive": "2.5 mm hex",
+    "supplier_part": "WF14434",
+    "head_diameter": 7.96,
+    "head_height": 2.48,
+    "alternative": {
+      "standard": "DIN 965 Z",
+      "drive": "PZ2",
+      "supplier_part": "WF33490",
+      "head_diameter": 7.5,
+      "head_height": 2.2
+    },
+    "clearance_diameter": 4.5,
+    "countersink_diameter": 8.0,
+    "countersink_angle": 90.0,
+    "tap_drill_diameter": 3.3,
+    "pilot_depth": 14.0,
+    "full_thread_depth_min": 10.0,
+    "head_diameter_min": 7.53,
+    "proud_head_review_height": 0.2
+  },
+  "port_hardware_keepout_diameter": 36.0
 }

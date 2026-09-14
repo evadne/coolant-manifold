@@ -1,5 +1,5 @@
 {
-  "revision": "D",
+  "revision": "E",
   "model": "RM8-2U",
   "mounting": "faceplate",
   "valid_manufactured_solids": 3,
@@ -7,14 +7,14 @@
   "branch_circuits": 8,
   "ports": 18,
   "lid_screws_M4": 31,
-  "body_mount_screws_M5": 8,
+  "body_mount_screws_M4": 8,
   "assembly_envelope_mm": [
     482.6,
     49.0,
     87.0
   ],
-  "body_volume_mm3": 1237032.4963177433,
-  "estimated_dry_mass_without_fittings_or_screws_kg": 3.300539002059305,
+  "body_volume_mm3": 1237626.2573292712,
+  "estimated_dry_mass_without_fittings_or_screws_kg": 3.305449994149668,
   "reference_pull_ring_gaps_xy_mm": [
     21.3,
     16.3
@@ -30,6 +30,23 @@
     5.399999999999997,
     81.6
   ],
+  "mounting_countersink_depth_mm": 1.75,
+  "mounting_plate_straight_bore_length_mm": 1.25,
+  "faceplate_fastener_fit": {
+    "DIN 7991": {
+      "nominal_head_recess_mm": 0.020000000000000018,
+      "nominal_tip_depth_in_POM_mm": 9.02,
+      "full_thread_depth_margin_mm": 0.9800000000000004
+    },
+    "DIN 965 Z": {
+      "nominal_head_recess_mm": 0.25,
+      "nominal_tip_depth_in_POM_mm": 9.25,
+      "full_thread_depth_margin_mm": 0.75
+    }
+  },
+  "proud_head_review_height_mm": 0.2,
+  "port_hardware_keepout_diameter_mm": 36.0,
+  "head_edge_to_port_hardware_keepout_min_mm": 8.123986446980737,
   "faceplate_openings_mm": 32.0,
   "boss_to_window_radial_clearance_mm": 2.0,
   "boss_height_from_mounting_face_mm": 6.0,
@@ -46,7 +63,11 @@
     "36 mm fitting overhang and raised POM seals clear faceplate",
     "no intersecting cover/mount screw bores",
     "2U envelope",
-    "12 mm minimum conservative fitting gap"
+    "12 mm minimum conservative fitting gap",
+    "both specified M4 bearing cones clear steel",
+    "head envelope contained within plate",
+    "blind M4 nominal thread and pilot depth budget",
+    "0.2 mm proud heads remain outside 36 mm port hardware keep-outs"
   ],
   "limitations": [
     "No pressure or structural rating established",

@@ -14,7 +14,7 @@ if BACK:
 else:
     for z in p['port_rows_z']:
         for x in xs:m.add_circle((x,z),p['faceplate_port_clearance']/2,dxfattribs={'layer':'CUT'})
-for x,z in p['faceplate_mounts_xz']:m.add_circle((x,z),2.75,dxfattribs={'layer':'CUT'})
+for x,z in p['faceplate_mounts_xz']:m.add_circle((x,z),2.75 if BACK else p['faceplate_fastener']['clearance_diameter']/2,dxfattribs={'layer':'CUT'})
 for x in (-p['rack_hole_pitch']/2,p['rack_hole_pitch']/2):
     for z in (6.35-(88.9-h)/2,82.55-(88.9-h)/2):
         r=p['rack_slot_width']/2;a=(p['rack_slot_length']-p['rack_slot_width'])/2
