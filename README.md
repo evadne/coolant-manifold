@@ -1,5 +1,7 @@
 [Current O-M02 manufacturing package: 4 mm bosses, projecting 1 mm above the 3 mm faceplate](docs/manufacturing-O-M02.md).
 
+[24U open-frame workstation context](docs/context-24U.md): eight waterblocked GPUs above the manifold, with a front-I/O 4U host below; sketch and editable Blender layout.
+
 [Ready for JLC: upload files and submission instructions](docs/jlc-submission-O-M02.md). Both POM-C and POM-H accepted. [Complete local handover](output/submission/O-M02/RM10-O-M02-HANDOVER.zip); extract and upload the two individual part ZIPs separately.
 
 Current O-M02 studio views: [bare ports](output/manufacturing/O-M02/photorealistic/01-bare-ports.png), [QD3 pairs with translucent 10/13 tubing](output/manufacturing/O-M02/photorealistic/02-qd3-translucent-tubes.png), and [internal galleries at 50% body transparency](output/manufacturing/O-M02/product-views/10-body-50-percent-transparent.png). These use the issued 4 mm boss geometry; the historical images below retain their original revisions.

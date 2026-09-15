@@ -1,0 +1,45 @@
+{
+  "rack_U": 24,
+  "rack_depth_overall_mm": 600,
+  "rail_spacing_depth_mm": 500,
+  "rack_units_bottom_to_top": [
+    {
+      "U": "1-8",
+      "use": "Reserved cooling/power space; external cooling connections shown"
+    },
+    {
+      "U": "9-12",
+      "use": "4U host, front-accessible PCIe coolant bracket"
+    },
+    {
+      "U": "13-14",
+      "use": "O-M02 manifold"
+    },
+    {
+      "U": "15-20",
+      "use": "Open eight-GPU shelf and conceptual PCIe switch"
+    },
+    {
+      "U": "21-24",
+      "use": "Service space / spare"
+    }
+  ],
+  "front_pair_allocation": {
+    "1-8": "Individual GPUs in parallel",
+    "9": "Host CPU/chassis branch",
+    "10": "Spare"
+  },
+  "gpu_envelope_mm": [
+    17,
+    270,
+    132
+  ],
+  "gpu_pitch_mm": 40,
+  "host_envelope_mm": [
+    440,
+    456,
+    176
+  ],
+  "switch_status": "Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified",
+  "scope": "Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold."
+}

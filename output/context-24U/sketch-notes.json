@@ -1,0 +1,16 @@
+{
+  "mode": "Built-in image_gen tool, reference-based sketch then targeted dimension-annotation correction",
+  "final_image": "03-context-sketch-v2.png",
+  "initial_prompt": "sketch-prompt.txt",
+  "correction_prompt": "sketch-edit-prompt.txt",
+  "references": [
+    "01-rack-context.png",
+    "02-front-layout.png"
+  ],
+  "manifold_source": "output/manufacturing/O-M02/product-views/assembled-unmarked.blend",
+  "review": "Visually checked eight GPUs, GPU/manifold/host order, parallel branches, host bracket, ten front pairs and U-range labels; removed misleading generated depth dimension arrows. Small hardware details remain illustrative.",
+  "sha256": {
+    "03-context-sketch-v2.png": "5147656ca26cd894d1c71b808c5b4d5c63e1241ec4fc1c98ac92274749c503cc",
+    "24U-context.blend": "5212bcd7d89d902ae3864962251b7d994b1a5092b0c5cc494d14ace06befb1e7"
+  }
+}
