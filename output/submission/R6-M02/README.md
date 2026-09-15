@@ -6,7 +6,7 @@ Issued 15 September 2026. R6 operator-approved on 15 September 2026. Part **SN12
 
 Use `output/submission/R6-M02/SN1260-R6-M02-PLATE.zip` as one part. It contains identically named STEP, DXF and three-sheet A3 PDF files. The STEP is a single finished nominal solid; the DXF is the 1:1 millimetre cut profile. The drawing defines tolerances, edge breaks and finish. Report conflicts before cutting; do not silently substitute nominal model sizes for drawing limits.
 
-Suggested route: JLC's sheet-metal service, stainless steel 304, 2 mm, brushed finish. Flat plate with plain through holes; no tapping or countersinks. Round holes may be laser-cut where the specified finished dimensions are met, otherwise drilled/finished. This avoids prescribing an unnecessary separate drilling operation.
+Suggested route: JLC's sheet-metal service, stainless steel 304, 2 mm, raw sheet finish, no brushing or polishing. Flat plate with plain through holes; no tapping or countersinks. Round holes may be laser-cut where the specified finished dimensions are met, otherwise drilled/finished. This avoids prescribing an unnecessary separate drilling operation.
 
 JLC's [sheet-metal fabrication guidelines](https://jlccnc.com/help/article/sheet-metal-fabrication-guidelines) require STEP/STP, accept PDF/DXF supplementary drawings and permit ZIP uploads containing STEP; matching file names are recommended. Their listed minima are 1 mm hole spacing and cut diameter at least 1 mm and half the sheet thickness. Published general/cutting/hole tolerances do not automatically establish compliance with this drawing's unilateral hole limits, cable-notch edge finish or free-state flatness. Checked 15 September 2026.
 
@@ -30,7 +30,7 @@ Overall dimensions are 482.60 ±0.15 × 444.50 +0/−0.15 × 2.00 ±0.10 mm. The
 
 The smallest round hole is 3.6 mm. Nominal rack-slot end margins are 2.85 mm vertically and 3.75 mm laterally; the nearest adjacent slot gap is 5.70 mm. Central aperture webs are 12 mm. None of these dimensions require a sub-millimetre cut ligament. The thin, broad plate should be inspected without fixture forces masking distortion.
 
-Deburr both faces: fan holes have only a 0.10 mm maximum edge break; other cut edges have a 0.20–0.30 mm break, except E01. At E01, continuously round the cable-contact edges R0.30–0.50 on both faces and blend into the adjacent top edge. Remove burrs, sharp lips and rough cut striations. These small face rounds are specified separately from the R0.5 cut-profile radii. These finishing details are drawing requirements, not extra machined STEP chamfers. Specify uniform satin brushing on BOTH broad faces, grain along X / the 482.60 mm width, with no product markings or applied coating.
+Deburr both faces: fan holes have only a 0.10 mm maximum edge break; other cut edges have a 0.20–0.30 mm break, except E01. At E01, continuously round the cable-contact edges R0.30–0.50 on both faces and blend into the adjacent top edge. Remove burrs, sharp lips and rough cut striations. These small face rounds are specified separately from the R0.5 cut-profile radii. These finishing details are drawing requirements, not extra machined STEP chamfers. Specify raw stainless sheet finish on BOTH broad faces, with no brushing, polishing, product markings or applied coating.
 
 CAD verification confirms one valid solid, 72 openings, all 68 fixing positions and matching circular DXF coordinates. The production STEP is byte-identical to the R6 source. A solid comparison against R4 verifies that the only removed material is the 10 × 2 mm notch envelope (36.000 mm³); there is no added material. Nominal net mass is 1.247 kg using 7,900 kg/m³; finishing is not deducted. The notch removes about 0.284 g at the top centre and leaves the mount patterns and central web intact.
 
@@ -46,4 +46,4 @@ Build geometry first with `scripts/build_radiator_plate.py --revision R6`. Run `
 
 This issue prepares the files only. No supplier upload, quotation acceptance or order has been made.
 
-R6-M02 supersedes R6-M01 only to specify horizontal brushing on both broad faces. STEP/DXF geometry remains byte-identical to approved R6. See [current three-part JLC review](../../../docs/jlc-final-review.md).
+R6-M02 supersedes R6-M01. Before quotation, the operator amended both steel parts to raw sheet finish with no brushing or polishing. STEP/DXF geometry remains byte-identical to approved R6. See [current three-part JLC review](../../../docs/jlc-final-review.md).

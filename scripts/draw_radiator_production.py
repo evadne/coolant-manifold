@@ -121,13 +121,12 @@ lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '   Other edges: break 0.20-0.30; E01 see sheet 3.' if NOTCH else '   All other cut edges: deburr / break 0.20-0.30.',
  '   Edge breaks are not modelled in STEP.',
  '6. Flatness: 0.50 max, free state, whole plate.',
- '7. Uniform satin brushed finish; no coating,',
- '   engraving, printing or identification marks.',
+ ('7. Raw sheet finish; no brushing or polishing,' if ISSUE=='R6-M02' else '7. Uniform satin brushed finish; no coating,' ),
+ '   coating, engraving, printing or markings.',
  '8. Confirm specified tolerances and flatness',
  '   before fabrication; report discrepancies.'],2.6,5.2)
 if ISSUE=='R6-M02':
- text(40,259,'BRUSH BOTH FACES: X / RACK WIDTH',2.3,True)
- line(40,255,100,255);arrow(40,255,1,0);arrow(100,255,-1,0)
+ text(40,259,'RAW SHEET FINISH: BOTH FACES',2.3,True)
 text(x,97,'COORDINATES AND TOLERANCES',3.2,True)
 lines(x,89,['Origin O: width centreline at bottom edge.',
  'X right; Y up; all feature axes normal to sheet.',

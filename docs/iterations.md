@@ -1,6 +1,6 @@
 # Revision register
 
-**Current:** operator-approved manifold **Q**, manufacturing issue **Q-M01**, and radiator **R6**, manufacturing issue **R6-M02**. The [three-part recap](three-part-recap.md) describes the current interfaces. Q retains the accepted Koolance fitting pose and uses shorter retention pilots; R6-M02 specifies horizontal brushing without changing R6 geometry.
+**Current:** operator-approved manifold **Q**, manufacturing issue **Q-M01**, and radiator **R6**, manufacturing issue **R6-M02**. The [three-part recap](three-part-recap.md) describes the current interfaces. Q retains the accepted Koolance fitting pose and uses shorter retention pilots; R6-M02 now specifies raw stainless sheet finish, matching the faceplate, without changing R6 geometry.
 
 ## Manifold history
 
@@ -29,7 +29,7 @@ P's official Koolance studio fitting update and operator acceptance are presenta
 | R3 | Added tapped M4 fan holes and R50 aperture corners | Historical unselected alternative |
 | R4 / R4-M01 | Plain fan holes and nuts; accepted assembly sequence | Superseded geometry/pack; its final load analysis remains baseline evidence |
 | R5 / R5-M01 | 10 ×5 mm cable notch | Historical deeper-notch version |
-| **R6 / R6-M02** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | **Current operator-approved geometry; M02 adds horizontal brushing** |
+| **R6 / R6-M02** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | **Current operator-approved geometry; M02 specifies raw sheet finish (amended before quotation)** |
 
 ## Archive policy
 

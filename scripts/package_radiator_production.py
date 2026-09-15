@@ -26,7 +26,7 @@ if REV in ['R5','R6']:
  for phrase in (f"{n['mouth_width']:.2f}",f"{n['depth']:.2f}",f"R{n['mouth_radius']:.2f}",f"R{n['bottom_radius']:.2f}",'R0.30-0.50',f'{throat:.2f} REF',f'{floor:.2f} REF'):
   assert phrase in pages[2],phrase
 if ISSUE=='R6-M02':
- for phrase in ('BRUSH BOTH FACES: X', 'M02'):assert phrase in txt,phrase
+ for phrase in ('RAW SHEET FINISH: BOTH FACES', 'M02'):assert phrase in txt,phrase
  for phrase in ('M4 ×40', 'screws + nuts', 'assembly order', 'loctite'):
   assert phrase.lower() not in txt.lower(),f'Assembly instruction in fabrication PDF: {phrase}'
 files=[src/f'{stem}.step',src/f'{stem}.dxf',pdf]

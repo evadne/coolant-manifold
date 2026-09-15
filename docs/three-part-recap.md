@@ -34,7 +34,7 @@ Duty remains formulated inhibited computer coolant, with approximately 50°C int
 - Forty optional 10 × 7 mm rack slots: four available fixing positions per U, two per side. Empty holes are not structural supports.
 - Top-centre cable notch: 10 mm mouth × 2 mm depth, four tangent R0.5 profile corners, 9 mm throat and 8 mm bottom flat.
 - Cable-contact edges receive R0.3–0.5 rounding on both faces after cutting. STEP/DXF contain the actual notch outline; these additional face-edge finishing rounds are specified in the drawing.
-- Uniform satin brushed finish along rack width X on both broad faces, no surface markings; no tapping, countersinking or bending.
+- Raw stainless sheet finish on both broad faces; no brushing or polishing, no surface markings; no tapping, countersinking or bending.
 - Assembly order: fans onto plate, populated plate onto radiator, complete assembly onto rack. Fan screw heads and washers sit on the core side; nuts sit outside the fan faces.
 
 The [current load summary](radiator-load-assessment.md) uses R4 structural calculations as baseline evidence for the radiator mount, not an R6 tested assembly rating. R6 changes only the small top-edge notch; fixing positions and air apertures remain the same.

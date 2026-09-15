@@ -12,7 +12,7 @@ for part,n,groups in [('BODY',3,'PEBF'),('FACEPLATE',2,'WHR')]:
   page=pages[1] if part=='FACEPLATE' or f['group'] in 'EB' else pages[0]
   assert f['id'] in page,f['id']
   for j in ([0,1,2] if f['group'] in 'EB' else [0,2]):assert f"{f['xyz_mm'][j]:.3f}" in page,(f['id'],j)
- required=['13.00','10 MIN','G 1/4','ISO 228-1','118°','90°','NO INTERNAL','0.05','28 G1/4'] if part=='BODY' else ['NO TAPPED','NO COUNTERSINKS','BRUSH X','BOTH broad faces','482.60','2.00','0.30','±0.05']
+ required=['13.00','10 MIN','G 1/4','ISO 228-1','118°','90°','NO INTERNAL','0.05','28 G1/4'] if part=='BODY' else ['NO TAPPED','NO COUNTERSINKS','RAW STAINLESS SHEET FINISH','BOTH broad faces','482.60','2.00','0.30','±0.05']
  for s in required:assert s in text,s
  for s in ['unused ports', 'no rear cover', 'loctite', 'tighten', 'M4 ×10', 'installed rack screws']:
   assert s.lower() not in text.lower(),f'Assembly/design commentary in fabrication PDF: {s}'

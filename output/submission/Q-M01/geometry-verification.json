@@ -111,7 +111,7 @@
     }
   },
   "source_sha256": {
-    "cad/manufacturing/Q-M01.json": "4115b172f438352c85ccc5fd888498268d0404379988fbd4db05eb229cf4129e",
+    "cad/manufacturing/Q-M01.json": "d02cd991288f26c514f1d695672bb41652dbae28f86c89ce58e83a555c9cca2d",
     "scripts/prepare_Q_production.py": "430db7160deac0a6674ce7f5cbff314ba091bea229850152b8149cee942c00aa",
     "output/long-bore-Q/cad/body.step": "4d4158aa8de30eced120da93b9bd8b9f4500ce8b8a7822eb15e369e5869b893d",
     "output/long-bore-Q/cad/faceplate.step": "2726a5719c7133160e256fc9c38e7b84bd15c15b328d5b687e5acddda73e7c8d"

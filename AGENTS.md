@@ -12,7 +12,7 @@ Sources: `cad/iterations/Q-rear-ports.json` derives accepted Q from historical P
 -28 G1/4 female total:20 front at40×40 pitch,4 side,4 rear atX±180/Y40/Z23.5,63.5. Two isolated continuous common galleries only. No grouping, bypass, rear cover or large perimeter seals. Unused ports need face-sealing plugs or appropriate self-closing couplings.
 - All G1/4:8 mm MIN full thread AFTER1 mm entry. Front pilot23, rear20; end galleries through. Rear flatØ28 seal lands, no bosses. External deburr only; no internal bore/cross-hole deburr operation, clean/flush loose chips.
 - Twelve M4×0.7-6H retention holes,10 mm MIN full thread AFTER0.55 entry,Ø3.3×13 full-diameter pilots plus118° point. M4×10 ISO7380-1 A2 button screws are selected, nominal8 mm insertion through2 mm plate. No countersunk screws. First assembly dry, without Loctite. No qualified torque/creep rating; see docs/Q-torque-and-creep.md.
-- Faceplate geometry identical to P:304/EN1.4301,482.6×87×2,20Ø32 windows,12Ø4.5 plain M4 holes,12 optional10×7 rack slots. Boss projection1 mm nominal. M4 mating coordinates on both parts±0.05; other port/window coordinates±0.10. Brushed BOTH broad faces along X/rack width; no surface markings. Six optional rack positions per side do not require twelve rack screws.
+- Faceplate geometry identical to P:304/EN1.4301,482.6×87×2,20Ø32 windows,12Ø4.5 plain M4 holes,12 optional10×7 rack slots. Boss projection1 mm nominal. M4 mating coordinates on both parts±0.05; other port/window coordinates±0.10. Raw stainless sheet finish on BOTH broad faces, matching the radiator plate; no brushing, polishing or markings. Specified external deburring remains required. Six optional rack positions per side do not require twelve rack screws.
 - Current product/studio and25U context use Q. Official Koolance reference meshes remain under `output/long-bore-P/koolance-fit/` as shared immutable source data; do not rescale. Preserve accepted front tube routes and GPU/power geometry.
 
 ## Current fitting presentation and rack context
@@ -60,3 +60,5 @@ Power connectors in the current GPU context use separate Molex219114 cable-housi
 
 
 Keep manufacturing documents limited to how to fabricate and inspect each custom part. Port plugs, bought-in hardware, tightening, threadlocker and installation sequence belong in separate assembly guides, not supplier drawings or fabrication ZIPs. Q assembly instructions are in `docs/assembly-Q.md`; assembly solids/parameters are in `output/assembly/Q/` and `cad/assembly/Q.json`.
+
+On 15 September 2026, the operator selected matching raw stainless sheet finish for BOTH steel parts before supplier quotation. Keep all fabrication PDFs, supplier options and remarks consistent. Existing presentation shaders are illustrative; finish requirements come from the current fabrication pack.

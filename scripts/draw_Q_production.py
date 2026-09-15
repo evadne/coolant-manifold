@@ -66,7 +66,7 @@ stem='RM10-Q-M01-FACEPLATE';c=canvas.Canvas(str(OUT/f'{stem}.pdf'),pagesize=(420
 page(1,2,'Flat rack faceplate - through features and finish','304 / EN 1.4301 stainless steel | 2.00 ±0.10 thick')
 elevation('plate',211,166,.75)
 t(25,251,'FRONT VIEW 3:4 - SAME COORDINATES AS BODY FRONT',2.7,True)
-dh(35,100,148,'BRUSH X');t(111,149,'Satin brushed BOTH broad faces, parallel to 482.60 mm width.',2.9,True)
+t(25,149,'RAW STAINLESS SHEET FINISH - BOTH broad faces; no brushing or polishing.',2.9,True)
 lines(22,132,['W01-W20: 20x Ø32.00 +0.10/0 THROUGH port windows.',
 'H01-H12: 12x Ø4.50 +0.10/0 THROUGH M4 retention holes.',
 'R01-R12: 12x horizontal 10.00 ±0.10 ×7.00 +0.10/0 THROUGH slots; R3.50 ends.',
@@ -77,17 +77,17 @@ lines(22,132,['W01-W20: 20x Ø32.00 +0.10/0 THROUGH port windows.',
 'External deburr / edge break 0.10-0.20 max, both faces; maintain flat screw bearing seats.',
 'Edge breaks are finishing operations; nominal STEP/DXF cut profile has no face-edge breaks.',
 'Laser-cut profile/windows/slots; drill or finish holes where required to achieve call-outs.',
-'No coating, paint, engraving, printing or other product markings. Brush arrows are drawing-only.',
+'No brushing, polishing, coating, paint, engraving, printing or other product markings.',
 'General DIN ISO 2768-1 class m; H centres ±0.05; other centres ±0.10; specific limits override.',
 'H01-H12: finished plain bores; preserve the specified full through diameter.',
-'Supplier must confirm unilateral hole sizes, flatness and satin grain before fabrication.'],step=6,size=2.8)
+'Supplier must confirm unilateral hole sizes, flatness and specified edge finish before fabrication.'],step=6,size=2.8)
 c.showPage();page(2,2,'Coordinate schedules - all 44 through openings','304 / EN 1.4301 stainless steel | 2.00 ±0.10 thick')
 for x,g,title in [(18,'W','PORT WINDOWS'),(152,'H','BODY RETENTION'),(280,'R','OPTIONAL RACK SLOTS')]:
  t(x,254,title,3.2,True);table(x,247,['ID','X','Z'],[[v['id'],f"{v['xyz_mm'][0]:.3f}",f"{v['xyz_mm'][2]:.3f}"] for v in group(g)],[29,43,43])
 lines(18,109,['W diameter Ø32.00 +0.10/0; H diameter Ø4.50 +0.10/0; R dimensions 10.00 ±0.10 ×7.00 +0.10/0.',
 'H01-H12 X/Z coordinates ±0.05; W/R coordinates ±0.10 from the stated origin. Do not accumulate chained pitch errors.',
 'Port pitch 40.00 REF horizontally and vertically. Rack column pitch 465.10 REF.',
-'No surface markings. Both broad faces brushed horizontally, along X / the rack width.'],step=7,size=2.8)
+'Raw stainless sheet finish on both broad faces. No brushing, polishing or surface markings.'],step=7,size=2.8)
 c.save()
 # BODY
 stem='RM10-Q-M01-BODY';c=canvas.Canvas(str(OUT/f'{stem}.pdf'),pagesize=(420*mm,297*mm));c.setTitle(stem)

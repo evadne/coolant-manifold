@@ -5,7 +5,7 @@
   "status": "Operator-approved Q geometry; shorter M4 retention detail following thread-depth review; supplier review only",
   "body_material": "Black unfilled declared POM-C or POM-H machining stock; grade datasheet required; Delrin branding optional",
   "faceplate_material": "304 stainless steel / EN 1.4301 (JLC SUS304)",
-  "plate_finish": "Satin brushed both broad faces; grain parallel to X / 482.60 mm rack width; no coating or markings",
+  "plate_finish": "Raw stainless sheet finish on both broad faces; no brushing, polishing, coating or markings; specified deburring and edge finishing required",
   "plate_thickness_mm": 2,
   "plate_flatness_mm": 0.3,
   "boss_height_mm": 3,

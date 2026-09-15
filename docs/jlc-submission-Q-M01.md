@@ -5,7 +5,7 @@ Q is the accepted 28-port parallel manifold. During manufacturing review the ope
 Upload as two separate parts when authorised:
 
 - `RM10-Q-M01-BODY.zip`: matching single-solid STEP and three-sheet production PDF. CNC POM, black unfilled declared POM-C or POM-H; Threads YES; no surface treatment/polishing. Confirm exact grade, long-hole capability, functional finishes and thread gauges.
-- `RM10-Q-M01-FACEPLATE.zip`: matching single-solid STEP, flat DXF and two-sheet production PDF. Sheet-metal SUS304,2 mm; brushed both broad faces along X /482.60 mm rack width. Plain through holes; flat profile.
+- `RM10-Q-M01-FACEPLATE.zip`: matching single-solid STEP, flat DXF and two-sheet production PDF. Sheet-metal SUS304,2 mm; raw sheet finish on both broad faces; no brushing or polishing. Plain through holes; flat profile.
 
 Supplier remarks are separate text files for the quotation interface. Each fabrication ZIP contains only the single part STEP and its matching PDF, plus DXF for the plate. The POM STEP represents tap pilots; finish threads to the PDF call-outs.
 

@@ -38,4 +38,4 @@ The body uses opposed long-bore drilling, external milling and direct tapped por
 
 Parallel topology does not enforce equal flow. Required flow, gallery losses, plastic thread retention, thermal cycling and assembled leak performance remain engineering work. The current geometry and screw checks are detailed in [Revision Q](revision-Q-rear-ports.md); [manufacturing status](manufacturing.md) distinguishes review files from supplier issues.
 
-Q-M01 retention:10 mm full M4 thread after entry,13 mm pilot plus118° point. First assembly dry, no Loctite. Both stainless plates: satin brushed along rack width X on both broad faces. See [torque/creep assessment](Q-torque-and-creep.md).
+Q-M01 retention:10 mm full M4 thread after entry,13 mm pilot plus118° point. First assembly dry, no Loctite. Both stainless plates: raw stainless sheet finish on both broad faces, with no brushing or polishing. See [torque/creep assessment](Q-torque-and-creep.md).

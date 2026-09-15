@@ -14,7 +14,7 @@
     {
       "part": "RM10-Q-M01-FACEPLATE",
       "zip": "RM10-Q-M01-FACEPLATE.zip",
-      "sha256": "e53da66db36095bc1e88e2eaf57062468980ece6585db1e4a76814da0cb4e00e",
+      "sha256": "79e3494f78bd4f6f53581c9d7fa30c974a2238ea01ba37b9a616f69ca5cb7ebe",
       "pdf_sheets": 2,
       "contents": [
         "step",
@@ -25,7 +25,7 @@
     {
       "part": "SN1260-R6-M02-PLATE",
       "zip": "SN1260-R6-M02-PLATE.zip",
-      "sha256": "ce83900ce87d3b2b43aba8b822b63920636cfe494cf86aa80e1ca83855fc608b",
+      "sha256": "e52e87c1a158953fa378bd27544a048a2f005536ab3a3d7192e2c0c6a94d2bde",
       "pdf_sheets": 3,
       "contents": [
         "step",
@@ -47,10 +47,10 @@
     "Specified tolerances, flatness and surface finishes"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "5735010444258912e586b24a4dc98040a7ed79dfb2f0c8c76fabc09cd834ec52",
-    "output/review/Q-M01-R6-M02-visual-review.json": "1127c6f88c41d149c82a3330540a9d0a574b2aad668acb5ae1dc3953e56133a1",
-    "scripts/draw_radiator_production.py": "0b86988c7998e34b0a89a502592d48ad8c0f5efd768b9ce505507f5ed8cccae9",
-    "scripts/package_radiator_production.py": "3e2b97078d8842b78dafc1a653d9eba937cbf5ec07871617d9711a2c0f6fda9d",
-    "cad/manufacturing/R6-M02.json": "d67775bcdfd091b50c339da1eb69168c1717aade6199698e905321377cd608b7"
+    "scripts/finalise_three_part_pack.py": "e5eb3ab3ab8c628ea28fded4d3ea3d18ce5e35d6687df21545da8b0b27a88b55",
+    "output/review/Q-M01-R6-M02-visual-review.json": "7a55d3ee5ecf4f917ad6aee52c09d995e733a0b555dc2fa330414e089ac8cba1",
+    "scripts/draw_radiator_production.py": "f64edea35e31b19b4db2f3ace01a329205dd0739f8d6c8db04ec741f81a9ac70",
+    "scripts/package_radiator_production.py": "4a9d48fe70cc56c7408039fe18e3437ce57ddc94598fc4bb2ea37f481c472164",
+    "cad/manufacturing/R6-M02.json": "23ae7afc8c77ad50cca85f467a0386caef132a0619dd9b9ab6f8a3127792deda"
   }
 }

@@ -7,8 +7,8 @@
   "scope": "Visual and document review, not physical or performance qualification.",
   "source_sha256": {
     "output/pdf/RM10-Q-M01-BODY.pdf": "0712162e83ea375740369cbede3ec1e4f0190ef0474e8dfbca108871948cddc6",
-    "output/pdf/RM10-Q-M01-FACEPLATE.pdf": "453108c06971e39652bcf61483236313fec60dcc683c3df40bcf1c585fd745ed",
-    "output/pdf/SN1260-R6-M02-PLATE.pdf": "11f8e54302e43dc131613b2ef654c2df206a31b9e91887a7d29e6c55045d2884",
+    "output/pdf/RM10-Q-M01-FACEPLATE.pdf": "f58f9b346d5a421d79d4a1681d5f487bbb66f14c70ae0244f901447097830207",
+    "output/pdf/SN1260-R6-M02-PLATE.pdf": "53fa16c3af88623862042908cc6a445b99c9e488cc1c613dc309dd922daed686",
     "output/long-bore-Q/product-views/01-rear-assembled.png": "0432ca5ec8172efda2e901813c2ebf7e34c33c21626d27387c68bb09c4c22a4b",
     "output/long-bore-Q/product-views/02-rear-elevation.png": "d7bd5166ea4550fd40c622630406c89edd49d41616ace3d445f15f53002086a1",
     "output/long-bore-Q/product-views/03-front-unchanged.png": "d9285a0b7b194ee46a509e6c9d9eafceac2d35b5ff8209b1679d5f44087facdb",
@@ -35,5 +35,6 @@
     "output/radiator-R6/00-plate-front.png": "7bd65fe3eccf00268055caa65f99dc71f05381dd8805f6e71d2ffe1868fd6c30",
     "output/radiator-R6/01-plate-perspective.png": "d576b695f1e68e95384b203fc3dbb95eadeead8027f1ac53fba808ddd806246a",
     "output/radiator-R6/05-cable-notch-detail.png": "61b622995cb42ef2765016fb5e7be587d504365815885b429b42785cb5e64eee"
-  }
+  },
+  "raw_finish_amendment_review": "Both steel PDFs (five sheets) rendered and visually checked after raw-finish amendment on 15 September 2026. Dimensions and edge finishes unchanged; brush arrows removed. Body PDF unchanged. Earlier presentation shaders remain illustrative, not the specified raw finish."
 }
