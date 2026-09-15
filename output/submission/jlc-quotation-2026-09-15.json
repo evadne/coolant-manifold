@@ -1,0 +1,76 @@
+{
+  "supplier": "JLCCNC",
+  "submitted_at_utc": "2026-09-15T22:46:00Z",
+  "timestamp_precision": "minute (approximate; success observed before 22:46:53 UTC)",
+  "status": "submitted_for_file_review",
+  "method": "Existing signed-in Safari session via Computer Use",
+  "checkout_mode": "Review Before Payment",
+  "payment_made": false,
+  "automatic_payment_authorised": false,
+  "production_authorised_by_payment": false,
+  "quantity_per_part": 1,
+  "parts": [
+    {
+      "part": "RM10-Q-M01-BODY",
+      "supplier_part_reference": "CNC2609165002398-6347288A",
+      "quantity": 1,
+      "process": "CNC machining",
+      "material_selection": "POM(Black)",
+      "surface_finish_selection": "No surface finish",
+      "threads": true,
+      "archive": "output/submission/Q-M01/RM10-Q-M01-BODY.zip",
+      "sha256": "4c4bb6df9d021b6d57dba951d646559eb32181727eff882d3cc6d0cd45158dde",
+      "pre_review_estimate_USD": 128.74,
+      "remarks": "Follow attached PDF; STEP shows tap pilots. Confirm black unfilled POM grade and two D11.8 x410 through galleries. External deburr only; flush chips. Report proposed deviations before manufacture."
+    },
+    {
+      "part": "RM10-Q-M01-FACEPLATE",
+      "supplier_part_reference": "SMS2609163000694-6347288A",
+      "quantity": 1,
+      "process": "Sheet Metal",
+      "material_selection": "Stainless Steel 304",
+      "surface_finish_selection": "No surface finish",
+      "threads": false,
+      "archive": "output/submission/Q-M01/RM10-Q-M01-FACEPLATE.zip",
+      "sha256": "79e3494f78bd4f6f53581c9d7fa30c974a2238ea01ba37b9a616f69ca5cb7ebe",
+      "pre_review_estimate_USD": 9.86,
+      "remarks": "Follow attached PDF/DXF. Raw 304 sheet, no brushing/polishing. Plain through holes. M4 hole centres +/-0.05 mm; flatness 0.30 mm. Confirm specified tolerances and external edge finishing."
+    },
+    {
+      "part": "SN1260-R6-M02-PLATE",
+      "supplier_part_reference": "SMS2609163000690-6347288A",
+      "quantity": 1,
+      "process": "Sheet Metal",
+      "material_selection": "Stainless Steel 304",
+      "surface_finish_selection": "No surface finish",
+      "threads": false,
+      "archive": "output/submission/R6-M02/SN1260-R6-M02-PLATE.zip",
+      "sha256": "e52e87c1a158953fa378bd27544a048a2f005536ab3a3d7192e2c0c6a94d2bde",
+      "pre_review_estimate_USD": 29.84,
+      "remarks": "Follow attached PDF/DXF. Raw 304 sheet, no brushing/polishing. Plain through holes; flatness 0.50 mm. Confirm specified tolerances and external edge finishing, including rounded cable-contact notch."
+    }
+  ],
+  "success_url": "https://jlccnc.com/checkout/orderSuccess?systemType=order_merge&spm=Jlcpcb.Confirmorder.1001",
+  "confirmation_text": "Your order has been submitted.",
+  "review_notice": "We’ll email you the review results within hours during business days.",
+  "reference_scope": "Part references read from the cart immediately before the three-item submission. Combined submission success verified; no separate later order-history status verified.",
+  "initial_cart": "Empty before first upload",
+  "superseded_steel_cart_entries_removed": [
+    "SMS2609163000680-6347288A",
+    "SMS2609163000676-6347288A"
+  ],
+  "pre_review_estimates_USD": {
+    "parts": 168.44,
+    "shipping": 122.79,
+    "total": 291.23
+  },
+  "shipping_selection_for_estimate": "DHL Express, existing saved address",
+  "attachment_handling": "One matching-name STEP/PDF ZIP per part; steel ZIPs also contain matching DXF. Body PDF additionally attached in CNC tolerance upload control. Sheet-metal UI displays STEP filenames after ZIP processing; individual PDF/DXF receipt is not separately exposed in the configuration UI.",
+  "pending_supplier_review": [
+    "POM stock grade and datasheet",
+    "Two 410 mm deep galleries and meeting tolerance",
+    "Thread specifications and depths",
+    "Specific size/location tolerances, flatness and seal surfaces",
+    "External deburr and radiator notch rounding"
+  ]
+}

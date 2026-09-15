@@ -1,6 +1,6 @@
 # Current three-part fabrication pack
 
-Prepared locally for supplier review. No upload or order has occurred.
+Current fabrication files. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|

@@ -29,5 +29,5 @@ for name in ['geometry-verification.json','feature-schedule.json']:shutil.copyfi
 guide=(R/'docs/jlc-submission-Q-M01.md').read_text()
 (out/'README.md').write_text(re.sub(r'\]\(([^:/)]+\.md)\)', r'](../../../docs/\1)', guide))
 for name in ['body','faceplate']:shutil.copyfile(R/f'docs/jlc-Q-{name}-remarks.txt',out/f'{name}-supplier-remarks.txt')
-(out/'package-verification.json').write_text(json.dumps(dict(issue='Q-M01',checks='PASS',parts=results,source_sha256={str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [R/'scripts/draw_Q_production.py',R/'scripts/package_Q_production.py']},supplier_submission_performed=False),indent=2)+'\n')
+(out/'package-verification.json').write_text(json.dumps(dict(issue='Q-M01',checks='PASS',parts=results,source_sha256={str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [R/'scripts/draw_Q_production.py',R/'scripts/package_Q_production.py']},upload_performed_by_packaging_script=False),indent=2)+'\n')
 files=sorted(p for p in out.iterdir() if p.is_file() and p.name!='SHA256SUMS.txt');(out/'SHA256SUMS.txt').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n' for p in files));print(json.dumps(results,indent=2))

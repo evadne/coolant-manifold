@@ -46,7 +46,7 @@ shutil.copyfile(src/'geometry-verification.json',out/'geometry-verification.json
 report={'issue':M['issue'],'checks':'PASS','pdf_pages':len(pages),'scheduled_features':len(schedule),
  'round_holes':28,'rack_slots':40,'air_apertures':4,'edge_notches':int(REV in ['R5','R6']),'zip_members':[f.name for f in files],
  'pdf_identifier_and_coordinate_coverage':'PASS','zip_integrity':'PASS',
- 'supplier_submission_performed':False}
+ 'upload_performed_by_packaging_script':False}
 (out/'package-verification.json').write_text(json.dumps(report,indent=2)+'\n')
 paths=sorted(p for p in out.iterdir() if p.is_file() and p.name!='SHA256SUMS.txt')
 (out/'SHA256SUMS.txt').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n' for p in paths))

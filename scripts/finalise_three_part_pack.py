@@ -71,6 +71,12 @@ visual = read('output/review/Q-M01-R6-M02-visual-review.json')
 check_sources(visual)
 assert visual['pdf_sheets_reviewed'] == 8 and visual['presentation_images_reviewed'] == 26
 
+submission_path = ROOT / 'output/submission/jlc-quotation-2026-09-15.json'
+submission = json.loads(submission_path.read_text()) if submission_path.exists() else None
+submitted = bool(submission and submission['status'] == 'submitted_for_file_review' and len(submission['parts']) == len(parts) and all(
+    any(p['part'] == sent['part'] and p['sha256'] == sent['sha256'] for p in parts)
+    for sent in submission['parts']))
+
 manifest = {
     'checks': 'PASS', 'parts': parts,
     'fabrication_scope': 'Each ZIP contains only one custom part STEP and its fabrication drawing/profile.',
@@ -79,7 +85,8 @@ manifest = {
     'geometry_and_coordinate_checks': 'PASS',
     'current_context_sources': 'PASS',
     'visual_review_record': 'output/review/Q-M01-R6-M02-visual-review.json',
-    'supplier_submission_performed': False,
+    'supplier_submission_performed': submitted,
+    'submission_record': 'output/submission/jlc-quotation-2026-09-15.json' if submitted else None,
     'remaining_supplier_review': ['POM stock grade', 'Deep-gallery drilling process',
                                    'Specified tolerances, flatness and surface finishes'],
     'source_sha256': {str(p): sha(p) for p in [
@@ -93,7 +100,7 @@ manifest = {
 (OUT / 'verification.json').write_text(json.dumps(manifest, indent=2) + '\n')
 (OUT / 'README.md').write_text('''# Current three-part fabrication pack
 
-Prepared locally for supplier review. No upload or order has occurred.
+Current fabrication files. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|
@@ -110,4 +117,4 @@ Each ZIP contains a same-name single-part STEP and PDF; the steel parts also hav
 files = sorted(p for p in OUT.iterdir() if p.is_file() and p.name != 'SHA256SUMS.txt')
 (OUT / 'SHA256SUMS.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in files))
 print(json.dumps({'checks': 'PASS', 'parts': len(parts), 'drawing_sheets': 8,
-                  'reviewed_images': 26, 'supplier_submission_performed': False}, indent=2))
+                  'reviewed_images': 26, 'supplier_submission_performed': submitted}, indent=2))

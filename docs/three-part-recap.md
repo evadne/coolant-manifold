@@ -41,6 +41,6 @@ The [current load summary](radiator-load-assessment.md) uses R4 structural calcu
 
 ## Production-file status
 
-All three single-part supplier packs are prepared for final review: [Q-M01 body/faceplate](jlc-submission-Q-M01.md) and [R6-M02 radiator](jlc-submission-R6-M02.md). Each ZIP contains matching STEP/PDF files; the steel packs also include DXF. The [JLC review](jlc-final-review.md) records process/material confirmation items and first-article checks. No upload/order has occurred.
+All three single-part supplier packs have been submitted for quotation/file review: [Q-M01 body/faceplate](jlc-submission-Q-M01.md) and [R6-M02 radiator](jlc-submission-R6-M02.md). Each ZIP contains matching STEP/PDF files; the steel packs also include DXF. The [JLC review](jlc-final-review.md) records process/material confirmation items and first-article checks. See the [submission record](jlc-quotation-2026-09-15.md); no payment was made.
 
 Use `output/submission/current-three-parts/` as the submission index. Older O-M02, P and R6-M01 files are historical. Q studio and StarTech25U scenes show the current parts; supplier Koolance geometry and accepted tubing routes remain. First assembly: M4×10, dry, without Loctite. The [torque/creep assessment](Q-torque-and-creep.md) records the unqualified trial setting and remaining actual-grade tests.

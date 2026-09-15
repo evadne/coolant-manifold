@@ -40,17 +40,18 @@
   "geometry_and_coordinate_checks": "PASS",
   "current_context_sources": "PASS",
   "visual_review_record": "output/review/Q-M01-R6-M02-visual-review.json",
-  "supplier_submission_performed": false,
+  "supplier_submission_performed": true,
+  "submission_record": "output/submission/jlc-quotation-2026-09-15.json",
   "remaining_supplier_review": [
     "POM stock grade",
     "Deep-gallery drilling process",
     "Specified tolerances, flatness and surface finishes"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "e5eb3ab3ab8c628ea28fded4d3ea3d18ce5e35d6687df21545da8b0b27a88b55",
+    "scripts/finalise_three_part_pack.py": "fb557b89d2f5d8cdceeb0d310320bf93b584ee3028c3ac052fec501219f71d21",
     "output/review/Q-M01-R6-M02-visual-review.json": "7a55d3ee5ecf4f917ad6aee52c09d995e733a0b555dc2fa330414e089ac8cba1",
     "scripts/draw_radiator_production.py": "f64edea35e31b19b4db2f3ace01a329205dd0739f8d6c8db04ec741f81a9ac70",
-    "scripts/package_radiator_production.py": "4a9d48fe70cc56c7408039fe18e3437ce57ddc94598fc4bb2ea37f481c472164",
+    "scripts/package_radiator_production.py": "bcfab25fcca39faa293ac3b87a5e86f60804eb98a2112b1a60cdb3ce2b2feb23",
     "cad/manufacturing/R6-M02.json": "23ae7afc8c77ad50cca85f467a0386caef132a0619dd9b9ab6f8a3127792deda"
   }
 }

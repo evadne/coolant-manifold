@@ -11,4 +11,4 @@ Supplier remarks are separate text files for the quotation interface. Each fabri
 
 The packet has checks for valid solids, twelve shortened blind pilots, matching hole schedules, coordinates, PDFs and ZIP contents. Plate geometry and cut DXF remain the accepted P layout; body rear bores and shortened M4 pilot tails are Q. Use the current Q drawings, not P or O-M02. Material and process acceptance remain supplier review items. See [JLC final review](jlc-final-review.md).
 
-No supplier upload or order has occurred. Assembly method and hardware are specified separately in [the Q assembly guide](assembly-Q.md), not on manufacturing drawings.
+[Submitted to JLCCNC for review before payment](jlc-quotation-2026-09-15.md); no payment made. Assembly method and hardware are specified separately in [the Q assembly guide](assembly-Q.md), not on manufacturing drawings.

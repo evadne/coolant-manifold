@@ -1,6 +1,6 @@
 # Three-part JLC review: Q-M01 and R6-M02
 
-Checked against live JLCCNC official pages on **15 September 2026**. Q is operator-approved; the subsequent M4 refinement uses 10 mm full thread, 13 mm pilot. R6 geometry is unchanged; R6-M02 now specifies raw sheet finish, matching the manifold faceplate (operator amendment before quotation). Files are prepared locally for final review; no upload, supplier acceptance or order has occurred.
+Checked against live JLCCNC official pages on **15 September 2026**. Q is operator-approved; the subsequent M4 refinement uses 10 mm full thread, 13 mm pilot. R6 geometry is unchanged; R6-M02 now specifies raw sheet finish, matching the manifold faceplate (operator amendment before quotation). The three parts were [submitted for review before payment](jlc-quotation-2026-09-15.md). No supplier acceptance or payment is claimed.
 
 | Part | Process / material selection | Finish and options | Supplier pack |
 |---|---|---|---|
@@ -35,4 +35,4 @@ Assembly and operational qualification are separate from this fabrication review
 
 ## File selection
 
-Use the three ZIPs indexed in `output/submission/current-three-parts/README.md`, each as a separate part. Use only matching current-issue files for each part. Supplier messages are drafted locally; nothing has been sent.
+Use the three ZIPs indexed in `output/submission/current-three-parts/README.md`, each as a separate part. Use only matching current-issue files for each part. Uploaded files, exact submitted remarks, supplier references and review status are recorded in the [submission log](jlc-quotation-2026-09-15.md).

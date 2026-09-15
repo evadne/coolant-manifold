@@ -44,6 +44,10 @@ The shallow notch supersedes the previous 5 mm depth; its floor is Y442.500.
 
 Build geometry first with `scripts/build_radiator_plate.py --revision R6`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R6-M02`, then `scripts/draw_radiator_production.py --issue R6-M02` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R6-M02` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R6-M02/`; the upload bundle and supplier remarks are in `output/submission/R6-M02/`.
 
-This issue prepares the files only. No supplier upload, quotation acceptance or order has been made.
+The generation scripts prepare local files only; the separate quotation status below records the authorised supplier submission. Supplier acceptance and payment remain pending.
 
 R6-M02 supersedes R6-M01. Before quotation, the operator amended both steel parts to raw sheet finish with no brushing or polishing. STEP/DXF geometry remains byte-identical to approved R6. See [current three-part JLC review](../../../docs/jlc-final-review.md).
+
+## Quotation status
+
+[Submitted to JLCCNC for review before payment](../../../docs/jlc-quotation-2026-09-15.md), with raw sheet finish. No payment made.

@@ -1,6 +1,6 @@
 # Current manufacturing status
 
-**Q-M01 body +Q-M01 faceplate +R6-M02 radiator plate** are prepared for final supplier review. No supplier upload or order has occurred. Each part has its own matching-name STEP/PDF package; steel parts also include a DXF cut profile.
+**Q-M01 body +Q-M01 faceplate +R6-M02 radiator plate** were [submitted to JLCCNC for review before payment](jlc-quotation-2026-09-15.md) on 15 September 2026. Supplier acceptance and payment remain pending. Each part has its own matching-name STEP/PDF package; steel parts also include a DXF cut profile.
 
 - [Q-M01 submission guide](jlc-submission-Q-M01.md): three-sheet body drawing, two-sheet faceplate drawing, all28 G1/4 and12 M4 call-outs, shorter13 mm M4 pilots, finished hole tolerances and seal lands.
 - [R6-M02 submission guide](jlc-submission-R6-M02.md): unchanged approved R6 geometry, three-sheet drawing, raw sheet finish on both broad faces.

@@ -14,5 +14,5 @@
   ],
   "pdf_identifier_and_coordinate_coverage": "PASS",
   "zip_integrity": "PASS",
-  "supplier_submission_performed": false
+  "upload_performed_by_packaging_script": false
 }
