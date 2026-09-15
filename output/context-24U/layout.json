@@ -5,7 +5,7 @@
   "rack_units_bottom_to_top": [
     {
       "U": "1-10",
-      "use": "Custom front-mounted MO-RA radiator bay"
+      "use": "Custom front-mounted MO-RA cooling assembly: radiator, reservoir and D5"
     },
     {
       "U": "11-14",
@@ -34,7 +34,9 @@
     ],
     "front_fans": "Nine 120 mm references",
     "type": "Custom front-mounted MO-RA concept; no stock model selected",
-    "plumbing": "Service hoses to bay; pump/reservoir and complete loop plumbing TBD"
+    "pump_reservoir": "Included in the MO-RA assembly; rear-offset radiator-mounted reservoir and one illustrative D5 stage",
+    "plumbing": "Manifold return -> radiator -> reservoir -> D5 -> manifold supply; schematic routes",
+    "integration": "Custom carrier within the 10U bay; exact MO-RA generation, modules and pump count remain selectable"
   },
   "front_pair_allocation": {
     "1-8": "Individual GPUs in parallel",
