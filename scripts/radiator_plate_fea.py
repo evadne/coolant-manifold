@@ -18,7 +18,7 @@ parser.add_argument('--benchmark',action='store_true')
 parser.add_argument('--payload-kg',type=float,default=6.225)
 parser.add_argument('--cg-mm',type=float,default=75)
 parser.add_argument('--label',default='')
-parser.add_argument('--revision',choices=['R1','R2'],default='R1')
+parser.add_argument('--revision',choices=['R1','R2','R3','R4'],default='R1')
 a=parser.parse_args();P=json.loads((ROOT/f'cad/radiator/{a.revision}.json').read_text());H=P['height'];t=a.thickness
 name=f'plate-t{t:g}-h{a.size:g}-s{a.supports}-{a.load}' if not a.benchmark else f'benchmark-h{a.size:g}'
 if a.label:name=a.label+'-'+name
@@ -73,10 +73,27 @@ else:
  force=a.payload_kg*9.80665
  moment=force*a.cg_mm
  active=mounts if a.load=='distributed' else [m for m in mounts if abs(m[1])==203.5]
+ # Four front fans load their own M4 holes. Preserve the specified total
+ # payload and total moment; the remaining load enters through radiator M3s.
+ front_mass=4*P['fan_nominal_mass_kg'] if 'fan_mount_style' in P else 0
+ front_force=front_mass*9.80665
+ front_offset=-(P['thickness']+16)
+ front_moment=front_force*front_offset
+ radiator_force=force-front_force; radiator_moment=moment-front_moment
+ if front_mass:
+  for fx in P['aperture_centres_x']:
+   for fyc in P['aperture_centres_y_from_centre']:
+    for dx in (-85,85):
+     for ddy in (-85,85):
+      rr=np.hypot(coords[:,0]-fx-dx,coords[:,1]-H/2-fyc-ddy)
+      ns=ids[abs(rr-P['fan_mount_diameter']/2)<1e-5];assert len(ns)>10
+      vertical=-front_force/16
+      normal=(front_moment/4)*ddy/(4*85**2)
+      for n in ns:add(n,2,vertical/len(ns));add(n,3,normal/len(ns))
  denominator=sum(m[1]**2 for m in active)
  for x,dy,ns in active:
-  fy=-force/len(active) if a.load!='top' else (-force/2 if dy>0 else 0)
-  fz=moment*dy/denominator
+  fy=-radiator_force/len(active) if a.load!='top' else (-radiator_force/2 if dy>0 else 0)
+  fz=radiator_moment*dy/denominator
   for n in ns:add(n,2,fy/len(ns));add(n,3,fz/len(ns))
 resultant=np.zeros(3);mom=np.zeros(3)
 for (n,d),f in loads.items():
@@ -105,6 +122,7 @@ metadata={'name':name,'thickness_mm':t,'mesh_size_mm':a.size,'nodes':len(ids),'e
  'revision':a.revision,'height_mm':H,'solver':'CalculiX 2.23','element':'S6','gmsh':'4.15.2','poisson_ratio':0. if a.benchmark else .3,'payload_resultant_N':resultant.tolist(),
  'payload_moment_about_plate_centre_Nmm':mom.tolist(),'supports':a.supports if not a.benchmark else 'fixed edge',
  'payload_mass_kg':a.payload_kg,'payload_cg_mm':a.cg_mm,'load':a.load,'self_weight':not a.benchmark,
+ 'front_fan_direct_load_kg':front_mass if not a.benchmark else 0,
  'node_ids':list(map(int,ids)),'coordinates':coords.tolist(),'elements_connectivity':connectivity.astype(int).tolist(),
  'support_nodes':sorted(supports),
  'benchmark_expected_tip_mm':10*100**3/(3*200000*(20*2**3/12)) if a.benchmark else None}

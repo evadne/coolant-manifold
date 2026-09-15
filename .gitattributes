@@ -5,3 +5,6 @@
 *.pdf binary
 
 *.dxf binary
+*.stp binary
+# Preserve supplier reference text and its Windows line endings.
+docs/references/noctua-nf-a20/README.txt whitespace=cr-at-eol

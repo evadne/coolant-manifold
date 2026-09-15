@@ -4,7 +4,7 @@ import json, math, argparse, sys
 import bpy
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2'],default='R1')
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4'],default='R1')
 REV=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []).revision
 OUT=ROOT/f'output/radiator-{REV}'
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text()); H=P['height'];T=P['thickness']
@@ -37,13 +37,14 @@ def cut(a,b):
 bpy.ops.wm.stl_import(filepath=str(OUT/f'rack-plate-{REV}.stl'));plate=bpy.context.object
 plate.name=f'{REV} rack plate - exact CAD mesh';plate.rotation_euler.x=math.pi/2;plate.data.materials.append(steel);bevel(plate,.15)
 # The source CAD is XY, extruded +Z. Rotation maps it to X,-thickness,height.
-assembly=[]
+assembly=[];front_hardware=[];front_fans=[];rear_fans=[]
+NEW=REV in ['R3','R4']
 def keep(o):assembly.append(o);return o
-keep(box('Illustrative 400 mm radiator core',(0,22.5,H/2),(400,42,400),black))
+keep(box('Illustrative 400 mm radiator core',(0,22.5,H/2),(400,32 if NEW else 42,400),black))
 for x in (-206,206):keep(box('Radiator structural side rail',(x,22.5,H/2),(10,45,424),black,.5))
 for z in (H/2-212,H/2+212):keep(box('Radiator end chamber',(0,22.5,z),(422,45,17),black,1.5))
 # Visible fin texture on the front and rear; radiator is an envelope, not new production CAD.
-for y in (.6,44.1):
+for y in ((6.5,38.5) if NEW else (.6,44.1)):
  for i in range(201):keep(box('Cooling fin',(i*1.98-198,y,H/2),(.22,.6,396),fins))
  for z in range(-190,200,20):keep(box('Core cross tube',(0,y-.2,H/2+z),(396,.8,2),black))
 # Retained stock rear plate represented by its outline and four circular fan apertures.
@@ -54,27 +55,64 @@ bevel(rear,.15)
 for x in P['radiator_mount_x']:
  for dy in P['radiator_mount_y_from_centre']:
   z=H/2+dy
-  keep(cyl('M3 washer',(x,-T-.3,z),3.5,.6,steel))
-  screw=keep(cyl('M3 pan head reference',(x,-T-1.8,z),2.8,2.4,steel));bevel(screw,.3)
-  cut(screw,box('Drive recess',(x,-T-2.9,z),(2.3,.8,.55),black))
+  if not NEW:keep(cyl('M3 washer',(x,-T-.3,z),3.5,.6,steel))
+  screw=keep(cyl('M3 pan head reference',(x,-T-(1.2 if NEW else 1.8),z),2.8,2.4,steel));bevel(screw,.3)
+  cut(screw,box('Drive recess',(x,-T-(2.3 if NEW else 2.9),z),(2.3,.8,.55),black))
 for x in (-140.5,140.5):
  keep(cyl('Top G1-4 plug reference',(x,22.5,H/2+221.8),9,2.6,steel,'Z'))
-# Four 200 mm fans, 30 mm thickness used as an explicit visual envelope.
-for x in (-100,100):
- for dz in (-100,100):
-  z=H/2+dz
-  fan=keep(box('200 mm fan frame',(x,61.5,z),(200,30,200),plastic,2))
-  cut(fan,cyl('Fan bore cutter',(x,61.5,z),95,34,black))
-  keep(cyl('Fan hub',(x,67,z),26,19,plastic))
-  for j in range(9):
-   a=j*2*math.pi/9;verts=[]
-   for r,theta,y in [(24,a,64),(88,a+.32,64),(92,a+.68,60),(35,a+.68,60)]:
-    verts.append((x+r*math.cos(theta),y,z+r*math.sin(theta)))
-   mesh=bpy.data.meshes.new('Fan blade mesh');mesh.from_pydata(verts,[],[(0,1,2,3)]);mesh.update()
-   o=bpy.data.objects.new('Fan blade',mesh);scene.collection.objects.link(o);o.data.materials.append(plastic)
-   m=o.modifiers.new('Blade thickness','SOLIDIFY');m.thickness=1.3;keep(o)
-  for sx in (-78,78):
-   for sz in (-78,78):keep(cyl('Rear fan screw reference',(x+sx,77,z+sz),3,2,steel))
+# Noctua official reference meshes: pad-to-pad 32 mm, airflow +Y.
+if NEW:
+ beige=mat('Noctua frame polymer',(.55,.43,.29),0,.5)
+ brown=mat('Noctua impeller and pads',(.15,.07,.035),0,.48)
+ meshpaths=sorted((ROOT/'output/radiator-fan-integration/reference-meshes').glob('fan-*.stl'))
+ assert len(meshpaths)==10, 'Run prepare_radiator_fan_mounts.py first'
+ def add_fan(x,dy,centre_y,group):
+  for path in meshpaths:
+   bpy.ops.wm.stl_import(filepath=str(path));o=bpy.context.object
+   o.name='NF-A20 reference '+path.stem;o.location=(x,centre_y,H/2+dy)
+
+   if x>0:o.rotation_euler.y=math.pi
+   o.data.materials.append(beige if path.stem=='fan-00' else brown);keep(o);group.append(o)
+ for x in P['aperture_centres_x']:
+  for dy in P['aperture_centres_y_from_centre']:add_fan(x,dy,-T-16,front_fans)
+ # Opposite original fan plate retains its 200 mm grid.
+ for x in (-100,100):
+  for dy in (-100,100):add_fan(x,dy,62.5,rear_fans)
+ def washer(name,x,y,z):
+  o=keep(cyl(name,(x,y,z),4.5,.8,steel));cut(o,cyl('Washer bore',(x,y,z),2.15,2,steel));return o
+ def hardware(o):front_hardware.append(o);return o
+ for x in P['aperture_centres_x']:
+  for dy in P['aperture_centres_y_from_centre']:
+   for dx in (-85,85):
+    for dz in (-85,85):
+     xx=x+dx;zz=H/2+dy+dz;seat=-T-32-.8 if REV=='R3' else .8;length=P['fan_bolt_length'];direction=1 if REV=='R3' else -1
+     hardware(washer('M4 front washer',xx,-T-32-.4,zz))
+     hardware(keep(cyl('M4 screw shank reference',(xx,seat+direction*length/2,zz),2,length,steel)))
+     head=hardware(keep(cyl('M4 button hex socket head',(xx,seat-direction*1.1,zz),3.8,2.2,steel)))
+     bevel(head,.65)
+     bpy.ops.mesh.primitive_cylinder_add(vertices=6,radius=1.443,depth=1.5,location=(xx,seat-direction*2.1,zz),rotation=(math.pi/2,0,0));cut(head,bpy.context.object)
+     if REV=='R4':
+      hardware(washer('M4 rear washer',xx,.4,zz))
+      bpy.ops.mesh.primitive_cylinder_add(vertices=6,radius=7/math.sqrt(3),depth=3.2,location=(xx,-T-32-.8-1.6,zz),rotation=(math.pi/2,0,0))
+      nut=hardware(keep(bpy.context.object));nut.name='DIN 934 M4 nut';nut.data.materials.append(steel)
+      cut(nut,cyl('Nut pilot reference',(xx,-T-32-.8-1.6,zz),1.7,5,steel));bevel(nut,.15)
+else:
+ # Four 200 mm fans, 30 mm thickness used as an explicit visual envelope.
+ for x in (-100,100):
+  for dz in (-100,100):
+   z=H/2+dz
+   fan=keep(box('200 mm fan frame',(x,61.5,z),(200,30,200),plastic,2))
+   cut(fan,cyl('Fan bore cutter',(x,61.5,z),95,34,black))
+   keep(cyl('Fan hub',(x,67,z),26,19,plastic))
+   for j in range(9):
+    a=j*2*math.pi/9;verts=[]
+    for r,theta,y in [(24,a,64),(88,a+.32,64),(92,a+.68,60),(35,a+.68,60)]:
+     verts.append((x+r*math.cos(theta),y,z+r*math.sin(theta)))
+    mesh=bpy.data.meshes.new('Fan blade mesh');mesh.from_pydata(verts,[],[(0,1,2,3)]);mesh.update()
+    o=bpy.data.objects.new('Fan blade',mesh);scene.collection.objects.link(o);o.data.materials.append(plastic)
+    m=o.modifiers.new('Blade thickness','SOLIDIFY');m.thickness=1.3;keep(o)
+   for sx in (-78,78):
+    for sz in (-78,78):keep(cyl('Rear fan screw reference',(x+sx,77,z+sz),3,2,steel))
 # Studio lighting in millimetre scene units.
 box('Studio ground',(0,0,-4),(4000,4000,2),floor)
 world=bpy.data.worlds.new('Studio world');scene.world=world;world.use_nodes=True
@@ -92,9 +130,16 @@ def render(name,loc,bare=False):
  for o in assembly:o.hide_render=bare
  camera.location=loc;camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
  scene.render.filepath=str(OUT/name);bpy.ops.render.render(write_still=True)
-if REV=='R2':render('00-plate-front.png',(0,-1000,H/2),True)
+if REV in ['R2','R3','R4']:render('00-plate-front.png',(0,-1000,H/2),True)
 render('01-plate-perspective.png',(630,-1100,700),True)
 render('02-radiator-front.png',(630,-1100,700))
 render('03-radiator-rear.png',(-700,1100,650))
+if NEW:
+ # Expose rear fasteners without the radiator hiding the nut stack.
+ for o in assembly:o.hide_render=o not in front_hardware and o not in front_fans
+ camera.location=(-620,1000,650);camera.rotation_euler=(Vector((0,-10,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
+ scene.render.filepath=str(OUT/'04-fan-fasteners-rear.png');bpy.ops.render.render(write_still=True)
+ for o in assembly:o.hide_render=False
+
 camera.location=(630,-1100,700);camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
-bpy.ops.wm.save_as_mainfile(filepath=str(OUT/f'radiator-rack-plate-{REV}.blend'))
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/f'radiator-rack-plate-{REV}.blend'),compress=True)

@@ -1,0 +1,144 @@
+{
+  "revision": "R4",
+  "geometry_checks": "PASS",
+  "plate_volume_mm3": 157928.69061429024,
+  "plate_mass_kg": 1.2476366558528929,
+  "radiator_plus_allowance_kg": 15.0,
+  "total_rack_mass_kg": 16.247636655852894,
+  "payload_force_N": 147.09975,
+  "total_rack_force_N": 159.33488601111978,
+  "airflow_aperture_area_mm2": 132791.92653589795,
+  "open_fraction_of_400mm_square": 0.8299495408493621,
+  "minimum_mount_hole_to_aperture_ligament_mm": 7.7,
+  "rack_slot_outer_edge_ligament_mm": 3.75,
+  "fan_mount_style": "clearance",
+  "fan_holes": [
+    [
+      -185,
+      37.25
+    ],
+    [
+      -185,
+      207.25
+    ],
+    [
+      -15,
+      37.25
+    ],
+    [
+      -15,
+      207.25
+    ],
+    [
+      -185,
+      237.25
+    ],
+    [
+      -185,
+      407.25
+    ],
+    [
+      -15,
+      237.25
+    ],
+    [
+      -15,
+      407.25
+    ],
+    [
+      15,
+      37.25
+    ],
+    [
+      15,
+      207.25
+    ],
+    [
+      185,
+      37.25
+    ],
+    [
+      185,
+      207.25
+    ],
+    [
+      15,
+      237.25
+    ],
+    [
+      15,
+      407.25
+    ],
+    [
+      185,
+      237.25
+    ],
+    [
+      185,
+      407.25
+    ]
+  ],
+  "fan_mount_count": 16,
+  "fan_hole_diameter_mm": 4.5,
+  "fan_threads_are_pilot_representations": false,
+  "radiator_mount_count": 12,
+  "rack_slot_count": 40,
+  "manufacturer_pilot_centres_xz": [
+    [
+      -203.5,
+      8.5
+    ],
+    [
+      -203.5,
+      133.5
+    ],
+    [
+      -203.5,
+      149.5
+    ],
+    [
+      -203.5,
+      274.5
+    ],
+    [
+      -203.5,
+      290.5
+    ],
+    [
+      -203.5,
+      415.5
+    ],
+    [
+      203.5,
+      8.5
+    ],
+    [
+      203.5,
+      133.5
+    ],
+    [
+      203.5,
+      149.5
+    ],
+    [
+      203.5,
+      274.5
+    ],
+    [
+      203.5,
+      290.5
+    ],
+    [
+      203.5,
+      415.5
+    ]
+  ],
+  "manufacturer_mesh_sha256": "0d22ad7cdcd287f0d9ad5863f915e88936b66af4627a3c84a87ff88b941bfc38",
+  "statics_assumptions": "Stationary vertical rack; payload CG 150 mm behind plate; symmetric load sharing; no shock or hose loads.",
+  "eccentric_payload_moment_Nm": 22.0649625,
+  "four_corner_rack_screws_average_shear_N": 39.833721502779945,
+  "four_corner_rack_screws_top_pair_total_tension_N": 51.09995947197777,
+  "twelve_radiator_screws_average_shear_N": 12.2583125,
+  "same_profile_bending_stiffness_ratio_to_1p5mm": 2.37037037037037,
+  "limits": "Statics and CAD checks only. No assembly stiffness, screw pull-out, vibration or load rating qualification."
+}

@@ -1,0 +1,156 @@
+{
+  "reference_fan_sha256": "4dba51c63094d461351024ba1314afb87714d43e6bee220bdab2d93a21563498",
+  "fan_centre_pitch_mm": 200,
+  "nominal_adjacent_fan_gap_mm": 0,
+  "M3_hardware": "Pan head OD5.6, height2.4, no washer; reverse right-hand fans 180 degrees about airflow axis",
+  "reference_M3_hardware_minimum_gap_mm": 0.7724055910359878,
+  "M3_hardware_checks": [
+    {
+      "fan_centre": [
+        -100,
+        -100
+      ],
+      "M3_centre": [
+        -203.5,
+        -203.5
+      ],
+      "gap_mm": 14.762950903899913
+    },
+    {
+      "fan_centre": [
+        -100,
+        -100
+      ],
+      "M3_centre": [
+        -203.5,
+        -78.5
+      ],
+      "gap_mm": 0.7724055910359878
+    },
+    {
+      "fan_centre": [
+        -100,
+        -100
+      ],
+      "M3_centre": [
+        -203.5,
+        -62.5
+      ],
+      "gap_mm": 5.146938549252624
+    },
+    {
+      "fan_centre": [
+        -100,
+        100
+      ],
+      "M3_centre": [
+        -203.5,
+        62.5
+      ],
+      "gap_mm": 5.146938549252624
+    },
+    {
+      "fan_centre": [
+        -100,
+        100
+      ],
+      "M3_centre": [
+        -203.5,
+        78.5
+      ],
+      "gap_mm": 0.7724055910615324
+    },
+    {
+      "fan_centre": [
+        -100,
+        100
+      ],
+      "M3_centre": [
+        -203.5,
+        203.5
+      ],
+      "gap_mm": 14.762950903900006
+    },
+    {
+      "fan_centre": [
+        100,
+        -100
+      ],
+      "M3_centre": [
+        203.5,
+        -203.5
+      ],
+      "gap_mm": 14.762950903899991
+    },
+    {
+      "fan_centre": [
+        100,
+        -100
+      ],
+      "M3_centre": [
+        203.5,
+        -78.5
+      ],
+      "gap_mm": 0.7724055910615317
+    },
+    {
+      "fan_centre": [
+        100,
+        -100
+      ],
+      "M3_centre": [
+        203.5,
+        -62.5
+      ],
+      "gap_mm": 5.146938549252624
+    },
+    {
+      "fan_centre": [
+        100,
+        100
+      ],
+      "M3_centre": [
+        203.5,
+        62.5
+      ],
+      "gap_mm": 5.146938549252624
+    },
+    {
+      "fan_centre": [
+        100,
+        100
+      ],
+      "M3_centre": [
+        203.5,
+        78.5
+      ],
+      "gap_mm": 0.7724055910359886
+    },
+    {
+      "fan_centre": [
+        100,
+        100
+      ],
+      "M3_centre": [
+        203.5,
+        203.5
+      ],
+      "gap_mm": 14.762950903899895
+    }
+  ],
+  "sampled_core_setback_mm": 6.5,
+  "core_samples": 272,
+  "rear_nut_and_washer_height_mm": 4.0,
+  "nut_to_core_nominal_gap_mm": 2.5,
+  "rear_nut_alternative_M4x40_tip_behind_plate_mm": 5.200000000000003,
+  "rear_nut_alternative_tip_to_core_nominal_gap_mm": 1.2999999999999972,
+  "R4_selected_screw_orientation": "Button heads behind plate; nuts on outside of fans",
+  "R4_head_and_washer_behind_plate_mm": 3.0,
+  "R4_head_to_core_nominal_gap_mm": 3.5,
+  "R4_M4x40_tip_ahead_of_front_nut_mm": 1.2,
+  "R3_M4x35_tip_behind_plate_mm": 0.20000000000000284,
+  "R3_nominal_effective_thread_mm": 1.8,
+  "R3_minimum_effective_thread_mm": 1.7,
+  "R3_minimum_full_pitch_count": 2.428571428571429,
+  "limits": "Nominal integration only. Fan/pad compression, part tolerances, fastener length tolerances and actual core position require first-article check. No tightening torque or vibration qualification. Public Noctua CAD must not be used for fan performance simulation or manufacture."
+}

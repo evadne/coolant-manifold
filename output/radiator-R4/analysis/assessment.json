@@ -1,0 +1,118 @@
+{
+  "revision": "R4",
+  "plate_height_mm": 444.5,
+  "rack_units": 10,
+  "plate_thickness_mm": 2,
+  "plate_mass_kg": 1.2476366558528929,
+  "payload_kg": 15,
+  "front_fan_direct_load_kg": 1.48,
+  "front_fan_cg_mm": -18,
+  "load_note": "Remaining 13.52 kg enters radiator M3s with total moment adjusted to retain the overall 150 mm CG.",
+  "cases": [
+    {
+      "name": "R4-plate-t2-h6-s40-distributed",
+      "thickness_mm": 2,
+      "mesh_size_mm": 6.0,
+      "nodes": 100469,
+      "elements": 49072,
+      "supports": 40,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.1018268,
+      "max_downwards_mm": 0.001338682,
+      "peak_displacement_location_mm": [
+        1.1368683772161603e-13,
+        0.0,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 30.611182239907333,
+      "max_recovered_surface_von_mises_MPa": 35.11357673304887,
+      "total_support_reaction_N": [
+        -9.386148e-10,
+        159.3151,
+        -2.2028e-09
+      ],
+      "vertical_force_balance_relative_error": 0.0001504062662068817,
+      "support_reaction_moment_Nmm": [
+        -22064.96072612951,
+        0.00019008638082596008,
+        -0.01851868501818288
+      ],
+      "overturning_moment_balance_relative_error": 8.039308851959248e-08,
+      "cg_offset_mm": 150.0,
+      "payload_mass_kg": 15.0
+    },
+    {
+      "name": "R4-plate-t2-h3-s40-distributed",
+      "thickness_mm": 2,
+      "mesh_size_mm": 3.0,
+      "nodes": 167575,
+      "elements": 82196,
+      "supports": 40,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.1019851,
+      "max_downwards_mm": 0.001338924,
+      "peak_displacement_location_mm": [
+        -5.684341886080802e-14,
+        444.5,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 29.361163681317382,
+      "max_recovered_surface_von_mises_MPa": 34.77175323193096,
+      "total_support_reaction_N": [
+        8.805366e-10,
+        159.3162,
+        4.809326e-10
+      ],
+      "vertical_force_balance_relative_error": 0.0001435027488809748,
+      "support_reaction_moment_Nmm": [
+        -22064.961797771524,
+        0.0009494951673900687,
+        -0.007527302684341208
+      ],
+      "overturning_moment_balance_relative_error": 3.182550090130576e-08,
+      "cg_offset_mm": 150.0,
+      "payload_mass_kg": 15.0
+    },
+    {
+      "name": "R4-plate-t2-h3-s8-distributed",
+      "thickness_mm": 2,
+      "mesh_size_mm": 3.0,
+      "nodes": 167575,
+      "elements": 82196,
+      "supports": 8,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.2165327,
+      "max_downwards_mm": 0.001635613,
+      "peak_displacement_location_mm": [
+        -0.6590245649876594,
+        428.59497493350096,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 65.22436739202382,
+      "max_recovered_surface_von_mises_MPa": 76.726779445449,
+      "total_support_reaction_N": [
+        1.643422e-09,
+        159.3344,
+        -1.637774e-08
+      ],
+      "vertical_force_balance_relative_error": 2.9280916763796405e-05,
+      "support_reaction_moment_Nmm": [
+        -22064.96561840874,
+        0.0009843687382726785,
+        -0.010330590463212275
+      ],
+      "overturning_moment_balance_relative_error": 1.4132853065618178e-07,
+      "cg_offset_mm": 150.0,
+      "payload_mass_kg": 15.0
+    }
+  ],
+  "coarse_to_fine_relative_change": {
+    "max_out_of_plane_mm": 0.0015521875254326245,
+    "max_recovered_surface_von_mises_MPa": 0.00983049370096234
+  },
+  "relative_reduction_8_to_40_secured_fixings": {
+    "max_out_of_plane_mm": 0.5290083206832039,
+    "max_recovered_surface_von_mises_MPa": 0.5468107291450583
+  },
+  "limits": "Linear elastic plate only. Added empty holes are not supports. Actual screws, washers, cage nuts, rail compliance and radiator M3 interface are not qualified."
+}

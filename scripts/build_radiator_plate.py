@@ -10,7 +10,7 @@ import ezdxf
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2'],default='R1')
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4'],default='R1')
 REV=parser.parse_args().revision
 P = json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
 OUT = ROOT/f'output/radiator-{REV}'
@@ -19,6 +19,8 @@ W,H,T = (P[k] for k in ('width','height','thickness'))
 mounts = [(x,H/2+y) for x in P['radiator_mount_x'] for y in P['radiator_mount_y_from_centre']]
 slots = [(x,y) for x in P['rack_mount_x'] for y in P['rack_mount_y']]
 windows = [(x,H/2+y) for x in P['aperture_centres_x'] for y in P['aperture_centres_y_from_centre']]
+
+fan_mounts=[(x+dx,H/2+dy+dz) for x in P['aperture_centres_x'] for dy in P['aperture_centres_y_from_centre'] for dx in [-85,85] for dz in [-85,85]] if P.get('fan_mount_style') else []
 
 def rounded(x,y,w,h,r,depth):
     return cq.Workplane('XY').center(x,y).rect(w,h).extrude(depth).edges('|Z').fillet(r)
@@ -30,6 +32,8 @@ for x,y in mounts:
     plate = plate.cut(cq.Workplane('XY').center(x,y).circle(P['radiator_clearance_diameter']/2).extrude(T))
 for x,y in slots:
     plate = plate.cut(cq.Workplane('XY').center(x,y).slot2D(P['rack_slot_length'],P['rack_slot_width']).extrude(T))
+for x,y in fan_mounts:
+    plate=plate.cut(cq.Workplane('XY').center(x,y).circle(P['fan_mount_diameter']/2).extrude(T))
 solid=plate.val()
 assert solid.isValid() and len(solid.Solids())==1
 for ext in ('step','stl'):
@@ -45,12 +49,15 @@ def rr(x,y,w,h,r):
 rr(0,H/2,W,H,P['outer_radius'])
 for x,y in windows: rr(x,y,P['aperture_width'],P['aperture_height'],P['aperture_radius'])
 for x,y in mounts: ms.add_circle((x,y),P['radiator_clearance_diameter']/2,dxfattribs={'layer':'CUT'})
+if fan_mounts:
+    doc.layers.new('TAP_M4' if P['fan_mount_style']=='tapped' else 'M4_CLEARANCE')
+    for x,y in fan_mounts:ms.add_circle((x,y),P['fan_mount_diameter']/2,dxfattribs={'layer':'TAP_M4' if P['fan_mount_style']=='tapped' else 'M4_CLEARANCE'})
 for x,y in slots:
     r=P['rack_slot_width']/2; a=(P['rack_slot_length']-P['rack_slot_width'])/2
     ms.add_lwpolyline([(x-a,y-r,0),(x+a,y-r,1),(x+a,y+r,0),(x-a,y+r,1)],format='xyb',close=True,dxfattribs={'layer':'CUT'})
 doc.saveas(OUT/f'rack-plate-{REV}.dxf')
 dx=ezdxf.readfile(OUT/f'rack-plate-{REV}.dxf'); assert not dx.audit().has_errors
-assert len(dx.modelspace().query('CIRCLE'))==12
+assert len(dx.modelspace().query('CIRCLE'))==12+len(fan_mounts)
 assert len(dx.modelspace().query('LWPOLYLINE'))==5+len(slots)
 assert all(e.closed for e in dx.modelspace().query('LWPOLYLINE'))
 
@@ -58,6 +65,7 @@ def area_rr(w,h,r): return w*h-(4-math.pi)*r*r
 aperture_area=4*area_rr(P['aperture_width'],P['aperture_height'],P['aperture_radius'])
 area=area_rr(W,H,P['outer_radius'])-aperture_area
 area-=len(mounts)*math.pi*(P['radiator_clearance_diameter']/2)**2
+area-=len(fan_mounts)*math.pi*(P.get('fan_mount_diameter',0)/2)**2
 area-=len(slots)*((P['rack_slot_length']-P['rack_slot_width'])*P['rack_slot_width']+math.pi*(P['rack_slot_width']/2)**2)
 assert abs(solid.Volume()-area*T)<1e-4
 reloaded=cq.importers.importStep(str(OUT/f'rack-plate-{REV}.step')).val()
@@ -83,9 +91,22 @@ for x,y in mounts:
     assert np.count_nonzero(abs(radius-1.23)<.015)>=12,(x,z)
     pilot_evidence.append([x,z])
 
-if REV=='R2':
+if REV in ['R2','R3','R4']:
     assert abs(H/44.45-10)<1e-9 and len(slots)==40
     assert all(any(abs((y%44.45)-o)<1e-7 for o in [6.35,38.1]) for x,y in slots)
+
+if fan_mounts:
+    assert len(fan_mounts)==16
+    # The complete 188 mm circle remains inside every rounded opening.
+    for x,y in windows:
+        test=cq.Solid.makeCylinder(94,T,cq.Vector(x,y,0))
+        assert solid.intersect(test).Volume()<1e-6
+    # No washer bearing land can overhang an aperture.
+    for x,y in fan_mounts:
+        disk=cq.Solid.makeCylinder(4.5,T,cq.Vector(x,y,0))
+        bore=cq.Solid.makeCylinder(P['fan_mount_diameter']/2,T,cq.Vector(x,y,0))
+        annulus=disk.cut(bore)
+        assert annulus.cut(solid).Volume()<1e-6
 
 mass=solid.Volume()*P['density_kg_m3']/1e9
 payload=P['radiator_mass_kg']+P['additional_load_kg']; total=payload+mass
@@ -96,9 +117,9 @@ report={
  'plate_mass_kg':mass,'radiator_plus_allowance_kg':payload,'total_rack_mass_kg':total,
  'payload_force_N':payload*g,'total_rack_force_N':total*g,
  'airflow_aperture_area_mm2':aperture_area,'open_fraction_of_400mm_square':aperture_area/160000,
- 'minimum_mount_hole_to_aperture_ligament_mm':7.7,
+ 'minimum_mount_hole_to_aperture_ligament_mm':min(math.hypot(max(abs(x-wx)-P['aperture_width']/2,0),max(abs(y-wy)-P['aperture_height']/2,0))-P['radiator_clearance_diameter']/2 for x,y in mounts for wx,wy in windows),
  'rack_slot_outer_edge_ligament_mm':W/2-max(P['rack_mount_x'])-P['rack_slot_length']/2,
- 'radiator_mount_count':len(mounts),'rack_slot_count':len(slots),
+ 'fan_mount_style':P.get('fan_mount_style'),'fan_holes':fan_mounts,'fan_mount_count':len(fan_mounts),'fan_hole_diameter_mm':P.get('fan_mount_diameter'),'fan_threads_are_pilot_representations':P.get('fan_mount_style')=='tapped','radiator_mount_count':len(mounts),'rack_slot_count':len(slots),
  'manufacturer_pilot_centres_xz':pilot_evidence,'manufacturer_mesh_sha256':hashlib.sha256(raw).hexdigest(),
  'statics_assumptions':f'Stationary vertical rack; payload CG {P["assumed_load_cg_behind_plate_mm"]} mm behind plate; symmetric load sharing; no shock or hose loads.',
  'eccentric_payload_moment_Nm':moment,
