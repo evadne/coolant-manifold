@@ -19,7 +19,7 @@ JLC lists 2 mm 304 sheet and an 800 mm maximum length in its [supported sheet-me
 | A01–A16 | 16 | Ø4.50 +0.15/0 through; M4 fan screws with separate nuts |
 | B01–B12 | 12 | Ø3.60 +0.15/0 through; M3 screws into the radiator frame |
 | C01–C40 | 40 | Horizontal 10.00 ±0.15 × 7.00 +0.15/0 through slots |
-| D01–D04 | 4 | 188.00 ±0.15 square, R60.00 ±0.15 through apertures |
+| D01–D04 | 4 | 188.00 ±0.15 square, R50.00 ±0.15 through apertures |
 | E01 | 1 | Top-centre open cable notch: 10.00 ±0.15 mouth × 2.00 ±0.15 depth, R0.5 mouth and bottom transitions |
 
 Sheet 1 identifies every feature and specifies the profile, material, finish and edge treatment. Sheet 2 schedules the fixing and aperture coordinates and details the slot and sheet thickness. Sheet 3 details E01, centred at X0 ±0.10 on the top edge. Its 10 mm mouth includes the two R0.5 entry transitions; the parallel throat is 9 mm and the bottom flat is 8 mm. All four corners are tangent arcs. No sloped ramp is needed. All holes are normal to the broad faces; there is no countersink angle or tapped thread in this plate. M3 threads belong to the bought-in radiator only.
