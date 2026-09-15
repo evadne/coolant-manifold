@@ -1,3 +1,5 @@
+> Current Q studio images reuse these retained official source meshes and accepted coupled pose. See [current views](product-views.md). The P paths below identify the original integration evidence.
+
 # Koolance QD3 studio integration — Revision P
 
 The two current studio outputs are `output/long-bore-P/photorealistic/01-bare-ports.png` and `02-qd3-translucent-tubes.png`, with matching editable Blender scenes. Both retain the current P manifold geometry. There are no added product surface markings.

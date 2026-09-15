@@ -16,7 +16,7 @@ The radiator is rotated to a nominal 422 mm width ×441 mm height, with its port
 | Rack slots | Forty optional 10 ×7 slots; two per side per U |
 | Cable notch | Top centre, 10 mouth ×2 deep; four tangent R0.5 profile corners, 9 throat, 8 bottom flat |
 
-The final [production drawing and guide](jlc-submission-R6-M01.md) control tolerances, feature coordinates, finish and R0.3–0.5 cable-contact rounding on both faces. The actual notch outline is modelled in STEP/DXF; light face-edge finishing is a separate drawing requirement. No bending, tapping, countersinking, applied coating or product markings.
+The final [production drawing and guide](jlc-submission-R6-M02.md) control tolerances, feature coordinates, finish and R0.3–0.5 cable-contact rounding on both faces. The actual notch outline is modelled in STEP/DXF; light face-edge finishing is a separate drawing requirement. No bending, tapping, countersinking, applied coating or product markings.
 
 ## Hardware and assembly
 
@@ -42,4 +42,4 @@ The Watercool MO-RA X-Splitter is supported by the operator's physical fit exper
 
 The [current load summary](radiator-load-assessment.md) updates the equipment budget to R6's plate mass and identifies R4's 15 kg payload shell calculations as baseline evidence. No new R6 FEA or complete-assembly load rating is claimed. The pump/reservoir may be attached behind the radiator via an existing 140 mm fan-hole adapter, or supported separately; that assembly choice remains open.
 
-Use [R6-M01](../output/submission/R6-M01/SN1260-R6-M01-PLATE.zip) for the radiator part, [current plate views](product-views.md) for the notch, and [rebuild commands](rebuild.md) for regeneration. R4's populated views still illustrate the retained fan/hardware stack, but omit the notch. [Archived R3/R4 notes](archive/radiator-fan-plates-R3-R4.md) retain the original comparison, references and calculation details.
+Use [R6-M02](../output/submission/R6-M02/SN1260-R6-M02-PLATE.zip) for the radiator part, [current plate views](product-views.md) for the notch, and [rebuild commands](rebuild.md) for regeneration. R4's populated views still illustrate the retained fan/hardware stack, but omit the notch. [Archived R3/R4 notes](archive/radiator-fan-plates-R3-R4.md) retain the original comparison, references and calculation details.

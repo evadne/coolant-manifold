@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1500" height="930" viewBox="0 0 1500 930"><rect width="1500" height="930" fill="white"/><g font-family="Arial,sans-serif" fill="#203342">
 <text x="65" y="58" font-size="30" text-anchor="start">REVISION Q — FOUR REAR G1/4 PORTS</text>
-<text x="65" y="94" font-size="20" text-anchor="start">Rear elevation • millimetres • design review only • P faceplate and front interfaces retained</text>
+<text x="65" y="94" font-size="20" text-anchor="start">Rear elevation • millimetres • accepted geometry • unchanged faceplate and front interfaces retained</text>
 <rect x="196.5" y="240.0" width="1107.0" height="234.9" fill="#eef2f4" stroke="#203342" stroke-width="2"/>
 <path d="M196.5,411.45000000000005 L1303.5,411.45000000000005" fill="none" stroke="#607583" stroke-width="1.5" stroke-dasharray="7 5"/>
 <circle cx="1236.0" cy="411.45000000000005" r="18.630000000000003" fill="white" stroke="#203342" stroke-width="2"/>
@@ -55,9 +55,9 @@
 <text x="65" y="629" font-size="20" text-anchor="start">Pilot Ø11.80 × 20 full diameter from rear face, to gallery axis Y20; 118° drill point.</text>
 <text x="65" y="663" font-size="20" text-anchor="start">Entry Ø13.80 × 1 deep; full thread 8 minimum AFTER entry (9 minimum from face).</text>
 <text x="65" y="697" font-size="20" text-anchor="start">Preserve a flat Ø28 sealing land around each port. Dashed circles are reference lands, not grooves.</text>
-<text x="65" y="731" font-size="20" text-anchor="start">No rear bosses. No rear cover. Existing 40 mm slab and 3 mm front bosses retained.</text>
+<text x="65" y="731" font-size="20" text-anchor="start">Body slab 40 mm; front bosses 3 mm high. Rear face is flat at Y40.</text>
 <text x="65" y="765" font-size="20" text-anchor="start">Each rear port joins the gallery of the front port directly opposite it; two wet networks total.</text>
-<text x="65" y="799" font-size="20" text-anchor="start">Unused ports require G1/4 face-sealing plugs. External deburr only; clean and flush internal bores.</text>
-<text x="65" y="833" font-size="20" text-anchor="start">Threads in STEP are pilot cylinders, not finished plain bores. This sheet is not a supplier release.</text>
+<text x="65" y="799" font-size="20" text-anchor="start">External deburr only; clean and flush internal bores.</text>
+<text x="65" y="833" font-size="20" text-anchor="start">Threads in STEP are pilot cylinders, not finished plain bores. Use Q-M01 production drawings for manufacture.</text>
 <text x="65" y="904" font-size="17" text-anchor="start">Rear view reverses left/right relative to the front. Coordinate signs use the existing P datum.</text>
 </g></svg>

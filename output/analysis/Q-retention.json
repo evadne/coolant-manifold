@@ -1,0 +1,75 @@
+{
+  "status": "Screening calculation; actual-grade joint testing required",
+  "method": "A_s = pi * (4 - 1.082532 * 0.7) * L_e / 2; F_p = T / (K*d)",
+  "assumptions": {
+    "supported_mass_kg": 5,
+    "rearward_CG_mm": 100,
+    "minimum_effective_load_sharing_screws": 4,
+    "top_row_screws": 2,
+    "row_spacing_mm": 73,
+    "local_axial_service_load_N": 100,
+    "local_load_sharing_screws": 2,
+    "allowable_shear_MPa": 10,
+    "allowable_status": "Engineering screening assumption, NOT a measured 50 C long-term material property",
+    "torque_screening_Nm": 0.2,
+    "nut_factor_range": [
+      0.15,
+      0.3
+    ],
+    "tip_allowance_mm": 0.7
+  },
+  "gravity_N": 49.033249999999995,
+  "gravity_moment_Nmm": 4903.325,
+  "top_screw_axial_from_gravity_N": 33.58441780821918,
+  "local_external_axial_per_screw_N": 83.58441780821917,
+  "rounded_external_axial_design_case_N": 100,
+  "preload_N_range": [
+    166.66666666666669,
+    333.33333333333337
+  ],
+  "rows": [
+    {
+      "screw_length_mm": 8,
+      "effective_engagement_mm": 4.75,
+      "shear_area_mm2": 24.191176222386908,
+      "capacity_at_assumed_10MPa_N": 241.91176222386906,
+      "stress_at_433N_MPa": 17.912867444576186
+    },
+    {
+      "screw_length_mm": 10,
+      "effective_engagement_mm": 6.75,
+      "shear_area_mm2": 34.37693463181297,
+      "capacity_at_assumed_10MPa_N": 343.7693463181297,
+      "stress_at_433N_MPa": 12.605351164701762
+    },
+    {
+      "screw_length_mm": 12,
+      "effective_engagement_mm": 8.75,
+      "shear_area_mm2": 44.56269304123904,
+      "capacity_at_assumed_10MPa_N": 445.6269304123904,
+      "stress_at_433N_MPa": 9.724128041341359
+    },
+    {
+      "screw_length_mm": 16,
+      "effective_engagement_mm": 12.75,
+      "shear_area_mm2": 64.93420986009117,
+      "capacity_at_assumed_10MPa_N": 649.3420986009118,
+      "stress_at_433N_MPa": 6.673421204842109
+    }
+  ],
+  "selected_screw": "12 x M4 x 10 ISO 7380-1 A2 stainless; no washers in reference assembly",
+  "full_thread_min_after_entry_mm": 10,
+  "pilot_full_diameter_depth_mm": 13,
+  "unthreaded_full_diameter_allowance_mm": 2.4499999999999993,
+  "G1_4_thread_unchanged": "8 mm minimum full form after 1 mm entry; actual engagement depends on the fitting male thread length",
+  "limits": [
+    "Uniform-load shear-cylinder approximation does not resolve first-thread loading or thread-root bending.",
+    "No long-term creep, stripping, torque or temperature rating is established.",
+    "0.2 Nm is a proposed test point, not a released assembly torque.",
+    "5 kg and 100 N service loads are screening scenarios, not rated limits.",
+    "Pressure does not load a rear cover or these dry faceplate retainers; Q has no rear cover."
+  ],
+  "selected_screw_effective_engagement_mm": 6.75,
+  "selected_screw_assumed_allowable_exceeded_at_upper_preload_case": true,
+  "selected_screw_stress_100N_external_only_MPa": 2.908927194091889
+}

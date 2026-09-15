@@ -1,4 +1,4 @@
-"""Unmarked Q review views, with a separate diagnostic transparency file."""
+"""Unmarked accepted Q views, with a separate diagnostic transparency file."""
 import bpy,bmesh,json,sys,math,hashlib
 from pathlib import Path
 from mathutils import Vector,Matrix
@@ -44,6 +44,8 @@ def render(name,cam):
 render('01-rear-assembled',rear)
 render('02-rear-elevation',straight)
 render('03-front-unchanged',front)
+extra_views=[('06-front-elevation',(0,-600,43.5),(0,0,43.5),490),('07-left',(-600,20,43.5),(0,20,43.5),145),('08-right',(600,20,43.5),(0,20,43.5),145),('09-top',(0,20,650),(0,20,43.5),490),('10-bottom',(0,20,-650),(0,20,43.5),490)]
+for name,loc,target,scale in extra_views:render(name,camera(name,loc,target,scale))
 scene.camera=rear
 configure_context_viewports(scene,target=(0,20,43.5),distance=650,clean=True)
 for o in scene.objects:o.select_set(False)
@@ -61,4 +63,4 @@ for i,colour in enumerate(((.025,.35,.6,1),(.8,.19,.06,1)),1):
  load('Diagnostic fluid volume '+str(i),MESH/f'fluid-network-{i}.stl',mat)
 render('05-POM-transparent-channels',rear)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'body-50-percent-transparent.blend'),compress=True)
-(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png'],'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,ROOT/'output/long-bore-Q/cad/body.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; P remains selected baseline.'},indent=2)+'\n')
+(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png']+[v[0]+'.png' for v in extra_views],'M4_reference':'12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted','M4_pilot_depth_mm':13,'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,ROOT/'output/long-bore-Q/cad/body.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M01 specifies M4x10 screws and 13 mm pilots.'},indent=2)+'\n')

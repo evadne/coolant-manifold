@@ -1,7 +1,7 @@
 {
   "revision": "Q",
   "parent_revision": "P",
-  "status": "Rear-port review candidate",
+  "status": "Operator-approved geometry",
   "rear_port_columns_x_mm": [
     -180,
     180
@@ -14,8 +14,16 @@
   "entry_depth_mm": 1,
   "seal_land_diameter_mm": 28,
   "rear_fitting_keepout_diameter_mm": 36,
-  "unused_ports": "Fit G1/4 face-sealing plugs; four rear plugs optional, four side plugs retained",
+  "unused_ports": "Every unused port requires a G1/4 face-sealing plug or suitable self-closing coupling",
   "deburring": "External only; clean/flush internal bores; no internal cross-hole deburring operation",
   "topology": "Two isolated continuous galleries; rear ports duplicate their aligned front-row connection; no grouping or cross-link",
-  "drawing_status": "Review only; P production/review files retained unchanged"
+  "drawing_status": "Q-M01 supplier review issue; no submission performed",
+  "M4_retention": {
+    "thread": "M4 x 0.7 - 6H",
+    "full_thread_min_after_entry_mm": 10,
+    "pilot_full_diameter_depth_mm": 13,
+    "entry_depth_mm": 0.55,
+    "drill_point_included_angle_deg": 118,
+    "reference_screw": "M4 x 10 ISO 7380-1 A2 stainless"
+  }
 }

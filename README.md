@@ -1,31 +1,23 @@
 # Rack coolant manifold and SuperNova mount
 
-The current set comprises **three custom parts**: the Revision **P** POM manifold body, its matching **P** stainless rack faceplate, and the operator-approved **R6** SuperNova radiator/fan plate. Dimensions are in millimetres. Start with the [three-part recap](docs/three-part-recap.md).
+The current three-part set is the **accepted Revision Q manifold body and faceplate**, plus the **accepted R6 radiator plate**. Supplier issues are **Q-M01 and R6-M02**, prepared for final review; nothing has been submitted or ordered.
 
-![Revision P with official Koolance QD3 pairs](output/long-bore-P/photorealistic/02-qd3-translucent-tubes.png)
+![Q with official Koolance QD3 pairs](output/long-bore-Q/photorealistic/02-qd3-translucent-tubes.png)
 
-| Part | Current design | Files and status |
+| Part | Current definition | Supplier files |
 |---|---|---|
-| Manifold body P | Black unfilled POM-C or POM-H; 410 × 87 × 40 main body, 3 mm bosses; ten front pairs at 40 × 40 pitch, four side ports; two independent long bores | [Body STEP](output/long-bore-P/cad/body.step), [P review drawing](output/pdf/manifold-revision-P.pdf). Dedicated P manufacturing issue still to be prepared. |
-| Manifold faceplate P | Flat 304 stainless, 482.6 × 87 × 2; twelve plain M4 clearance holes, twelve optional rack slots | [Plate STEP](output/long-bore-P/cad/faceplate.step), [cut DXF](output/long-bore-P/cad/faceplate-flat.dxf). Use only with the matching P body and M4 ×16 button-head hardware. |
-| Radiator plate R6 | Flat 304 stainless, 482.6 × 444.5 × 2; four NF-A20 positions, plain fan holes, forty optional rack slots, 10 × 2 cable notch | [R6-M01 part ZIP](output/submission/R6-M01/SN1260-R6-M01-PLATE.zip), [production guide](docs/jlc-submission-R6-M01.md). Prepared for quotation/manufacturing review; no supplier submission made. |
+| Q POM body | Black unfilled declared POM-C or POM-H;410×87×40 slab +3 mm bosses;28 G1/4 female ports; two isolated long galleries | [Q-M01 body ZIP](output/submission/Q-M01/RM10-Q-M01-BODY.zip), [drawing](output/pdf/RM10-Q-M01-BODY.pdf) |
+| Q rack faceplate | 304 stainless,482.6×87×2;20 windows,12 plain M4 holes,12 optional rack slots; horizontal brushed grain | [Q-M01 plate ZIP](output/submission/Q-M01/RM10-Q-M01-FACEPLATE.zip), [drawing](output/pdf/RM10-Q-M01-FACEPLATE.pdf) |
+| R6 radiator plate | 304 stainless,482.6×444.5×2; four NF-A20 positions,68 fixing openings,10×2 cable notch; horizontal brushed grain | [R6-M02 ZIP](output/submission/R6-M02/SN1260-R6-M02-PLATE.zip), [drawing](output/pdf/SN1260-R6-M02-PLATE.pdf) |
 
-The manifold provides parallel supply and return without internal grouping. Every coolant port is direct G1/4 female. Side-fed infrastructure leaves all ten front pairs available for loads; using one front pair for infrastructure leaves nine. There is no rear cover or large gallery seal. Side plugs retain their own face seals.
+The manifold has20 front ports at40×40 mm pitch,4 side ports and4 rear ports aligned with the outermost front pairs. Side- or rear-fed infrastructure frees all ten front pairs for loads. Topology is parallel-only, without internal grouping or a rear cover. Fittings and plugs use their own face seals.
 
-The operator has accepted the current Koolance QD3-MTG4 / QD3-FT10X13 studio rendition and coupled placement. Rack installation includes sufficient front service space. These are mechanical design and review files, not pressure-rated or complete-assembly load-rated releases.
+Q-M01 incorporates the operator's shorter retention detail: **10 mm full M4 thread after entry,13 mm pilot plus drill point**. Assembly uses **M4×10** button screws, initially dry without Loctite. [Assembly instructions](docs/assembly-Q.md) are separate from manufacturing drawings. This is a prototype mechanical definition, not a pressure/load/creep-rated release.
 
-## Project guide
+- [Three-part recap](docs/three-part-recap.md) · [JLC requirements and final-review items](docs/jlc-final-review.md) · [submission index](output/submission/current-three-parts/README.md).
+- [Design/interfaces](docs/design.md) · [Q rear ports](docs/revision-Q-rear-ports.md) · [current product/studio views](docs/product-views.md) · [Koolance source geometry](docs/koolance-qd3-studio-integration.md).
+- [StarTech25U scene](docs/context-25U.md) · [radiator assembly](docs/radiator-rack-plate.md) · [radiator load assessment](docs/radiator-load-assessment.md).
+- [M4 sizing](docs/Q-retention-sizing.md) · [torque/creep and threadlocker research](docs/Q-torque-and-creep.md) · [POM/coolant](docs/pom-coolant-assessment.md).
+- [Rebuild commands](docs/rebuild.md) · [revision register](docs/iterations.md) · [output guide](output/README.md) · [project instructions](AGENTS.md).
 
-- [Design and interfaces](docs/design.md) — P manifold geometry, topology and rack/service clearances.
-- [Manifold P detail and checks](docs/revision-P-plain-bore-faceplate.md) · [current renders and Blender scenes](docs/product-views.md) · [official fitting integration](docs/koolance-qd3-studio-integration.md).
-- [Radiator R6 assembly](docs/radiator-rack-plate.md) · [load budget and analysis basis](docs/radiator-load-assessment.md) · [X-Splitter fit](docs/radiator-x-splitter-fit.md).
-- [Manufacturing status and remaining work](docs/manufacturing.md) — includes the missing P supplier issue; O-M02 ZIPs describe superseded parts.
-- [POM and coolant assessment](docs/pom-coolant-assessment.md) · [Blitz overrun qualification plan](docs/blitz-overrun-qualification.md) · [D5 pressure basis](docs/d5-pressure.md).
-- [StarTech25U installation and composite scene](docs/context-25U.md) — P/R6, eight GPUs, host, eight fans and provisional pump/reservoir support.
-- [Source index](docs/sources.md) · [rebuild commands](docs/rebuild.md) · [revision register and archive](docs/iterations.md) · [output directory guide](output/README.md).
-
-## Working on the project
-
-Use `cad/iterations/P-long-bore.json` for the manifold and `cad/radiator/R6.json` / `cad/manufacturing/R6-M01.json` for the radiator. Follow [AGENTS.md](AGENTS.md) and the explicit revision flags in the rebuild guide: several older scripts intentionally default to historical designs. Thread cylinders in STEP are tapping pilots; the relevant drawing supplies the machining call-outs.
-
-Superseded writeups are in [docs/archive](docs/archive/README.md). Historical CAD, renders and calculation evidence retain their revision-specific locations; their presence does not make them current. Git history preserves the earlier project entry points and design decisions.
+Sources: `cad/iterations/Q-rear-ports.json` derives from retained P CAD; `cad/manufacturing/Q-M01.json` defines manufacture; `cad/assembly/Q.json` defines assembly choices. Radiator sources remain `cad/radiator/R6.json` with finish issue `cad/manufacturing/R6-M02.json`. Threads in STEP are tapping pilots; the matching drawings specify finished threads. Historical outputs remain identifiable by their own revision and are not current supplier files.

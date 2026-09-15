@@ -1,0 +1,10 @@
+{
+  "revision": "Q",
+  "retention_screws": 12,
+  "thread": "M4 x 0.7",
+  "screw_underhead_length_mm": 10,
+  "head": "ISO 7380-1 A2 stainless button head, 2.5 AF socket, diameter 7.6 x 2.2 maximum envelope",
+  "first_assembly": "Dry, without Loctite or other threadlocker",
+  "provisional_dry_test_setting_Nm": 0.1,
+  "qualified_production_torque_Nm": null
+}

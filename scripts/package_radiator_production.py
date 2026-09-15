@@ -1,9 +1,9 @@
 """Package the selected plate with its checked production drawing, not an assembly."""
 from pathlib import Path
-import hashlib,json,shutil,zipfile,argparse
+import hashlib,json,shutil,zipfile,argparse,re
 from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M01',choices=['R4-M01','R5-M01','R6-M01'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 stem=M['part_number'];src=ROOT/f'output/manufacturing/{ISSUE}'
@@ -25,6 +25,10 @@ if REV in ['R5','R6']:
  throat=n['mouth_width']-2*n['mouth_radius'];floor=throat-2*n['bottom_radius']
  for phrase in (f"{n['mouth_width']:.2f}",f"{n['depth']:.2f}",f"R{n['mouth_radius']:.2f}",f"R{n['bottom_radius']:.2f}",'R0.30-0.50',f'{throat:.2f} REF',f'{floor:.2f} REF'):
   assert phrase in pages[2],phrase
+if ISSUE=='R6-M02':
+ for phrase in ('BRUSH BOTH FACES: X', 'M02'):assert phrase in txt,phrase
+ for phrase in ('M4 ×40', 'screws + nuts', 'assembly order', 'loctite'):
+  assert phrase.lower() not in txt.lower(),f'Assembly instruction in fabrication PDF: {phrase}'
 files=[src/f'{stem}.step',src/f'{stem}.dxf',pdf]
 for f in files:assert f.stat().st_size<100_000_000
 for f in files:shutil.copyfile(f,out/f.name)
@@ -34,8 +38,9 @@ with zipfile.ZipFile(zpath,'w',zipfile.ZIP_DEFLATED) as z:
 with zipfile.ZipFile(zpath) as z:
  assert z.testzip() is None and set(z.namelist())=={f.name for f in files}
  for f in files:assert z.read(f.name)==f.read_bytes()
-guide_dir=ROOT/('docs' if ISSUE=='R6-M01' else 'docs/archive')
-shutil.copyfile(guide_dir/f'jlc-submission-{ISSUE}.md',out/'README.md')
+guide_dir=ROOT/('docs' if ISSUE == 'R6-M02' else 'docs/archive')
+guide=(guide_dir/f'jlc-submission-{ISSUE}.md').read_text()
+(out/'README.md').write_text(re.sub(r'\]\(([^:/)]+\.md)\)', r'](../../../docs/\1)', guide))
 shutil.copyfile(guide_dir/f'jlc-radiator-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')
 shutil.copyfile(src/'geometry-verification.json',out/'geometry-verification.json')
 report={'issue':M['issue'],'checks':'PASS','pdf_pages':len(pages),'scheduled_features':len(schedule),

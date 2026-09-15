@@ -1,6 +1,6 @@
 # Revision register
 
-**Current:** manifold **P** body and faceplate; radiator **R6**, manufacturing issue **R6-M01**. The [three-part recap](three-part-recap.md) describes the current interfaces. The operator accepts the P Koolance studio layout; R6 is operator-approved. P still needs its own supplier manufacturing issue.
+**Current:** operator-approved manifold **Q**, manufacturing issue **Q-M01**, and radiator **R6**, manufacturing issue **R6-M02**. The [three-part recap](three-part-recap.md) describes the current interfaces. Q retains the accepted Koolance fitting pose and uses shorter retention pilots; R6-M02 specifies horizontal brushing without changing R6 geometry.
 
 ## Manifold history
 
@@ -14,10 +14,9 @@
 | M | Six POM retainers at balanced X−120/0/+120 columns | Historical; tag `revision-m-before-centred-depth` |
 | N | 35 mm slab and centred galleries | Historical rejected depth candidate; tag `revision-n-35mm-centred` |
 | O | Restored 40 mm slab, galleries at Y20 | Historical operator-approved predecessor; tag `revision-o-operator-approved` |
-| O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier issues; `cad/manufacturing/` and `output/manufacturing/`; do not submit as P |
-| **P** | 2 mm plain-hole plate, twelve M4 ×16 button screws, 3 mm bosses, revised M4 depths | **Current pair**, `cad/iterations/P-long-bore.json`, `output/long-bore-P/`; [detail](revision-P-plain-bore-faceplate.md) |
-
-| **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Review candidate**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). P remains selected. |
+| O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier issues; `cad/manufacturing/` and `output/manufacturing/`; do not submit as Q |
+| **P** | 2 mm plain-hole plate, twelve M4 ×16 button screws, 3 mm bosses, revised M4 depths | Historical predecessor, `cad/iterations/P-long-bore.json`, `output/long-bore-P/`; [detail](revision-P-plain-bore-faceplate.md) |
+| **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Current operator-approved pair / Q-M01**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). M4: 10 mm full thread, 13 mm pilot. |
 
 P's official Koolance studio fitting update and operator acceptance are presentation/installation decisions, not new manufactured-part revisions. Source geometry remains unchanged.
 
@@ -30,7 +29,7 @@ P's official Koolance studio fitting update and operator acceptance are presenta
 | R3 | Added tapped M4 fan holes and R50 aperture corners | Historical unselected alternative |
 | R4 / R4-M01 | Plain fan holes and nuts; accepted assembly sequence | Superseded geometry/pack; its final load analysis remains baseline evidence |
 | R5 / R5-M01 | 10 ×5 mm cable notch | Historical deeper-notch version |
-| **R6 / R6-M01** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | **Current operator-approved plate and supplier pack** |
+| **R6 / R6-M02** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | **Current operator-approved geometry; M02 adds horizontal brushing** |
 
 ## Archive policy
 
@@ -40,4 +39,4 @@ Git preserves all earlier revisions, recaps and README/AGENTS history. Retrieve 
 
 ## StarTech25U context update —15 September2026
 
-The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and retains P/R6. Front PVC routes use the accepted shortened free-XYZ rod/contact solution; infrastructure retains geometric65 mm bends. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.
+The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and uses Q/R6. Front PVC routes use the accepted shortened free-XYZ rod/contact solution; infrastructure retains geometric65 mm bends. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.

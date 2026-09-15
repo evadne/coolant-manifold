@@ -1,0 +1,56 @@
+{
+  "checks": "PASS",
+  "parts": [
+    {
+      "part": "RM10-Q-M01-BODY",
+      "zip": "RM10-Q-M01-BODY.zip",
+      "sha256": "4c4bb6df9d021b6d57dba951d646559eb32181727eff882d3cc6d0cd45158dde",
+      "pdf_sheets": 3,
+      "contents": [
+        "step",
+        "pdf"
+      ]
+    },
+    {
+      "part": "RM10-Q-M01-FACEPLATE",
+      "zip": "RM10-Q-M01-FACEPLATE.zip",
+      "sha256": "e53da66db36095bc1e88e2eaf57062468980ece6585db1e4a76814da0cb4e00e",
+      "pdf_sheets": 2,
+      "contents": [
+        "step",
+        "pdf",
+        "dxf"
+      ]
+    },
+    {
+      "part": "SN1260-R6-M02-PLATE",
+      "zip": "SN1260-R6-M02-PLATE.zip",
+      "sha256": "ce83900ce87d3b2b43aba8b822b63920636cfe494cf86aa80e1ca83855fc608b",
+      "pdf_sheets": 3,
+      "contents": [
+        "step",
+        "pdf",
+        "dxf"
+      ]
+    }
+  ],
+  "fabrication_scope": "Each ZIP contains only one custom part STEP and its fabrication drawing/profile.",
+  "assembly_guide": "docs/assembly-Q.md",
+  "assembly_parameters": "cad/assembly/Q.json",
+  "geometry_and_coordinate_checks": "PASS",
+  "current_context_sources": "PASS",
+  "visual_review_record": "output/review/Q-M01-R6-M02-visual-review.json",
+  "supplier_submission_performed": false,
+  "remaining_supplier_review": [
+    "POM stock grade",
+    "Deep-gallery drilling process",
+    "Specified tolerances, flatness and surface finishes"
+  ],
+  "source_sha256": {
+    "scripts/finalise_three_part_pack.py": "5735010444258912e586b24a4dc98040a7ed79dfb2f0c8c76fabc09cd834ec52",
+    "output/review/Q-M01-R6-M02-visual-review.json": "1127c6f88c41d149c82a3330540a9d0a574b2aad668acb5ae1dc3953e56133a1",
+    "scripts/draw_radiator_production.py": "0b86988c7998e34b0a89a502592d48ad8c0f5efd768b9ce505507f5ed8cccae9",
+    "scripts/package_radiator_production.py": "3e2b97078d8842b78dafc1a653d9eba937cbf5ec07871617d9711a2c0f6fda9d",
+    "cad/manufacturing/R6-M02.json": "d67775bcdfd091b50c339da1eb69168c1717aade6199698e905321377cd608b7"
+  }
+}

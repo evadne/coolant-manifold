@@ -11,7 +11,7 @@ def dim(x1,x2,y,t):
 s=2.7;ox=750;oy=240
 def pt(x,z):return ox-x*s,oy+(87-z)*s
 text(65,58,'REVISION Q — FOUR REAR G1/4 PORTS',30)
-text(65,94,'Rear elevation • millimetres • design review only • P faceplate and front interfaces retained',20)
+text(65,94,'Rear elevation • millimetres • accepted geometry • unchanged faceplate and front interfaces retained',20)
 x0,y0=pt(205,87);x1,y1=pt(-205,0)
 a.append(f'<rect x="{x0}" y="{y0}" width="{410*s}" height="{87*s}" fill="#eef2f4" stroke="#203342" stroke-width="2"/>')
 for z in (23.5,63.5):
@@ -33,10 +33,10 @@ for i,t in enumerate([
  'Pilot Ø11.80 × 20 full diameter from rear face, to gallery axis Y20; 118° drill point.',
  'Entry Ø13.80 × 1 deep; full thread 8 minimum AFTER entry (9 minimum from face).',
  'Preserve a flat Ø28 sealing land around each port. Dashed circles are reference lands, not grooves.',
- 'No rear bosses. No rear cover. Existing 40 mm slab and 3 mm front bosses retained.',
+ 'Body slab 40 mm; front bosses 3 mm high. Rear face is flat at Y40.',
  'Each rear port joins the gallery of the front port directly opposite it; two wet networks total.',
- 'Unused ports require G1/4 face-sealing plugs. External deburr only; clean and flush internal bores.',
- 'Threads in STEP are pilot cylinders, not finished plain bores. This sheet is not a supplier release.'
+ 'External deburr only; clean and flush internal bores.',
+ 'Threads in STEP are pilot cylinders, not finished plain bores. Use Q-M01 production drawings for manufacture.'
 ]):text(65,595+i*34,t,20)
 text(65,904,'Rear view reverses left/right relative to the front. Coordinate signs use the existing P datum.',17)
 a.append('</g></svg>');(out/'rear-port-layout.svg').write_text('\n'.join(a))

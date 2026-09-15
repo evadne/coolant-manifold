@@ -1,0 +1,27 @@
+{
+  "reviewed_on": "2026-09-15",
+  "sources": [
+    {
+      "title": "KNAUER AZURA Pump P 6.1L service instructions V6895, hosted by Antec",
+      "url": "https://antecscientific.com/wp-content/mu-plugins/antec-downloads/files/manuals/serv_manuals/194_0020_04%20-%20P6.1L%20pump%20service%20manual_v4.2%20V6895.pdf",
+      "sha256": "182dff73d2305bf9c8062b0a871efd1d8a649718cffbe3384b3dc7a75f57cfd0",
+      "printed_pages": "68-69",
+      "finding": "Product-specific plastic screw table includes POM in material list and M4 1.0 Nm. Engagement/grade for our joint not established; not adopted."
+    },
+    {
+      "title": "LOCTITE 425 TDS",
+      "url": "https://datasheets.tdx.henkel.com/LOCTITE-425-en_GL.pdf",
+      "finding": "Metal/plastic fastener adhesive; no POM-specific torque/strength qualification."
+    },
+    {
+      "title": "LOCTITE 243 TDS April 2025",
+      "url": "https://datasheets.tdx.henkel.com/LOCTITE-243-en_GL.pdf",
+      "finding": "Not normally recommended for plastics; stress-cracking concern."
+    },
+    {
+      "title": "DuPont general design principles hosted by Delrin",
+      "url": "https://www.delrin.com/wp-content/uploads/2023/10/General-Design-Principles-for-Engineering-Polymers.pdf",
+      "finding": "Section 10 self-tapping screw torque data must not be treated as a metric pre-tapped M4 recommendation."
+    }
+  ]
+}

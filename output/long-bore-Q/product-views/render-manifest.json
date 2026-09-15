@@ -6,15 +6,22 @@
     "02-rear-elevation.png",
     "03-front-unchanged.png",
     "04-POM-rear.png",
-    "05-POM-transparent-channels.png"
+    "05-POM-transparent-channels.png",
+    "06-front-elevation.png",
+    "07-left.png",
+    "08-right.png",
+    "09-top.png",
+    "10-bottom.png"
   ],
+  "M4_reference": "12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted",
+  "M4_pilot_depth_mm": 13,
   "rear_G1_4_ports": 4,
   "diagnostic_transparency": 0.5,
   "source_sha256": {
     "output/long-bore-P/product-views/assembled-unmarked.blend": "ad740ac919923e397bfb91d6f426ccad07a1255cbaa9cb5e02168461a4e9beda",
-    "output/long-bore-Q/cad/body.step": "8d6f08240250568a6cd704293c8c1946fb1150293b8343ccc019bdae573fbdf2",
-    "scripts/render_revision_Q.py": "f4f90fd80fbea019d207b3a28807f7bc87c17257932390106053596ba14ab2b2",
-    "output/long-bore-Q/cad/verification.json": "c5a86c01e98e345530d1a65b5eb165c2061e79a4afb679502d56053872ec1e06"
+    "output/long-bore-Q/cad/body.step": "4d4158aa8de30eced120da93b9bd8b9f4500ce8b8a7822eb15e369e5869b893d",
+    "scripts/render_revision_Q.py": "00e97ca220f1324650e32409afc6d665c62ba3855e833aa91010163915799de4",
+    "output/long-bore-Q/cad/verification.json": "515c12743a91af800bf49a038ab6193587375cc7452010844941a37a600895b4"
   },
-  "scope": "Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; P remains selected baseline."
+  "scope": "Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M01 specifies M4x10 screws and 13 mm pilots."
 }

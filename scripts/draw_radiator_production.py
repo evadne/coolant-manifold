@@ -8,7 +8,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M01',choices=['R4-M01','R5-M01','R6-M01'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2
@@ -53,7 +53,7 @@ def table(x,y,width,headers,rows,weights=None,rh=5.6):
  return bottom
 def sheet(n,title):
  rect(10,10,400,277);text(15,279,STEM,4.9,True);text(15,271,title,3.3)
- text(405,280,(f'{REV} CABLE NOTCH / ISSUE M01' if NOTCH else 'R4 APPROVED / ISSUE M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
+ text(405,280,(f'{REV} CABLE NOTCH / ISSUE {ISSUE.split(chr(45))[-1]}' if NOTCH else 'R4 APPROVED / ISSUE M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
  line(10,267,410,267);rect(10,10,400,20)
  for x in (145,283,352):line(x,10,x,30)
  lines(14,24,['304 / EN 1.4301 stainless steel; thickness 2.00 ±0.10','Units: mm; dimensions at 20°C; do not scale'],2.55,7)
@@ -103,10 +103,9 @@ text(ox,264,'FRONT VIEW 1:2  /  IDENTIFIERS REFER TO SHEET 2',2.3,False,'centre'
 x=294
 text(x,254,'FEATURES',3.2,True)
 lines(x,246,['A01-A16: 16x Ø4.50 +0.15/0 THROUGH.',
- 'Plain fan mounting holes for M4 screws + nuts.',
+ 'Plain clearance holes; no threads.',
  'B01-B12: 12x Ø3.60 +0.15/0 THROUGH.',
- 'Plain radiator mounting holes for M3 screws.',
- 'M3 threads are in the bought-in radiator.',
+ 'Plain clearance holes; no threads.',
  'C01-C40: 40x 10.00 ±0.15 x 7.00 +0.15/0',
  'horizontal slots THROUGH; semicircular ends.',
  'D01-D04: 4x 188.00 ±0.15 square cut-outs,',
@@ -124,9 +123,11 @@ lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '6. Flatness: 0.50 max, free state, whole plate.',
  '7. Uniform satin brushed finish; no coating,',
  '   engraving, printing or identification marks.',
- '8. Do not add fasteners, rivet nuts or standoffs.',
- '9. Confirm specified tolerances and flatness',
+ '8. Confirm specified tolerances and flatness',
  '   before fabrication; report discrepancies.'],2.6,5.2)
+if ISSUE=='R6-M02':
+ text(40,259,'BRUSH BOTH FACES: X / RACK WIDTH',2.3,True)
+ line(40,255,100,255);arrow(40,255,1,0);arrow(100,255,-1,0)
 text(x,97,'COORDINATES AND TOLERANCES',3.2,True)
 lines(x,89,['Origin O: width centreline at bottom edge.',
  'X right; Y up; all feature axes normal to sheet.',
@@ -171,10 +172,9 @@ lines(302,111,['All feature axes perpendicular to broad faces.',
  'Permitted small edge breaks: see sheet 1.',
  'Free-state flatness 0.50 max over whole plate.'],2.5,5.8)
 text(302,78,'ISSUE CONTROL',3,True)
-lines(302,70,['Geometry '+REV+'; manufacturing issue M01.',
+lines(302,70,['Geometry '+REV+'; manufacturing issue '+ISSUE.split('-')[-1]+'.',
  'Quote / manufacture this single plate only.',
- 'Radiator, fans, screws and nuts are bought-in.',
- 'No supplier assembly or fitting trial is requested.',
+ 'All specified holes are through the plate.',
  'Drawing tolerances require supplier acceptance.'],2.5,5.8)
 if NOTCH:
  C.showPage();sheet(3,'E01 - rounded top-centre fan cable notch')
@@ -217,6 +217,5 @@ if NOTCH:
   'No angled ramp or sheet bend is required: the tangent radii provide the smooth entry and bottom transitions.',
   'Notch dimensions refer to the nominal through profile, excluding the small face edge rounds.',
   'Check width, depth, centre position, corner radii and the smooth edge finish on both faces.',
-  'This issue changes only the top edge of R4; all 68 fixing positions and four airflow apertures remain unchanged.',
   'General material, flatness, finish and hole requirements remain as specified on sheets 1 and 2.'],2.8,8)
 C.save();print(OUT)

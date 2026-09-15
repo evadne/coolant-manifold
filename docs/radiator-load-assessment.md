@@ -1,5 +1,7 @@
 # Current radiator load budget and analysis basis
 
+**Engineering assessment, not a part manufacturing instruction.** Fabrication is defined only by the matching current STEP/PDF and supplier remarks.
+
 The approved R6 plate is 2 mm 304 stainless. The existing full-plate analysis supports this prototype choice under its stated static loads and supports. Its final pre-notch calculation uses the R4 profile and direct fan loads; it is not a newly solved R6 or complete-assembly load rating.
 
 ## Updated planning mass
@@ -7,7 +9,7 @@ The approved R6 plate is 2 mm 304 stainless. The existing full-plate analysis su
 | Component | Mass, kg | Basis |
 |---|---:|---|
 | SuperNova 1260 dry radiator | 4.225 | Manufacturer net mass; no deduction for the replaced stock plate |
-| R6 custom plate | 1.247 | [Current CAD verification](../output/manufacturing/R6-M01/geometry-verification.json), density 7,900 kg/m³ |
+| R6 custom plate | 1.247 | [Current CAD verification](../output/manufacturing/R6-M02/geometry-verification.json), density 7,900 kg/m³ |
 | Eight NF-A20 fans | 2.960 | Eight ×370 g manufacturer net mass |
 | ULTITUBE D5 200, dry, without pump | 1.000 | Engineering allowance; dry net mass unverified |
 | D5 NEXT | 0.500 | Engineering allowance; dry net mass unverified |

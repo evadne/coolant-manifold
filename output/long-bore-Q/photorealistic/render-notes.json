@@ -1,0 +1,31 @@
+{
+  "revision": "Q",
+  "source_scene": "../product-views/assembled-unmarked.blend",
+  "boss_height_mm": 3.0,
+  "retention_screws": "12 x M4 x 10 ISO 7380-1; heads rendered, shanks omitted",
+  "brush_direction": "X / across rack width on both broad faces",
+  "geometry_changes": "No manifold changes; converted millimetres to metres. Small shader-only edge rounding.",
+  "bare": "20 front, 4 side and 4 rear ports unpopulated; body screws retained.",
+  "connected": "20 official QD3-MTG4 / QD3-FT10X13 STEP pairs; 20 annular 10 mm ID / 13 mm OD tube tails; four reference side plugs; Q also has four rear plug envelopes.",
+  "materials": [
+    "Fine satin black POM",
+    "Directionally brushed stainless faceplate",
+    "Polished nickel-plated brass fitting references",
+    "A2 stainless button screws",
+    "Translucent polymer tubing, IOR 1.46"
+  ],
+  "lighting": "Four rectangular softboxes, low world illumination, tabletop contact shadows",
+  "camera": "72 mm perspective, front three-quarter, deep focus",
+  "render": "Cycles 256 samples, adaptive threshold 0.006, denoising, AgX Medium High Contrast",
+  "resolution": [
+    3000,
+    1600
+  ],
+  "surface_markings": false,
+  "device": "METAL",
+  "scope": "Koolance supplier STEP geometry, unscaled. Coupled axial pose inferred from annular interface registration; individual supplier drawings do not state coupled length or release stroke. See output/long-bore-P/koolance-fit/verification.json. Closed valves are not articulated. Tube tails use nominal free ID/OD; deformation over the barb and compression under the nut are not simulated. Side plugs are visual references. Manifold threads remain pilot representations.",
+  "fitting_sources": {
+    "qd3-mtg4": "e0f39f788be3b336af2e5eebc5834fcf9ab9326a70795fdc161b1a31851a9090",
+    "qd3-ft10x13": "f1126bd64f33ec3b670f8eae1ffde41136c372e57e92ed783d17b7b81d9084a1"
+  }
+}

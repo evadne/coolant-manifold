@@ -1,29 +1,26 @@
 # Current product views
 
-## Manifold Revision P
+## Accepted manifold Q / manufacturing detail Q-M01
 
-The studio images show the current 2 mm faceplate, twelve M4 button heads and 3 mm POM bosses. The operator accepts the official Koolance QD3-MTG4 / QD3-FT10X13 rendition and coupled placement. Product surfaces have no added text, lines or colour markings.
+The updated scenes use the40 mm slab,3 mm bosses,2 mm plate,28 G1/4 ports and shortened13 mm M4 pilots. Twelve ISO7380-1 button heads represent the selected M4×10 hardware; hidden screw shanks are omitted. No product markings are added.
 
-![P with official Koolance fittings](../output/long-bore-P/photorealistic/02-qd3-translucent-tubes.png)
+![Q connected studio](../output/long-bore-Q/photorealistic/02-qd3-translucent-tubes.png)
 
-[Connected Blender scene](../output/long-bore-P/photorealistic/02-qd3-translucent-tubes.blend) · [bare-port image](../output/long-bore-P/photorealistic/01-bare-ports.png) · [bare Blender scene](../output/long-bore-P/photorealistic/01-bare-ports.blend) · [fitting dimensions and placement](koolance-qd3-studio-integration.md).
-
-The eleven general inspection images below use CAD-derived POM/steel and simpler fitting references. Use the studio scenes for the current Koolance fitting presentation, not the approximate fittings in these inspection views.
-
-| Views | Files |
+| Studio view | Image |
 |---|---|
-| Three-quarter | [Front](../output/long-bore-P/product-views/01-front-three-quarter.png), [rear](../output/long-bore-P/product-views/02-rear-three-quarter.png) |
-| Elevations | [Front](../output/long-bore-P/product-views/03-front.png), [rear](../output/long-bore-P/product-views/04-rear.png), [left](../output/long-bore-P/product-views/05-left.png), [right](../output/long-bore-P/product-views/06-right.png) |
-| Plan views | [Top](../output/long-bore-P/product-views/07-top.png), [bottom](../output/long-bore-P/product-views/08-bottom.png) |
-| Internal review | [Gallery section](../output/long-bore-P/product-views/09-gallery-section.png), [50% transparent body](../output/long-bore-P/product-views/10-body-50-percent-transparent.png) |
-| Alternative plumbing | [Side-elbow reference](../output/long-bore-P/product-views/11-side-elbow-configuration.png) |
+| Bare front | [Front three-quarter](../output/long-bore-Q/photorealistic/01-bare-ports.png) |
+| Official Koolance QD3-MTG4 +QD3-FT10X13,10/13 tubes | [Connected front](../output/long-bore-Q/photorealistic/02-qd3-translucent-tubes.png) |
+| Bare rear ports | [Rear three-quarter](../output/long-bore-Q/photorealistic/03-bare-rear.png) |
+| Connected configuration, unused rear ports plugged | [Rear three-quarter](../output/long-bore-Q/photorealistic/04-connected-rear.png) |
 
-[General review Blender scene](../output/long-bore-P/product-views/assembled-unmarked.blend) · [transparent-body scene](../output/long-bore-P/product-views/body-50-percent-transparent.blend) · [refresh verification](../output/long-bore-P/rendition-refresh.json). Transparency is a visualisation aid; actual black POM is opaque.
+[Connected studio Blender](../output/long-bore-Q/photorealistic/02-qd3-translucent-tubes.blend) · [bare studio Blender](../output/long-bore-Q/photorealistic/01-bare-ports.blend). Koolance source meshes and accepted inferred coupled placement are retained unscaled from the [P reference integration](koolance-qd3-studio-integration.md). Rear plugs are simple visual envelopes, not exact bought-in models. Stainless grain runs horizontally across rack width.
 
-## Radiator plate Revision R6
+The [unmarked review scene](../output/long-bore-Q/product-views/assembled-unmarked.blend) has ten inspection views: rear assembly/elevation, front perspective/elevation, bare POM rear, left/right, top/bottom and [50% transparency with diagnostic gallery volumes](../output/long-bore-Q/product-views/05-POM-transparent-channels.png). [Separate transparent Blender file](../output/long-bore-Q/product-views/body-50-percent-transparent.blend). Actual POM is opaque. Review views expose rear ports intentionally; the connected studio and rack scenes close unused rear ports.
 
-[Plate perspective](../output/radiator-R6/01-plate-perspective.png) · [front](../output/radiator-R6/00-plate-front.png) · [10 ×2 notch detail](../output/radiator-R6/05-cable-notch-detail.png) · [Blender scene](../output/radiator-R6/radiator-rack-plate-R6.blend).
+## R6 radiator / R6-M02 finish
 
-The R4 populated radiator/fan scenes remain useful assembly references for the same fixing pattern, but omit R6's cable notch. The [StarTech25U composite](context-25U.md) now combines P and R6 with eight NF-A20s, the eight-GPU tray, host and a provisional pump/reservoir behind the radiator.
+[Plate perspective](../output/radiator-R6/01-plate-perspective.png) · [front](../output/radiator-R6/00-plate-front.png) · [notch](../output/radiator-R6/05-cable-notch-detail.png) · [native Blender scene](../output/radiator-R6/radiator-rack-plate-R6.blend). R6-M02 leaves the geometry intact and specifies horizontal brushing on both broad faces; the refreshed material reflects this.
 
-Reproduce current images with the explicit revision commands in [rebuild.md](rebuild.md). Historical images and drawings remain in their original revision directories; see the [output guide](../output/README.md).
+The [StarTech25U composite](context-25U.md) combines Q and R6 with official Noctua and Koolance references, the accepted GPU/host tube routes, corrected5090 block/power geometry and provisional pump support. Nine context views and the orbitable Blender file are refreshed. Desktop Blender is not needed to generate them and should remain closed when not being used.
+
+See [rebuild instructions](rebuild.md). Historical P studio files remain intact as source/acceptance evidence, not the current product.

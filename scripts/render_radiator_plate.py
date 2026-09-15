@@ -6,6 +6,7 @@ from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5','R6'],default='R1')
 parser.add_argument('--plate-only',action='store_true')
+parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
 REV=args.revision
 OUT=ROOT/f'output/radiator-{REV}'
@@ -38,6 +39,14 @@ def cut(a,b):
  bpy.context.view_layer.objects.active=a;bpy.ops.object.modifier_apply(modifier=m.name);bpy.data.objects.remove(b,do_unlink=True)
 bpy.ops.wm.stl_import(filepath=str(OUT/f'rack-plate-{REV}.stl'));plate=bpy.context.object
 plate.name=f'{REV} rack plate - exact CAD mesh';plate.rotation_euler.x=math.pi/2;plate.data.materials.append(steel);bevel(plate,.15)
+if REV=='R6':
+ brushed=steel.copy();brushed.name='R6-M02 satin brushed along rack width X'
+ n=brushed.node_tree.nodes;p=n.get('Principled BSDF');p.inputs['Anisotropic'].default_value=.55;p.inputs['Tangent'].default_value=(1,0,0)
+ g=n.new('ShaderNodeNewGeometry');stretch=n.new('ShaderNodeVectorMath');stretch.operation='MULTIPLY';stretch.inputs[1].default_value=(.03,18,18)
+ noise=n.new('ShaderNodeTexNoise');noise.inputs['Scale'].default_value=1
+ remap=n.new('ShaderNodeMapRange');remap.inputs['To Min'].default_value=.28;remap.inputs['To Max'].default_value=.34
+ links=brushed.node_tree.links;links.new(g.outputs['Position'],stretch.inputs[0]);links.new(stretch.outputs['Vector'],noise.inputs['Vector']);links.new(noise.outputs['Fac'],remap.inputs['Value']);links.new(remap.outputs['Result'],p.inputs['Roughness'])
+ plate.data.materials.clear();plate.data.materials.append(brushed)
 # The source CAD is XY, extruded +Z. Rotation maps it to X,-thickness,height.
 assembly=[];front_hardware=[];front_fans=[];rear_fans=[]
 NEW=REV in ['R3','R4','R5','R6']
@@ -126,6 +135,11 @@ def light(loc,power,size):
 light((200,-450,900),18000000,650);light((-600,-200,450),13000000,550);light((300,650,650),20000000,450)
 bpy.ops.object.camera_add();camera=bpy.context.object;scene.camera=camera;camera.data.type='ORTHO';camera.data.ortho_scale=650;camera.data.clip_end=10000
 scene.render.engine='CYCLES';scene.cycles.samples=32;scene.cycles.use_denoising=True
+if args.device=='METAL':
+ prefs=bpy.context.preferences.addons['cycles'].preferences;prefs.compute_device_type='METAL';prefs.get_devices()
+ assert any(d.type=='METAL' for d in prefs.devices)
+ for d in prefs.devices:d.use=d.type=='METAL'
+ scene.cycles.device='GPU'
 scene.render.resolution_x=1500;scene.render.resolution_y=1300;scene.render.resolution_percentage=100
 scene.view_settings.view_transform='AgX';scene.render.image_settings.file_format='PNG'
 def render(name,loc,bare=False):

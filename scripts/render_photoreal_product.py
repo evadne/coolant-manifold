@@ -9,12 +9,12 @@ from mathutils import Vector,Matrix
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--variant',choices=['all','bare','connected'],default='all')
 parser.add_argument('--manufacturing', choices=['O-M02'])
-parser.add_argument('--iteration',choices=['P'])
+parser.add_argument('--iteration',choices=['P','Q'])
 parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
 assert not (args.iteration and args.manufacturing), 'Select either a layout iteration or a manufacturing issue'
 REV=args.iteration or args.manufacturing or 'M'
-BASE=ROOT/('output/long-bore-P' if args.iteration else 'output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')
+BASE=ROOT/(f'output/long-bore-{REV}' if args.iteration else 'output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')
 OUT=BASE/'photorealistic';OUT.mkdir(parents=True,exist_ok=True)
 BOSS=(json.loads((ROOT/'cad/manufacturing/O-M02.json').read_text())['boss_height'] if args.manufacturing else 3 if args.iteration else 6)*.001
 bpy.ops.wm.open_mainfile(filepath=str(BASE/'product-views/assembled-unmarked.blend'))
@@ -23,6 +23,12 @@ for o in list(scene.objects):
     keep=(o.name in ('body','faceplate') or o.name.startswith(('QD3 reference /','Front M4','G1-4 side plug reference')))
     if args.iteration and o.name.startswith('QD3 reference /'):keep=False
     if not keep:bpy.data.objects.remove(o,do_unlink=True)
+if args.iteration=='Q':
+    from mathutils import Matrix
+    for x in (-180,180):
+        for z in (23.5,63.5):
+            bpy.ops.mesh.primitive_cylinder_add(vertices=64,radius=10,depth=4,location=(x,42,z),rotation=(math.pi/2,0,0))
+            bpy.context.object.name=f'G1-4 rear plug reference {x} {z}'
 product=list(scene.objects)
 for o in product:
     o.hide_render=False;o.hide_set(False)
@@ -81,7 +87,7 @@ tube_mat,p=base('Translucent 10-13 polymer tube',(.89,.96,.985),0,.12)
 p.inputs['Transmission Weight'].default_value=1;p.inputs['IOR'].default_value=1.46
 scene.cycles.transmission_bounces=12
 if args.iteration:
-    fit_dir=BASE/'koolance-fit';fit=json.loads((fit_dir/'verification.json').read_text())
+    fit_dir=ROOT/'output/long-bore-P/koolance-fit';fit=json.loads((fit_dir/'verification.json').read_text())
     assert fit['checks']=='PASS' and not fit['scaling_applied']
     templates={}
     for rec in fit['mesh_records']:
@@ -159,10 +165,11 @@ assert not any(o.type=='FONT' for o in scene.objects)
 assert len(connected)==(80 if args.iteration else 100)
 for variant in (['bare','connected'] if args.variant=='all' else [args.variant]):
     for o in product:
-        if o.name.startswith(('QD3 reference /','Koolance QD3-MTG4 /','G1-4 side plug reference')):
+        if o.name.startswith(('QD3 reference /','Koolance QD3-MTG4 /','G1-4 side plug reference','G1-4 rear plug reference')):
             o.hide_render=variant=='bare';o.hide_set(variant=='bare')
     for o in connected:o.hide_render=variant=='bare';o.hide_set(variant=='bare')
     stem='01-bare-ports' if variant=='bare' else '02-qd3-translucent-tubes'
+    camera.location=(.45,-1.15,.48);camera.rotation_euler=(Vector((0,-.032,.044))-camera.location).to_track_quat('-Z','Y').to_euler()
     scene.render.filepath=str(ROOT/f'tmp/{REV}-{variant}-preview.png' if args.preview else OUT/f'{stem}.png')
     bpy.ops.render.render(write_still=True)
     if not args.preview:
@@ -170,20 +177,24 @@ for variant in (['bare','connected'] if args.variant=='all' else [args.variant])
             for a in screen.areas:
                 if a.type=='VIEW_3D':
                     a.spaces.active.overlay.show_overlays=False;a.spaces.active.clip_end=250;a.spaces.active.region_3d.view_perspective='CAMERA'
-        bpy.ops.wm.save_as_mainfile(filepath=str(OUT/f'{stem}.blend'))
+        bpy.ops.wm.save_as_mainfile(filepath=str(OUT/f'{stem}.blend'),compress=True)
+        if args.iteration=='Q':
+            camera.location=(-.45,1.12,.48);camera.rotation_euler=(Vector((0,.015,.044))-camera.location).to_track_quat('-Z','Y').to_euler()
+            scene.render.filepath=str(OUT/('03-bare-rear.png' if variant=='bare' else '04-connected-rear.png'))
+            bpy.ops.render.render(write_still=True)
 if not args.preview:
     (OUT/'render-notes.json').write_text(json.dumps({
         'revision':REV,'source_scene':'../product-views/assembled-unmarked.blend',
-        'boss_height_mm':BOSS*1000,
+        'boss_height_mm':BOSS*1000,'retention_screws':('12 x M4 x 10 ISO 7380-1; heads rendered, shanks omitted' if REV=='Q' else 'Historical hardware per source'),'brush_direction':'X / across rack width on both broad faces',
         'geometry_changes':'No manifold changes; converted millimetres to metres. Small shader-only edge rounding.',
-        'bare':'20 front and 4 side ports unpopulated; M4 body screws retained (12 in P; six in O-M02).',
-        'connected':('20 official QD3-MTG4 / QD3-FT10X13 STEP pairs; 20 annular 10 mm ID / 13 mm OD tube tails; four reference side plugs.' if args.iteration else '20 male/female QD approximations and 20 tube tails.'),
+        'bare':f'20 front, 4 side and {4 if REV == chr(81) else 0} rear ports unpopulated; body screws retained.',
+        'connected':('20 official QD3-MTG4 / QD3-FT10X13 STEP pairs; 20 annular 10 mm ID / 13 mm OD tube tails; four reference side plugs; Q also has four rear plug envelopes.' if args.iteration else '20 male/female QD approximations and 20 tube tails.'),
         'materials':['Fine satin black POM','Directionally brushed stainless faceplate','Polished nickel-plated brass fitting references','A2 stainless button screws' if args.iteration else 'A4 stainless fastener references','Translucent polymer tubing, IOR 1.46'],
         'lighting':'Four rectangular softboxes, low world illumination, tabletop contact shadows',
         'camera':'72 mm perspective, front three-quarter, deep focus',
         'render':'Cycles 256 samples, adaptive threshold 0.006, denoising, AgX Medium High Contrast',
         'resolution':[3000,1600],'surface_markings':False,
         'device':args.device,
-        'scope':('Koolance supplier STEP geometry, unscaled. Coupled axial pose inferred from annular interface registration; individual supplier drawings do not state coupled length or release stroke. See ../koolance-fit/verification.json. Closed valves are not articulated. Tube tails use nominal free ID/OD; deformation over the barb and compression under the nut are not simulated. Side plugs are visual references. Manifold threads remain pilot representations.' if args.iteration else 'Approximate QD envelopes and tube tails, not a complete routed loop.'),
+        'scope':('Koolance supplier STEP geometry, unscaled. Coupled axial pose inferred from annular interface registration; individual supplier drawings do not state coupled length or release stroke. See output/long-bore-P/koolance-fit/verification.json. Closed valves are not articulated. Tube tails use nominal free ID/OD; deformation over the barb and compression under the nut are not simulated. Side plugs are visual references. Manifold threads remain pilot representations.' if args.iteration else 'Approximate QD envelopes and tube tails, not a complete routed loop.'),
         'fitting_sources':fit['source_sha256'] if args.iteration else None
     },indent=2)+'\n')

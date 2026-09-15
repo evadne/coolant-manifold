@@ -1,0 +1,42 @@
+{
+  "issue": "R6-M02",
+  "part_number": "SN1260-R6-M02-PLATE",
+  "issue_date": "2026-09-15",
+  "geometry_revision": "R6",
+  "status": "Operator-approved R6 geometry; production pack for supplier quotation and manufacturing review",
+  "material": "304 stainless steel / EN 1.4301 (JLC SUS304)",
+  "thickness_mm": 2.0,
+  "thickness_tolerance_mm": 0.1,
+  "profile_tolerance_mm": 0.15,
+  "hole_centre_tolerance_mm": 0.1,
+  "round_hole_diameter_tolerance_mm": [
+    0.0,
+    0.15
+  ],
+  "slot_width_tolerance_mm": [
+    0.0,
+    0.15
+  ],
+  "slot_length_tolerance_mm": 0.15,
+  "height_tolerance_mm": [
+    -0.15,
+    0.0
+  ],
+  "flatness_max_mm": 0.5,
+  "fan_hole_edge_break_max_mm": 0.1,
+  "other_edge_break_mm": [
+    0.2,
+    0.3
+  ],
+  "finish": "Uniform satin brushed finish on both broad faces; grain parallel to X / 482.60 mm rack width; no applied coating or product markings",
+  "preferred_process": "Flat-sheet laser cutting; drill or finish round holes where necessary to meet drawing",
+  "threads": false,
+  "countersinks": false,
+  "bends": false,
+  "supplier_assembly": false,
+  "cable_notch_edge_round_mm": [
+    0.3,
+    0.5
+  ],
+  "operator_approved_on": "2026-09-15"
+}

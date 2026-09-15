@@ -1,4 +1,4 @@
-"""StarTech 25U open-frame use-case study. Current P manifold and R6 plate; bought-in context envelopes noted."""
+"""StarTech 25U open-frame use-case study. Current Q manifold and R6 plate; bought-in context envelopes noted."""
 from pathlib import Path
 import bpy, math, json, hashlib, argparse, sys
 from mathutils import Vector
@@ -14,7 +14,7 @@ import numpy as np
 OUT=ROOT/'output/context-25U';OUT.mkdir(parents=True,exist_ok=True)
 parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--check-only',action='store_true');parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-bpy.ops.wm.open_mainfile(filepath=str(ROOT/'output/long-bore-P/product-views/assembled-unmarked.blend'))
+bpy.ops.wm.open_mainfile(filepath=str(ROOT/'output/long-bore-Q/product-views/assembled-unmarked.blend'))
 scene=bpy.context.scene
 for o in list(scene.objects):
     if not (o.name in ('body','faceplate') or o.name.startswith(('Front M4','G1-4 side plug reference'))):
@@ -57,6 +57,10 @@ def hose(name,pts,m,r=6.5):
     sp=cu.splines.new('BEZIER');sp.bezier_points.add(len(pts)-1)
     for b,p in zip(sp.bezier_points,pts):b.co=p;b.handle_left_type='AUTO';b.handle_right_type='AUTO'
     o=bpy.data.objects.new(name,cu);scene.collection.objects.link(o);o.data.materials.append(m);return o
+# Flat rear ports are unused in this accepted routing; close each with a plug envelope.
+for x in (-180,180):
+    for z in (23.5,63.5):
+        cyl(f'G1-4 rear plug reference {x} {z}',(x,42,manifold+z),10,4,steel)
 build_rack(box,cyl,rack,steel,black)
 pvc=mat('Transparent PVC wall',(.94,.975,1),0,.1)
 pvc.node_tree.nodes.get('Principled BSDF').inputs['Transmission Weight'].default_value=1
@@ -275,15 +279,15 @@ if not args.preview:
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'25U-StarTech-context.blend'),compress=True)
     def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
     report=dict(rack_U=25,rack_model='StarTech 4POSTRACK25U',rack_depth_overall_mm=661.8,rail_spacing_depth_mm=RAIL_DEPTH,rack_width_mm=600,rack_height_casters_mm=1288.34,rack_U_datum_mm=RACK_U_DATUM,depth_setting='22in / 0 and 0',
-      manifold_revision='P',radiator_plate_revision='R6',
-      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='P parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],
+      manifold_revision='Q',radiator_plate_revision='R6',
+      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='Q parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],
       radiator=dict(plate_dimensions_mm=[482.6,444.5,2],body_envelope_mm=[422,48,441],fans=8,fan_model='Official Noctua NF-A20 integration meshes',port_orientation='Downwards into reserved U1; radiator begins at U2',rack_screws_populated=8,cable_notch_mm=[10,2],plate_aperture_radius_mm=50),
       pump_reservoir=dict(selection='Provisional ULTITUBE 200 / D5 NEXT envelopes',glass_length_mm=200,glass_od_mm=65,glass_wall_mm=5,position_xy_mm=[pump_x,pump_y],mounting='Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection',reason='Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate.'),
       front_pair_allocation={'1-8':'Individual GPUs','9':'Host CPU/chassis','10':'Spare male QDs'},
-      fittings=dict(male='QD3-MTG4',female='QD3-FT10X13',connected_pairs=9,spare_pairs=1,source_scale='Unscaled supplier meshes in mm',axial_placement='Operator-accepted inferred studio pose'),
+      fittings=dict(male='QD3-MTG4',female='QD3-FT10X13',connected_pairs=9,spare_pairs=1,rear_ports=4,rear_ports_state='Four reference face-sealing plugs; existing side-fed routing retained',source_scale='Unscaled supplier meshes in mm',axial_placement='Operator-accepted inferred studio pose'),
       pvc_equilibrium=dict(report='pvc-equilibrium.json',modulus_MPa=relaxation_report['parameters']['young_modulus_MPa'],method=relaxation_report['parameters']['model']),
       gpu_pitch_mm=40,gpu_reference=GPU,gpu_registration=gpu_records,gpu_orientation='Viewed from ports, main block left, processor PCB right, active backplate further right. Bracket rear; angled 12V-2x6 at top-front cutout',host_envelope_mm=[440,456,176],host_link=dict(adapter='x16 to 2x MCIO 8i',physical_cables=2,logical_link='one x16'),switch_status='Eight-endpoint concept; exact board not selected',
-      source_sha256={path:digest(path) for path in ['output/long-bore-P/cad/body.step','output/long-bore-P/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-P/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/check_context_gpu.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','scripts/context_gpu5090.py','cad/context/gpu-5090fe.json','docs/references/alphacool-5090/datasheet.pdf','docs/references/alphacool-5090/manual.pdf','docs/references/alphacool-5090/power-housing.pdf','docs/references/alphacool-5090/power-header.pdf','output/context-25U/relaxed-branches.json']},
+      source_sha256={path:digest(path) for path in ['output/long-bore-Q/cad/body.step','output/long-bore-Q/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-Q/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/check_context_gpu.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','scripts/context_gpu5090.py','cad/context/gpu-5090fe.json','docs/references/alphacool-5090/datasheet.pdf','docs/references/alphacool-5090/manual.pdf','docs/references/alphacool-5090/power-housing.pdf','docs/references/alphacool-5090/power-header.pdf','output/context-25U/relaxed-branches.json']},
       view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png','06-front-tube-routing.png','07-side-tube-routing.png','08-front-tube-detail.png','09-GPU-block-detail.png','10-GPU-power-detail.png'],
       scope='Current custom parts with manufacturer-dimensioned StarTech rack envelope and inferred section registration; chassis, GPU, pump and support remain illustrative. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings.')
     (OUT/'layout.json').write_text(json.dumps(report,indent=2)+'\n')

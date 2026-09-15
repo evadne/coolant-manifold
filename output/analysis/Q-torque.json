@@ -1,0 +1,138 @@
+{
+  "status": "Screening sensitivity only; friction, material allowable and loads are unvalidated",
+  "effective_engagement_nominal_mm": 6.75,
+  "reduced_engagement_sensitivity_mm": 6.3,
+  "reduced_engagement_assumptions": "0.30 mm shorter screw, 2.10 mm plate, 0.60 mm entry, 0.70 mm incomplete male tip; these are sensitivity inputs, not a claimed ISO screw length tolerance",
+  "shear_area_nominal_mm2": 34.37693463181297,
+  "shear_area_reduced_mm2": 32.085138989692105,
+  "external_axial_screw_load_assumed_N": 100,
+  "assumed_long_term_shear_allowable_MPa": 10,
+  "rows": [
+    {
+      "torque_Nm": 0.05,
+      "preload_at_K_030_015_010_N": [
+        41.66666666666667,
+        83.33333333333334,
+        125.0
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        4.120980191630177,
+        5.3330331891684635,
+        6.545086186706751
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 7.01259234290009
+    },
+    {
+      "torque_Nm": 0.08,
+      "preload_at_K_030_015_010_N": [
+        66.66666666666667,
+        133.33333333333334,
+        200.0
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        4.848211990153149,
+        6.787496786214408,
+        8.726781582275667
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 9.350123123866787
+    },
+    {
+      "torque_Nm": 0.1,
+      "preload_at_K_030_015_010_N": [
+        83.33333333333334,
+        166.66666666666669,
+        250.0
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        5.3330331891684635,
+        7.757139184245038,
+        10.181245179321612
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 10.908476977844586
+    },
+    {
+      "torque_Nm": 0.12,
+      "preload_at_K_030_015_010_N": [
+        100.0,
+        200.0,
+        300.0
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        5.817854388183778,
+        8.726781582275667,
+        11.635708776367556
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 12.466830831822383
+    },
+    {
+      "torque_Nm": 0.15,
+      "preload_at_K_030_015_010_N": [
+        125.0,
+        250.0,
+        374.99999999999994
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        6.545086186706751,
+        10.181245179321612,
+        13.817404171936472
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 14.804361612789078
+    },
+    {
+      "torque_Nm": 0.2,
+      "preload_at_K_030_015_010_N": [
+        166.66666666666669,
+        333.33333333333337,
+        500.0
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        7.757139184245038,
+        12.605351174398187,
+        17.453563164551333
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 18.700246247733574
+    },
+    {
+      "torque_Nm": 0.3,
+      "preload_at_K_030_015_010_N": [
+        250.0,
+        500.0,
+        749.9999999999999
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        10.181245179321612,
+        17.453563164551333,
+        24.725881149781056
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 26.492015517622562
+    },
+    {
+      "torque_Nm": 0.5,
+      "preload_at_K_030_015_010_N": [
+        416.6666666666667,
+        833.3333333333334,
+        1250.0
+      ],
+      "stress_with_100N_external_at_nominal_engagement_MPa": [
+        15.029457169474762,
+        27.149987144857633,
+        39.270517120240505
+      ],
+      "stress_with_100N_at_reduced_engagement_K010_MPa": 42.075554057400545
+    }
+  ],
+  "torque_limit_at_10MPa_and_reduced_engagement_Nm": {
+    "0.1": 0.08834055595876843,
+    "0.15": 0.1325108339381526,
+    "0.3": 0.2650216678763052
+  },
+  "prototype_test_points_Nm": [
+    0.08,
+    0.1,
+    0.12,
+    0.15,
+    0.2
+  ],
+  "production_torque": null,
+  "conclusion": "Around 0.10 Nm is a plausible initial coupon-test point, not an established safe torque. 0.08-0.12 Nm is a test band, not a qualified allowable interval. No generic finger-tight claim."
+}

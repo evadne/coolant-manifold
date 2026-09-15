@@ -1,6 +1,6 @@
 # StarTech 25U installation and PVC routing
 
-The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **P manifold body, P faceplate and R6 radiator plate**. Eight RTX 5090 FE GPUs with Alphacool 5100182 block/active-backplate assemblies connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. No custom-part geometry was changed.
+The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **Q manifold body, Q faceplate and R6 radiator plate**. Eight RTX 5090 FE GPUs with Alphacool 5100182 block/active-backplate assemblies connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. The scene now uses Q-M01 with four plugged rear ports and shorter M4 pilots; accepted hose routes and GPU geometry are retained.
 
 ![StarTech 25U composite](../output/context-25U/01-rack-context.png)
 
@@ -13,7 +13,7 @@ The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 
 | U1 | Clear space for radiator bottom elbows and hoses |
 | U2–U11 |10U R6/SuperNova with four NF-A20 fans on each face |
 | U12–U15 |4U host with motherboard I/O and PCIe coolant bulkheads facing the service side |
-| U16–U17 |2U manifold P |
+| U16–U17 |2U manifold Q |
 | U18–U23 | Eight RTX 5090 FE / Alphacool 5100182 assemblies, raised retention/riser supports and conceptual PCIe switch |
 | U24–U25 |2U service/spare space |
 
@@ -31,7 +31,7 @@ The old radiator-in-U1 layout would place the illustrated bottom elbow about 23 
 
 The 450 mm opening accepts the 410 mm body, but a pair of side elbows is wider than that frontal opening. In service their bodies sit behind the mounting flange and inside the wider frame. This is an installed-position study, not a guarantee that a fully plumbed manifold can be inserted straight through the opening. Assemble side fittings with appropriate access after placing the panel, or separately verify an insertion sequence.
 
-For this installation the manifold populates the existing outer rack slots at local Z5.4/81.6, four rack screws total. Illustrative13×12×13 mm cage-nut envelopes then clear the 18 mm side-elbow bodies vertically by 2.6 mm. The middle-U positions can overlap these conservative nut envelopes; the optional slots are retained rather than claimed universally compatible. All P/R6 CAD stays unchanged. The 465 mm rack columns differ by0.05 mm per side from the plates'±232.55 mm nominal slot centres, within the slots' horizontal allowance.
+For this installation the manifold populates the existing outer rack slots at local Z5.4/81.6, four rack screws total. Illustrative13×12×13 mm cage-nut envelopes then clear the 18 mm side-elbow bodies vertically by 2.6 mm. The middle-U positions can overlap these conservative nut envelopes; the optional slots are retained rather than claimed universally compatible. All Q/R6 CAD stays unchanged. The 465 mm rack columns differ by0.05 mm per side from the plates'±232.55 mm nominal slot centres, within the slots' horizontal allowance.
 
 The outer manifold slots still leave only 1.9 mm steel edge ligament. This rendition uses compactØ10 mm rack-head envelopes, with no cup washers; aØ15 mm cup washer would overhang the plate by2.1 mm. Actual head/washer/cage-nut selection and the neighbouring-U space require physical fit review. No improved load rating is inferred from choosing these slots.
 

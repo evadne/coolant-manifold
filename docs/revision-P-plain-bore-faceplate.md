@@ -1,5 +1,7 @@
 # Revision P: plain-bore manifold faceplate
 
+**Historical predecessor:** Q / Q-M01 is current. Retain P as a geometry and fitting-reference source; do not use its screw lengths or pilot depths for Q.
+
 P is the current manifold body/faceplate pair, with a 2 mm plain-hole faceplate. It supersedes O-M02, whose 3 mm countersunk plate and JLC handover files are historical. This is a geometry and presentation iteration, not a qualified structural release.
 
 ## Changes

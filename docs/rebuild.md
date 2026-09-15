@@ -13,32 +13,35 @@ python3 -m venv .venv
 
 Use the available document runtime for ReportLab/pypdf if the CAD environment lacks them. Do not overwrite a working environment just to reproduce unchanged outputs.
 
-## Manifold P
+## Manifold Q / Q-M01
+
+Q derives from the retained P solids and source-fitting library. Do not rebuild P just to rebuild Q.
 
 ```sh
-.venv/bin/python scripts/build_long_bore.py --iteration P
-.venv/bin/python scripts/prepare_revision_P.py
-# Run with a Python environment containing ReportLab:
-python3 scripts/draw_revision_P.py
-/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_product.py -- --iteration P
-.venv/bin/python scripts/prepare_koolance_qd3.py
-/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_photoreal_product.py -- --iteration P --device METAL
+.venv/bin/python scripts/build_revision_Q.py
+.venv/bin/python scripts/prepare_Q_production.py
+.venv/bin/python scripts/assess_Q_retention.py
+.venv/bin/python scripts/assess_Q_torque.py
+.venv/bin/python scripts/draw_revision_Q.py
+# Use ReportLab/pypdf Python for the following; inspect all PDF sheets before packaging:
+python3 scripts/draw_Q_production.py
+python3 scripts/package_Q_production.py
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_revision_Q.py
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_photoreal_product.py -- --iteration Q --device METAL
 ```
 
-Omit `--device METAL` for CPU rendering. Import the retained original Koolance STEP sources at supplier scale. The last rendition refresh used finer body/plate tessellation (0.025 mm /0.06 rad); ordinary regeneration may differ slightly at rendered edges without changing STEP geometry. Inspect fresh images after regeneration. The P scripts check geometry and retention clearance, and the fitting preparation checks supplier model dimensions.
+Supplier files are Q-M01; assembly references are separately in `output/assembly/Q/`. O-M02 manufacturing scripts are historical and must not be used for Q. Shared official fitting meshes remain under `output/long-bore-P/koolance-fit/`. The Q renderer shows unchanged button heads representing M4×10, with hidden shanks omitted. No upload occurs.
 
-These commands generate design/review outputs under `output/long-bore-P/` and `output/pdf/manifold-revision-P.pdf`. **They do not create a P manufacturing issue.** `prepare_manufacturing.py`, `draw_manufacturing.py`, `verify_manufacturing.py` and `package_manufacturing.py` currently belong to historical O-M02 and must not be mistaken for a P packaging workflow.
-
-## Radiator R6 / R6-M01
+## Radiator R6 / R6-M02
 
 ```sh
 .venv/bin/python scripts/build_radiator_plate.py --revision R6
-.venv/bin/python scripts/prepare_radiator_production.py --issue R6-M01
+.venv/bin/python scripts/prepare_radiator_production.py --issue R6-M02
 # Use ReportLab, then inspect all three rendered PDF sheets:
-python3 scripts/draw_radiator_production.py --issue R6-M01
+python3 scripts/draw_radiator_production.py --issue R6-M02
 # Use pypdf after visual inspection:
-python3 scripts/package_radiator_production.py --issue R6-M01
-/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_radiator_plate.py -- --revision R6 --plate-only
+python3 scripts/package_radiator_production.py --issue R6-M02
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_radiator_plate.py -- --revision R6 --plate-only --device METAL
 ```
 
 For a populated radiator assembly, first run `prepare_radiator_fan_mounts.py` with the CAD environment, then render R6 without `--plate-only`. The checked-in R6 images are the bare plate and notch views; populated R4 scenes remain historical assembly references. Do not imply a new render exists until it has been generated and inspected.
@@ -47,7 +50,7 @@ The package script reads the current submission writeup and supplier remarks, ve
 
 ## Composite StarTech25U scene
 
-After the current P/R6 source scenes and official fitting meshes exist (run `python3 scripts/assess_manifold_side_clearance.py` for the separate40/45/50mm envelope assessment):
+After the current Q/R6 source scenes and official fitting meshes exist (run `python3 scripts/assess_manifold_side_clearance.py` for the separate40/45/50mm envelope assessment):
 
 ```sh
 .venv/bin/python scripts/relax_context_tubes.py
@@ -65,6 +68,6 @@ The composite saves a rack-centred perspective viewport with 5 mm near /10,000 m
 
 Operator confirmation, 15 September 2026: increasing Clip Start made the live viewport smoother. Retain the 5 mm default for the composite rack scene.
 
-## Q rear-port review candidate
+## Final three-part consistency record
 
-Run `scripts/build_revision_Q.py`, then `scripts/draw_revision_Q.py` in the CAD environment, followed by headless Blender `scripts/render_revision_Q.py`. Q derives from retained P STEP sources and checks their hashes before rendering. Outputs stay under `output/long-bore-Q/`; neither P nor the rack composite is regenerated. See [Q review](revision-Q-rear-ports.md).
+After the current files and fresh visual checks exist, run `python3 scripts/finalise_three_part_pack.py`. This checks part ZIPs, source hashes and current Q/R6 context; it creates the submission index without uploading. Assembly instructions remain in `docs/assembly-Q.md`, outside the fabrication ZIPs.
