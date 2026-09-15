@@ -58,3 +58,5 @@ Use `--preview` for a half-resolution front overview in `tmp/`. A full run refre
 ## Historical reproduction
 
 Sources and generated data for older revisions remain in their original locations. Superseded writeups and older packaging remarks are in [archive](archive/README.md); historical package scripts resolve those archived templates. See [iterations](iterations.md) for revisions and tags. Never combine an older manufacturing drawing with a newer mating part.
+
+The composite saves a rack-centred perspective viewport with 5 mm near /10,000 mm far clipping. The previous 0.01 mm near clip provides very poor depth precision at rack viewing distances and can cause apparent z-fighting. `scripts/context_viewport.py` sets these defaults; it changes neither geometry nor render cameras. For close inspection below 5 mm, adjust the near plane temporarily rather than reverting to that extreme range for whole-rack viewing.

@@ -3,6 +3,8 @@ from pathlib import Path
 import bpy, math, json, hashlib, argparse, sys
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'scripts'))
+from context_viewport import configure_context_viewports
 OUT=ROOT/'output/context-24U';OUT.mkdir(parents=True,exist_ok=True)
 parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
@@ -240,6 +242,7 @@ for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1
     if args.preview:break
 scene.camera=bpy.data.objects['01-rack-context']
 if not args.preview:
+    configure_context_viewports(scene)
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'24U-context.blend'),compress=True)
     def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
     report=dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,

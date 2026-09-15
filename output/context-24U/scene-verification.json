@@ -26,5 +26,18 @@
   "added_text_objects": 0,
   "obsolete_MO_RA_objects": 0,
   "scope": "Scene inventory and nominal source extents; not a complete collision or mechanical qualification.",
-  "checks": "PASS"
+  "checks": "PASS",
+  "viewport": {
+    "clip_start_mm": 5,
+    "clip_end_mm": 10000,
+    "orbit_centre_mm": [
+      0,
+      180,
+      625
+    ],
+    "orbit_distance_mm": 3000,
+    "perspective": "PERSP",
+    "geometry_and_camera_unchanged": true,
+    "duplicate_mesh_placements_found": 0
+  }
 }
