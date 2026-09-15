@@ -81,7 +81,9 @@ for x in (-232.55,232.55):
 for x in (-222,222):box('Host four-post support rail',(x,250,host+10),(10,500,16),steel)
 # Host branch pair nine terminates at a two-port PCI bracket on the rack-facing end.
 for z in (host+42,host+82):cyl('PCI bracket G1-4 feedthrough',(136,-11,z),10,18,steel)
-box('Host MCIO pair bracket',(176,-7,host+70),(16,8,80),black)
+box('Host MCIO pair bracket',(176,-7,host+70),(16,8,80),steel)
+box('PCIe x16 to dual MCIO host adapter PCB',(176,48,host+70),(2,95,65),pcb)
+for j in range(2):box('Host MCIO 8i socket '+str(j+1),(176,-13,host+62+j*27),(13,12,16),black)
 # 6U open GPU shelf. Cards are single-slot THICK, but separated at 40 mm for service.
 box('GPU tray',(0,211,gpu-18),(440,420,3),steel)
 for x in (-215,215):box('GPU tray side support',(x,211,gpu-4),(10,420,28),rack)
@@ -105,7 +107,9 @@ box('Conceptual eight-endpoint PCIe switch PCB',(164,260,gpu+14),(110,150,2),pcb
 box('Switch heatsink',(164,260,gpu+26),(42,48,22),black)
 for i in range(8):box('Switch downstream connector',(117+i*13,329,gpu+20),(10,15,10),steel)
 for i in range(2):box('Switch host MCIO connector',(155+i*20,187,gpu+20),(16,15,10),steel)
-hose('Logical PCIe x16 host uplink',[(176,-16,host+115),(210,-65,host+145),(218,-75,gpu+35),(200,160,gpu+40),(164,180,gpu+20)],data,5)
+for j in range(2):
+    hose('Host uplink MCIO 8i cable '+str(j+1),[(176,-20,host+62+j*27),(207+j*16,-65-j*12,host+145),(210+j*16,-75-j*12,gpu+35),(191+j*16,145,gpu+40),(155+j*20,180,gpu+20)],data,3.5)
+assert len([o for o in scene.objects if o.name.startswith('Host uplink MCIO 8i cable')])==2
 # Pair nine cools host; pair ten remains spare with disconnected male QDs.
 for j,z in enumerate((host+42,host+82)):
     hose('Host coolant branch '+str(j),[(140,-65,manifold+(23.5 if j==0 else 63.5)),(150+j*22,-110-j*25,manifold-30),(136,-90-j*25,z),(136,-22,z)],supply if j==0 else ret)
@@ -129,4 +133,4 @@ for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1
     scene.render.filepath=str(OUT/f'{name}.png');bpy.ops.render.render(write_still=True)
 scene.camera=bpy.data.objects['01-rack-context']
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'24U-context.blend'))
-(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-8',use='Reserved cooling/power space; external cooling connections shown'),dict(U='9-12',use='4U host, front-accessible PCIe coolant bracket'),dict(U='13-14',use='O-M02 manifold'),dict(U='15-20',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='21-24',use='Service space / spare')],front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,host_envelope_mm=[440,456,176],switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')
+(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-8',use='Reserved cooling/power space; external cooling connections shown'),dict(U='9-12',use='4U host, front-accessible PCIe coolant bracket'),dict(U='13-14',use='O-M02 manifold'),dict(U='15-20',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='21-24',use='Service space / spare')],front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')

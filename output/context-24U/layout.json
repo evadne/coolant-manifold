@@ -40,6 +40,13 @@
     456,
     176
   ],
+  "host_link": {
+    "host_adapter": "PCIe x16 to 2x MCIO 8i",
+    "physical_cables": 2,
+    "lanes_per_cable": 8,
+    "logical_link": "one x16 link",
+    "adapter_mode": "x16; exact passive or retimed SKU not selected"
+  },
   "switch_status": "Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified",
   "scope": "Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold."
 }

@@ -25,7 +25,7 @@ The shelf and host have illustrative four-post supports. Selection of commercial
 - Pair 10 is spare, shown with shut male quick-disconnect references.
 - The left side supply/return ports connect to external cooling infrastructure; the right side ports remain plugged. Pump/reservoir/radiator hardware is not selected or thermally sized here. The lower eight units remain available for it and dedicated GPU power equipment.
 - Blue and amber identify supply/return routes in the illustration. Purple identifies PCIe cabling; black represents auxiliary GPU power. Colours are drawing aids, not specified coolant colours or product markings.
-- The host has one **logical PCIe x16 uplink** to the switch arrangement; GPUs attach through individual risers. The sketch does not imply eight independent x16 links back to the CPU or full simultaneous x16 host bandwidth per GPU. One drawn cable bundle may represent multiple physical high-speed connectors.
+- The host has one **logical PCIe x16 uplink** to the switch arrangement; GPUs attach through individual risers. The sketch does not imply eight independent x16 links back to the CPU or full simultaneous x16 host bandwidth per GPU. The host connection is explicitly a **PCIe x16 to two MCIO 8i host adapter**, with **two separate eight-lane cables** to the switch. Together they carry one x16 link; they do not represent two independent x8 hosts. The adapter is used in x16 mode with matching lane ordering at the switch. Both [passive](https://c-payne.com/products/mcio-pcie-gen5-host-adapter-x16-passive) and [retimed](https://c-payne.com/products/mcio-pcie-gen5-host-adapter-x16-retimer) c-payne adapters provide this connector arrangement; exact generation, SKU and cable length remain to be selected.
 
 ## Product references and limits
 
@@ -37,7 +37,7 @@ The [c-payne vertical device adapter](https://c-payne.com/products/mcio-pcie-gen
 
 ## Files and method
 
-- [Context sketch](../output/context-24U/03-context-sketch-v2.png): generated with the built-in image-generation tool using the Blender context views as references. [Exact prompt](../output/context-24U/sketch-prompt.txt).
+- [Context sketch](../output/context-24U/03-context-sketch-v3.png): generated with the built-in image-generation tool using the Blender context views as references. [Initial prompt](../output/context-24U/sketch-prompt.txt), [dimension correction](../output/context-24U/sketch-edit-prompt.txt), and [dual-MCIO update](../output/context-24U/sketch-mcio-prompt.txt).
 - [CAD-based context view](../output/context-24U/01-rack-context.png) and [front elevation](../output/context-24U/02-front-layout.png).
 - [Editable Blender scene](../output/context-24U/24U-context.blend), [layout data](../output/context-24U/layout.json), and `scripts/render_context_24u.py`.
 
