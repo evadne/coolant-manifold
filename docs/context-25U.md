@@ -4,7 +4,7 @@ The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 
 
 ![StarTech 25U composite](../output/context-25U/01-rack-context.png)
 
-[Orbitable Blender scene](../output/context-25U/25U-StarTech-context.blend) · [front](../output/context-25U/02-front-layout.png) · [rear](../output/context-25U/04-rear-cooling-assembly.png) · [pump/radiator](../output/context-25U/05-pump-reservoir-detail.png) · [front tubing detail](../output/context-25U/06-front-tube-routing.png) · [side tubing detail](../output/context-25U/07-side-tube-routing.png).
+[Orbitable Blender scene](../output/context-25U/25U-StarTech-context.blend) · [front](../output/context-25U/02-front-layout.png) · [rear](../output/context-25U/04-rear-cooling-assembly.png) · [pump/radiator](../output/context-25U/05-pump-reservoir-detail.png) · [oblique tubing detail](../output/context-25U/06-front-tube-routing.png) · [side tubing detail](../output/context-25U/07-side-tube-routing.png) · [straight-on tubing detail](../output/context-25U/08-front-tube-detail.png).
 
 ## Rack and allocation
 
@@ -57,7 +57,7 @@ A45mm slab does not clear this particular conservative envelope. A50mm slab clea
 
 The 18 branch hoses are **10 mm ID /13 mm OD**, matching QD3-FT10X13. Three infrastructure hoses use **10 mm ID /16 mm OD** and matching illustrative compression envelopes. Both are modelled as real annular walls containing a separate clear coolant volume, rather than opaque coloured cylinders.
 
-[Koolance HOS-10CL-3M](https://koolance.com/tubing-clear-uv-reactive-pvc-10mm-x-13mm-3-8in-x-1-2in-3m) publishes approximately 37 mm bend radius for its 10/13 PVC. The eighteen branch routes now use a static elastic-rod calculation with gravity and an estimated9.4 MPa modulus derived from the published Shore80A hardness. Each front branch is100 mm shorter in nominal modelled length following operator review. Approximately9 mm is clamped at each fitting; the free spans bend continuously instead of retaining long straight sections. Lateral routing lanes remain prescribed. See [the physics basis and limits](pvc-routing-physics.md).
+[Koolance HOS-10CL-3M](https://koolance.com/tubing-clear-uv-reactive-pvc-10mm-x-13mm-3-8in-x-1-2in-3m) publishes approximately 37 mm bend radius for its 10/13 PVC. The eighteen branch routes now use a static elastic-rod calculation with gravity and an estimated9.4 MPa modulus derived from the published Shore80A hardness. Each front branch is100 mm shorter in nominal modelled length following operator review. Approximately9 mm is clamped at each fitting; the free spans bend continuously instead of retaining long straight sections. All X/Y/Z coordinates are free between fitting exits. Paired hoses use frictionless regularised contact, replacing the earlier incorrectly prescribed lateral lanes. See [the physics basis and limits](pvc-routing-physics.md).
 
 Infrastructure uses 65 mm centre-line bends. [Alphacool AlphaTube HF16/10,17496](https://shop.alphacool.com/en/shop/tubes/tube1610mm/s16-alphacool-hose-alphatube-hf-16/10-3/8-quot-id-ultra-clear-1m-3.3ft-retail-box-100cm) supplies a clear PVC option, but the reviewed page gives no numerical bend limit.65 mm is therefore a layout allowance, not a manufacturer-approved limit for every16/10 hose. Its3 mm wall differs from the1.5 mm branch wall; formulation/hardness also matters, so their stiffness and kink behaviour must not be treated as interchangeable.
 
@@ -65,8 +65,8 @@ The front excursion is recorded by the current centre-line geometry; it changes 
 
 ## Checks and scope
 
-- All 21 centre-lines pass tangent continuity, fitting-axis alignment, no backtracking, nonlocal self-overlap and inter-tube separation checks. Minimum sampled curvature radius is approximately52.73 mm for GPU branches,42.61 mm for the host pair and65 mm for infrastructure. Host checks use a40 mm floor, above the selected tube’s published approximate37 mm radius.
-- Minimum conservative tube-to-tube outer-surface gap is approximately 6.50 mm. The calculation subtracts both tube radii and sampling uncertainty; the exact same points produce the meshes.
+- All 21 centre-lines pass tangent continuity, fitting-axis alignment, no backtracking, nonlocal self-overlap and inter-tube separation checks. Minimum sampled curvature radius is approximately70.39 mm for GPU branches,70.01 mm for the host pair and65 mm for infrastructure. Host checks use a40 mm floor, above the selected tube’s published approximate37 mm radius.
+- Minimum conservative tube-to-tube outer-surface gap is approximately 0.39 mm in the paired-hose contact region. This reflects a numerical contact allowance, not a specified assembly gap. The calculation subtracts both tube radii and sampling uncertainty; the exact same points produce the meshes.
 - Mesh proximity checks found no unintended tube/equipment or tube/cable intersection. Fitting/barb insertion interfaces are excluded by owner. The smallest sampled equipment gap is approximately 4.97 mm at the pump support; allow another 0.5 mm for centre-line sampling.
 - P body/plate and R6 source imports, official Koolance solids, twelve P retainers, eight NF-A20 frames and two MCIO cables are inventoried. See [scene verification](../output/context-25U/scene-verification.json), [tube checks](../output/context-25U/tube-verification.json) and [layout/source hashes](../output/context-25U/layout.json).
 

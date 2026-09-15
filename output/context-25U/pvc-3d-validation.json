@@ -1,0 +1,16 @@
+{
+  "uncontacted_GPU_lateral_extent_mm": 8.000068524138502e-10,
+  "mirror_symmetry_max_difference_mm": 0.0,
+  "refinement_101_to_201_max_difference_mm": 0.18511776725383214,
+  "refined_minimum_radii_mm": [
+    73.24832872108736,
+    70.28733538348703
+  ],
+  "fixed_end_length_preserved": true,
+  "source_sha256": {
+    "cad/context/pvc-routing.json": "68e2b4a47e7445432ed42375c8229b6d53294f72f675400c6f2e7f1717571962",
+    "scripts/relax_context_tubes.py": "eb6ac177e257ffec0e7324fc2aab984f710e68b70d63aefc2ac08d112872bda4",
+    "scripts/context_tubing.py": "ae95d4ea1b5d39645ed3f420654304e971c4503d94f0380ed58c198fa1177b60",
+    "scripts/check_pvc_equilibrium.py": "362b5df554858187e9ffbe2df52834c04ea67adb82b5d95ce5718733b26f0e9c"
+  }
+}

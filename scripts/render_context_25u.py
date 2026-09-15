@@ -252,7 +252,7 @@ scene_report=check_scene(scene,routes)
 (OUT/'scene-verification.json').write_text(json.dumps(scene_report,indent=2)+'\n')
 print('Tube/equipment intersections:',scene_report['tube_equipment_intersections'])
 assert not scene_report['tube_equipment_intersections']
-# Broad studio lighting and two deterministic cameras, for both image reference and review.
+# Broad studio lighting and deterministic review cameras.
 world=bpy.data.worlds.new('White studio');world.use_nodes=True;scene.world=world
 world.node_tree.nodes['Background'].inputs[0].default_value=(.85,.88,.92,1);world.node_tree.nodes['Background'].inputs[1].default_value=.8
 for loc,power,size in [((0,-1100,2200),50000000,1400),((1000,600,1900),40000000,1200),((-1200,100,1400),25000000,1000)]:
@@ -266,7 +266,7 @@ if args.device=='METAL':
 scene.cycles.transmission_bounces=12;scene.cycles.max_bounces=16
 scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_mode='RGB';scene.view_settings.view_transform='AgX'
 scene.render.resolution_x=1700;scene.render.resolution_y=2000;scene.render.resolution_percentage=50 if args.preview else 100
-for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,220,660),1700),('02-front-layout',(0,-2600,660),(0,0,660),1480),('04-rear-cooling-assembly',(1800,2100,1250),(0,220,660),1700),('05-pump-reservoir-detail',(-350,1350,700),(0,285,rad_z),750),('06-front-tube-routing',(1050,-1700,1100),(0,-65,manifold+40),790),('07-side-tube-routing',(1350,-350,1000),(0,-110,manifold+35),740)]:
+for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,220,660),1700),('02-front-layout',(0,-2600,660),(0,0,660),1480),('04-rear-cooling-assembly',(1800,2100,1250),(0,220,660),1700),('05-pump-reservoir-detail',(-350,1350,700),(0,285,rad_z),750),('06-front-tube-routing',(1050,-1700,1100),(0,-65,manifold+40),790),('07-side-tube-routing',(1350,-350,1000),(0,-110,manifold+35),740),('08-front-tube-detail',(0,-2000,manifold+35),(0,0,manifold+35),620)]:
     bpy.ops.object.camera_add(location=loc);o=bpy.context.object;o.name=name;o.data.type='ORTHO';o.data.ortho_scale=scale;o.data.clip_end=10000;o.rotation_euler=(Vector(target)-o.location).to_track_quat('-Z','Y').to_euler();scene.camera=o
     scene.render.filepath=str(ROOT/f'tmp/context25-{name}.png' if args.preview else OUT/f'{name}.png')
     if not args.check_only:bpy.ops.render.render(write_still=True)
@@ -287,7 +287,7 @@ if not args.preview:
       pvc_equilibrium=dict(report='pvc-equilibrium.json',modulus_MPa=relaxation_report['parameters']['young_modulus_MPa'],method=relaxation_report['parameters']['model']),
       gpu_pitch_mm=40,gpu_envelope_mm=[17,270,132],gpu_orientation='Bracket rear; coolant and power at non-bracket side; overhead power leads',host_envelope_mm=[440,456,176],host_link=dict(adapter='x16 to 2x MCIO 8i',physical_cables=2,logical_link='one x16'),switch_status='Eight-endpoint concept; exact board not selected',
       source_sha256={path:digest(path) for path in ['output/long-bore-P/cad/body.step','output/long-bore-P/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-P/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','output/context-25U/relaxed-branches.json']},
-      view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png','06-front-tube-routing.png','07-side-tube-routing.png'],
+      view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png','06-front-tube-routing.png','07-side-tube-routing.png','08-front-tube-detail.png'],
       scope='Current custom parts with manufacturer-dimensioned StarTech rack envelope and inferred section registration; chassis, GPU, pump and support remain illustrative. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings.')
     (OUT/'layout.json').write_text(json.dumps(report,indent=2)+'\n')
 

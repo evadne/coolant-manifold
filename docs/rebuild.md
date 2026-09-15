@@ -51,10 +51,11 @@ After the current P/R6 source scenes and official fitting meshes exist (run `pyt
 
 ```sh
 .venv/bin/python scripts/relax_context_tubes.py
+.venv/bin/python scripts/check_pvc_equilibrium.py
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_context_25u.py -- --device METAL
 ```
 
-Use `--preview` for a half-resolution front overview in `tmp/`. A full run refreshes six views and `output/context-25U/25U-StarTech-context.blend`, recording source hashes in `layout.json`. `--check-only` rebuilds the native scene and verification without rendering. The preparation step requires NumPy/SciPy and writes rod solutions plus their force/stiffness checks. The Blender generator rejects stale solver inputs or changed nominal fitting routes. See [PVC physics](pvc-routing-physics.md). The generator calls `context_startech25.py`, `context_tubing.py` and `check_context_fit.py`; any failed curvature, tube-separation or mesh-intersection assertion stops the run before rendering/saving. Inspect the rear/pump detail as well as the front. Exact custom parts are retained; provisional pump/support, GPU and host envelopes remain labelled in the layout data.
+Use `--preview` for a half-resolution front overview in `tmp/`. A full run refreshes seven views (including a straight-on front tubing detail) and `output/context-25U/25U-StarTech-context.blend`, recording source hashes in `layout.json`. `--check-only` rebuilds the native scene and verification without rendering. The preparation step requires NumPy/SciPy and writes rod solutions plus their force/stiffness checks. The Blender generator rejects stale solver inputs or changed nominal fitting routes. See [PVC physics](pvc-routing-physics.md). The generator calls `context_startech25.py`, `context_tubing.py` and `check_context_fit.py`; any failed curvature, tube-separation or mesh-intersection assertion stops the run before rendering/saving. Inspect the rear/pump detail as well as the front. Exact custom parts are retained; provisional pump/support, GPU and host envelopes remain labelled in the layout data.
 
 ## Historical reproduction
 
