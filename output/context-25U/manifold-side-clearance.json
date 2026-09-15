@@ -1,0 +1,142 @@
+{
+  "status": "OPEN: actual rack cage clips, screw tails and selected90-degree rotary fitting need measured/CAD fit confirmation",
+  "approved_design": "P:40mm slab plus3mm bosses.35mm N was superseded. All manufactured P CAD remains unchanged.",
+  "basis": "Same conservative18mm elbow-head boxes as the composite, two port rows,13x12x13 cage-nut envelopes centred atX+/-232.5,Y8.5. Negative gap is AABB minimum translation overlap, not proven physical contact.",
+  "previous_O_basis": "10x6x10 nut boxes centred atY6 extended toY9, yielding2mm depth clearance atY20. Current larger illustrative hardware extends toY14.5, consuming5.5mm more space. The earlier conclusion was conditional on those generic envelopes.",
+  "cases": [
+    {
+      "slab_mm": 40,
+      "boss_mm": 3,
+      "overall_POM_mm": 43,
+      "gallery_axis_Y_mm": 20.0,
+      "side_port_rear_shift_from_P_mm": 0.0,
+      "front_rear_gallery_ligament_mm": 14.1,
+      "elbow_to_nut_depth_gap_mm": -3.5,
+      "optional_slots": [
+        {
+          "slot_z_mm": 5.4,
+          "signed_envelope_gap_mm": 2.6,
+          "overlap": false
+        },
+        {
+          "slot_z_mm": 21.275,
+          "signed_envelope_gap_mm": -3.5,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 37.15,
+          "signed_envelope_gap_mm": -1.85,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 49.85,
+          "signed_envelope_gap_mm": -1.85,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 65.725,
+          "signed_envelope_gap_mm": -3.5,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 81.6,
+          "signed_envelope_gap_mm": 2.6,
+          "overlap": false
+        }
+      ]
+    },
+    {
+      "slab_mm": 45,
+      "boss_mm": 3,
+      "overall_POM_mm": 48,
+      "gallery_axis_Y_mm": 22.5,
+      "side_port_rear_shift_from_P_mm": 2.5,
+      "front_rear_gallery_ligament_mm": 16.6,
+      "elbow_to_nut_depth_gap_mm": -1.0,
+      "optional_slots": [
+        {
+          "slot_z_mm": 5.4,
+          "signed_envelope_gap_mm": 2.6,
+          "overlap": false
+        },
+        {
+          "slot_z_mm": 21.275,
+          "signed_envelope_gap_mm": -1.0,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 37.15,
+          "signed_envelope_gap_mm": -1.0,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 49.85,
+          "signed_envelope_gap_mm": -1.0,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 65.725,
+          "signed_envelope_gap_mm": -1.0,
+          "overlap": true
+        },
+        {
+          "slot_z_mm": 81.6,
+          "signed_envelope_gap_mm": 2.6,
+          "overlap": false
+        }
+      ]
+    },
+    {
+      "slab_mm": 50,
+      "boss_mm": 3,
+      "overall_POM_mm": 53,
+      "gallery_axis_Y_mm": 25.0,
+      "side_port_rear_shift_from_P_mm": 5.0,
+      "front_rear_gallery_ligament_mm": 19.1,
+      "elbow_to_nut_depth_gap_mm": 1.5,
+      "optional_slots": [
+        {
+          "slot_z_mm": 5.4,
+          "signed_envelope_gap_mm": 3.0017,
+          "overlap": false
+        },
+        {
+          "slot_z_mm": 21.275,
+          "signed_envelope_gap_mm": 1.5,
+          "overlap": false
+        },
+        {
+          "slot_z_mm": 37.15,
+          "signed_envelope_gap_mm": 1.5,
+          "overlap": false
+        },
+        {
+          "slot_z_mm": 49.85,
+          "signed_envelope_gap_mm": 1.5,
+          "overlap": false
+        },
+        {
+          "slot_z_mm": 65.725,
+          "signed_envelope_gap_mm": 1.5,
+          "overlap": false
+        },
+        {
+          "slot_z_mm": 81.6,
+          "signed_envelope_gap_mm": 3.0017,
+          "overlap": false
+        }
+      ]
+    }
+  ],
+  "installed_width_mm": 467.6,
+  "opening_mm": 450,
+  "depth_changes_do_not_fix_width": "Slab depth affectsY placement only.410mm body plus2x28.8mm nominal side fitting projection still exceeds450mm opening.",
+  "recommendation": "Keep approved40mm P and lodge the concern.45mm still overlaps these envelopes at inner slots;50mm gives only1.5mm nominal depth gap, not a tolerance-qualified solution. Outer-slot rendering is one provisional arrangement, not universal90-degree fitting feasibility.",
+  "unresolved": [
+    "Actual cage-clip geometry and projection from rail back",
+    "Actual bolt length and screw tails",
+    "Selected rotary elbow and compression dimensions/rotation sweep",
+    "Rack datum/tolerances and flange section",
+    "Insertion sequence and assembly/service access"
+  ]
+}

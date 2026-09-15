@@ -31,3 +31,7 @@ The [P detail](revision-P-plain-bore-faceplate.md) records nominal interference 
 4. Trial-fit bought-in fittings, rack hardware, radiator and fans on first articles. Resolve mechanical, flow and exposure qualification using the actual assembly and duty.
 
 The accepted Koolance studio placement does not need another visual approval. Current deliverables and rebuild commands are indexed in the [project guide](../README.md) and [rebuild guide](rebuild.md).
+
+## Open manifold integration concern
+
+The current approved P slab is40mm, excluding3mm bosses. The StarTech25U scene uses outer manifold rack slots provisionally, but90° side-elbow compatibility with actual rail/cage-clip/screw-tail hardware remains open. A separate centred-gallery sensitivity check finds45mm still overlaps the present conservative nut envelope;50mm gives only1.5mm nominal depth clearance. No P geometry or supplier definition has been changed. See [the fit concern and comparison](context-25U.md#open-concern-manifold-side-elbows-and-cage-nuts) before treating any slot choice or thicker slab as a qualified solution. This concern does not concern radiator width or require changing R6.

@@ -1,0 +1,282 @@
+{
+  "body_dimensions_xyz_mm": [
+    410.0,
+    43.0,
+    87.0
+  ],
+  "faceplate_dimensions_xyz_mm": [
+    482.6,
+    2.0,
+    87.0
+  ],
+  "radiator_plate_dimensions_xyz_mm": [
+    482.6,
+    2.0,
+    444.5
+  ],
+  "counts": {
+    "male_fitting_solids": 40,
+    "female_fitting_solids": 54,
+    "manifold_retention_screws": 12,
+    "fan_frames": 8,
+    "host_MCIO_cables": 2,
+    "radiator_rack_screws": 8,
+    "tubes": 21,
+    "rack_square_holes": 300
+  },
+  "tube_equipment_intersections": [],
+  "nearest_equipment": [
+    {
+      "tube": "GPU 1 parallel coolant 0",
+      "equipment": "GPU 1 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -180.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 1 parallel coolant 1",
+      "equipment": "GPU 1 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -180.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "GPU 2 parallel coolant 0",
+      "equipment": "GPU 2 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -140.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 2 parallel coolant 1",
+      "equipment": "GPU 2 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -140.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "GPU 3 parallel coolant 0",
+      "equipment": "GPU 3 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -100.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 3 parallel coolant 1",
+      "equipment": "GPU 3 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -100.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "GPU 4 parallel coolant 0",
+      "equipment": "GPU 4 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -60.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 4 parallel coolant 1",
+      "equipment": "GPU 4 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -60.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "GPU 5 parallel coolant 0",
+      "equipment": "GPU 5 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -20.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 5 parallel coolant 1",
+      "equipment": "GPU 5 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        -20.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "GPU 6 parallel coolant 0",
+      "equipment": "GPU 6 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        20.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 6 parallel coolant 1",
+      "equipment": "GPU 6 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        20.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "GPU 7 parallel coolant 0",
+      "equipment": "GPU 7 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        60.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 7 parallel coolant 1",
+      "equipment": "GPU 7 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        60.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "GPU 8 parallel coolant 0",
+      "equipment": "GPU 8 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        100.0,
+        9.0,
+        1010.905
+      ]
+    },
+    {
+      "tube": "GPU 8 parallel coolant 1",
+      "equipment": "GPU 8 water terminal",
+      "sampled_surface_gap_mm": 13.5,
+      "conservative_surface_gap_mm": 13.0,
+      "at": [
+        100.0,
+        9.0,
+        1040.905
+      ]
+    },
+    {
+      "tube": "Host coolant branch 0",
+      "equipment": "Host uplink MCIO 8i cable 1",
+      "sampled_surface_gap_mm": 63.318511962890625,
+      "conservative_surface_gap_mm": 62.818511962890625,
+      "at": [
+        140.0,
+        -81.77155151894846,
+        833.4550000000002
+      ]
+    },
+    {
+      "tube": "Host coolant branch 1",
+      "equipment": "Host uplink MCIO 8i cable 1",
+      "sampled_surface_gap_mm": 35.61094665527344,
+      "conservative_surface_gap_mm": 35.11094665527344,
+      "at": [
+        136.0,
+        -33.0,
+        714.1049999999999
+      ]
+    },
+    {
+      "tube": "Cooling infrastructure supply",
+      "equipment": "Provisional pump mount",
+      "sampled_surface_gap_mm": 4.971121788024902,
+      "conservative_surface_gap_mm": 4.471121788024902,
+      "at": [
+        -51.0,
+        285.0,
+        296.705
+      ]
+    },
+    {
+      "tube": "Cooling infrastructure return",
+      "equipment": "GPU tray four-post support",
+      "sampled_surface_gap_mm": 7.45001220703125,
+      "conservative_surface_gap_mm": 6.95001220703125,
+      "at": [
+        -222.8,
+        47.0,
+        873.4550000000002
+      ]
+    },
+    {
+      "tube": "Radiator to reservoir",
+      "equipment": "Radiator end chamber",
+      "sampled_surface_gap_mm": 10.337120056152344,
+      "conservative_surface_gap_mm": 9.837120056152344,
+      "at": [
+        140.5,
+        47.0,
+        170.45499999999998
+      ]
+    }
+  ],
+  "method": "Evaluate actual equipment mesh surfaces including cable sweeps; sample identical tube centreline used in meshes and subtract tube OD/2. Signed nearest surface test on closed meshes. Intended fitting/barb insertion interfaces excluded by owner. Clearance envelope approximations do not establish first-article fit.",
+  "rack_front_opening_mm": 450,
+  "host_lateral_clearance_mm": 5,
+  "host_depth_to_rear_rail_mm": 102.79999999999995,
+  "old_radiator_elbow_to_base_top_mm": -22.995000000000005,
+  "new_radiator_elbow_to_base_top_mm": 21.454999999999984,
+  "manifold_selected_rack_slots_z_mm": [
+    5.4,
+    81.6
+  ],
+  "viewport": {
+    "clip_start_mm": 5,
+    "clip_end_mm": 10000,
+    "orbit_centre_mm": [
+      0,
+      220,
+      660
+    ],
+    "orbit_distance_mm": 1800
+  },
+  "scope": "Nominal reference geometry, not tolerance-stack, strength, transport, thermal or ergonomic qualification."
+}

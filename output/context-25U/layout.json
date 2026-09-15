@@ -1,0 +1,125 @@
+{
+  "rack_U": 25,
+  "rack_model": "StarTech 4POSTRACK25U",
+  "rack_depth_overall_mm": 661.8,
+  "rail_spacing_depth_mm": 558.8,
+  "rack_width_mm": 600,
+  "rack_height_casters_mm": 1288.34,
+  "rack_U_datum_mm": 142.255,
+  "depth_setting": "22in / 0 and 0",
+  "manifold_revision": "P",
+  "radiator_plate_revision": "R6",
+  "rack_units_bottom_to_top": [
+    {
+      "U": "1",
+      "use": "Radiator bottom fitting and plumbing clearance"
+    },
+    {
+      "U": "2-11",
+      "use": "SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind"
+    },
+    {
+      "U": "12-15",
+      "use": "4U host with front PCIe coolant bracket"
+    },
+    {
+      "U": "16-17",
+      "use": "P parallel manifold"
+    },
+    {
+      "U": "18-23",
+      "use": "Eight-GPU tray and conceptual PCIe switch"
+    },
+    {
+      "U": "24-25",
+      "use": "Service space"
+    }
+  ],
+  "radiator": {
+    "plate_dimensions_mm": [
+      482.6,
+      444.5,
+      2
+    ],
+    "body_envelope_mm": [
+      422,
+      48,
+      441
+    ],
+    "fans": 8,
+    "fan_model": "Official Noctua NF-A20 integration meshes",
+    "port_orientation": "Downwards into reserved U1; radiator begins at U2",
+    "rack_screws_populated": 8,
+    "cable_notch_mm": [
+      10,
+      2
+    ],
+    "plate_aperture_radius_mm": 50
+  },
+  "pump_reservoir": {
+    "selection": "Provisional ULTITUBE 200 / D5 NEXT envelopes",
+    "glass_length_mm": 200,
+    "glass_od_mm": 65,
+    "glass_wall_mm": 5,
+    "position_xy_mm": [
+      0.0,
+      285.0
+    ],
+    "mounting": "Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection",
+    "reason": "Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate."
+  },
+  "front_pair_allocation": {
+    "1-8": "Individual GPUs",
+    "9": "Host CPU/chassis",
+    "10": "Spare male QDs"
+  },
+  "fittings": {
+    "male": "QD3-MTG4",
+    "female": "QD3-FT10X13",
+    "connected_pairs": 9,
+    "spare_pairs": 1,
+    "source_scale": "Unscaled supplier meshes in mm",
+    "axial_placement": "Operator-accepted inferred studio pose"
+  },
+  "gpu_pitch_mm": 40,
+  "gpu_envelope_mm": [
+    17,
+    270,
+    132
+  ],
+  "gpu_orientation": "Bracket rear; coolant and power at non-bracket side; overhead power leads",
+  "host_envelope_mm": [
+    440,
+    456,
+    176
+  ],
+  "host_link": {
+    "adapter": "x16 to 2x MCIO 8i",
+    "physical_cables": 2,
+    "logical_link": "one x16"
+  },
+  "switch_status": "Eight-endpoint concept; exact board not selected",
+  "source_sha256": {
+    "output/long-bore-P/cad/body.step": "d56b698fa4aee7f2f0fb3d013ffc96842d8b66fedb66e962e254b0214f294bf8",
+    "output/long-bore-P/cad/faceplate.step": "2726a5719c7133160e256fc9c38e7b84bd15c15b328d5b687e5acddda73e7c8d",
+    "output/radiator-R6/rack-plate-R6.step": "5bfe6bebf9ca1deefb4731741c59572999c82aaf936196dc5c0a37f9a5ccd50c",
+    "output/long-bore-P/koolance-fit/verification.json": "82eab3b601e74d083ef908751283e57a843008afc0e1433a041d4f5af1355b70",
+    "output/long-bore-P/product-views/assembled-unmarked.blend": "ad740ac919923e397bfb91d6f426ccad07a1255cbaa9cb5e02168461a4e9beda",
+    "output/radiator-R6/radiator-rack-plate-R6.blend": "592c26649e58248122102a163be7195def561fc5ae94f6c23519b4909182e6f9",
+    "docs/references/startech-25u/dimensions.pdf": "99cd5dd23cfaa8d0903e3cfcbbab178818c7aece6c13d2b7d3053d69395582f9",
+    "docs/references/startech-25u/sources.json": "e8d9bc22d1c780a6e80cd52dd68d8c6fa742a40110943b0a596adb66ad74f88d",
+    "scripts/context_startech25.py": "df95293ded0718ece86a4a379a19da399e94ce54d498c77d180174a0bb814855",
+    "scripts/context_tubing.py": "ae95d4ea1b5d39645ed3f420654304e971c4503d94f0380ed58c198fa1177b60",
+    "scripts/check_context_fit.py": "84441491298f9f607015fa9069abe1d5576274976d31b710a5ccf37e0ada10cd",
+    "scripts/render_context_25u.py": "ff6ddae294e975b92f0553e4842e936b486916db3f3a33eac5272c978ebd1ff9"
+  },
+  "view_files": [
+    "01-rack-context.png",
+    "02-front-layout.png",
+    "04-rear-cooling-assembly.png",
+    "05-pump-reservoir-detail.png",
+    "06-front-tube-routing.png",
+    "07-side-tube-routing.png"
+  ],
+  "scope": "Current custom parts with manufacturer-dimensioned StarTech rack envelope and inferred section registration; chassis, GPU, pump and support remain illustrative. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings."
+}

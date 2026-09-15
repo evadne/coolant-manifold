@@ -35,3 +35,7 @@ P's official Koolance studio fitting update and operator acceptance are presenta
 Superseded writeups are in [archive](archive/README.md), labelled historical. Their original revision-specific CAD, render and analysis paths remain available for traceability and script dependencies. Unversioned legacy manifold outputs are G, not the current design. See [output guide](../output/README.md).
 
 Git preserves all earlier revisions, recaps and README/AGENTS history. Retrieve a snapshot into a separate directory with `git archive <tag-or-commit>` when needed; do not replace the current files to inspect history. Older descriptions saying “current”, “selected” or “next” apply only to their labelled snapshot.
+
+## StarTech25U context update —15 September2026
+
+The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and retains P/R6. Transparent PVC routes use55/65mm bends, separated pair lanes and geometric clearance checks. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.

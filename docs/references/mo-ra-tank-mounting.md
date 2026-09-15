@@ -1,6 +1,6 @@
 # MO-RA IV tank mounting reference review
 
-> Historical MO-RA mounting reference. The current cooling plan uses SuperNova/R6; see [the current 24U plan](../context-24U.md).
+> Historical MO-RA mounting reference. The current cooling plan uses SuperNova/R6; see [the current StarTech25U plan](../context-25U.md).
 
 
 Reviewed 15 September 2026 after the operator rejected the invented rear-offset tank carrier. This corrects the visual mounting arrangement, without selecting a stock radiator for the custom 10U installation.

@@ -51,4 +51,4 @@ The older manifold O-M02 ZIPs contain the 3 mm countersunk plate, six retention 
 
 No supplier upload or order has been made. Geometry is unchanged by this approval/recap update.
 
-The current P Koolance studio rendition and coupled placement are operator-accepted. See [current views](product-views.md), [assembly notes](radiator-rack-plate.md) and [rebuild commands](rebuild.md). The [refreshed 24U scene](context-24U.md) combines P and R6 with the host/GPU arrangement and a provisional rear pump/reservoir support.
+The current P Koolance studio rendition and coupled placement are operator-accepted. See [current views](product-views.md), [assembly notes](radiator-rack-plate.md) and [rebuild commands](rebuild.md). The [StarTech25U scene](context-25U.md) combines P and R6 with the host/GPU arrangement and a provisional rear pump/reservoir support.

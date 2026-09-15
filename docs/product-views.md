@@ -24,6 +24,6 @@ The eleven general inspection images below use CAD-derived POM/steel and simpler
 
 [Plate perspective](../output/radiator-R6/01-plate-perspective.png) · [front](../output/radiator-R6/00-plate-front.png) · [10 ×2 notch detail](../output/radiator-R6/05-cable-notch-detail.png) · [Blender scene](../output/radiator-R6/radiator-rack-plate-R6.blend).
 
-The R4 populated radiator/fan scenes remain useful assembly references for the same fixing pattern, but omit R6's cable notch. The [refreshed 24U composite](context-24U.md) now combines P and R6 with eight NF-A20s, the eight-GPU tray, host and a provisional pump/reservoir behind the radiator.
+The R4 populated radiator/fan scenes remain useful assembly references for the same fixing pattern, but omit R6's cable notch. The [StarTech25U composite](context-25U.md) now combines P and R6 with eight NF-A20s, the eight-GPU tray, host and a provisional pump/reservoir behind the radiator.
 
 Reproduce current images with the explicit revision commands in [rebuild.md](rebuild.md). Historical images and drawings remain in their original revision directories; see the [output guide](../output/README.md).

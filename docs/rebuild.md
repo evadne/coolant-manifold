@@ -45,15 +45,15 @@ For a populated radiator assembly, first run `prepare_radiator_fan_mounts.py` wi
 
 The package script reads the current submission writeup and supplier remarks, verifies PDF feature coverage and ZIP contents, then refreshes checksums. No command above uploads to a supplier.
 
-## Composite 24U scene
+## Composite StarTech25U scene
 
-After the current P/R6 source scenes and official fitting meshes exist:
+After the current P/R6 source scenes and official fitting meshes exist (run `python3 scripts/assess_manifold_side_clearance.py` for the separate40/45/50mm envelope assessment):
 
 ```sh
-/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_context_24u.py -- --device METAL
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_context_25u.py -- --device METAL
 ```
 
-Use `--preview` for a half-resolution front overview in `tmp/`. A full run refreshes four views and `output/context-24U/24U-context.blend`, recording source hashes in `layout.json`. Inspect the rear/pump detail as well as the front. Exact custom parts are retained; provisional pump/support, GPU and host envelopes remain labelled in the layout data.
+Use `--preview` for a half-resolution front overview in `tmp/`. A full run refreshes six views and `output/context-25U/25U-StarTech-context.blend`, recording source hashes in `layout.json`. `--check-only` rebuilds the native scene and verification without rendering. The generator calls `context_startech25.py`, `context_tubing.py` and `check_context_fit.py`; any failed curvature, tube-separation or mesh-intersection assertion stops the run before rendering/saving. Inspect the rear/pump detail as well as the front. Exact custom parts are retained; provisional pump/support, GPU and host envelopes remain labelled in the layout data.
 
 ## Historical reproduction
 

@@ -12,7 +12,8 @@ Current parts are manifold P and radiator R6. This directory also retains older 
 | `radiator-R6/` | Current radiator plate CAD, checks, bare renders and notch detail |
 | `manufacturing/R6-M01/`, `pdf/SN1260-R6-M01-PLATE.pdf` | Current radiator production geometry, feature schedule and drawing |
 | `submission/R6-M01/` | Current radiator part ZIP, remarks, guide and checksums |
-| `context-24U/` | Current P/R6 composite, four rendered views and editable scene; bought-in equipment/supports remain illustrative |
+| `context-25U/` | Current StarTech25U P/R6 composite, six views, orbitable scene and tubing/fit checks |
+| `context-24U/` | Historical generic24U composite; superseded by the StarTech25U installation |
 | `radiator-fan-integration/`, `radiator-R4/analysis/` | Retained fan/hardware fit evidence and pre-notch structural baseline supporting R6 |
 
 **Historical, not current supplier files:** `submission/O-M02/`, `submission/R4-M01/`, `submission/R5-M01/`, `manufacturing/O-M01/`, `manufacturing/O-M02/` and older radiator issues. Do not mix their dimensions or hardware with P/R6. Their snapshot readmes remain historical records.

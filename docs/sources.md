@@ -16,6 +16,6 @@ This index identifies the references already reviewed on 14–15 September 2026.
 | Fan splitter | [Watercool MO-RA X-Splitter SKU60327](https://shop.watercool.de/MO-RA-X-SPLITTER-FOR-NOCTUA-NF-A20_1), operator fit report and [spacing assessment](radiator-x-splitter-fit.md). |
 | Plate material/FEA | [Outokumpu Core datasheet](https://www.outokumpu.com/-/media/files/products/core/outokumpu-core-range-datasheet.pdf), [CalculiX](https://www.dhondt.de/), [Gmsh](https://gmsh.info/doc/texinfo/); [current load summary](radiator-load-assessment.md). |
 | JLC fabrication | [R6-M01 guide](jlc-submission-R6-M01.md) links the reviewed sheet-metal format, material and design guidelines. [Manufacturing status](manufacturing.md) separates this current pack from the missing P issue. |
-| Host/PCIe context | [Current 24U plan](context-24U.md); [archived source review](archive/context-24U-O-M02.md) contains the SilverStone/c-payne references and unresolved switch-board selection. |
+| Host/PCIe context | [Current StarTech25U plan](context-25U.md); [archived source review](archive/context-24U-O-M02.md) contains the SilverStone/c-payne references and unresolved switch-board selection. |
 
 Older QD3-MSG4/FS10X16 drawings, rear-cover rings, wetted stainless-cover studies and alternative mounting research remain historical references. They do not override the current QD3-MTG4/FT10X13 choice, long-bore topology, dry faceplate or plain-hole fasteners. See [archive](archive/README.md).

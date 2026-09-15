@@ -21,7 +21,7 @@ The operator has accepted the current Koolance QD3-MTG4 / QD3-FT10X13 studio ren
 - [Radiator R6 assembly](docs/radiator-rack-plate.md) · [load budget and analysis basis](docs/radiator-load-assessment.md) · [X-Splitter fit](docs/radiator-x-splitter-fit.md).
 - [Manufacturing status and remaining work](docs/manufacturing.md) — includes the missing P supplier issue; O-M02 ZIPs describe superseded parts.
 - [POM and coolant assessment](docs/pom-coolant-assessment.md) · [Blitz overrun qualification plan](docs/blitz-overrun-qualification.md) · [D5 pressure basis](docs/d5-pressure.md).
-- [24U installation and composite scene](docs/context-24U.md) — P/R6, eight GPUs, host, eight fans and provisional pump/reservoir support.
+- [StarTech25U installation and composite scene](docs/context-25U.md) — P/R6, eight GPUs, host, eight fans and provisional pump/reservoir support.
 - [Source index](docs/sources.md) · [rebuild commands](docs/rebuild.md) · [revision register and archive](docs/iterations.md) · [output directory guide](output/README.md).
 
 ## Working on the project

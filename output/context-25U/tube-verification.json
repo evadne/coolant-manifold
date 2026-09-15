@@ -1,0 +1,548 @@
+{
+  "routes": {
+    "GPU 1 parallel coolant 0": {
+      "length_mm": 568.2315489177428,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -180.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        -180.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 1 parallel coolant 1": {
+      "length_mm": 558.231548917743,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -180.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        -180.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 2 parallel coolant 0": {
+      "length_mm": 568.2315489177428,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -140.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        -140.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 2 parallel coolant 1": {
+      "length_mm": 558.231548917743,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -140.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        -140.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 3 parallel coolant 0": {
+      "length_mm": 568.2315489177429,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -100.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        -100.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 3 parallel coolant 1": {
+      "length_mm": 558.2315489177431,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -100.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        -100.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 4 parallel coolant 0": {
+      "length_mm": 568.2315489177429,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -60.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        -60.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 4 parallel coolant 1": {
+      "length_mm": 558.2315489177431,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -60.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        -60.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 5 parallel coolant 0": {
+      "length_mm": 568.2315489177429,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -20.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        -20.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 5 parallel coolant 1": {
+      "length_mm": 558.2315489177431,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -20.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        -20.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 6 parallel coolant 0": {
+      "length_mm": 568.2315489177429,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        20.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        20.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 6 parallel coolant 1": {
+      "length_mm": 558.2315489177431,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        20.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        20.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 7 parallel coolant 0": {
+      "length_mm": 568.2315489177429,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        60.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        60.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 7 parallel coolant 1": {
+      "length_mm": 558.2315489177431,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        60.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        60.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 8 parallel coolant 0": {
+      "length_mm": 568.2315489177429,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        100.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        100.0,
+        9.0,
+        1010.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "GPU 8 parallel coolant 1": {
+      "length_mm": 558.2315489177431,
+      "minimum_sampled_radius_mm": 54.99999999925439,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        100.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        100.0,
+        9.0,
+        1040.905
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.527354136066386,
+      "fitting_axes_aligned": true
+    },
+    "Host coolant branch 0": {
+      "length_mm": 548.1988485655203,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        140.0,
+        -72.77155151894846,
+        833.4550000000002
+      ],
+      "end": [
+        136.0,
+        -33.0,
+        674.1049999999999
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.833509291969634,
+      "fitting_axes_aligned": true
+    },
+    "Host coolant branch 1": {
+      "length_mm": 549.8605916690195,
+      "minimum_sampled_radius_mm": 54.99999999958622,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        140.0,
+        -72.77155151894846,
+        873.4550000000002
+      ],
+      "end": [
+        136.0,
+        -33.0,
+        714.1049999999999
+      ],
+      "od_mm": 13,
+      "id_mm": 10,
+      "design_radius_floor_mm": 50,
+      "nonlocal_self_surface_gap_mm": 24.735543288116148,
+      "fitting_axes_aligned": true
+    },
+    "Cooling infrastructure supply": {
+      "length_mm": 941.5628329038485,
+      "minimum_sampled_radius_mm": 64.99999999930327,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -222.8,
+        47.0,
+        833.4550000000002
+      ],
+      "end": [
+        -51.0,
+        285.0,
+        296.705
+      ],
+      "od_mm": 16,
+      "id_mm": 10,
+      "design_radius_floor_mm": 60,
+      "nonlocal_self_surface_gap_mm": 29.996776711499777,
+      "fitting_axes_aligned": true
+    },
+    "Cooling infrastructure return": {
+      "length_mm": 1547.041237725117,
+      "minimum_sampled_radius_mm": 64.99999999933452,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        -222.8,
+        47.0,
+        873.4550000000002
+      ],
+      "end": [
+        -140.5,
+        47.0,
+        170.45499999999998
+      ],
+      "od_mm": 16,
+      "id_mm": 10,
+      "design_radius_floor_mm": 60,
+      "nonlocal_self_surface_gap_mm": 30.257644062549538,
+      "fitting_axes_aligned": true
+    },
+    "Radiator to reservoir": {
+      "length_mm": 423.95154361896346,
+      "minimum_sampled_radius_mm": 64.99999999969069,
+      "max_sample_step_mm": 1.0,
+      "start": [
+        140.5,
+        47.0,
+        170.45499999999998
+      ],
+      "end": [
+        55.0,
+        285.0,
+        326.705
+      ],
+      "od_mm": 16,
+      "id_mm": 10,
+      "design_radius_floor_mm": 60,
+      "nonlocal_self_surface_gap_mm": 30.41758124011651,
+      "fitting_axes_aligned": true
+    }
+  },
+  "closest_pairs": [
+    {
+      "a": "GPU 1 parallel coolant 0",
+      "b": "GPU 1 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 1 parallel coolant 1",
+      "b": "GPU 2 parallel coolant 0",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 2 parallel coolant 0",
+      "b": "GPU 2 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 2 parallel coolant 1",
+      "b": "GPU 3 parallel coolant 0",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 3 parallel coolant 0",
+      "b": "GPU 3 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 3 parallel coolant 1",
+      "b": "GPU 4 parallel coolant 0",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 4 parallel coolant 0",
+      "b": "GPU 4 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 4 parallel coolant 1",
+      "b": "GPU 5 parallel coolant 0",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 5 parallel coolant 0",
+      "b": "GPU 5 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 5 parallel coolant 1",
+      "b": "GPU 6 parallel coolant 0",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 6 parallel coolant 0",
+      "b": "GPU 6 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 6 parallel coolant 1",
+      "b": "GPU 7 parallel coolant 0",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 7 parallel coolant 0",
+      "b": "GPU 7 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 7 parallel coolant 1",
+      "b": "GPU 8 parallel coolant 0",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "GPU 8 parallel coolant 0",
+      "b": "GPU 8 parallel coolant 1",
+      "sampled_surface_gap_mm": 7.001990317254169,
+      "conservative_surface_gap_mm": 6.001990317254169
+    },
+    {
+      "a": "Host coolant branch 0",
+      "b": "Host coolant branch 1",
+      "sampled_surface_gap_mm": 11.00454309084012,
+      "conservative_surface_gap_mm": 10.00454309084012
+    },
+    {
+      "a": "Cooling infrastructure supply",
+      "b": "Cooling infrastructure return",
+      "sampled_surface_gap_mm": 24.0,
+      "conservative_surface_gap_mm": 23.0
+    },
+    {
+      "a": "GPU 8 parallel coolant 0",
+      "b": "Host coolant branch 0",
+      "sampled_surface_gap_mm": 24.610972974460978,
+      "conservative_surface_gap_mm": 23.610972974460978
+    },
+    {
+      "a": "GPU 3 parallel coolant 0",
+      "b": "GPU 4 parallel coolant 0",
+      "sampled_surface_gap_mm": 25.962777386300452,
+      "conservative_surface_gap_mm": 24.962777386300452
+    },
+    {
+      "a": "GPU 7 parallel coolant 1",
+      "b": "GPU 8 parallel coolant 1",
+      "sampled_surface_gap_mm": 25.962777386300452,
+      "conservative_surface_gap_mm": 24.962777386300452
+    }
+  ],
+  "minimum_conservative_tube_gap_mm": 6.001990317254169,
+  "method": "Centrelines sampled at <=1mm (quintic transition <=~1mm); subtract both outer radii and half the sum of maximum steps. Curvature from three-point circumcircles. No load, ovalisation or temperature simulation."
+}
