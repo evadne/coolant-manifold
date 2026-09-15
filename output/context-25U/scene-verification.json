@@ -30,7 +30,7 @@
       "tube": "GPU 1 parallel coolant 0",
       "equipment": "GPU 1 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.24894409359019,
       "at": [
         -180.0,
         9.0,
@@ -41,10 +41,10 @@
       "tube": "GPU 1 parallel coolant 1",
       "equipment": "GPU 1 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888338,
       "at": [
         -180.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -52,7 +52,7 @@
       "tube": "GPU 2 parallel coolant 0",
       "equipment": "GPU 2 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.24894409359019,
       "at": [
         -140.0,
         9.0,
@@ -63,10 +63,10 @@
       "tube": "GPU 2 parallel coolant 1",
       "equipment": "GPU 2 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888338,
       "at": [
         -140.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -74,7 +74,7 @@
       "tube": "GPU 3 parallel coolant 0",
       "equipment": "GPU 3 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248944093590188,
       "at": [
         -100.0,
         9.0,
@@ -85,10 +85,10 @@
       "tube": "GPU 3 parallel coolant 1",
       "equipment": "GPU 3 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888336,
       "at": [
         -100.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -96,7 +96,7 @@
       "tube": "GPU 4 parallel coolant 0",
       "equipment": "GPU 4 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248944093590188,
       "at": [
         -60.0,
         9.0,
@@ -107,10 +107,10 @@
       "tube": "GPU 4 parallel coolant 1",
       "equipment": "GPU 4 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888336,
       "at": [
         -60.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -118,7 +118,7 @@
       "tube": "GPU 5 parallel coolant 0",
       "equipment": "GPU 5 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248944093590188,
       "at": [
         -20.0,
         9.0,
@@ -129,10 +129,10 @@
       "tube": "GPU 5 parallel coolant 1",
       "equipment": "GPU 5 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888336,
       "at": [
         -20.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -140,7 +140,7 @@
       "tube": "GPU 6 parallel coolant 0",
       "equipment": "GPU 6 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248944093590188,
       "at": [
         20.0,
         9.0,
@@ -151,10 +151,10 @@
       "tube": "GPU 6 parallel coolant 1",
       "equipment": "GPU 6 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888336,
       "at": [
         20.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -162,7 +162,7 @@
       "tube": "GPU 7 parallel coolant 0",
       "equipment": "GPU 7 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248944093590188,
       "at": [
         60.0,
         9.0,
@@ -173,10 +173,10 @@
       "tube": "GPU 7 parallel coolant 1",
       "equipment": "GPU 7 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888336,
       "at": [
         60.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -184,7 +184,7 @@
       "tube": "GPU 8 parallel coolant 0",
       "equipment": "GPU 8 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248944093590188,
       "at": [
         100.0,
         9.0,
@@ -195,10 +195,10 @@
       "tube": "GPU 8 parallel coolant 1",
       "equipment": "GPU 8 water terminal",
       "sampled_surface_gap_mm": 13.5,
-      "conservative_surface_gap_mm": 13.0,
+      "conservative_surface_gap_mm": 13.248939185888336,
       "at": [
         100.0,
-        9.0,
+        8.999999999999986,
         1040.905
       ]
     },
@@ -206,21 +206,21 @@
       "tube": "Host coolant branch 0",
       "equipment": "Host uplink MCIO 8i cable 1",
       "sampled_surface_gap_mm": 63.318511962890625,
-      "conservative_surface_gap_mm": 62.818511962890625,
+      "conservative_surface_gap_mm": 63.06697076165557,
       "at": [
-        140.0,
-        -81.77155151894846,
-        833.4550000000002
+        140.00000082546836,
+        -81.76551068302784,
+        833.4549193629256
       ]
     },
     {
       "tube": "Host coolant branch 1",
       "equipment": "Host uplink MCIO 8i cable 1",
       "sampled_surface_gap_mm": 35.61094665527344,
-      "conservative_surface_gap_mm": 35.11094665527344,
+      "conservative_surface_gap_mm": 35.358817968463335,
       "at": [
         136.0,
-        -33.0,
+        -33.00000000000001,
         714.1049999999999
       ]
     },

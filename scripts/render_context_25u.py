@@ -59,9 +59,19 @@ pvc.node_tree.nodes.get('Principled BSDF').inputs['IOR'].default_value=1.54
 fluid=mat('Clear inhibited coolant',(.87,.95,.98),0,.08)
 fluid.node_tree.nodes.get('Principled BSDF').inputs['Transmission Weight'].default_value=1
 fluid.node_tree.nodes.get('Principled BSDF').inputs['IOR'].default_value=1.333
+relaxed=json.loads((OUT/'relaxed-branches.json').read_text())
+relaxation_report=json.loads((OUT/'pvc-equilibrium.json').read_text())
+for path,expected in relaxation_report['source_sha256'].items():
+    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==expected, 'Re-run scripts/relax_context_tubes.py: '+path
 routes={}
 def pvc_tube(name,points,od=13,floor=50):
-    points=np.asarray(points);routes[name]=dict(points=points,od=od,floor=floor)
+    points=np.asarray(points)
+    if name in relaxed:
+        digest=hashlib.sha256(np.round(points,7).astype('<f8').tobytes()).hexdigest()
+        assert digest==relaxed[name]['nominal_sha256'], 'Stale equilibrium route: '+name
+        points=np.asarray(relaxed[name]['points'])
+        if name.startswith('Host '):floor=relaxation_report['parameters']['minimum_host_bend_radius_mm']
+    routes[name]=dict(points=points,od=od,floor=floor)
     return make_tube(scene,name,points,pvc,fluid,od=od)
 # Official supplier fitting meshes; retain the operator-accepted studio registration.
 fit_dir=ROOT/'output/long-bore-P/koolance-fit'
@@ -274,8 +284,9 @@ if not args.preview:
       pump_reservoir=dict(selection='Provisional ULTITUBE 200 / D5 NEXT envelopes',glass_length_mm=200,glass_od_mm=65,glass_wall_mm=5,position_xy_mm=[pump_x,pump_y],mounting='Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection',reason='Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate.'),
       front_pair_allocation={'1-8':'Individual GPUs','9':'Host CPU/chassis','10':'Spare male QDs'},
       fittings=dict(male='QD3-MTG4',female='QD3-FT10X13',connected_pairs=9,spare_pairs=1,source_scale='Unscaled supplier meshes in mm',axial_placement='Operator-accepted inferred studio pose'),
+      pvc_equilibrium=dict(report='pvc-equilibrium.json',modulus_MPa=relaxation_report['parameters']['young_modulus_MPa'],method=relaxation_report['parameters']['model']),
       gpu_pitch_mm=40,gpu_envelope_mm=[17,270,132],gpu_orientation='Bracket rear; coolant and power at non-bracket side; overhead power leads',host_envelope_mm=[440,456,176],host_link=dict(adapter='x16 to 2x MCIO 8i',physical_cables=2,logical_link='one x16'),switch_status='Eight-endpoint concept; exact board not selected',
-      source_sha256={path:digest(path) for path in ['output/long-bore-P/cad/body.step','output/long-bore-P/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-P/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/render_context_25u.py']},
+      source_sha256={path:digest(path) for path in ['output/long-bore-P/cad/body.step','output/long-bore-P/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-P/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','output/context-25U/relaxed-branches.json']},
       view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png','06-front-tube-routing.png','07-side-tube-routing.png'],
       scope='Current custom parts with manufacturer-dimensioned StarTech rack envelope and inferred section registration; chassis, GPU, pump and support remain illustrative. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings.')
     (OUT/'layout.json').write_text(json.dumps(report,indent=2)+'\n')

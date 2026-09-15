@@ -1,0 +1,22 @@
+{
+  "model": "Static extensible elastic rod under gravity, with prescribed lateral routing lanes",
+  "young_modulus_MPa": 9.4,
+  "modulus_status": "First approximation from published Koolance Shore 80A hardness using the Gent elastomer correlation, rounded; not a measured PVC modulus or temperature-dependent constitutive law",
+  "tube_ID_mm": 10.0,
+  "tube_OD_mm": 13.0,
+  "dry_mass_kg_per_m": 0.09,
+  "dry_mass_basis": "Approximation from Koolance's published 0.27 kg per 3 m product weight",
+  "coolant_density_kg_per_m3": 1000.0,
+  "gravity_m_per_s2": 9.81,
+  "nodes": 101,
+  "fixed_nodes_each_end": 3,
+  "minimum_branch_bend_radius_mm": 50.0,
+  "scope": "Visual equilibrium study with fixed lateral lane coordinates and clamped fitting exits. No measured constitutive law, coiling memory, pressure, thermal softening or contact dynamics. Infrastructure routes remain the prior nominal geometry.",
+  "hardness_shore_A": 80,
+  "hardness_source": "https://koolance.com/tubing-clear-uv-reactive-pvc-10mm-x-13mm-3-8in-x-1-2in-3m",
+  "modulus_correlation_source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8849984/",
+  "modulus_correlation": "E[MPa] = 0.0981*(56+7.66*S)/(0.137505*(254-2.54*S)); extrapolated to flexible PVC as an estimate",
+  "shorten_each_front_branch_mm": 100.0,
+  "minimum_host_bend_radius_mm": 40.0,
+  "host_radius_basis": "100 mm shorter host hoses give about43 mm minimum radius; 40 mm check floor retains a small nominal margin over the published approximate37 mm for this selected10/13 tube."
+}

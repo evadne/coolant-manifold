@@ -1,0 +1,34 @@
+# Firm, pliant PVC routing
+
+The 25U scene's eighteen front branches now use a static elastic-rod calculation. The previous straight spans joined by circular bends were useful for clearance planning but looked like rigid pipe. The new curves distribute bending continuously and settle under their own weight and the contained coolant. Following operator review of the first relaxed side view, each front branch is shortened by100 mm in nominal modelled length and solved again. The three10/16 infrastructure runs retain their previous nominal geometry.
+
+## Material estimate
+
+[Koolance HOS-10CL-3M](https://koolance.com/tubing-clear-uv-reactive-pvc-10mm-x-13mm-3-8in-x-1-2in-3m) specifies 10 mm ID, 13 mm OD, Shore 80A hardness, approximately 37 mm bend radius and 0.27 kg product weight per 3 m. The latter is used as a dry-mass approximation, not a separately measured tubing density.
+
+Tube bending stiffness is **E I**, where `I = pi (OD^4 - ID^4) / 64`. For 10/13 tubing, I is 911.11 mm⁴. Wall thickness alone fixes I, but does not fix the compound's elastic modulus E.
+
+The [Gent hardness correlation reproduced in this research paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC8849984/) gives `E [MPa] = 0.0981 (56 + 7.66 S) / [0.137505 (254 - 2.54 S)]`. At S = 80, this gives approximately **9.4 MPa**, and EI approximately **8,564 N mm²**. This elastomer correlation is applied to flexible PVC as a first approximation; it is not a measured constitutive law for Koolance's formulation. It provides a reasoned starting point instead of an arbitrary softness control. Temperature, loading time and coiling memory are not inferred from hardness.
+
+The contained coolant density is assumed to be 1,000 kg/m³. Combined with the dry-mass approximation, the filled tube weighs 0.16854 kg/m, giving a gravitational load of 0.0016534 N/mm. These inputs are explicit in [the parameters](../cad/context/pvc-routing.json).
+
+Mayhems' [Ultra Flex 11/16 page](https://mayhems.store/mayhems-soft-tubing-ultraflex-1116-3m.html) describes polymer additives, high flexibility, absence of phthalates and resistance to plasticiser leaching. It supplies no numerical hardness, modulus or minimum bend radius on the reviewed page. These claims do not identify the formulation or establish the same stiffness as Koolance. The linked tube has a 2.5 mm wall and is not the 10/13 tube fitted to QD3-FT10X13. No Mayhems material substitution is made.
+
+## Calculation and limits
+
+[The solver](../scripts/relax_context_tubes.py) minimises axial strain energy, discrete bending energy and gravitational potential with an analytic gradient and Hessian. Each branch uses 101 centre-line nodes. The lateral X routing lanes remain prescribed to preserve separation; the free Y/Z coordinates settle. Approximately9 mm at each fitting is clamped. These are routing constraints, not modelled physical supports along the free spans. The computation is not a fully free three-dimensional contact simulation.
+
+This is a straight-rest-rod approximation with fixed fitting positions and nominal branch lengths reduced by100 mm. The resulting modelled GPU branch lengths are approximately467.5/457.5 mm, and host branches447.4/449.1 mm; these are centre-line lengths between modelled attachment points, not a workshop cut list including insertion allowances. It does not identify plasticiser chemistry, model residual coiling, internal pressure, ovalisation, thermal softening or long-term creep. A handling video could help judge spring-back and coiling memory, but cannot uniquely identify formulation or modulus without known forces and dimensions.
+
+[Blender soft bodies](https://docs.blender.org/manual/en/latest/physics/soft_body/settings/edges.html) offer edge springs and bending resistance, with [goal constraints](https://docs.blender.org/manual/en/latest/physics/soft_body/settings/goal.html) for attachments. Those controls need calibration; they do not directly encode a measured PVC material. This scene therefore uses a reproducible static rod solution calculated in Python, then builds the annular PVC/coolant meshes and renders them in Blender. There is no native soft-body bake presented as a calibrated simulation.
+
+## Results and verification
+
+- The shortened GPU branches settle downward by approximately9.41–12.39 mm from the shortened initial guess; host branches by20.10–20.21 mm. These are solver displacements from the seed, not sag measurements from a straight support chord or the previous longer tubes.
+- The smallest GPU branch bend radius is approximately52.73 mm. The host pair gives49.33/42.61 mm; infrastructure remains at65 mm. GPU checks retain the50 mm floor. The shortened host check uses40 mm, above Koolance’s published approximate37 mm radius for the selected tubing. This smaller margin is explicit, rather than retaining a stale50 mm assertion.
+- The minimum conservative tube-to-tube surface gap is approximately 6.50 mm; no unintended tube/equipment or tube/cable intersection is detected. The smallest sampled equipment clearance remains approximately 4.97 mm at the unchanged pump support.
+- Analytic gradients and Hessians pass independent central finite-difference checks. Maximum free-coordinate equilibrium force residual is below 1e-6 N. The modest axial strain remains below0.9%.
+- A representative GPU branch refined from 101 to 201 nodes, retaining the same clamped length, differs by at most0.06 mm; minimum radius changes from53.808 to53.597 mm.
+- An explicitly hypothetical 3/10/30 MPa stiffness sweep is retained in [the equilibrium report](../output/context-25U/pvc-equilibrium.json). It demonstrates sensitivity; it is not a measured material range.
+
+All six views and the native scene were regenerated and inspected. Operator judgement from the front, side and oblique views is the intended check for QD handling access; no repeat visual-approval demand is implied. P/R6 CAD, rack allocation and the open side-elbow/cage-nut concern are unchanged. The desktop Blender session was terminated without saving its in-memory state; the new scene was generated headlessly, and no Blender process was left running.

@@ -81,6 +81,11 @@
     "source_scale": "Unscaled supplier meshes in mm",
     "axial_placement": "Operator-accepted inferred studio pose"
   },
+  "pvc_equilibrium": {
+    "report": "pvc-equilibrium.json",
+    "modulus_MPa": 9.4,
+    "method": "Static extensible elastic rod under gravity, with prescribed lateral routing lanes"
+  },
   "gpu_pitch_mm": 40,
   "gpu_envelope_mm": [
     17,
@@ -111,7 +116,10 @@
     "scripts/context_startech25.py": "df95293ded0718ece86a4a379a19da399e94ce54d498c77d180174a0bb814855",
     "scripts/context_tubing.py": "ae95d4ea1b5d39645ed3f420654304e971c4503d94f0380ed58c198fa1177b60",
     "scripts/check_context_fit.py": "84441491298f9f607015fa9069abe1d5576274976d31b710a5ccf37e0ada10cd",
-    "scripts/render_context_25u.py": "ff6ddae294e975b92f0553e4842e936b486916db3f3a33eac5272c978ebd1ff9"
+    "scripts/render_context_25u.py": "ca74ab0eb0aa2bf323b450611f80c58273e2a3f91563584d0e3c6e4c34eb7f95",
+    "scripts/relax_context_tubes.py": "2197cddaa5a26943b195e3a3af8a6c899903f239fa3788590875d8183eba3c65",
+    "cad/context/pvc-routing.json": "4ae6fa45b8f35d1c5c765bd10a19bdc91424f8ac994e4c7435586e4b9c0711a7",
+    "output/context-25U/relaxed-branches.json": "8b93ed0428246bfffdb07ba9b8fd96e6c68d8666eba2edaf7caf921ace3434a6"
   },
   "view_files": [
     "01-rack-context.png",

@@ -19,3 +19,7 @@ This index identifies the references already reviewed on 14–15 September 2026.
 | Host/PCIe context | [Current StarTech25U plan](context-25U.md); [archived source review](archive/context-24U-O-M02.md) contains the SilverStone/c-payne references and unresolved switch-board selection. |
 
 Older QD3-MSG4/FS10X16 drawings, rear-cover rings, wetted stainless-cover studies and alternative mounting research remain historical references. They do not override the current QD3-MTG4/FT10X13 choice, long-bore topology, dry faceplate or plain-hole fasteners. See [archive](archive/README.md).
+
+## PVC bending and formulation
+
+See [the rod-model material basis](pvc-routing-physics.md) for Koolance dimensions/Shore80A, the Gent hardness correlation, Blender soft-body documentation and the reviewed Mayhems Ultra Flex11/16 claims. The9.4MPa estimate is not an exact-formulation identification.
