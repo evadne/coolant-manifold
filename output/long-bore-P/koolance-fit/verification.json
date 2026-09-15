@@ -1,0 +1,139 @@
+{
+  "revision": "P",
+  "source": "Unscaled Koolance supplier STEP files; rigid transforms only",
+  "published_dimensions": {
+    "male_overall_length_mm": 36.6,
+    "male_length_tolerance_mm": 0.5,
+    "male_hex_across_flats_mm": 22,
+    "male_max_diameter_mm": 23.9,
+    "male_thread_projection_mm": 4.5,
+    "male_shoulder_diameter_mm": 19.8,
+    "female_body_overall_length_mm": 49.1,
+    "female_length_tolerance_mm": 0.5,
+    "female_hex_across_flats_mm": 24,
+    "female_max_diameter_mm": 26.1,
+    "female_pull_ring_diameter_mm": 23.7,
+    "compression_nut_length_mm": 15,
+    "compression_nut_hex_across_flats_mm": 21,
+    "compression_nut_max_diameter_mm": 22.4,
+    "tube_id_mm": 10,
+    "tube_od_mm": 13
+  },
+  "male_mounting_face_source_x": -43.23998718853101,
+  "female_mouth_source_x": -36.85692806490091,
+  "male_planar_end_length_mm": 36.6154396167009,
+  "male_thread_projection_from_model_mm": 4.4960851750293,
+  "female_planar_end_length_mm": 49.106718380678615,
+  "female_mouth_Y_relative_to_male_sealing_face_mm": -21.664833138269834,
+  "inferred_seat_to_female_tail_mm": 70.77155151894846,
+  "inferred_axial_pose": "Register midpoint of male R8.45/r1 annular groove with female R9.7/r0.5 annular feature. This is an inferred presentation pose; Koolance individual drawings do not dimension the coupled length or release stroke. Closed-valve interior geometry is not articulated.",
+  "nominal_gap_at_40mm_pitch_mm": {
+    "maximum_body_envelopes": 13.899999999999999,
+    "pull_ring_envelopes": 16.3
+  },
+  "scaling_applied": false,
+  "surface_text_added": false,
+  "manifold_geometry_changed": false,
+  "mesh_records": [
+    {
+      "part": "qd3-mtg4",
+      "solid_index": 0,
+      "mesh": "qd3-mtg4-0.stl",
+      "bounds_xyz_mm": [
+        [
+          -10.399999999973076,
+          10.399999999973083
+        ],
+        [
+          -32.32188253644814,
+          -14.798764733395728
+        ],
+        [
+          -10.399999999973076,
+          10.399999999973076
+        ]
+      ]
+    },
+    {
+      "part": "qd3-mtg4",
+      "solid_index": 1,
+      "mesh": "qd3-mtg4-1.stl",
+      "bounds_xyz_mm": [
+        [
+          -11.9494723467946,
+          11.949472346794586
+        ],
+        [
+          -14.798764733399373,
+          4.4960851750293
+        ],
+        [
+          -11.000000000003297,
+          11.000000000003277
+        ]
+      ]
+    },
+    {
+      "part": "qd3-ft10x13",
+      "solid_index": 0,
+      "mesh": "qd3-ft10x13-0.stl",
+      "bounds_xyz_mm": [
+        [
+          -11.849706941793556,
+          11.849706941793556
+        ],
+        [
+          -21.500736237756755,
+          3.4124936210133683e-07
+        ],
+        [
+          -11.849706941793556,
+          11.849706941793556
+        ]
+      ]
+    },
+    {
+      "part": "qd3-ft10x13",
+      "solid_index": 1,
+      "mesh": "qd3-ft10x13-1.stl",
+      "bounds_xyz_mm": [
+        [
+          -12.94607763719629,
+          12.946077637195998
+        ],
+        [
+          -49.10671838067864,
+          -21.500736237756758
+        ],
+        [
+          -12.887673001812637,
+          12.887673001814505
+        ]
+      ]
+    },
+    {
+      "part": "qd3-ft10x13",
+      "solid_index": 2,
+      "mesh": "qd3-ft10x13-2.stl",
+      "bounds_xyz_mm": [
+        [
+          -10.520186150710913,
+          10.520186150702841
+        ],
+        [
+          -48.996115933452806,
+          -33.992554289621935
+        ],
+        [
+          -11.199877515305104,
+          11.199877515305115
+        ]
+      ]
+    }
+  ],
+  "source_sha256": {
+    "qd3-mtg4": "e0f39f788be3b336af2e5eebc5834fcf9ab9326a70795fdc161b1a31851a9090",
+    "qd3-ft10x13": "f1126bd64f33ec3b670f8eae1ffde41136c372e57e92ed783d17b7b81d9084a1"
+  },
+  "checks": "PASS"
+}

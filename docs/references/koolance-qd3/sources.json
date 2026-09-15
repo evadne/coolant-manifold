@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://koolance.com/files/products/models/qd3-mtg4.step.zip",
+    "file": "qd3-mtg4.step.zip",
+    "sha256": "bfe1f7e0748eb5cb40a8463f3740eea6b14dc8832d406dfbe05beecb870f1fef"
+  },
+  {
+    "url": "https://koolance.com/files/products/diagrams/qd3-mtg4_d1.pdf",
+    "file": "qd3-mtg4_d1.pdf",
+    "sha256": "998d6b5954e01cbde09313d1c4fe0285d28469e6efbfc1bdebf9ed0f062dab31"
+  },
+  {
+    "url": "https://koolance.com/files/products/models/qd3-ft10x13.step.zip",
+    "file": "qd3-ft10x13.step.zip",
+    "sha256": "bf3ce003e0d091ba1ad5d610fca84c69ed69372e07783303f84a95477811d031"
+  },
+  {
+    "url": "https://koolance.com/files/products/diagrams/qd3-ft10x13_d1.pdf",
+    "file": "qd3-ft10x13_d1.pdf",
+    "sha256": "81ce61611a3649a2393ffb85740301b3dd40f44547b071ac085ca25ec1ea298b"
+  }
+]

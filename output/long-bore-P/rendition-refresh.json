@@ -1,0 +1,172 @@
+{
+  "revision": "P",
+  "date": "2026-09-15",
+  "manifold_geometry_unchanged_from_git_head": true,
+  "source_sha256": {
+    "cad/iterations/P-long-bore.json": "b1dde89ed34e32123e4446173c12fb35f6cc8d42da1b5ff41fbffd1254abef1d",
+    "output/long-bore-P/cad/body.step": "d56b698fa4aee7f2f0fb3d013ffc96842d8b66fedb66e962e254b0214f294bf8",
+    "output/long-bore-P/cad/faceplate.step": "2726a5719c7133160e256fc9c38e7b84bd15c15b328d5b687e5acddda73e7c8d"
+  },
+  "manifold_tessellation": {
+    "linear_mm": 0.025,
+    "angular_rad": 0.06
+  },
+  "fitting_verification": "koolance-fit/verification.json",
+  "studio_audit": [
+    {
+      "file": "output/long-bore-P/photorealistic/01-bare-ports.blend",
+      "part_counts": {
+        "male": 40,
+        "female": 60,
+        "tubes": 20,
+        "screws": 12
+      },
+      "fittings_visible": false,
+      "dimensions_xyz_mm": {
+        "body": [
+          410.0000262260437,
+          43.00000285729766,
+          87.00000494718552
+        ],
+        "faceplate": [
+          482.60003328323364,
+          2.0000000949949026,
+          87.00000494718552
+        ]
+      },
+      "surface_text_objects": 0
+    },
+    {
+      "file": "output/long-bore-P/photorealistic/02-qd3-translucent-tubes.blend",
+      "part_counts": {
+        "male": 40,
+        "female": 60,
+        "tubes": 20,
+        "screws": 12
+      },
+      "fittings_visible": true,
+      "dimensions_xyz_mm": {
+        "body": [
+          410.0000262260437,
+          43.00000285729766,
+          87.00000494718552
+        ],
+        "faceplate": [
+          482.60003328323364,
+          2.0000000949949026,
+          87.00000494718552
+        ]
+      },
+      "surface_text_objects": 0
+    }
+  ],
+  "images": [
+    {
+      "file": "output/long-bore-P/product-views/01-front-three-quarter.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "9f4505d0d9ef3fb3db8740bb2dd62a2a2d85e70449825125206f81f2f5b9108e"
+    },
+    {
+      "file": "output/long-bore-P/product-views/02-rear-three-quarter.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "f98645febff2f66736206023be9d4b66332b3a53097fe8513b263b2fa3f097fb"
+    },
+    {
+      "file": "output/long-bore-P/product-views/03-front.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "edc1dd543d3e522b23e2abe496b2e268da625a68a5f961b84ad8025e21899395"
+    },
+    {
+      "file": "output/long-bore-P/product-views/04-rear.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "0de5bab4ff1c1305de0eb8ed59728a0423392a9cc397b3b5642f6c6c30a188ee"
+    },
+    {
+      "file": "output/long-bore-P/product-views/05-left.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "874b39f0b0a22c4511956368d258639590bec320232c8e0ced30bb71836f0c4d"
+    },
+    {
+      "file": "output/long-bore-P/product-views/06-right.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "87c4107f1ae9978ca545629512c2a0bd7731e12827502a59c3b8ad95323d461e"
+    },
+    {
+      "file": "output/long-bore-P/product-views/07-top.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "93932b5ebe249151c497e0bad96c9517f4a2d3060bcb6443b28c51795bf6f098"
+    },
+    {
+      "file": "output/long-bore-P/product-views/08-bottom.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "bb6dc240b7f9ac17226284d17441340c38ac0baa86de272150e99169448c04a6"
+    },
+    {
+      "file": "output/long-bore-P/product-views/09-gallery-section.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "4c9fe9abba3d403043ca474df0beac4c41f0d90eab0f58caee002198bc85cbc7"
+    },
+    {
+      "file": "output/long-bore-P/product-views/10-body-50-percent-transparent.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "97ed15cd1c3cd7a69a227e1c777e35d87b540b24029f656420f9cdcbd03b411f"
+    },
+    {
+      "file": "output/long-bore-P/product-views/11-side-elbow-configuration.png",
+      "pixels": [
+        1800,
+        1100
+      ],
+      "sha256": "4fd931f3593b48ca8d5f9f72b336edb80a1247d570d68b3c5e5593a47526dc96"
+    },
+    {
+      "file": "output/long-bore-P/photorealistic/01-bare-ports.png",
+      "pixels": [
+        3000,
+        1600
+      ],
+      "sha256": "e4ee48934ddacb925628b635e51e2d426e8e5ae48715aaff560cde45ef637a5f"
+    },
+    {
+      "file": "output/long-bore-P/photorealistic/02-qd3-translucent-tubes.png",
+      "pixels": [
+        3000,
+        1600
+      ],
+      "sha256": "c3067aecff603e857ec562994e650484cea23ba1118b3f5f11a4a6b1c92878d7"
+    }
+  ],
+  "visual_review": "All eleven review images and both full-resolution studio images inspected. Product geometry, orientation, retained screws, blank surfaces and connected tube tails reviewed.",
+  "scope": "Supplier STEP individual fittings, unscaled; coupled axial pose inferred. General product views retain approximate fitting references.",
+  "checks": "PASS"
+}
