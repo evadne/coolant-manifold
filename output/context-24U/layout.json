@@ -34,9 +34,18 @@
     ],
     "front_fans": "Nine 120 mm references",
     "type": "Custom front-mounted MO-RA concept; no stock model selected",
-    "pump_reservoir": "Included in the MO-RA assembly; rear-offset radiator-mounted reservoir and one illustrative D5 stage",
+    "pump_reservoir": "Included in the MO-RA assembly; tank on narrow side, D5 axis perpendicular to side panel",
     "plumbing": "Manifold return -> radiator -> reservoir -> D5 -> manifold supply; schematic routes",
-    "integration": "Custom carrier within the 10U bay; exact MO-RA generation, modules and pump count remain selectable"
+    "integration": "Direct upper port adapter and compact lower retainer per MO-RA IV manual; no rear carrier",
+    "tank_body_mm": [
+      49,
+      84,
+      275
+    ],
+    "cooling_body_recess_mm": 60,
+    "side_pump_max_x_mm": 336,
+    "packaging": "Tank/pump project outboard of rack side; 440 mm radiator body plus side assembly is not a rack-width-contained solution",
+    "mount_reference": "https://shop.watercool.de/mediafiles/Manuals/MA_MO-RA_IV_TANK.pdf pp3-5"
   },
   "front_pair_allocation": {
     "1-8": "Individual GPUs in parallel",

@@ -145,28 +145,48 @@ for row in range(3):
             mesh=bpy.data.meshes.new('Fan blade reference')
             mesh.from_pydata([(x+r*math.cos(t),-26,z+r*math.sin(t)) for r,t in polar],[],[(0,1,2,3)])
             ob=bpy.data.objects.new('Radiator fan blade',mesh);scene.collection.objects.link(ob);ob.data.materials.append(rack)
-# MO-RA cooling assembly includes a radiator-mounted reservoir and D5 stage.
-# Custom rear-offset carrier within the same 10U bay; not a stock bracket drawing.
-for z in (rad_z-110,rad_z+110):
-    box('MO-RA pump-res carrier',(188,111,z),(48,152,8),steel)
-box('MO-RA reservoir acetal body',(166,161,rad_z+8),(84,49,275),black)
-box('MO-RA reservoir sight window',(166,187,rad_z+30),(66,3,210),steel)
-box('MO-RA reservoir coolant reference',(166,189,rad_z+12),(56,2,164),supply)
-cyl('MO-RA reservoir fill cap',(166,161,rad_z+152),9,12,steel,'Z')
-box('MO-RA D5 pump top',(166,161,rad_z-104),(76,58,59),black)
-cyl('MO-RA integrated D5 reference',(166,216,rad_z-104),32,60,rack)
-# Return -> radiator -> reservoir -> D5 -> manifold supply. Routing is schematic.
-for j,z in enumerate((rad_z+150,rad_z-150)):
-    cyl('Radiator service fitting',(-224,40,z),9,20,steel,'X')
-hose('Radiator outlet to integrated reservoir',[(-235,40,rad_z+150),(-247,103,rad_z+172),(-140,160,rad_z+172),(150,200,rad_z+172),(166,194,rad_z+118)],ret,8)
-cyl('MO-RA reservoir inlet',(166,195,rad_z+118),9,12,steel)
-cyl('MO-RA pump outlet',(123,161,rad_z-104),9,14,steel,'X')
+# Photographic/manual reference: MO-RA IV tank sits on the narrow connection side.
+# Recess the cooling body 60 mm from its previous plane to clear the front rack post.
+# Rack ears remain at Y0; short stand-offs connect them to the radiator frame.
+for o in list(scene.objects):
+    if o.name.startswith(('Custom radiator fin core','Radiator fin reference','Radiator vertical frame','Radiator horizontal frame','Radiator fan')):
+        o.location.y+=60
+for x in (-212,212):
+    for dz in (-212,212):box('Radiator rack stand-off',(x,28,rad_z+dz),(16,60,12),steel)
+# Tank 200 D5 reference: 275 high x84 across the side x49 projection.
+# Nominal placement and pump projection are illustrative; direct side attachment
+# follows Watercool MA_MO-RA_IV_TANK pp3-5, not the removed rear carrier.
+side_y=102; tank_top=rad_z+175; tank_bottom=tank_top-275
+box('MO-RA side connection panel',(220,side_y,rad_z),(3,84,430),rack)
+for z in (tank_top-24,rad_z-175):
+    box('MO-RA brass terminal seat',(221.5,side_y,z),(4,32,28),steel)
+cyl('MO-RA direct tank adapter',(224,side_y,tank_top-24),8,8,steel,'X')
+box('MO-RA tank upper body',(250.5,side_y,tank_top-100),(49,84,200),black)
+# Clear window faces sideways (+X), perpendicular to the radiator fan face.
+box('MO-RA tank clear window',(275.5,side_y,tank_top-100),(2,76,192),steel)
+box('MO-RA tank coolant reference',(277,side_y,tank_top-113),(1,64,150),supply)
+for yy in (side_y-36,side_y+36):
+    for z in (tank_top-10,tank_top-55,tank_top-100,tank_top-145,tank_top-190):
+        cyl('MO-RA tank window fixing',(278,yy,z),2.5,3,steel,'X')
+for yy in (side_y-21,side_y+21):
+    cyl('MO-RA tank top fill plug',(250.5,yy,tank_top+3),9,6,steel,'Z')
+# Compact lower support/retainer and rear fixings, as opposed to wraparound shelves.
+box('MO-RA tank lower retaining bracket',(224,side_y,tank_top-197),(4,64,18),steel)
+for yy in (side_y-25,side_y+25):
+    cyl('MO-RA tank rear fixing',(224,yy,tank_top-185),3,6,steel,'X')
+box('MO-RA D5 lower part',(250.5,side_y,tank_bottom+37.5),(49,84,75),black)
+box('MO-RA D5 retaining plate',(277,side_y,tank_bottom+37.5),(3,78,69),steel)
+cyl('MO-RA side-facing D5 reference',(306,side_y,tank_bottom+37.5),32,60,rack,'X')
+# Direct upper radiator-to-tank connection replaces the long hose over the fins.
+# Loop return enters the lower radiator terminal; tank bottom feeds the pump outlet.
+cyl('MO-RA lower radiator inlet',(228,side_y,rad_z-175),9,14,steel,'X')
+cyl('MO-RA tank bottom outlet',(250.5,side_y,tank_bottom-7),9,14,steel,'Z')
 for j,z in enumerate((manifold+23.5,manifold+63.5)):
     cyl('Left infrastructure G1-4 fitting',(-215,20,z),9,20,steel,'X')
     if j==0:
-        pts=[(-224,20,z),(-280,65,z-35),(-280,120,rad_z-50),(-140,170,rad_z-104),(116,161,rad_z-104)]
+        pts=[(-224,20,z),(-280,90,z-35),(-280,180,rad_z-130),(-120,185,rad_z-165),(245,185,tank_bottom-40),(250.5,side_y,tank_bottom-15)]
     else:
-        pts=[(-224,20,z),(-300,90,z-35),(-300,110,rad_z-110),(-235,40,rad_z-150)]
+        pts=[(-224,20,z),(-300,125,z-35),(-300,215,rad_z-165),(-110,215,rad_z-190),(290,200,rad_z-175),(235,side_y,rad_z-175)]
     hose('MO-RA cooling assembly service hose '+str(j),pts,supply if j==0 else ret,8)
 assert len([o for o in scene.objects if o.name.startswith('Radiator fan hub')])==9
 assert len([o for o in scene.objects if 'single-slot waterblock' in o.name])==8
@@ -182,9 +202,9 @@ for loc,power,size in [((0,-1100,2200),50000000,1400),((1000,600,1900),40000000,
 scene.render.engine='CYCLES';scene.cycles.samples=32;scene.cycles.use_denoising=True
 scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_mode='RGB';scene.view_settings.view_transform='AgX'
 scene.render.resolution_x=1700;scene.render.resolution_y=2000;scene.render.resolution_percentage=100
-for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1570),('02-front-layout',(0,-2600,625),(0,0,625),1400),('04-rear-cooling-assembly',(1400,2300,1400),(0,210,610),1570)]:
+for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1570),('02-front-layout',(0,-2600,625),(0,0,625),1400),('04-rear-cooling-assembly',(1800,2100,1250),(0,170,610),1570),('05-tank-side-detail',(1550,1250,800),(190,105,rad_z+5),660)]:
     bpy.ops.object.camera_add(location=loc);o=bpy.context.object;o.name=name;o.data.type='ORTHO';o.data.ortho_scale=scale;o.data.clip_end=10000;o.rotation_euler=(Vector(target)-o.location).to_track_quat('-Z','Y').to_euler();scene.camera=o
     scene.render.filepath=str(OUT/f'{name}.png');bpy.ops.render.render(write_still=True)
 scene.camera=bpy.data.objects['01-rack-context']
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'24U-context.blend'))
-(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-10',use='Custom front-mounted MO-RA cooling assembly: radiator, reservoir and D5'),dict(U='11-14',use='4U host, front-accessible PCIe coolant bracket'),dict(U='15-16',use='O-M02 manifold'),dict(U='17-22',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='23-24',use='Service space / spare')],radiator={'allocation_U':10,'allocation_height_mm':444.5,'illustrative_body_envelope_mm':[440,110,440],'front_fans':'Nine 120 mm references','type':'Custom front-mounted MO-RA concept; no stock model selected','pump_reservoir':'Included in the MO-RA assembly; rear-offset radiator-mounted reservoir and one illustrative D5 stage','plumbing':'Manifold return -> radiator -> reservoir -> D5 -> manifold supply; schematic routes','integration':'Custom carrier within the 10U bay; exact MO-RA generation, modules and pump count remain selectable'},front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,gpu_orientation={'IO_bracket':'Rack-rear end, Y329','coolant_terminals':'Non-bracket end, rack-front, Y42','power_sockets':'Top edge near non-bracket end, Y65','power_routing':'Straight lead above each plug, then overhead to side distribution envelope','scope':'Generic connector positions; exact GPU and cable bend limits not selected'},host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')
+(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-10',use='Custom front-mounted MO-RA cooling assembly: radiator, reservoir and D5'),dict(U='11-14',use='4U host, front-accessible PCIe coolant bracket'),dict(U='15-16',use='O-M02 manifold'),dict(U='17-22',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='23-24',use='Service space / spare')],radiator={'allocation_U':10,'allocation_height_mm':444.5,'illustrative_body_envelope_mm':[440,110,440],'front_fans':'Nine 120 mm references','type':'Custom front-mounted MO-RA concept; no stock model selected','pump_reservoir':'Included in the MO-RA assembly; tank on narrow side, D5 axis perpendicular to side panel','plumbing':'Manifold return -> radiator -> reservoir -> D5 -> manifold supply; schematic routes','integration':'Direct upper port adapter and compact lower retainer per MO-RA IV manual; no rear carrier','tank_body_mm':[49,84,275],'cooling_body_recess_mm':60,'side_pump_max_x_mm':336,'packaging':'Tank/pump project outboard of rack side; 440 mm radiator body plus side assembly is not a rack-width-contained solution','mount_reference':'https://shop.watercool.de/mediafiles/Manuals/MA_MO-RA_IV_TANK.pdf pp3-5'},front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,gpu_orientation={'IO_bracket':'Rack-rear end, Y329','coolant_terminals':'Non-bracket end, rack-front, Y42','power_sockets':'Top edge near non-bracket end, Y65','power_routing':'Straight lead above each plug, then overhead to side distribution envelope','scope':'Generic connector positions; exact GPU and cable bend limits not selected'},host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')
