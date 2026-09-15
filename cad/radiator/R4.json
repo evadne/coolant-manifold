@@ -104,5 +104,6 @@
     "Fit fans to plate",
     "Fit plate to radiator",
     "Fit assembly to rack"
-  ]
+  ],
+  "selection_rationale": "Plain fan mounting bores simplify manufacture and avoid tapping cost. The operator accepts the more involved screw-and-nut assembly; tapped fan holes offer no useful benefit for this application."
 }

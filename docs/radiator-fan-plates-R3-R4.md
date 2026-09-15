@@ -2,6 +2,10 @@
 
 Two separate prototype alternatives add four Noctua NF-A20 fans to the custom rack plate. R3 has tapped M4 holes; R4 has plain holes with separate nuts. **R4 is operator-approved as of 15 September 2026**, with button screw heads on the radiator side and nuts on the outer fan faces. R3 is retained as the unselected tapped alternative. Design acceptance does not change the existing engineering qualification limits. Manifold revision P and radiator revisions R1/R2 are preserved.
 
+## Selection rationale
+
+The operator prefers R4's non-tapped fan mounting holes for ease and lower cost of manufacture. The additional handling of screws and nuts during assembly is acceptable. For this application, tapping the plate adds cost without a useful operational benefit. R3 remains reference material; it is not an alternative requiring further evaluation.
+
 ## Accepted assembly sequence
 
 1. **Fans onto plate.** Fit the four fans using the R4 M4 screws, washers and nuts. The button heads remain on the radiator side; hold their hex sockets while tightening the nuts on the outer fan faces.
