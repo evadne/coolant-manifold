@@ -52,3 +52,5 @@ Files:
 - [Outokumpu Core range datasheet](https://www.outokumpu.com/-/media/files/products/core/outokumpu-core-range-datasheet.pdf): 304 density 7.9 kg/dm³, elastic modulus 200 GPa at 20°C.
 
 Checked 15 September 2026. Prototype design only; no supplier submission or order made.
+
+The subsequent [thickness assessment](radiator-plate-thickness.md) proposes 2 mm as the next prototype candidate, saving 566 g. R1 remains the preserved 3 mm drawing; the simplified local stress check does not qualify whole-assembly stiffness or the radiator attachment.

@@ -1,0 +1,77 @@
+{
+  "purpose": "Thickness screening only; R1 manufacturing geometry is unchanged.",
+  "material_reference": "Outokumpu Core 304/4301 cold-rolled sheet: Rp0.2 230 MPa at 20 C; actual stock certificate required.",
+  "source": "https://www.outokumpu.com/-/media/files/products/core/outokumpu-core-range-datasheet.pdf",
+  "assumptions": {
+    "payload_kg": 6.225,
+    "load_CG_mm": 75,
+    "radiator_vertical_attachment_span_mm": 407.0,
+    "normal_force_per_upper_path_N": 5.624667959152334,
+    "vertical_force_per_upper_path_N": 30.523198124999997,
+    "strip_length_mm": 29.05000000000001,
+    "assumed_strip_gross_width_mm": 20.0,
+    "equivalent_net_width_mm": 13.0,
+    "elastic_modulus_MPa": 200000
+  },
+  "limitations": [
+    "Ideal fixed-end rectangular strips between rack and radiator attachment columns, not a meshed plate.",
+    "The 20 mm gross strip / 13 mm equivalent net width is an analyst assumption, not a proven effective width.",
+    "No hole stress concentrations, washer contact, bolt preload/prying, radiator rail flexibility or uneven slip.",
+    "No global plate bowing, plate self-weight distribution, shock, vibration or external hose loads.",
+    "Local strip displacement must not be reported as whole-assembly displacement; nominal stresses are not a qualified safety factor."
+  ],
+  "comparison": [
+    {
+      "thickness_mm": 3.0,
+      "plate_mass_kg": 1.6969939299896528,
+      "rack_mass_kg": 7.921993929989652,
+      "saving_vs_3mm_kg": 0.0,
+      "bending_stiffness_fraction": 1.0,
+      "same_load_bending_deflection_multiplier": 1.0,
+      "same_profile_elastic_bending_capacity_fraction": 1.0,
+      "local_strip_normal_bending_stress_MPa": 8.379313036583353,
+      "local_strip_inplane_bending_stress_MPa": 10.493478171967459,
+      "local_strip_sum_of_bending_stress_magnitudes_MPa": 18.87279120855081,
+      "local_strip_out_of_plane_deflection_mm": 0.007857025799839209
+    },
+    {
+      "thickness_mm": 2.5,
+      "plate_mass_kg": 1.4141616083247108,
+      "rack_mass_kg": 7.63916160832471,
+      "saving_vs_3mm_kg": 0.282832321664942,
+      "bending_stiffness_fraction": 0.5787037037037038,
+      "same_load_bending_deflection_multiplier": 1.7279999999999998,
+      "same_profile_elastic_bending_capacity_fraction": 0.6944444444444445,
+      "local_strip_normal_bending_stress_MPa": 12.06621077268003,
+      "local_strip_inplane_bending_stress_MPa": 12.59217380636095,
+      "local_strip_sum_of_bending_stress_magnitudes_MPa": 24.65838457904098,
+      "local_strip_out_of_plane_deflection_mm": 0.013576940582122152
+    },
+    {
+      "thickness_mm": 2.0,
+      "plate_mass_kg": 1.1313292866597684,
+      "rack_mass_kg": 7.3563292866597685,
+      "saving_vs_3mm_kg": 0.5656646433298844,
+      "bending_stiffness_fraction": 0.2962962962962962,
+      "same_load_bending_deflection_multiplier": 3.375,
+      "same_profile_elastic_bending_capacity_fraction": 0.4444444444444444,
+      "local_strip_normal_bending_stress_MPa": 18.853454332312545,
+      "local_strip_inplane_bending_stress_MPa": 15.740217257951187,
+      "local_strip_sum_of_bending_stress_magnitudes_MPa": 34.59367159026373,
+      "local_strip_out_of_plane_deflection_mm": 0.026517462074457328
+    },
+    {
+      "thickness_mm": 1.5,
+      "plate_mass_kg": 0.8484969649948264,
+      "rack_mass_kg": 7.073496964994826,
+      "saving_vs_3mm_kg": 0.8484969649948264,
+      "bending_stiffness_fraction": 0.125,
+      "same_load_bending_deflection_multiplier": 8.0,
+      "same_profile_elastic_bending_capacity_fraction": 0.25,
+      "local_strip_normal_bending_stress_MPa": 33.51725214633341,
+      "local_strip_inplane_bending_stress_MPa": 20.986956343934917,
+      "local_strip_sum_of_bending_stress_magnitudes_MPa": 54.504208490268326,
+      "local_strip_out_of_plane_deflection_mm": 0.06285620639871367
+    }
+  ]
+}
