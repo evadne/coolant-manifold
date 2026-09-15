@@ -1,10 +1,13 @@
 """Blender review of CAD-derived R1 plate, with illustrative radiator and fans."""
 from pathlib import Path
-import json, math
+import json, math, argparse, sys
 import bpy
 from mathutils import Vector
-ROOT=Path(__file__).resolve().parents[1]; OUT=ROOT/'output/radiator-R1'
-P=json.loads((ROOT/'cad/radiator/R1.json').read_text()); H=P['height']
+ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2'],default='R1')
+REV=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []).revision
+OUT=ROOT/f'output/radiator-{REV}'
+P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text()); H=P['height'];T=P['thickness']
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scene=bpy.context.scene
 scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=.001
@@ -31,8 +34,8 @@ def cyl(name,loc,r,d,material,axis='Y'):
 def cut(a,b):
  m=a.modifiers.new('Cut','BOOLEAN');m.operation='DIFFERENCE';m.object=b
  bpy.context.view_layer.objects.active=a;bpy.ops.object.modifier_apply(modifier=m.name);bpy.data.objects.remove(b,do_unlink=True)
-bpy.ops.wm.stl_import(filepath=str(OUT/'rack-plate-R1.stl'));plate=bpy.context.object
-plate.name='R1 rack plate - exact CAD mesh';plate.rotation_euler.x=math.pi/2;plate.data.materials.append(steel);bevel(plate,.15)
+bpy.ops.wm.stl_import(filepath=str(OUT/f'rack-plate-{REV}.stl'));plate=bpy.context.object
+plate.name=f'{REV} rack plate - exact CAD mesh';plate.rotation_euler.x=math.pi/2;plate.data.materials.append(steel);bevel(plate,.15)
 # The source CAD is XY, extruded +Z. Rotation maps it to X,-thickness,height.
 assembly=[]
 def keep(o):assembly.append(o);return o
@@ -51,9 +54,9 @@ bevel(rear,.15)
 for x in P['radiator_mount_x']:
  for dy in P['radiator_mount_y_from_centre']:
   z=H/2+dy
-  keep(cyl('M3 washer',(x,-3.3,z),3.5,.6,steel))
-  screw=keep(cyl('M3 pan head reference',(x,-4.8,z),2.8,2.4,steel));bevel(screw,.3)
-  cut(screw,box('Drive recess',(x,-5.9,z),(2.3,.8,.55),black))
+  keep(cyl('M3 washer',(x,-T-.3,z),3.5,.6,steel))
+  screw=keep(cyl('M3 pan head reference',(x,-T-1.8,z),2.8,2.4,steel));bevel(screw,.3)
+  cut(screw,box('Drive recess',(x,-T-2.9,z),(2.3,.8,.55),black))
 for x in (-140.5,140.5):
  keep(cyl('Top G1-4 plug reference',(x,22.5,H/2+221.8),9,2.6,steel,'Z'))
 # Four 200 mm fans, 30 mm thickness used as an explicit visual envelope.
@@ -89,8 +92,9 @@ def render(name,loc,bare=False):
  for o in assembly:o.hide_render=bare
  camera.location=loc;camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
  scene.render.filepath=str(OUT/name);bpy.ops.render.render(write_still=True)
+if REV=='R2':render('00-plate-front.png',(0,-1000,H/2),True)
 render('01-plate-perspective.png',(630,-1100,700),True)
 render('02-radiator-front.png',(630,-1100,700))
 render('03-radiator-rear.png',(-700,1100,650))
 camera.location=(630,-1100,700);camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
-bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'radiator-rack-plate-R1.blend'))
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/f'radiator-rack-plate-{REV}.blend'))

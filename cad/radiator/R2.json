@@ -1,0 +1,77 @@
+{
+  "revision": "R2",
+  "description": "10U integral-height plate with four available rack fixings per U",
+  "status": "Prototype revision; static shell assessment, not an assembly load rating",
+  "width": 482.6,
+  "height": 444.5,
+  "thickness": 2.0,
+  "outer_radius": 2.0,
+  "material": "304 / EN 1.4301 stainless steel",
+  "density_kg_m3": 7900,
+  "elastic_modulus_mpa": 200000,
+  "radiator_mass_kg": 4.225,
+  "additional_load_kg": 10.775,
+  "radiator_width": 422,
+  "radiator_height": 441,
+  "radiator_depth": 48,
+  "radiator_mount_x": [
+    -203.5,
+    203.5
+  ],
+  "radiator_mount_y_from_centre": [
+    -203.5,
+    -78.5,
+    -62.5,
+    62.5,
+    78.5,
+    203.5
+  ],
+  "radiator_clearance_diameter": 3.6,
+  "rack_mount_x": [
+    -232.55,
+    232.55
+  ],
+  "rack_mount_y": [
+    6.35,
+    38.1,
+    50.800000000000004,
+    82.55000000000001,
+    95.25,
+    127.0,
+    139.70000000000002,
+    171.45000000000002,
+    184.15,
+    215.9,
+    228.6,
+    260.35,
+    273.05000000000007,
+    304.80000000000007,
+    317.50000000000006,
+    349.25000000000006,
+    361.95000000000005,
+    393.70000000000005,
+    406.40000000000003,
+    438.15000000000003
+  ],
+  "rack_slot_length": 10,
+  "rack_slot_width": 7,
+  "aperture_centres_x": [
+    -100,
+    100
+  ],
+  "aperture_centres_y_from_centre": [
+    -100,
+    100
+  ],
+  "aperture_width": 188,
+  "aperture_height": 188,
+  "aperture_radius": 8,
+  "assumed_load_cg_behind_plate_mm": 150,
+  "sources": {
+    "radiator": "https://download.alphacool.com/datasheet/ENG_14351_Alphacool_NexXxoS_XT45_Full_Copper_1260mm_SuperNova_Radiator_datasheet.pdf",
+    "manufacturer_mesh": "https://3dcenter.alphacool.com/stl/14351_0.stl",
+    "material": "https://www.outokumpu.com/-/media/files/products/core/outokumpu-core-range-datasheet.pdf"
+  },
+  "rack_units": 10,
+  "load_basis": "15 kg total payload screening envelope, including radiator, fans, coolant, pump/reservoir and extra equipment; plate self-weight additional."
+}

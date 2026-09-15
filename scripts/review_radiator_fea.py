@@ -26,7 +26,7 @@ def read_case(name):
    if mode=='total' and len(v)==3:reaction=np.array(list(map(float,v)))
   except ValueError:pass
  ids=meta['node_ids'];xy=np.array(meta['coordinates']);disp=np.array([u[n] for n in ids])
- coord_map=dict(zip(ids,xy));reaction_moment=sum((np.cross(coord_map[n]-[0,221.3,0],r) for n,r in reactions.items()),start=np.zeros(3))
+ coord_map=dict(zip(ids,xy));reaction_moment=sum((np.cross(coord_map[n]-[0,meta.get('height_mm',442.6)/2,0],r) for n,r in reactions.items()),start=np.zeros(3))
  assert len(u)==len(ids)
  # S6 uses nine integration points: three in-plane points at each of three
  # thickness positions. Recover top/bottom surface stresses linearly from
@@ -52,7 +52,9 @@ def read_case(name):
   report['expected_root_bending_stress_MPa']=75.
   assert abs(report['max_recovered_surface_von_mises_MPa']/75.-1)<.03
  else:
-  mass=json.loads((ROOT/'output/radiator-R1/verification.json').read_text())['plate_mass_kg']*meta['thickness_mm']/3
+  rev=meta.get('revision','R1')
+  reference_thickness=json.loads((ROOT/f'cad/radiator/{rev}.json').read_text())['thickness']
+  mass=json.loads((ROOT/f'output/radiator-{rev}/verification.json').read_text())['plate_mass_kg']*meta['thickness_mm']/reference_thickness
   expected=meta.get('payload_mass_kg',6.225)*9.80665+mass*9.81
   report['vertical_force_balance_relative_error']=abs(reaction[1]/expected-1)
   assert report['vertical_force_balance_relative_error']<.001

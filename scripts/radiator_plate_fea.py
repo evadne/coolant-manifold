@@ -9,24 +9,25 @@ import numpy as np
 import cadquery as cq
 import gmsh
 ROOT=Path(__file__).resolve().parents[1]
-P=json.loads((ROOT/'cad/radiator/R1.json').read_text())
 OUT=ROOT/'tmp/radiator-fea';OUT.mkdir(parents=True,exist_ok=True)
 parser=argparse.ArgumentParser();parser.add_argument('--size',type=float,default=6)
 parser.add_argument('--thickness',type=float,default=2)
-parser.add_argument('--supports',type=int,choices=[4,8],default=8)
+parser.add_argument('--supports',type=int,choices=[4,8,40],default=8)
 parser.add_argument('--load',choices=['distributed','corners','top'],default='distributed')
 parser.add_argument('--benchmark',action='store_true')
 parser.add_argument('--payload-kg',type=float,default=6.225)
 parser.add_argument('--cg-mm',type=float,default=75)
 parser.add_argument('--label',default='')
-a=parser.parse_args();H=P['height'];t=a.thickness
+parser.add_argument('--revision',choices=['R1','R2'],default='R1')
+a=parser.parse_args();P=json.loads((ROOT/f'cad/radiator/{a.revision}.json').read_text());H=P['height'];t=a.thickness
 name=f'plate-t{t:g}-h{a.size:g}-s{a.supports}-{a.load}' if not a.benchmark else f'benchmark-h{a.size:g}'
 if a.label:name=a.label+'-'+name
+elif a.revision!='R1':name=a.revision+'-'+name
 gmsh.initialize();gmsh.option.setNumber('General.Terminal',0)
 if a.benchmark:
  gmsh.model.occ.addRectangle(0,0,0,100,20)
 else:
- body=cq.importers.importStep(str(ROOT/'output/radiator-R1/rack-plate-R1.step')).val()
+ body=cq.importers.importStep(str(ROOT/f'output/radiator-{a.revision}/rack-plate-{a.revision}.step')).val()
  face=max([f for f in body.Faces() if abs(f.Center().z)<1e-6],key=lambda f:f.Area())
  assert abs(face.Area()-body.Volume()/P['thickness'])<1e-4
  cq.exporters.export(face,str(OUT/'plate-midsurface.step'))
@@ -52,7 +53,11 @@ if a.benchmark:
  for n in tip:add(n,3,10/len(tip))
  t=2.
 else:
- indices=[0,5] if a.supports==4 else [0,2,3,5]
+ if a.revision=='R1':
+  assert a.supports in [4,8]
+  indices=[0,5] if a.supports==4 else [0,2,3,5]
+ else:
+  indices=list(range(20)) if a.supports==40 else [0,8,11,19] if a.supports==8 else [0,19]
  for x in P['rack_mount_x']:
   for j in indices:
    y=P['rack_mount_y'][j]
@@ -97,7 +102,7 @@ lines+=['*NODE PRINT,NSET=ALL','U','*NODE PRINT,NSET=SUPPORT,TOTALS=YES','RF',
  '*EL PRINT,ELSET=PLATE','S','*NODE FILE,OUTPUT=2D','U','*END STEP']
 (OUT/(name+'.inp')).write_text('\n'.join(lines)+'\n')
 metadata={'name':name,'thickness_mm':t,'mesh_size_mm':a.size,'nodes':len(ids),'elements':len(elements),
- 'solver':'CalculiX 2.23','element':'S6','gmsh':'4.15.2','poisson_ratio':0. if a.benchmark else .3,'payload_resultant_N':resultant.tolist(),
+ 'revision':a.revision,'height_mm':H,'solver':'CalculiX 2.23','element':'S6','gmsh':'4.15.2','poisson_ratio':0. if a.benchmark else .3,'payload_resultant_N':resultant.tolist(),
  'payload_moment_about_plate_centre_Nmm':mom.tolist(),'supports':a.supports if not a.benchmark else 'fixed edge',
  'payload_mass_kg':a.payload_kg,'payload_cg_mm':a.cg_mm,'load':a.load,'self_weight':not a.benchmark,
  'node_ids':list(map(int,ids)),'coordinates':coords.tolist(),'elements_connectivity':connectivity.astype(int).tolist(),
