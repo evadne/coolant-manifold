@@ -38,6 +38,7 @@
     "orbit_distance_mm": 3000,
     "perspective": "PERSP",
     "geometry_and_camera_unchanged": true,
-    "duplicate_mesh_placements_found": 0
+    "duplicate_mesh_placements_found": 0,
+    "operator_confirmation": "2026-09-15: increasing Clip Start made the live viewport smoother."
   }
 }
