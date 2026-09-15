@@ -1,0 +1,189 @@
+{
+  "method": "Linear elastic S6 shell analysis, E 200 GPa, nu 0.3, except benchmark nu=0.",
+  "solver": "CalculiX 2.23 Debian build 2.23-1; SPOOLES solver; Gmsh 4.15.2",
+  "scope": "Full R1 cut profile at varied thickness; no radiator stiffening or joint/contact model.",
+  "surface_stress_recovery": "Linear through-thickness extrapolation from outer Gauss layers to surfaces; no in-plane nodal extrapolation.",
+  "convergence_relative_changes_h6_to_h3": {
+    "max_out_of_plane_mm": 0.001569973933958968,
+    "max_recovered_surface_von_mises_MPa": 0.005951335778771605
+  },
+  "cases": [
+    {
+      "name": "benchmark-h3",
+      "thickness_mm": 2.0,
+      "mesh_size_mm": 3.0,
+      "nodes": 1183,
+      "elements": 550,
+      "supports": "fixed edge",
+      "load": "distributed",
+      "max_out_of_plane_mm": 1.250289,
+      "max_downwards_mm": -0.0,
+      "peak_displacement_location_mm": [
+        100.0,
+        0.0,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 57.883784442368054,
+      "max_recovered_surface_von_mises_MPa": 74.72660210524107,
+      "total_support_reaction_N": [
+        3.827747e-10,
+        -4.038687e-11,
+        -10.0
+      ],
+      "mean_tip_mm": 1.2502453333333332,
+      "Euler_Bernoulli_tip_mm": 1.25,
+      "relative_error": 0.0001962666666666113,
+      "expected_root_bending_stress_MPa": 75.0
+    },
+    {
+      "name": "plate-t3-h6-s8-distributed",
+      "thickness_mm": 3.0,
+      "mesh_size_mm": 6.0,
+      "nodes": 38763,
+      "elements": 18662,
+      "supports": 8,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.01346714,
+      "max_downwards_mm": 0.0008978891,
+      "peak_displacement_location_mm": [
+        -1.1368683772161603e-13,
+        442.6,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 5.199473843687359,
+      "max_recovered_surface_von_mises_MPa": 6.156898526063315,
+      "total_support_reaction_N": [
+        5.150055e-11,
+        77.68648,
+        6.948152e-10
+      ],
+      "vertical_force_balance_relative_error": 9.558926193353745e-05,
+      "support_reaction_moment_Nmm": [
+        -4578.479465466587,
+        0.00042025791154287617,
+        0.011167476270600218
+      ],
+      "overturning_moment_balance_relative_error": 5.532041735811788e-08
+    },
+    {
+      "name": "plate-t2-h6-s8-distributed",
+      "thickness_mm": 2.0,
+      "mesh_size_mm": 6.0,
+      "nodes": 38763,
+      "elements": 18662,
+      "supports": 8,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.04285053,
+      "max_downwards_mm": 0.0009358345,
+      "peak_displacement_location_mm": [
+        -1.1368683772161603e-13,
+        442.6,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 11.287666487133114,
+      "max_recovered_surface_von_mises_MPa": 13.953178565250568,
+      "total_support_reaction_N": [
+        -1.298833e-11,
+        72.13979,
+        6.722855e-09
+      ],
+      "vertical_force_balance_relative_error": 6.856428297785655e-05,
+      "support_reaction_moment_Nmm": [
+        -4578.479751341008,
+        0.00020301540016021136,
+        0.007741966304706693
+      ],
+      "overturning_moment_balance_relative_error": 7.118304390374419e-09
+    },
+    {
+      "name": "plate-t2-h3-s8-distributed",
+      "thickness_mm": 2.0,
+      "mesh_size_mm": 3.0,
+      "nodes": 82941,
+      "elements": 40374,
+      "supports": 8,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.04291791,
+      "max_downwards_mm": 0.000935956,
+      "peak_displacement_location_mm": [
+        5.684341886080802e-14,
+        0.0,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 11.391270983418625,
+      "max_recovered_surface_von_mises_MPa": 14.036715774053137,
+      "total_support_reaction_N": [
+        4.457023e-10,
+        72.14014,
+        9.388637e-10
+      ],
+      "vertical_force_balance_relative_error": 6.3712924213144e-05,
+      "support_reaction_moment_Nmm": [
+        -4578.479321854659,
+        0.0009721951385301963,
+        -0.00035230910356176537
+      ],
+      "overturning_moment_balance_relative_error": 8.668714557291679e-08
+    },
+    {
+      "name": "plate-t1.5-h6-s8-distributed",
+      "thickness_mm": 1.5,
+      "mesh_size_mm": 6.0,
+      "nodes": 38763,
+      "elements": 18662,
+      "supports": 8,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.09887497,
+      "max_downwards_mm": 0.0009737755,
+      "peak_displacement_location_mm": [
+        -1.1368683772161603e-13,
+        442.6,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 19.96134279819905,
+      "max_recovered_surface_von_mises_MPa": 25.18571395882145,
+      "total_support_reaction_N": [
+        -6.074879e-10,
+        69.36644,
+        4.396831e-09
+      ],
+      "vertical_force_balance_relative_error": 5.350250100721876e-05,
+      "support_reaction_moment_Nmm": [
+        -4578.480092886828,
+        0.0010214175598548536,
+        0.005835620283207277
+      ],
+      "overturning_moment_balance_relative_error": 8.171638965492889e-08
+    },
+    {
+      "name": "plate-t2-h6-s4-top",
+      "thickness_mm": 2.0,
+      "mesh_size_mm": 6.0,
+      "nodes": 38763,
+      "elements": 18662,
+      "supports": 4,
+      "load": "top",
+      "max_out_of_plane_mm": 0.04931179,
+      "max_downwards_mm": 0.001444551,
+      "peak_displacement_location_mm": [
+        1.1368683772161603e-13,
+        0.0,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 12.559310584601409,
+      "max_recovered_surface_von_mises_MPa": 14.8839641764244,
+      "total_support_reaction_N": [
+        -2.441876e-10,
+        72.1423,
+        -7.115969e-10
+      ],
+      "vertical_force_balance_relative_error": 3.3773110122314876e-05,
+      "support_reaction_moment_Nmm": [
+        -4578.479748694183,
+        -7.34509295909902e-05,
+        0.007287321398052882
+      ],
+      "overturning_moment_balance_relative_error": 6.540202379667903e-09
+    }
+  ]
+}
