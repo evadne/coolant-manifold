@@ -1,6 +1,6 @@
 [Current O-M02 manufacturing package: 4 mm bosses, projecting 1 mm above the 3 mm faceplate](docs/manufacturing-O-M02.md).
 
-[24U open-frame workstation context](docs/context-24U.md): eight waterblocked GPUs above the manifold, with a front-I/O 4U host below; sketch and editable Blender layout.
+[24U open-frame workstation context](docs/context-24U.md): eight waterblocked GPUs above the manifold, with a front-I/O 4U host below; Blender renders and editable scene.
 
 [Ready for JLC: upload files and submission instructions](docs/jlc-submission-O-M02.md). Both POM-C and POM-H accepted. [Complete local handover](output/submission/O-M02/RM10-O-M02-HANDOVER.zip); extract and upload the two individual part ZIPs separately.
 

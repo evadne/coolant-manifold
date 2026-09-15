@@ -22,5 +22,11 @@
     "01-rack-context.png",
     "02-front-layout.png"
   ],
-  "radiator_update_prompt": "sketch-radiator-prompt.txt"
+  "radiator_update_prompt": "sketch-radiator-prompt.txt",
+  "status": "Historical reference only; no further sketch generation or synchronisation requested",
+  "current_presentation": [
+    "01-rack-context.png",
+    "02-front-layout.png",
+    "24U-context.blend"
+  ]
 }
