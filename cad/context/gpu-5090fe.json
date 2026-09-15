@@ -1,0 +1,81 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5090 Founders Edition, 32 GB",
+  "cooler": "Alphacool ES RTX 6000 Pro Workstation/RTX 5090 Founders Edition",
+  "sku": "5100182",
+  "published": {
+    "stock_air_cooled_card_length_mm": 304.0,
+    "stock_air_cooled_card_height_mm": 137.0,
+    "stock_air_cooled_card_slots": 2,
+    "main_cooler_length_height_thickness_mm": [
+      231.1,
+      119.4,
+      13.4
+    ],
+    "active_backplate_length_height_thickness_mm": [
+      208.97,
+      120.9,
+      10.93
+    ],
+    "water_cooled_slots": 1.5,
+    "assembled_body_thickness_mm": 29.68,
+    "assembled_overall_length_mm": 245.83,
+    "assembled_length_to_bracket_datum_mm": 231.97,
+    "assembled_overall_height_including_bracket_mm": 150.6,
+    "assembled_overall_width_including_bracket_mm": 42.07,
+    "port_pitch_mm": 34.0,
+    "upper_port_below_top_mm": 61.18,
+    "port_axis_to_backplate_outer_face_mm": 21.18
+  },
+  "placement": {
+    "card_pitch_mm": 40.0,
+    "port_face_Y_mm": 31.0,
+    "port_midpoint_Z_above_gpu_datum_mm": 104.0,
+    "main_block_outer_X_relative_to_port_mm": -8.5,
+    "backplate_front_offset_from_port_face_mm": 10.18,
+    "PCB_X_relative_to_port_mm": 7.7,
+    "PCB_thickness_mm": 1.6,
+    "main_PCB_length_height_mm": [
+      108.0,
+      110.0
+    ],
+    "main_PCB_front_offset_from_port_face_mm": 17.0,
+    "main_PCB_bottom_above_gpu_datum_mm": 66.0,
+    "bracket_width_mm": 38.0,
+    "bracket_sheet_mm": 1.0,
+    "bracket_outer_X_min_relative_to_port_mm": -20.89,
+    "power_socket_position_relative_to_port_and_gpu_datum_mm": [
+      3.7,
+      75.0,
+      174.18
+    ],
+    "power_exit_angle_from_vertical_degrees": 45.0,
+    "riser_centre_Z_above_gpu_datum_mm": 52.0
+  },
+  "scope": "Published envelopes and port datums from the Alphacool dimensioned assembly drawing; NVIDIA dimensions refer only to the removed stock cooler. PCB sub-board outlines, thickness, stack registration, small hardware, connector location/angle and bracket width/profile are visual inferences from the manual and drawing, not supplier CAD. PCB is right of the main block when looking into the ports. Rounded top notch and carbon/chrome surfaces are schematic. Main PCB is a near-square 108 x 110 mm visual envelope, estimated from TechPowerUp front/back teardown photographs and fitted within the Alphacool envelope; no published bare-PCB dimensional drawing was found.",
+  "power_housing_reference": {
+    "manufacturer": "Molex",
+    "part": "2191140161",
+    "drawing": "2191140001-SD revision A, 2024-03-11",
+    "flange_width_mm": 20.85,
+    "main_height_mm": 7.55,
+    "axial_length_mm": 14.0,
+    "overall_height_with_latch_mm": 11.63,
+    "power_contact_pitch_mm": 3.0,
+    "signal_contact_pitch_mm": 2.0,
+    "power_contacts": 12,
+    "signal_contacts": 4,
+    "scope": "Published cable housing envelope, representative compatible connector; exact NVIDIA header vendor and selected PSU cable are unconfirmed. Latch details, insertion, header, insulated wire diameters and routing are illustrative."
+  },
+  "power_header_reference": {
+    "manufacturer": "Molex",
+    "series": "219116",
+    "drawing": "2191160001-SD revision A1, 2026-01-13",
+    "width_mm": 18.85,
+    "main_shroud_height_mm": 6.86,
+    "axial_depth_mm": 9.91,
+    "mated_housing_length_mm": 17.66,
+    "mated_housing_height_mm": 12.13,
+    "housing_insertion_mm": 6.25,
+    "scope": "Separate board-side male header drawing. Render uses shroud, signal pod and latch ramp; hidden contacts and solder tails omitted. Installed board position remains inferred; actual NVIDIA supplier is not established."
+  }
+}

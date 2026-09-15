@@ -12,6 +12,7 @@ from scipy.optimize import minimize
 from scipy.interpolate import CubicSpline
 from context_tubing import branch_route, route_metrics, assess_routes
 from context_startech25 import RACK_U_DATUM
+from context_gpu5090 import PORT_Z, P as GPU_PLACEMENT
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/context-25U'
@@ -28,15 +29,15 @@ def nominal_branches():
     for i in range(8):
         x=-180+40*i
         for row in range(2):
-            result[f'GPU {i+1} parallel coolant {row}']=branch_route(x,tail+1,manifold+23.5+40*row,x,9,gpu+89+30*row,x+(-10 if row==0 else 10))
+            result[f'GPU {i+1} parallel coolant {row}']=branch_route(x,tail+1,manifold+23.5+40*row,x,9,gpu+PORT_Z[row],x+(-10 if row==0 else 10))
     for row in range(2):
         result[f'Host coolant branch {row}']=branch_route(140,tail+1,manifold+23.5+40*row,136,-33,host+42+40*row,128 if row==0 else 152,depth=-270)
     return result
 
-def rod_problem(points,params,modulus=None):
+def rod_problem(points,params,modulus=None,nominal_length=None):
     arclength=np.r_[0,np.cumsum(np.linalg.norm(np.diff(points,axis=0),axis=1))]
     n=params['nodes'];reduction=params.get('shorten_each_front_branch_mm',0.)
-    target_length=arclength[-1]-reduction
+    target_length=arclength[-1]-reduction if nominal_length is None else nominal_length
     assert target_length>np.linalg.norm(points[-1]-points[0])
     s=np.linspace(0,target_length,n);h=s[1]
     # Compress only the initial guess towards the fitting plane, then resample
@@ -96,7 +97,7 @@ def rod_problem(points,params,modulus=None):
                     maximum_downward_shift_mm=float(max(base[:,2]-q[:,2])),
                     maximum_lateral_shift_from_seed_mm=float(max(abs(base[:,0]-q[:,0]))),
                     lateral_extent_relative_to_pair_origin_mm=[float(min(q[:,0])),float(max(q[:,0]))],
-                    previous_nominal_length_mm=float(arclength[-1]),shortening_mm=reduction,nominal_length_mm=float(target_length),relaxed_length_mm=metrics['length_mm'],
+                    seed_route_length_mm=float(arclength[-1]),accepted_shortening_mm=reduction,nominal_length_mm=float(target_length),relaxed_length_mm=metrics['length_mm'],
                     minimum_radius_mm=metrics['minimum_sampled_radius_mm'],
                     fixed_lead_length_mm=float((fixed-1)*h),derivative_check_max_error=max(errors))
         return sampled,record
@@ -119,7 +120,8 @@ def solve_pair(points,params,modulus=None):
     they exert no force and impose no coordinate constraints on free spans.
     A 1 mm numerical contact allowance covers node sampling and interpolation.
     """
-    rods=[rod_problem(p,params,modulus) for p in points]
+    lengths=params.get('pair_nominal_lengths_mm',[None,None])
+    rods=[rod_problem(p,params,modulus,length) for p,length in zip(points,lengths)]
     size=len(rods[0]['initial']);n=rods[0]['nodes'];fixed=rods[0]['fixed']
     distance=params['tube_OD_mm']+params['contact_numerical_allowance_mm']
     stiffness=params['contact_penalty_N_per_mm']
@@ -174,7 +176,8 @@ if __name__=='__main__':
         # Whole GPU pairs are translation-equivalent, including contact.
         origin=points[0][0].copy();relative=[p-origin for p in points]
         key=tuple(fingerprint(p) for p in relative)
-        if key not in cache:cache[key]=solve_pair(relative,params)
+        pair_params=dict(params,pair_nominal_lengths_mm=[params['accepted_front_branch_lengths_mm'][name] for name in pair])
+        if key not in cache:cache[key]=solve_pair(relative,pair_params)
         for name,p,(q,record) in zip(pair,points,cache[key]):
             result[name]=dict(nominal_sha256=fingerprint(p),points=(q+origin).tolist())
             records[name]=record
@@ -185,10 +188,11 @@ if __name__=='__main__':
     sensitivity={}
     first=next(iter(nominal_branches().values()))
     for E in (3,10,30):
-        sensitivity[str(E)]=[r for _,r in solve_pair([nominal[name]-first[0] for name in names[:2]],params,E)]
+        sensitivity_params=dict(params,pair_nominal_lengths_mm=[params['accepted_front_branch_lengths_mm'][name] for name in names[:2]])
+        sensitivity[str(E)]=[r for _,r in solve_pair([nominal[name]-first[0] for name in names[:2]],sensitivity_params,E)]
     report=dict(parameters=params,branches=records,stiffness_sensitivity_MPa=sensitivity,
                 branch_checks=checks,source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
-                for p in ('cad/context/pvc-routing.json','scripts/relax_context_tubes.py','scripts/context_tubing.py')})
+                for p in ('cad/context/pvc-routing.json','scripts/relax_context_tubes.py','scripts/context_tubing.py','scripts/context_gpu5090.py','cad/context/gpu-5090fe.json')})
     OUT.mkdir(exist_ok=True,parents=True)
     (OUT/'relaxed-branches.json').write_text(json.dumps(result)+'\n')
     (OUT/'pvc-equilibrium.json').write_text(json.dumps(report,indent=2)+'\n')

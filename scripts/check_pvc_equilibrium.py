@@ -7,7 +7,9 @@ from relax_context_tubes import ROOT, OUT, nominal_branches, solve, solve_pair
 
 def main():
     params = json.loads((ROOT / 'cad/context/pvc-routing.json').read_text())
-    pair = list(nominal_branches().values())[:2]
+    nominal = nominal_branches()
+    params['pair_nominal_lengths_mm'] = [params['accepted_front_branch_lengths_mm'][name] for name in list(nominal)[:2]]
+    pair = list(nominal.values())[:2]
     origin = pair[0][0]
     pair = [points - origin for points in pair]
 
@@ -39,6 +41,8 @@ def main():
                        for path in ('cad/context/pvc-routing.json',
                                     'scripts/relax_context_tubes.py',
                                     'scripts/context_tubing.py',
+                                    'scripts/context_gpu5090.py',
+                                    'cad/context/gpu-5090fe.json',
                                     'scripts/check_pvc_equilibrium.py')})
     (OUT / 'pvc-3d-validation.json').write_text(json.dumps(record, indent=2) + '\n')
     print(json.dumps(record, indent=2))

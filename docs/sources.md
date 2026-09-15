@@ -23,3 +23,9 @@ Older QD3-MSG4/FS10X16 drawings, rear-cover rings, wetted stainless-cover studie
 ## PVC bending and formulation
 
 See [the rod-model material basis](pvc-routing-physics.md) for Koolance dimensions/Shore80A, the Gent hardness correlation, Blender soft-body documentation and the reviewed Mayhems Ultra Flex11/16 claims. The9.4MPa estimate is not an exact-formulation identification.
+
+## RTX 5090 FE context refinement
+
+The [GPU source record](references/alphacool-5090/sources.json) links the operator-selected Alphacool 5100182, manufacturer dimensioned datasheet/manual, NVIDIA stock-card dimensions and TechPowerUp front/back PCB photographs inspected through Computer Use. Published envelopes and visually estimated small details are distinguished in [the GPU context note](gpu-5090fe-context.md).
+
+- Molex2191140001-SD revisionA cable receptacle housing and2191160001-SD revisionA1 board header: separate plug/socket reference dimensions, archived in `docs/references/alphacool-5090/`, with URLs and hashes in its `sources.json`. Header PDF acquired through Computer Use. Exact NVIDIA connector supplier unconfirmed.

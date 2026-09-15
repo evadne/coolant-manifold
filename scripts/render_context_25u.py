@@ -8,6 +8,8 @@ from context_viewport import configure_context_viewports
 from context_startech25 import build_rack, RACK_U_DATUM, RAIL_DEPTH
 from context_tubing import Route, branch_route, make_tube, assess_routes
 from check_context_fit import check_scene
+from check_context_gpu import check_gpus
+from context_gpu5090 import build_gpu, GPU, PORT_Z, P as GPU_PLACEMENT
 import numpy as np
 OUT=ROOT/'output/context-25U';OUT.mkdir(parents=True,exist_ok=True)
 parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--check-only',action='store_true');parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
@@ -31,7 +33,10 @@ def mat(name,c,metal=0,rough=.4):
 rack=mat('Charcoal open-frame rack',(.035,.045,.055),.5)
 steel=mat('Satin silver metal',(.50,.54,.57),.75)
 pcb=mat('Dark green PCB',(.025,.09,.065))
-block=mat('Nickel GPU waterblock',(.43,.48,.51),.7)
+block=mat('Chrome plated copper GPU block',(.57,.61,.65),.92,.22)
+carbon=mat('Matt carbon composite GPU covers',(.022,.025,.028),.15,.4)
+gold=mat('PCIe gold contacts',(.58,.36,.09),.8,.25)
+gpu_pcb=mat('Black soldermask RTX 5090 PCB',(.014,.018,.017),0,.48)
 black=mat('Black connectors and sleeving',(.01,.013,.018))
 supply=mat('Coolant supply illustration',(.06,.27,.39),.1,.28)
 ret=mat('Coolant return illustration',(.40,.16,.08),.1,.28)
@@ -112,29 +117,19 @@ for z in (host+42,host+82):
 box('Host MCIO pair bracket',(176,-7,host+70),(16,8,80),steel)
 box('PCIe x16 to dual MCIO host adapter PCB',(176,48,host+70),(2,95,65),pcb)
 for j in range(2):box('Host MCIO 8i socket '+str(j+1),(176,-13,host+62+j*27),(13,12,16),black)
-# 6U open GPU shelf. Cards are single-slot THICK, but separated at 40 mm for service.
+# 6U open GPU shelf; dimensioned 1.5-slot 5090 FE assemblies at 40 mm pitch.
 box('GPU tray',(0,211,gpu-18),(440,420,3),steel)
 for x in (-215,215):box('GPU tray side support',(x,211,gpu-4),(10,420,28),rack)
-for y in (55,345):box('GPU mechanical retention crossbar',(0,y,gpu-1),(420,15,15),rack)
+# Raised crossbars locate the shorter water-cooled cards at the accepted port mid-height.
+for y in (155,230):
+    box('GPU mechanical retention crossbar',(0,y,gpu+42),(410,8,8),rack)
+    for x in (-201,201):box('GPU crossbar standoff',(x,y,gpu+10.75),(8,8,54.5),steel)
+gpu_records=[]
 for i,x in enumerate([-180+40*i for i in range(8)]):
-    box(f'GPU {i+1} single-slot waterblock',(x,190,gpu+77),(17,270,132),block)
-    box(f'GPU {i+1} PCB',(x-9.5,190,gpu+77),(2,274,133),pcb)
-    box(f'GPU {i+1} PCIe riser',(x,190,gpu+6),(20,112,12),black)
-    # Bracket end faces the rack rear; coolant and power share the opposite end.
-    box(f'GPU {i+1} IO bracket',(x,329,gpu+77),(19,2,132),steel)
-    for dz in (40,65,90):
-        box(f'GPU {i+1} display socket',(x,331,gpu+dz),(12,4,8),black)
-    box(f'GPU {i+1} water terminal',(x,42,gpu+104),(20,26,53),black)
-    for j,z in enumerate((gpu+89,gpu+119)):
-        cyl(f'GPU {i+1} coolant fitting',(x,20,z),8,22,steel)
+    gpu_records.append(build_gpu(i,x,gpu,box,cyl,hose,(block,carbon,gpu_pcb,black,steel,gold)))
+    for j,dz in enumerate(PORT_Z):
         source_z=manifold+(23.5 if j==0 else 63.5)
-        pvc_tube(f'GPU {i+1} parallel coolant '+str(j),branch_route(x,qd_tail_y+1,source_z,x,9,z,x+(-10 if j==0 else 10)))
-    # Generic socket envelope on the top edge near the non-bracket end.
-    # Leave a straight lead above the plug before bending into the side loom.
-    box(f'GPU {i+1} 12VHPWR socket',(x,65,gpu+143),(14,20,12),black)
-    box(f'GPU {i+1} 12VHPWR plug',(x,65,gpu+158),(14,20,18),black)
-    hose(f'GPU {i+1} riser data',[(x,240,gpu+4),(x,370,gpu-2),(117+i*13,360,gpu+10),(117+i*13,337,gpu+20)],data,3)
-    hose(f'GPU {i+1} auxiliary power',[(x,65,gpu+167),(x,65,gpu+207),(x,100+i*9,gpu+221),(186+i*2,100+i*9,gpu+221),(195,100+i*3,gpu+43)],black,4)
+        pvc_tube(f'GPU {i+1} parallel coolant '+str(j),branch_route(x,qd_tail_y+1,source_z,x,9,gpu+dz,x+(-10 if j==0 else 10)))
 box('GPU auxiliary power distribution enclosure',(195,112,gpu+20),(32,48,45),black)
 for x in (-220,220):box('GPU tray four-post support',(x,RAIL_DEPTH/2,gpu-25),(10,RAIL_DEPTH,16),steel)
 # A switch-board envelope beside the eight cards: requested topology, SKU provisional.
@@ -236,12 +231,14 @@ assert len([o for o in scene.objects if o.name.startswith('Koolance qd3-mtg4 /')
 assert len([o for o in scene.objects if o.name.startswith('Koolance qd3-ft10x13 /')])==54
 assert len([o for o in scene.objects if o.name.startswith('Front M4')])==12
 assert not any('MO-RA' in o.name for o in scene.objects)
-assert len([o for o in scene.objects if 'single-slot waterblock' in o.name])==8
+assert len([o for o in scene.objects if 'main chrome cooling block' in o.name])==8
 assert len([o for o in scene.objects if o.name.startswith('GPU ') and 'parallel coolant' in o.name])==16
-assert len([o for o in scene.objects if o.name.startswith('GPU ') and '12VHPWR socket' in o.name])==8
-assert len([o for o in scene.objects if o.name.startswith('GPU ') and 'IO bracket' in o.name])==8
+assert len([o for o in scene.objects if o.name.startswith('GPU ') and '12V-2x6 socket' in o.name])==8
+assert len([o for o in scene.objects if o.name.startswith('GPU ') and 'IO bracket top flange' in o.name])==8
 assert not any(o.type=='FONT' for o in scene.objects)
 # Validate the same sampled centrelines used to build the rendered annular meshes.
+gpu_report=check_gpus(scene,gpu_records)
+(OUT/'gpu-verification.json').write_text(json.dumps(gpu_report,indent=2)+'\n')
 tube_report=assess_routes(routes)
 (OUT/'tube-verification.json').write_text(json.dumps(tube_report,indent=2)+'\n')
 (OUT/'tube-centrelines.json').write_text(json.dumps({name:{'points':r['points'].tolist(),'od':r['od']} for name,r in routes.items()})+'\n')
@@ -266,7 +263,7 @@ if args.device=='METAL':
 scene.cycles.transmission_bounces=12;scene.cycles.max_bounces=16
 scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_mode='RGB';scene.view_settings.view_transform='AgX'
 scene.render.resolution_x=1700;scene.render.resolution_y=2000;scene.render.resolution_percentage=50 if args.preview else 100
-for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,220,660),1700),('02-front-layout',(0,-2600,660),(0,0,660),1480),('04-rear-cooling-assembly',(1800,2100,1250),(0,220,660),1700),('05-pump-reservoir-detail',(-350,1350,700),(0,285,rad_z),750),('06-front-tube-routing',(1050,-1700,1100),(0,-65,manifold+40),790),('07-side-tube-routing',(1350,-350,1000),(0,-110,manifold+35),740),('08-front-tube-detail',(0,-2000,manifold+35),(0,0,manifold+35),620)]:
+for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,220,660),1700),('02-front-layout',(0,-2600,660),(0,0,660),1480),('04-rear-cooling-assembly',(1800,2100,1250),(0,220,660),1700),('05-pump-reservoir-detail',(-350,1350,700),(0,285,rad_z),750),('06-front-tube-routing',(1050,-1700,1100),(0,-65,manifold+40),790),('07-side-tube-routing',(1350,-350,1000),(0,-110,manifold+35),740),('08-front-tube-detail',(0,-2000,manifold+35),(0,0,manifold+35),620),('09-GPU-block-detail',(-150,-800,gpu+350),(-40,130,gpu+130),550),('10-GPU-power-detail',(-225,-100,gpu+295),(-172,67,gpu+183),100)]:
     bpy.ops.object.camera_add(location=loc);o=bpy.context.object;o.name=name;o.data.type='ORTHO';o.data.ortho_scale=scale;o.data.clip_end=10000;o.rotation_euler=(Vector(target)-o.location).to_track_quat('-Z','Y').to_euler();scene.camera=o
     scene.render.filepath=str(ROOT/f'tmp/context25-{name}.png' if args.preview else OUT/f'{name}.png')
     if not args.check_only:bpy.ops.render.render(write_still=True)
@@ -279,15 +276,15 @@ if not args.preview:
     def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
     report=dict(rack_U=25,rack_model='StarTech 4POSTRACK25U',rack_depth_overall_mm=661.8,rail_spacing_depth_mm=RAIL_DEPTH,rack_width_mm=600,rack_height_casters_mm=1288.34,rack_U_datum_mm=RACK_U_DATUM,depth_setting='22in / 0 and 0',
       manifold_revision='P',radiator_plate_revision='R6',
-      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='P parallel manifold'),dict(U='18-23',use='Eight-GPU tray and conceptual PCIe switch'),dict(U='24-25',use='Service space')],
+      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='P parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],
       radiator=dict(plate_dimensions_mm=[482.6,444.5,2],body_envelope_mm=[422,48,441],fans=8,fan_model='Official Noctua NF-A20 integration meshes',port_orientation='Downwards into reserved U1; radiator begins at U2',rack_screws_populated=8,cable_notch_mm=[10,2],plate_aperture_radius_mm=50),
       pump_reservoir=dict(selection='Provisional ULTITUBE 200 / D5 NEXT envelopes',glass_length_mm=200,glass_od_mm=65,glass_wall_mm=5,position_xy_mm=[pump_x,pump_y],mounting='Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection',reason='Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate.'),
       front_pair_allocation={'1-8':'Individual GPUs','9':'Host CPU/chassis','10':'Spare male QDs'},
       fittings=dict(male='QD3-MTG4',female='QD3-FT10X13',connected_pairs=9,spare_pairs=1,source_scale='Unscaled supplier meshes in mm',axial_placement='Operator-accepted inferred studio pose'),
       pvc_equilibrium=dict(report='pvc-equilibrium.json',modulus_MPa=relaxation_report['parameters']['young_modulus_MPa'],method=relaxation_report['parameters']['model']),
-      gpu_pitch_mm=40,gpu_envelope_mm=[17,270,132],gpu_orientation='Bracket rear; coolant and power at non-bracket side; overhead power leads',host_envelope_mm=[440,456,176],host_link=dict(adapter='x16 to 2x MCIO 8i',physical_cables=2,logical_link='one x16'),switch_status='Eight-endpoint concept; exact board not selected',
-      source_sha256={path:digest(path) for path in ['output/long-bore-P/cad/body.step','output/long-bore-P/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-P/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','output/context-25U/relaxed-branches.json']},
-      view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png','06-front-tube-routing.png','07-side-tube-routing.png','08-front-tube-detail.png'],
+      gpu_pitch_mm=40,gpu_reference=GPU,gpu_registration=gpu_records,gpu_orientation='Viewed from ports, main block left, processor PCB right, active backplate further right. Bracket rear; angled 12V-2x6 at top-front cutout',host_envelope_mm=[440,456,176],host_link=dict(adapter='x16 to 2x MCIO 8i',physical_cables=2,logical_link='one x16'),switch_status='Eight-endpoint concept; exact board not selected',
+      source_sha256={path:digest(path) for path in ['output/long-bore-P/cad/body.step','output/long-bore-P/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-P/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/check_context_gpu.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','scripts/context_gpu5090.py','cad/context/gpu-5090fe.json','docs/references/alphacool-5090/datasheet.pdf','docs/references/alphacool-5090/manual.pdf','docs/references/alphacool-5090/power-housing.pdf','docs/references/alphacool-5090/power-header.pdf','output/context-25U/relaxed-branches.json']},
+      view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png','06-front-tube-routing.png','07-side-tube-routing.png','08-front-tube-detail.png','09-GPU-block-detail.png','10-GPU-power-detail.png'],
       scope='Current custom parts with manufacturer-dimensioned StarTech rack envelope and inferred section registration; chassis, GPU, pump and support remain illustrative. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings.')
     (OUT/'layout.json').write_text(json.dumps(report,indent=2)+'\n')
 

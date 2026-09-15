@@ -1,0 +1,24 @@
+{
+  "handedness": "From ports: main block left, processor PCB right, active backplate further right",
+  "power_housing_flange_width_height_mm": [
+    20.85,
+    7.55
+  ],
+  "power_wires_per_card": 12,
+  "sense_wires_per_card": 4,
+  "cards": 8,
+  "main_PCBs": 8,
+  "PCIe_daughter_PCBs": 8,
+  "display_daughter_PCBs": 8,
+  "ports_per_card": 2,
+  "port_pitch_mm": 34.0,
+  "card_pitch_mm": 40.0,
+  "cooling_body_width_mm": 29.68,
+  "cooling_body_nominal_gap_mm": 10.32,
+  "aggregate_width_including_offset_bracket_mm": 42.07,
+  "inferred_bracket_sheet_width_mm": 38.0,
+  "bracket_plane_ahead_of_adjacent_body_end_mm": 0.37000000000000455,
+  "inter_card_broad_phase_candidates": 0,
+  "inter_card_mesh_intersections": [],
+  "scope": "Published cooling envelopes and port datums; detailed brackets, PCBs and connector placements are inferred reference geometry. Inter-card mesh tests exclude cables and coolant; tube/equipment is checked separately. Exact bought-in hardware fit is not qualified."
+}

@@ -20,5 +20,26 @@
   "minimum_host_bend_radius_mm": 40.0,
   "host_radius_basis": "Retained 40 mm visual check floor, above published approximate 37 mm for selected 10/13 tubing; not a prediction of the current minimum radius.",
   "contact_numerical_allowance_mm": 1.0,
-  "contact_penalty_N_per_mm": 10.0
+  "contact_penalty_N_per_mm": 10.0,
+  "accepted_front_branch_lengths_mm": {
+    "GPU 1 parallel coolant 0": 468.23154891774277,
+    "GPU 1 parallel coolant 1": 458.231548917743,
+    "GPU 2 parallel coolant 0": 468.23154891774277,
+    "GPU 2 parallel coolant 1": 458.231548917743,
+    "GPU 3 parallel coolant 0": 468.23154891774277,
+    "GPU 3 parallel coolant 1": 458.231548917743,
+    "GPU 4 parallel coolant 0": 468.23154891774277,
+    "GPU 4 parallel coolant 1": 458.231548917743,
+    "GPU 5 parallel coolant 0": 468.23154891774277,
+    "GPU 5 parallel coolant 1": 458.231548917743,
+    "GPU 6 parallel coolant 0": 468.23154891774277,
+    "GPU 6 parallel coolant 1": 458.231548917743,
+    "GPU 7 parallel coolant 0": 468.23154891774277,
+    "GPU 7 parallel coolant 1": 458.231548917743,
+    "GPU 8 parallel coolant 0": 468.23154891774277,
+    "GPU 8 parallel coolant 1": 458.231548917743,
+    "Host coolant branch 0": 448.1988485655203,
+    "Host coolant branch 1": 449.8605916690195
+  },
+  "accepted_length_basis": "Nominal lengths accepted at 08beda1; preserve these when moving GPU terminals to the dimensioned Alphacool 34 mm pitch."
 }

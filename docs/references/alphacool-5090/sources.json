@@ -1,0 +1,55 @@
+{
+  "accessed": "2026-09-15",
+  "sources": [
+    {
+      "url": "https://www.watercoolinguk.co.uk/product/alphacool-es-rtx-6000-pro-workstation-rtx-5090-founders-edition/",
+      "role": "User-selected product identity"
+    },
+    {
+      "url": "https://download.alphacool.com/datasheet/ENG_5100182_Alphacool_ES_RTX_6000_Pro_Workstation-RTX_5090_Founders_Edition_datasheet.pdf",
+      "file": "datasheet.pdf",
+      "role": "Published part dimensions p2 and dimensioned assembly Figure 1 p5; materials and 1.5-slot specification",
+      "sha256": "d4d67905f2ebbb7b2126336a43db7d8f9123f1103e56318d2164e22acfe20018"
+    },
+    {
+      "url": "https://download.alphacool.com/manual/5100182_Alphacool_ES_RTX_6000_Pro_Workstation-RTX_5090_Founders_Edition_Manual.pdf",
+      "file": "manual.pdf",
+      "role": "Three-board assembly, cooler/PCB/backplate order, connector cutout and bracket p3-4",
+      "sha256": "8a75635491b53ea3aafba200a058c4ad9bbcbaf0ca4d28893f8dd990de1b487a"
+    },
+    {
+      "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+      "role": "304 x 137 mm / two-slot stock card; not bare PCB dimensions"
+    },
+    {
+      "url": "https://www.nvidia.com/en-gb/geforce/news/rtx-50-series-graphics-cards-gpu-laptop-announcements/",
+      "role": "Official three-piece FE PCB architecture"
+    },
+    {
+      "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5090-founders-edition/6.html",
+      "role": "Original bare PCB photography, viewed through Computer Use after web fetch failed"
+    },
+    {
+      "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5090-founders-edition/images/front.jpg",
+      "role": "Viewed front image: near-square black PCB, notched lower edge, corner angled power connector"
+    },
+    {
+      "url": "https://www.techpowerup.com/review/nvidia-geforce-rtx-5090-founders-edition/images/back.jpg",
+      "role": "Viewed reverse image: underside board connectors and matching outline"
+    },
+    {
+      "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/219/219114/2191140161_sd.pdf?inline=",
+      "download_url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/7139/900_2191140161sd.pdf",
+      "file": "power-housing.pdf",
+      "sha256": "9370f03fdcfaa34a9415dfa736c6835677f22644402c7de64a3787417a03a798",
+      "role": "Molex 2191140161 cable receptacle housing drawing, archived revision A. Rectangular housing, latch, two rows of six power contacts and four signal contacts. Representative compatible housing, not identification of actual NVIDIA supplier."
+    },
+    {
+      "url": "https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/219/219116/2191160161_sd.pdf?inline",
+      "file": "power-header.pdf",
+      "sha256": "efdf86bead1afcec10eaa997c19e6b4b4e3784e4495ca3b087259927fce5c0ad",
+      "role": "Separate board header drawing A1, downloaded through Computer Use and visually inspected. Header 18.85 across, 6.86 main shroud height, 9.91 axial depth; mated length 17.66."
+    }
+  ],
+  "no_supplier_STEP": "Alphacool GPU configurator download response lists datasheets and manual only for SKU 5100182; model is a dimensioned reference, not a supplier solid."
+}

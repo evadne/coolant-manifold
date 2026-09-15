@@ -28,7 +28,7 @@
     },
     {
       "U": "18-23",
-      "use": "Eight-GPU tray and conceptual PCIe switch"
+      "use": "Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch"
     },
     {
       "U": "24-25",
@@ -87,12 +87,338 @@
     "method": "Static extensible elastic rods with free XYZ coordinates, gravity and paired tube contact"
   },
   "gpu_pitch_mm": 40,
-  "gpu_envelope_mm": [
-    17,
-    270,
-    132
+  "gpu_reference": {
+    "gpu": "NVIDIA GeForce RTX 5090 Founders Edition, 32 GB",
+    "cooler": "Alphacool ES RTX 6000 Pro Workstation/RTX 5090 Founders Edition",
+    "sku": "5100182",
+    "published": {
+      "stock_air_cooled_card_length_mm": 304.0,
+      "stock_air_cooled_card_height_mm": 137.0,
+      "stock_air_cooled_card_slots": 2,
+      "main_cooler_length_height_thickness_mm": [
+        231.1,
+        119.4,
+        13.4
+      ],
+      "active_backplate_length_height_thickness_mm": [
+        208.97,
+        120.9,
+        10.93
+      ],
+      "water_cooled_slots": 1.5,
+      "assembled_body_thickness_mm": 29.68,
+      "assembled_overall_length_mm": 245.83,
+      "assembled_length_to_bracket_datum_mm": 231.97,
+      "assembled_overall_height_including_bracket_mm": 150.6,
+      "assembled_overall_width_including_bracket_mm": 42.07,
+      "port_pitch_mm": 34.0,
+      "upper_port_below_top_mm": 61.18,
+      "port_axis_to_backplate_outer_face_mm": 21.18
+    },
+    "placement": {
+      "card_pitch_mm": 40.0,
+      "port_face_Y_mm": 31.0,
+      "port_midpoint_Z_above_gpu_datum_mm": 104.0,
+      "main_block_outer_X_relative_to_port_mm": -8.5,
+      "backplate_front_offset_from_port_face_mm": 10.18,
+      "PCB_X_relative_to_port_mm": 7.7,
+      "PCB_thickness_mm": 1.6,
+      "main_PCB_length_height_mm": [
+        108.0,
+        110.0
+      ],
+      "main_PCB_front_offset_from_port_face_mm": 17.0,
+      "main_PCB_bottom_above_gpu_datum_mm": 66.0,
+      "bracket_width_mm": 38.0,
+      "bracket_sheet_mm": 1.0,
+      "bracket_outer_X_min_relative_to_port_mm": -20.89,
+      "power_socket_position_relative_to_port_and_gpu_datum_mm": [
+        3.7,
+        75.0,
+        174.18
+      ],
+      "power_exit_angle_from_vertical_degrees": 45.0,
+      "riser_centre_Z_above_gpu_datum_mm": 52.0
+    },
+    "scope": "Published envelopes and port datums from the Alphacool dimensioned assembly drawing; NVIDIA dimensions refer only to the removed stock cooler. PCB sub-board outlines, thickness, stack registration, small hardware, connector location/angle and bracket width/profile are visual inferences from the manual and drawing, not supplier CAD. PCB is right of the main block when looking into the ports. Rounded top notch and carbon/chrome surfaces are schematic. Main PCB is a near-square 108 x 110 mm visual envelope, estimated from TechPowerUp front/back teardown photographs and fitted within the Alphacool envelope; no published bare-PCB dimensional drawing was found.",
+    "power_housing_reference": {
+      "manufacturer": "Molex",
+      "part": "2191140161",
+      "drawing": "2191140001-SD revision A, 2024-03-11",
+      "flange_width_mm": 20.85,
+      "main_height_mm": 7.55,
+      "axial_length_mm": 14.0,
+      "overall_height_with_latch_mm": 11.63,
+      "power_contact_pitch_mm": 3.0,
+      "signal_contact_pitch_mm": 2.0,
+      "power_contacts": 12,
+      "signal_contacts": 4,
+      "scope": "Published cable housing envelope, representative compatible connector; exact NVIDIA header vendor and selected PSU cable are unconfirmed. Latch details, insertion, header, insulated wire diameters and routing are illustrative."
+    },
+    "power_header_reference": {
+      "manufacturer": "Molex",
+      "series": "219116",
+      "drawing": "2191160001-SD revision A1, 2026-01-13",
+      "width_mm": 18.85,
+      "main_shroud_height_mm": 6.86,
+      "axial_depth_mm": 9.91,
+      "mated_housing_length_mm": 17.66,
+      "mated_housing_height_mm": 12.13,
+      "housing_insertion_mm": 6.25,
+      "scope": "Separate board-side male header drawing. Render uses shroud, signal pod and latch ramp; hidden contacts and solder tails omitted. Installed board position remains inferred; actual NVIDIA supplier is not established."
+    }
+  },
+  "gpu_registration": [
+    {
+      "port_centres": [
+        [
+          -180,
+          31.0,
+          1008.905
+        ],
+        [
+          -180,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": -172.3,
+      "main_block_X_bounds": [
+        -188.5,
+        -175.1
+      ],
+      "backplate_X_bounds": [
+        -169.75,
+        -158.82
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    },
+    {
+      "port_centres": [
+        [
+          -140,
+          31.0,
+          1008.905
+        ],
+        [
+          -140,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": -132.3,
+      "main_block_X_bounds": [
+        -148.5,
+        -135.1
+      ],
+      "backplate_X_bounds": [
+        -129.75,
+        -118.82
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    },
+    {
+      "port_centres": [
+        [
+          -100,
+          31.0,
+          1008.905
+        ],
+        [
+          -100,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": -92.3,
+      "main_block_X_bounds": [
+        -108.5,
+        -95.1
+      ],
+      "backplate_X_bounds": [
+        -89.75,
+        -78.82
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    },
+    {
+      "port_centres": [
+        [
+          -60,
+          31.0,
+          1008.905
+        ],
+        [
+          -60,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": -52.3,
+      "main_block_X_bounds": [
+        -68.5,
+        -55.1
+      ],
+      "backplate_X_bounds": [
+        -49.75,
+        -38.82
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    },
+    {
+      "port_centres": [
+        [
+          -20,
+          31.0,
+          1008.905
+        ],
+        [
+          -20,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": -12.3,
+      "main_block_X_bounds": [
+        -28.5,
+        -15.1
+      ],
+      "backplate_X_bounds": [
+        -9.75,
+        1.1799999999999997
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    },
+    {
+      "port_centres": [
+        [
+          20,
+          31.0,
+          1008.905
+        ],
+        [
+          20,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": 27.7,
+      "main_block_X_bounds": [
+        11.5,
+        24.9
+      ],
+      "backplate_X_bounds": [
+        30.25,
+        41.18
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    },
+    {
+      "port_centres": [
+        [
+          60,
+          31.0,
+          1008.905
+        ],
+        [
+          60,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": 67.7,
+      "main_block_X_bounds": [
+        51.5,
+        64.9
+      ],
+      "backplate_X_bounds": [
+        70.25,
+        81.18
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    },
+    {
+      "port_centres": [
+        [
+          100,
+          31.0,
+          1008.905
+        ],
+        [
+          100,
+          31.0,
+          1042.905
+        ]
+      ],
+      "pcb_X": 107.7,
+      "main_block_X_bounds": [
+        91.5,
+        104.9
+      ],
+      "backplate_X_bounds": [
+        110.25,
+        121.18
+      ],
+      "body_gap_at_40mm_pitch": 10.32,
+      "bracket_sheet_width_mm": 38.0,
+      "bracket_edge_gap_mm": 2.0,
+      "overall_envelope_mm": [
+        42.07,
+        245.83,
+        150.6
+      ]
+    }
   ],
-  "gpu_orientation": "Bracket rear; coolant and power at non-bracket side; overhead power leads",
+  "gpu_orientation": "Viewed from ports, main block left, processor PCB right, active backplate further right. Bracket rear; angled 12V-2x6 at top-front cutout",
   "host_envelope_mm": [
     440,
     456,
@@ -116,10 +442,17 @@
     "scripts/context_startech25.py": "df95293ded0718ece86a4a379a19da399e94ce54d498c77d180174a0bb814855",
     "scripts/context_tubing.py": "ae95d4ea1b5d39645ed3f420654304e971c4503d94f0380ed58c198fa1177b60",
     "scripts/check_context_fit.py": "84441491298f9f607015fa9069abe1d5576274976d31b710a5ccf37e0ada10cd",
-    "scripts/render_context_25u.py": "80e71970d2f4ea9ba30c83ccd52f2c006a25b0beb743a27e07ad66c191e547b1",
-    "scripts/relax_context_tubes.py": "eb6ac177e257ffec0e7324fc2aab984f710e68b70d63aefc2ac08d112872bda4",
-    "cad/context/pvc-routing.json": "68e2b4a47e7445432ed42375c8229b6d53294f72f675400c6f2e7f1717571962",
-    "output/context-25U/relaxed-branches.json": "3246970af7ca5354d7bdb8058a9235eb6ba97ac914f1e852326aa2fc357835ff"
+    "scripts/check_context_gpu.py": "3eca3bd8a4ccc3b24e512b8dd153804e9983195f6e41ec6cd12b3cd5c7a75919",
+    "scripts/render_context_25u.py": "6e32c03b1c283cfa3d88834c388b830d300634944fba0957f9c9e3d521e18972",
+    "scripts/relax_context_tubes.py": "4b3fc95c2bd59a949ef25e3419c5c292e0cef7ccd065a8b64a2b342a3c846b13",
+    "cad/context/pvc-routing.json": "361403c0b1af112b6275a50e46bedf539f3a16123422b5db168dfb49f9488a48",
+    "scripts/context_gpu5090.py": "42377d94b995d1b08f9c07728d2e173a93b68c52dfd93863edbf227a66987669",
+    "cad/context/gpu-5090fe.json": "31c64e9773463f4d9e54e25e0d7ae3dd5479fbb2d30353d1428da4cbf4ae2156",
+    "docs/references/alphacool-5090/datasheet.pdf": "d4d67905f2ebbb7b2126336a43db7d8f9123f1103e56318d2164e22acfe20018",
+    "docs/references/alphacool-5090/manual.pdf": "8a75635491b53ea3aafba200a058c4ad9bbcbaf0ca4d28893f8dd990de1b487a",
+    "docs/references/alphacool-5090/power-housing.pdf": "9370f03fdcfaa34a9415dfa736c6835677f22644402c7de64a3787417a03a798",
+    "docs/references/alphacool-5090/power-header.pdf": "efdf86bead1afcec10eaa997c19e6b4b4e3784e4495ca3b087259927fce5c0ad",
+    "output/context-25U/relaxed-branches.json": "f4811c5fa86a87886377b05f600ec3086609eba9f5a5fd66a46d4ebb1778c97a"
   },
   "view_files": [
     "01-rack-context.png",
@@ -128,7 +461,9 @@
     "05-pump-reservoir-detail.png",
     "06-front-tube-routing.png",
     "07-side-tube-routing.png",
-    "08-front-tube-detail.png"
+    "08-front-tube-detail.png",
+    "09-GPU-block-detail.png",
+    "10-GPU-power-detail.png"
   ],
   "scope": "Current custom parts with manufacturer-dimensioned StarTech rack envelope and inferred section registration; chassis, GPU, pump and support remain illustrative. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings."
 }

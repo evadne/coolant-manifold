@@ -1,10 +1,10 @@
 # StarTech 25U installation and PVC routing
 
-The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **P manifold body, P faceplate and R6 radiator plate**. Eight single-slot waterblocked GPUs connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. No custom-part geometry was changed.
+The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **P manifold body, P faceplate and R6 radiator plate**. Eight RTX 5090 FE GPUs with Alphacool 5100182 block/active-backplate assemblies connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. No custom-part geometry was changed.
 
 ![StarTech 25U composite](../output/context-25U/01-rack-context.png)
 
-[Orbitable Blender scene](../output/context-25U/25U-StarTech-context.blend) · [front](../output/context-25U/02-front-layout.png) · [rear](../output/context-25U/04-rear-cooling-assembly.png) · [pump/radiator](../output/context-25U/05-pump-reservoir-detail.png) · [oblique tubing detail](../output/context-25U/06-front-tube-routing.png) · [side tubing detail](../output/context-25U/07-side-tube-routing.png) · [straight-on tubing detail](../output/context-25U/08-front-tube-detail.png).
+[Orbitable Blender scene](../output/context-25U/25U-StarTech-context.blend) · [front](../output/context-25U/02-front-layout.png) · [rear](../output/context-25U/04-rear-cooling-assembly.png) · [pump/radiator](../output/context-25U/05-pump-reservoir-detail.png) · [oblique tubing detail](../output/context-25U/06-front-tube-routing.png) · [side tubing detail](../output/context-25U/07-side-tube-routing.png) · [straight-on tubing detail](../output/context-25U/08-front-tube-detail.png) · [GPU block detail](../output/context-25U/09-GPU-block-detail.png).
 
 ## Rack and allocation
 
@@ -14,7 +14,7 @@ The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 
 | U2–U11 |10U R6/SuperNova with four NF-A20 fans on each face |
 | U12–U15 |4U host with motherboard I/O and PCIe coolant bulkheads facing the service side |
 | U16–U17 |2U manifold P |
-| U18–U23 | Eight GPUs, retention/riser tray and conceptual PCIe switch |
+| U18–U23 | Eight RTX 5090 FE / Alphacool 5100182 assemblies, raised retention/riser supports and conceptual PCIe switch |
 | U24–U25 |2U service/spare space |
 
 Use the shortest **22 in setting,0/0**, giving 558.8 mm front/rear mounting-plane separation. The manufacturer's dimensioned drawing gives 600 mm width,661.8 mm overall depth at minimum extension,1215.4 mm body height and 1288.34 mm with casters. The frontal clear opening is450 mm; rack-hole columns are465 mm apart. The reference chassis is440×456×176 mm, leaving 5 mm each side and 102.8 mm to the rear mounting plane. Rails/supports remain schematic mounting references, not a selected SilverStone rail kit.
@@ -53,9 +53,13 @@ The table is the **Y separation**, not an actual collision assertion; the interm
 
 A45mm slab does not clear this particular conservative envelope. A50mm slab clears it by only1.5mm before tolerances and screw/clip variation. Neither candidate is approved or a demonstrated solution. More slab depth does not reduce the approximately467.6mm side-fitted width or solve the450mm insertion opening. Obtain the actual cage nut, selected screw length, rotary elbow and compression fitting geometry, check their installed and rotation/insertion envelopes, then choose whether to retain40mm or formally revise P.
 
+## GPU reference
+
+The current cards use the dimensioned Alphacool 5100182 assembly: 1.5-slot, 29.68 mm cooling-body thickness, 245.83 mm overall length and 34 mm coolant-port pitch. From the ports, the processor PCB is to the right of the main block, with the active backplate beyond it. TechPowerUp bare-PCB photographs guide the approximate board outline and angled connector. See [GPU geometry and source distinctions](gpu-5090fe-context.md). The 40 mm card spacing is retained. Separate Molex 219114 cable-housing and 219116 header drawings govern the representative rectangular power connector; the detailed close-up is `10-GPU-power-detail.png`.
+
 ## Transparent PVC tubes
 
-The operator accepted the corrected front tubing view, hose lengths and clearance on 15 September 2026, following the free-XYZ/contact correction in commit `08beda1`. Retain this geometry as the current rack-scene baseline, including the 100 mm nominal shortening of all eighteen front branches. Do not reopen this visual acceptance without a relevant design change.
+The operator accepted the corrected front tubing view, hose lengths and clearance on 15 September 2026, following the free-XYZ/contact correction in commit `08beda1`. Retain this geometry as the current rack-scene baseline, including the 100 mm nominal shortening of all eighteen front branches. The subsequent requested RTX 5090 FE refinement retains those nominal lengths and shifts only the GPU terminal heights by 2 mm each to match the published 34 mm pitch.
 
 The 18 branch hoses are **10 mm ID /13 mm OD**, matching QD3-FT10X13. Three infrastructure hoses use **10 mm ID /16 mm OD** and matching illustrative compression envelopes. Both are modelled as real annular walls containing a separate clear coolant volume, rather than opaque coloured cylinders.
 
@@ -67,8 +71,8 @@ The front excursion is recorded by the current centre-line geometry; it changes 
 
 ## Checks and scope
 
-- All 21 centre-lines pass tangent continuity, fitting-axis alignment, no backtracking, nonlocal self-overlap and inter-tube separation checks. Minimum sampled curvature radius is approximately70.39 mm for GPU branches,70.01 mm for the host pair and65 mm for infrastructure. Host checks use a40 mm floor, above the selected tube’s published approximate37 mm radius.
-- Minimum conservative tube-to-tube outer-surface gap is approximately 0.39 mm in the paired-hose contact region. This reflects a numerical contact allowance, not a specified assembly gap. The calculation subtracts both tube radii and sampling uncertainty; the exact same points produce the meshes.
+- All 21 centre-lines pass tangent continuity, fitting-axis alignment, no backtracking, nonlocal self-overlap and inter-tube separation checks. Minimum sampled curvature radius is approximately70.84 mm for GPU branches,70.01 mm for the host pair and65 mm for infrastructure. Host checks use a40 mm floor, above the selected tube’s published approximate37 mm radius.
+- Minimum conservative tube-to-tube outer-surface gap is approximately 0.31 mm in the paired-hose contact region. This reflects a numerical contact allowance, not a specified assembly gap. The calculation subtracts both tube radii and sampling uncertainty; the exact same points produce the meshes.
 - Mesh proximity checks found no unintended tube/equipment or tube/cable intersection. Fitting/barb insertion interfaces are excluded by owner. The smallest sampled equipment gap is approximately 4.97 mm at the pump support; allow another 0.5 mm for centre-line sampling.
 - P body/plate and R6 source imports, official Koolance solids, twelve P retainers, eight NF-A20 frames and two MCIO cables are inventoried. See [scene verification](../output/context-25U/scene-verification.json), [tube checks](../output/context-25U/tube-verification.json) and [layout/source hashes](../output/context-25U/layout.json).
 

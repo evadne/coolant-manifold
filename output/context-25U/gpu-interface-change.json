@@ -1,0 +1,117 @@
+{
+  "accepted_baseline_commit": "08beda1",
+  "branches": {
+    "GPU 1 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 1 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "GPU 2 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 2 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "GPU 3 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 3 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "GPU 4 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 4 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "GPU 5 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 5 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "GPU 6 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 6 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "GPU 7 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 7 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "GPU 8 parallel coolant 0": {
+      "nominal_length_mm": 468.23154891774277,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.000252935178765
+    },
+    "GPU 8 parallel coolant 1": {
+      "nominal_length_mm": 458.231548917743,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 2.0,
+      "maximum_corresponding_point_shift_mm": 2.0002468290859365
+    },
+    "Host coolant branch 0": {
+      "nominal_length_mm": 448.1988485655203,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 0.0,
+      "maximum_corresponding_point_shift_mm": 0.0
+    },
+    "Host coolant branch 1": {
+      "nominal_length_mm": 449.8605916690195,
+      "nominal_length_change_mm": 0.0,
+      "attachment_shift_mm": 0.0,
+      "maximum_corresponding_point_shift_mm": 0.0
+    }
+  },
+  "source_sha256": {
+    "output/context-25U/relaxed-branches.json": "f4811c5fa86a87886377b05f600ec3086609eba9f5a5fd66a46d4ebb1778c97a",
+    "cad/context/gpu-5090fe.json": "31c64e9773463f4d9e54e25e0d7ae3dd5479fbb2d30353d1428da4cbf4ae2156"
+  }
+}
