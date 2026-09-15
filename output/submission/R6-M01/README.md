@@ -42,7 +42,7 @@ First article: inspect thickness, overall dimensions, all fixing positions, fini
 2. Fix the populated plate to the radiator through the twelve M3 clearance holes.
 3. Mount the assembly to the rack using the chosen optional rack positions.
 
-Use the existing R4 assembly notes for hardware details. If using the X-Splitter, retain/insulate it with suitable nonconductive double-sided tape. No additional holes are required.
+Use the current R6 assembly notes (`docs/radiator-rack-plate.md` in the project) for hardware details. If using the X-Splitter, retain/insulate it with suitable nonconductive double-sided tape. No additional holes are required.
 
 ## Reproduction and records
 

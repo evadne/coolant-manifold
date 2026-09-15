@@ -1,95 +1,31 @@
-[Current O-M02 manufacturing package: 4 mm bosses, projecting 1 mm above the 3 mm faceplate](docs/manufacturing-O-M02.md).
+# Rack coolant manifold and SuperNova mount
 
-[24U open-frame workstation context](docs/context-24U.md): eight waterblocked GPUs above the manifold, with a front-I/O 4U host below; Blender renders and editable scene.
+The current set comprises **three custom parts**: the Revision **P** POM manifold body, its matching **P** stainless rack faceplate, and the operator-approved **R6** SuperNova radiator/fan plate. Dimensions are in millimetres. Start with the [three-part recap](docs/three-part-recap.md).
 
-[Ready for JLC: upload files and submission instructions](docs/jlc-submission-O-M02.md). Both POM-C and POM-H accepted. [Complete local handover](output/submission/O-M02/RM10-O-M02-HANDOVER.zip); extract and upload the two individual part ZIPs separately.
+![Revision P with official Koolance QD3 pairs](output/long-bore-P/photorealistic/02-qd3-translucent-tubes.png)
 
-Current O-M02 studio views: [bare ports](output/manufacturing/O-M02/photorealistic/01-bare-ports.png), [QD3 pairs with translucent 10/13 tubing](output/manufacturing/O-M02/photorealistic/02-qd3-translucent-tubes.png), and [internal galleries at 50% body transparency](output/manufacturing/O-M02/product-views/10-body-50-percent-transparent.png). These use the issued 4 mm boss geometry; the historical images below retain their original revisions.
+| Part | Current design | Files and status |
+|---|---|---|
+| Manifold body P | Black unfilled POM-C or POM-H; 410 × 87 × 40 main body, 3 mm bosses; ten front pairs at 40 × 40 pitch, four side ports; two independent long bores | [Body STEP](output/long-bore-P/cad/body.step), [P review drawing](output/pdf/manifold-revision-P.pdf). Dedicated P manufacturing issue still to be prepared. |
+| Manifold faceplate P | Flat 304 stainless, 482.6 × 87 × 2; twelve plain M4 clearance holes, twelve optional rack slots | [Plate STEP](output/long-bore-P/cad/faceplate.step), [cut DXF](output/long-bore-P/cad/faceplate-flat.dxf). Use only with the matching P body and M4 ×16 button-head hardware. |
+| Radiator plate R6 | Flat 304 stainless, 482.6 × 444.5 × 2; four NF-A20 positions, plain fan holes, forty optional rack slots, 10 × 2 cable notch | [R6-M01 part ZIP](output/submission/R6-M01/SN1260-R6-M01-PLATE.zip), [production guide](docs/jlc-submission-R6-M01.md). Prepared for quotation/manufacturing review; no supplier submission made. |
 
-[Revision O-M01: supplier drawings, STEP/DXF upload packages and JLC manufacturing review](docs/manufacturing-O-M01.md). Operator-approved O layout; black unfilled POM-C or POM-H accepted; external deburring only.
+The manifold provides parallel supply and return without internal grouping. Every coolant port is direct G1/4 female. Side-fed infrastructure leaves all ten front pairs available for loads; using one front pair for infrastructure leaves nine. There is no rear cover or large gallery seal. Side plugs retain their own face seals.
 
-[Revision O: selected 40 mm POM body with centred galleries](docs/revision-O-centred-40mm.md).
+The operator has accepted the current Koolance QD3-MTG4 / QD3-FT10X13 studio rendition and coupled placement. Rack installation includes sufficient front service space. These are mechanical design and review files, not pressure-rated or complete-assembly load-rated releases.
 
-[Revision N: 35 mm POM body with centred galleries](docs/revision-N-centred-galleries.md).
+## Project guide
 
-[Revision M: balanced faceplate-to-POM fixing positions](docs/revision-M-balanced-fixings.md).
+- [Design and interfaces](docs/design.md) — P manifold geometry, topology and rack/service clearances.
+- [Manifold P detail and checks](docs/revision-P-plain-bore-faceplate.md) · [current renders and Blender scenes](docs/product-views.md) · [official fitting integration](docs/koolance-qd3-studio-integration.md).
+- [Radiator R6 assembly](docs/radiator-rack-plate.md) · [load budget and analysis basis](docs/radiator-load-assessment.md) · [X-Splitter fit](docs/radiator-x-splitter-fit.md).
+- [Manufacturing status and remaining work](docs/manufacturing.md) — includes the missing P supplier issue; O-M02 ZIPs describe superseded parts.
+- [POM and coolant assessment](docs/pom-coolant-assessment.md) · [Blitz overrun qualification plan](docs/blitz-overrun-qualification.md) · [D5 pressure basis](docs/d5-pressure.md).
+- [24U installation and composite scene](docs/context-24U.md) — P/R6, eight GPUs, host, eight fans and provisional pump/reservoir support.
+- [Source index](docs/sources.md) · [rebuild commands](docs/rebuild.md) · [revision register and archive](docs/iterations.md) · [output directory guide](output/README.md).
 
-[Revision L: six available rack-fixing positions per side](docs/revision-L-six-rack-positions.md).
+## Working on the project
 
-[Revision K: ten pairs at 40 × 40 mm spacing, visual review candidate](docs/revision-K-ten-pairs.md).
+Use `cad/iterations/P-long-bore.json` for the manifold and `cad/radiator/R6.json` / `cad/manufacturing/R6-M01.json` for the radiator. Follow [AGENTS.md](AGENTS.md) and the explicit revision flags in the rebuild guide: several older scripts intentionally default to historical designs. Thread cylinders in STEP are tapping pilots; the relevant drawing supplies the machining call-outs.
 
-# RM8-2U rack coolant manifold
-
-**Latest width variants:** [I: 390 mm / 8 front pairs and J: 450 mm / 9 front pairs](docs/width-variants.md), with revised fixings, side-fitting envelopes, drawings and 50%-transparent body views. End-fed infrastructure can serve all front pairs. G and H remain preserved.
-
-**Design iterations:** [G is preserved](docs/iterations.md) under tag `revision-g-rear-cover` (`8ebd431`). [New revision H](docs/long-bore-H.md) is a separate long-bore design with four plugged G1/4 end ports, no rear plate and no large gallery seals. The baseline G files and description below remain intact.
-
-Initial design, revision G: eight parallel circuits, all connections on one face, black Delrin body and a flat stainless steel rack faceplate. Each G1/4 female port is inside an integral cylindrical POM boss, standing 3 mm proud of the steel. The 2U format provides space to operate QD3 release rings without crowding adjacent fittings.
-
-![Assembled manifold](output/product-views/01-front-three-quarter.png)
-
-| Parameter | Initial model |
-|---|---|
-| Bare rack envelope | 482.6 × 49 × 87 mm (width × depth × height) |
-| Ports |18 × G1/4 female BSPP, machined into Delrin |
-| Circuits |8 paired branches plus main inlet/outlet |
-| Port pitch |45 mm horizontal /40 mm vertical |
-| Reference pull-ring gaps |21.3 mm horizontal /16.3 mm vertical |
-| Internal paths |One uninterrupted supply gallery and one uninterrupted return gallery |
-| Manufacture |Rear-pocket milling, drilled/tapped front ports, sealed stainless rear cover, flat stainless faceplate |
-
-The dimensions of EK's reference manifold are 326 × 57 × 36 mm; its published 57 mm height is 12.55 mm above 1U. Our model uses 2U to prioritise servicing access. See [design reasoning](docs/design.md) and [manufacturer sources](docs/sources.md).
-
-## Selected mounting arrangement — Option B
-
-The front faceplate fixes the POM body to the rack through eight M4 screws. The separate rear plate only closes and seals the two galleries, using 31 M4 screws. All 39 plate-to-POM screws use A4 M4 × 12 DIN 7991 socket countersunk heads as standard, accepting the specified DIN 965 Z Pozi alternative. There are no M3 or M5 fasteners in these joints. Rack fixings remain sized to the rails/cage nuts.
-
-The former combined rack/backing plate, [Option C](docs/backplate.md), is retained as a historical reference and is not selected.
-
-## Review files
-
-- [Eight unmarked assembled product views](docs/product-views.md) — front/rear three-quarter, front, rear, left, right, top and bottom.
-- [Unmarked Blender assembly](output/product-views/assembled-unmarked.blend) — CAD-derived POM and steel, 39 M4 screw references, eighteen male QD3 references and eight named cameras.
-- [Earlier technical review scene](output/manifold-review.blend) — annotated views with illustrative hose connections.
-- [Assembly STEP](output/cad/manifold-assembly.step) — three manufactured components and two seal envelopes. Individual body, cover and faceplate STEP files are alongside it.
-- [Front plate drawing](output/faceplate-drawing.svg) and [cut DXF](output/cad/faceplate-flat.dxf).
-- [Rear sealing plate drawing](output/rear-cover-drawing.svg) and [cut DXF](output/cad/rear-cover-flat.dxf) — 31 Ø4.5 through holes; machine countersinks afterwards.
-- [Wetted rear-plate material assessment](docs/wetted-materials.md) — retain 316L with compatible inhibited coolant.
-- [Steel plate drafting notes](docs/steel-plates.md) — hole coordinates, finishing and matching STEP files.
-- [POM body and cylindrical port bosses](output/images/pom-body.png).
-- [Faceplate exploded view](output/images/faceplate-exploded.png).
-- [Port seating section](output/port-seating-section.svg).
-- [Dimensioned layout](output/layout.svg) — front and rear views.
-- [Full-size clearance template](output/clearance-template-1to1.svg) — print 100%, calibrate against the 100 mm bar; large-format or tiled print required.
-- [Rear pockets, cover removed](output/images/open-galleries.png).
-- [Rear groove detail](output/images/rear-seal-review.png) and [stock-ring assessment](docs/rear-seals.md) — 4.0 × 2.3 mm glands for the selected Polymax 3 mm EPDM rings.
-- [Manufacturing notes and BOM](docs/manufacturing.md) — thread call-outs, sealing details, fasteners and DFM requirements.
-- [Geometry verification](output/cad/verification.json).
-- [Gallery and seal architecture comparison](docs/gallery-comparison.md) — end-drilled galleries versus the current rear-milled pockets; assessment only.
-- [D5 pressure estimates](docs/d5-pressure.md) — one, two or four pumps in series; pump differential versus local seal pressure.
-
-This is an initial model for feedback and vendor DFM, not a pressure-rated production release. STEP thread holes are pilot bores: use the thread call-outs in the manufacturing notes. QD shapes are illustrative, and actual ring travel/hand access must be trialled. Working pressure, total flow, coolant and final seal qualification remain open. The selected rings are Polymax 255 × 3 mm EPDM 70 ShA; catalogue listing verified; user reports 5–7 day cart dispatch and a £10 rubber minimum.
-
-The 3 mm faceplate mounts to the rack. Its eighteen Ø32 mm windows clear Ø28 mm POM bosses; their sealing faces stand 3 mm proud of steel; eight separate A4 M4 × 12 DIN 7991 screws attach the body, with DIN 965 Z Pozi accepted in the same countersinks. Socket heads target flush seating and Pozi heads sit lower; slight proudness is acceptable outside the fitting keep-outs. The rear gallery cover uses 31 M4 screws solely for closure and seal clamping; it has no rack-mounting holes. The bosses are 6 mm high from the plate-supporting POM face, passing through the 3 mm faceplate. No metal bending is required.
-
-## Rebuild
-
-Python 3.12 and Blender 5.2 were used. CadQuery 2.8 exports the STEP solids; Blender renders tessellations of those same solids. Millimetres throughout.
-
-```sh
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python scripts/build_cad.py
-.venv/bin/python scripts/draw_layout.py
-.venv/bin/python scripts/draw_rear_seals.py
-rsvg-convert output/rear-seal-review.svg -o output/images/rear-seal-review.png
-.venv/bin/python scripts/export_steel_plates.py
-/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py
-/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_product.py
-```
-
-Parameters are in `cad/parameters.json`. The source defines the current faceplate/bolt pattern explicitly; changing circuit count or major dimensions also requires reviewing those patterns and the manufacturing documentation. It is not an automatically qualified product configurator.
-
-Historical Option C assets and rebuild instructions are retained in [its reference notes](docs/backplate.md).
-
-[Revision I installed in an illustrative 42U open-frame rack](docs/revision-I-rack-installation.md) — rear overview and detail with four side elbows, compression fittings and 10/16 tubes.
+Superseded writeups are in [docs/archive](docs/archive/README.md). Historical CAD, renders and calculation evidence retain their revision-specific locations; their presence does not make them current. Git history preserves the earlier project entry points and design decisions.

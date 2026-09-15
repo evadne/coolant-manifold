@@ -18,26 +18,16 @@ Using water density 1,000 kg/m³ and `Δp = ρgH`, one metre of water head is 9.
 
 These are nominal zero-flow pump differentials, not hard limits on local gauge pressure. A low-flow restriction or closing all available load branches can move the pumps towards shut-off while they remain powered. Running pressure follows the actual pump curve and can remain relatively close to shut-off in a restrictive loop; it should not simply be assumed negligible because coolant is flowing. Reduced speed generally reduces developed head, but a PWM percentage alone is not enough to calculate it. Exact operating pressure needs the selected pump/top curves, actual speed and the hydraulic operating point or measurements.
 
-## What pressure acts on the cover and seals?
+## Local pressure at the body, fittings and seals
 
-Use each gallery's local internal pressure relative to ambient air. The pressure difference between supply and return is a different quantity and does not by itself determine outward cover load.
+Use each gallery's local internal pressure relative to ambient air. The pressure difference between supply and return is a different quantity and does not by itself determine the load on a body wall, fitting or plug seal.
 
 With a near-atmospheric reservoir on the pump suction side and approximately equal elevations, pressure immediately after the pump group is approximately reservoir gauge pressure plus the group's pressure rise, less any intervening losses. Elsewhere, component losses and height changes alter it. A sealed reservoir's headspace pressure can change with temperature and fluid expansion; any intentional fill pressure is an additional baseline. This pressure-distribution distinction is also used in circulator-system design. [Grundfos circulator handbook](https://ma.grundfos.com/rs/233-GTS-982/images/LUPSL033_Circulator%20Handbook_0423-DigitalV2.pdf?dtid=EM%3AMARKETO%3A38jpwt).
 
 Hydrostatic pressure changes by approximately 0.098 bar per metre downward. For example, a manifold 2 m below an atmospheric reservoir has approximately 0.196 bar static gauge pressure before pump effects. In a filled closed loop the ascent and descent cancel in the net circulation-head balance; local hydrostatic pressure still exists. Thus a four-pump discharge located 2 m below that reservoir could approach approximately 1.7 bar gauge at shut-off, under those specific assumptions. Reservoir pressure, pump position and the connected flow path must be stated before adding terms. Fast transients or heating trapped coolant can exceed a steady pump-head estimate and require separate consideration when setting a working rating.
 
-## Relevance to the gallery comparison
+## Application to Revision P
 
-One or two ordinary D5s therefore support a sub-bar pump-differential scenario. Four in series move the nominal pump-only shut-off estimate to about 1.5 bar. The earlier 1 bar example was a scaling illustration: it is above a single standard D5's nominal head but below the four-pump scenario.
-
-At the revision G nominal seal-centreline projected area of 9,380.39 mm² per gallery, approximate separating force per gallery is:
-
-| Local gallery gauge pressure | Force on rear cover from that gallery |
-|---|---:|
-| 0.4 bar | 375 N |
-| 0.8 bar | 750 N |
-| 1.6 bar | 1,501 N |
-
-These values use the seal-centreline area from the gallery assessment. Do not assume both galleries simultaneously have the full pump discharge pressure: calculate each local pressure separately. They are total area loads, not screw-load distributions or proof that a particular cover thickness fails or succeeds. The long cover can be designed for these pressures; the end-cap alternative's reduced closure area remains an engineering advantage rather than a necessity established solely by pump count.
+P uses long bores with G1/4 side plugs or fittings, not a rear cover. The earlier large-cover separating-force examples belong to Revision G and are retained in Git history and the [archived gallery comparison](archive/gallery-comparison.md). They are not loads on the current dry rack faceplate. Pump count still informs local pressure at the POM body and fitting/plug seals.
 
 Use approximately 0.4 / 0.8 / 1.6 bar as rounded nominal pump-only scenarios for one / two / four pumps when comparing concepts. They are not certified upper bounds or design safety margins. Establish the exact pump/top, speed limits, reservoir/fill arrangement, elevations, maximum temperature and relevant transient conditions before selecting the working and proof pressures. Neither a 1 bar nor a 2 bar manifold rating is assigned by this assessment.

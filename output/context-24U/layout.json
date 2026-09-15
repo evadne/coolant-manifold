@@ -2,81 +2,107 @@
   "rack_U": 24,
   "rack_depth_overall_mm": 600,
   "rail_spacing_depth_mm": 500,
+  "manifold_revision": "P",
+  "radiator_plate_revision": "R6",
   "rack_units_bottom_to_top": [
     {
       "U": "1-10",
-      "use": "Custom front-mounted MO-RA cooling assembly: radiator, reservoir and D5"
+      "use": "SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind"
     },
     {
       "U": "11-14",
-      "use": "4U host, front-accessible PCIe coolant bracket"
+      "use": "4U host with front PCIe coolant bracket"
     },
     {
       "U": "15-16",
-      "use": "O-M02 manifold"
+      "use": "P parallel manifold"
     },
     {
       "U": "17-22",
-      "use": "Open eight-GPU shelf and conceptual PCIe switch"
+      "use": "Eight-GPU tray and conceptual PCIe switch"
     },
     {
       "U": "23-24",
-      "use": "Service space / spare"
+      "use": "Service space"
     }
   ],
   "radiator": {
-    "allocation_U": 10,
-    "allocation_height_mm": 444.5,
-    "illustrative_body_envelope_mm": [
-      440,
-      110,
-      440
+    "plate_dimensions_mm": [
+      482.6,
+      444.5,
+      2
     ],
-    "front_fans": "Nine 120 mm references",
-    "type": "Custom front-mounted MO-RA concept; no stock model selected",
-    "pump_reservoir": "Included in the MO-RA assembly; tank on narrow side, D5 axis perpendicular to side panel",
-    "plumbing": "Manifold return -> radiator -> reservoir -> D5 -> manifold supply; schematic routes",
-    "integration": "Direct upper port adapter and compact lower retainer per MO-RA IV manual; no rear carrier",
-    "tank_body_mm": [
-      49,
-      84,
-      275
+    "body_envelope_mm": [
+      422,
+      48,
+      441
     ],
-    "cooling_body_recess_mm": 60,
-    "side_pump_max_x_mm": 336,
-    "packaging": "Tank/pump project outboard of rack side; 440 mm radiator body plus side assembly is not a rack-width-contained solution",
-    "mount_reference": "https://shop.watercool.de/mediafiles/Manuals/MA_MO-RA_IV_TANK.pdf pp3-5"
+    "fans": 8,
+    "fan_model": "Official Noctua NF-A20 integration meshes",
+    "port_orientation": "Downwards; elbows use pedestal space below U1",
+    "rack_screws_populated": 8,
+    "cable_notch_mm": [
+      10,
+      2
+    ],
+    "plate_aperture_radius_mm": 50
+  },
+  "pump_reservoir": {
+    "selection": "Provisional ULTITUBE 200 / D5 NEXT envelopes",
+    "glass_length_mm": 200,
+    "glass_od_mm": 65,
+    "glass_wall_mm": 5,
+    "position_xy_mm": [
+      0.0,
+      155.0
+    ],
+    "mounting": "Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection",
+    "reason": "Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate."
   },
   "front_pair_allocation": {
-    "1-8": "Individual GPUs in parallel",
-    "9": "Host CPU/chassis branch",
-    "10": "Spare"
+    "1-8": "Individual GPUs",
+    "9": "Host CPU/chassis",
+    "10": "Spare male QDs"
   },
+  "fittings": {
+    "male": "QD3-MTG4",
+    "female": "QD3-FT10X13",
+    "connected_pairs": 9,
+    "spare_pairs": 1,
+    "source_scale": "Unscaled supplier meshes in mm",
+    "axial_placement": "Operator-accepted inferred studio pose"
+  },
+  "gpu_pitch_mm": 40,
   "gpu_envelope_mm": [
     17,
     270,
     132
   ],
-  "gpu_pitch_mm": 40,
-  "gpu_orientation": {
-    "IO_bracket": "Rack-rear end, Y329",
-    "coolant_terminals": "Non-bracket end, rack-front, Y42",
-    "power_sockets": "Top edge near non-bracket end, Y65",
-    "power_routing": "Straight lead above each plug, then overhead to side distribution envelope",
-    "scope": "Generic connector positions; exact GPU and cable bend limits not selected"
-  },
+  "gpu_orientation": "Bracket rear; coolant and power at non-bracket side; overhead power leads",
   "host_envelope_mm": [
     440,
     456,
     176
   ],
   "host_link": {
-    "host_adapter": "PCIe x16 to 2x MCIO 8i",
+    "adapter": "x16 to 2x MCIO 8i",
     "physical_cables": 2,
-    "lanes_per_cable": 8,
-    "logical_link": "one x16 link",
-    "adapter_mode": "x16; exact passive or retimed SKU not selected"
+    "logical_link": "one x16"
   },
-  "switch_status": "Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified",
-  "scope": "Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold."
+  "switch_status": "Eight-endpoint concept; exact board not selected",
+  "source_sha256": {
+    "output/long-bore-P/cad/body.step": "d56b698fa4aee7f2f0fb3d013ffc96842d8b66fedb66e962e254b0214f294bf8",
+    "output/long-bore-P/cad/faceplate.step": "2726a5719c7133160e256fc9c38e7b84bd15c15b328d5b687e5acddda73e7c8d",
+    "output/radiator-R6/rack-plate-R6.step": "5bfe6bebf9ca1deefb4731741c59572999c82aaf936196dc5c0a37f9a5ccd50c",
+    "output/long-bore-P/koolance-fit/verification.json": "82eab3b601e74d083ef908751283e57a843008afc0e1433a041d4f5af1355b70",
+    "output/long-bore-P/product-views/assembled-unmarked.blend": "ad740ac919923e397bfb91d6f426ccad07a1255cbaa9cb5e02168461a4e9beda",
+    "output/radiator-R6/radiator-rack-plate-R6.blend": "592c26649e58248122102a163be7195def561fc5ae94f6c23519b4909182e6f9"
+  },
+  "view_files": [
+    "01-rack-context.png",
+    "02-front-layout.png",
+    "04-rear-cooling-assembly.png",
+    "05-pump-reservoir-detail.png"
+  ],
+  "scope": "Current custom-part versions with illustrative rack, chassis, GPU, pump and support geometry. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings."
 }

@@ -1,13 +1,15 @@
-"""24U open-frame use-case study. Exact O-M02 manifold; contextual envelopes only."""
+"""24U open-frame use-case study. Current P manifold and R6 plate; bought-in context envelopes noted."""
 from pathlib import Path
-import bpy, math, json
+import bpy, math, json, hashlib, argparse, sys
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/context-24U';OUT.mkdir(parents=True,exist_ok=True)
-bpy.ops.wm.open_mainfile(filepath=str(ROOT/'output/manufacturing/O-M02/product-views/assembled-unmarked.blend'))
+parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
+args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+bpy.ops.wm.open_mainfile(filepath=str(ROOT/'output/long-bore-P/product-views/assembled-unmarked.blend'))
 scene=bpy.context.scene
 for o in list(scene.objects):
-    if not (o.name in ('body','faceplate') or o.name.startswith(('QD3 reference /','Front M4 DIN 7991','G1-4 side plug reference'))):
+    if not (o.name in ('body','faceplate') or o.name.startswith(('Front M4','G1-4 side plug reference'))):
         bpy.data.objects.remove(o,do_unlink=True)
 U=44.45; bottom=100.; manifold=bottom+14*U+.95; host=bottom+10*U+.9; gpu=bottom+16*U+24
 rad_z=bottom+5*U
@@ -65,12 +67,27 @@ for sign in (-1,1):
             length=z-4.5-last
             if length>0:box('Rail aperture web',(xc,y+2,last+length/2),(10,3,length),rack)
             last=z+4.5
-# Connected female QD3 envelopes on nine branch pairs; pair ten stays available.
-for x in [-180+40*i for i in range(9)]:
-    for z in (manifold+23.5,manifold+63.5):
-        cyl('Female QD pull ring',(x,-25,z),11.85,8,steel)
-        cyl('Female QD receiver',(x,-38,z),10.7,18,steel)
-        cyl('10-13 tube collar',(x,-57,z),10.6,16,steel)
+# Official supplier fitting meshes; retain the operator-accepted studio registration.
+fit_dir=ROOT/'output/long-bore-P/koolance-fit'
+fit=json.loads((fit_dir/'verification.json').read_text());templates={}
+for rec in fit['mesh_records']:
+    bpy.ops.wm.stl_import(filepath=str(fit_dir/rec['mesh']));o=bpy.context.object
+    o.data.materials.append(steel)
+    for face in o.data.polygons:face.use_smooth=True
+    o.data.set_sharp_from_angle(angle=math.radians(35))
+    templates[(rec['part'],rec['solid_index'])]=o.data
+    bpy.data.objects.remove(o,do_unlink=True)
+for i in range(10):
+    for row,z in enumerate((23.5,63.5)):
+        for (part,solid),mesh in templates.items():
+            male=part=='qd3-mtg4'
+            if i==9 and not male:continue
+            o=bpy.data.objects.new(f'Koolance {part} / pair {i+1} row {row+1} solid {solid}',mesh)
+            scene.collection.objects.link(o)
+            o.location=(-180+40*i,-3+(0 if male else fit['female_mouth_Y_relative_to_male_sealing_face_mm']),manifold+z)
+qd_tail_y=-3-fit['inferred_seat_to_female_tail_mm']
+for x in (-232.55,232.55):
+    for dz in (21.275,65.725):cyl('Manifold rack screw reference',(x,-5,manifold+dz),5,6,steel)
 # 4U host envelope: 440 W x456 D x176 H. I/O and PCI brackets face the viewer.
 box('RM46-502-I host envelope',(0,228,host+88),(440,456,176),rack)
 box('Front-facing motherboard IO',( -110,-2,host+47),(150,5,43),steel)
@@ -101,7 +118,7 @@ for i,x in enumerate([-180+40*i for i in range(8)]):
     for j,z in enumerate((gpu+89,gpu+119)):
         cyl(f'GPU {i+1} coolant fitting',(x,20,z),8,22,steel)
         source_z=manifold+(23.5 if j==0 else 63.5)
-        hose(f'GPU {i+1} parallel coolant '+str(j),[(x,-65,source_z),(x,-100-j*34,source_z+25),(x,-100-j*34,z-20),(x,-15,z),(x,9,z)],supply if j==0 else ret)
+        hose(f'GPU {i+1} parallel coolant '+str(j),[(x,qd_tail_y+1,source_z),(x,-100-j*34,source_z+25),(x,-100-j*34,z-20),(x,-15,z),(x,9,z)],supply if j==0 else ret)
     # Generic socket envelope on the top edge near the non-bracket end.
     # Leave a straight lead above the plug before bending into the side loom.
     box(f'GPU {i+1} 12VHPWR socket',(x,65,gpu+143),(14,20,12),black)
@@ -120,75 +137,85 @@ for j in range(2):
 assert len([o for o in scene.objects if o.name.startswith('Host uplink MCIO 8i cable')])==2
 # Pair nine cools host; pair ten remains spare with disconnected male QDs.
 for j,z in enumerate((host+42,host+82)):
-    hose('Host coolant branch '+str(j),[(140,-65,manifold+(23.5 if j==0 else 63.5)),(150+j*22,-110-j*25,manifold-30),(136,-90-j*25,z),(136,-22,z)],supply if j==0 else ret)
-# Custom front-mounted radiator envelope occupies U1-10 (444.5 mm allocation).
-# Nine 120 mm fan references illustrate the face; this is not a stock MO-RA SKU.
-box('Custom radiator fin core',(0,42,rad_z),(400,64,400),black)
-for dz in range(-195,196,5):
-    box('Radiator fin reference',(0,8,rad_z+dz),(400,1,1),steel)
-for x in (-212,212):box('Radiator vertical frame',(x,35,rad_z),(16,80,440),rack)
-for dz in (-212,212):box('Radiator horizontal frame',(0,35,rad_z+dz),(408,80,16),rack)
-for x in (-232.55,232.55):
-    box('Custom radiator rack ear',(x,0,rad_z),(25,3,440),rack)
-    for u in (1,4,8):cyl('Radiator rack fixing',(x,-4,bottom+u*U+22.225),5,6,steel)
-for row in range(3):
-    for col in range(3):
-        x=(col-1)*130;z=rad_z+(row-1)*130
-        for dx in (-58,58):box('Radiator fan frame',(x+dx,-12,z),(4,30,120),rack)
-        for dz in (-58,58):box('Radiator fan frame',(x,-12,z+dz),(112,30,4),rack)
-        bpy.ops.mesh.primitive_torus_add(major_radius=54,minor_radius=3,major_segments=48,minor_segments=8,location=(x,-27,z),rotation=(math.pi/2,0,0))
-        bpy.context.object.name='Radiator fan rim';bpy.context.object.data.materials.append(rack)
-        cyl('Radiator fan hub',(x,-26,z),14,14,rack)
-        for blade in range(7):
-            a=blade*2*math.pi/7
-            polar=((13,a),(51,a+.22),(51,a+.67),(22,a+.5))
-            mesh=bpy.data.meshes.new('Fan blade reference')
-            mesh.from_pydata([(x+r*math.cos(t),-26,z+r*math.sin(t)) for r,t in polar],[],[(0,1,2,3)])
-            ob=bpy.data.objects.new('Radiator fan blade',mesh);scene.collection.objects.link(ob);ob.data.materials.append(rack)
-# Photographic/manual reference: MO-RA IV tank sits on the narrow connection side.
-# Recess the cooling body 60 mm from its previous plane to clear the front rack post.
-# Rack ears remain at Y0; short stand-offs connect them to the radiator frame.
-for o in list(scene.objects):
-    if o.name.startswith(('Custom radiator fin core','Radiator fin reference','Radiator vertical frame','Radiator horizontal frame','Radiator fan')):
-        o.location.y+=60
-for x in (-212,212):
-    for dz in (-212,212):box('Radiator rack stand-off',(x,28,rad_z+dz),(16,60,12),steel)
-# Tank 200 D5 reference: 275 high x84 across the side x49 projection.
-# Nominal placement and pump projection are illustrative; direct side attachment
-# follows Watercool MA_MO-RA_IV_TANK pp3-5, not the removed rear carrier.
-side_y=102; tank_top=rad_z+175; tank_bottom=tank_top-275
-box('MO-RA side connection panel',(220,side_y,rad_z),(3,84,430),rack)
-for z in (tank_top-24,rad_z-175):
-    box('MO-RA brass terminal seat',(221.5,side_y,z),(4,32,28),steel)
-cyl('MO-RA direct tank adapter',(224,side_y,tank_top-24),8,8,steel,'X')
-box('MO-RA tank upper body',(250.5,side_y,tank_top-100),(49,84,200),black)
-# Clear window faces sideways (+X), perpendicular to the radiator fan face.
-box('MO-RA tank clear window',(275.5,side_y,tank_top-100),(2,76,192),steel)
-box('MO-RA tank coolant reference',(277,side_y,tank_top-113),(1,64,150),supply)
-for yy in (side_y-36,side_y+36):
-    for z in (tank_top-10,tank_top-55,tank_top-100,tank_top-145,tank_top-190):
-        cyl('MO-RA tank window fixing',(278,yy,z),2.5,3,steel,'X')
-for yy in (side_y-21,side_y+21):
-    cyl('MO-RA tank top fill plug',(250.5,yy,tank_top+3),9,6,steel,'Z')
-# Compact lower support/retainer and rear fixings, as opposed to wraparound shelves.
-box('MO-RA tank lower retaining bracket',(224,side_y,tank_top-197),(4,64,18),steel)
-for yy in (side_y-25,side_y+25):
-    cyl('MO-RA tank rear fixing',(224,yy,tank_top-185),3,6,steel,'X')
-box('MO-RA D5 lower part',(250.5,side_y,tank_bottom+37.5),(49,84,75),black)
-box('MO-RA D5 retaining plate',(277,side_y,tank_bottom+37.5),(3,78,69),steel)
-cyl('MO-RA side-facing D5 reference',(306,side_y,tank_bottom+37.5),32,60,rack,'X')
-# Direct upper radiator-to-tank connection replaces the long hose over the fins.
-# Loop return enters the lower radiator terminal; tank bottom feeds the pump outlet.
-cyl('MO-RA lower radiator inlet',(228,side_y,rad_z-175),9,14,steel,'X')
-cyl('MO-RA tank bottom outlet',(250.5,side_y,tank_bottom-7),9,14,steel,'Z')
+    hose('Host coolant branch '+str(j),[(140,qd_tail_y+1,manifold+(23.5 if j==0 else 63.5)),(150+j*22,-110-j*25,manifold-30),(136,-90-j*25,z),(136,-22,z)],supply if j==0 else ret)
+# Append the existing R6 CAD/fan assembly from its native mm Blender scene.
+# Even the plate-only file retains the other components, hidden for its own view.
+rad_source=ROOT/'output/radiator-R6/radiator-rack-plate-R6.blend'
+with bpy.data.libraries.load(str(rad_source),link=False) as (src,dst):
+    dst.objects=[name for name in src.objects if name!='Studio ground']
+rad_objects=[]
+for o in dst.objects:
+    if o is None:continue
+    if o.type!='MESH':bpy.data.objects.remove(o,do_unlink=True);continue
+    # Ports point down to use pedestal space below U1 instead of the host above.
+    if o.name.startswith('Top G1-4 plug reference'):
+        bpy.data.objects.remove(o,do_unlink=True);continue
+    scene.collection.objects.link(o);o.location.z+=bottom
+    o.hide_render=False;o.hide_set(False);rad_objects.append(o)
+assert sum(o.name.startswith('NF-A20 reference fan-00') for o in rad_objects)==8
+rad_plate=next(o for o in rad_objects if o.name.startswith('R6 rack plate'))
+rad_params=json.loads((ROOT/'cad/radiator/R6.json').read_text())
+for x in rad_params['rack_mount_x']:
+    for i in (0,6,13,19):
+        cyl('R6 populated rack screw',(x,-5,bottom+rad_params['rack_mount_y'][i]),5,6,steel)
+# The stock radiator/frame/fan geometry is an integration envelope; the R6 plate
+# is CAD-derived. Rotate the symmetrical radiator port arrangement to the bottom.
+port_z=bottom+(rad_params['height']-rad_params['radiator_height'])/2
+for x in (-140.5,140.5):
+    cyl('SuperNova bottom port elbow stem',(x,22.5,port_z-7),9,14,steel,'Z')
+    box('SuperNova bottom port elbow',(x,22.5,port_z-18),(18,18,18),steel)
+    cyl('SuperNova bottom hose compression',(x,39,port_z-18),11,16,steel)
+# ULTITUBE/D5 NEXT context envelope, independently supported behind the fans.
+# Glass dimensions follow the retained 200 mm / OD65 / wall5 reference. Pump,
+# caps, clamps and support are provisional envelopes, not manufacture-ready CAD.
+pump_x=0.;pump_y=155.;glass_bottom=bottom+150;glass_top=glass_bottom+200
+for x in (-220,220):box('Provisional pump shelf depth support',(x,250,bottom+55),(10,500,12),steel)
+box('Provisional pump shelf crossmember',(0,210,bottom+54.5),(440,30,10),steel)
+box('Provisional separate pump shelf',(0,180,bottom+61),(110,120,3),steel)
+box('Provisional pump mount',(pump_x,pump_y,bottom+81),(90,90,35),black)
+cyl('D5 NEXT pump envelope',(pump_x,pump_y,bottom+110),32,50,rack,'Z')
+box('D5 NEXT display envelope',(pump_x,pump_y+32,bottom+106),(45,10,30),black)
+cyl('ULTITUBE bottom cap envelope',(pump_x,pump_y,glass_bottom-10),36,20,black,'Z')
+cyl('ULTITUBE top cap envelope',(pump_x,pump_y,glass_top+8),36,16,black,'Z')
+glass=mat('Borosilicate glass context',(.90,.97,1),0,.1)
+glass.node_tree.nodes.get('Principled BSDF').inputs['Transmission Weight'].default_value=1
+glass.node_tree.nodes.get('Principled BSDF').inputs['IOR'].default_value=1.47
+# Annular glass mesh avoids an opaque solid-cylinder shortcut.
+verts=[];N=64
+for zz,rr in ((glass_bottom,32.5),(glass_top,32.5),(glass_bottom,27.5),(glass_top,27.5)):
+    verts.extend([(pump_x+rr*math.cos(2*math.pi*i/N),pump_y+rr*math.sin(2*math.pi*i/N),zz) for i in range(N)])
+faces=[]
+for i in range(N):
+    j=(i+1)%N;faces.extend([(i,j,N+j,N+i),(2*N+j,2*N+i,3*N+i,3*N+j),(j,i,2*N+i,2*N+j),(N+i,N+j,3*N+j,3*N+i)])
+mesh=bpy.data.meshes.new('ULTITUBE nominal glass');mesh.from_pydata(verts,[],faces);mesh.update()
+o=bpy.data.objects.new('ULTITUBE 200 glass envelope',mesh);scene.collection.objects.link(o);o.data.materials.append(glass)
+for face in mesh.polygons:face.use_smooth=face.index%4<2
+cyl('Reservoir coolant illustration',(pump_x,pump_y,glass_bottom+80),27.2,160,supply,'Z')
+cyl('Reservoir fill plug',(pump_x,pump_y,glass_top+19),9,6,steel,'Z')
+for x in (-40,40):box('Provisional reservoir rear support',(x,201,bottom+209),(8,4,278),steel)
+for zz in (glass_bottom+18,glass_top-18):
+    box('Provisional reservoir clamp link',(0,188,zz),(24,27,8),black)
+    box('Provisional reservoir support bridge',(0,201,zz),(88,4,8),steel)
+    bpy.ops.mesh.primitive_torus_add(major_radius=34,minor_radius=3,major_segments=64,minor_segments=8,location=(pump_x,pump_y,zz))
+    bpy.context.object.name='Provisional reservoir clamp';bpy.context.object.data.materials.append(black)
+# Complete cooling plumbing: return -> radiator -> reservoir -> pump -> supply.
+# Side elbows direct the infrastructure rearwards; hoses use the free side aisle.
 for j,z in enumerate((manifold+23.5,manifold+63.5)):
-    cyl('Left infrastructure G1-4 fitting',(-215,20,z),9,20,steel,'X')
+    cyl('Left infrastructure G1-4 fitting',(-213.8,20,z),9,17.6,steel,'X')
+    box('Left infrastructure rotary elbow',(-222.8,20,z),(18,18,18),steel)
+    cyl('Left infrastructure compression',(-222.8,38,z),11,18,steel)
     if j==0:
-        pts=[(-224,20,z),(-280,90,z-35),(-280,180,rad_z-130),(-120,185,rad_z-165),(245,185,tank_bottom-40),(250.5,side_y,tank_bottom-15)]
+        pts=[(-222.8,47,z),(-240,120,z-25),(-240,145,bottom+115),(-80,185,bottom+110),(-36,pump_y,bottom+110)]
     else:
-        pts=[(-224,20,z),(-300,125,z-35),(-300,215,rad_z-165),(-110,215,rad_z-190),(290,200,rad_z-175),(235,side_y,rad_z-175)]
-    hose('MO-RA cooling assembly service hose '+str(j),pts,supply if j==0 else ret,8)
-assert len([o for o in scene.objects if o.name.startswith('Radiator fan hub')])==9
+        pts=[(-222.8,47,z),(-246,100,z-35),(-246,100,port_z-18),(-140.5,80,port_z-18),(-140.5,47,port_z-18)]
+    hose('Cooling infrastructure '+('supply' if j==0 else 'return'),pts,supply if j==0 else ret,8)
+hose('Radiator to reservoir',[(140.5,47,port_z-18),(140.5,130,port_z-18),(110,155,glass_bottom-10),(36,pump_y,glass_bottom-10)],ret,8)
+cyl('Pump outlet reference',(-36,pump_y,bottom+110),9,14,steel,'X')
+cyl('Reservoir inlet reference',(36,pump_y,glass_bottom-10),9,14,steel,'X')
+assert len([o for o in scene.objects if o.name.startswith('Koolance qd3-mtg4 /')])==40
+assert len([o for o in scene.objects if o.name.startswith('Koolance qd3-ft10x13 /')])==54
+assert len([o for o in scene.objects if o.name.startswith('Front M4')])==12
+assert not any('MO-RA' in o.name for o in scene.objects)
 assert len([o for o in scene.objects if 'single-slot waterblock' in o.name])==8
 assert len([o for o in scene.objects if o.name.startswith('GPU ') and 'parallel coolant' in o.name])==16
 assert len([o for o in scene.objects if o.name.startswith('GPU ') and '12VHPWR socket' in o.name])==8
@@ -199,12 +226,31 @@ world=bpy.data.worlds.new('White studio');world.use_nodes=True;scene.world=world
 world.node_tree.nodes['Background'].inputs[0].default_value=(.85,.88,.92,1);world.node_tree.nodes['Background'].inputs[1].default_value=.8
 for loc,power,size in [((0,-1100,2200),50000000,1400),((1000,600,1900),40000000,1200),((-1200,100,1400),25000000,1000)]:
     bpy.ops.object.light_add(type='AREA',location=loc);o=bpy.context.object;o.data.energy=power;o.data.shape='DISK';o.data.size=size;o.rotation_euler=(Vector((0,200,650))-o.location).to_track_quat('-Z','Y').to_euler()
-scene.render.engine='CYCLES';scene.cycles.samples=32;scene.cycles.use_denoising=True
+scene.render.engine='CYCLES';scene.cycles.samples=16 if args.preview else 48;scene.cycles.use_denoising=True
+if args.device=='METAL':
+    prefs=bpy.context.preferences.addons['cycles'].preferences;prefs.compute_device_type='METAL';prefs.get_devices()
+    assert any(d.type=='METAL' for d in prefs.devices)
+    for d in prefs.devices:d.use=d.type=='METAL'
+    scene.cycles.device='GPU'
 scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_mode='RGB';scene.view_settings.view_transform='AgX'
-scene.render.resolution_x=1700;scene.render.resolution_y=2000;scene.render.resolution_percentage=100
-for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1570),('02-front-layout',(0,-2600,625),(0,0,625),1400),('04-rear-cooling-assembly',(1800,2100,1250),(0,170,610),1570),('05-tank-side-detail',(1550,1250,800),(190,105,rad_z+5),660)]:
+scene.render.resolution_x=1700;scene.render.resolution_y=2000;scene.render.resolution_percentage=50 if args.preview else 100
+for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1570),('02-front-layout',(0,-2600,625),(0,0,625),1400),('04-rear-cooling-assembly',(1800,2100,1250),(0,170,610),1570),('05-pump-reservoir-detail',(-300,1250,650),(0,155,rad_z),650)]:
     bpy.ops.object.camera_add(location=loc);o=bpy.context.object;o.name=name;o.data.type='ORTHO';o.data.ortho_scale=scale;o.data.clip_end=10000;o.rotation_euler=(Vector(target)-o.location).to_track_quat('-Z','Y').to_euler();scene.camera=o
-    scene.render.filepath=str(OUT/f'{name}.png');bpy.ops.render.render(write_still=True)
+    scene.render.filepath=str(ROOT/f'tmp/context-{name}.png' if args.preview else OUT/f'{name}.png');bpy.ops.render.render(write_still=True)
+    if args.preview:break
 scene.camera=bpy.data.objects['01-rack-context']
-bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'24U-context.blend'))
-(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-10',use='Custom front-mounted MO-RA cooling assembly: radiator, reservoir and D5'),dict(U='11-14',use='4U host, front-accessible PCIe coolant bracket'),dict(U='15-16',use='O-M02 manifold'),dict(U='17-22',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='23-24',use='Service space / spare')],radiator={'allocation_U':10,'allocation_height_mm':444.5,'illustrative_body_envelope_mm':[440,110,440],'front_fans':'Nine 120 mm references','type':'Custom front-mounted MO-RA concept; no stock model selected','pump_reservoir':'Included in the MO-RA assembly; tank on narrow side, D5 axis perpendicular to side panel','plumbing':'Manifold return -> radiator -> reservoir -> D5 -> manifold supply; schematic routes','integration':'Direct upper port adapter and compact lower retainer per MO-RA IV manual; no rear carrier','tank_body_mm':[49,84,275],'cooling_body_recess_mm':60,'side_pump_max_x_mm':336,'packaging':'Tank/pump project outboard of rack side; 440 mm radiator body plus side assembly is not a rack-width-contained solution','mount_reference':'https://shop.watercool.de/mediafiles/Manuals/MA_MO-RA_IV_TANK.pdf pp3-5'},front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,gpu_orientation={'IO_bracket':'Rack-rear end, Y329','coolant_terminals':'Non-bracket end, rack-front, Y42','power_sockets':'Top edge near non-bracket end, Y65','power_routing':'Straight lead above each plug, then overhead to side distribution envelope','scope':'Generic connector positions; exact GPU and cable bend limits not selected'},host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')
+if not args.preview:
+    bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'24U-context.blend'),compress=True)
+    def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
+    report=dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,
+      manifold_revision='P',radiator_plate_revision='R6',
+      rack_units_bottom_to_top=[dict(U='1-10',use='SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='11-14',use='4U host with front PCIe coolant bracket'),dict(U='15-16',use='P parallel manifold'),dict(U='17-22',use='Eight-GPU tray and conceptual PCIe switch'),dict(U='23-24',use='Service space')],
+      radiator=dict(plate_dimensions_mm=[482.6,444.5,2],body_envelope_mm=[422,48,441],fans=8,fan_model='Official Noctua NF-A20 integration meshes',port_orientation='Downwards; elbows use pedestal space below U1',rack_screws_populated=8,cable_notch_mm=[10,2],plate_aperture_radius_mm=50),
+      pump_reservoir=dict(selection='Provisional ULTITUBE 200 / D5 NEXT envelopes',glass_length_mm=200,glass_od_mm=65,glass_wall_mm=5,position_xy_mm=[pump_x,pump_y],mounting='Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection',reason='Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate.'),
+      front_pair_allocation={'1-8':'Individual GPUs','9':'Host CPU/chassis','10':'Spare male QDs'},
+      fittings=dict(male='QD3-MTG4',female='QD3-FT10X13',connected_pairs=9,spare_pairs=1,source_scale='Unscaled supplier meshes in mm',axial_placement='Operator-accepted inferred studio pose'),
+      gpu_pitch_mm=40,gpu_envelope_mm=[17,270,132],gpu_orientation='Bracket rear; coolant and power at non-bracket side; overhead power leads',host_envelope_mm=[440,456,176],host_link=dict(adapter='x16 to 2x MCIO 8i',physical_cables=2,logical_link='one x16'),switch_status='Eight-endpoint concept; exact board not selected',
+      source_sha256={path:digest(path) for path in ['output/long-bore-P/cad/body.step','output/long-bore-P/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-P/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend']},
+      view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png'],
+      scope='Current custom-part versions with illustrative rack, chassis, GPU, pump and support geometry. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings.')
+    (OUT/'layout.json').write_text(json.dumps(report,indent=2)+'\n')

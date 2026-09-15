@@ -1,77 +1,36 @@
-# RM8-2U coolant manifold — initial design, revision G
+# Current manifold design — Revision P
 
-Eight parallel circuits in two rack units, with vertically paired supply and return connections on one service face. The black Delrin body, repeated G1/4 ports and satin stainless steel hardware follow the requested industrial character of EK's Pro manifold. The design prioritises access to the female QD3 release rings.
+The RM10-2U manifold provides a common supply gallery and a separate common return gallery for parallel loads. It has no internal grouping, partitions, bypass or supply-to-return connection. The current manufactured parts are one POM body and one dry stainless front rack plate. There is no rear plate.
 
-## EK and rack-height comparison
-
-EK lists the Pro 2CPU 8GPU manifold at 326 × 57 × 36 mm (L × H × W), without its mounting system. One rack unit is 44.45 mm; two are 88.9 mm. Its stated 57 mm height exceeds 1U by 12.55 mm, and leaves 31.9 mm within 2U before mounting and access allowances. Rotating the 36 mm dimension vertically fits the bare body height, but changes port orientation and does not prove coupling or hand clearance.
-
-This initial design uses a finished 87 mm high panel, leaving 1.9 mm total clearance within 2U. It is deliberately wider and taller than EK to provide access around the ports. EK's exact port pitch has not been verified from an accessible dimensional drawing; no spacing here is claimed to be copied from it.
-
-## Layout
-
-| Feature | Revision G |
+| Interface | Revision P, nominal mm |
 |---|---|
-| Delrin base | 440 wide × 40 deep × 87 high |
-| Integral port bosses | Ø28 × 6 high; female G1/4; 3 proud of steel |
-| Front rack faceplate | 3 thick, eighteen Ø32 windows |
-| Rear stainless cover | 3 thick |
-| Bare rack assembly | 482.6 wide × 49 deep × 87 high |
-| Branches | 8 parallel circuits |
-| Ports | 18 G1/4 female: 8 supply + 8 return + IN + OUT |
-| Horizontal pitch | 45 |
-| Vertical pitch | 40 |
-| Port rows | z=23.5 supply; z=63.5 return |
-| Rack slots | 10 × 7; 465.1 horizontal and 76.2 vertical centres |
+| POM body | 410 wide × 87 high × 40 main depth; 43 overall with bosses |
+| Integral bosses | Twenty Ø28 × 3 high; R1 roots; C0.5 ×45° outer lips |
+| Rack faceplate | 482.6 wide × 87 high × 2 thick, 304 / EN 1.4301 |
+| Front ports | Twenty G1/4 female, ten pairs at 40 × 40 centres |
+| Side ports | Four G1/4 female, two at each end |
+| Galleries | Two continuous Ø11.8 bores along X, axes Y20 and Z23.5/63.5 |
+| Body retention | Twelve M4 ×0.7 holes; M4 ×16 ISO 7380-1 A2 button-head screws |
+| Rack mounting | Six optional 10 ×7 slots per side, at X±232.55 |
 
-Looking at the service face, the lower row is IN, S1…S8 and the upper row is OUT, R1…R8. Each vertical S/R pair belongs to one load. IN and OUT occupy the leftmost column. All ports share the same face and thread type. Plug any unused connections or use the intended self-closing QDs.
+X runs across the rack, Y rearwards and Z upwards. The slab front is Y0, the plate occupies Y−2…0 and the POM sealing faces are Y−3. The bosses therefore project 1 mm above the steel. Fittings seal on the uninterrupted POM annuli using their own O-rings. Ø32 plate windows provide 2 mm nominal radial clearance around the bosses and 1 mm around the Ø30 root envelope, before tolerances.
 
-The two galleries are the common supply and common return required for parallel flow. Neither gallery has partitions, internal plugs, selectable groups or a bypass. The solid web between them keeps supply and return separate. Connect S1 → load 1 → R1, and similarly for all eight circuits. IN receives flow from the pump; OUT returns flow to the external loop.
+Front port centres run from X−180 to +180 in 40 mm increments. The outer centres are 25 mm from the body ends. Either row can be assigned supply or return by the external plumbing; each vertical pair serves one load. Side-fed infrastructure frees all ten front pairs. Front-fed infrastructure consumes one pair. Unused connections require suitable plugged or self-closing fittings; plugged side ports remain reusable.
 
-Parallel flow is not inherently equal. Different blocks, hoses and QDs have different resistance. The design provides no internal balancing and makes no thermal-capacity claim. As drawn, both main ports are at the same end (direct return); this is a practical routing choice, not a claim of equal header pressure at every branch.
+## Rack and fitting access
 
-## QD3 service clearance
+The 87 mm panel uses a nominal 2U allocation, leaving 1.9 mm within 88.9 mm. EK's reference manifold is listed at 326 ×57 ×36 mm; its 57 mm height exceeds 1U by 12.55 mm. The project chose service access over a dense 1U arrangement. See the dated [source index](sources.md).
 
-Reference male: Koolance QD3-MTG4. The drawing shows 36.6 ±0.5 overall, 4.5 male thread and approximately 32.1 projection from the face; 22 across flats and 23.9 outside diameter. The earlier QD3-MSG4 has a 4 mm thread and about 31.1 mm face projection.
+The current studio references are **Koolance QD3-MTG4 + QD3-FT10X13**, with nominal 10/13 tubing. Official STEP models are retained at supplier scale. At 40 mm pitch, the published female Ø26.1 body and Ø23.7 pull ring leave 13.9 and 16.3 mm between nominal envelopes. The operator accepts the depicted coupled placement based on experience with physical pairs. Front space is required for fittings, hose routing and servicing; no numerical minimum was approved. The inherited `service_projection_front: 100` parameter is an illustrative allowance, not a newly specified installation limit. See [fitting integration](koolance-qd3-studio-integration.md).
 
-Reference female: QD3-FS10X16 for 10/16 mm hose. Its drawing shows a 23.7 mm pull ring, 23 mm across flats at the compression end and 46.2 ±0.5 mm overall. A regular 23 mm hex can reach 26.56 mm across corners. Consequently:
+The twelve rack slots offer installation choices, not twelve mandatory screws. Slot heights are Z5.4/21.275/37.15/49.85/65.725/81.6. The outer slots retain a 1.9 mm nominal panel-edge ligament; washers can overhang the panel. Selected hardware, rail geometry and nearby equipment determine installed fit.
 
-| Clearance between adjacent reference fittings | Horizontal | Vertical |
-|---|---:|---:|
-| 23.7 mm release rings | 21.3 | 16.3 |
-| 26.56 mm compression-hex envelope | 18.44 | 13.44 |
-| Conservative 28 mm circular envelope | 17 | 12 |
+The 410 mm body leaves 20 mm per side inside an assumed 450 mm equipment opening. Four 4 mm plug heads give a nominal 418 mm fitted width. The earlier BP-90R/Barrow side-elbow envelope reaches approximately 467.6 mm overall, so it must not be described as contained inside 450 mm. Elbow depth and height may use space between rack features. Installation clearance depends on actual rails, nuts, fittings and insertion path; it is distinct from the accepted front-QD visual layout.
 
-The ring-to-body-top/bottom edge clearance is 11.65 mm; actual 2U boundaries give another 0.95 mm each. Rings project in front of the mounting plane, allowing access from the front, sides and between rows. These dimensions improve access substantially compared with the explored dense 1U arrangement, but do not constitute an ergonomic validation. Verify the actual female variant, hand/glove size and release stroke with adjacent real fittings. The included full-size SVG is intended for that trial.
+## Materials and manufacture
 
-Reserve 100 mm unobstructed service space forward of the raised port face (106 mm ahead of the rail mating plane). This is a layout allowance for hand access and axial disconnection, not a measured release stroke or a hose bend-radius specification. The sum of the uncoupled reference projections from the raised sealing face is approximately 78.3 mm; coupling overlap reduces the connected length. Blender shows simplified reference fittings and four example female/tube connections; their connected geometry is illustrative. Hose bends may extend outside 2U. The rack door and adjacent equipment must remain clear of the service region.
+Use black unfilled POM-C or POM-H of an identified machining-stock grade; Delrin branding is optional. Intended duty is formulated inhibited computer coolant at approximately 50°C maximum liquid temperature, with Blitz Part 2 maintenance as described in the [material assessment](pom-coolant-assessment.md). These are design assumptions, not tested ratings.
 
-## Construction and manufacture
+The body uses opposed long-bore drilling, external milling and direct tapped ports. External deburring only; clean/flush loose internal chips without specifying internal cross-hole deburring. Long-hole alignment and vendor capability remain DFM items. The dry 2 mm faceplate has plain through holes, no countersinks and no threads. Fitting retention and body-to-rack retention are separate functions.
 
-Two continuous capsule pockets are milled from the rear of one Delrin block. Each is 388 × 16 in the XZ plane and 24 deep, leaving a 16 mm front wall. Their centres are z=23.5 and 63.5; ends are R8. All front ports drill into the appropriate pocket. There are no buried junctions or deep longitudinal drilled galleries.
-
-Each gallery has its own continuous EPDM seal beneath a 3 mm stainless steel rear cover. The rigid cover avoids a large thin plastic pressure lid. Its underside is a machined sealing face, not unfinished sheet. A single 3 mm flat stainless steel faceplate carries the body on the rack. Its eighteen Ø32 mm windows surround eighteen integral Ø28 mm POM bosses. Each boss is 6 mm high and its sealing face stands 3 mm in front of the steel. Eight dedicated front-facing M4 DIN 7991 screws fasten the body to it; the QDs are not mounting fasteners. The previous bent ears and side mounting holes are removed. The base envelope and port arrangement are retained. Revision G uses388 mm galleries and4.0 wide ×2.3 deep rear grooves for two Polymax255×3 EPDM rings. Groove centreline is396×24; outer cover screw rows are z5.5/81.5. The bosses add 6 mm of forward projection.
-
-The operations are conventional 3-axis milling with rear/front setups, standard threaded holes, profile punching or cutting and countersinking. No metal bending is required. This is a design for vendor DFM and budget quotation, not a promise of instant-quote acceptance. Confirm branded Delrin homopolymer, stock size/porosity, sealing flatness and BSPP tooling. Generic POM offered by a vendor is not automatically Delrin.
-
-## Raised female-threaded POM ports
-
-Each port has a cylindrical Ø28 mm POM boss, integral with the body, with a G1/4 female thread inside. There are no external threaded nipples or inserts. The boss rises 6 mm from the plate-supporting POM plane (y = 0) to its flat sealing face at y = −6. The faceplate is 3 mm thick (y = −3…0), so the boss end is 3 mm proud of the steel.
-
-The flat annulus on the boss end receives the fitting's O-ring. Tightening the fitting compresses the O-ring against POM; steel is behind the sealing plane and does not stop a normal flat-bottomed fitting. This permits fitting bodies wider than the plate window to overhang the boss. It does not mean every G1/4 fitting will seal: the O-ring contact band must lie entirely on the boss end, the male thread must not bottom, and adequate O-ring compression must be achieved. G1/4 specifies the thread, not a universal O-ring footprint or shoulder shape. Rear-projecting skirts need their own check.
-
-The boss has 1 mm root fillets. The Ø32 windows give 2 mm nominal radial clearance around the Ø28 cylinders and 1 mm around the maximum Ø30 root-fillet envelope. This leaves room for the assembly tolerance stack; still check hole alignment and edge finish. The boss end has a continuous flat sealing land around the thread mouth; no relief or cosmetic groove crosses it.
-
-A Ø36 mm illustrative fitting-body envelope, larger than the Ø32 plate window, has been checked against the faceplate at the raised seating plane. Its normal flat shoulder clears the steel axially by 3 mm. This is a geometric demonstration, not a universal fitting qualification. The selected QD3 remains the reference for actual thread length and O-ring geometry, and 45 × 40 mm port spacing still bounds neighbouring fitting sizes and hand access.
-
-Manufacture the body from thicker stock: mill the front background down 6 mm while leaving eighteen cylindrical islands. Finish the cylindrical walls, root fillets and flat annular ends, then drill/tap the G1/4 bores from the raised faces. This adds material removal and finishing but remains conventional front/rear 3-axis milling without undercuts. The eight mounting holes stay in the recessed background and carry the body independently of the fittings.
-
-Option B is selected: the front faceplate carries the POM body on the rack; the rear plate only closes and seals the galleries. All plate-to-POM screws are M4 (eight front and 31 rear). Option C, the former combined rack/backing plate with M5 retention screws, is a historical reference only. The original recessed-port faceplate version remains in Git history; selected Option B is revision G with raised ports.
-
-## Status and open engineering work
-
-This is an initial dimensional model, not a pressure-rated production release. The user specifies a formulated inhibited coolant, with Mayhems X1 and Koolance 705 as candidates. Exact coolant formulation, working pressure, temperature, pump shut-off head and desired flow remain to be specified. No structural FEA, seal validation, creep test or hydraulic test has been performed. QD component pressure ratings do not rate the manifold assembly.
-
-The G1/4/QD3 main pair carries the sum of all branch flows and may dominate pressure loss. Establish the required total flow before treating eight circuits as a cooling-capacity promise. There is no dedicated drain or bleed connection in revision G; draining/bleeding is via the external loop and appropriate orientation. Closed unused QDs cannot vent air.
-
-Before manufacture release: choose actual QDs and coolant; trial release-ring access; confirm continuous seals and gland dimensions; review plastic threads, cover flatness, preload/torque and creep; check rack and hose loads; then agree separate-gallery leak/cross-leak, thermal-cycle and pressure qualification for the intended working pressure.
+Parallel topology does not enforce equal flow. Required flow, gallery losses, plastic thread retention, thermal cycling and assembled leak performance remain engineering work. The current geometry and screw checks are detailed in [Revision P](revision-P-plain-bore-faceplate.md); [manufacturing status](manufacturing.md) distinguishes review files from supplier issues.

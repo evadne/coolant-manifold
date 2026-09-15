@@ -15,7 +15,7 @@ The current design set is the Revision P manifold body and its matching Revision
 - Twelve M4 × 0.7 blind retention holes for the matching faceplate. Ø3.3 pilot cylinders are 18 mm deep plus a 118° drill point; minimum full-form thread depth is 16 mm after entry.
 - External deburring and internal chip cleaning/flushing; no internal cross-hole deburring operation specified.
 
-Duty remains formulated inhibited computer coolant, with approximately 50°C intended maximum liquid temperature. This is a duty assumption, not a tested product rating. Existing coolant/cleaning notes continue to apply. Deep-drilling acceptance, exact stock grade and prototype checks remain supplier/engineering items.
+Duty remains formulated inhibited computer coolant, with approximately 50°C intended maximum liquid temperature. This is a duty assumption, not a tested product rating. The [coolant assessment](pom-coolant-assessment.md) and [Blitz overrun plan](blitz-overrun-qualification.md) continue to apply. Deep-drilling acceptance, exact stock grade and prototype checks remain supplier/engineering items.
 
 ## 2. Manifold rack faceplate - Revision P
 
@@ -37,7 +37,7 @@ Duty remains formulated inhibited computer coolant, with approximately 50°C int
 - Uniform satin brushed finish, no surface markings; no tapping, countersinking or bending.
 - Assembly order: fans onto plate, populated plate onto radiator, complete assembly onto rack. Fan screw heads and washers sit on the core side; nuts sit outside the fan faces.
 
-R4 structural calculations remain baseline evidence for the radiator mount, not an R6 tested assembly rating. R6 changes only the small top-edge notch; fixing positions and air apertures remain the same.
+The [current load summary](radiator-load-assessment.md) uses R4 structural calculations as baseline evidence for the radiator mount, not an R6 tested assembly rating. R6 changes only the small top-edge notch; fixing positions and air apertures remain the same.
 
 ## Production-file status
 
@@ -50,3 +50,5 @@ R4 structural calculations remain baseline evidence for the radiator mount, not 
 The older manifold O-M02 ZIPs contain the 3 mm countersunk plate, six retention positions, 4 mm bosses and former M4 depths. They must not be submitted as the current P pair or mixed with P parts. The next manufacturing-pack task is to issue the two matching P parts with updated tolerances, thread call-outs and supplier notes. This recap records that gap without claiming it has been completed.
 
 No supplier upload or order has been made. Geometry is unchanged by this approval/recap update.
+
+The current P Koolance studio rendition and coupled placement are operator-accepted. See [current views](product-views.md), [assembly notes](radiator-rack-plate.md) and [rebuild commands](rebuild.md). The [refreshed 24U scene](context-24U.md) combines P and R6 with the host/GPU arrangement and a provisional rear pump/reservoir support.

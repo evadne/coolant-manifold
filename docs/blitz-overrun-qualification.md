@@ -25,7 +25,7 @@ Test both stagnant filled assemblies and circulating assemblies. Include thermal
 
 ## Test articles and evidence
 
-Screen machined, stressed port specimens before full-body trials. Include the 4 mm bosses, actual G1/4 threads, sealing lands and selected fittings/plug seals, together with representative M4 retention preload. Simple unstressed plastic coupons cannot establish loaded-thread or assembly behaviour. Compare with unexposed controls and coolant-exposed controls from the same stock; use multiple specimens rather than relying on a single successful sample.
+Screen machined, stressed port specimens before full-body trials. Use Revision P articles: include the 3 mm bosses, actual G1/4 threads, sealing lands and selected fittings/plug seals, together with representative preload at the twelve M4 retention positions. Simple unstressed plastic coupons cannot establish loaded-thread or assembly behaviour. Compare with unexposed controls and coolant-exposed controls from the same stock; use multiple specimens rather than relying on a single successful sample.
 
 Full-assembly acceptance must cover:
 
@@ -34,7 +34,7 @@ Full-assembly acceptance must cover:
 - Functional plate/boss fit and repeatable sealing after fitting removal/reinstallation.
 - Retained pressure and fitting-retention capability against predetermined design minima, compared with controls. Record dimensional, mass and mechanical changes so apparently sound surfaces do not conceal degradation.
 
-The numerical working/proof pressure, fitting torque, retention load, instrument sensitivity and sample count must be established before execution from the selected pump arrangement, hardware and product reliability objective. They are not already qualified in Revision O. Tests must include the actual sealing elastomers and wetted metals; body survival alone is insufficient. Failure to meet a target requires a material/stock/seal/design change or reconsideration of the target, not merely a shorter user warning.
+The numerical working/proof pressure, fitting torque, retention load, instrument sensitivity and sample count must be established before execution from the selected pump arrangement, hardware and product reliability objective. They are not already qualified in Revision P. Tests must include the actual sealing elastomers and wetted metals; body survival alone is insufficient. Failure to meet a target requires a material/stock/seal/design change or reconsideration of the target, not merely a shorter user warning.
 
 ## Limits of the published evidence
 

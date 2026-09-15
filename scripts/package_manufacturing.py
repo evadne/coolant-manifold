@@ -44,9 +44,9 @@ copies = {
     OUT / 'RM10-O-M02-BODY.zip': 'RM10-O-M02-BODY.zip',
     OUT / 'RM10-O-M02-FACEPLATE.zip': 'RM10-O-M02-FACEPLATE.zip',
     PDF / 'RM10-O-M02-DFM.pdf': 'RM10-O-M02-DFM.pdf',
-    ROOT / 'docs/jlc-submission-O-M02.md': 'README.md',
-    ROOT / 'docs/jlc-body-remarks-O-M02.txt': 'BODY-REMARKS.txt',
-    ROOT / 'docs/jlc-faceplate-remarks-O-M02.txt': 'FACEPLATE-REMARKS.txt',
+    ROOT / 'docs/archive/jlc-submission-O-M02.md': 'README.md',
+    ROOT / 'docs/archive/jlc-body-remarks-O-M02.txt': 'BODY-REMARKS.txt',
+    ROOT / 'docs/archive/jlc-faceplate-remarks-O-M02.txt': 'FACEPLATE-REMARKS.txt',
 }
 for source, name in copies.items():
     shutil.copyfile(source, submission / name)

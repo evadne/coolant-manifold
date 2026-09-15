@@ -1,25 +1,37 @@
-# Stored design iterations
+# Revision register
 
-| Iteration | Construction | Location | Status |
-|---|---|---|---|
-| G | Rear-milled galleries, separate stainless sealing plate, two large EPDM rings | Existing `cad/parameters.json`, `output/cad/`, `output/product-views/` | Preserved baseline; snapshot tag `revision-g-rear-cover` at `8ebd431` |
-| H | Two long drilled bores, 440 mm body, four plugged G1/4 end ports | `cad/iterations/H-long-bore.json`, `output/long-bore-H/` | Preserved at `revision-h-long-bore` / `2ff8019` |
-| I | Long bores, 390 mm body, 8 front pairs, 6 M4 mounts | `cad/iterations/I-long-bore.json`, `output/long-bore-I/` | Side-clearance variant |
-| J | Long bores, 450 mm body, 9 front pairs, 8 M4 mounts | `cad/iterations/J-long-bore.json`, `output/long-bore-J/` | Maximum-body variant; insertion/installed fit conditional |
-| K | Long bores, 410 mm body, 10 front pairs at 40 × 40 mm pitch, 6 M4 mounts | `cad/iterations/K-long-bore.json`, `output/long-bore-K/` | Visual review candidate; 25 mm centre-to-end allowance under review |
-| L | K body with six available rack-fixing slots per side | `cad/iterations/L-long-bore.json`, `output/long-bore-L/` | Mounting-choice visual review; screws populated as required |
-| M | L with outer POM fixings moved inward one port pitch; columns X−120/0/+120 | `cad/iterations/M-long-bore.json`, `output/long-bore-M/` | Current visual layout; six M4 POM fixings and twelve optional rack slots |
+**Current:** manifold **P** body and faceplate; radiator **R6**, manufacturing issue **R6-M01**. The [three-part recap](three-part-recap.md) describes the current interfaces. The operator accepts the P Koolance studio layout; R6 is operator-approved. P still needs its own supplier manufacturing issue.
 
-The annotated local Git tag preserves the complete G source, documentation, CAD and eight unmarked views as they existed before the long-bore iteration. H does not overwrite G's parameters or generated files. H reuses the unchanged front plate design; the builder checks solid equivalence before copying its cut DXF.
+## Manifold history
 
-To retrieve a separate copy of G without changing the current working tree, use `git archive revision-g-rear-cover` into a new directory. The historical combined rack/rear plate Option C is also preserved in that history but remains unselected.
+| Revision | Main change | Status / location |
+|---|---|---|
+| G | Rear-milled galleries, separate rear cover and two large rings | Historical baseline; `cad/parameters.json`, unversioned `output/cad/` and `output/product-views/`; tag `revision-g-rear-cover` |
+| H | Two long bores and four side ports; removed rear cover | Historical; `cad/iterations/H-long-bore.json`, `output/long-bore-H/`; tag `revision-h-long-bore` |
+| I / J | 390 mm /8-pair and 450 mm /9-pair width variants | Historical; matching iteration/output directories |
+| K | 410 mm body, ten pairs at 40 ×40 | Historical; tag `revision-k-ten-pair` |
+| L | Six optional rack positions per side | Historical; tag `revision-l-six-rack-positions` |
+| M | Six POM retainers at balanced X−120/0/+120 columns | Historical; tag `revision-m-before-centred-depth` |
+| N | 35 mm slab and centred galleries | Historical rejected depth candidate; tag `revision-n-35mm-centred` |
+| O | Restored 40 mm slab, galleries at Y20 | Historical operator-approved predecessor; tag `revision-o-operator-approved` |
+| O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier issues; `cad/manufacturing/` and `output/manufacturing/`; do not submit as P |
+| **P** | 2 mm plain-hole plate, twelve M4 ×16 button screws, 3 mm bosses, revised M4 depths | **Current pair**, `cad/iterations/P-long-bore.json`, `output/long-bore-P/`; [detail](revision-P-plain-bore-faceplate.md) |
 
-[Review revision G](product-views.md) · [Review revision H and its manufacturing trade-offs](long-bore-H.md)
+P's official Koolance studio fitting update and operator acceptance are presentation/installation decisions, not new manufactured-part revisions. Source geometry remains unchanged.
 
-[Compare I/J width variants and translucent views](width-variants.md).
+## Radiator history
 
-[Review K: ten pairs and end spacing](revision-K-ten-pairs.md).
+| Revision / issue | Main change | Status |
+|---|---|---|
+| R1 | 3 mm flat rack plate | Historical; early thickness/FEA studies also evaluated thinner versions of this profile |
+| R2 | 2 mm, integral 10U, forty optional rack slots | Historical |
+| R3 | Added tapped M4 fan holes and R50 aperture corners | Historical unselected alternative |
+| R4 / R4-M01 | Plain fan holes and nuts; accepted assembly sequence | Superseded geometry/pack; its final load analysis remains baseline evidence |
+| R5 / R5-M01 | 10 ×5 mm cable notch | Historical deeper-notch version |
+| **R6 / R6-M01** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | **Current operator-approved plate and supplier pack** |
 
-[Review L: six rack positions per side](revision-L-six-rack-positions.md).
+## Archive policy
 
-[Review M: balanced POM fixings](revision-M-balanced-fixings.md).
+Superseded writeups are in [archive](archive/README.md), labelled historical. Their original revision-specific CAD, render and analysis paths remain available for traceability and script dependencies. Unversioned legacy manifold outputs are G, not the current design. See [output guide](../output/README.md).
+
+Git preserves all earlier revisions, recaps and README/AGENTS history. Retrieve a snapshot into a separate directory with `git archive <tag-or-commit>` when needed; do not replace the current files to inspect history. Older descriptions saying “current”, “selected” or “next” apply only to their labelled snapshot.

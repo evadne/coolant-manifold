@@ -1,6 +1,6 @@
 # Revision P: plain-bore manifold faceplate
 
-P is a separate 2 mm faceplate variation. Operator-approved O-M02, its 3 mm countersunk plate and JLC handover files are preserved. This is a geometry and presentation iteration, not a qualified structural release.
+P is the current manifold body/faceplate pair, with a 2 mm plain-hole faceplate. It supersedes O-M02, whose 3 mm countersunk plate and JLC handover files are historical. This is a geometry and presentation iteration, not a qualified structural release.
 
 ## Changes
 
@@ -27,7 +27,7 @@ The M4 major-diameter envelope including the drill-tip depth remains approximate
 - `output/long-bore-P/product-views/`: eleven unmarked review angles/configurations and editable scene.
 - `output/long-bore-P/photorealistic/`: bare-port and QD/tube studio views. No product surface markings. QDs and tube tails remain visual references, not a routed loop.
 
-Reproduce with `build_long_bore.py --iteration P`, then `prepare_revision_P.py`, then `draw_revision_P.py` using the PDF runtime. Blender: `render_product.py -- --iteration P`. Prepare official fitting meshes with `prepare_koolance_qd3.py`, then run Blender `render_photoreal_product.py -- --iteration P` (optional `--device METAL` on a supported Mac). Preserve older issues. P needs its own supplier issue if selected; do not combine its 2 mm plate with the old screw-depth call-outs.
+Reproduce with `build_long_bore.py --iteration P`, then `prepare_revision_P.py`, then `draw_revision_P.py` using the PDF runtime. Blender: `render_product.py -- --iteration P`. Prepare official fitting meshes with `prepare_koolance_qd3.py`, then run Blender `render_photoreal_product.py -- --iteration P` (optional `--device METAL` on a supported Mac). Preserve older issues. P needs its own supplier manufacturing issue; do not combine its 2 mm plate with the old screw-depth call-outs.
 
 ## Rendition refresh - 15 September 2026
 

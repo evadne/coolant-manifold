@@ -1,12 +1,12 @@
 # Watercool MO-RA X-Splitter fit assessment
 
-**Conclusion: compatible with the selected fan-centre spacing, based on the operator's physical fit evidence and the Alphacool reference geometry.** On 15 September 2026 the operator confirmed that the Watercool MO-RA X-Splitter for Noctua NF-A20 sits snugly in Alphacool's existing four-NF-A20 fan plate for this radiator. R3/R4 use the same 200 × 200 mm fan-centre grid. No increase in fan spacing or change to the steel cut profile is indicated by this assessment.
+**Conclusion: compatible with the selected fan-centre spacing, based on the operator's physical fit evidence and the Alphacool reference geometry.** On 15 September 2026 the operator confirmed that the Watercool MO-RA X-Splitter for Noctua NF-A20 sits snugly in Alphacool's existing four-NF-A20 fan plate for this radiator. R6 uses the same 200 × 200 mm fan-centre grid. No increase in fan spacing or change to the steel cut profile is indicated by this assessment.
 
 ## Independent spacing check
 
 The Alphacool 14351 manufacturer mesh includes the four-fan plate on its Y = +24 mm outer face. Its four approximately Ø195 openings have nominal centres X = ±100, Z = 112/312, relative to the radiator centre at Z = 212. The surrounding small mounting holes independently give the same centres: X −178/−22 and +22/+178, with Z34/190 and Z234/390. Midpoints are exactly X±100, Z112/312: **200 mm horizontally and vertically**.
 
-In our plate coordinates the radiator centre is at height222.25, so these become X±100, height122.25/322.25: exactly the R3/R4 fan centres. Changing the local fan fixing pattern to 170 × 170 mm does not move the fan bodies. The 12 mm steel webs describe the apertures; they must not be confused with a uniform 12 mm free gap between fan frames. The usable space follows the shaped NF-A20 frames and is cross-shaped.
+In our plate coordinates the radiator centre is at height222.25, so these become X±100, height122.25/322.25: exactly the R6 fan centres. Changing the local fan fixing pattern to 170 × 170 mm does not move the fan bodies. The 12 mm steel webs describe the apertures; they must not be confused with a uniform 12 mm free gap between fan frames. The usable space follows the shaped NF-A20 frames and is cross-shaped.
 
 ## Splitter and installation
 
@@ -15,7 +15,7 @@ In our plate coordinates the radiator centre is at height222.25, so these become
 The operator's stock-plate fit observation is stronger evidence for the fan-frame gap than an approximate silhouette reconstructed from these photographs. Treat this as a supported accessory choice for the equivalent fan layout, while checking the local assembly details when a sample is installed:
 
 - Centre the splitter at X0 / plate height222.25. Keep it in the central pocket on the fan side of the steel.
-- R4's button heads sit on the core side of the plate; its nuts sit outside the fan faces. These are not located within the plate-adjacent 9 mm-deep pocket. The screw shafts occupy the fan mounting holes. This arrangement avoids adding a projecting screw head beneath the splitter on the fan side.
+- R6's button heads sit on the core side of the plate; its nuts sit outside the fan faces. These are not located within the plate-adjacent 9 mm-deep pocket. The screw shafts occupy the fan mounting holes. This arrangement avoids adding a projecting screw head beneath the splitter on the fan side.
 - The four innermost fan fixings are at X±15 / relative height±15. Their Ø9 washers leave a 21 mm-wide cross corridor in projection, before considering fan-frame shape. This is a hardware-envelope observation, not a certified PCB width limit.
 - Fix and electrically isolate the splitter using nonconductive double-sided tape, as selected by the operator. Follow the installation requirements below. The catalogue does not specify a dedicated mounting-hole pattern; do not invent tapped holes in the plate for it.
 - Orient the fan cable exits towards the splitter and check reach of the actual leads. Any fan rotations should retain clearance from the compact radiator M3 heads. The photographed tidy installation uses the Chromax arrangement; standard brown fans may require managing their longer leads.
@@ -25,6 +25,6 @@ The operator's stock-plate fit observation is stronger evidence for the fan-fram
 
 Fix and electrically isolate the splitter with nonconductive double-sided tape. Use enough thickness to keep exposed pin ends and solder joints clear of the steel after compression, and take care when fitting or servicing it. The plate's surface finish is not the intended insulation. Tape selection remains an assembly detail.
 
-R3/R4 STEP, DXF, drawings and renders remain unchanged. This assessment does not claim an exact splitter-body collision check or change the previous structural qualification limits.
+R6 STEP, DXF, drawings and renders remain unchanged. This assessment does not claim an exact splitter-body collision check or change the previous structural qualification limits.
 
 References: [Alphacool catalogue mesh](https://3dcenter.alphacool.com/stl/14351_0.stl), retained as `docs/references/alphacool-14351-manufacturer.stl`; [Watercool product specifications and installation photograph](https://shop.watercool.de/MO-RA-X-SPLITTER-FOR-NOCTUA-NF-A20_1), viewed 15 September 2026; operator report in this task on the same date.

@@ -1,0 +1,30 @@
+{
+  "body_dimensions_xyz_mm": [
+    410.0,
+    43.0,
+    87.0
+  ],
+  "faceplate_dimensions_xyz_mm": [
+    482.6000061035156,
+    2.0,
+    87.0
+  ],
+  "radiator_plate_dimensions_xyz_mm": [
+    482.6000061035156,
+    2.0000193119049072,
+    444.5
+  ],
+  "counts": {
+    "male_fitting_solids": 40,
+    "female_fitting_solids": 54,
+    "manifold_retention_screws": 12,
+    "fan_frames": 8,
+    "host_MCIO_cables": 2,
+    "radiator_rack_screws": 8
+  },
+  "source_hashes": "PASS",
+  "added_text_objects": 0,
+  "obsolete_MO_RA_objects": 0,
+  "scope": "Scene inventory and nominal source extents; not a complete collision or mechanical qualification.",
+  "checks": "PASS"
+}

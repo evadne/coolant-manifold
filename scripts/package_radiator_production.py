@@ -34,8 +34,9 @@ with zipfile.ZipFile(zpath,'w',zipfile.ZIP_DEFLATED) as z:
 with zipfile.ZipFile(zpath) as z:
  assert z.testzip() is None and set(z.namelist())=={f.name for f in files}
  for f in files:assert z.read(f.name)==f.read_bytes()
-shutil.copyfile(ROOT/f'docs/jlc-submission-{ISSUE}.md',out/'README.md')
-shutil.copyfile(ROOT/f'docs/jlc-radiator-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')
+guide_dir=ROOT/('docs' if ISSUE=='R6-M01' else 'docs/archive')
+shutil.copyfile(guide_dir/f'jlc-submission-{ISSUE}.md',out/'README.md')
+shutil.copyfile(guide_dir/f'jlc-radiator-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')
 shutil.copyfile(src/'geometry-verification.json',out/'geometry-verification.json')
 report={'issue':M['issue'],'checks':'PASS','pdf_pages':len(pages),'scheduled_features':len(schedule),
  'round_holes':28,'rack_slots':40,'air_apertures':4,'edge_notches':int(REV in ['R5','R6']),'zip_members':[f.name for f in files],

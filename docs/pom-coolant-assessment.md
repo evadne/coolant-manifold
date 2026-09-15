@@ -6,7 +6,7 @@ The operator expects formulated computer coolant, such as Koolance LIQ-705 or co
 
 ## Conclusion
 
-Both black unfilled POM-C and POM-H remain acceptable material candidates for this duty. There is no demonstrated coolant-compatibility reason to reject POM-H solely because it is a homopolymer. The earlier general preference for POM-C gave excessive weight to resistance in aggressive chemical environments that do not apply here. Keep the current drawing allowance for either material, with an identified grade and stock form.
+Both black unfilled POM-C and POM-H remain acceptable material candidates for this duty. There is no demonstrated coolant-compatibility reason to reject POM-H solely because it is a homopolymer. The earlier general preference for POM-C gave excessive weight to resistance in aggressive chemical environments that do not apply here. Retain both materials for Revision P, with an identified grade and stock form in its forthcoming supplier issue.
 
 POM-C offers established low-porosity machining-stock options. POM-H offers generally higher stiffness, strength and creep resistance. Choose between actual available grades and sound stock rather than treating either polymer family as automatically superior for this application. No geometry or supplier PDF change is needed for this conclusion.
 
@@ -25,7 +25,7 @@ Stock integrity, sealing-land finish, thread quality, fitting loads, differentia
 
 Practical selection: accept the supplier's identified, sound unfilled POM-C or POM-H machining stock if it meets the drawing and the selected coolant's compatibility requirements. Prototype leak/thermal testing remains part of assembly qualification, not grounds to reject either polymer family at this stage.
 
-Operator decision, 15 September 2026: retain both POM families and finalise the quotation package. The operator reports cleaning an EK Pro manifold with Blitz Part 2, followed by long satisfactory service. This is relevant field experience supporting the maintenance choice; the exact EK resin grade and exposure conditions remain unspecified. Further C/H comparison does not hold up the current supplier package.
+Operator decision, 15 September 2026: retain both POM families and finalise the quotation package. The operator reports cleaning an EK Pro manifold with Blitz Part 2, followed by long satisfactory service. This is relevant field experience supporting the maintenance choice; the exact EK resin grade and exposure conditions remain unspecified. Further C/H comparison does not hold up preparation of the P supplier issue; the earlier O-M02 package remains historical.
 
 ## Mayhems Blitz Part 2 / Blitz System cleaning
 

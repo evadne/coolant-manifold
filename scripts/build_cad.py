@@ -1,4 +1,4 @@
-"""Reproducible RM8-2U review CAD in mm. Thread call-outs in manufacturing.md."""
+"""Reproducible RM8-2U review CAD in mm. Historical G thread call-outs in docs/archive/manufacturing-G.md."""
 import json, math, argparse
 from pathlib import Path
 import cadquery as cq
