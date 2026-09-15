@@ -16,8 +16,12 @@ parser.add_argument('--thickness',type=float,default=2)
 parser.add_argument('--supports',type=int,choices=[4,8],default=8)
 parser.add_argument('--load',choices=['distributed','corners','top'],default='distributed')
 parser.add_argument('--benchmark',action='store_true')
+parser.add_argument('--payload-kg',type=float,default=6.225)
+parser.add_argument('--cg-mm',type=float,default=75)
+parser.add_argument('--label',default='')
 a=parser.parse_args();H=P['height'];t=a.thickness
 name=f'plate-t{t:g}-h{a.size:g}-s{a.supports}-{a.load}' if not a.benchmark else f'benchmark-h{a.size:g}'
+if a.label:name=a.label+'-'+name
 gmsh.initialize();gmsh.option.setNumber('General.Terminal',0)
 if a.benchmark:
  gmsh.model.occ.addRectangle(0,0,0,100,20)
@@ -61,8 +65,8 @@ else:
    rr=np.sqrt((coords[:,0]-x)**2+(coords[:,1]-H/2-dy)**2)
    ns=ids[abs(rr-1.8)<1e-5];assert len(ns)>10
    mounts.append((x,dy,ns))
- force=(P['radiator_mass_kg']+P['additional_load_kg'])*9.80665
- moment=force*75
+ force=a.payload_kg*9.80665
+ moment=force*a.cg_mm
  active=mounts if a.load=='distributed' else [m for m in mounts if abs(m[1])==203.5]
  denominator=sum(m[1]**2 for m in active)
  for x,dy,ns in active:
@@ -95,7 +99,7 @@ lines+=['*NODE PRINT,NSET=ALL','U','*NODE PRINT,NSET=SUPPORT,TOTALS=YES','RF',
 metadata={'name':name,'thickness_mm':t,'mesh_size_mm':a.size,'nodes':len(ids),'elements':len(elements),
  'solver':'CalculiX 2.23','element':'S6','gmsh':'4.15.2','poisson_ratio':0. if a.benchmark else .3,'payload_resultant_N':resultant.tolist(),
  'payload_moment_about_plate_centre_Nmm':mom.tolist(),'supports':a.supports if not a.benchmark else 'fixed edge',
- 'load':a.load,'self_weight':not a.benchmark,
+ 'payload_mass_kg':a.payload_kg,'payload_cg_mm':a.cg_mm,'load':a.load,'self_weight':not a.benchmark,
  'node_ids':list(map(int,ids)),'coordinates':coords.tolist(),'elements_connectivity':connectivity.astype(int).tolist(),
  'support_nodes':sorted(supports),
  'benchmark_expected_tip_mm':10*100**3/(3*200000*(20*2**3/12)) if a.benchmark else None}

@@ -1,0 +1,173 @@
+{
+  "refinement_relative_changes_300mm_case": {
+    "max_out_of_plane_mm": 0.001753515642392789,
+    "max_recovered_surface_von_mises_MPa": 0.00599210405152506
+  },
+  "basis": "Expanded equipment load screening, not a rack/radiator assembly rating.",
+  "mass_budget": [
+    {
+      "item": "SuperNova 1260 radiator, net dry",
+      "mass_kg": 4.225,
+      "basis": "Manufacturer net weight. No deduction for removed fan plate."
+    },
+    {
+      "item": "2 mm stainless rack plate",
+      "mass_kg": 1.1313292866597686,
+      "basis": "Current R1 net CAD area x 2 mm x 7900 kg/m3; no new cut profile."
+    },
+    {
+      "item": "8 x Noctua NF-A20 PWM",
+      "mass_kg": 2.96,
+      "basis": "Manufacturer 370 g per fan, excluding packaging."
+    },
+    {
+      "item": "ULTITUBE D5 200 dry reservoir",
+      "mass_kg": 1.0,
+      "basis": "Engineering allowance, not a verified manufacturer net mass."
+    },
+    {
+      "item": "D5 NEXT pump",
+      "mass_kg": 0.5,
+      "basis": "Engineering allowance, not a verified manufacturer net mass."
+    },
+    {
+      "item": "ULTITUBE coolant, 470 ml",
+      "mass_kg": 0.4935,
+      "basis": "Manufacturer capacity; assumed formulated-coolant density 1.05 kg/l."
+    },
+    {
+      "item": "Radiator and local plumbing coolant",
+      "mass_kg": 2.0,
+      "basis": "Separate provisional allowance; measure actual fill mass. Does not consume equipment allowance."
+    },
+    {
+      "item": "Additional equipment requested by operator",
+      "mass_kg": 2.0,
+      "basis": "Additional to all listed fans, pump, reservoir, plate and coolant."
+    }
+  ],
+  "budget_total_kg": 14.309829286659768,
+  "analysis_payload_kg": 15,
+  "analysis_plate_mass_kg": 1.1313292866597686,
+  "analysis_total_kg": 16.131329286659767,
+  "reserve_above_budget_kg": 1.8214999999999986,
+  "unverified_masses": "Dry reservoir, pump and radiator/local coolant entries are explicit allowances; not measured net weights.",
+  "geometry": "Unchanged R1 cut profile modelled at 2 mm; no fan-tab or pump-bracket redesign.",
+  "mounting": "Operator: optional pump/res on 140 mm fan-hole bracket using OEM radiator plate; alternatively separate rack pump/res. Loads here all attributed to radiator plate through radiator attachment holes.",
+  "cases": [
+    {
+      "name": "expanded-plate-t2-h3-s8-distributed",
+      "thickness_mm": 2,
+      "mesh_size_mm": 3.0,
+      "nodes": 82941,
+      "elements": 40374,
+      "supports": 8,
+      "load": "distributed",
+      "max_out_of_plane_mm": 0.2068333,
+      "max_downwards_mm": 0.001096501,
+      "peak_displacement_location_mm": [
+        5.684341886080802e-14,
+        0.0,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 54.47966549305077,
+      "max_recovered_surface_von_mises_MPa": 67.39187546645401,
+      "total_support_reaction_N": [
+        2.134607e-09,
+        158.1935,
+        4.569077e-09
+      ],
+      "vertical_force_balance_relative_error": 2.9016166526174558e-05,
+      "support_reaction_moment_Nmm": [
+        -22064.96436276022,
+        -0.0018663202463358175,
+        -0.0009591625316431873
+      ],
+      "overturning_moment_balance_relative_error": 8.442163546007464e-08,
+      "payload_mass_kg": 15.0,
+      "cg_offset_mm": 150.0,
+      "total_mass_kg": 16.131329286659767,
+      "proof_strength_to_peak_stress_ratio": 3.4128743028451294
+    },
+    {
+      "name": "expanded-plate-t2-h6-s4-top",
+      "thickness_mm": 2,
+      "mesh_size_mm": 6.0,
+      "nodes": 38763,
+      "elements": 18662,
+      "supports": 4,
+      "load": "top",
+      "max_out_of_plane_mm": 0.4752943,
+      "max_downwards_mm": 0.002234767,
+      "peak_displacement_location_mm": [
+        1.1368683772161603e-13,
+        0.0,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 112.74610666594965,
+      "max_recovered_surface_von_mises_MPa": 136.81914105982077,
+      "total_support_reaction_N": [
+        -2.402917e-09,
+        158.1957,
+        -6.873795e-09
+      ],
+      "vertical_force_balance_relative_error": 1.5109551118941411e-05,
+      "support_reaction_moment_Nmm": [
+        -44129.92574836486,
+        0.0019515677709023294,
+        0.008050305378446865
+      ],
+      "overturning_moment_balance_relative_error": 1.6958217052831515e-08,
+      "payload_mass_kg": 15.0,
+      "cg_offset_mm": 300.0,
+      "total_mass_kg": 16.131329286659767,
+      "proof_strength_to_peak_stress_ratio": 1.6810513369575841
+    },
+    {
+      "name": "expanded-plate-t2-h3-s4-top",
+      "thickness_mm": 2,
+      "mesh_size_mm": 3.0,
+      "nodes": 82941,
+      "elements": 40374,
+      "supports": 4,
+      "load": "top",
+      "max_out_of_plane_mm": 0.4761292,
+      "max_downwards_mm": 0.002235773,
+      "peak_displacement_location_mm": [
+        5.684341886080802e-14,
+        0.0,
+        0.0
+      ],
+      "max_integration_point_von_mises_MPa": 113.83677368580238,
+      "max_recovered_surface_von_mises_MPa": 137.6439177369602,
+      "total_support_reaction_N": [
+        6.335318e-09,
+        158.1958,
+        7.312142e-09
+      ],
+      "vertical_force_balance_relative_error": 1.4477432236814636e-05,
+      "support_reaction_moment_Nmm": [
+        -44129.924857659775,
+        -0.0021629618308907084,
+        0.0024252938039808214
+      ],
+      "overturning_moment_balance_relative_error": 3.2254805493181493e-09,
+      "payload_mass_kg": 15.0,
+      "cg_offset_mm": 300.0,
+      "total_mass_kg": 16.131329286659767,
+      "proof_strength_to_peak_stress_ratio": 1.6709783024305789
+    }
+  ],
+  "limits": [
+    "Static linear elastic S6 shell model, E200 GPa, nu0.3, ideal fixed translations at rack holes.",
+    "No radiator reinforcement, bolt preload, washer contact, thread pull-out, vibration or transport impact model.",
+    "150 mm or 300 mm effective CG offsets are test scenarios, not a measured product centre of gravity.",
+    "Direct pump loads applied to narrow aperture webs or a different carrier are not validated by these attachment-hole loads.",
+    "Eight A20 fans need appropriate fan mounting plates/adapters. Existing R1 aperture windows alone do not supply A20 mounting holes."
+  ],
+  "sources": {
+    "fan": "https://www.noctua.at/en/products/nf-a20-pwm/specifications",
+    "reservoir": "https://shop.aquacomputer.de/Wasserkuehlung/Ausgleichsbehaelter-Zub/Fuer-Pumpenmontage/ULTITUBE-D5-200-Ausgleichsbehaelter-fuer-D5-Pumpen::3844.html",
+    "radiator": "https://download.alphacool.com/legacy/ENG_1018089_Alphacool_NexXxoS_XT45_Full_Copper_1260mm_SuperNova_Radiator.pdf"
+  }
+}

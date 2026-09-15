@@ -53,7 +53,7 @@ def read_case(name):
   assert abs(report['max_recovered_surface_von_mises_MPa']/75.-1)<.03
  else:
   mass=json.loads((ROOT/'output/radiator-R1/verification.json').read_text())['plate_mass_kg']*meta['thickness_mm']/3
-  expected=6.225*9.80665+mass*9.81
+  expected=meta.get('payload_mass_kg',6.225)*9.80665+mass*9.81
   report['vertical_force_balance_relative_error']=abs(reaction[1]/expected-1)
   assert report['vertical_force_balance_relative_error']<.001
   report['support_reaction_moment_Nmm']=reaction_moment.tolist()
@@ -69,39 +69,40 @@ def read_case(name):
  triangles=np.array([[lookup[n] for n in e[1:4]] for e in einput])
  face_stress=np.array([surface[e[0]] for e in einput])
  return report,(meta,xy,disp,triangles,face_stress)
-names=['benchmark-h3','plate-t3-h6-s8-distributed','plate-t2-h6-s8-distributed',
- 'plate-t2-h3-s8-distributed','plate-t1.5-h6-s8-distributed','plate-t2-h6-s4-top']
-reports=[];data={}
-for name in names:
- report,raw=read_case(name);reports.append(report);data[name]=raw
-coarse=reports[2];fine=reports[3]
-convergence={key:abs(coarse[key]/fine[key]-1) for key in ('max_out_of_plane_mm','max_recovered_surface_von_mises_MPa')}
-assert convergence['max_out_of_plane_mm']<.05,convergence
-assert convergence['max_recovered_surface_von_mises_MPa']<.05,convergence
-summary={'method':'Linear elastic S6 shell analysis, E 200 GPa, nu 0.3, except benchmark nu=0.',
- 'solver':'CalculiX 2.23 Debian build 2.23-1; SPOOLES solver; Gmsh 4.15.2',
- 'scope':'Full R1 cut profile at varied thickness; no radiator stiffening or joint/contact model.',
- 'surface_stress_recovery':'Linear through-thickness extrapolation from outer Gauss layers to surfaces; no in-plane nodal extrapolation.',
- 'convergence_relative_changes_h6_to_h3':convergence,'cases':reports}
-(OUT/'results.json').write_text(json.dumps(summary,indent=2)+'\n')
-meta,xy,disp,tris,stress=data['plate-t2-h3-s8-distributed']
-tri=mtri.Triangulation(xy[:,0],xy[:,1],tris)
-fig,axes=plt.subplots(1,2,figsize=(12,6.5),layout='constrained')
-for ax in axes:
- ax.set_aspect('equal');ax.set_xlabel('Horizontal position / mm');ax.set_ylabel('Height / mm')
- ax.set_facecolor('#eef1f3')
-im=axes[0].tripcolor(tri,np.abs(disp[:,2])*1000,shading='gouraud',cmap='viridis')
-fig.colorbar(im,ax=axes[0],label='Out-of-plane displacement magnitude / micrometres')
-im=axes[1].tripcolor(tri,facecolors=stress,shading='flat',cmap='magma')
-fig.colorbar(im,ax=axes[1],label='Recovered surface von Mises stress / MPa')
-axes[0].set_title('2 mm plate / elastic deflection')
-axes[1].set_title('2 mm plate / surface stress')
-fig.suptitle('6.225 kg payload + plate weight; 75 mm eccentricity; eight secured rack fixings\n'
- 'Undeformed outline shown. Idealised supports and distributed radiator loads.',fontsize=12)
-fig.savefig(OUT/'2mm-plate-analysis.png',dpi=180);plt.close(fig)
-# Retain compressed input and result evidence; meshes and full coordinate JSON
-# remain regenerable working files rather than duplicating them in git.
-for name in names:
- for ext in ('inp','dat'):
-  with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write((WORK/(name+'.'+ext)).read_bytes())
-print(json.dumps(summary,indent=2))
+if __name__=='__main__':
+ names=['benchmark-h3','plate-t3-h6-s8-distributed','plate-t2-h6-s8-distributed',
+  'plate-t2-h3-s8-distributed','plate-t1.5-h6-s8-distributed','plate-t2-h6-s4-top']
+ reports=[];data={}
+ for name in names:
+  report,raw=read_case(name);reports.append(report);data[name]=raw
+ coarse=reports[2];fine=reports[3]
+ convergence={key:abs(coarse[key]/fine[key]-1) for key in ('max_out_of_plane_mm','max_recovered_surface_von_mises_MPa')}
+ assert convergence['max_out_of_plane_mm']<.05,convergence
+ assert convergence['max_recovered_surface_von_mises_MPa']<.05,convergence
+ summary={'method':'Linear elastic S6 shell analysis, E 200 GPa, nu 0.3, except benchmark nu=0.',
+  'solver':'CalculiX 2.23 Debian build 2.23-1; SPOOLES solver; Gmsh 4.15.2',
+  'scope':'Full R1 cut profile at varied thickness; no radiator stiffening or joint/contact model.',
+  'surface_stress_recovery':'Linear through-thickness extrapolation from outer Gauss layers to surfaces; no in-plane nodal extrapolation.',
+  'convergence_relative_changes_h6_to_h3':convergence,'cases':reports}
+ (OUT/'results.json').write_text(json.dumps(summary,indent=2)+'\n')
+ meta,xy,disp,tris,stress=data['plate-t2-h3-s8-distributed']
+ tri=mtri.Triangulation(xy[:,0],xy[:,1],tris)
+ fig,axes=plt.subplots(1,2,figsize=(12,6.5),layout='constrained')
+ for ax in axes:
+  ax.set_aspect('equal');ax.set_xlabel('Horizontal position / mm');ax.set_ylabel('Height / mm')
+  ax.set_facecolor('#eef1f3')
+ im=axes[0].tripcolor(tri,np.abs(disp[:,2])*1000,shading='gouraud',cmap='viridis')
+ fig.colorbar(im,ax=axes[0],label='Out-of-plane displacement magnitude / micrometres')
+ im=axes[1].tripcolor(tri,facecolors=stress,shading='flat',cmap='magma')
+ fig.colorbar(im,ax=axes[1],label='Recovered surface von Mises stress / MPa')
+ axes[0].set_title('2 mm plate / elastic deflection')
+ axes[1].set_title('2 mm plate / surface stress')
+ fig.suptitle('6.225 kg payload + plate weight; 75 mm eccentricity; eight secured rack fixings\n'
+  'Undeformed outline shown. Idealised supports and distributed radiator loads.',fontsize=12)
+ fig.savefig(OUT/'2mm-plate-analysis.png',dpi=180);plt.close(fig)
+ # Retain compressed input and result evidence; meshes and full coordinate JSON
+ # remain regenerable working files rather than duplicating them in git.
+ for name in names:
+  for ext in ('inp','dat'):
+   with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write((WORK/(name+'.'+ext)).read_bytes())
+ print(json.dumps(summary,indent=2))
