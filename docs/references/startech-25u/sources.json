@@ -1,0 +1,104 @@
+{
+  "retrieved": "2026-09-15",
+  "product_url": "https://www.startech.com/en-gb/server-management/4postrack25u",
+  "sources": {
+    "dimensions.pdf": "https://media.startech.com/downloads/image/4POSTRACK25U_Diagram.pdf",
+    "current-manual.pdf": "https://media.startech.com/downloads/image/4POSTRACKxU_Manual.pdf",
+    "manual.pdf": "https://sgcdn.startech.com/005329/media/sets/4POSTRACK25U_Manual/4POSTRACK25U_usermanual.pdf",
+    "datasheet.pdf": "https://media.startech.com/cms/pdfs/4postrack25u_datasheet.pdf",
+    "Open_Frame_Racks.vssx": "User attachment; official download also links https://media.startech.com/downloads/raw/Open_Frame_Racks.vssx"
+  },
+  "stencil": {
+    "master": "master5.xml",
+    "id": 50,
+    "name": "4POSTRACK25U - Front",
+    "scale": "Width=23.6219IN/10; Height=50.7242IN/10. Symbol is explicitly 1:10, not 1:1 CAD.",
+    "properties": {
+      "Sku": {
+        "Value": "4POSTRACK25U",
+        "Label": "Model Number"
+      },
+      "Mfg": {
+        "Value": "Startech.com",
+        "Label": "Manufacturer"
+      },
+      "ProdType": {
+        "Value": "Server-Racks",
+        "Label": "Product Category"
+      },
+      "ProdDesc": {
+        "Value": "4-Post 25U Mobile Open Frame Server Rack",
+        "Label": "Product Description"
+      },
+      "MfgURL": {
+        "Value": "Startech.com",
+        "Label": "Manufacturer URL"
+      },
+      "ProdWgt": {
+        "Value": "72.8",
+        "Label": "Product Weight (lbs)"
+      },
+      "ProdLG": {
+        "Value": "1147.8 MAX",
+        "Label": "Product Length (mm)"
+      },
+      "ProdWD": {
+        "Value": "600",
+        "Label": "Product Width (mm)"
+      },
+      "ProdHT": {
+        "Value": "1215.4",
+        "Label": "Product Height (mm)"
+      },
+      "MaxDP": {
+        "Value": "1017",
+        "Label": "Maximum Mounting Depth (mm)"
+      },
+      "MinDP": {
+        "Value": "560",
+        "Label": "Minimum Mounting Depth (mm)"
+      },
+      "ProdHTwCSTR": {
+        "Value": "1288.4",
+        "Label": "Product Height with Casters (mm)"
+      },
+      "TotalRU": {
+        "Value": "25",
+        "Label": "Total Rack Units"
+      },
+      "TotalLoad": {
+        "Value": "1199.5",
+        "Label": "Load Capacity (lbs)"
+      }
+    },
+    "preview": "image8.png, linked by master5.xml.rels; preserved as stencil-front.png",
+    "classification": "2D front symbol, embedded bitmap and vector paths, useful registration reference; no3D depth or manufacturing tolerances."
+  },
+  "selected_dimensions_mm": {
+    "width": 600,
+    "height_with_casters": 1288.34,
+    "body_height": 1215.4,
+    "overall_depth": 661.8,
+    "mounting_depth": 558.8,
+    "rack_hole_columns": 465,
+    "opening_width": 450,
+    "vertical_opening": 1113.9,
+    "nominal_25U_height": 1111.25,
+    "hole_square": 9.8,
+    "U1_datum_Z": 142.255
+  },
+  "inferences": [
+    "Depth set22in at0/0 per manual. Symmetric inferred rail-plane offsets16.5 to upright datum,51.5 to overall extremity.",
+    "9.8 square apertures and142.255 Udatum derived from scaled stencil vector coordinates; not manufacturing tolerances.",
+    "Simplified2.5mm L profile/beam sections and bought-in screw/caster detail; overall drawing envelope retained.",
+    "Rack stencil rounds mounting depths to560/1017 and metadata maxlength1147.8, whereas dimensioned drawing gives1119; use dimensioned diagram for envelope and manual exact inch-derived mounting plane separation."
+  ],
+  "sha256": {
+    "datasheet.pdf": "9a8a469e8a52b03a54586dae131f3abbdda4d23c8ac80ecbab354c4a79a5fdd6",
+    "current-manual.pdf": "dab05ef42ca51df82b2e4801ee9c97bf154d84f3ea9fc9ce23f5f7ca49459ddd",
+    "dimensions.pdf": "99cd5dd23cfaa8d0903e3cfcbbab178818c7aece6c13d2b7d3053d69395582f9",
+    "stencil-front.png": "e868e5958082e50e72f89c819e2d9a29d1711994d87e9073317b98bf308e6e00",
+    "Open_Frame_Racks.vssx": "7efa99b8677f0045a1e03b5230c0bb8efbecabd9719e1d52f9a13a0b7b8ff598",
+    "manual.pdf": "79bebb31cd7af3edaf77a619dd97d013326071c6883121c3779e9deb799af8bc"
+  }
+}
