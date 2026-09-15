@@ -5,7 +5,7 @@ import cadquery as cq
 import ezdxf
 from OCP.BRepAdaptor import BRepAdaptor_Surface
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R5-M01',choices=['R4-M01','R5-M01'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M01',choices=['R4-M01','R5-M01','R6-M01'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
@@ -48,12 +48,15 @@ for x,y in c:
  for xx in (x-1.5,x+1.5):assert any(abs(r-3.5)<1e-6 and math.hypot(px-xx,py-y)<1e-6 for px,py,r in cyl)
 assert sum(abs(r-3.5)<1e-6 for x,y,r in cyl)==80
 assert sum(abs(r-50)<1e-6 for x,y,r in cyl)==16
-assert sum(abs(r-2)<1e-6 for x,y,r in cyl)==4+2*int(notched)
-assert sum(abs(r-1)<1e-6 for x,y,r in cyl)==2*int(notched)
-assert len(cyl)==128+4*int(notched)
+# Four outer R2 corners plus the four parameterised notch arcs.
+expected_arcs=[(-P['width']/2+2,2,2),(P['width']/2-2,2,2),
+               (-P['width']/2+2,H-2,2),(P['width']/2-2,H-2,2)]
 if notched:
- for x,y,r in [(5,H-1,1),(-5,H-1,1),(2,H-3,2),(-2,H-3,2)]:
-  assert any(math.hypot(x-xx,y-yy)<1e-6 and abs(rr-r)<1e-6 for xx,yy,rr in cyl)
+ n=P['cable_notch'];a=n['mouth_width']/2;u=n['mouth_radius'];b=n['bottom_radius'];d=n['depth']
+ expected_arcs += [(a,H-u,u),(-a,H-u,u),(a-u-b,H-d+b,b),(-a+u+b,H-d+b,b)]
+for x,y,r in expected_arcs:
+ assert any(math.hypot(x-xx,y-yy)<1e-6 and abs(rr-r)<1e-6 for xx,yy,rr in cyl)
+assert len(cyl)==128+4*int(notched)
 # Independently verify the two circular DXF groups and all closed profile loops.
 dxf=ezdxf.readfile(OUT/f'{stem}.dxf');assert not dxf.audit().has_errors
 circles=list(dxf.modelspace().query('CIRCLE'));loops=list(dxf.modelspace().query('LWPOLYLINE'))

@@ -8,7 +8,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R5-M01',choices=['R4-M01','R5-M01'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M01',choices=['R4-M01','R5-M01','R6-M01'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2
@@ -53,7 +53,7 @@ def table(x,y,width,headers,rows,weights=None,rh=5.6):
  return bottom
 def sheet(n,title):
  rect(10,10,400,277);text(15,279,STEM,4.9,True);text(15,271,title,3.3)
- text(405,280,('R5 CABLE NOTCH / ISSUE M01' if NOTCH else 'R4 APPROVED / ISSUE M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
+ text(405,280,(f'{REV} CABLE NOTCH / ISSUE M01' if NOTCH else 'R4 APPROVED / ISSUE M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
  line(10,267,410,267);rect(10,10,400,20)
  for x in (145,283,352):line(x,10,x,30)
  lines(14,24,['304 / EN 1.4301 stainless steel; thickness 2.00 ±0.10','Units: mm; dimensions at 20°C; do not scale'],2.55,7)
@@ -181,26 +181,30 @@ if NOTCH:
  text(25,257,'LOCAL FRONT PROFILE / 5:1',3.2,True)
  local=dict(P,width=32,height=15,outer_radius=0)
  draw_profile(outline(local),115,152,5)
- # Top edge is at y227; notch floor at y202.
- dimh(90,140,242,'10.00 ±0.15 MOUTH',227)
- dimv(211,202,227,'5.00 ±0.15 DEPTH',140)
+ a=NOTCH['mouth_width']/2;d=NOTCH['depth'];u=NOTCH['mouth_radius'];b=NOTCH['bottom_radius'];throat=2*(a-u);floor=throat-2*b
+ dimh(115-5*a,115+5*a,242,f"{2*a:.2f} ±0.15 MOUTH",227)
+ dimv(211,227-5*d,227,f"{d:.2f} ±0.15 DEPTH" if d>=4 else '',140)
+ if d<4:
+  text(216,224,f'{d:.2f} ±0.15',2.5);text(216,218,'DEPTH',2.5)
  C.setDash([4,2,1,2]);line(115,197,115,235,.12);C.setDash()
  text(115,191,'X = 0.000 ±0.10; top edge Y = 444.500',2.6,align='centre')
- line(136.4645,225.5355,163,251,.12);arrow(136.4645,225.5355,26.5355,25.4645)
- text(166,251,'2x R1.00 ±0.15',2.6)
- line(132.0711,204.9289,171,176,.12);arrow(132.0711,204.9289,38.9289,-28.9289)
- text(172,174,'2x R2.00 ±0.15',2.6)
+ ex=115+5*(a-u/math.sqrt(2));ey=227-5*u*(1-1/math.sqrt(2))
+ line(ex,ey,163,251,.12);arrow(ex,ey,163-ex,251-ey)
+ text(166,251,f'2x R{u:.2f} ±0.15',2.6)
+ bx=115+5*(a-u-b+b/math.sqrt(2));by=227+5*(-d+b-b/math.sqrt(2))
+ line(bx,by,171,176,.12);arrow(bx,by,171-bx,176-by)
+ text(172,174,f'2x R{b:.2f} ±0.15',2.6)
  text(115,145,'Local boundary is cropped; see sheet 1 for full plate.',2.5,align='centre')
  text(247,252,'CABLE NOTCH REQUIREMENTS',3.2,True)
  lines(247,242,['One open notch, THROUGH the full 2 mm sheet.',
   'Centred on the plate width; opens at the top edge.',
-  'Maximum mouth width: 10.00 ±0.15.',
-  'Depth below straight top edge: 5.00 ±0.15.',
-  '2x R1 entry transitions; 2x R2 bottom corners.',
+  f'Maximum mouth width: {2*a:.2f} ±0.15.',
+  f'Depth below straight top edge: {d:.2f} ±0.15.',
+  f'2x R{u:g} entry transitions; 2x R{b:g} bottom corners.',
   'All four arcs tangent to adjoining straight edges.',
-  'Parallel throat width: 8.00 REF.',
-  'Bottom flat width: 4.00 REF.',
-  'Floor elevation: Y439.500 REF.'],2.8,7)
+  f'Parallel throat width: {throat:.2f} REF.',
+  f'Bottom flat width: {floor:.2f} REF.',
+  f"Floor elevation: Y{P['height']-d:.3f} REF."],2.8,7)
  text(247,168,'EDGE FINISH - E01 ONLY',3.2,True)
  lines(247,158,['Round cable-contact edges R0.30-0.50 on both',
   'broad faces, continuously around the notch.',

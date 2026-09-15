@@ -11,7 +11,7 @@ import numpy as np
 from radiator_notch import outline, arc_mid, notch_area
 
 ROOT = Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5'],default='R1')
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5','R6'],default='R1')
 REV=parser.parse_args().revision
 P = json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
 OUT = ROOT/f'output/radiator-{REV}'
@@ -109,7 +109,7 @@ for x,y in mounts:
     assert np.count_nonzero(abs(radius-1.23)<.015)>=12,(x,z)
     pilot_evidence.append([x,z])
 
-if REV in ['R2','R3','R4','R5']:
+if REV in ['R2','R3','R4','R5','R6']:
     assert abs(H/44.45-10)<1e-9 and len(slots)==40
     assert all(any(abs((y%44.45)-o)<1e-7 for o in [6.35,38.1]) for x,y in slots)
 
@@ -129,13 +129,15 @@ if fan_mounts:
 mass=solid.Volume()*P['density_kg_m3']/1e9
 if P.get('cable_notch'):
     # Check the mouth, neck, floor and smooth returns on the reimported solid.
-    for x,y,inside in [(0,H-4.99,False),(0,H-5.01,True),(3.99,H-2,False),(4.01,H-2,True),(5.01,H-.01,True)]:
+    n=P['cable_notch'];depth=n['depth'];wall=n['mouth_width']/2-n['mouth_radius']
+    mid_y=H-(n['mouth_radius']+depth-n['bottom_radius'])/2
+    for x,y,inside in [(0,H-depth+.01,False),(0,H-depth-.01,True),(wall-.01,mid_y,False),(wall+.01,mid_y,True),(n['mouth_width']/2+.01,H-.01,True)]:
         assert reloaded.isInside((x,y,T/2))==inside,(x,y)
     previous=cq.importers.importStep(str(ROOT/'output/radiator-R4/rack-plate-R4.step')).val()
     assert solid.cut(previous).Volume()<1e-6
     removed=previous.cut(reloaded)
     assert abs(removed.Volume()-notch_area(P)*T)<1e-4
-    assert removed.BoundingBox().ymin>=H-5-1e-6
+    assert removed.BoundingBox().ymin>=H-depth-1e-6
 payload=P['radiator_mass_kg']+P['additional_load_kg']; total=payload+mass
 g=9.80665; moment=payload*g*P['assumed_load_cg_behind_plate_mm']/1000
 span=max(P['rack_mount_y'])-min(P['rack_mount_y'])
