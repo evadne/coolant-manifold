@@ -55,6 +55,8 @@ A45mm slab does not clear this particular conservative envelope. A50mm slab clea
 
 ## Transparent PVC tubes
 
+The operator accepted the corrected front tubing view, hose lengths and clearance on 15 September 2026, following the free-XYZ/contact correction in commit `08beda1`. Retain this geometry as the current rack-scene baseline, including the 100 mm nominal shortening of all eighteen front branches. Do not reopen this visual acceptance without a relevant design change.
+
 The 18 branch hoses are **10 mm ID /13 mm OD**, matching QD3-FT10X13. Three infrastructure hoses use **10 mm ID /16 mm OD** and matching illustrative compression envelopes. Both are modelled as real annular walls containing a separate clear coolant volume, rather than opaque coloured cylinders.
 
 [Koolance HOS-10CL-3M](https://koolance.com/tubing-clear-uv-reactive-pvc-10mm-x-13mm-3-8in-x-1-2in-3m) publishes approximately 37 mm bend radius for its 10/13 PVC. The eighteen branch routes now use a static elastic-rod calculation with gravity and an estimated9.4 MPa modulus derived from the published Shore80A hardness. Each front branch is100 mm shorter in nominal modelled length following operator review. Approximately9 mm is clamped at each fitting; the free spans bend continuously instead of retaining long straight sections. All X/Y/Z coordinates are free between fitting exits. Paired hoses use frictionless regularised contact, replacing the earlier incorrectly prescribed lateral lanes. See [the physics basis and limits](pvc-routing-physics.md).

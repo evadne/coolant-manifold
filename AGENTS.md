@@ -30,6 +30,8 @@ Current `output/context-25U/` combines P/R6 and official Koolance/Noctua referen
 
 The host uses one x16 link via two MCIO8i cables. Exact eight-downlink switch hardware remains unselected. The provisional ULTITUBE/D5 NEXT has independent support behind the fans atY285; do not invent a140mm mount on a populated200mm plate. Its support is illustrative, not a new manufactured part. Generic24U files/renderer remain historical. See `docs/context-25U.md`.
 
+The operator accepted the corrected front tubing view, hose lengths and clearance on 15 September 2026, following the free-XYZ/contact correction in commit `08beda1`. Retain this geometry as the current rack-scene baseline, including the 100 mm nominal shortening of all eighteen front branches. Do not reopen this visual acceptance without a relevant design change. This acceptance concerns the visible front tubing layout; it does not close the separate manifold side-elbow/cage-nut concern.
+
 ## Coolant and qualification
 
 Both POM families remain acceptable candidates for formulated inhibited computer coolant such as correctly prepared Mayhems X1 or Koolance LIQ-705, expected maximum liquid temperature around50°C. This is a duty assumption, not a tested assembly rating. Do not exclude POM-H based on strong-acid/alkali service that is outside scope. Prefer identified sound machining stock and actual coolant compatibility; EK's precise C/H grade was not established.
