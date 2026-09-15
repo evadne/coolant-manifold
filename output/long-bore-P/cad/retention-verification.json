@@ -1,0 +1,74 @@
+{
+  "revision": "P",
+  "status": "Separate design variation; O-M02 retained",
+  "plate_thickness_mm": 2,
+  "plate_mass_kg": 0.3949459598894161,
+  "plate_clearance_holes": 12,
+  "countersinks": 0,
+  "body_mounts_xz_mm": [
+    [
+      -198.0,
+      7.0
+    ],
+    [
+      -120.0,
+      7.0
+    ],
+    [
+      -40.0,
+      7.0
+    ],
+    [
+      40.0,
+      7.0
+    ],
+    [
+      120.0,
+      7.0
+    ],
+    [
+      198.0,
+      7.0
+    ],
+    [
+      -198.0,
+      80.0
+    ],
+    [
+      -120.0,
+      80.0
+    ],
+    [
+      -40.0,
+      80.0
+    ],
+    [
+      40.0,
+      80.0
+    ],
+    [
+      120.0,
+      80.0
+    ],
+    [
+      198.0,
+      80.0
+    ]
+  ],
+  "boss_height_mm": 3,
+  "boss_projection_mm": 1,
+  "body_depth_including_bosses_mm": 43,
+  "head_diameter_mm": 7.6,
+  "head_height_mm": 2.2,
+  "fastener": "12 x M4 x 16 ISO 7380-1 A2 stainless, Westfield WF2237",
+  "screw_nominal_reach_in_POM_mm": 14,
+  "minimum_full_form_thread_from_end_of_entry_mm": 16,
+  "M4_entry_depth_mm": 0.55,
+  "M4_full_diameter_pilot_depth_mm": 18,
+  "M4_drill_tip_depth_mm": 18.991420021395474,
+  "minimum_M4_envelope_to_pilot_represented_wet_network_mm": 8.635034694600556,
+  "minimum_head_edge_to_diameter_36_port_keepout_mm": 2.6182308941495585,
+  "minimum_head_edge_to_body_top_bottom_mm": 3.2,
+  "alternative_screws": "Plain-bearing M4 x 0.7 heads only; check head/washer envelope, screw length and engagement. Countersunk screws incompatible.",
+  "scope": "Geometry checks only; POM thread stripping, creep, torque, coupling loads and rack stiffness not qualified. Thread helices omitted."
+}

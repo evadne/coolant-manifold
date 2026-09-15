@@ -14,10 +14,10 @@ from mathutils import Vector
 
 ROOT = Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument('--iteration',choices=('G','H','I','J','K','L','M','N','O'),default='G')
+parser.add_argument('--iteration',choices=('G','H','I','J','K','L','M','N','O','P'),default='G')
 parser.add_argument('--manufacturing', choices=['O-M02'])
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-LONG=args.iteration in ('H','I','J','K','L','M','N','O')
+LONG=args.iteration in ('H','I','J','K','L','M','N','O','P')
 REV=args.iteration
 OUT = ROOT / (f'output/long-bore-{REV}/product-views' if LONG else 'output/product-views')
 OUT.mkdir(parents=True, exist_ok=True)
@@ -127,6 +127,14 @@ for rear, positions in ((False,S['faceplate_mounts']),(True,S['cover_bolts'])):
     if not positions:
         continue
     spec = P['cover_fastener'] if rear else P['faceplate_fastener']
+    if spec.get('style')=='button':
+        for x,z in positions:
+            bpy.ops.wm.stl_import(filepath=str(MESH/'button-head.stl'))
+            head=bpy.context.object;head.name='Front M4 ISO 7380 button head'
+            head.location=(x,-P['faceplate_thickness'],z)
+            finish(head,steel,0);heads.append(head)
+        continue
+
     outer = P['body_depth']+P['lid_thickness'] if rear else -P['faceplate_thickness']
     inward = -1 if rear else 1
     recess = (spec['countersink_diameter']-spec['head_diameter'])/2
@@ -256,7 +264,7 @@ if LONG:
     section.hide_render=True
     section.hide_set(True)
     bpy.data.objects['body'].hide_render=False
-if REV in ('I','J','K','L','M','N','O'):
+if REV in ('I','J','K','L','M','N','O','P'):
     # Body-only inspection: exactly 50/50 Transparent and Principled surface shaders.
     visibility={o.name:o.hide_render for o in scene.objects if o.type=='MESH'}
     body=bpy.data.objects['body']
@@ -315,8 +323,8 @@ bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'assembled-unmarked.blend'))
     'QD3_male_references':2*len(S['ports_x']),'side_plug_references':4 if LONG else 0,
     'notes':'QD3 shapes, plugs and screws are visual references; CAD-derived POM and steel. No tubing, labels or markings.',
     'technical_section':'09-gallery-section.png' if LONG else None,
-    'body_transparency':.5 if REV in ('I','J','K','L','M','N','O') else None,
-    'body_transparency_view':'10-body-50-percent-transparent.png' if REV in ('I','J','K','L','M','N','O') else None,
-    'side_elbow_view':'11-side-elbow-configuration.png' if REV in ('I','J','K','L','M','N','O') else None,
+    'body_transparency':.5 if REV in ('I','J','K','L','M','N','O','P') else None,
+    'body_transparency_view':'10-body-50-percent-transparent.png' if REV in ('I','J','K','L','M','N','O','P') else None,
+    'side_elbow_view':'11-side-elbow-configuration.png' if REV in ('I','J','K','L','M','N','O','P') else None,
     'views':report},indent=2)+'\n')
 print('Completed unmarked product views and editable Blender assembly.')

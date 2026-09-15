@@ -8,15 +8,17 @@ from mathutils import Vector,Matrix
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--variant',choices=['all','bare','connected'],default='all')
 parser.add_argument('--manufacturing', choices=['O-M02'])
+parser.add_argument('--iteration',choices=['P'])
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-REV=args.manufacturing or 'M'
-BASE=ROOT/('output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')
+assert not (args.iteration and args.manufacturing), 'Select either a layout iteration or a manufacturing issue'
+REV=args.iteration or args.manufacturing or 'M'
+BASE=ROOT/('output/long-bore-P' if args.iteration else 'output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')
 OUT=BASE/'photorealistic';OUT.mkdir(parents=True,exist_ok=True)
-BOSS=(json.loads((ROOT/'cad/manufacturing/O-M02.json').read_text())['boss_height'] if args.manufacturing else 6)*.001
+BOSS=(json.loads((ROOT/'cad/manufacturing/O-M02.json').read_text())['boss_height'] if args.manufacturing else 3 if args.iteration else 6)*.001
 bpy.ops.wm.open_mainfile(filepath=str(BASE/'product-views/assembled-unmarked.blend'))
 scene=bpy.context.scene
 for o in list(scene.objects):
-    keep=(o.name in ('body','faceplate') or o.name.startswith(('QD3 reference /','Front M4 DIN 7991','G1-4 side plug reference')))
+    keep=(o.name in ('body','faceplate') or o.name.startswith(('QD3 reference /','Front M4','G1-4 side plug reference')))
     if not keep:bpy.data.objects.remove(o,do_unlink=True)
 product=list(scene.objects)
 for o in product:
@@ -54,7 +56,7 @@ noise=n.new('ShaderNodeTexNoise');noise.inputs['Scale'].default_value=1;noise.in
 r=n.new('ShaderNodeMapRange');r.inputs['To Min'].default_value=.25;r.inputs['To Max'].default_value=.32;links.new(noise.outputs['Fac'],r.inputs['Value']);links.new(r.outputs['Result'],p.inputs['Roughness'])
 nickel,p=base('Nickel-plated brass fittings — polished metal',(.66,.64,.59),1,.19)
 bevel(nickel,p,.000065)
-fastener,p=base('A4 stainless screw heads',(.53,.55,.57),1,.23);bevel(fastener,p,.000035)
+fastener,p=base('Stainless screw heads',(.53,.55,.57),1,.23);bevel(fastener,p,.000035)
 for o in product:
     o.data.materials.clear();o.data.materials.append(pom if o.name=='body' else steel if o.name=='faceplate' else fastener if o.name.startswith('Front M4') else nickel)
 # Simplified connected female halves. Dimensions are visual envelopes, not supplier CAD.
@@ -110,7 +112,7 @@ scene.render.resolution_x=3000;scene.render.resolution_y=1600;scene.render.resol
 scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_mode='RGB';scene.render.image_settings.color_depth='8'
 scene.render.film_transparent=False;scene.view_settings.view_transform='AgX';scene.view_settings.look='AgX - Medium High Contrast';scene.view_settings.exposure=-.25
 assert len([o for o in product if o.name.startswith('QD3 reference /')])==80
-assert len([o for o in product if o.name.startswith('Front M4')])==6
+assert len([o for o in product if o.name.startswith('Front M4')])==(12 if args.iteration else 6)
 assert not any(o.type=='FONT' for o in scene.objects)
 assert len(connected)==100
 for variant in (['bare','connected'] if args.variant=='all' else [args.variant]):
@@ -132,9 +134,9 @@ if not args.preview:
         'revision':REV,'source_scene':'../product-views/assembled-unmarked.blend',
         'boss_height_mm':BOSS*1000,
         'geometry_changes':'No manifold changes; converted millimetres to metres. Small shader-only edge rounding.',
-        'bare':'20 front and 4 side ports unpopulated; six M4 body screws retained.',
+        'bare':'20 front and 4 side ports unpopulated; M4 body screws retained (12 in P; six in O-M02).',
         'connected':'20 male/female QD approximations, 20 annular 10 mm ID / 13 mm OD tube tails; four side plugs fitted.',
-        'materials':['Fine satin black POM','Directionally brushed stainless faceplate','Polished nickel-plated brass fitting references','A4 stainless fastener references','Translucent polymer tubing, IOR 1.46'],
+        'materials':['Fine satin black POM','Directionally brushed stainless faceplate','Polished nickel-plated brass fitting references','A2 stainless button screws' if args.iteration else 'A4 stainless fastener references','Translucent polymer tubing, IOR 1.46'],
         'lighting':'Four rectangular softboxes, low world illumination, tabletop contact shadows',
         'camera':'72 mm perspective, front three-quarter, deep focus',
         'render':'Cycles 256 samples, adaptive threshold 0.006, denoising, AgX Medium High Contrast',

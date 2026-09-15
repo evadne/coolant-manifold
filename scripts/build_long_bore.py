@@ -11,7 +11,7 @@ import shutil
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument('--iteration',choices=('H','I','J','K','L','M','N','O'),default='H')
+parser.add_argument('--iteration',choices=('H','I','J','K','L','M','N','O','P'),default='H')
 args=parser.parse_args();REV=args.iteration
 P=json.loads((ROOT/f'cad/iterations/{REV}-long-bore.json').read_text())
 OUT=ROOT/f'output/long-bore-{REV}/cad';OUT.mkdir(parents=True,exist_ok=True)
@@ -61,8 +61,18 @@ for sign in (-1,1):
   face=face.cut(cq.Workplane('XZ',origin=(sign*P['rack_hole_pitch']/2,.1,z)).slot2D(P['rack_slot_length'],P['rack_slot_width']).extrude(T+.2))
 for x,z in P['faceplate_mounts_xz']:
  face=face.cut(cyl(F['clearance_diameter']/2,T+.1,(x,-T,z),(0,1,0)))
- face=face.cut(cq.Solid.makeCone(F['countersink_diameter']/2,F['clearance_diameter']/2,(F['countersink_diameter']-F['clearance_diameter'])/2,cq.Vector(x,-T,z),cq.Vector(0,1,0)))
+ if F.get('style')!='button':face=face.cut(cq.Solid.makeCone(F['countersink_diameter']/2,F['clearance_diameter']/2,(F['countersink_diameter']-F['clearance_diameter'])/2,cq.Vector(x,-T,z),cq.Vector(0,1,0)))
  body=body.cut(cyl(F['tap_drill_diameter']/2,F['pilot_depth'],(x,0,z),(0,1,0)))
+
+if P.get('boss_outer_chamfer'):
+ edges=[e for e in body.val().Edges() if e.geomType()=='CIRCLE' and abs(e.Center().y+BH)<1e-6 and abs(e.radius()-P['port_boss_diameter']/2)<1e-6]
+ assert len(edges)==20
+ body=body.newObject(edges).chamfer(P['boss_outer_chamfer'])
+for x,z in P['faceplate_mounts_xz']:
+ if F.get('entry_diameter'):
+  pr=F['tap_drill_diameter']/2;er=F['entry_diameter']/2
+  body=body.cut(cq.Solid.makeCone(er,pr,er-pr,cq.Vector(x,0,z),cq.Vector(0,1,0)))
+  body=body.cut(cq.Solid.makeCone(pr,0,pr/math.tan(math.radians(F['drill_point_angle']/2)),cq.Vector(x,F['pilot_depth'],z),cq.Vector(0,1,0)))
 
 plug_spec=P['side_plug_reference'];plugs=[]
 for x,y,z in side_ports:
@@ -89,7 +99,7 @@ assert Y+R<D and Y-R>0
 if P.get('galleries_centred_in_depth'):assert abs(Y-D/2)<1e-6
 assert min(rows[0]-R,H-rows[1]-R)>0
 assert rows[1]-rows[0]>2*R
-assert BH-T==3 and len(side_ports)==4
+assert BH-T==P.get('boss_projection_above_plate',3) and len(side_ports)==4
 # Every branch opens to its intended continuous gallery, without requiring a group jumper.
 for z,gallery,fluid in zip(rows,channels,fluids):
  for x in xs:
@@ -99,7 +109,7 @@ for z,gallery,fluid in zip(rows,channels,fluids):
   assert vol(usable.intersect(gallery))<1e-6
   keepout=cyl(P['port_hardware_keepout_diameter']/2,12,(x,-BH,z),(0,-1,0))
   assert vol(keepout.intersect(face))<1e-6
-mount_clearance=min(cyl(F['nominal_diameter']/2,F['pilot_depth'],(x,0,z),(0,1,0)).val().distance(fluid.val()) for x,z in P['faceplate_mounts_xz'] for fluid in fluids)
+mount_clearance=min(cyl(F['nominal_diameter']/2,F['pilot_depth']+(1 if F.get('entry_diameter') else 0),(x,0,z),(0,1,0)).val().distance(fluid.val()) for x,z in P['faceplate_mounts_xz'] for fluid in fluids)
 assert mount_clearance>2
 for i,plug in enumerate(plugs):
  assert vol(plug.intersect(body))<1e-5
@@ -150,7 +160,7 @@ else:
  assert not check.audit().has_errors and len(check.modelspace().query('CIRCLE'))==2*len(xs)+len(P['faceplate_mounts_xz'])
  assert len(check.modelspace().query('LWPOLYLINE'))==1+2*len(rack_z)
  # Check every screw keeps a dry, continuous head-bearing land outside port windows.
- assert min(math.hypot(mx-x,mz-z)-F['countersink_diameter']/2-P['faceplate_port_clearance']/2 for mx,mz in P['faceplate_mounts_xz'] for x in xs for z in rows)>2
+ assert min(math.hypot(mx-x,mz-z)-F.get('countersink_diameter',F['clearance_diameter'])/2-P['faceplate_port_clearance']/2 for mx,mz in P['faceplate_mounts_xz'] for x in xs for z in rows)>2
  assert min(math.hypot(mx-x,mz-z)-F['head_diameter']/2-P['port_hardware_keepout_diameter']/2 for mx,mz in P['faceplate_mounts_xz'] for x in xs for z in rows)>2
  assert min(P['port_pitch'],rows[1]-rows[0])-P['qd_female_diameter_reference']>=16
  assert W/2-max(abs(x) for x in xs)-P['port_boss_diameter']/2-P['port_boss_root_radius']>=P.get('minimum_end_boss_root_margin',20)
@@ -187,9 +197,9 @@ report={'revision':REV,'system_pairs_with_side_feed':len(xs),'system_pairs_with_
  'front_wall_to_gallery_mm':Y-R,'rear_wall_mm':D-Y-R,'inter_gallery_web_mm':rows[1]-rows[0]-2*R,
  'front_drill_tip_y_mm':P['front_drill_cylinder_end_y']+point_length,'M4_thread_envelope_to_wet_network_min_mm':mount_clearance,
  'side_plug_to_nearest_front_thread_envelope_mm':plug_to_branch,'body_volume_mm3':vol(body),
- 'checks':['valid connected solids','two separated uninterrupted fluid networks','all front ports intersect intended gallery','four side mouths and plug positions','front usable threads precede gallery breakthrough','M4 mounts clear wet networks','no overlap of plugs with pilot-represented body or faceplate','side seal lands within POM face','front plate geometrically identical to G' if REV=='H' else 'repositioned M4 countersinks and heads clear port windows and hardware','raised port fitting keep-outs clear steel'],
+ 'checks':['valid connected solids','two separated uninterrupted fluid networks','all front ports intersect intended gallery','four side mouths and plug positions','front usable threads precede gallery breakthrough','M4 mounts clear wet networks','no overlap of plugs with pilot-represented body or faceplate','side seal lands within POM face','front plate geometrically identical to G' if REV=='H' else 'M4 clearance holes and heads clear port windows and hardware','raised port fitting keep-outs clear steel'],
  'limitations':['Deep drilling exceeds ordinary 10D guidance even from both ends; manual vendor DFM required','Nominal straight cylinder does not simulate drill wander or opposed-bore mismatch','Plugs are provisional envelopes; seal footprint and thread length need confirmation','No pressure, thermal, creep or hydraulic qualification','BSPP thread helices and plug face seals not modelled']}
-if REV in ('I','J','K','L','M','N','O'):
+if REV in ('I','J','K','L','M','N','O','P'):
  E=P['side_fitting_clearance'];projection=max(E['elbow_base_height']+E['elbow_head_height'],E['elbow_outlet_axis_from_seat_inferred']+E['compression_diameter']/2)
  report['side_fitting_review']={'equipment_width_assumption_mm':E['equipment_width_assumption'],'body_width_mm':W,'reserved_per_side_mm':(E['equipment_width_assumption']-W)/2,'drawing_inferred_projection_mm':projection,'fitted_body_width_nominal_mm':W+2*projection,'nominal_margin_each_side_mm':(E['equipment_width_assumption']-W)/2-projection,'plugged_body_width_mm':W+2*plug_spec['head_projection'],'rearward_fitting_extent_y_mm':Y+E['elbow_diameter']/2+E['compression_projection'],'front_pull_ring_gap_mm':P['port_pitch']-P['qd_female_diameter_reference'],'body_with_30mm_side_allowances_mm':W+60,'straight_insertion_exceeds_assumed_opening_with_plugs':W+2*plug_spec['head_projection']>E['equipment_width_assumption'],'mount_positions_xz_mm':P['faceplate_mounts_xz'],'status':'Nominal envelope only; rack rails, hose bends and fitting tolerances unverified'}
 (OUT/'verification.json').write_text(json.dumps(report,indent=2)+'\n')

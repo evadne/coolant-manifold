@@ -1,0 +1,30 @@
+# Revision P: plain-bore manifold faceplate
+
+P is a separate 2 mm faceplate variation. Operator-approved O-M02, its 3 mm countersunk plate and JLC handover files are preserved. This is a geometry and presentation iteration, not a qualified structural release.
+
+## Changes
+
+- 304 stainless faceplate: 482.6 × 87 × **2 mm**, approximately **395 g** from CAD. Twelve Ø4.5 through clearance holes; **no countersinks and no tapped steel holes**.
+- Twelve body-retention screws, in two rows at Z7/80. Columns X−198/−120/−40/+40/+120/+198: four near the body corners and top/bottom fixings between pairs 2–3, 4–5, 6–7 and 8–9. X is measured from the width centre. Rack holes are a separate interface; six optional positions per side remain.
+- Reference screws: [Westfield WF2237, M4 × 16 ISO 7380 button-head screws](https://www.westfieldfasteners.co.uk/Bolts-Screws-Metric/Hex-Button-Screw-M4x16-Stainless-Steel.html), A2 stainless; Ø7.6 head, 2.2 high, 2.5 mm hex socket, 1.3 socket depth. Length is measured **under the head**, unlike the former countersunk screws. The supplied product is A2, superseding the old A4 reference for this variation.
+- Plain-bearing M4 × 0.7 heads are the alternative family, subject to head/washer clearance, length and thread engagement. **Countersunk screws are incompatible and using them is an assembly error.** No countersunk-head adaptor is part of this design.
+- 16 mm screws through the 2 mm plate reach 14 mm into the POM. New M4 pilots extend 18 mm full diameter plus a 118° drill point (18.99 total); require 16 mm full-form thread after the 0.55 mm entry chamfer. The old 14 mm pilot/10 mm thread call-out is not sufficient for this screw choice. No washers in the rendition.
+- Bosses shortened to **3 mm**, retaining 1 mm projection above the steel, Ø28 outer diameter, R1 root and C0.5 outer lip. Main slab remains 40 mm; overall POM depth 43 mm. Front pilot length becomes 23 mm to gallery axis Y20.
+
+Ten front pairs retain 40 × 40 mm pitch. All 24 direct G1/4 female ports and two independent continuous long-bore galleries remain. No grouping, rear plate or large perimeter seals. Side plugs/fittings retain their own face seals.
+
+## Geometry checks
+
+The CAD builder checks valid connected solids, isolated fluid networks, port/gallery connectivity and body/plate interference. Additional checks verify twelve plain cylindrical retention holes and no conical steel faces; screw-reference/part interference; and head clearance.
+
+The M4 major-diameter envelope including the drill-tip depth remains approximately **8.64 mm** from the pilot-represented wet network. The smallest head-edge gap to a Ø36 front-port keep-out is **2.62 mm**, at the corner fixings; the top/bottom head-edge reserve is **3.2 mm**. These are nominal geometry checks, not proof of POM pull-out strength, creep life, coupling service clearance under every fitting, or torque allowance. Thread helices are not modelled. The domed screw crown is a visual approximation within the linked supplier's main dimensions.
+
+## Review outputs
+
+- `cad/iterations/P-long-bore.json`: source parameters.
+- `output/long-bore-P/cad/`: STEP body/plate, flat DXF, reference assembly and geometry reports.
+- `output/pdf/manifold-revision-P.pdf`: two-sheet plate/body review drawing, including hole schedules and new thread depths.
+- `output/long-bore-P/product-views/`: eleven unmarked review angles/configurations and editable scene.
+- `output/long-bore-P/photorealistic/`: bare-port and QD/tube studio views. No product surface markings. QDs and tube tails remain visual references, not a routed loop.
+
+Reproduce with `build_long_bore.py --iteration P`, then `prepare_revision_P.py`, then `draw_revision_P.py` using the PDF runtime. Blender: `render_product.py -- --iteration P`, followed by `render_photoreal_product.py -- --iteration P`. Preserve older issues. P needs its own supplier issue if selected; do not combine its 2 mm plate with the old screw-depth call-outs.
