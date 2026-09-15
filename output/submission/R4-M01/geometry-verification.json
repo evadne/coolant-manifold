@@ -1,0 +1,24 @@
+{
+  "part_number": "SN1260-R4-M01-PLATE",
+  "source_revision": "R4",
+  "checks": "PASS",
+  "solid_count": 1,
+  "extent_mm": [
+    482.6,
+    444.5,
+    2.0
+  ],
+  "volume_mm3": 157928.6906142851,
+  "net_mass_kg_at_7900_kg_m3": 1.2476366558528524,
+  "plain_fan_holes": 16,
+  "plain_radiator_holes": 12,
+  "rack_slots": 40,
+  "air_apertures": 4,
+  "front_face_boundary_wires": 73,
+  "through_wall_cylinders": 128,
+  "drawing_has_unmodelled_edge_breaks": true,
+  "nominal_geometry_unchanged": true,
+  "source_step_sha256": "ea1ff1a1f13ab58b94fdf5a36861eafda3336f7c6595e821a915e46c1af34970",
+  "production_step_sha256": "ea1ff1a1f13ab58b94fdf5a36861eafda3336f7c6595e821a915e46c1af34970",
+  "DFM": "Flatness and unilateral size tolerances require supplier acceptance; no automatic manufacturing acceptance claimed."
+}

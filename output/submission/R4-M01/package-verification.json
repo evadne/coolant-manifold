@@ -1,0 +1,17 @@
+{
+  "issue": "R4-M01",
+  "checks": "PASS",
+  "pdf_pages": 2,
+  "scheduled_features": 72,
+  "round_holes": 28,
+  "rack_slots": 40,
+  "air_apertures": 4,
+  "zip_members": [
+    "SN1260-R4-M01-PLATE.step",
+    "SN1260-R4-M01-PLATE.dxf",
+    "SN1260-R4-M01-PLATE.pdf"
+  ],
+  "pdf_identifier_and_coordinate_coverage": "PASS",
+  "zip_integrity": "PASS",
+  "supplier_submission_performed": false
+}
