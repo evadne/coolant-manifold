@@ -4,26 +4,38 @@
   "rail_spacing_depth_mm": 500,
   "rack_units_bottom_to_top": [
     {
-      "U": "1-8",
-      "use": "Reserved cooling/power space; external cooling connections shown"
+      "U": "1-10",
+      "use": "Custom front-mounted MO-RA radiator bay"
     },
     {
-      "U": "9-12",
+      "U": "11-14",
       "use": "4U host, front-accessible PCIe coolant bracket"
     },
     {
-      "U": "13-14",
+      "U": "15-16",
       "use": "O-M02 manifold"
     },
     {
-      "U": "15-20",
+      "U": "17-22",
       "use": "Open eight-GPU shelf and conceptual PCIe switch"
     },
     {
-      "U": "21-24",
+      "U": "23-24",
       "use": "Service space / spare"
     }
   ],
+  "radiator": {
+    "allocation_U": 10,
+    "allocation_height_mm": 444.5,
+    "illustrative_body_envelope_mm": [
+      440,
+      110,
+      440
+    ],
+    "front_fans": "Nine 120 mm references",
+    "type": "Custom front-mounted MO-RA concept; no stock model selected",
+    "plumbing": "Service hoses to bay; pump/reservoir and complete loop plumbing TBD"
+  },
   "front_pair_allocation": {
     "1-8": "Individual GPUs in parallel",
     "9": "Host CPU/chassis branch",

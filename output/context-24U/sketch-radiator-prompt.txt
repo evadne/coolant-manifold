@@ -1,0 +1,13 @@
+Use case: precise-object-edit.
+Image 1 is the existing hand-drawn two-view 24U open GPU workstation sheet to update. Images 2 and 3 are the updated Blender perspective and front-elevation geometry references, controlling the new vertical positions and radiator envelope.
+Allocate the bottom TEN rack units to a custom FRONT-MOUNTED MO-RA radiator below the 4U server. Draw a square radiator with nine illustrative black fans in a 3x3 array, fin core behind them, slim rack mounting ears, mounted vertically across the FRONT of the lower rack; leave the rear of this bay visibly open in the perspective. The module is a custom envelope, not a claim of a stock product fit.
+Move the server, manifold and GPU/switch assembly UP by 2U together, keeping their sizes and relative spacing the same. Reduce the spare space at the top to TWO units. Keep rack total 24U.
+Replace ALL right-side allocation labels and leader extents so the sequence is precisely:
+"U23–U24" / "Service / spare"
+"U17–U22" / "8 GPUs + PCIe switch"
+"U15–U16" / "2U manifold"
+"U11–U14" / "4U host chassis"
+"U1–U10" / "10U custom front-mounted MO-RA"
+The lower radiator bay is 10/24 of usable rack height, server4/24, manifold2/24, GPUs6/24 and top reserve2/24. Follow Image3 for scale.
+Remove the existing 'To external cooling plant (out of frame)' text and the hoses leaving the sheet. Route the two side service hoses down from manifold into the radiator bay as shown in the Blender references. Replace the old cooling infrastructure annotation with 'Radiator bay service hoses'. Add a small unobtrusive note 'Custom radiator envelope; pump/reservoir TBD'.
+Preserve eight GPUs, their single-slot waterblocks, front non-bracket coolant terminals and eight 12VHPWR plugs/cables at that same end, sixteen individual GPU coolant hoses, ten front manifold pairs, two purple MCIO8i host cables and separate terminations, exact-board-TBD switch annotation, host PCIe coolant bracket and pair of host hoses. All existing relevant callouts should follow their shifted components. Keep the paper background, polished hand-drawn engineering sketch style, title, two-view composition, rack dimensions and no surface markings on manifold. Do not draw an external radiator, put radiator behind the server, add GPU cards, introduce new width/depth dimension arrows, or keep any obsolete U-range labels.

@@ -9,7 +9,8 @@ scene=bpy.context.scene
 for o in list(scene.objects):
     if not (o.name in ('body','faceplate') or o.name.startswith(('QD3 reference /','Front M4 DIN 7991','G1-4 side plug reference'))):
         bpy.data.objects.remove(o,do_unlink=True)
-U=44.45; bottom=100.; manifold=bottom+12*U+.95; host=bottom+8*U+.9; gpu=bottom+14*U+24
+U=44.45; bottom=100.; manifold=bottom+14*U+.95; host=bottom+10*U+.9; gpu=bottom+16*U+24
+rad_z=bottom+5*U
 for o in scene.objects:
     o.location.z+=manifold
     if o.name.startswith('G1-4 side plug') and o.location.x<0:
@@ -120,10 +121,38 @@ assert len([o for o in scene.objects if o.name.startswith('Host uplink MCIO 8i c
 # Pair nine cools host; pair ten remains spare with disconnected male QDs.
 for j,z in enumerate((host+42,host+82)):
     hose('Host coolant branch '+str(j),[(140,-65,manifold+(23.5 if j==0 else 63.5)),(150+j*22,-110-j*25,manifold-30),(136,-90-j*25,z),(136,-22,z)],supply if j==0 else ret)
-# Left side supplies infrastructure; right ports remain plugged. External plant not sized here.
+# Custom front-mounted radiator envelope occupies U1-10 (444.5 mm allocation).
+# Nine 120 mm fan references illustrate the face; this is not a stock MO-RA SKU.
+box('Custom radiator fin core',(0,42,rad_z),(400,64,400),black)
+for dz in range(-195,196,5):
+    box('Radiator fin reference',(0,8,rad_z+dz),(400,1,1),steel)
+for x in (-212,212):box('Radiator vertical frame',(x,35,rad_z),(16,80,440),rack)
+for dz in (-212,212):box('Radiator horizontal frame',(0,35,rad_z+dz),(408,80,16),rack)
+for x in (-232.55,232.55):
+    box('Custom radiator rack ear',(x,0,rad_z),(25,3,440),rack)
+    for u in (1,4,8):cyl('Radiator rack fixing',(x,-4,bottom+u*U+22.225),5,6,steel)
+for row in range(3):
+    for col in range(3):
+        x=(col-1)*130;z=rad_z+(row-1)*130
+        for dx in (-58,58):box('Radiator fan frame',(x+dx,-12,z),(4,30,120),rack)
+        for dz in (-58,58):box('Radiator fan frame',(x,-12,z+dz),(112,30,4),rack)
+        bpy.ops.mesh.primitive_torus_add(major_radius=54,minor_radius=3,major_segments=48,minor_segments=8,location=(x,-27,z),rotation=(math.pi/2,0,0))
+        bpy.context.object.name='Radiator fan rim';bpy.context.object.data.materials.append(rack)
+        cyl('Radiator fan hub',(x,-26,z),14,14,rack)
+        for blade in range(7):
+            a=blade*2*math.pi/7
+            polar=((13,a),(51,a+.22),(51,a+.67),(22,a+.5))
+            mesh=bpy.data.meshes.new('Fan blade reference')
+            mesh.from_pydata([(x+r*math.cos(t),-26,z+r*math.sin(t)) for r,t in polar],[],[(0,1,2,3)])
+            ob=bpy.data.objects.new('Radiator fan blade',mesh);scene.collection.objects.link(ob);ob.data.materials.append(rack)
+# Side service hoses now descend to the radiator bay instead of leaving the rack.
+# Complete pump/reservoir plumbing remains unspecified in this allocation study.
 for j,z in enumerate((manifold+23.5,manifold+63.5)):
     cyl('Left infrastructure G1-4 fitting',(-215,20,z),9,20,steel,'X')
-    hose('External cooling connection '+str(j),[(-224,20,z),(-275,50+j*35,z-20),(-280,90+j*35,bottom+70),(-390,90+j*35,bottom+70)],supply if j==0 else ret,8)
+    rz=rad_z+150-j*300
+    cyl('Radiator service fitting',(-224,40,rz),9,20,steel,'X')
+    hose('Radiator bay service hose '+str(j),[(-224,20,z),(-280-j*20,55+j*35,z-35),(-280-j*20,75+j*35,rz+40),(-235,40,rz)],supply if j==0 else ret,8)
+assert len([o for o in scene.objects if o.name.startswith('Radiator fan hub')])==9
 assert len([o for o in scene.objects if 'single-slot waterblock' in o.name])==8
 assert len([o for o in scene.objects if o.name.startswith('GPU ') and 'parallel coolant' in o.name])==16
 assert len([o for o in scene.objects if o.name.startswith('GPU ') and '12VHPWR socket' in o.name])==8
@@ -142,4 +171,4 @@ for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1
     scene.render.filepath=str(OUT/f'{name}.png');bpy.ops.render.render(write_still=True)
 scene.camera=bpy.data.objects['01-rack-context']
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'24U-context.blend'))
-(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-8',use='Reserved cooling/power space; external cooling connections shown'),dict(U='9-12',use='4U host, front-accessible PCIe coolant bracket'),dict(U='13-14',use='O-M02 manifold'),dict(U='15-20',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='21-24',use='Service space / spare')],front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,gpu_orientation={'IO_bracket':'Rack-rear end, Y329','coolant_terminals':'Non-bracket end, rack-front, Y42','power_sockets':'Top edge near non-bracket end, Y65','power_routing':'Straight lead above each plug, then overhead to side distribution envelope','scope':'Generic connector positions; exact GPU and cable bend limits not selected'},host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')
+(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-10',use='Custom front-mounted MO-RA radiator bay'),dict(U='11-14',use='4U host, front-accessible PCIe coolant bracket'),dict(U='15-16',use='O-M02 manifold'),dict(U='17-22',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='23-24',use='Service space / spare')],radiator={'allocation_U':10,'allocation_height_mm':444.5,'illustrative_body_envelope_mm':[440,110,440],'front_fans':'Nine 120 mm references','type':'Custom front-mounted MO-RA concept; no stock model selected','plumbing':'Service hoses to bay; pump/reservoir and complete loop plumbing TBD'},front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,gpu_orientation={'IO_bracket':'Rack-rear end, Y329','coolant_terminals':'Non-bracket end, rack-front, Y42','power_sockets':'Top edge near non-bracket end, Y65','power_routing':'Straight lead above each plug, then overhead to side distribution envelope','scope':'Generic connector positions; exact GPU and cable bend limits not selected'},host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')

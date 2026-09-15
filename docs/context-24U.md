@@ -8,13 +8,17 @@ Rack units count upwards from the bottom. The proposed allocation is:
 
 | Position, top to bottom | Allocation | Contents |
 |---|---|---|
-| U21–U24 | 4U | Open service / spare space |
-| U15–U20 | 6U | Eight single-slot waterblocked GPUs on individual powered risers, mechanical retention and a PCIe switch-board envelope |
-| U13–U14 | 2U | O-M02 parallel coolant manifold |
-| U9–U12 | 4U | SilverStone RM46-502-I-style host, with motherboard I/O and PCIe brackets facing the manifold service side |
-| U1–U8 | 8U | Reserved cooling / power equipment space, left empty in this first study |
+| U23–U24 | 2U | Open service / spare space |
+| U17–U22 | 6U | Eight single-slot waterblocked GPUs on individual powered risers, mechanical retention and a PCIe switch-board envelope |
+| U15–U16 | 2U | O-M02 parallel coolant manifold |
+| U11–U14 | 4U | SilverStone RM46-502-I-style host, with motherboard I/O and PCIe brackets facing the manifold service side |
+| U1–U10 | 10U | Custom front-mounted MO-RA radiator bay, below the server |
 
 The illustrative frame is 600 mm deep overall, with 500 mm between rail planes. The host envelope is 440 ×456 ×176 mm (width ×depth ×height); the GPU blade envelope is approximately 19 mm thick including PCB, 270 mm long and 132 mm high. GPU centres are 40 mm apart. **Single-slot thickness does not require single-slot spacing:** the extra gap aligns each card with a manifold pair and leaves room for servicing. These GPU dimensions are study assumptions, not a selected waterblock drawing. The six-unit GPU allocation includes cable/hose access above the cards; it does not imply the cards themselves are six units tall.
+
+The lower radiator allocation is **10U = 444.5 mm**. The model shows a custom 440 mm-wide ×440 mm-high radiator body with an approximately 110 mm front-to-back envelope and nine illustrative 120 mm fans. Rack ears extend to the 19-inch mounting positions. These are space-study dimensions, not the specification of a selected stock MO-RA product; core size, fan arrangement and structural mounting remain open. The radiator face is at the rack front, with its depth extending mostly into the rack and open space behind it. The fan face and rear discharge region should remain unobstructed.
+
+The server, manifold and GPU shelf move upwards by 2U together; their relative spacing and coolant branches remain the same. This reduces the top reserve from 4U to 2U.
 
 The shelf and host have illustrative four-post supports. Selection of commercial rack rails, rear cable clearance, shelf loading and exact waterblock/terminal envelopes remains an installation detail. A 456 mm chassis envelope inside a 600 mm frame does not establish compatibility with a particular telescopic rail kit.
 
@@ -25,7 +29,7 @@ The GPU I/O brackets face the rack rear. Coolant terminals and 12VHPWR sockets s
 - Front manifold pairs 1–8 each feed one GPU and receive its return. All eight GPU branches are parallel; there is no daisy chain, GPU bridge or internal grouping.
 - Pair 9 feeds the host's CPU/chassis loop through **two bulkhead fittings in a PCIe slot bracket** on the front-accessible expansion side. The bracket is an added liquid-cooling accessory, not a built-in SilverStone coolant feature.
 - Pair 10 is spare, shown with shut male quick-disconnect references.
-- The left side supply/return ports connect to external cooling infrastructure; the right side ports remain plugged. Pump/reservoir/radiator hardware is not selected or thermally sized here. The lower eight units remain available for it and dedicated GPU power equipment.
+- The left side supply/return service hoses descend to the radiator bay; the right side ports remain plugged. Pump/reservoir hardware and its complete plumbing are not depicted or selected. The radiator is an allocated custom envelope, with no heat-rejection rating inferred from the sketch. Any pump or power equipment placed behind it needs to preserve the airflow path.
 - Blue and amber identify supply/return routes in the illustration. Purple identifies PCIe cabling; black represents auxiliary GPU power. Colours are drawing aids, not specified coolant colours or product markings.
 - The host has one **logical PCIe x16 uplink** to the switch arrangement; GPUs attach through individual risers. The sketch does not imply eight independent x16 links back to the CPU or full simultaneous x16 host bandwidth per GPU. The host connection is explicitly a **PCIe x16 to two MCIO 8i host adapter**, with **two separate eight-lane cables** to the switch. Together they carry one x16 link; they do not represent two independent x8 hosts. The adapter is used in x16 mode with matching lane ordering at the switch. Both [passive](https://c-payne.com/products/mcio-pcie-gen5-host-adapter-x16-passive) and [retimed](https://c-payne.com/products/mcio-pcie-gen5-host-adapter-x16-retimer) c-payne adapters provide this connector arrangement; exact generation, SKU and cable length remain to be selected.
 
@@ -39,7 +43,7 @@ The [c-payne vertical device adapter](https://c-payne.com/products/mcio-pcie-gen
 
 ## Files and method
 
-- [Context sketch](../output/context-24U/03-context-sketch-v4.png): generated with the built-in image-generation tool using the Blender context views as references. [Initial prompt](../output/context-24U/sketch-prompt.txt), [dimension correction](../output/context-24U/sketch-edit-prompt.txt), [dual-MCIO update](../output/context-24U/sketch-mcio-prompt.txt), and [GPU connection correction](../output/context-24U/sketch-gpu-orientation-prompt.txt).
+- [Context sketch](../output/context-24U/03-context-sketch-v5.png): generated with the built-in image-generation tool using the Blender context views as references. [Initial prompt](../output/context-24U/sketch-prompt.txt), [dimension correction](../output/context-24U/sketch-edit-prompt.txt), [dual-MCIO update](../output/context-24U/sketch-mcio-prompt.txt), and [GPU connection correction](../output/context-24U/sketch-gpu-orientation-prompt.txt), and [10U radiator allocation](../output/context-24U/sketch-radiator-prompt.txt).
 - [CAD-based context view](../output/context-24U/01-rack-context.png) and [front elevation](../output/context-24U/02-front-layout.png).
 - [Editable Blender scene](../output/context-24U/24U-context.blend), [layout data](../output/context-24U/layout.json), and `scripts/render_context_24u.py`.
 
