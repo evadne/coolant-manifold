@@ -56,3 +56,5 @@ The Blender renders are the primary presentation from this point onwards. Update
 The manifold uses the issued O-M02 CAD meshes: 410 mm body, 40 mm slab, 4 mm bosses, 3 mm faceplate, twenty front ports at 40 ×40 mm pitch and four end ports. No surface text, lines or other markings are added to the manifold. Context equipment, hoses and fittings are illustrative. The context views use CAD-derived manifold meshes; the O-M02 manufacturing package controls the actual manifold geometry.
 
 Sources checked 15 September 2026. No purchases, enquiries or changes to the finalised JLC package were made.
+
+The operator subsequently suggested Alphacool's large NexXxoS radiators. See the [Nova/SuperNova packaging assessment](alphacool-radiator-options.md): the 1080 offers useful installation reserve, while the 1260's nominal body fit leaves fittings and tolerances unresolved. This is an alternative under assessment, not a change to the current Blender scene.
