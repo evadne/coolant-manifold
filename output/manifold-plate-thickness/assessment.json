@@ -1,0 +1,41 @@
+{
+  "scope": "Dimensional and mass assessment only; no separate manifold structural simulation.",
+  "reference": "Issued O-M02 geometry unchanged; 7900 kg/m3 stainless density.",
+  "worst_case_stack": "Thickness -0.10; countersink diameter +0.10; included angle -1 degree; through-hole at minimum 4.50.",
+  "important": "A thin cylindrical land is not itself proof of inadequate strength. Nominal conical seating geometry remains present.",
+  "comparison": [
+    {
+      "thickness_mm": 3.0,
+      "mass_kg": 0.5933884156920656,
+      "saving_kg": 0.0,
+      "nominal_countersink_depth_mm": 1.7500000000000002,
+      "nominal_cylindrical_land_mm": 1.2499999999999998,
+      "minimum_land_before_edge_break_mm": 1.0683066926501743,
+      "existing_boss_projection_mm": 1.0,
+      "boss_height_for_1mm_projection_mm": 4.0,
+      "nominal_M4x12_reach_from_POM_face_mm": 9.0
+    },
+    {
+      "thickness_mm": 2.5,
+      "mass_kg": 0.49427499350614096,
+      "saving_kg": 0.09911342218592462,
+      "nominal_countersink_depth_mm": 1.7500000000000002,
+      "nominal_cylindrical_land_mm": 0.7499999999999998,
+      "minimum_land_before_edge_break_mm": 0.5683066926501743,
+      "existing_boss_projection_mm": 1.5,
+      "boss_height_for_1mm_projection_mm": 3.5,
+      "nominal_M4x12_reach_from_POM_face_mm": 9.5
+    },
+    {
+      "thickness_mm": 2.0,
+      "mass_kg": 0.3951615713202164,
+      "saving_kg": 0.19822684437184923,
+      "nominal_countersink_depth_mm": 1.7500000000000002,
+      "nominal_cylindrical_land_mm": 0.24999999999999978,
+      "minimum_land_before_edge_break_mm": 0.0683066926501743,
+      "existing_boss_projection_mm": 2.0,
+      "boss_height_for_1mm_projection_mm": 3.0,
+      "nominal_M4x12_reach_from_POM_face_mm": 10.0
+    }
+  ]
+}
