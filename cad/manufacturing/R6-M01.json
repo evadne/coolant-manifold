@@ -3,7 +3,7 @@
   "part_number": "SN1260-R6-M01-PLATE",
   "issue_date": "2026-09-15",
   "geometry_revision": "R6",
-  "status": "Production drawing pack; operator-requested shallow 10 x 2 mm rounded cable notch",
+  "status": "Operator-approved R6 geometry; production pack for supplier quotation and manufacturing review",
   "material": "304 stainless steel / EN 1.4301 (JLC SUS304)",
   "thickness_mm": 2.0,
   "thickness_tolerance_mm": 0.1,
@@ -37,5 +37,6 @@
   "cable_notch_edge_round_mm": [
     0.3,
     0.5
-  ]
+  ],
+  "operator_approved_on": "2026-09-15"
 }

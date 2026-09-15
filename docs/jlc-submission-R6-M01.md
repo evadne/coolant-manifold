@@ -1,6 +1,6 @@
 # R6-M01 radiator plate production pack
 
-Issued 15 September 2026. Part **SN1260-R6-M01-PLATE** adds the requested shallow 10 × 2 mm rounded cable notch to the operator-approved, non-tapped R4 radiator plate. It supersedes R5-M01 for fabrication; the earlier R4 and 10 × 5 mm R5 packs are preserved. The manifold package remains separate.
+Issued 15 September 2026. R6 operator-approved on 15 September 2026. Part **SN1260-R6-M01-PLATE** adds the requested shallow 10 × 2 mm rounded cable notch to the operator-approved, non-tapped R4 radiator plate. It supersedes R5-M01 for fabrication; the earlier R4 and 10 × 5 mm R5 packs are preserved. The manifold package remains separate.
 
 ## Upload files
 
