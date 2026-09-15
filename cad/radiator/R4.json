@@ -1,7 +1,7 @@
 {
   "revision": "R4",
   "description": "10U radiator/fan plate: four NF-A20 fans, M4 clearance mounting",
-  "status": "Prototype revision; static shell assessment, not an assembly load rating",
+  "status": "Operator-approved design; static shell assessment, not an assembly load rating",
   "width": 482.6,
   "height": 444.5,
   "thickness": 2.0,
@@ -98,5 +98,11 @@
   "radiator_screw_head_height_max": 2.4,
   "radiator_screw_washer": false,
   "fan_screw_orientation": "Button heads on core side; nuts on outer fan face",
-  "fan_screw_head_height": 2.2
+  "fan_screw_head_height": 2.2,
+  "operator_approved_on": "2026-09-15",
+  "assembly_sequence": [
+    "Fit fans to plate",
+    "Fit plate to radiator",
+    "Fit assembly to rack"
+  ]
 }

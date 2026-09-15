@@ -1,6 +1,14 @@
 # Radiator fan plates R3 and R4
 
-Two separate prototype alternatives add four Noctua NF-A20 fans to the custom rack plate. R3 has tapped M4 holes; R4 has plain holes with separate nuts. **R4 is the recommended prototype**, with button screw heads on the radiator side and nuts on the outer fan faces. This recommendation is not an operator selection or a load rating. Manifold revision P and radiator revisions R1/R2 are preserved.
+Two separate prototype alternatives add four Noctua NF-A20 fans to the custom rack plate. R3 has tapped M4 holes; R4 has plain holes with separate nuts. **R4 is operator-approved as of 15 September 2026**, with button screw heads on the radiator side and nuts on the outer fan faces. R3 is retained as the unselected tapped alternative. Design acceptance does not change the existing engineering qualification limits. Manifold revision P and radiator revisions R1/R2 are preserved.
+
+## Accepted assembly sequence
+
+1. **Fans onto plate.** Fit the four fans using the R4 M4 screws, washers and nuts. The button heads remain on the radiator side; hold their hex sockets while tightening the nuts on the outer fan faces.
+2. **Plate onto radiator.** Attach the populated plate to the radiator frame using the existing M3 interface.
+3. **Assembly onto rack.** Mount the complete fan/plate/radiator assembly to the rack using the selected rack fixing positions.
+
+This order preserves access to both ends of the fan fasteners before the radiator is attached.
 
 ## Shared geometry
 
@@ -68,7 +76,7 @@ The 6 to 3 mm refinement changed peak movement by 0.16% and peak recovered stres
 
 - `cad/radiator/R3.json`, `R4.json`: separate parameters.
 - `output/radiator-R3/`, `output/radiator-R4/`: STEP, DXF, STL, checks, Blender scenes and five review angles per alternative.
-- `output/pdf/radiator-fan-plates-R3-R4.pdf`: three sheets covering both cut profiles, holes, threads and the recommended screw stack.
+- `output/pdf/radiator-fan-plates-R3-R4.pdf`: the preserved pre-acceptance comparison drawing covering both cut profiles, holes, threads and the R4 screw stack. The acceptance and assembly sequence above supersede its recommendation status; geometry is unchanged.
 - `output/radiator-fan-integration/`: common integration evidence and Noctua reference meshes. These meshes are assembly references, not supplier fabrication parts.
 
 Run `build_radiator_plate.py --revision R3|R4`, then `prepare_radiator_fan_mounts.py`, `draw_radiator_fan_plates.py`, and Blender `render_radiator_plate.py -- --revision R3|R4`. Shell cases are generated with `radiator_plate_fea.py --revision R4 --payload-kg 15 --cg-mm 150`, solved using CalculiX 2.23, and reduced using `review_radiator_R4.py`. Native input/output files are preserved compressed with the analysis.
