@@ -1,5 +1,7 @@
 # Current manifold design — Revision P
 
+A separate [Q review candidate](revision-Q-rear-ports.md) adds four rear ports aligned with the outermost front pairs; it does not replace P yet.
+
 The RM10-2U manifold provides a common supply gallery and a separate common return gallery for parallel loads. It has no internal grouping, partitions, bypass or supply-to-return connection. The current manufactured parts are one POM body and one dry stainless front rack plate. There is no rear plate.
 
 | Interface | Revision P, nominal mm |

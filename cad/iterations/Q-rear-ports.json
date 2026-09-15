@@ -1,0 +1,21 @@
+{
+  "revision": "Q",
+  "parent_revision": "P",
+  "status": "Rear-port review candidate",
+  "rear_port_columns_x_mm": [
+    -180,
+    180
+  ],
+  "rear_port_rows": "Same as P front rows, Z23.5/63.5 mm",
+  "rear_seal_face_y_mm": 40,
+  "rear_thread": "G1/4 BSPP female, ISO 228-1; face seal",
+  "full_thread_depth_after_entry_mm": 8,
+  "entry_mouth_diameter_mm": 13.8,
+  "entry_depth_mm": 1,
+  "seal_land_diameter_mm": 28,
+  "rear_fitting_keepout_diameter_mm": 36,
+  "unused_ports": "Fit G1/4 face-sealing plugs; four rear plugs optional, four side plugs retained",
+  "deburring": "External only; clean/flush internal bores; no internal cross-hole deburring operation",
+  "topology": "Two isolated continuous galleries; rear ports duplicate their aligned front-row connection; no grouping or cross-link",
+  "drawing_status": "Review only; P production/review files retained unchanged"
+}

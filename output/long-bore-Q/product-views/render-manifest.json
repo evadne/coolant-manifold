@@ -1,0 +1,20 @@
+{
+  "revision": "Q",
+  "surface_markings": false,
+  "views": [
+    "01-rear-assembled.png",
+    "02-rear-elevation.png",
+    "03-front-unchanged.png",
+    "04-POM-rear.png",
+    "05-POM-transparent-channels.png"
+  ],
+  "rear_G1_4_ports": 4,
+  "diagnostic_transparency": 0.5,
+  "source_sha256": {
+    "output/long-bore-P/product-views/assembled-unmarked.blend": "ad740ac919923e397bfb91d6f426ccad07a1255cbaa9cb5e02168461a4e9beda",
+    "output/long-bore-Q/cad/body.step": "8d6f08240250568a6cd704293c8c1946fb1150293b8343ccc019bdae573fbdf2",
+    "scripts/render_revision_Q.py": "f4f90fd80fbea019d207b3a28807f7bc87c17257932390106053596ba14ab2b2",
+    "output/long-bore-Q/cad/verification.json": "c5a86c01e98e345530d1a65b5eb165c2061e79a4afb679502d56053872ec1e06"
+  },
+  "scope": "Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; P remains selected baseline."
+}

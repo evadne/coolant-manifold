@@ -17,6 +17,8 @@
 | O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier issues; `cad/manufacturing/` and `output/manufacturing/`; do not submit as P |
 | **P** | 2 mm plain-hole plate, twelve M4 ×16 button screws, 3 mm bosses, revised M4 depths | **Current pair**, `cad/iterations/P-long-bore.json`, `output/long-bore-P/`; [detail](revision-P-plain-bore-faceplate.md) |
 
+| **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Review candidate**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). P remains selected. |
+
 P's official Koolance studio fitting update and operator acceptance are presentation/installation decisions, not new manufactured-part revisions. Source geometry remains unchanged.
 
 ## Radiator history
@@ -38,4 +40,4 @@ Git preserves all earlier revisions, recaps and README/AGENTS history. Retrieve 
 
 ## StarTech25U context update —15 September2026
 
-The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and retains P/R6. Transparent PVC routes use55/65mm bends, separated pair lanes and geometric clearance checks. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.
+The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and retains P/R6. Front PVC routes use the accepted shortened free-XYZ rod/contact solution; infrastructure retains geometric65 mm bends. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.

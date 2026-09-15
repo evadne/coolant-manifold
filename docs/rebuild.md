@@ -55,7 +55,7 @@ After the current P/R6 source scenes and official fitting meshes exist (run `pyt
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_context_25u.py -- --device METAL
 ```
 
-Use `--preview` for a half-resolution front overview in `tmp/`. A full run refreshes nine views (including a straight-on front tubing detail a GPU block detail and a power-connector close-up) and `output/context-25U/25U-StarTech-context.blend`, recording source hashes in `layout.json`. `--check-only` rebuilds the native scene and verification without rendering. The preparation step requires NumPy/SciPy and writes rod solutions plus their force/stiffness checks. The Blender generator rejects stale solver inputs or changed nominal fitting routes. See [PVC physics](pvc-routing-physics.md). The generator calls `context_startech25.py`, `context_gpu5090.py`, `context_tubing.py`, `check_context_gpu.py` and `check_context_fit.py`; any failed curvature, tube-separation or mesh-intersection assertion stops the run before rendering/saving. Inspect the rear/pump detail as well as the front. Exact custom parts are retained; provisional pump/support, GPU and host envelopes remain labelled in the layout data.
+Use `--preview` for a half-resolution front overview in `tmp/`. A full run refreshes nine views (including a straight-on front tubing detail, a GPU block detail and a power-connector close-up) and `output/context-25U/25U-StarTech-context.blend`, recording source hashes in `layout.json`. `--check-only` rebuilds the native scene and verification without rendering. The preparation step requires NumPy/SciPy and writes rod solutions plus their force/stiffness checks. The Blender generator rejects stale solver inputs or changed nominal fitting routes. See [PVC physics](pvc-routing-physics.md). The generator calls `context_startech25.py`, `context_gpu5090.py`, `context_tubing.py`, `check_context_gpu.py` and `check_context_fit.py`; any failed curvature, tube-separation or mesh-intersection assertion stops the run before rendering/saving. Inspect the rear/pump detail as well as the front. Exact custom parts are retained; provisional pump/support, GPU and host envelopes remain labelled in the layout data.
 
 ## Historical reproduction
 
@@ -64,3 +64,7 @@ Sources and generated data for older revisions remain in their original location
 The composite saves a rack-centred perspective viewport with 5 mm near /10,000 mm far clipping. The previous 0.01 mm near clip provides very poor depth precision at rack viewing distances and can cause apparent z-fighting. `scripts/context_viewport.py` sets these defaults; it changes neither geometry nor render cameras. For close inspection below 5 mm, adjust the near plane temporarily rather than reverting to that extreme range for whole-rack viewing.
 
 Operator confirmation, 15 September 2026: increasing Clip Start made the live viewport smoother. Retain the 5 mm default for the composite rack scene.
+
+## Q rear-port review candidate
+
+Run `scripts/build_revision_Q.py`, then `scripts/draw_revision_Q.py` in the CAD environment, followed by headless Blender `scripts/render_revision_Q.py`. Q derives from retained P STEP sources and checks their hashes before rendering. Outputs stay under `output/long-bore-Q/`; neither P nor the rack composite is regenerated. See [Q review](revision-Q-rear-ports.md).
