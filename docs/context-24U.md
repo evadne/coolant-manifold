@@ -18,6 +18,8 @@ The illustrative frame is 600 mm deep overall, with 500 mm between rail planes. 
 
 The shelf and host have illustrative four-post supports. Selection of commercial rack rails, rear cable clearance, shelf loading and exact waterblock/terminal envelopes remains an installation detail. A 456 mm chassis envelope inside a 600 mm frame does not establish compatibility with a particular telescopic rail kit.
 
+The GPU I/O brackets face the rack rear. Coolant terminals and 12VHPWR sockets share the opposite, non-bracket region, facing the manifold service side. The power sockets are on the top edge near that end, with straight cable leads above the plugs before routing overhead to the side power-distribution envelope. Earlier views incorrectly placed auxiliary power at the opposite end from the coolant terminals. These corrected positions represent the operator's intended GPU arrangement; exact connector positions and cable bend clearances depend on the selected card and cable.
+
 ## Coolant and data connections
 
 - Front manifold pairs 1–8 each feed one GPU and receive its return. All eight GPU branches are parallel; there is no daisy chain, GPU bridge or internal grouping.
@@ -37,7 +39,7 @@ The [c-payne vertical device adapter](https://c-payne.com/products/mcio-pcie-gen
 
 ## Files and method
 
-- [Context sketch](../output/context-24U/03-context-sketch-v3.png): generated with the built-in image-generation tool using the Blender context views as references. [Initial prompt](../output/context-24U/sketch-prompt.txt), [dimension correction](../output/context-24U/sketch-edit-prompt.txt), and [dual-MCIO update](../output/context-24U/sketch-mcio-prompt.txt).
+- [Context sketch](../output/context-24U/03-context-sketch-v4.png): generated with the built-in image-generation tool using the Blender context views as references. [Initial prompt](../output/context-24U/sketch-prompt.txt), [dimension correction](../output/context-24U/sketch-edit-prompt.txt), [dual-MCIO update](../output/context-24U/sketch-mcio-prompt.txt), and [GPU connection correction](../output/context-24U/sketch-gpu-orientation-prompt.txt).
 - [CAD-based context view](../output/context-24U/01-rack-context.png) and [front elevation](../output/context-24U/02-front-layout.png).
 - [Editable Blender scene](../output/context-24U/24U-context.blend), [layout data](../output/context-24U/layout.json), and `scripts/render_context_24u.py`.
 

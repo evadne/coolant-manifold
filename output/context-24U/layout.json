@@ -35,6 +35,13 @@
     132
   ],
   "gpu_pitch_mm": 40,
+  "gpu_orientation": {
+    "IO_bracket": "Rack-rear end, Y329",
+    "coolant_terminals": "Non-bracket end, rack-front, Y42",
+    "power_sockets": "Top edge near non-bracket end, Y65",
+    "power_routing": "Straight lead above each plug, then overhead to side distribution envelope",
+    "scope": "Generic connector positions; exact GPU and cable bend limits not selected"
+  },
   "host_envelope_mm": [
     440,
     456,

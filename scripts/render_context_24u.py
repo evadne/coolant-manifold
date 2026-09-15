@@ -92,15 +92,22 @@ for i,x in enumerate([-180+40*i for i in range(8)]):
     box(f'GPU {i+1} single-slot waterblock',(x,190,gpu+77),(17,270,132),block)
     box(f'GPU {i+1} PCB',(x-9.5,190,gpu+77),(2,274,133),pcb)
     box(f'GPU {i+1} PCIe riser',(x,190,gpu+6),(20,112,12),black)
+    # Bracket end faces the rack rear; coolant and power share the opposite end.
+    box(f'GPU {i+1} IO bracket',(x,329,gpu+77),(19,2,132),steel)
+    for dz in (40,65,90):
+        box(f'GPU {i+1} display socket',(x,331,gpu+dz),(12,4,8),black)
     box(f'GPU {i+1} water terminal',(x,42,gpu+104),(20,26,53),black)
     for j,z in enumerate((gpu+89,gpu+119)):
         cyl(f'GPU {i+1} coolant fitting',(x,20,z),8,22,steel)
         source_z=manifold+(23.5 if j==0 else 63.5)
         hose(f'GPU {i+1} parallel coolant '+str(j),[(x,-65,source_z),(x,-100-j*34,source_z+25),(x,-100-j*34,z-20),(x,-15,z),(x,9,z)],supply if j==0 else ret)
-    # Explicit powered riser and auxiliary feed, with restrained rear routing.
+    # Generic socket envelope on the top edge near the non-bracket end.
+    # Leave a straight lead above the plug before bending into the side loom.
+    box(f'GPU {i+1} 12VHPWR socket',(x,65,gpu+143),(14,20,12),black)
+    box(f'GPU {i+1} 12VHPWR plug',(x,65,gpu+158),(14,20,18),black)
     hose(f'GPU {i+1} riser data',[(x,240,gpu+4),(x,370,gpu-2),(117+i*13,360,gpu+10),(117+i*13,337,gpu+20)],data,3)
-    hose(f'GPU {i+1} auxiliary power',[(x,310,gpu+123),(x,385,gpu+130),(195,395,gpu+100)],black,4)
-box('GPU auxiliary power distribution enclosure',(195,395,gpu+90),(32,30,45),black)
+    hose(f'GPU {i+1} auxiliary power',[(x,65,gpu+167),(x,65,gpu+207),(x,100+i*9,gpu+221),(186+i*2,100+i*9,gpu+221),(195,100+i*3,gpu+43)],black,4)
+box('GPU auxiliary power distribution enclosure',(195,112,gpu+20),(32,48,45),black)
 for x in (-220,220):box('GPU tray four-post support',(x,250,gpu-25),(10,500,16),steel)
 # A switch-board envelope beside the eight cards: requested topology, SKU provisional.
 box('Conceptual eight-endpoint PCIe switch PCB',(164,260,gpu+14),(110,150,2),pcb)
@@ -119,6 +126,8 @@ for j,z in enumerate((manifold+23.5,manifold+63.5)):
     hose('External cooling connection '+str(j),[(-224,20,z),(-275,50+j*35,z-20),(-280,90+j*35,bottom+70),(-390,90+j*35,bottom+70)],supply if j==0 else ret,8)
 assert len([o for o in scene.objects if 'single-slot waterblock' in o.name])==8
 assert len([o for o in scene.objects if o.name.startswith('GPU ') and 'parallel coolant' in o.name])==16
+assert len([o for o in scene.objects if o.name.startswith('GPU ') and '12VHPWR socket' in o.name])==8
+assert len([o for o in scene.objects if o.name.startswith('GPU ') and 'IO bracket' in o.name])==8
 assert not any(o.type=='FONT' for o in scene.objects)
 # Broad studio lighting and two deterministic cameras, for both image reference and review.
 world=bpy.data.worlds.new('White studio');world.use_nodes=True;scene.world=world
@@ -133,4 +142,4 @@ for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1
     scene.render.filepath=str(OUT/f'{name}.png');bpy.ops.render.render(write_still=True)
 scene.camera=bpy.data.objects['01-rack-context']
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'24U-context.blend'))
-(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-8',use='Reserved cooling/power space; external cooling connections shown'),dict(U='9-12',use='4U host, front-accessible PCIe coolant bracket'),dict(U='13-14',use='O-M02 manifold'),dict(U='15-20',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='21-24',use='Service space / spare')],front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')
+(OUT/'layout.json').write_text(json.dumps(dict(rack_U=24,rack_depth_overall_mm=600,rail_spacing_depth_mm=500,rack_units_bottom_to_top=[dict(U='1-8',use='Reserved cooling/power space; external cooling connections shown'),dict(U='9-12',use='4U host, front-accessible PCIe coolant bracket'),dict(U='13-14',use='O-M02 manifold'),dict(U='15-20',use='Open eight-GPU shelf and conceptual PCIe switch'),dict(U='21-24',use='Service space / spare')],front_pair_allocation={'1-8':'Individual GPUs in parallel','9':'Host CPU/chassis branch','10':'Spare'},gpu_envelope_mm=[17,270,132],gpu_pitch_mm=40,gpu_orientation={'IO_bracket':'Rack-rear end, Y329','coolant_terminals':'Non-bracket end, rack-front, Y42','power_sockets':'Top edge near non-bracket end, Y65','power_routing':'Straight lead above each plug, then overhead to side distribution envelope','scope':'Generic connector positions; exact GPU and cable bend limits not selected'},host_envelope_mm=[440,456,176],host_link={'host_adapter':'PCIe x16 to 2x MCIO 8i','physical_cables':2,'lanes_per_cable':8,'logical_link':'one x16 link','adapter_mode':'x16; exact passive or retimed SKU not selected'},switch_status='Requested x16 uplink / eight x16 endpoints is conceptual; exact board unverified',scope='Concept layout, not an assembly fit, power, thermal or signal-integrity qualification. Coolant colours identify routes only; no markings applied to manifold.'),indent=2)+'\n')

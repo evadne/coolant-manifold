@@ -1,6 +1,6 @@
 {
-  "mode": "Built-in image_gen tool, reference-based sketch then targeted dimension-annotation correction",
-  "final_image": "03-context-sketch-v3.png",
+  "mode": "Built-in image_gen reference-based edit; corrected Blender scene supplies GPU connection geometry",
+  "final_image": "03-context-sketch-v4.png",
   "initial_prompt": "sketch-prompt.txt",
   "correction_prompt": "sketch-edit-prompt.txt",
   "references": [
@@ -8,12 +8,17 @@
     "02-front-layout.png"
   ],
   "manifold_source": "output/manufacturing/O-M02/product-views/assembled-unmarked.blend",
-  "review": "Visually checked eight GPUs, GPU/manifold/host order, parallel branches, host bracket, ten front pairs and U-range labels; removed misleading generated depth dimension arrows. Small hardware details remain illustrative. Updated sketch and Blender views visually checked for two host MCIO cables and separate terminations.",
+  "review": "Visually checked eight GPUs, GPU/manifold/host order, parallel branches, host bracket, ten front pairs and U-range labels; removed misleading generated depth dimension arrows. Small hardware details remain illustrative. Updated sketch and Blender views visually checked for two host MCIO cables and separate terminations. Corrected both views to place eight 12VHPWR plugs near the coolant terminals at the non-bracket end; visually checked the updated power leads, retained eight GPUs and two host MCIO cables. Native Blender scene contains eight explicit rear I/O brackets and eight socket/plug pairs. Sketch hardware detail remains approximate.",
   "sha256": {
-    "03-context-sketch-v3.png": "6a360c832b468d26776f913642b898434308288a866d10c10397f29e69d2bfdd",
-    "24U-context.blend": "98333a851fe0cc0132ef25ae068640ea32fedeb7b3e3894d0cac941f0b888def"
+    "03-context-sketch-v4.png": "2c8015108104862a4997de093546eea20bea442ad218f874656d7b70333528ee",
+    "24U-context.blend": "632881ea0378f09e5c8c44bd67ce4b804e96a8a877221b2693574017d050c13e"
   },
   "host_link_update_prompt": "sketch-mcio-prompt.txt",
-  "previous_sketch": "03-context-sketch-v2.png",
-  "host_link": "PCIe x16 adapter to two physical MCIO 8i cables carrying one logical x16 uplink"
+  "previous_sketch": "03-context-sketch-v3.png",
+  "host_link": "PCIe x16 adapter to two physical MCIO 8i cables carrying one logical x16 uplink",
+  "gpu_orientation_update_prompt": "sketch-gpu-orientation-prompt.txt",
+  "edit_references": [
+    "03-context-sketch-v3.png",
+    "01-rack-context.png"
+  ]
 }
