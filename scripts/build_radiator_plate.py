@@ -8,9 +8,10 @@ import json, math, hashlib, argparse
 import cadquery as cq
 import ezdxf
 import numpy as np
+from radiator_notch import outline, arc_mid, notch_area
 
 ROOT = Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4'],default='R1')
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5'],default='R1')
 REV=parser.parse_args().revision
 P = json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
 OUT = ROOT/f'output/radiator-{REV}'
@@ -25,7 +26,11 @@ fan_mounts=[(x+dx,H/2+dy+dz) for x in P['aperture_centres_x'] for dy in P['apert
 def rounded(x,y,w,h,r,depth):
     return cq.Workplane('XY').center(x,y).rect(w,h).extrude(depth).edges('|Z').fillet(r)
 
-plate = rounded(0,H/2,W,H,P['outer_radius'],T)
+profile=outline(P)
+path=cq.Workplane('XY').moveTo(*profile[0][:2])
+for a,b in zip(profile,profile[1:]+profile[:1]):
+    path=path.threePointArc(arc_mid(a,b,a[2]),b[:2]) if a[2] else path.lineTo(*b[:2])
+plate=path.close().extrude(T)
 for x,y in windows:
     plate = plate.cut(rounded(x,y,P['aperture_width'],P['aperture_height'],P['aperture_radius'],T))
 for x,y in mounts:
@@ -46,7 +51,7 @@ def rr(x,y,w,h,r):
     pts=[(l+r,b,0),(rt-r,b,q),(rt,b+r,0),(rt,tp-r,q),
          (rt-r,tp,0),(l+r,tp,q),(l,tp-r,0),(l,b+r,q)]
     ms.add_lwpolyline(pts,format='xyb',close=True,dxfattribs={'layer':'CUT'})
-rr(0,H/2,W,H,P['outer_radius'])
+ms.add_lwpolyline(profile,format='xyb',close=True,dxfattribs={'layer':'CUT'})
 for x,y in windows: rr(x,y,P['aperture_width'],P['aperture_height'],P['aperture_radius'])
 for x,y in mounts: ms.add_circle((x,y),P['radiator_clearance_diameter']/2,dxfattribs={'layer':'CUT'})
 if fan_mounts:
@@ -60,10 +65,23 @@ dx=ezdxf.readfile(OUT/f'rack-plate-{REV}.dxf'); assert not dx.audit().has_errors
 assert len(dx.modelspace().query('CIRCLE'))==12+len(fan_mounts)
 assert len(dx.modelspace().query('LWPOLYLINE'))==5+len(slots)
 assert all(e.closed for e in dx.modelspace().query('LWPOLYLINE'))
+# Independently integrate the exported bulge arcs, including the open-edge notch.
+def poly_area(entity):
+    vertices=list(entity.get_points('xyb'));total=0
+    for a,b in zip(vertices,vertices[1:]+vertices[:1]):
+        x,y,bulge=a;xx,yy=b[:2];total+=(x*yy-xx*y)/2
+        if bulge:
+            theta=4*math.atan(bulge)
+            radius=math.hypot(xx-x,yy-y)*(1+bulge*bulge)/(4*abs(bulge))
+            total+=radius*radius*(theta-math.sin(theta))/2
+    return abs(total)
+areas=[poly_area(e) for e in dx.modelspace().query('LWPOLYLINE')]
+dxf_area=2*max(areas)-sum(areas)-sum(math.pi*e.dxf.radius**2 for e in dx.modelspace().query('CIRCLE'))
+assert abs(dxf_area*T-solid.Volume())<1e-4
 
 def area_rr(w,h,r): return w*h-(4-math.pi)*r*r
 aperture_area=4*area_rr(P['aperture_width'],P['aperture_height'],P['aperture_radius'])
-area=area_rr(W,H,P['outer_radius'])-aperture_area
+area=area_rr(W,H,P['outer_radius'])-aperture_area-notch_area(P)
 area-=len(mounts)*math.pi*(P['radiator_clearance_diameter']/2)**2
 area-=len(fan_mounts)*math.pi*(P.get('fan_mount_diameter',0)/2)**2
 area-=len(slots)*((P['rack_slot_length']-P['rack_slot_width'])*P['rack_slot_width']+math.pi*(P['rack_slot_width']/2)**2)
@@ -91,7 +109,7 @@ for x,y in mounts:
     assert np.count_nonzero(abs(radius-1.23)<.015)>=12,(x,z)
     pilot_evidence.append([x,z])
 
-if REV in ['R2','R3','R4']:
+if REV in ['R2','R3','R4','R5']:
     assert abs(H/44.45-10)<1e-9 and len(slots)==40
     assert all(any(abs((y%44.45)-o)<1e-7 for o in [6.35,38.1]) for x,y in slots)
 
@@ -109,11 +127,21 @@ if fan_mounts:
         assert annulus.cut(solid).Volume()<1e-6
 
 mass=solid.Volume()*P['density_kg_m3']/1e9
+if P.get('cable_notch'):
+    # Check the mouth, neck, floor and smooth returns on the reimported solid.
+    for x,y,inside in [(0,H-4.99,False),(0,H-5.01,True),(3.99,H-2,False),(4.01,H-2,True),(5.01,H-.01,True)]:
+        assert reloaded.isInside((x,y,T/2))==inside,(x,y)
+    previous=cq.importers.importStep(str(ROOT/'output/radiator-R4/rack-plate-R4.step')).val()
+    assert solid.cut(previous).Volume()<1e-6
+    removed=previous.cut(reloaded)
+    assert abs(removed.Volume()-notch_area(P)*T)<1e-4
+    assert removed.BoundingBox().ymin>=H-5-1e-6
 payload=P['radiator_mass_kg']+P['additional_load_kg']; total=payload+mass
 g=9.80665; moment=payload*g*P['assumed_load_cg_behind_plate_mm']/1000
 span=max(P['rack_mount_y'])-min(P['rack_mount_y'])
 report={
  'revision':REV,'geometry_checks':'PASS', 'plate_volume_mm3':solid.Volume(),
+ 'cable_notch':P.get('cable_notch'),'notch_removed_volume_mm3':notch_area(P)*T,
  'plate_mass_kg':mass,'radiator_plus_allowance_kg':payload,'total_rack_mass_kg':total,
  'payload_force_N':payload*g,'total_rack_force_N':total*g,
  'airflow_aperture_area_mm2':aperture_area,'open_fraction_of_400mm_square':aperture_area/160000,

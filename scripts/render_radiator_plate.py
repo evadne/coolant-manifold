@@ -4,8 +4,10 @@ import json, math, argparse, sys
 import bpy
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4'],default='R1')
-REV=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []).revision
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5'],default='R1')
+parser.add_argument('--plate-only',action='store_true')
+args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+REV=args.revision
 OUT=ROOT/f'output/radiator-{REV}'
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text()); H=P['height'];T=P['thickness']
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -38,7 +40,7 @@ bpy.ops.wm.stl_import(filepath=str(OUT/f'rack-plate-{REV}.stl'));plate=bpy.conte
 plate.name=f'{REV} rack plate - exact CAD mesh';plate.rotation_euler.x=math.pi/2;plate.data.materials.append(steel);bevel(plate,.15)
 # The source CAD is XY, extruded +Z. Rotation maps it to X,-thickness,height.
 assembly=[];front_hardware=[];front_fans=[];rear_fans=[]
-NEW=REV in ['R3','R4']
+NEW=REV in ['R3','R4','R5']
 def keep(o):assembly.append(o);return o
 keep(box('Illustrative 400 mm radiator core',(0,22.5,H/2),(400,32 if NEW else 42,400),black))
 for x in (-206,206):keep(box('Radiator structural side rail',(x,22.5,H/2),(10,45,424),black,.5))
@@ -91,7 +93,7 @@ if NEW:
      head=hardware(keep(cyl('M4 button hex socket head',(xx,seat-direction*1.1,zz),3.8,2.2,steel)))
      bevel(head,.65)
      bpy.ops.mesh.primitive_cylinder_add(vertices=6,radius=1.443,depth=1.5,location=(xx,seat-direction*2.1,zz),rotation=(math.pi/2,0,0));cut(head,bpy.context.object)
-     if REV=='R4':
+     if REV in ['R4','R5']:
       hardware(washer('M4 rear washer',xx,.4,zz))
       bpy.ops.mesh.primitive_cylinder_add(vertices=6,radius=7/math.sqrt(3),depth=3.2,location=(xx,-T-32-.8-1.6,zz),rotation=(math.pi/2,0,0))
       nut=hardware(keep(bpy.context.object));nut.name='DIN 934 M4 nut';nut.data.materials.append(steel)
@@ -130,16 +132,23 @@ def render(name,loc,bare=False):
  for o in assembly:o.hide_render=bare
  camera.location=loc;camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
  scene.render.filepath=str(OUT/name);bpy.ops.render.render(write_still=True)
-if REV in ['R2','R3','R4']:render('00-plate-front.png',(0,-1000,H/2),True)
+if REV in ['R2','R3','R4','R5']:render('00-plate-front.png',(0,-1000,H/2),True)
 render('01-plate-perspective.png',(630,-1100,700),True)
-render('02-radiator-front.png',(630,-1100,700))
-render('03-radiator-rear.png',(-700,1100,650))
-if NEW:
+if not args.plate_only:render('02-radiator-front.png',(630,-1100,700))
+if not args.plate_only:render('03-radiator-rear.png',(-700,1100,650))
+if NEW and not args.plate_only:
  # Expose rear fasteners without the radiator hiding the nut stack.
  for o in assembly:o.hide_render=o not in front_hardware and o not in front_fans
  camera.location=(-620,1000,650);camera.rotation_euler=(Vector((0,-10,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
  scene.render.filepath=str(OUT/'04-fan-fasteners-rear.png');bpy.ops.render.render(write_still=True)
  for o in assembly:o.hide_render=False
 
+if P.get('cable_notch'):
+ for o in assembly:o.hide_render=True
+ camera.data.ortho_scale=34
+ camera.location=(14,-60,H+14);camera.rotation_euler=(Vector((0,-1,H-4))-camera.location).to_track_quat('-Z','Y').to_euler()
+ scene.render.filepath=str(OUT/'05-cable-notch-detail.png');bpy.ops.render.render(write_still=True)
+ camera.data.ortho_scale=650
+for o in assembly:o.hide_render=args.plate_only
 camera.location=(630,-1100,700);camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/f'radiator-rack-plate-{REV}.blend'),compress=True)

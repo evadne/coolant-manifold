@@ -1,14 +1,18 @@
-"""Two A3 production sheets for the selected R4 flat plate, all features scheduled."""
+"""A3 production sheets for the selected flat plate, including the R5 notch detail."""
 from pathlib import Path
-import json,math
+import json,math,argparse
+from radiator_notch import outline
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 ROOT=Path(__file__).resolve().parents[1]
-P=json.loads((ROOT/'cad/radiator/R4.json').read_text());M=json.loads((ROOT/'cad/manufacturing/R4-M01.json').read_text())
-S=json.loads((ROOT/'output/manufacturing/R4-M01/feature-schedule.json').read_text())['features']
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R5-M01',choices=['R4-M01','R5-M01'])
+ISSUE=parser.parse_args().issue
+M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
+P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2
+S=json.loads((ROOT/f'output/manufacturing/{ISSUE}/feature-schedule.json').read_text())['features']
 STEM=M['part_number'];OUT=ROOT/'output/pdf'/f'{STEM}.pdf'
 pdfmetrics.registerFont(TTFont('Arial','/System/Library/Fonts/Supplemental/Arial.ttf'))
 pdfmetrics.registerFont(TTFont('Arial-Bold','/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
@@ -49,26 +53,39 @@ def table(x,y,width,headers,rows,weights=None,rh=5.6):
  return bottom
 def sheet(n,title):
  rect(10,10,400,277);text(15,279,STEM,4.9,True);text(15,271,title,3.3)
- text(405,280,'R4 APPROVED / ISSUE M01',3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
+ text(405,280,('R5 CABLE NOTCH / ISSUE M01' if NOTCH else 'R4 APPROVED / ISSUE M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
  line(10,267,410,267);rect(10,10,400,20)
  for x in (145,283,352):line(x,10,x,30)
  lines(14,24,['304 / EN 1.4301 stainless steel; thickness 2.00 ±0.10','Units: mm; dimensions at 20°C; do not scale'],2.55,7)
- lines(149,24,['Geometry R4 unchanged; '+M['issue_date'],'Production drawing / quotation and supplier review'],2.55,7)
+ lines(149,24,['Geometry '+REV+'; '+M['issue_date'],'Production drawing / quotation and supplier review'],2.55,7)
  lines(287,24,['No threads or countersinks','Scale as stated'],2.55,7)
- text(357,23,f'SHEET {n} / 2',3.8,True);text(357,16,'No product markings',2.5)
+ text(357,23,f'SHEET {n} / {N}',3.8,True);text(357,16,'No product markings',2.5)
+def draw_profile(points,ox,oy,scale):
+ p=C.beginPath();p.moveTo((ox+points[0][0]*scale)*mm,(oy+points[0][1]*scale)*mm)
+ for a,b in zip(points,points[1:]+points[:1]):
+  ax,ay,v=a;bx,by=b[:2]
+  if v:
+   dx,dy=bx-ax,by-ay;cx=(ax+bx)/2-dy*(1-v*v)/(4*v);cy=(ay+by)/2+dx*(1-v*v)/(4*v)
+   k=4/3*v
+   c1=(ax-k*(ay-cy),ay+k*(ax-cx));c2=(bx+k*(by-cy),by-k*(bx-cx))
+   p.curveTo((ox+c1[0]*scale)*mm,(oy+c1[1]*scale)*mm,(ox+c2[0]*scale)*mm,(oy+c2[1]*scale)*mm,(ox+bx*scale)*mm,(oy+by*scale)*mm)
+  else:p.lineTo((ox+bx*scale)*mm,(oy+by*scale)*mm)
+ p.close();C.setFillColor(grey);C.setStrokeColor(ink);C.setLineWidth(.18*mm);C.drawPath(p,fill=1,stroke=1)
 sheet(1,'Supernova 1260 radiator / NF-A20 rack plate - profile and feature identification')
 s=.5;ox=145;oy=39
 xy=lambda x,y:(ox+x*s,oy+y*s)
 def rounded(x,y,w,h,r,fill=False):
  xx,yy=xy(x-w/2,y-h/2);C.setFillColor(colors.white if fill else grey);C.setStrokeColor(ink);C.setLineWidth(.18*mm)
  C.roundRect(xx*mm,yy*mm,w*s*mm,h*s*mm,r*s*mm,fill=1,stroke=1)
-rounded(0,P['height']/2,P['width'],P['height'],2)
+draw_profile(outline(P),ox,oy,s)
 # Cut-out fills must precede identifiers: labels may extend over the air openings.
 for r in S:
  if r['kind']=='aperture':rounded(r['x'],r['y'],188,188,50,True)
 for r in S:
  x,y=xy(r['x'],r['y'])
- if r['kind']=='aperture':text(x,y,r['id'],3,True,'centre')
+ if r['kind']=='edge_notch':
+  text(x+9,y-5,r['id']+' - SHEET 3',2.1);line(x+1,y-1,x+8,y-4,.12)
+ elif r['kind']=='aperture':text(x,y,r['id'],3,True,'centre')
  elif r['kind']=='slot':
   rounded(r['x'],r['y'],10,7,3.5,True)
   text(x+5.1,y-.7,r['id'],1.9)
@@ -94,7 +111,7 @@ lines(x,246,['A01-A16: 16x Ø4.50 +0.15/0 THROUGH.',
  'horizontal slots THROUGH; semicircular ends.',
  'D01-D04: 4x 188.00 ±0.15 square cut-outs,',
  'corner R50.00 ±0.15, THROUGH.',
- 'Outer corners: 4x R2.00 ±0.15.'],2.6,5.2)
+ 'Outer corners: 4x R2.00 ±0.15.']+(['E01: rounded top cable notch; see sheet 3.'] if NOTCH else []),2.6,5.2)
 text(x,184,'MANUFACTURING NOTES',3.2,True)
 lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '2. NO TAPPED HOLES IN THIS PLATE.',
@@ -102,7 +119,7 @@ lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '4. Laser-cut profile and slots. Drill/finish round',
  '   holes where necessary to meet this drawing.',
  '5. Fan holes A: edge break 0.10 max both faces.',
- '   All other cut edges: deburr / break 0.20-0.30.',
+ '   Other edges: break 0.20-0.30; E01 see sheet 3.' if NOTCH else '   All other cut edges: deburr / break 0.20-0.30.',
  '   Edge breaks are not modelled in STEP.',
  '6. Flatness: 0.50 max, free state, whole plate.',
  '7. Uniform satin brushed finish; no coating,',
@@ -154,9 +171,48 @@ lines(302,111,['All feature axes perpendicular to broad faces.',
  'Permitted small edge breaks: see sheet 1.',
  'Free-state flatness 0.50 max over whole plate.'],2.5,5.8)
 text(302,78,'ISSUE CONTROL',3,True)
-lines(302,70,['Approved geometry: R4; manufacturing issue M01.',
+lines(302,70,['Geometry '+REV+'; manufacturing issue M01.',
  'Quote / manufacture this single plate only.',
  'Radiator, fans, screws and nuts are bought-in.',
  'No supplier assembly or fitting trial is requested.',
  'Drawing tolerances require supplier acceptance.'],2.5,5.8)
+if NOTCH:
+ C.showPage();sheet(3,'E01 - rounded top-centre fan cable notch')
+ text(25,257,'LOCAL FRONT PROFILE / 5:1',3.2,True)
+ local=dict(P,width=32,height=15,outer_radius=0)
+ draw_profile(outline(local),115,152,5)
+ # Top edge is at y227; notch floor at y202.
+ dimh(90,140,242,'10.00 ±0.15 MOUTH',227)
+ dimv(211,202,227,'5.00 ±0.15 DEPTH',140)
+ C.setDash([4,2,1,2]);line(115,197,115,235,.12);C.setDash()
+ text(115,191,'X = 0.000 ±0.10; top edge Y = 444.500',2.6,align='centre')
+ line(136.4645,225.5355,163,251,.12);arrow(136.4645,225.5355,26.5355,25.4645)
+ text(166,251,'2x R1.00 ±0.15',2.6)
+ line(132.0711,204.9289,171,176,.12);arrow(132.0711,204.9289,38.9289,-28.9289)
+ text(172,174,'2x R2.00 ±0.15',2.6)
+ text(115,145,'Local boundary is cropped; see sheet 1 for full plate.',2.5,align='centre')
+ text(247,252,'CABLE NOTCH REQUIREMENTS',3.2,True)
+ lines(247,242,['One open notch, THROUGH the full 2 mm sheet.',
+  'Centred on the plate width; opens at the top edge.',
+  'Maximum mouth width: 10.00 ±0.15.',
+  'Depth below straight top edge: 5.00 ±0.15.',
+  '2x R1 entry transitions; 2x R2 bottom corners.',
+  'All four arcs tangent to adjoining straight edges.',
+  'Parallel throat width: 8.00 REF.',
+  'Bottom flat width: 4.00 REF.',
+  'Floor elevation: Y439.500 REF.'],2.8,7)
+ text(247,168,'EDGE FINISH - E01 ONLY',3.2,True)
+ lines(247,158,['Round cable-contact edges R0.30-0.50 on both',
+  'broad faces, continuously around the notch.',
+  'Blend smoothly into the adjacent top-edge finish.',
+  'Remove all burrs, sharp lips and rough cut striations.',
+  'This finish overrides the general edge break at E01.',
+  'Small edge rounds are not modelled in STEP.'],2.8,7)
+ text(25,119,'MANUFACTURING AND INSPECTION',3.2,True)
+ lines(25,108,['Laser-cut the nominal rounded profile as part of the outside contour; finish the cable-contact edges afterwards.',
+  'No angled ramp or sheet bend is required: the tangent radii provide the smooth entry and bottom transitions.',
+  'Notch dimensions refer to the nominal through profile, excluding the small face edge rounds.',
+  'Check width, depth, centre position, corner radii and the smooth edge finish on both faces.',
+  'This issue changes only the top edge of R4; all 68 fixing positions and four airflow apertures remain unchanged.',
+  'General material, flatness, finish and hole requirements remain as specified on sheets 1 and 2.'],2.8,8)
 C.save();print(OUT)

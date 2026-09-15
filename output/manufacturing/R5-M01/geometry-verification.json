@@ -1,0 +1,25 @@
+{
+  "part_number": "SN1260-R5-M01-PLATE",
+  "source_revision": "R5",
+  "checks": "PASS",
+  "solid_count": 1,
+  "extent_mm": [
+    482.6,
+    444.5,
+    2.0
+  ],
+  "volume_mm3": 157851.26583632428,
+  "net_mass_kg_at_7900_kg_m3": 1.2470250001069618,
+  "plain_fan_holes": 16,
+  "plain_radiator_holes": 12,
+  "rack_slots": 40,
+  "air_apertures": 4,
+  "front_face_boundary_wires": 73,
+  "through_wall_cylinders": 132,
+  "edge_notches": 1,
+  "drawing_has_unmodelled_edge_breaks": true,
+  "nominal_geometry_unchanged": true,
+  "source_step_sha256": "8e7edff1f75f757b1df3303fec91be07feb49ce4370d41d77787dd871f3fde24",
+  "production_step_sha256": "8e7edff1f75f757b1df3303fec91be07feb49ce4370d41d77787dd871f3fde24",
+  "DFM": "Flatness and unilateral size tolerances require supplier acceptance; no automatic manufacturing acceptance claimed."
+}

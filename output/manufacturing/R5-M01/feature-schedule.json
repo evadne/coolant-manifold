@@ -1,0 +1,683 @@
+{
+  "part_number": "SN1260-R5-M01-PLATE",
+  "origin": "X centreline; Y bottom straight edge; Z=0 at one broad face; solid spans Z0..2",
+  "features": [
+    {
+      "id": "A01",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -185,
+      "y": 37.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A02",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -15,
+      "y": 37.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A03",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 15,
+      "y": 37.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A04",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 185,
+      "y": 37.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A05",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -185,
+      "y": 207.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A06",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -15,
+      "y": 207.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A07",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 15,
+      "y": 207.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A08",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 185,
+      "y": 207.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A09",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -185,
+      "y": 237.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A10",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -15,
+      "y": 237.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A11",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 15,
+      "y": 237.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A12",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 185,
+      "y": 237.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A13",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -185,
+      "y": 407.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A14",
+      "group": "A",
+      "kind": "round_hole",
+      "x": -15,
+      "y": 407.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A15",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 15,
+      "y": 407.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "A16",
+      "group": "A",
+      "kind": "round_hole",
+      "x": 185,
+      "y": 407.25,
+      "diameter": 4.5
+    },
+    {
+      "id": "B01",
+      "group": "B",
+      "kind": "round_hole",
+      "x": -203.5,
+      "y": 18.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B02",
+      "group": "B",
+      "kind": "round_hole",
+      "x": 203.5,
+      "y": 18.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B03",
+      "group": "B",
+      "kind": "round_hole",
+      "x": -203.5,
+      "y": 143.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B04",
+      "group": "B",
+      "kind": "round_hole",
+      "x": 203.5,
+      "y": 143.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B05",
+      "group": "B",
+      "kind": "round_hole",
+      "x": -203.5,
+      "y": 159.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B06",
+      "group": "B",
+      "kind": "round_hole",
+      "x": 203.5,
+      "y": 159.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B07",
+      "group": "B",
+      "kind": "round_hole",
+      "x": -203.5,
+      "y": 284.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B08",
+      "group": "B",
+      "kind": "round_hole",
+      "x": 203.5,
+      "y": 284.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B09",
+      "group": "B",
+      "kind": "round_hole",
+      "x": -203.5,
+      "y": 300.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B10",
+      "group": "B",
+      "kind": "round_hole",
+      "x": 203.5,
+      "y": 300.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B11",
+      "group": "B",
+      "kind": "round_hole",
+      "x": -203.5,
+      "y": 425.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "B12",
+      "group": "B",
+      "kind": "round_hole",
+      "x": 203.5,
+      "y": 425.75,
+      "diameter": 3.6
+    },
+    {
+      "id": "C01",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 6.35,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C02",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 38.1,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C03",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 50.8,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C04",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 82.55,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C05",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 95.25,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C06",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 127.0,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C07",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 139.7,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C08",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 171.45,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C09",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 184.15,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C10",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 215.9,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C11",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 228.6,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C12",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 260.35,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C13",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 273.05,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C14",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 304.8,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C15",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 317.5,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C16",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 349.25,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C17",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 361.95,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C18",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 393.7,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C19",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 406.4,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C20",
+      "group": "C",
+      "kind": "slot",
+      "x": -232.55,
+      "y": 438.15,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C21",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 6.35,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C22",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 38.1,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C23",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 50.8,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C24",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 82.55,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C25",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 95.25,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C26",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 127.0,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C27",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 139.7,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C28",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 171.45,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C29",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 184.15,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C30",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 215.9,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C31",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 228.6,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C32",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 260.35,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C33",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 273.05,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C34",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 304.8,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C35",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 317.5,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C36",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 349.25,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C37",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 361.95,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C38",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 393.7,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C39",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 406.4,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "C40",
+      "group": "C",
+      "kind": "slot",
+      "x": 232.55,
+      "y": 438.15,
+      "length": 10,
+      "width": 7,
+      "end_radius": 3.5
+    },
+    {
+      "id": "D01",
+      "group": "D",
+      "kind": "aperture",
+      "x": -100,
+      "y": 122.25,
+      "width": 188,
+      "height": 188,
+      "corner_radius": 50
+    },
+    {
+      "id": "D02",
+      "group": "D",
+      "kind": "aperture",
+      "x": 100,
+      "y": 122.25,
+      "width": 188,
+      "height": 188,
+      "corner_radius": 50
+    },
+    {
+      "id": "D03",
+      "group": "D",
+      "kind": "aperture",
+      "x": -100,
+      "y": 322.25,
+      "width": 188,
+      "height": 188,
+      "corner_radius": 50
+    },
+    {
+      "id": "D04",
+      "group": "D",
+      "kind": "aperture",
+      "x": 100,
+      "y": 322.25,
+      "width": 188,
+      "height": 188,
+      "corner_radius": 50
+    },
+    {
+      "id": "E01",
+      "group": "E",
+      "kind": "edge_notch",
+      "x": 0,
+      "y": 444.5,
+      "mouth_width": 10.0,
+      "depth": 5.0,
+      "mouth_radius": 1.0,
+      "bottom_radius": 2.0,
+      "edge_round_min": 0.3,
+      "edge_round_max": 0.5
+    }
+  ]
+}
