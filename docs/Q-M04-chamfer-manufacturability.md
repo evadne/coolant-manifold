@@ -8,7 +8,7 @@ The CAD includes twelve edge chamfer faces and eight small triangular corner fla
 
 The current drawing retains explicit edge size/angle and identifies all eight triangular corner flats in STEP. It does not add separate micron-scale point-location or flatness tolerances to those tiny faces. If JLC requests a simpler cosmetic treatment, a wider chamfer tolerance or controlled corner blending could be evaluated separately; neither has been substituted for the accepted geometry in this issue.
 
-The CNC design guideline states that unspecified tolerances are normally ±0.1 mm or greater and that other limits should be supplied in a 2D drawing. A catalogue statement is not approval of the complete tolerance stack. Q-M04 has not been submitted; retain the current supplier order's original Q-M01 files.
+The CNC design guideline states that unspecified tolerances are normally ±0.1 mm or greater and that other limits should be supplied in a 2D drawing. A catalogue statement is not approval of the complete tolerance stack. Q-M04 was subsequently submitted for file review on16September2026; its part-specific approval remains outstanding. Retain original Q-M01 fabrication archives as history.
 
 Sources (primary supplier guidance):
 

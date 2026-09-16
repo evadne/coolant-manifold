@@ -104,5 +104,23 @@
   "timestamp_precision": "minute; success page observed before 15:20:49 UTC",
   "payment_made": false,
   "confirmation_text": "Your order has been submitted.",
-  "confirmation_url": "https://jlccnc.com/checkout/orderSuccess?systemType=order_merge&spm=Jlcpcb.Confirmorder.1001"
+  "confirmation_url": "https://jlccnc.com/checkout/orderSuccess?systemType=order_merge&spm=Jlcpcb.Confirmorder.1001",
+  "batch_reference": "W2026091623209243",
+  "subsequent_order_history_observation": {
+    "date": "2026-09-16",
+    "batch_status": "File Review",
+    "body_status": "Reviewing",
+    "body_price_USD": 128.12,
+    "body_build_days": 6,
+    "merchandise_USD": 167.8,
+    "shipping_USD": 65.81,
+    "order_total_USD": 233.61,
+    "note": "Portal shipping is lower than checkout estimate; reason not displayed. Preserve original checkout estimate separately. New body details confirm black POM, no finish, +/-0.05mm, Standard appearance, threads Yes, qty1, 410x87x43mm, volume1326122.41mm3."
+  },
+  "old_order_cancellation": {
+    "requested_by_operator": true,
+    "batch_reference": "W2026091606463892",
+    "status": "pending",
+    "reason": "Redundant original order; preserve archive history. Safari currently in active operator use."
+  }
 }
