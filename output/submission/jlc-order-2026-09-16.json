@@ -11,7 +11,7 @@
   "shipping_confirmed": true,
   "submitted": true,
   "payment_authorised": false,
-  "original_orders": "Preserve original Q-M01/R6-M02 orders and archives; create a separate new order.",
+  "original_orders": "Operator reports old batch W2026091606463892 cleared; retain original fabrication archives as history.",
   "parts": [
     {
       "part": "RM10-Q-M04-BODY",
@@ -120,7 +120,9 @@
   "old_order_cancellation": {
     "requested_by_operator": true,
     "batch_reference": "W2026091606463892",
-    "status": "pending",
-    "reason": "Redundant original order; preserve archive history. Safari currently in active operator use."
+    "status": "cleared_by_operator",
+    "reason": "Redundant original order; no further cancellation action required.",
+    "source": "Operator message, 16 September 2026",
+    "independently_verified": false
   }
 }

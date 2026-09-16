@@ -51,4 +51,4 @@ R7-M01 supersedes the held R6-M03 issue. Both steel parts retain raw sheet finis
 
 ## Quotation status
 
-The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Submitted for file review on 16 September after explicit confirmation of UPS shipping at US$71.99. Prior material, finish and goods metadata were reused. No payment was made. Preserve the original orders and archives. [New-order submission record](jlc-order-2026-09-16.md). Assembly instructions remain outside the fabrication ZIP.
+The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Submitted for file review on 16 September after explicit confirmation of UPS shipping at US$71.99. Prior material, finish and goods metadata were reused. No payment was made. The operator subsequently reported clearing the original order; preserve its fabrication archives. [New-order submission record](jlc-order-2026-09-16.md). Assembly instructions remain outside the fabrication ZIP.
