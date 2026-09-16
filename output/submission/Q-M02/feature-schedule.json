@@ -1,0 +1,457 @@
+{
+  "part_number": "RM10-Q-M02-FACEPLATE",
+  "features": [
+    {
+      "id": "W01",
+      "group": "W",
+      "xyz_mm": [
+        -180,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W02",
+      "group": "W",
+      "xyz_mm": [
+        -140,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W03",
+      "group": "W",
+      "xyz_mm": [
+        -100,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W04",
+      "group": "W",
+      "xyz_mm": [
+        -60,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W05",
+      "group": "W",
+      "xyz_mm": [
+        -20,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W06",
+      "group": "W",
+      "xyz_mm": [
+        20,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W07",
+      "group": "W",
+      "xyz_mm": [
+        60,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W08",
+      "group": "W",
+      "xyz_mm": [
+        100,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W09",
+      "group": "W",
+      "xyz_mm": [
+        140,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W10",
+      "group": "W",
+      "xyz_mm": [
+        180,
+        0,
+        23.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W11",
+      "group": "W",
+      "xyz_mm": [
+        -180,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W12",
+      "group": "W",
+      "xyz_mm": [
+        -140,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W13",
+      "group": "W",
+      "xyz_mm": [
+        -100,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W14",
+      "group": "W",
+      "xyz_mm": [
+        -60,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W15",
+      "group": "W",
+      "xyz_mm": [
+        -20,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W16",
+      "group": "W",
+      "xyz_mm": [
+        20,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W17",
+      "group": "W",
+      "xyz_mm": [
+        60,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W18",
+      "group": "W",
+      "xyz_mm": [
+        100,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W19",
+      "group": "W",
+      "xyz_mm": [
+        140,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "W20",
+      "group": "W",
+      "xyz_mm": [
+        180,
+        0,
+        63.5
+      ],
+      "diameter": 32
+    },
+    {
+      "id": "H01",
+      "group": "H",
+      "xyz_mm": [
+        -198.0,
+        0,
+        7.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H02",
+      "group": "H",
+      "xyz_mm": [
+        -120.0,
+        0,
+        7.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H03",
+      "group": "H",
+      "xyz_mm": [
+        -40.0,
+        0,
+        7.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H04",
+      "group": "H",
+      "xyz_mm": [
+        40.0,
+        0,
+        7.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H05",
+      "group": "H",
+      "xyz_mm": [
+        120.0,
+        0,
+        7.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H06",
+      "group": "H",
+      "xyz_mm": [
+        198.0,
+        0,
+        7.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H07",
+      "group": "H",
+      "xyz_mm": [
+        -198.0,
+        0,
+        80.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H08",
+      "group": "H",
+      "xyz_mm": [
+        -120.0,
+        0,
+        80.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H09",
+      "group": "H",
+      "xyz_mm": [
+        -40.0,
+        0,
+        80.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H10",
+      "group": "H",
+      "xyz_mm": [
+        40.0,
+        0,
+        80.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H11",
+      "group": "H",
+      "xyz_mm": [
+        120.0,
+        0,
+        80.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "H12",
+      "group": "H",
+      "xyz_mm": [
+        198.0,
+        0,
+        80.0
+      ],
+      "diameter": 4.5
+    },
+    {
+      "id": "R01",
+      "group": "R",
+      "xyz_mm": [
+        -232.55,
+        0,
+        5.4
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R02",
+      "group": "R",
+      "xyz_mm": [
+        -232.55,
+        0,
+        21.275
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R03",
+      "group": "R",
+      "xyz_mm": [
+        -232.55,
+        0,
+        37.15
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R04",
+      "group": "R",
+      "xyz_mm": [
+        -232.55,
+        0,
+        49.85
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R05",
+      "group": "R",
+      "xyz_mm": [
+        -232.55,
+        0,
+        65.725
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R06",
+      "group": "R",
+      "xyz_mm": [
+        -232.55,
+        0,
+        81.6
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R07",
+      "group": "R",
+      "xyz_mm": [
+        232.55,
+        0,
+        5.4
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R08",
+      "group": "R",
+      "xyz_mm": [
+        232.55,
+        0,
+        21.275
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R09",
+      "group": "R",
+      "xyz_mm": [
+        232.55,
+        0,
+        37.15
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R10",
+      "group": "R",
+      "xyz_mm": [
+        232.55,
+        0,
+        49.85
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R11",
+      "group": "R",
+      "xyz_mm": [
+        232.55,
+        0,
+        65.725
+      ],
+      "length": 10,
+      "width": 7
+    },
+    {
+      "id": "R12",
+      "group": "R",
+      "xyz_mm": [
+        232.55,
+        0,
+        81.6
+      ],
+      "length": 10,
+      "width": 7
+    }
+  ]
+}

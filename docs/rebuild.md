@@ -13,7 +13,24 @@ python3 -m venv .venv
 
 Use the available document runtime for ReportLab/pypdf if the CAD environment lacks them. Do not overwrite a working environment just to reproduce unchanged outputs.
 
-## Manifold Q / Q-M01
+## Current steel specification issues: Q-M02 / R6-M03
+
+Preserve the submitted Q-M01 body and original supplier archives. To rebuild the new tolerance-only steel issues from the verified geometry:
+
+```sh
+python3 scripts/prepare_Q_faceplate_issue.py
+.venv/bin/python scripts/prepare_radiator_production.py --issue R6-M03
+# Use the ReportLab/pypdf runtime; inspect both PDFs (five sheets) before packaging.
+python3 scripts/draw_Q_production.py --faceplate-issue Q-M02 --faceplate-only
+python3 scripts/draw_radiator_production.py --issue R6-M03
+python3 scripts/package_Q_faceplate_issue.py
+python3 scripts/package_radiator_production.py --issue R6-M03
+python3 scripts/finalise_three_part_pack.py
+```
+
+These commands do not upload. `finalise_three_part_pack.py` checks the unchanged body against its original submitted archive hash, the new steel files against their geometry sources and drawings, and the new five-sheet visual review. Product/context renders are inherited because nominal geometry is byte-identical. Refresh the visual-review hashes only after inspecting regenerated PDFs.
+
+## Original manifold Q / Q-M01 reproduction
 
 Q derives from the retained P solids and source-fitting library. Do not rebuild P just to rebuild Q.
 
@@ -30,9 +47,9 @@ python3 scripts/package_Q_production.py
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_photoreal_product.py -- --iteration Q --device METAL
 ```
 
-Supplier files are Q-M01; assembly references are separately in `output/assembly/Q/`. O-M02 manufacturing scripts are historical and must not be used for Q. Shared official fitting meshes remain under `output/long-bore-P/koolance-fit/`. The Q renderer shows unchanged button heads representing M4×10, with hidden shanks omitted. No upload occurs.
+Original supplier files are Q-M01; current faceplate specification is Q-M02. Do not run the original drawing/package commands to overwrite submitted archives during a steel-only revision. assembly references are separately in `output/assembly/Q/`. O-M02 manufacturing scripts are historical and must not be used for Q. Shared official fitting meshes remain under `output/long-bore-P/koolance-fit/`. The Q renderer shows unchanged button heads representing M4×10, with hidden shanks omitted. No upload occurs.
 
-## Radiator R6 / R6-M02
+## Original radiator R6 / R6-M02 reproduction
 
 ```sh
 .venv/bin/python scripts/build_radiator_plate.py --revision R6

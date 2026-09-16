@@ -1,5 +1,7 @@
 # R6-M02 radiator plate production pack
 
+Historical submitted issue. Use [R6-M03](jlc-submission-R6-M03.md) for the current replacement tolerance specification; preserve this original submission record.
+
 Issued 15 September 2026. R6 operator-approved on 15 September 2026. Part **SN1260-R6-M02-PLATE** adds the requested shallow 10 × 2 mm rounded cable notch to the operator-approved, non-tapped R4 radiator plate. R6-M02 supersedes R6-M01 for finish specification only; the approved R6 geometry is unchanged. The manifold package remains separate.
 
 ## Upload files

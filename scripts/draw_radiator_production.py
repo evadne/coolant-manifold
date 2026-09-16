@@ -8,10 +8,13 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2
+PROFILE=f"±{M['profile_tolerance_mm']:.2f}"
+HOLE_TOL='±0.10' if ISSUE=='R6-M03' else '+0.15/0'
+HEIGHT_TOL='±0.10' if ISSUE=='R6-M03' else '+0 / -0.15'
 S=json.loads((ROOT/f'output/manufacturing/{ISSUE}/feature-schedule.json').read_text())['features']
 STEM=M['part_number'];OUT=ROOT/'output/pdf'/f'{STEM}.pdf'
 pdfmetrics.registerFont(TTFont('Arial','/System/Library/Fonts/Supplemental/Arial.ttf'))
@@ -97,20 +100,20 @@ for r in S:
 # Centreline and coordinate origin; identifiers belong to the drawing only.
 C.setDash([4,2,1,2]);line(ox,oy-2,ox,oy+P['height']*s+1,.12);C.setDash()
 text(ox+3,oy+3,'O (0,0)',2.3)
-dimh(ox-P['width']*s/2,ox+P['width']*s/2,34,'482.60 ±0.15',oy)
-dimv(16,oy,oy+P['height']*s,'444.50 +0 / -0.15',ox-P['width']*s/2)
+dimh(ox-P['width']*s/2,ox+P['width']*s/2,34,f'482.60 {PROFILE}',oy)
+dimv(16,oy,oy+P['height']*s,f'444.50 {HEIGHT_TOL}',ox-P['width']*s/2)
 text(ox,264,'FRONT VIEW 1:2  /  IDENTIFIERS REFER TO SHEET 2',2.3,False,'centre')
 x=294
 text(x,254,'FEATURES',3.2,True)
-lines(x,246,['A01-A16: 16x Ø4.50 +0.15/0 THROUGH.',
+lines(x,246,[f'A01-A16: 16x Ø4.50 {HOLE_TOL} THROUGH.',
  'Plain clearance holes; no threads.',
- 'B01-B12: 12x Ø3.60 +0.15/0 THROUGH.',
+ f'B01-B12: 12x Ø3.60 {HOLE_TOL} THROUGH.',
  'Plain clearance holes; no threads.',
- 'C01-C40: 40x 10.00 ±0.15 x 7.00 +0.15/0',
+ f'C01-C40: 40x 10.00 {PROFILE} x 7.00 {HOLE_TOL}',
  'horizontal slots THROUGH; semicircular ends.',
- 'D01-D04: 4x 188.00 ±0.15 square cut-outs,',
- 'corner R50.00 ±0.15, THROUGH.',
- 'Outer corners: 4x R2.00 ±0.15.']+(['E01: rounded top cable notch; see sheet 3.'] if NOTCH else []),2.6,5.2)
+ f'D01-D04: 4x 188.00 {PROFILE} square cut-outs,',
+ f'corner R50.00 {PROFILE}, THROUGH.',
+ f'Outer corners: 4x R2.00 {PROFILE}.']+(['E01: rounded top cable notch; see sheet 3.'] if NOTCH else []),2.6,5.2)
 text(x,184,'MANUFACTURING NOTES',3.2,True)
 lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '2. NO TAPPED HOLES IN THIS PLATE.',
@@ -121,27 +124,27 @@ lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '   Other edges: break 0.20-0.30; E01 see sheet 3.' if NOTCH else '   All other cut edges: deburr / break 0.20-0.30.',
  '   Edge breaks are not modelled in STEP.',
  '6. Flatness: 0.50 max, free state, whole plate.',
- ('7. Raw sheet finish; no brushing or polishing,' if ISSUE=='R6-M02' else '7. Uniform satin brushed finish; no coating,' ),
+ ('7. Raw sheet finish; no brushing or polishing,' if ISSUE in ['R6-M02','R6-M03'] else '7. Uniform satin brushed finish; no coating,' ),
  '   coating, engraving, printing or markings.',
  '8. Confirm specified tolerances and flatness',
  '   before fabrication; report discrepancies.'],2.6,5.2)
-if ISSUE=='R6-M02':
+if ISSUE in ['R6-M02','R6-M03']:
  text(40,259,'RAW SHEET FINISH: BOTH FACES',2.3,True)
 text(x,97,'COORDINATES AND TOLERANCES',3.2,True)
 lines(x,89,['Origin O: width centreline at bottom edge.',
  'X right; Y up; all feature axes normal to sheet.',
  'Hole / slot centre X,Y coordinates: ±0.10.',
- 'Other profile dimensions: ±0.15 unless stated.',
+ f'Other profile dimensions: {PROFILE} unless stated.',
  'Dimensions apply after finishing; full through',
  'diameters exclude the permitted edge breaks.'],2.6,5.2)
 text(x,50,'Matching STEP defines the nominal geometry.',2.5)
 text(x,44,'All dimensions / feature IDs are drawing-only.',2.5)
 C.showPage()
 sheet(2,'Hole and slot coordinate schedules - all 68 fixing positions and four air apertures')
-text(16,257,'A: FAN HOLES / 16x Ø4.50 +0.15/0',3.0,True)
+text(16,257,f'A: FAN HOLES / 16x Ø4.50 {HOLE_TOL}',3.0,True)
 fmt=lambda v:f'{v:.3f}'
 table(16,251,111,['ID','X','Y'],[[r['id'],fmt(r['x']),fmt(r['y'])] for r in S if r['group']=='A'],[1,1.4,1.4],5.7)
-text(16,143,'B: RADIATOR HOLES / 12x Ø3.60 +0.15/0',2.9,True)
+text(16,143,f'B: RADIATOR HOLES / 12x Ø3.60 {HOLE_TOL}',2.9,True)
 table(16,137,111,['ID','X','Y'],[[r['id'],fmt(r['x']),fmt(r['y'])] for r in S if r['group']=='B'],[1,1.4,1.4],5.7)
 text(141,257,'C: RACK SLOTS / 40x 10.00 x 7.00',3.0,True)
 cs=[r for r in S if r['group']=='C']
@@ -149,7 +152,7 @@ table(141,251,149,['ID','X','Y','ID','X','Y'],[[cs[i]['id'],fmt(cs[i]['x']),fmt(
 text(141,123,'D: APERTURE CENTRES / 4x 188 SQUARE, R50',2.8,True)
 table(141,117,149,['ID','X','Y'],[[r['id'],fmt(r['x']),fmt(r['y'])] for r in S if r['group']=='D'],[1,1.4,1.4],5.7)
 lines(141,80,['All scheduled X,Y coordinates: ±0.10 for A/B/C.',
- 'D centre coordinates: ±0.15. Values are not chain dimensions.',
+ f'D centre coordinates: {PROFILE}. Values are not chain dimensions.',
  'A/B holes and C/D cut-outs pass through the full 2 mm sheet.',
  'No pilot bores awaiting tapping: A/B are finished clearance holes.',
  'Inspect all 68 fixing positions for size and position.',
@@ -157,7 +160,7 @@ lines(141,80,['All scheduled X,Y coordinates: ±0.10 for A/B/C.',
 # Slot detail at 5:1.
 x=302;text(x,257,'SLOT C / 5:1',3.0,True)
 C.setFillColor(colors.white);C.setStrokeColor(ink);C.roundRect(319*mm,203*mm,50*mm,35*mm,17.5*mm,fill=0,stroke=1)
-dimh(319,369,246,'10.00 ±0.15',238);dimv(382,203,238,'7.00 +0.15/0',369)
+dimh(319,369,246,f'10.00 {PROFILE}',238);dimv(382,203,238,f'7.00 {HOLE_TOL}',369)
 line(321.5,211.5,302,192,.12);arrow(321.5,211.5,-19.5,-19.5)
 text(302,187,'Ends R3.50 REF = half finished width.',2.5)
 text(302,181,'Horizontal centre segment: 3.00 REF.',2.5)
@@ -181,24 +184,24 @@ if NOTCH:
  local=dict(P,width=32,height=15,outer_radius=0)
  draw_profile(outline(local),115,152,5)
  a=NOTCH['mouth_width']/2;d=NOTCH['depth'];u=NOTCH['mouth_radius'];b=NOTCH['bottom_radius'];throat=2*(a-u);floor=throat-2*b
- dimh(115-5*a,115+5*a,242,f"{2*a:.2f} ±0.15 MOUTH",227)
- dimv(211,227-5*d,227,f"{d:.2f} ±0.15 DEPTH" if d>=4 else '',140)
+ dimh(115-5*a,115+5*a,242,f"{2*a:.2f} {PROFILE} MOUTH",227)
+ dimv(211,227-5*d,227,f"{d:.2f} {PROFILE} DEPTH" if d>=4 else '',140)
  if d<4:
-  text(216,224,f'{d:.2f} ±0.15',2.5);text(216,218,'DEPTH',2.5)
+  text(216,224,f'{d:.2f} {PROFILE}',2.5);text(216,218,'DEPTH',2.5)
  C.setDash([4,2,1,2]);line(115,197,115,235,.12);C.setDash()
  text(115,191,'X = 0.000 ±0.10; top edge Y = 444.500',2.6,align='centre')
  ex=115+5*(a-u/math.sqrt(2));ey=227-5*u*(1-1/math.sqrt(2))
  line(ex,ey,163,251,.12);arrow(ex,ey,163-ex,251-ey)
- text(166,251,f'2x R{u:.2f} ±0.15',2.6)
+ text(166,251,f'2x R{u:.2f} {PROFILE}',2.6)
  bx=115+5*(a-u-b+b/math.sqrt(2));by=227+5*(-d+b-b/math.sqrt(2))
  line(bx,by,171,176,.12);arrow(bx,by,171-bx,176-by)
- text(172,174,f'2x R{b:.2f} ±0.15',2.6)
+ text(172,174,f'2x R{b:.2f} {PROFILE}',2.6)
  text(115,145,'Local boundary is cropped; see sheet 1 for full plate.',2.5,align='centre')
  text(247,252,'CABLE NOTCH REQUIREMENTS',3.2,True)
  lines(247,242,['One open notch, THROUGH the full 2 mm sheet.',
   'Centred on the plate width; opens at the top edge.',
-  f'Maximum mouth width: {2*a:.2f} ±0.15.',
-  f'Depth below straight top edge: {d:.2f} ±0.15.',
+  f'Mouth width: {2*a:.2f} {PROFILE}.',
+  f'Depth below straight top edge: {d:.2f} {PROFILE}.',
   f'2x R{u:g} entry transitions; 2x R{b:g} bottom corners.',
   'All four arcs tangent to adjoining straight edges.',
   f'Parallel throat width: {throat:.2f} REF.',

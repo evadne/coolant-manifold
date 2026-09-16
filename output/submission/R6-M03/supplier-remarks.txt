@@ -1,0 +1,1 @@
+Revised drawing R6-M03; unchanged STEP/DXF geometry. Raw 304 sheet, no brushing/polishing. All cut dimensions and hole coordinates +/-0.10 mm; plain through holes. Free-state flatness 0.50 mm max. Follow attached PDF, including specified external edge finishing and rounded cable-contact notch.

@@ -1,0 +1,15 @@
+{
+  "review_date": "2026-09-16",
+  "reviewer": "Codex visual inspection",
+  "pdf_sheets_reviewed": 5,
+  "unchanged_body_sheets_inherited": 3,
+  "method": "Inspected all five newly rendered PNG sheets. Corrected residual 0.15 mm labels in the radiator notch detail and re-rendered/reviewed that sheet.",
+  "findings": "Legible dimensions and schedules; \u00b10.10 cut sizes/coordinates on both steel plates. Flatness and specified radiator edge finishing remain distinct. Faceplate standard deburring notes match accepted concession.",
+  "geometry": "Both steel STEP/DXF files byte-identical to preceding issues. Body archive unchanged.",
+  "presentation_review_inherited_from": "output/review/Q-M01-R6-M02-visual-review.json",
+  "source_sha256": {
+    "output/pdf/RM10-Q-M02-FACEPLATE.pdf": "f50c3b831366094b8de23103079d8f7ad0a66517cc638dba924d3a2244057680",
+    "output/pdf/SN1260-R6-M03-PLATE.pdf": "328a4c4643f01870cc3ac415b1e64653dd165fb610e0c703516ae4e48257818b",
+    "output/pdf/RM10-Q-M01-BODY.pdf": "0712162e83ea375740369cbede3ec1e4f0190ef0474e8dfbca108871948cddc6"
+  }
+}

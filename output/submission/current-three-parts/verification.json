@@ -12,9 +12,9 @@
       ]
     },
     {
-      "part": "RM10-Q-M01-FACEPLATE",
-      "zip": "RM10-Q-M01-FACEPLATE.zip",
-      "sha256": "79e3494f78bd4f6f53581c9d7fa30c974a2238ea01ba37b9a616f69ca5cb7ebe",
+      "part": "RM10-Q-M02-FACEPLATE",
+      "zip": "RM10-Q-M02-FACEPLATE.zip",
+      "sha256": "ff9ee01939fb46442e485ee7203068548f852b173048ff37936a1c736e6d4cdf",
       "pdf_sheets": 2,
       "contents": [
         "step",
@@ -23,9 +23,9 @@
       ]
     },
     {
-      "part": "SN1260-R6-M02-PLATE",
-      "zip": "SN1260-R6-M02-PLATE.zip",
-      "sha256": "e52e87c1a158953fa378bd27544a048a2f005536ab3a3d7192e2c0c6a94d2bde",
+      "part": "SN1260-R6-M03-PLATE",
+      "zip": "SN1260-R6-M03-PLATE.zip",
+      "sha256": "a29266619fbe596d309e0d7c2379f095753dc3100821561327f8a2ade870b7b6",
       "pdf_sheets": 3,
       "contents": [
         "step",
@@ -39,19 +39,22 @@
   "assembly_parameters": "cad/assembly/Q.json",
   "geometry_and_coordinate_checks": "PASS",
   "current_context_sources": "PASS",
-  "visual_review_record": "output/review/Q-M01-R6-M02-visual-review.json",
-  "supplier_submission_performed": true,
-  "submission_record": "output/submission/jlc-quotation-2026-09-15.json",
+  "visual_review_record": "output/review/Q-M02-R6-M03-visual-review.json",
+  "faceplate_worst_case_fit": "Operator accepted JLC capability; worst-case interchangeability is not guaranteed",
+  "faceplate_M4_radial_margin_mm": -0.012132034355964078,
+  "historical_submission_record": "output/submission/jlc-quotation-2026-09-15.json",
+  "supplier_submission_performed": false,
+  "submission_record": null,
   "remaining_supplier_review": [
     "POM stock grade",
     "Deep-gallery drilling process",
     "Specified tolerances, flatness and surface finishes"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "fb557b89d2f5d8cdceeb0d310320bf93b584ee3028c3ac052fec501219f71d21",
-    "output/review/Q-M01-R6-M02-visual-review.json": "7a55d3ee5ecf4f917ad6aee52c09d995e733a0b555dc2fa330414e089ac8cba1",
-    "scripts/draw_radiator_production.py": "f64edea35e31b19b4db2f3ace01a329205dd0739f8d6c8db04ec741f81a9ac70",
-    "scripts/package_radiator_production.py": "bcfab25fcca39faa293ac3b87a5e86f60804eb98a2112b1a60cdb3ce2b2feb23",
-    "cad/manufacturing/R6-M02.json": "23ae7afc8c77ad50cca85f467a0386caef132a0619dd9b9ab6f8a3127792deda"
+    "scripts/finalise_three_part_pack.py": "0e197c2d4a8c7c94c20f8d5be99a070659d0dbecfdd30f11b199a33817c959c2",
+    "output/review/Q-M02-R6-M03-visual-review.json": "7aabb08d578b15a1b1dae81b7b5647d13d9dc33357301ea1d5d777b7fef466ca",
+    "scripts/draw_radiator_production.py": "56315eccbc0ac20334d271b68efbe810847d11de65f6a2a99db7c32c3d2746c1",
+    "scripts/package_radiator_production.py": "1587b8c3064e16a43a947e1a52fae8d55d81656cd88db3f1bdfb17ecfd4f72fa",
+    "cad/manufacturing/R6-M03.json": "5703419b0649561373a550e7796e8f48698983141c56790fe23145bde460d0d1"
   }
 }

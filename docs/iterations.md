@@ -1,6 +1,6 @@
 # Revision register
 
-**Current:** operator-approved manifold **Q**, manufacturing issue **Q-M01**, and radiator **R6**, manufacturing issue **R6-M02**. The [three-part recap](three-part-recap.md) describes the current interfaces. Q retains the accepted Koolance fitting pose and uses shorter retention pilots; R6-M02 now specifies raw stainless sheet finish, matching the faceplate, without changing R6 geometry.
+**Current:** operator-approved manifold **Q**, with **Q-M01 body / Q-M02 faceplate**, and radiator **R6 / R6-M03**. The [three-part recap](three-part-recap.md) describes the current interfaces. Both new steel issues use ±0.10 mm cut dimensions and coordinates, preserving nominal geometry and raw finish. Q-M02 records the accepted standard-deburring faceplate limitation; radiator edge finishing remains specified. New steel packs are prepared locally, not yet uploaded.
 
 ## Manifold history
 
@@ -16,7 +16,7 @@
 | O | Restored 40 mm slab, galleries at Y20 | Historical operator-approved predecessor; tag `revision-o-operator-approved` |
 | O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier issues; `cad/manufacturing/` and `output/manufacturing/`; do not submit as Q |
 | **P** | 2 mm plain-hole plate, twelve M4 ×16 button screws, 3 mm bosses, revised M4 depths | Historical predecessor, `cad/iterations/P-long-bore.json`, `output/long-bore-P/`; [detail](revision-P-plain-bore-faceplate.md) |
-| **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Current operator-approved pair / Q-M01**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). M4: 10 mm full thread, 13 mm pilot. |
+| **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Current operator-approved geometry / Q-M01 body, Q-M02 faceplate**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). M4: 10 mm full thread, 13 mm pilot. |
 
 P's official Koolance studio fitting update and operator acceptance are presentation/installation decisions, not new manufactured-part revisions. Source geometry remains unchanged.
 
@@ -40,3 +40,9 @@ Git preserves all earlier revisions, recaps and README/AGENTS history. Retrieve 
 ## StarTech25U context update —15 September2026
 
 The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and uses Q/R6. Front PVC routes use the accepted shortened free-XYZ rod/contact solution; infrastructure retains geometric65 mm bends. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.
+
+## 16 September steel tolerance issues
+
+- **Q-M02 faceplate:** all cut sizes and X/Z coordinates ±0.10; standard grinding/deburring, no dimensioned face-edge break. Q-M01 body unchanged.
+- **R6-M03 radiator:** all cut sizes, profile radii and X/Y coordinates ±0.10; separate flatness and edge finishes unchanged.
+- STEP/DXF geometry byte-identical to previous issues. Original submitted archives preserved; current local index selects the two new issues.

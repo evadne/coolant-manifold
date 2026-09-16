@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json,shutil,zipfile,argparse,re
 from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 stem=M['part_number'];src=ROOT/f'output/manufacturing/{ISSUE}'
@@ -25,10 +25,14 @@ if REV in ['R5','R6']:
  throat=n['mouth_width']-2*n['mouth_radius'];floor=throat-2*n['bottom_radius']
  for phrase in (f"{n['mouth_width']:.2f}",f"{n['depth']:.2f}",f"R{n['mouth_radius']:.2f}",f"R{n['bottom_radius']:.2f}",'R0.30-0.50',f'{throat:.2f} REF',f'{floor:.2f} REF'):
   assert phrase in pages[2],phrase
-if ISSUE=='R6-M02':
- for phrase in ('RAW SHEET FINISH: BOTH FACES', 'M02'):assert phrase in txt,phrase
+if ISSUE in ['R6-M02','R6-M03']:
+ for phrase in ('RAW SHEET FINISH: BOTH FACES', ISSUE.split('-')[-1]):assert phrase in txt,phrase
  for phrase in ('M4 ×40', 'screws + nuts', 'assembly order', 'loctite'):
   assert phrase.lower() not in txt.lower(),f'Assembly instruction in fabrication PDF: {phrase}'
+if ISSUE=='R6-M03':
+ for obsolete in ['±0.15','+0.15/0','+0 / -0.15','±0.05']:
+  assert obsolete not in txt,obsolete
+ assert '±0.10' in txt
 files=[src/f'{stem}.step',src/f'{stem}.dxf',pdf]
 for f in files:assert f.stat().st_size<100_000_000
 for f in files:shutil.copyfile(f,out/f.name)
@@ -38,7 +42,7 @@ with zipfile.ZipFile(zpath,'w',zipfile.ZIP_DEFLATED) as z:
 with zipfile.ZipFile(zpath) as z:
  assert z.testzip() is None and set(z.namelist())=={f.name for f in files}
  for f in files:assert z.read(f.name)==f.read_bytes()
-guide_dir=ROOT/('docs' if ISSUE == 'R6-M02' else 'docs/archive')
+guide_dir=ROOT/('docs' if ISSUE in ['R6-M02','R6-M03'] else 'docs/archive')
 guide=(guide_dir/f'jlc-submission-{ISSUE}.md').read_text()
 (out/'README.md').write_text(re.sub(r'\]\(([^:/)]+\.md)\)', r'](../../../docs/\1)', guide))
 shutil.copyfile(guide_dir/f'jlc-radiator-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')

@@ -1,14 +1,14 @@
 # Rack coolant manifold and SuperNova mount
 
-The current three-part set is the **accepted Revision Q manifold body and faceplate**, plus the **accepted R6 radiator plate**. Supplier issues are **Q-M01 and R6-M02**, [submitted to JLCCNC for review before payment](docs/jlc-quotation-2026-09-15.md). Both steel plates specify matching raw sheet finish. No payment or automatic payment was authorised.
+The current three-part set is the **accepted Revision Q manifold body and faceplate**, plus the **accepted R6 radiator plate**. Supplier issues are **Q-M01 body, Q-M02 faceplate and R6-M03 radiator**; both new steel issues use ±0.10 mm cut dimensions and coordinates. The original Q-M01/R6-M02 files were [submitted to JLCCNC for review before payment](docs/jlc-quotation-2026-09-15.md); the revised steel bundles are prepared locally, not yet uploaded. Both steel plates specify matching raw sheet finish. No payment or automatic payment was authorised.
 
 ![Q with official Koolance QD3 pairs](output/long-bore-Q/photorealistic/02-qd3-translucent-tubes.png)
 
 | Part | Current definition | Supplier files |
 |---|---|---|
 | Q POM body | Black unfilled declared POM-C or POM-H;410×87×40 slab +3 mm bosses;28 G1/4 female ports; two isolated long galleries | [Q-M01 body ZIP](output/submission/Q-M01/RM10-Q-M01-BODY.zip), [drawing](output/pdf/RM10-Q-M01-BODY.pdf) |
-| Q rack faceplate | 304 stainless,482.6×87×2;20 windows,12 plain M4 holes,12 optional rack slots; raw stainless sheet finish | [Q-M01 plate ZIP](output/submission/Q-M01/RM10-Q-M01-FACEPLATE.zip), [drawing](output/pdf/RM10-Q-M01-FACEPLATE.pdf) |
-| R6 radiator plate | 304 stainless,482.6×444.5×2; four NF-A20 positions,68 fixing openings,10×2 cable notch; raw stainless sheet finish | [R6-M02 ZIP](output/submission/R6-M02/SN1260-R6-M02-PLATE.zip), [drawing](output/pdf/SN1260-R6-M02-PLATE.pdf) |
+| Q rack faceplate | 304 stainless,482.6×87×2;20 windows,12 plain M4 holes,12 optional rack slots; raw stainless sheet finish | [Q-M02 plate ZIP](output/submission/Q-M02/RM10-Q-M02-FACEPLATE.zip), [drawing](output/pdf/RM10-Q-M02-FACEPLATE.pdf) |
+| R6 radiator plate | 304 stainless,482.6×444.5×2; four NF-A20 positions,68 fixing openings,10×2 cable notch; raw stainless sheet finish | [R6-M03 ZIP](output/submission/R6-M03/SN1260-R6-M03-PLATE.zip), [drawing](output/pdf/SN1260-R6-M03-PLATE.pdf) |
 
 The manifold has20 front ports at40×40 mm pitch,4 side ports and4 rear ports aligned with the outermost front pairs. Side- or rear-fed infrastructure frees all ten front pairs for loads. Topology is parallel-only, without internal grouping or a rear cover. Fittings and plugs use their own face seals.
 

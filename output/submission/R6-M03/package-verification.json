@@ -1,0 +1,18 @@
+{
+  "issue": "R6-M03",
+  "checks": "PASS",
+  "pdf_pages": 3,
+  "scheduled_features": 73,
+  "round_holes": 28,
+  "rack_slots": 40,
+  "air_apertures": 4,
+  "edge_notches": 1,
+  "zip_members": [
+    "SN1260-R6-M03-PLATE.step",
+    "SN1260-R6-M03-PLATE.dxf",
+    "SN1260-R6-M03-PLATE.pdf"
+  ],
+  "pdf_identifier_and_coordinate_coverage": "PASS",
+  "zip_integrity": "PASS",
+  "upload_performed_by_packaging_script": false
+}

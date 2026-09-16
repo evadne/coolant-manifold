@@ -5,7 +5,7 @@ import cadquery as cq
 import ezdxf
 from OCP.BRepAdaptor import BRepAdaptor_Surface
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
@@ -71,6 +71,6 @@ report={'part_number':stem,'source_revision':REV,'checks':'PASS','solid_count':1
  'drawing_has_unmodelled_edge_breaks':True,'nominal_geometry_unchanged':True,
  'source_step_sha256':hashlib.sha256((source/f'rack-plate-{REV}.step').read_bytes()).hexdigest(),
  'production_step_sha256':hashlib.sha256((OUT/f'{stem}.step').read_bytes()).hexdigest(),
- 'DFM':'Flatness and unilateral size tolerances require supplier acceptance; no automatic manufacturing acceptance claimed.'}
+ 'DFM':'Flatness and specified edge finishes require supplier acceptance; size/position tolerances follow the selected issue drawing.'}
 assert report['source_step_sha256']==report['production_step_sha256']
 (OUT/'geometry-verification.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
