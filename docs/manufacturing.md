@@ -10,6 +10,7 @@ Historical original-order statuses and the operator’s emailed acceptance remai
 - [Q-M04 body guide](jlc-submission-Q-M04.md): three-sheet body drawing with twelve explicit perimeter chamfers, all28 G1/4 and12 M4 call-outs, shorter13 mm M4 pilots, finished hole tolerances and seal lands.
 - [R7-M01 submission guide](jlc-submission-R7-M01.md): R7 geometry with four R5 outer corners, three-sheet drawing, raw sheet finish on both broad faces.
 - [JLC requirements and final checks](jlc-final-review.md): current official process/material rules, long-drilling acceptance, exact POM stock, functional finishes, mating coordinates, plate flatness and first-article checks.
+- [Q-M04 machining-route assessment](Q-M04-machining-route.md): conventional three-axis work with re-fixturing is geometrically sufficient; the two 410 mm galleries require suitable deep-drilling capability. Engineering analysis, separate from supplier fabrication instructions.
 - [Three-part file index](../output/submission/current-three-parts/README.md): verified ZIPs and cross-part manifest.
 
 **Assembly is separate:** [Q assembly guide](assembly-Q.md) and [radiator assembly guide](radiator-rack-plate.md). The fabrication PDFs do not set screw torque, apply threadlocker or order bought-in hardware.
