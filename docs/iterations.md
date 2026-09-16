@@ -1,6 +1,6 @@
 # Revision register
 
-**Current:** operator-approved manifold **Q**, with **Q-M01 body / Q-M02 faceplate**, and radiator **R6 / R6-M03**. The [three-part recap](three-part-recap.md) describes the current interfaces. Both new steel issues use ±0.10 mm cut dimensions and coordinates, preserving nominal geometry and raw finish. Q-M02 records the accepted standard-deburring faceplate limitation; radiator edge finishing remains specified. New steel packs are prepared locally, not yet uploaded.
+**Current:** operator-approved manifold **Q**, with **Q-M01 body / Q-M02 faceplate**, and radiator **R6 / R6-M03**. The [three-part recap](three-part-recap.md) describes the current interfaces. Both new steel issues use ±0.10 mm cut dimensions and coordinates, preserving nominal geometry and raw finish. Q-M02 records the accepted standard-deburring faceplate limitation; radiator edge finishing remains specified. New steel packs are held for later submission if a repeat order is needed; the current order retains its original files and emailed acceptance.
 
 ## Manifold history
 

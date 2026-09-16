@@ -44,10 +44,10 @@ The shallow notch supersedes the previous 5 mm depth; its floor is Y442.500.
 
 Build geometry first with `scripts/build_radiator_plate.py --revision R6`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R6-M03`, then `scripts/draw_radiator_production.py --issue R6-M03` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R6-M03` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R6-M03/`; the upload bundle and supplier remarks are in `output/submission/R6-M03/`.
 
-The generation scripts prepare local files only; the separate quotation status below records the authorised supplier submission. This revised package is prepared locally; replacement upload, supplier acknowledgement and payment are not recorded by packaging.
+The generation scripts prepare local files only; the separate quotation status below records the authorised supplier submission. This revised package is held for a future repeat order; it is not a replacement upload for the current order.
 
 R6-M03 supersedes R6-M02. Both steel parts retain raw sheet finish with no brushing or polishing. STEP/DXF geometry remains byte-identical to approved R6. See [current three-part JLC review](../../../docs/jlc-final-review.md).
 
 ## Quotation status
 
-Prepared locally for replacement of the R6-M02 files on order **SMS2609163000690-6347288A**. Original submission remains recorded in the [quotation history](../../../docs/jlc-quotation-2026-09-15.md). No revised upload or payment has been performed. The earlier faceplate-specific deburring concession has not been extended to this radiator: its R0.30–0.50 cable-contact face-edge rounds and other edge finishing remain specified.
+**Held for later submission if a repeat order is needed**, by operator decision on 16 September 2026. This package records the accepted dimensional tolerances. Retain the R6-M02 files on current order **SMS2609163000690-6347288A**. Original submission remains recorded in the [quotation history](../../../docs/jlc-quotation-2026-09-15.md). No revised upload or payment has been performed. The earlier faceplate-specific deburring concession has not been extended to this radiator: its R0.30–0.50 cable-contact face-edge rounds and other edge finishing remain specified.

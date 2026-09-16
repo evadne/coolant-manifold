@@ -97,6 +97,8 @@ submitted = bool(submission and submission['status'] == 'submitted_for_file_revi
 
 manifest = {
     'checks': 'PASS', 'parts': parts,
+    'release_status': 'held_for_future_repeat_order',
+    'operator_disposition': 'Retain existing supplier order files; hold revised steel issues for later submission if a repeat order is needed.',
     'fabrication_scope': 'Each ZIP contains only one custom part STEP and its fabrication drawing/profile.',
     'assembly_guide': 'docs/assembly-Q.md',
     'assembly_parameters': 'cad/assembly/Q.json',
@@ -121,7 +123,7 @@ manifest = {
 (OUT / 'verification.json').write_text(json.dumps(manifest, indent=2) + '\n')
 (OUT / 'README.md').write_text('''# Current three-part fabrication pack
 
-Current local pack: unchanged Q-M01 body plus revised Q-M02 faceplate and R6-M03 radiator. The two steel revisions are prepared locally and have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
+Held repeat-order pack: unchanged Q-M01 body plus revised Q-M02 faceplate and R6-M03 radiator. The operator selected these issues to record accepted dimensional tolerances for later submission if a repeat order is needed. Do not replace the current JLC order files; that order proceeds under the emailed acceptance. These steel issues have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|

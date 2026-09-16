@@ -13,6 +13,6 @@ Use `output/submission/Q-M02/RM10-Q-M02-FACEPLATE.zip` as one sheet-metal part. 
 
 The twelve hole positions and all nominal diameters remain unchanged. The earlier proposed Ø4.5 minimum-hole condition is not retained: the new specification allows Ø4.40–4.60 mm. The [fit assessment](Q-faceplate-as-drawn-capability.md) and [operator acceptance](jlc-feedback-2026-09-16.md#operator-acceptance) are engineering records outside the fabrication ZIP.
 
-Prepared locally for revised submission. Existing supplier reference: **SMS2609163000694-6347288A**. No replacement upload or supplier acknowledgement is recorded by packaging. Original Q-M01 submitted archives remain intact; see [quotation history](jlc-quotation-2026-09-15.md).
+**Held for later submission if a repeat order is needed**, by operator decision on 16 September 2026. This package records the accepted dimensional tolerances. Do not replace the current order’s files. The existing order **SMS2609163000694-6347288A** proceeds under the operator’s emailed acceptance; it is a historical reference, not an order for this new issue. No upload of this issue has occurred. Original Q-M01 submitted archives remain intact; see [quotation history](jlc-quotation-2026-09-15.md).
 
 Rebuild: `python3 scripts/prepare_Q_faceplate_issue.py`, then `python3 scripts/draw_Q_production.py --faceplate-issue Q-M02 --faceplate-only`. Render and inspect both sheets, then run `python3 scripts/package_Q_faceplate_issue.py`. Use a Python runtime with ReportLab/pypdf for the final two commands.
