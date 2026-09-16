@@ -27,3 +27,5 @@ Supplier review must address stock grade, deep drilling, threads, specific toler
 ## Subsequent feedback
 
 [16 September 2026: verified order statuses and manifold faceplate tolerance/edge-finishing limitations](jlc-feedback-2026-09-16.md). Faceplate Pending, radiator Awaiting Payment, POM body Approved; displayed combined total now $356.95 including shipping. Original submission details and hashes above remain unchanged.
+
+On 16 September the operator subsequently reported emailing JLC to [accept its stated faceplate limitations and proceed](jlc-feedback-2026-09-16.md#operator-acceptance). Submitted files are unchanged. The portal statuses above predate that acceptance; no subsequent status or payment has been verified.
