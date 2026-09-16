@@ -1,6 +1,6 @@
 # Revision register
 
-**Current:** Q-M04 manifold body, Q-M03 faceplate and radiator R7 / R7-M01. Both steel plates have four R5 outside corners and retain ±0.10 mm cut dimensions/coordinates. All other geometry is retained. New steel bundles remain held for future repeat orders; original supplier-order files stay unchanged.
+**Current:** Q-M04 manifold body, Q-M03 faceplate and radiator R7 / R7-M01. Both steel plates have four R5 outside corners and retain ±0.10 mm cut dimensions/coordinates. All other geometry is retained. The operator accepted the complete set and authorised a separate new order, with shipping confirmation required before submission; original supplier-order files stay unchanged.
 
 ## Manifold history
 
@@ -56,3 +56,7 @@ The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in moun
 ## Q-M04 body — 16 September 2026
 
 Twelve main-slab outside edges gain C0.50 ±0.10 ×45° ±1° chamfers with modelled corner junctions. All functional geometry is retained. Held body issue replaces Q-M01 locally; submitted originals are untouched. Steel remains Q-M03 / R7-M01. Three new body drawing sheets and 25 affected renders refreshed; total current presentation set 32 images.
+
+## Operator acceptance and new-order authority — 16 September 2026
+
+The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Reuse prior material, finish and goods metadata; compare shipping services and obtain operator confirmation of the cheapest option before final submission. Preserve the original orders and archives. [New-order preparation record](jlc-order-2026-09-16.md).

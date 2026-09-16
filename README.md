@@ -1,6 +1,6 @@
 # Rack coolant manifold and SuperNova mount
 
-The current three-part set is the **accepted Revision Q manifold body and faceplate**, plus the **R7 radiator plate with R5 external corners**. The held repeat-order issues are **Q-M04 body, Q-M03 faceplate and R7-M01 radiator**; both new steel issues use ±0.10 mm cut dimensions and coordinates. The original Q-M01/R6-M02 files were [submitted to JLCCNC for review before payment](docs/jlc-quotation-2026-09-15.md); the revised steel bundles are held for a future repeat order, not for replacement on the current order. The current order proceeds with its original files and the operator’s emailed acceptance. Both steel plates specify matching raw sheet finish. No payment or automatic payment was authorised.
+The current accepted three-part set is **Q-M04 POM body, Q-M03 manifold faceplate and R7-M01 radiator plate**. The body has C0.5 slab-edge chamfers and eight modelled corner flats; both steel plates have R5 outer corners, ±0.10 mm cut dimensions/coordinates and matching raw sheet finish. The operator authorised a [separate new JLC order](docs/jlc-order-2026-09-16.md) on 16 September, subject to confirmation of the cheapest shipping option before submission. Original Q-M01/R6-M02 orders and archives remain unchanged. No payment is authorised.
 
 ![Q with official Koolance QD3 pairs](output/long-bore-Q/photorealistic/02-qd3-translucent-tubes.png)
 

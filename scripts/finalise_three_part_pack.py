@@ -102,8 +102,8 @@ submitted = bool(submission and submission['status'] == 'submitted_for_file_revi
 
 manifest = {
     'checks': 'PASS', 'parts': parts,
-    'release_status': 'held_for_future_repeat_order',
-    'operator_disposition': 'Retain existing supplier order files; hold revised body and steel issues for later submission if a repeat order is needed.',
+    'release_status': read('output/submission/jlc-order-2026-09-16.json')['status'],
+    'operator_disposition': 'Complete set accepted. Prepare a separate new order; confirm cheapest shipping with operator before final submission. Preserve original orders.',
     'fabrication_scope': 'Each ZIP contains only one custom part STEP and its fabrication drawing/profile.',
     'assembly_guide': 'docs/assembly-Q.md',
     'assembly_parameters': 'cad/assembly/Q.json',
@@ -128,7 +128,7 @@ manifest = {
 (OUT / 'verification.json').write_text(json.dumps(manifest, indent=2) + '\n')
 (OUT / 'README.md').write_text('''# Current three-part fabrication pack
 
-Held repeat-order pack: Q-M04 body with C0.5 slab-edge chamfers plus Q-M03 faceplate and R7-M01 radiator. The operator selected these issues to record accepted dimensional tolerances for later submission if a repeat order is needed. Do not replace the current JLC order files; that order proceeds under the emailed acceptance. These revised issues have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
+Accepted new-order pack: Q-M04 body with C0.5 slab-edge chamfers and eight corner flats, Q-M03 faceplate and R7-M01 radiator. A separate new order is authorised, subject to operator confirmation of the cheapest available shipping option before final submission. Preserve the original supplier orders and files. [New-order status](../../../docs/jlc-order-2026-09-16.md) records UI progress separately from these local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|

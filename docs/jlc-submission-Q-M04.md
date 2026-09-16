@@ -1,6 +1,6 @@
 # Q-M04 POM body fabrication issue
 
-Issued 16 September 2026. Part **RM10-Q-M04-BODY** supersedes Q-M01 for the held repeat-order pack. Its twelve main-block outside edges have **C0.50 ±0.10 mm ×45° ±1° chamfers**, modelled in STEP. The eight triangular corner flats follow the model. All other geometry and manufacturing requirements are retained.
+Issued 16 September 2026. Part **RM10-Q-M04-BODY** supersedes Q-M01 for the accepted new-order pack. Its twelve main-block outside edges have **C0.50 ±0.10 mm ×45° ±1° chamfers**, modelled in STEP. The eight triangular corner flats follow the model. All other geometry and manufacturing requirements are retained.
 
 Use `output/submission/Q-M04/RM10-Q-M04-BODY.zip`: one single-part STEP and matching three-sheet A3 PDF. Thread cylinders represent tapping pilots; the PDF specifies finished threads. This is a CNC part, not sheet metal.
 
@@ -15,4 +15,4 @@ STEP comparison confirms only the slab-perimeter chamfers remove material: 267.8
 
 Rebuild using `.venv/bin/python scripts/prepare_Q_body_issue.py`, then `python3 scripts/draw_Q_production.py --body-issue Q-M04 --body-only` with ReportLab. Render and inspect all three PDF sheets, then run `python3 scripts/package_Q_body_issue.py` with pypdf. The body preparation also refreshes the separate reference assembly with the current Q-M03 faceplate; run it after faceplate preparation.
 
-**Held for a future repeat order.** Do not replace the current JLC order files; original Q-M01 submitted files remain intact. This issue has not been submitted. Assembly hardware, torque and installation instructions remain outside this fabrication ZIP.
+The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Reuse prior material, finish and goods metadata; compare shipping services and obtain operator confirmation of the cheapest option before final submission. Preserve the original orders and archives. [New-order preparation record](jlc-order-2026-09-16.md). Assembly instructions remain outside the fabrication ZIP.

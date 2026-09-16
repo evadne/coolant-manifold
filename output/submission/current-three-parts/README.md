@@ -1,6 +1,6 @@
 # Current three-part fabrication pack
 
-Held repeat-order pack: Q-M04 body with C0.5 slab-edge chamfers plus Q-M03 faceplate and R7-M01 radiator. The operator selected these issues to record accepted dimensional tolerances for later submission if a repeat order is needed. Do not replace the current JLC order files; that order proceeds under the emailed acceptance. These revised issues have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
+Accepted new-order pack: Q-M04 body with C0.5 slab-edge chamfers and eight corner flats, Q-M03 faceplate and R7-M01 radiator. A separate new order is authorised, subject to operator confirmation of the cheapest available shipping option before final submission. Preserve the original supplier orders and files. [New-order status](../../../docs/jlc-order-2026-09-16.md) records UI progress separately from these local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|

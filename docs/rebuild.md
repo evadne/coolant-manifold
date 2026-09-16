@@ -42,7 +42,7 @@ python3 scripts/draw_Q_production.py --body-issue Q-M04 --body-only
 python3 scripts/package_Q_body_issue.py
 ```
 
-Q-M04 preserves the submitted Q-M01 source and adds only the twelve C0.5 ×45° slab-edge chamfers. It also refreshes the current assembly STEP; run this step after faceplate preparation. Current Q product/studio/context renderers load Q-M04. Do not overwrite submitted archives. The held pack is Q-M04 body + Q-M03 faceplate + R7-M01 radiator. Current review comprises three new body sheets, five unchanged steel sheets, 25 refreshed manifold/studio/context images and seven inherited radiator images. The tube equilibrium remains unchanged.
+Q-M04 preserves the submitted Q-M01 source and adds only the twelve C0.5 ×45° slab-edge chamfers. It also refreshes the current assembly STEP; run this step after faceplate preparation. Current Q product/studio/context renderers load Q-M04. Do not overwrite submitted archives. The accepted new-order pack is Q-M04 body + Q-M03 faceplate + R7-M01 radiator. Current review comprises three new body sheets, five unchanged steel sheets, 25 refreshed manifold/studio/context images and seven inherited radiator images. The tube equilibrium remains unchanged.
 
 ## Original manifold Q / Q-M01 reproduction
 

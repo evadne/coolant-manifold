@@ -34,8 +34,8 @@
       ]
     }
   ],
-  "release_status": "held_for_future_repeat_order",
-  "operator_disposition": "Retain existing supplier order files; hold revised body and steel issues for later submission if a repeat order is needed.",
+  "release_status": "preparing_new_order",
+  "operator_disposition": "Complete set accepted. Prepare a separate new order; confirm cheapest shipping with operator before final submission. Preserve original orders.",
   "fabrication_scope": "Each ZIP contains only one custom part STEP and its fabrication drawing/profile.",
   "assembly_guide": "docs/assembly-Q.md",
   "assembly_parameters": "cad/assembly/Q.json",
@@ -53,7 +53,7 @@
     "Specified tolerances, flatness and surface finishes"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "8a03ca9e7db79113cd17982468d9742cd53c2872a3a3cf6183b274d7ba156d16",
+    "scripts/finalise_three_part_pack.py": "519fe5e87842858c374940066569b7840e692ab72b97f229e8ce326e9f34824e",
     "output/review/Q-M04-visual-review.json": "5fab710ae0860d71185b60f357febc4062e4c03f784f7a4105a0edb3f45d2a44",
     "scripts/draw_radiator_production.py": "0da7a28db322b77086a660daf79a62f303cf1ba36a5208a4eb1d06a29393068c",
     "scripts/package_radiator_production.py": "020cc583876759a5150894208b2d51f4db3e3adb927d04fc976477f40834a1e4",

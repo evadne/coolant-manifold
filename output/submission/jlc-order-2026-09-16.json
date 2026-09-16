@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-16",
+  "status": "preparing_new_order",
+  "operator_design_accepted": true,
+  "accepted_design": "Q-M04 body including twelve C0.5 chamfers and eight triangular corner flats; Q-M03 faceplate; R7-M01 radiator",
+  "quantity_each": 1,
+  "supplier": "JLCCNC",
+  "interface": "Safari Computer Use",
+  "reuse_metadata_from": "output/submission/jlc-quotation-2026-09-15.json",
+  "shipping_instruction": "Compare all available shipping services, select the least expensive, and obtain operator confirmation before final submission.",
+  "shipping_confirmed": false,
+  "submitted": false,
+  "payment_authorised": false,
+  "original_orders": "Preserve original Q-M01/R6-M02 orders and archives; create a separate new order.",
+  "parts": [
+    {
+      "part": "RM10-Q-M04-BODY",
+      "archive": "output/submission/Q-M04/RM10-Q-M04-BODY.zip",
+      "quantity": 1
+    },
+    {
+      "part": "RM10-Q-M03-FACEPLATE",
+      "archive": "output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip",
+      "quantity": 1
+    },
+    {
+      "part": "SN1260-R7-M01-PLATE",
+      "archive": "output/submission/R7-M01/SN1260-R7-M01-PLATE.zip",
+      "quantity": 1
+    }
+  ]
+}

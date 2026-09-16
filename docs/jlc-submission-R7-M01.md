@@ -45,10 +45,10 @@ The shallow notch supersedes the previous 5 mm depth; its floor is Y442.500.
 
 Build geometry first with `scripts/build_radiator_plate.py --revision R7`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R7-M01`, then `scripts/draw_radiator_production.py --issue R7-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R7-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R7-M01/`; the upload bundle and supplier remarks are in `output/submission/R7-M01/`.
 
-The generation scripts prepare local files only; the separate quotation status below records the authorised supplier submission. This revised package is held for a future repeat order; it is not a replacement upload for the current order.
+The generation scripts prepare local files only; the separate quotation status below records the authorised supplier submission. This revised package is selected for a separate new order; it does not replace files on the original order.
 
 R7-M01 supersedes the held R6-M03 issue. Both steel parts retain raw sheet finish with no brushing or polishing. STEP/DXF contain the new R5 outside corners; all other geometry is retained. See [current three-part JLC review](jlc-final-review.md).
 
 ## Quotation status
 
-**Held for later submission if a repeat order is needed**, by operator decision on 16 September 2026. This package records the accepted dimensional tolerances. Retain the R6-M02 files on current order **SMS2609163000690-6347288A**. Original submission remains recorded in the [quotation history](jlc-quotation-2026-09-15.md). No revised upload or payment has been performed. The earlier faceplate-specific deburring concession has not been extended to this radiator: its R0.30–0.50 cable-contact face-edge rounds and other edge finishing remain specified.
+The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Reuse prior material, finish and goods metadata; compare shipping services and obtain operator confirmation of the cheapest option before final submission. Preserve the original orders and archives. [New-order preparation record](jlc-order-2026-09-16.md). Assembly instructions remain outside the fabrication ZIP.

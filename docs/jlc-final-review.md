@@ -36,3 +36,7 @@ Assembly and operational qualification are separate from this fabrication review
 ## File selection
 
 Use the three ZIPs indexed in `output/submission/current-three-parts/README.md`, each as a separate part. Use only matching current-issue files for each part. Uploaded files, exact submitted remarks, supplier references and review status are recorded in the [submission log](jlc-quotation-2026-09-15.md).
+
+## New-order authority — 16 September 2026
+
+The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Reuse prior material, finish and goods metadata; compare shipping services and obtain operator confirmation of the cheapest option before final submission. Preserve the original orders and archives. [New-order preparation record](jlc-order-2026-09-16.md). Q-M04 chamfer manufacturability is assessed in [the dedicated note](Q-M04-chamfer-manufacturability.md); supplier approval of the new issue remains outstanding.
