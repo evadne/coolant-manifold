@@ -23,3 +23,7 @@ All remark fields were checked in full before saving. POM remarks request declar
 ## Awaiting supplier review
 
 Supplier review must address stock grade, deep drilling, threads, specific tolerances, flatness, sealing surfaces and edge finishing. Proposed deviations require review before manufacture. No design or process acceptance is inferred from upload success or the automatic prices. Keep assembly instructions outside supplier fabrication drawings.
+
+## Subsequent feedback
+
+[16 September 2026: verified order statuses and manifold faceplate tolerance/edge-finishing limitations](jlc-feedback-2026-09-16.md). Faceplate Pending, radiator Awaiting Payment, POM body Approved; displayed combined total now $356.95 including shipping. Original submission details and hashes above remain unchanged.

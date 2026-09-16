@@ -7,8 +7,8 @@ The current three-part set is the **accepted Revision Q manifold body and facepl
 | Part | Current definition | Supplier files |
 |---|---|---|
 | Q POM body | Black unfilled declared POM-C or POM-H;410×87×40 slab +3 mm bosses;28 G1/4 female ports; two isolated long galleries | [Q-M01 body ZIP](output/submission/Q-M01/RM10-Q-M01-BODY.zip), [drawing](output/pdf/RM10-Q-M01-BODY.pdf) |
-| Q rack faceplate | 304 stainless,482.6×87×2;20 windows,12 plain M4 holes,12 optional rack slots; horizontal brushed grain | [Q-M01 plate ZIP](output/submission/Q-M01/RM10-Q-M01-FACEPLATE.zip), [drawing](output/pdf/RM10-Q-M01-FACEPLATE.pdf) |
-| R6 radiator plate | 304 stainless,482.6×444.5×2; four NF-A20 positions,68 fixing openings,10×2 cable notch; horizontal brushed grain | [R6-M02 ZIP](output/submission/R6-M02/SN1260-R6-M02-PLATE.zip), [drawing](output/pdf/SN1260-R6-M02-PLATE.pdf) |
+| Q rack faceplate | 304 stainless,482.6×87×2;20 windows,12 plain M4 holes,12 optional rack slots; raw stainless sheet finish | [Q-M01 plate ZIP](output/submission/Q-M01/RM10-Q-M01-FACEPLATE.zip), [drawing](output/pdf/RM10-Q-M01-FACEPLATE.pdf) |
+| R6 radiator plate | 304 stainless,482.6×444.5×2; four NF-A20 positions,68 fixing openings,10×2 cable notch; raw stainless sheet finish | [R6-M02 ZIP](output/submission/R6-M02/SN1260-R6-M02-PLATE.zip), [drawing](output/pdf/SN1260-R6-M02-PLATE.pdf) |
 
 The manifold has20 front ports at40×40 mm pitch,4 side ports and4 rear ports aligned with the outermost front pairs. Side- or rear-fed infrastructure frees all ten front pairs for loads. Topology is parallel-only, without internal grouping or a rear cover. Fittings and plugs use their own face seals.
 
