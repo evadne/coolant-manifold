@@ -27,3 +27,14 @@ At the operator’s request, the held issues are now Q-M03 and R7-M01. Both STEP
 ## Historical outer-corner inspection — 16 September 2026
 
 Direct inspection of the held-issue STEP and DXF confirms that **Q-M02 faceplate has four square outer corners**: its DXF perimeter is a four-vertex rectangle with zero bulges, and STEP has no outer corner cylindrical faces. **R6-M03 radiator has four R2 mm outer corners**, present in both STEP and DXF; the four STEP cylinders lie at X±239.3, Y2/442.5. The unchanged predecessor geometries have the same corners. These cut-profile radii are distinct from rounding the sheet's face edges or standard deburring. No geometry change was made during this inspection.
+
+## POM edge inspection — 16 September 2026
+
+Direct inspection of the submitted/current Q-M01 body STEP and its three-sheet PDF confirms:
+
+- All twelve outside edges of the 410 ×87 ×40 mm slab are sharp right-angle intersections in the nominal STEP: four 410 mm edges, four 87 mm edges and four 40 mm edges. No perimeter chamfer or outside-corner fillet is modelled.
+- The twenty front bosses have modelled R1 root fillets and C0.5 ×45° outer-lip chamfers. The drawing specifies R1.00 ±0.10 and C0.50 ±0.10 ×45° ±1°.
+- All 28 G1/4 mouths have modelled 45° entry chamfers: Ø13.80 mouth to Ø11.80 pilot, 1.00 mm nominal axial depth. The twelve M4 mouths have modelled Ø4.40 /90° included entries, 0.55 mm nominal depth.
+- Drawing sheet 3 specifies “External edges: break 0.20 max unless otherwise specified.” This is a finishing allowance without a specified minimum, chamfer angle or radius; it is not modelled in STEP. It does not define a consistent visible perimeter chamfer. Seal lands remain protected from general rounding.
+
+The user's EK comparison is an observation of their manifold; no exact EK perimeter-chamfer size has been established. No design, drawing or supplier-file change was made by this inspection. The steel R5 outside corners do not extend to the POM body.
