@@ -1,4 +1,4 @@
-"""StarTech 25U open-frame use-case study. Current Q manifold and R6 plate; bought-in context envelopes noted."""
+"""StarTech 25U open-frame use-case study. Current Q manifold and R7 plate; bought-in context envelopes noted."""
 from pathlib import Path
 import bpy, math, json, hashlib, argparse, sys
 from mathutils import Vector
@@ -147,9 +147,9 @@ assert len([o for o in scene.objects if o.name.startswith('Host uplink MCIO 8i c
 # Pair nine cools host; pair ten remains spare with disconnected male QDs.
 for j,z in enumerate((host+42,host+82)):
     pvc_tube('Host coolant branch '+str(j),branch_route(140,qd_tail_y+1,manifold+(23.5 if j==0 else 63.5),136,-33,z,128 if j==0 else 152,depth=-270))
-# Append the existing R6 CAD/fan assembly from its native mm Blender scene.
+# Append the existing R7 CAD/fan assembly from its native mm Blender scene.
 # Even the plate-only file retains the other components, hidden for its own view.
-rad_source=ROOT/'output/radiator-R6/radiator-rack-plate-R6.blend'
+rad_source=ROOT/'output/radiator-R7/radiator-rack-plate-R7.blend'
 with bpy.data.libraries.load(str(rad_source),link=False) as (src,dst):
     dst.objects=[name for name in src.objects if name!='Studio ground']
 rad_objects=[]
@@ -162,13 +162,13 @@ for o in dst.objects:
     scene.collection.objects.link(o);o.location.z+=bottom
     o.hide_render=False;o.hide_set(False);rad_objects.append(o)
 assert sum(o.name.startswith('NF-A20 reference fan-00') for o in rad_objects)==8
-rad_plate=next(o for o in rad_objects if o.name.startswith('R6 rack plate'))
-rad_params=json.loads((ROOT/'cad/radiator/R6.json').read_text())
+rad_plate=next(o for o in rad_objects if o.name.startswith('R7 rack plate'))
+rad_params=json.loads((ROOT/'cad/radiator/R7.json').read_text())
 for x in rad_params['rack_mount_x']:
     for i in (0,6,13,19):
-        cyl('R6 populated rack screw',(x,-5,bottom+rad_params['rack_mount_y'][i]),5,6,steel)
-        box('R6 M6 cage-nut envelope',(math.copysign(232.5,x),8.5,bottom+rad_params['rack_mount_y'][i]),(13,12,13),steel)
-# The stock radiator/frame/fan geometry is an integration envelope; the R6 plate
+        cyl('R7 populated rack screw',(x,-5,bottom+rad_params['rack_mount_y'][i]),5,6,steel)
+        box('R7 M6 cage-nut envelope',(math.copysign(232.5,x),8.5,bottom+rad_params['rack_mount_y'][i]),(13,12,13),steel)
+# The stock radiator/frame/fan geometry is an integration envelope; the R7 plate
 # is CAD-derived. Rotate the symmetrical radiator port arrangement to the bottom.
 port_z=bottom+(rad_params['height']-rad_params['radiator_height'])/2
 for x in (-140.5,140.5):
@@ -279,15 +279,15 @@ if not args.preview:
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'25U-StarTech-context.blend'),compress=True)
     def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
     report=dict(rack_U=25,rack_model='StarTech 4POSTRACK25U',rack_depth_overall_mm=661.8,rail_spacing_depth_mm=RAIL_DEPTH,rack_width_mm=600,rack_height_casters_mm=1288.34,rack_U_datum_mm=RACK_U_DATUM,depth_setting='22in / 0 and 0',
-      manifold_revision='Q',radiator_plate_revision='R6',
-      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R6 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='Q parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],
+      manifold_revision='Q',manifold_faceplate_issue='Q-M03',radiator_plate_revision='R7',outer_corner_radius_mm=5,
+      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R7 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='Q parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],
       radiator=dict(plate_dimensions_mm=[482.6,444.5,2],body_envelope_mm=[422,48,441],fans=8,fan_model='Official Noctua NF-A20 integration meshes',port_orientation='Downwards into reserved U1; radiator begins at U2',rack_screws_populated=8,cable_notch_mm=[10,2],plate_aperture_radius_mm=50),
       pump_reservoir=dict(selection='Provisional ULTITUBE 200 / D5 NEXT envelopes',glass_length_mm=200,glass_od_mm=65,glass_wall_mm=5,position_xy_mm=[pump_x,pump_y],mounting='Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection',reason='Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate.'),
       front_pair_allocation={'1-8':'Individual GPUs','9':'Host CPU/chassis','10':'Spare male QDs'},
       fittings=dict(male='QD3-MTG4',female='QD3-FT10X13',connected_pairs=9,spare_pairs=1,rear_ports=4,rear_ports_state='Four reference face-sealing plugs; existing side-fed routing retained',source_scale='Unscaled supplier meshes in mm',axial_placement='Operator-accepted inferred studio pose'),
       pvc_equilibrium=dict(report='pvc-equilibrium.json',modulus_MPa=relaxation_report['parameters']['young_modulus_MPa'],method=relaxation_report['parameters']['model']),
       gpu_pitch_mm=40,gpu_reference=GPU,gpu_registration=gpu_records,gpu_orientation='Viewed from ports, main block left, processor PCB right, active backplate further right. Bracket rear; angled 12V-2x6 at top-front cutout',host_envelope_mm=[440,456,176],host_link=dict(adapter='x16 to 2x MCIO 8i',physical_cables=2,logical_link='one x16'),switch_status='Eight-endpoint concept; exact board not selected',
-      source_sha256={path:digest(path) for path in ['output/long-bore-Q/cad/body.step','output/long-bore-Q/cad/faceplate.step','output/radiator-R6/rack-plate-R6.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-Q/product-views/assembled-unmarked.blend','output/radiator-R6/radiator-rack-plate-R6.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/check_context_gpu.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','scripts/context_gpu5090.py','cad/context/gpu-5090fe.json','docs/references/alphacool-5090/datasheet.pdf','docs/references/alphacool-5090/manual.pdf','docs/references/alphacool-5090/power-housing.pdf','docs/references/alphacool-5090/power-header.pdf','output/context-25U/relaxed-branches.json']},
+      source_sha256={path:digest(path) for path in ['output/long-bore-Q/cad/body.step','output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step','output/radiator-R7/rack-plate-R7.step','output/long-bore-P/koolance-fit/verification.json','output/long-bore-Q/product-views/assembled-unmarked.blend','output/radiator-R7/radiator-rack-plate-R7.blend','docs/references/startech-25u/dimensions.pdf','docs/references/startech-25u/sources.json','scripts/context_startech25.py','scripts/context_tubing.py','scripts/check_context_fit.py','scripts/check_context_gpu.py','scripts/render_context_25u.py','scripts/relax_context_tubes.py','cad/context/pvc-routing.json','scripts/context_gpu5090.py','cad/context/gpu-5090fe.json','docs/references/alphacool-5090/datasheet.pdf','docs/references/alphacool-5090/manual.pdf','docs/references/alphacool-5090/power-housing.pdf','docs/references/alphacool-5090/power-header.pdf','output/context-25U/relaxed-branches.json']},
       view_files=['01-rack-context.png','02-front-layout.png','04-rear-cooling-assembly.png','05-pump-reservoir-detail.png','06-front-tube-routing.png','07-side-tube-routing.png','08-front-tube-detail.png','09-GPU-block-detail.png','10-GPU-power-detail.png'],
       scope='Current custom parts with manufacturer-dimensioned StarTech rack envelope and inferred section registration; chassis, GPU, pump and support remain illustrative. Not a complete fit, load, heat-rejection or electrical qualification. Routing colours are aids, not product surface markings.')
     (OUT/'layout.json').write_text(json.dumps(report,indent=2)+'\n')

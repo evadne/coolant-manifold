@@ -4,7 +4,7 @@ import json, math, argparse, sys
 import bpy
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5','R6'],default='R1')
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5','R6','R7'],default='R1')
 parser.add_argument('--plate-only',action='store_true')
 parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
@@ -49,7 +49,7 @@ if REV=='R6':
  plate.data.materials.clear();plate.data.materials.append(brushed)
 # The source CAD is XY, extruded +Z. Rotation maps it to X,-thickness,height.
 assembly=[];front_hardware=[];front_fans=[];rear_fans=[]
-NEW=REV in ['R3','R4','R5','R6']
+NEW=REV in ['R3','R4','R5','R6','R7']
 def keep(o):assembly.append(o);return o
 keep(box('Illustrative 400 mm radiator core',(0,22.5,H/2),(400,32 if NEW else 42,400),black))
 for x in (-206,206):keep(box('Radiator structural side rail',(x,22.5,H/2),(10,45,424),black,.5))
@@ -102,7 +102,7 @@ if NEW:
      head=hardware(keep(cyl('M4 button hex socket head',(xx,seat-direction*1.1,zz),3.8,2.2,steel)))
      bevel(head,.65)
      bpy.ops.mesh.primitive_cylinder_add(vertices=6,radius=1.443,depth=1.5,location=(xx,seat-direction*2.1,zz),rotation=(math.pi/2,0,0));cut(head,bpy.context.object)
-     if REV in ['R4','R5','R6']:
+     if REV in ['R4','R5','R6','R7']:
       hardware(washer('M4 rear washer',xx,.4,zz))
       bpy.ops.mesh.primitive_cylinder_add(vertices=6,radius=7/math.sqrt(3),depth=3.2,location=(xx,-T-32-.8-1.6,zz),rotation=(math.pi/2,0,0))
       nut=hardware(keep(bpy.context.object));nut.name='DIN 934 M4 nut';nut.data.materials.append(steel)
@@ -146,7 +146,7 @@ def render(name,loc,bare=False):
  for o in assembly:o.hide_render=bare
  camera.location=loc;camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()
  scene.render.filepath=str(OUT/name);bpy.ops.render.render(write_still=True)
-if REV in ['R2','R3','R4','R5','R6']:render('00-plate-front.png',(0,-1000,H/2),True)
+if REV in ['R2','R3','R4','R5','R6','R7']:render('00-plate-front.png',(0,-1000,H/2),True)
 render('01-plate-perspective.png',(630,-1100,700),True)
 if not args.plate_only:render('02-radiator-front.png',(630,-1100,700))
 if not args.plate_only:render('03-radiator-rear.png',(-700,1100,650))
@@ -162,6 +162,13 @@ if P.get('cable_notch'):
  camera.data.ortho_scale=34
  camera.location=(14,-60,H+14);camera.rotation_euler=(Vector((0,-1,H-4))-camera.location).to_track_quat('-Z','Y').to_euler()
  scene.render.filepath=str(OUT/'05-cable-notch-detail.png');bpy.ops.render.render(write_still=True)
+ camera.data.ortho_scale=650
+# Dedicated outline-corner detail at true CAD radius.
+if REV=='R7':
+ for o in assembly:o.hide_render=True
+ camera.data.ortho_scale=30
+ camera.location=(P['width']/2+10,-60,H+12);camera.rotation_euler=(Vector((P['width']/2-7,-1,H-7))-camera.location).to_track_quat('-Z','Y').to_euler()
+ scene.render.filepath=str(OUT/'06-R5-corner-detail.png');bpy.ops.render.render(write_still=True)
  camera.data.ortho_scale=650
 for o in assembly:o.hide_render=args.plate_only
 camera.location=(630,-1100,700);camera.rotation_euler=(Vector((0,20,H/2))-camera.location).to_track_quat('-Z','Y').to_euler()

@@ -20,9 +20,10 @@ def check_sources(record):
         assert sha(path) == expected, f'Stale source: {path}'
 
 q = read('output/manufacturing/Q-M01/geometry-verification.json')
-r = read('output/manufacturing/R6-M03/geometry-verification.json')
-face = read('output/manufacturing/Q-M02/geometry-verification.json')
-assert face['checks'] == 'PASS' and face['nominal_geometry_unchanged']
+r = read('output/manufacturing/R7-M01/geometry-verification.json')
+face = read('output/manufacturing/Q-M03/geometry-verification.json')
+assert face['checks'] == 'PASS' and face['outer_corner_radius_mm'] == 5
+assert face['minimum_opening_to_outer_profile_mm'] > 1.89
 check_sources(face)
 assert q['checks'] == r['checks'] == 'PASS'
 check_sources(q)
@@ -31,21 +32,21 @@ assert q['G1_4_ports'] == 28 and q['M4_threads'] == 12
 assert q['M4_full_thread_after_entry_mm'] == 10
 assert q['M4_pilot_full_diameter_mm'] == 13
 assert q['geometry']['wet_networks'] == 2
-# Q-M01's positive fit calculation is historical; Q-M02 records the accepted capability.
+# Q-M01's positive fit calculation is historical; Q-M03 records the accepted capability.
 assert face['linear_and_coordinate_tolerance_mm'] == 0.1
 assert q['root_window_worst_size_and_coordinate_clearance_mm'] > 0
 assert r['nominal_geometry_unchanged'] and r['solid_count'] == 1
-assert sha('output/radiator-R6/rack-plate-R6.step') == r['source_step_sha256']
+assert sha('output/radiator-R7/rack-plate-R7.step') == r['source_step_sha256']
 
 # Superseded index copies are disposable; canonical submitted archives remain intact.
-for old_name in ['RM10-Q-M01-FACEPLATE.zip', 'SN1260-R6-M02-PLATE.zip']:
+for old_name in ['RM10-Q-M01-FACEPLATE.zip', 'SN1260-R6-M02-PLATE.zip', 'RM10-Q-M02-FACEPLATE.zip', 'SN1260-R6-M03-PLATE.zip']:
     (OUT/old_name).unlink(missing_ok=True)
 
 parts = []
 for issue, stem, pages in [
     ('Q-M01', 'RM10-Q-M01-BODY', 3),
-    ('Q-M02', 'RM10-Q-M02-FACEPLATE', 2),
-    ('R6-M03', 'SN1260-R6-M03-PLATE', 3),
+    ('Q-M03', 'RM10-Q-M03-FACEPLATE', 2),
+    ('R7-M01', 'SN1260-R7-M01-PLATE', 3),
 ]:
     directory = Path('output/submission') / issue
     verification = read(directory / 'package-verification.json')
@@ -77,17 +78,18 @@ product = read('output/long-bore-Q/product-views/render-manifest.json')
 context = read('output/context-25U/layout.json')
 studio = read('output/long-bore-Q/photorealistic/render-notes.json')
 assert product['revision'] == studio['revision'] == context['manifold_revision'] == 'Q'
-assert context['radiator_plate_revision'] == 'R6'
+assert context['radiator_plate_revision'] == 'R7'
+assert product['faceplate_issue'] == studio['faceplate_issue'] == context['manifold_faceplate_issue'] == 'Q-M03'
+assert r['outer_corner_radius_mm'] == product['outer_corner_radius_mm'] == context['outer_corner_radius_mm'] == 5
 check_sources(product)
 check_sources(context)
-assert len(product['views']) == 10 and len(context['view_files']) == 9
+assert len(product['views']) == 11 and len(context['view_files']) == 9
 assert not read('output/context-25U/scene-verification.json')['tube_equipment_intersections']
-historical_visual = read('output/review/Q-M01-R6-M02-visual-review.json')
-check_sources(historical_visual)
-visual = read('output/review/Q-M02-R6-M03-visual-review.json')
+# Earlier render paths have intentionally been refreshed; their old hashes are historical.
+visual = read('output/review/Q-M03-R7-M01-visual-review.json')
 check_sources(visual)
 assert visual['pdf_sheets_reviewed'] == 5 and visual['unchanged_body_sheets_inherited'] == 3
-assert historical_visual['presentation_images_reviewed'] == 26
+assert visual['presentation_images_reviewed'] == 31
 
 submission_path = ROOT / 'output/submission/jlc-quotation-2026-09-15.json'
 submission = json.loads(submission_path.read_text()) if submission_path.exists() else None
@@ -104,7 +106,7 @@ manifest = {
     'assembly_parameters': 'cad/assembly/Q.json',
     'geometry_and_coordinate_checks': 'PASS',
     'current_context_sources': 'PASS',
-    'visual_review_record': 'output/review/Q-M02-R6-M03-visual-review.json',
+    'visual_review_record': 'output/review/Q-M03-R7-M01-visual-review.json',
     'faceplate_worst_case_fit': face['fit_status'],
     'faceplate_M4_radial_margin_mm': face['worst_case_M4_radial_margin_mm'],
     'historical_submission_record': 'output/submission/jlc-quotation-2026-09-15.json',
@@ -114,30 +116,30 @@ manifest = {
                                    'Specified tolerances, flatness and surface finishes'],
     'source_sha256': {str(p): sha(p) for p in [
         Path('scripts/finalise_three_part_pack.py'),
-        Path('output/review/Q-M02-R6-M03-visual-review.json'),
+        Path('output/review/Q-M03-R7-M01-visual-review.json'),
         Path('scripts/draw_radiator_production.py'),
         Path('scripts/package_radiator_production.py'),
-        Path('cad/manufacturing/R6-M03.json'),
+        Path('cad/manufacturing/R7-M01.json'),
     ]},
 }
 (OUT / 'verification.json').write_text(json.dumps(manifest, indent=2) + '\n')
 (OUT / 'README.md').write_text('''# Current three-part fabrication pack
 
-Held repeat-order pack: unchanged Q-M01 body plus revised Q-M02 faceplate and R6-M03 radiator. The operator selected these issues to record accepted dimensional tolerances for later submission if a repeat order is needed. Do not replace the current JLC order files; that order proceeds under the emailed acceptance. These steel issues have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
+Held repeat-order pack: unchanged Q-M01 body plus revised Q-M03 faceplate and R7-M01 radiator. The operator selected these issues to record accepted dimensional tolerances for later submission if a repeat order is needed. Do not replace the current JLC order files; that order proceeds under the emailed acceptance. These steel issues have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|
 | Q POM body | [RM10-Q-M01-BODY.zip](RM10-Q-M01-BODY.zip) | CNC milling, drilling and tapping; black unfilled declared POM-C or POM-H |
-| Q faceplate | [RM10-Q-M02-FACEPLATE.zip](RM10-Q-M02-FACEPLATE.zip) | 2 mm 304 flat sheet; plain holes and raw sheet finish on both faces |
-| R6 radiator plate | [SN1260-R6-M03-PLATE.zip](SN1260-R6-M03-PLATE.zip) | 2 mm 304 flat sheet; plain holes and raw sheet finish on both faces |
+| Q faceplate | [RM10-Q-M03-FACEPLATE.zip](RM10-Q-M03-FACEPLATE.zip) | 2 mm 304 flat sheet; plain holes and raw sheet finish on both faces |
+| R7 radiator plate | [SN1260-R7-M01-PLATE.zip](SN1260-R7-M01-PLATE.zip) | 2 mm 304 flat sheet; plain holes and raw sheet finish on both faces |
 
-Each ZIP contains a same-name single-part STEP and PDF; the steel parts also have a DXF cut profile. The drawings define finished geometry, threads, tolerances, surface finish and inspection. STEP thread cylinders represent tapping pilots. There are eight drawing sheets across the three parts. Both steel drawings specify ±0.10 mm cut dimensions and coordinates. Separate flatness limits remain 0.30/0.50 mm; faceplate uses standard deburring, radiator retains its specified cable-contact edge finish.
+Each ZIP contains a same-name single-part STEP and PDF; the steel parts also have a DXF cut profile. The drawings define finished geometry, threads, tolerances, surface finish and inspection. STEP thread cylinders represent tapping pilots. There are eight drawing sheets across the three parts. Both steel drawings specify four R5 outside corners and ±0.10 mm cut dimensions and coordinates. Other cut profiles and fixing positions are retained. Separate flatness limits remain 0.30/0.50 mm; faceplate uses standard deburring, radiator retains its specified cable-contact edge finish.
 
-[Supplier requirements and open fabrication questions](../../../docs/jlc-final-review.md) cover the POM stock, long-gallery drilling and specified tolerances/finishes. [Verification](verification.json) records bundle integrity and consistency with the reviewed Q/R6 outputs.
+[Supplier requirements and open fabrication questions](../../../docs/jlc-final-review.md) cover the POM stock, long-gallery drilling and specified tolerances/finishes. [Verification](verification.json) records bundle integrity and consistency with the reviewed Q/R7 outputs.
 
 [Manifold assembly instructions](../../../docs/assembly-Q.md), [radiator assembly instructions](../../../docs/radiator-rack-plate.md) and engineering assessments are separate project documents, outside these fabrication ZIPs. The current [product views](../../../docs/product-views.md) and [rack scene](../../../docs/context-25U.md) are review references.
 ''')
 files = sorted(p for p in OUT.iterdir() if p.is_file() and p.name != 'SHA256SUMS.txt')
 (OUT / 'SHA256SUMS.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in files))
 print(json.dumps({'checks': 'PASS', 'parts': len(parts), 'drawing_sheets': 8,
-                  'new_pdf_sheets_reviewed': 5, 'unchanged_presentation_images_inherited': 26, 'supplier_submission_performed': submitted}, indent=2))
+                  'new_pdf_sheets_reviewed': 5, 'presentation_images_reviewed': 31, 'supplier_submission_performed': submitted}, indent=2))

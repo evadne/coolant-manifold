@@ -11,7 +11,7 @@ import numpy as np
 from radiator_notch import outline, arc_mid, notch_area
 
 ROOT = Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5','R6'],default='R1')
+parser=argparse.ArgumentParser();parser.add_argument('--revision',choices=['R1','R2','R3','R4','R5','R6','R7'],default='R1')
 REV=parser.parse_args().revision
 P = json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
 OUT = ROOT/f'output/radiator-{REV}'
@@ -109,7 +109,7 @@ for x,y in mounts:
     assert np.count_nonzero(abs(radius-1.23)<.015)>=12,(x,z)
     pilot_evidence.append([x,z])
 
-if REV in ['R2','R3','R4','R5','R6']:
+if REV in ['R2','R3','R4','R5','R6','R7']:
     assert abs(H/44.45-10)<1e-9 and len(slots)==40
     assert all(any(abs((y%44.45)-o)<1e-7 for o in [6.35,38.1]) for x,y in slots)
 
@@ -136,8 +136,13 @@ if P.get('cable_notch'):
     previous=cq.importers.importStep(str(ROOT/'output/radiator-R4/rack-plate-R4.step')).val()
     assert solid.cut(previous).Volume()<1e-6
     removed=previous.cut(reloaded)
-    assert abs(removed.Volume()-notch_area(P)*T)<1e-4
-    assert removed.BoundingBox().ymin>=H-depth-1e-6
+    expected_corner_loss=(4-math.pi)*(P['outer_radius']**2-2**2)*T
+    assert abs(removed.Volume()-notch_area(P)*T-expected_corner_loss)<1e-4
+    if REV!='R7':assert removed.BoundingBox().ymin>=H-depth-1e-6
+    else:
+        prev6=cq.importers.importStep(str(ROOT/'output/radiator-R6/rack-plate-R6.step')).val()
+        assert solid.cut(prev6).Volume()<1e-6
+        assert abs(prev6.cut(solid).Volume()-expected_corner_loss)<1e-4
 payload=P['radiator_mass_kg']+P['additional_load_kg']; total=payload+mass
 g=9.80665; moment=payload*g*P['assumed_load_cg_behind_plate_mm']/1000
 span=max(P['rack_mount_y'])-min(P['rack_mount_y'])

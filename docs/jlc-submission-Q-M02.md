@@ -1,5 +1,7 @@
 # Q-M02 manifold faceplate submission guide
 
+Historical held issue, superseded by [Q-M03](jlc-submission-Q-M03.md), which adds R5 outside corners. Retained for traceability; use the current issue for a future repeat order.
+
 Issued 16 September 2026. **RM10-Q-M02-FACEPLATE** replaces the Q-M01 faceplate specification only. The accepted Q geometry is unchanged; the POM body remains **RM10-Q-M01-BODY**, with its existing threads, positions and finishes.
 
 Use `output/submission/Q-M02/RM10-Q-M02-FACEPLATE.zip` as one sheet-metal part. It contains matching-name STEP, DXF and two-sheet A3 PDF. The STEP/DXF are byte-identical to the submitted Q-M01 geometry, renamed for this manufacturing issue.

@@ -8,13 +8,13 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2
 PROFILE=f"±{M['profile_tolerance_mm']:.2f}"
-HOLE_TOL='±0.10' if ISSUE=='R6-M03' else '+0.15/0'
-HEIGHT_TOL='±0.10' if ISSUE=='R6-M03' else '+0 / -0.15'
+HOLE_TOL='±0.10' if ISSUE in ['R6-M03','R7-M01'] else '+0.15/0'
+HEIGHT_TOL='±0.10' if ISSUE in ['R6-M03','R7-M01'] else '+0 / -0.15'
 S=json.loads((ROOT/f'output/manufacturing/{ISSUE}/feature-schedule.json').read_text())['features']
 STEM=M['part_number'];OUT=ROOT/'output/pdf'/f'{STEM}.pdf'
 pdfmetrics.registerFont(TTFont('Arial','/System/Library/Fonts/Supplemental/Arial.ttf'))
@@ -113,7 +113,7 @@ lines(x,246,[f'A01-A16: 16x Ø4.50 {HOLE_TOL} THROUGH.',
  'horizontal slots THROUGH; semicircular ends.',
  f'D01-D04: 4x 188.00 {PROFILE} square cut-outs,',
  f'corner R50.00 {PROFILE}, THROUGH.',
- f'Outer corners: 4x R2.00 {PROFILE}.']+(['E01: rounded top cable notch; see sheet 3.'] if NOTCH else []),2.6,5.2)
+ f"Outer corners: 4x R{P['outer_radius']:.2f} {PROFILE}."]+(['E01: rounded top cable notch; see sheet 3.'] if NOTCH else []),2.6,5.2)
 text(x,184,'MANUFACTURING NOTES',3.2,True)
 lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '2. NO TAPPED HOLES IN THIS PLATE.',
@@ -124,11 +124,11 @@ lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '   Other edges: break 0.20-0.30; E01 see sheet 3.' if NOTCH else '   All other cut edges: deburr / break 0.20-0.30.',
  '   Edge breaks are not modelled in STEP.',
  '6. Flatness: 0.50 max, free state, whole plate.',
- ('7. Raw sheet finish; no brushing or polishing,' if ISSUE in ['R6-M02','R6-M03'] else '7. Uniform satin brushed finish; no coating,' ),
+ ('7. Raw sheet finish; no brushing or polishing,' if ISSUE in ['R6-M02','R6-M03','R7-M01'] else '7. Uniform satin brushed finish; no coating,' ),
  '   coating, engraving, printing or markings.',
  '8. Confirm specified tolerances and flatness',
  '   before fabrication; report discrepancies.'],2.6,5.2)
-if ISSUE in ['R6-M02','R6-M03']:
+if ISSUE in ['R6-M02','R6-M03','R7-M01']:
  text(40,259,'RAW SHEET FINISH: BOTH FACES',2.3,True)
 text(x,97,'COORDINATES AND TOLERANCES',3.2,True)
 lines(x,89,['Origin O: width centreline at bottom edge.',

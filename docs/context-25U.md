@@ -1,6 +1,6 @@
 # StarTech 25U installation and PVC routing
 
-The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **Q manifold body, Q faceplate and R6 radiator plate**. Eight RTX 5090 FE GPUs with Alphacool 5100182 block/active-backplate assemblies connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. The scene now uses Q-M01 with four plugged rear ports and shorter M4 pilots; accepted hose routes and GPU geometry are retained.
+The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **Q manifold body, Q faceplate and R7 radiator plate**. Eight RTX 5090 FE GPUs with Alphacool 5100182 block/active-backplate assemblies connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. The scene uses Q-M01 body, Q-M03 faceplate (four R5 outside corners) and R7 radiator, with four plugged rear ports and shorter M4 pilots; accepted hose routes and GPU geometry are retained.
 
 ![StarTech 25U composite](../output/context-25U/01-rack-context.png)
 
@@ -11,7 +11,7 @@ The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 
 | Position, bottom to top | Contents |
 |---|---|
 | U1 | Clear space for radiator bottom elbows and hoses |
-| U2–U11 |10U R6/SuperNova with four NF-A20 fans on each face |
+| U2–U11 |10U R7/SuperNova with four NF-A20 fans on each face |
 | U12–U15 |4U host with motherboard I/O and PCIe coolant bulkheads facing the service side |
 | U16–U17 |2U manifold Q |
 | U18–U23 | Eight RTX 5090 FE / Alphacool 5100182 assemblies, raised retention/riser supports and conceptual PCIe switch |
@@ -31,7 +31,7 @@ The old radiator-in-U1 layout would place the illustrated bottom elbow about 23 
 
 The 450 mm opening accepts the 410 mm body, but a pair of side elbows is wider than that frontal opening. In service their bodies sit behind the mounting flange and inside the wider frame. This is an installed-position study, not a guarantee that a fully plumbed manifold can be inserted straight through the opening. Assemble side fittings with appropriate access after placing the panel, or separately verify an insertion sequence.
 
-For this installation the manifold populates the existing outer rack slots at local Z5.4/81.6, four rack screws total. Illustrative13×12×13 mm cage-nut envelopes then clear the 18 mm side-elbow bodies vertically by 2.6 mm. The middle-U positions can overlap these conservative nut envelopes; the optional slots are retained rather than claimed universally compatible. All Q/R6 CAD stays unchanged. The 465 mm rack columns differ by0.05 mm per side from the plates'±232.55 mm nominal slot centres, within the slots' horizontal allowance.
+For this installation the manifold populates the existing outer rack slots at local Z5.4/81.6, four rack screws total. Illustrative13×12×13 mm cage-nut envelopes then clear the 18 mm side-elbow bodies vertically by 2.6 mm. The middle-U positions can overlap these conservative nut envelopes; the optional slots are retained rather than claimed universally compatible. The corner-only Q-M03/R7 change retains all fixing positions. The 465 mm rack columns differ by0.05 mm per side from the plates'±232.55 mm nominal slot centres, within the slots' horizontal allowance.
 
 The outer manifold slots still leave only 1.9 mm steel edge ligament. This rendition uses compactØ10 mm rack-head envelopes, with no cup washers; aØ15 mm cup washer would overhang the plate by2.1 mm. Actual head/washer/cage-nut selection and the neighbouring-U space require physical fit review. No improved load rating is inferred from choosing these slots.
 
@@ -74,7 +74,7 @@ The front excursion is recorded by the current centre-line geometry; it changes 
 - All 21 centre-lines pass tangent continuity, fitting-axis alignment, no backtracking, nonlocal self-overlap and inter-tube separation checks. Minimum sampled curvature radius is approximately70.84 mm for GPU branches,70.01 mm for the host pair and65 mm for infrastructure. Host checks use a40 mm floor, above the selected tube’s published approximate37 mm radius.
 - Minimum conservative tube-to-tube outer-surface gap is approximately 0.31 mm in the paired-hose contact region. This reflects a numerical contact allowance, not a specified assembly gap. The calculation subtracts both tube radii and sampling uncertainty; the exact same points produce the meshes.
 - Mesh proximity checks found no unintended tube/equipment or tube/cable intersection. Fitting/barb insertion interfaces are excluded by owner. The smallest sampled equipment gap is approximately 4.97 mm at the pump support; allow another 0.5 mm for centre-line sampling.
-- P body/plate and R6 source imports, official Koolance solids, twelve P retainers, eight NF-A20 frames and two MCIO cables are inventoried. See [scene verification](../output/context-25U/scene-verification.json), [tube checks](../output/context-25U/tube-verification.json) and [layout/source hashes](../output/context-25U/layout.json).
+- Q body/Q-M03 plate and R7 source imports, official Koolance solids, twelve Q retainers, eight NF-A20 frames and two MCIO cables are inventoried. See [scene verification](../output/context-25U/scene-verification.json), [tube checks](../output/context-25U/tube-verification.json) and [layout/source hashes](../output/context-25U/layout.json).
 
 Front branches use a constrained elastic-rod approximation with estimated material stiffness; infrastructure routes remain nominal geometric layouts. Neither is a hot-coolant kink/creep qualification. Modelled rack section details and bought-in host/GPU/pump envelopes are not toleranced manufacturer solids. The checks establish nominal visual integration only, not complete fit, airflow, transport or load certification.
 

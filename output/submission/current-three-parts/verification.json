@@ -12,9 +12,9 @@
       ]
     },
     {
-      "part": "RM10-Q-M02-FACEPLATE",
-      "zip": "RM10-Q-M02-FACEPLATE.zip",
-      "sha256": "ff9ee01939fb46442e485ee7203068548f852b173048ff37936a1c736e6d4cdf",
+      "part": "RM10-Q-M03-FACEPLATE",
+      "zip": "RM10-Q-M03-FACEPLATE.zip",
+      "sha256": "3c80e7e8aa76f7f0c491d85baca623d7600ec8d7f56c1f24999eb6ccaaeb3664",
       "pdf_sheets": 2,
       "contents": [
         "step",
@@ -23,9 +23,9 @@
       ]
     },
     {
-      "part": "SN1260-R6-M03-PLATE",
-      "zip": "SN1260-R6-M03-PLATE.zip",
-      "sha256": "a29266619fbe596d309e0d7c2379f095753dc3100821561327f8a2ade870b7b6",
+      "part": "SN1260-R7-M01-PLATE",
+      "zip": "SN1260-R7-M01-PLATE.zip",
+      "sha256": "e5c4d85cf3fe5049dddc34ca8609f049415fbc364f7fac4732a83c5faca875fd",
       "pdf_sheets": 3,
       "contents": [
         "step",
@@ -41,7 +41,7 @@
   "assembly_parameters": "cad/assembly/Q.json",
   "geometry_and_coordinate_checks": "PASS",
   "current_context_sources": "PASS",
-  "visual_review_record": "output/review/Q-M02-R6-M03-visual-review.json",
+  "visual_review_record": "output/review/Q-M03-R7-M01-visual-review.json",
   "faceplate_worst_case_fit": "Operator accepted JLC capability; worst-case interchangeability is not guaranteed",
   "faceplate_M4_radial_margin_mm": -0.012132034355964078,
   "historical_submission_record": "output/submission/jlc-quotation-2026-09-15.json",
@@ -53,10 +53,10 @@
     "Specified tolerances, flatness and surface finishes"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "362c36af50cb4c2ee0effad1f6671bd5dbee2f29bfe01e3bbc640cec30c5da57",
-    "output/review/Q-M02-R6-M03-visual-review.json": "7aabb08d578b15a1b1dae81b7b5647d13d9dc33357301ea1d5d777b7fef466ca",
-    "scripts/draw_radiator_production.py": "56315eccbc0ac20334d271b68efbe810847d11de65f6a2a99db7c32c3d2746c1",
-    "scripts/package_radiator_production.py": "1587b8c3064e16a43a947e1a52fae8d55d81656cd88db3f1bdfb17ecfd4f72fa",
-    "cad/manufacturing/R6-M03.json": "5703419b0649561373a550e7796e8f48698983141c56790fe23145bde460d0d1"
+    "scripts/finalise_three_part_pack.py": "e85f96e4b1fa9d008ee413e817a005f6596324796310b73fa840835c25a2092d",
+    "output/review/Q-M03-R7-M01-visual-review.json": "f25c6a47766d8b8ca207ddfdcfef39ce999f7cfe0b5cc46e498ae8ceb8b8cf2e",
+    "scripts/draw_radiator_production.py": "0da7a28db322b77086a660daf79a62f303cf1ba36a5208a4eb1d06a29393068c",
+    "scripts/package_radiator_production.py": "020cc583876759a5150894208b2d51f4db3e3adb927d04fc976477f40834a1e4",
+    "cad/manufacturing/R7-M01.json": "ae285903faaf13c9b252f665f97877a475ffeaa776525e49d6da0182c99ab30a"
   }
 }

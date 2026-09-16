@@ -11,16 +11,21 @@
     "07-left.png",
     "08-right.png",
     "09-top.png",
-    "10-bottom.png"
+    "10-bottom.png",
+    "11-R5-corner-detail.png"
   ],
+  "faceplate_issue": "Q-M03",
+  "outer_corner_radius_mm": 5,
   "M4_reference": "12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted",
   "M4_pilot_depth_mm": 13,
   "rear_G1_4_ports": 4,
   "diagnostic_transparency": 0.5,
   "source_sha256": {
     "output/long-bore-P/product-views/assembled-unmarked.blend": "ad740ac919923e397bfb91d6f426ccad07a1255cbaa9cb5e02168461a4e9beda",
+    "output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.stl": "93d84db72618f48092c77cf312dfcb538e6ba55394db0339da7b6b7f76ecdfe3",
+    "output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step": "57ec36ddfd9e22df4ce9eb45b425e770228e22d7524b96d8a43970f9a9e63630",
     "output/long-bore-Q/cad/body.step": "4d4158aa8de30eced120da93b9bd8b9f4500ce8b8a7822eb15e369e5869b893d",
-    "scripts/render_revision_Q.py": "00e97ca220f1324650e32409afc6d665c62ba3855e833aa91010163915799de4",
+    "scripts/render_revision_Q.py": "df31476bd4ac65f4aa36bf533a2686a4053995042ed42de58915b5e8c2c39fdb",
     "output/long-bore-Q/cad/verification.json": "515c12743a91af800bf49a038ab6193587375cc7452010844941a37a600895b4"
   },
   "scope": "Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M01 specifies M4x10 screws and 13 mm pilots."

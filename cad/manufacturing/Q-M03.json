@@ -1,0 +1,23 @@
+{
+  "issue": "Q-M03",
+  "part_number": "RM10-Q-M03-FACEPLATE",
+  "issue_date": "2026-09-16",
+  "geometry_revision": "Q",
+  "scope": "Faceplate only; body remains Q-M01",
+  "source_issue": "Q-M02",
+  "material": "304 stainless steel / EN 1.4301",
+  "thickness_mm": 2.0,
+  "linear_tolerance_mm": 0.1,
+  "hole_centre_tolerance_mm": 0.1,
+  "hole_diameter_tolerance_mm": [
+    -0.1,
+    0.1
+  ],
+  "flatness_max_mm": 0.3,
+  "finish": "Raw stainless sheet finish on both broad faces; no brushing, polishing, coating or markings",
+  "deburr": "Standard grinding and deburring on both faces. No specified chamfer or edge-round size; complete burr removal is not guaranteed.",
+  "nominal_geometry_unchanged": false,
+  "supplier_submission_performed": false,
+  "outer_corner_radius_mm": 5.0,
+  "geometry_change": "Four external plan-view corners R5; other geometry unchanged"
+}

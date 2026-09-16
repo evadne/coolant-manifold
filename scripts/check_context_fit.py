@@ -56,14 +56,14 @@ def check_scene(scene,routes):
         'manifold_retention_screws':sum(o.name.startswith('Front M4') for o in scene.objects),
         'fan_frames':sum(o.name.startswith('NF-A20 reference fan-00') for o in scene.objects),
         'host_MCIO_cables':sum(o.name.startswith('Host uplink MCIO') for o in scene.objects),
-        'radiator_rack_screws':sum(o.name.startswith('R6 populated rack screw') for o in scene.objects),
+        'radiator_rack_screws':sum(o.name.startswith('R7 populated rack screw') for o in scene.objects),
         'tubes':len(routes),'rack_square_holes':25*3*4}
     assert np.allclose(dims(bpy.data.objects['body']),[410,43,87],atol=.01)
     assert np.allclose(dims(bpy.data.objects['faceplate']),[482.6,2,87],atol=.01)
-    assert np.allclose(dims(next(o for o in scene.objects if o.name.startswith('R6 rack plate'))),[482.6,2,444.5],atol=.01)
+    assert np.allclose(dims(next(o for o in scene.objects if o.name.startswith('R7 rack plate'))),[482.6,2,444.5],atol=.01)
     assert list(counts.values())==[40,54,12,8,2,8,21,300],counts
     return dict(body_dimensions_xyz_mm=dims(bpy.data.objects['body']),faceplate_dimensions_xyz_mm=dims(bpy.data.objects['faceplate']),
-                radiator_plate_dimensions_xyz_mm=dims(next(o for o in scene.objects if o.name.startswith('R6 rack plate'))),counts=counts,
+                radiator_plate_dimensions_xyz_mm=dims(next(o for o in scene.objects if o.name.startswith('R7 rack plate'))),counts=counts,
                 tube_equipment_intersections=hits,nearest_equipment=nearest,
                 method='Evaluate actual equipment mesh surfaces including cable sweeps; sample identical tube centreline used in meshes and subtract tube OD/2. Signed nearest surface test on closed meshes. Intended fitting/barb insertion interfaces excluded by owner. Clearance envelope approximations do not establish first-article fit.',
                 rack_front_opening_mm=450,host_lateral_clearance_mm=5,host_depth_to_rear_rail_mm=558.8-456,

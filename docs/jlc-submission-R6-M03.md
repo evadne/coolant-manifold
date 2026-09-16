@@ -1,5 +1,7 @@
 # R6-M03 radiator plate production pack
 
+Historical held issue, superseded by [R7-M01](jlc-submission-R7-M01.md), which adds R5 outside corners. Retained for traceability; use the current issue for a future repeat order.
+
 Issued 16 September 2026. R6 operator-approved on 15 September 2026. Part **SN1260-R6-M03-PLATE** adds the requested shallow 10 × 2 mm rounded cable notch to the operator-approved, non-tapped R4 radiator plate. R6-M03 supersedes R6-M02 for ±0.10 mm cut-size and coordinate tolerances; the approved R6 geometry is unchanged. The manifold package remains separate.
 
 ## Upload files

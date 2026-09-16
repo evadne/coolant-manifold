@@ -28,3 +28,5 @@ Fix and electrically isolate the splitter with nonconductive double-sided tape. 
 R6 STEP, DXF, drawings and renders remain unchanged. This assessment does not claim an exact splitter-body collision check or change the previous structural qualification limits.
 
 References: [Alphacool catalogue mesh](https://3dcenter.alphacool.com/stl/14351_0.stl), retained as `docs/references/alphacool-14351-manufacturer.stl`; [Watercool product specifications and installation photograph](https://shop.watercool.de/MO-RA-X-SPLITTER-FOR-NOCTUA-NF-A20_1), viewed 15 September 2026; operator report in this task on the same date.
+
+The current R7 outside-corner revision retains this exact fan grid and hardware placement. It does not alter the splitter fit evidence or add new holes. See [current plate](radiator-rack-plate.md).

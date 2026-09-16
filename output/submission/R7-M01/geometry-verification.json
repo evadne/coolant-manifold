@@ -1,0 +1,27 @@
+{
+  "part_number": "SN1260-R7-M01-PLATE",
+  "source_revision": "R7",
+  "checks": "PASS",
+  "solid_count": 1,
+  "extent_mm": [
+    482.6,
+    444.5,
+    2.0
+  ],
+  "volume_mm3": 157856.6375057363,
+  "net_mass_kg_at_7900_kg_m3": 1.2470674362953167,
+  "plain_fan_holes": 16,
+  "plain_radiator_holes": 12,
+  "rack_slots": 40,
+  "air_apertures": 4,
+  "front_face_boundary_wires": 73,
+  "through_wall_cylinders": 132,
+  "edge_notches": 1,
+  "drawing_has_unmodelled_edge_breaks": true,
+  "nominal_geometry_unchanged": true,
+  "outer_corner_radius_mm": 5.0,
+  "geometry_comparison_basis": "Production issue matches selected geometry revision",
+  "source_step_sha256": "51480b649f8c3ec518f9c067deed0d130021d2353bf8cbde09dc773cd8bfd8a8",
+  "production_step_sha256": "51480b649f8c3ec518f9c067deed0d130021d2353bf8cbde09dc773cd8bfd8a8",
+  "DFM": "Flatness and specified edge finishes require supplier acceptance; size/position tolerances follow the selected issue drawing."
+}

@@ -1,5 +1,7 @@
 # Q manifold assembly - first article
 
+Current reference assembly uses the unchanged Q-M01 POM body and Q-M03 faceplate with R5 outside corners. Fixings, port positions and assembly procedure are retained.
+
 **Assembly document, not a supplier manufacturing drawing.** Applies to RM10-Q-M01-BODY and RM10-Q-M01-FACEPLATE. Fabrication and JLC requirements are in [the manufacturing guide](jlc-submission-Q-M01.md). Do not place this guide in the supplier fabrication ZIPs.
 
 ## Hardware and starting condition

@@ -1,5 +1,7 @@
 {
   "revision": "Q",
+  "faceplate_issue": "Q-M03",
+  "outer_corner_radius_mm": 5,
   "source_scene": "../product-views/assembled-unmarked.blend",
   "boss_height_mm": 3.0,
   "retention_screws": "12 x M4 x 10 ISO 7380-1; heads rendered, shanks omitted",

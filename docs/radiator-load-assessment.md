@@ -2,14 +2,14 @@
 
 **Engineering assessment, not a part manufacturing instruction.** Fabrication is defined only by the matching current STEP/PDF and supplier remarks.
 
-The approved R6 plate is 2 mm 304 stainless. The existing full-plate analysis supports this prototype choice under its stated static loads and supports. Its final pre-notch calculation uses the R4 profile and direct fan loads; it is not a newly solved R6 or complete-assembly load rating.
+The current R7 plate is 2 mm 304 stainless. The existing full-plate analysis supports this prototype choice under its stated static loads and supports. Its final pre-notch calculation uses the R4 profile and direct fan loads; it is not a newly solved R7 or complete-assembly load rating.
 
 ## Updated planning mass
 
 | Component | Mass, kg | Basis |
 |---|---:|---|
 | SuperNova 1260 dry radiator | 4.225 | Manufacturer net mass; no deduction for the replaced stock plate |
-| R6 custom plate | 1.247 | [Current CAD verification](../output/manufacturing/R6-M02/geometry-verification.json), density 7,900 kg/m³ |
+| R7 custom plate | 1.247 | [Current CAD verification](../output/manufacturing/R7-M01/geometry-verification.json), density 7,900 kg/m³ |
 | Eight NF-A20 fans | 2.960 | Eight ×370 g manufacturer net mass |
 | ULTITUBE D5 200, dry, without pump | 1.000 | Engineering allowance; dry net mass unverified |
 | D5 NEXT | 0.500 | Engineering allowance; dry net mass unverified |
@@ -43,3 +43,7 @@ The calculation uses small-displacement linear elastic steel at room temperature
 - Reproduce R4 cases with `scripts/radiator_plate_fea.py --revision R4 --payload-kg 15 --cg-mm 150`, CalculiX and `scripts/review_radiator_R4.py`, following the archived numerical procedure. Do not relabel these as R6 results.
 
 No new solver run is implied by this documentation update. The original source reviews are dated 15 September 2026; allowances remain allowances.
+
+## R7 outside corners
+
+R7 increases only the four outer outline corners from R2 to R5. It removes 36.053 mm³ (0.285 g) from R6; the current plate mass is 1.247067 kg. All fixing positions, airflow apertures and central webs are unchanged. The approximately 14.426 kg planning load remains unchanged at its quoted precision. The R4 FEA remains historical baseline evidence; no new R7 solver run, joint qualification or load rating is claimed.

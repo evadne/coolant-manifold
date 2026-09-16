@@ -1,0 +1,1 @@
+R7-M01: four external cut-profile corners R5.00 +/-0.10 mm, modelled in STEP/DXF. All other nominal geometry retained. Raw 304 sheet, no brushing/polishing. All cut dimensions and hole coordinates +/-0.10 mm; plain through holes. Free-state flatness 0.50 mm max. Follow attached PDF, including specified external edge finishing and rounded cable-contact notch.

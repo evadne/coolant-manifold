@@ -1,6 +1,6 @@
-# Current SuperNova radiator/fan plate — R6
+# Current SuperNova radiator/fan plate — R7
 
-R6 is the operator-approved flat rack/fan plate for Alphacool's NexXxoS XT45 Full Copper 1260 SuperNova, product 14351. It retains R4's selected plain fan holes and adds the final 10 ×2 mm cable notch. R3's tapped-hole alternative and R5's deeper notch are superseded.
+R7 is the current flat rack/fan plate for Alphacool's NexXxoS XT45 Full Copper 1260 SuperNova, product 14351. It retains R4's selected plain fan holes and retains the final 10 ×2 mm cable notch from R6, with four R5 outside corners requested on 16 September 2026. R3's tapped-hole alternative and R5's deeper notch are superseded.
 
 The radiator is rotated to a nominal 422 mm width ×441 mm height, with its ports at the top or bottom. The custom plate replaces one stock fan plate and carries the radiator into the rack; the opposite stock plate can remain. Four front fans provide push or pull, with a second bank permitting push/pull. Front- or rear-rail mounting does not itself determine fan airflow direction.
 
@@ -8,7 +8,7 @@ The radiator is rotated to a nominal 422 mm width ×441 mm height, with its port
 
 | Feature | Current nominal geometry, mm |
 |---|---|
-| Plate | 482.6 ×444.5 ×2, 304 / EN 1.4301; 10U; approximately 1.247 kg |
+| Plate | 482.6 ×444.5 ×2, 304 / EN 1.4301; 10U; approximately 1.247067 kg; four R5 outside corners |
 | Air openings | Four 188 ×188 squares with **R50** corners; each contains a Ø188 circle |
 | Fan centres | X±100, plate heights 122.25/322.25; 200 ×200 grid |
 | Fan fixing holes | Sixteen Ø4.5 plain through; 170 ×170 pattern per NF-A20 |
@@ -16,7 +16,7 @@ The radiator is rotated to a nominal 422 mm width ×441 mm height, with its port
 | Rack slots | Forty optional 10 ×7 slots; two per side per U |
 | Cable notch | Top centre, 10 mouth ×2 deep; four tangent R0.5 profile corners, 9 throat, 8 bottom flat |
 
-The final [production drawing and guide](jlc-submission-R6-M02.md) control tolerances, feature coordinates, finish and R0.3–0.5 cable-contact rounding on both faces. The actual notch outline is modelled in STEP/DXF; light face-edge finishing is a separate drawing requirement. No bending, tapping, countersinking, applied coating or product markings.
+The final [production drawing and guide](jlc-submission-R7-M01.md) control tolerances, feature coordinates, finish and R0.3–0.5 cable-contact rounding on both faces. The actual notch outline is modelled in STEP/DXF; light face-edge finishing is a separate drawing requirement. No bending, tapping, countersinking, applied coating or product markings.
 
 ## Hardware and assembly
 
@@ -40,6 +40,6 @@ The Watercool MO-RA X-Splitter is supported by the operator's physical fit exper
 
 ## Load basis and files
 
-The [current load summary](radiator-load-assessment.md) updates the equipment budget to R6's plate mass and identifies R4's 15 kg payload shell calculations as baseline evidence. No new R6 FEA or complete-assembly load rating is claimed. The pump/reservoir may be attached behind the radiator via an existing 140 mm fan-hole adapter, or supported separately; that assembly choice remains open.
+The [current load summary](radiator-load-assessment.md) updates the equipment budget to R7's plate mass and identifies R4's 15 kg payload shell calculations as baseline evidence. No new R7 FEA or complete-assembly load rating is claimed. The pump/reservoir may be attached behind the radiator via an existing 140 mm fan-hole adapter, or supported separately; that assembly choice remains open.
 
-Use [R6-M02](../output/submission/R6-M02/SN1260-R6-M02-PLATE.zip) for the radiator part, [current plate views](product-views.md) for the notch, and [rebuild commands](rebuild.md) for regeneration. R4's populated views still illustrate the retained fan/hardware stack, but omit the notch. [Archived R3/R4 notes](archive/radiator-fan-plates-R3-R4.md) retain the original comparison, references and calculation details.
+Use [R7-M01](../output/submission/R7-M01/SN1260-R7-M01-PLATE.zip) for the radiator part, [current plate views](product-views.md) for the notch, and [rebuild commands](rebuild.md) for regeneration. The current seven-view R7 set includes populated front/rear assembly, fasteners, notch and R5 detail. [Archived R3/R4 notes](archive/radiator-fan-plates-R3-R4.md) retain the original comparison, references and calculation details.

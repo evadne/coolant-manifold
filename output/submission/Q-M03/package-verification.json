@@ -1,0 +1,19 @@
+{
+  "issue": "Q-M03",
+  "checks": "PASS",
+  "pdf_pages": 2,
+  "scheduled_features": 44,
+  "zip_members": [
+    "RM10-Q-M03-FACEPLATE.step",
+    "RM10-Q-M03-FACEPLATE.dxf",
+    "RM10-Q-M03-FACEPLATE.pdf"
+  ],
+  "nominal_geometry_unchanged": false,
+  "upload_performed_by_packaging_script": false,
+  "source_sha256": {
+    "scripts/draw_Q_production.py": "ab820b1c6c31e1dcf0e04083fbbff4390af30d9d7604b01147b2a8e7003f0413",
+    "scripts/package_Q_faceplate_issue.py": "552c8e2d617fad66708289a7086e3fc0b351ba4734ae0f34ac9b2dcd87e02c88",
+    "scripts/prepare_Q_faceplate_issue.py": "1c83ac60aadf98f1a967b275d92d9f9c1b164d367cae1918ec21b19413b53985",
+    "cad/manufacturing/Q-M03.json": "8a7dde34a840b528651ed75e2143493ad2f0d9fa537af1f481fd8d729701644a"
+  }
+}

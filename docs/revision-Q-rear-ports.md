@@ -10,7 +10,7 @@ Q is the operator-approved current revision, derived from P. It adds **four G1/4
 | Body | 410 × 87 × 40 mm slab; 43 mm overall with front bosses |
 | Port count | 20 front + 4 side + 4 rear = 28 G1/4 female |
 | Internal topology | Two separate continuous galleries; no grouping or cross-link |
-| Front plate and fixings | P plate geometry, twelve M4 retainers; Q-M01 shortens body pilots |
+| Front plate and fixings | P openings/positions, Q-M03 R5 outside corners, twelve M4 retainers; Q-M01 shortens body pilots |
 
 The rear ports are additional access points to the same supply and return galleries, not independent circuits. All ten front pairs can remain connected to systems while the cooling plant connects from behind. A typical external path is **return gallery → radiator(s) → reservoir/pump → supply gallery**. Radiators can be placed in series, or in an externally split and rejoined radiator stage. Four rear ports do not introduce a separate internal radiator circuit.
 
@@ -26,11 +26,11 @@ The addition needs four short rear drilling/tapping operations and a rear-facing
 
 ## Checks and review files
 
-The generated solid is valid and the two fluid networks remain separate. All four rear branches intersect only their intended gallery. The minimum M4 envelope-to-wet-network distance is **9.796 mm**. Four Ø36 × 80 mm rear hardware keep-outs clear the retained side-elbow reference solids by at least **13.038 mm**, with 4 mm between the two keep-outs in each rear pair. These are conservative nominal layout envelopes, not exact fitting or hand-access qualification. The faceplate STEP is copied byte-for-byte from P.
+The generated solid is valid and the two fluid networks remain separate. All four rear branches intersect only their intended gallery. The minimum M4 envelope-to-wet-network distance is **9.796 mm**. Four Ø36 × 80 mm rear hardware keep-outs clear the retained side-elbow reference solids by at least **13.038 mm**, with 4 mm between the two keep-outs in each rear pair. These are conservative nominal layout envelopes, not exact fitting or hand-access qualification. The original Q faceplate STEP was copied from P. Current Q-M03 changes only its four outside corners to R5; its STEP and drawings are in the held production pack.
 
 - [Rear layout and port call-outs](../output/long-bore-Q/rear-port-layout.svg)
 - [POM body STEP](../output/long-bore-Q/cad/body.step)
-- [Assembly STEP](../output/long-bore-Q/cad/manifold-assembly.step)
+- [Current reference assembly STEP](../output/assembly/Q/REFERENCE-assembled-with-screws.step)
 - [CAD verification](../output/long-bore-Q/cad/verification.json)
 - [Unmarked assembly Blender file](../output/long-bore-Q/product-views/assembled-unmarked.blend)
 - [50% transparency inspection Blender file](../output/long-bore-Q/product-views/body-50-percent-transparent.blend)

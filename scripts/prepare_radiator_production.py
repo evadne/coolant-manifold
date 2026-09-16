@@ -5,7 +5,7 @@ import cadquery as cq
 import ezdxf
 from OCP.BRepAdaptor import BRepAdaptor_Surface
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03'])
+parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
 ISSUE=parser.parse_args().issue
 M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
@@ -49,8 +49,9 @@ for x,y in c:
 assert sum(abs(r-3.5)<1e-6 for x,y,r in cyl)==80
 assert sum(abs(r-50)<1e-6 for x,y,r in cyl)==16
 # Four outer R2 corners plus the four parameterised notch arcs.
-expected_arcs=[(-P['width']/2+2,2,2),(P['width']/2-2,2,2),
-               (-P['width']/2+2,H-2,2),(P['width']/2-2,H-2,2)]
+cr=P['outer_radius']
+expected_arcs=[(-P['width']/2+cr,cr,cr),(P['width']/2-cr,cr,cr),
+               (-P['width']/2+cr,H-cr,cr),(P['width']/2-cr,H-cr,cr)]
 if notched:
  n=P['cable_notch'];a=n['mouth_width']/2;u=n['mouth_radius'];b=n['bottom_radius'];d=n['depth']
  expected_arcs += [(a,H-u,u),(-a,H-u,u),(a-u-b,H-d+b,b),(-a+u+b,H-d+b,b)]
@@ -68,7 +69,7 @@ for r in rows:
 report={'part_number':stem,'source_revision':REV,'checks':'PASS','solid_count':1,'extent_mm':[bb.xlen,bb.ylen,bb.zlen],
  'volume_mm3':solid.Volume(),'net_mass_kg_at_7900_kg_m3':solid.Volume()*7.9e-6,
  'plain_fan_holes':16,'plain_radiator_holes':12,'rack_slots':40,'air_apertures':4,'front_face_boundary_wires':73,'through_wall_cylinders':len(cyl),'edge_notches':int(notched),
- 'drawing_has_unmodelled_edge_breaks':True,'nominal_geometry_unchanged':True,
+ 'drawing_has_unmodelled_edge_breaks':True,'nominal_geometry_unchanged':True,'outer_corner_radius_mm':P['outer_radius'],'geometry_comparison_basis':'Production issue matches selected geometry revision',
  'source_step_sha256':hashlib.sha256((source/f'rack-plate-{REV}.step').read_bytes()).hexdigest(),
  'production_step_sha256':hashlib.sha256((OUT/f'{stem}.step').read_bytes()).hexdigest(),
  'DFM':'Flatness and specified edge finishes require supplier acceptance; size/position tolerances follow the selected issue drawing.'}

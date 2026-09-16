@@ -11,7 +11,7 @@ def dim(x1,x2,y,t):
 s=2.7;ox=750;oy=240
 def pt(x,z):return ox-x*s,oy+(87-z)*s
 text(65,58,'REVISION Q — FOUR REAR G1/4 PORTS',30)
-text(65,94,'Rear elevation • millimetres • accepted geometry • unchanged faceplate and front interfaces retained',20)
+text(65,94,'Rear elevation • millimetres • unchanged Q body • current Q-M03 faceplate detailed separately',20)
 x0,y0=pt(205,87);x1,y1=pt(-205,0)
 a.append(f'<rect x="{x0}" y="{y0}" width="{410*s}" height="{87*s}" fill="#eef2f4" stroke="#203342" stroke-width="2"/>')
 for z in (23.5,63.5):

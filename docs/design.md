@@ -1,6 +1,6 @@
 # Current manifold design — Revision Q
 
-Q is operator-approved. [Q-M01](jlc-submission-Q-M01.md) adds the shorter M4 manufacturing detail requested during final review.
+Q is operator-approved. [Q-M01](jlc-submission-Q-M01.md) adds the shorter M4 manufacturing detail requested during final review. The current Q-M03 faceplate adds four R5 outside outline corners and retains all original openings/positions.
 
 The RM10-2U manifold provides a common supply gallery and a separate common return gallery for parallel loads. It has no internal grouping, partitions, bypass or supply-to-return connection. The current manufactured parts are one POM body and one dry stainless front rack plate. There is no rear plate.
 
@@ -8,7 +8,7 @@ The RM10-2U manifold provides a common supply gallery and a separate common retu
 |---|---|
 | POM body | 410 wide × 87 high × 40 main depth; 43 overall with bosses |
 | Integral bosses | Twenty Ø28 × 3 high; R1 roots; C0.5 ×45° outer lips |
-| Rack faceplate | 482.6 wide × 87 high × 2 thick, 304 / EN 1.4301 |
+| Rack faceplate | 482.6 wide × 87 high × 2 thick, 304 / EN 1.4301; four R5 outside corners (Q-M03) |
 | Front ports | Twenty G1/4 female, ten pairs at 40 × 40 centres |
 | Side ports | Four G1/4 female, two at each end |
 | Rear ports | Four G1/4 female at X±180, Y40, Z23.5/63.5; flat Ø28 seal lands |

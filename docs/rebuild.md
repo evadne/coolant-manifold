@@ -13,22 +13,23 @@ python3 -m venv .venv
 
 Use the available document runtime for ReportLab/pypdf if the CAD environment lacks them. Do not overwrite a working environment just to reproduce unchanged outputs.
 
-## Current steel specification issues: Q-M02 / R6-M03
+## Current steel specification issues: Q-M03 / R7-M01
 
-Preserve the submitted Q-M01 body and original supplier archives. To rebuild the new tolerance-only steel issues from the verified geometry:
+Preserve the submitted Q-M01 body and original supplier archives. To rebuild the current R5-corner steel issues, retaining accepted ±0.10 mm cut tolerances:
 
 ```sh
-python3 scripts/prepare_Q_faceplate_issue.py
-.venv/bin/python scripts/prepare_radiator_production.py --issue R6-M03
+.venv/bin/python scripts/prepare_Q_faceplate_issue.py --issue Q-M03
+.venv/bin/python scripts/build_radiator_plate.py --revision R7
+.venv/bin/python scripts/prepare_radiator_production.py --issue R7-M01
 # Use the ReportLab/pypdf runtime; inspect both PDFs (five sheets) before packaging.
-python3 scripts/draw_Q_production.py --faceplate-issue Q-M02 --faceplate-only
-python3 scripts/draw_radiator_production.py --issue R6-M03
-python3 scripts/package_Q_faceplate_issue.py
-python3 scripts/package_radiator_production.py --issue R6-M03
-python3 scripts/finalise_three_part_pack.py
+python3 scripts/draw_Q_production.py --faceplate-issue Q-M03 --faceplate-only
+python3 scripts/draw_radiator_production.py --issue R7-M01
+python3 scripts/package_Q_faceplate_issue.py --issue Q-M03
+python3 scripts/package_radiator_production.py --issue R7-M01
+# Render and inspect current presentations below before finalising the index.
 ```
 
-These commands do not upload. `finalise_three_part_pack.py` checks the unchanged body against its original submitted archive hash, the new steel files against their geometry sources and drawings, and the new five-sheet visual review. Product/context renders are inherited because nominal geometry is byte-identical. Refresh the visual-review hashes only after inspecting regenerated PDFs.
+These commands do not upload. `finalise_three_part_pack.py` checks the unchanged body against its original submitted archive hash, the new steel files against their geometry sources and drawings, and the new five-sheet visual review. Refresh Q product/studio, R7 radiator and Q/R7 context renders before finalising. Refresh the visual-review hashes only after inspecting all five new PDF sheets and 31 presentation images; the three unchanged body sheets retain their prior review.
 
 ## Original manifold Q / Q-M01 reproduction
 
@@ -47,7 +48,7 @@ python3 scripts/package_Q_production.py
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_photoreal_product.py -- --iteration Q --device METAL
 ```
 
-Original supplier files are Q-M01; current faceplate specification is Q-M02. Do not run the original drawing/package commands to overwrite submitted archives during a steel-only revision. assembly references are separately in `output/assembly/Q/`. O-M02 manufacturing scripts are historical and must not be used for Q. Shared official fitting meshes remain under `output/long-bore-P/koolance-fit/`. The Q renderer shows unchanged button heads representing M4×10, with hidden shanks omitted. No upload occurs.
+Original supplier files are Q-M01; current faceplate specification is Q-M03. Do not run the original drawing/package commands to overwrite submitted archives during a steel-only revision. assembly references are separately in `output/assembly/Q/`. O-M02 manufacturing scripts are historical and must not be used for Q. Shared official fitting meshes remain under `output/long-bore-P/koolance-fit/`. The Q renderer shows unchanged button heads representing M4×10, with hidden shanks omitted. No upload occurs.
 
 ## Original radiator R6 / R6-M02 reproduction
 
@@ -65,13 +66,24 @@ For a populated radiator assembly, first run `prepare_radiator_fan_mounts.py` wi
 
 The package script reads the current submission writeup and supplier remarks, verifies PDF feature coverage and ZIP contents, then refreshes checksums. No command above uploads to a supplier.
 
-## Composite StarTech25U scene
-
-After the current Q/R6 source scenes and official fitting meshes exist (run `python3 scripts/assess_manifold_side_clearance.py` for the separate40/45/50mm envelope assessment):
+## Current presentation regeneration
 
 ```sh
-.venv/bin/python scripts/relax_context_tubes.py
-.venv/bin/python scripts/check_pvc_equilibrium.py
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_revision_Q.py
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_photoreal_product.py -- --iteration Q --device METAL
+/Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_radiator_plate.py -- --revision R7 --device METAL
+```
+
+The Q renderer loads the Q-M03 faceplate explicitly. R7 produces seven views including the populated assembly, fasteners, notch and outside-corner detail. The Q inspection set has eleven views including an R5 detail; studio has four. Retain the existing tube equilibrium solution for this corner-only change.
+
+## Composite StarTech25U scene
+
+After the current Q/R7 source scenes and official fitting meshes exist (run `python3 scripts/assess_manifold_side_clearance.py` for the separate40/45/50mm envelope assessment):
+
+```sh
+# Only rerun these preparation checks when tubing inputs change:
+# .venv/bin/python scripts/relax_context_tubes.py
+# .venv/bin/python scripts/check_pvc_equilibrium.py
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_context_25u.py -- --device METAL
 ```
 
@@ -87,4 +99,4 @@ Operator confirmation, 15 September 2026: increasing Clip Start made the live vi
 
 ## Final three-part consistency record
 
-After the current files and fresh visual checks exist, run `python3 scripts/finalise_three_part_pack.py`. This checks part ZIPs, source hashes and current Q/R6 context; it creates the submission index without uploading. Assembly instructions remain in `docs/assembly-Q.md`, outside the fabrication ZIPs.
+After the current files and fresh visual checks exist, run `python3 scripts/finalise_three_part_pack.py`. This checks part ZIPs, source hashes and current Q/R7 context; it creates the submission index without uploading. Assembly instructions remain in `docs/assembly-Q.md`, outside the fabrication ZIPs.

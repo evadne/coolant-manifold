@@ -1,6 +1,6 @@
 # Revision register
 
-**Current:** operator-approved manifold **Q**, with **Q-M01 body / Q-M02 faceplate**, and radiator **R6 / R6-M03**. The [three-part recap](three-part-recap.md) describes the current interfaces. Both new steel issues use ±0.10 mm cut dimensions and coordinates, preserving nominal geometry and raw finish. Q-M02 records the accepted standard-deburring faceplate limitation; radiator edge finishing remains specified. New steel packs are held for later submission if a repeat order is needed; the current order retains its original files and emailed acceptance.
+**Current:** Q-M01 manifold body, Q-M03 faceplate and radiator R7 / R7-M01. Both steel plates have four R5 outside corners and retain ±0.10 mm cut dimensions/coordinates. All other geometry is retained. New steel bundles remain held for future repeat orders; original supplier-order files stay unchanged.
 
 ## Manifold history
 
@@ -16,7 +16,7 @@
 | O | Restored 40 mm slab, galleries at Y20 | Historical operator-approved predecessor; tag `revision-o-operator-approved` |
 | O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier issues; `cad/manufacturing/` and `output/manufacturing/`; do not submit as Q |
 | **P** | 2 mm plain-hole plate, twelve M4 ×16 button screws, 3 mm bosses, revised M4 depths | Historical predecessor, `cad/iterations/P-long-bore.json`, `output/long-bore-P/`; [detail](revision-P-plain-bore-faceplate.md) |
-| **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Current operator-approved geometry / Q-M01 body, Q-M02 faceplate**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). M4: 10 mm full thread, 13 mm pilot. |
+| **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Current operator-approved geometry / Q-M01 body, Q-M03 faceplate**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). M4: 10 mm full thread, 13 mm pilot. |
 
 P's official Koolance studio fitting update and operator acceptance are presentation/installation decisions, not new manufactured-part revisions. Source geometry remains unchanged.
 
@@ -29,7 +29,7 @@ P's official Koolance studio fitting update and operator acceptance are presenta
 | R3 | Added tapped M4 fan holes and R50 aperture corners | Historical unselected alternative |
 | R4 / R4-M01 | Plain fan holes and nuts; accepted assembly sequence | Superseded geometry/pack; its final load analysis remains baseline evidence |
 | R5 / R5-M01 | 10 ×5 mm cable notch | Historical deeper-notch version |
-| **R6 / R6-M02** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | **Current operator-approved geometry; M02 specifies raw sheet finish (amended before quotation)** |
+| **R6 / R6-M02** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | Historical submitted geometry; M02 specifies raw sheet finish |
 
 ## Archive policy
 
@@ -39,10 +39,16 @@ Git preserves all earlier revisions, recaps and README/AGENTS history. Retrieve 
 
 ## StarTech25U context update —15 September2026
 
-The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and uses Q/R6. Front PVC routes use the accepted shortened free-XYZ rod/contact solution; infrastructure retains geometric65 mm bends. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.
+The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and uses Q/R7. Front PVC routes use the accepted shortened free-XYZ rod/contact solution; infrastructure retains geometric65 mm bends. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.
 
 ## 16 September steel tolerance issues
 
 - **Q-M02 faceplate:** all cut sizes and X/Z coordinates ±0.10; standard grinding/deburring, no dimensioned face-edge break. Q-M01 body unchanged.
 - **R6-M03 radiator:** all cut sizes, profile radii and X/Y coordinates ±0.10; separate flatness and edge finishes unchanged.
 - STEP/DXF geometry byte-identical to previous issues. Original submitted archives preserved; current local index selects the two new issues.
+
+## R5 outside-corner issues — 16 September 2026
+
+- **Q-M03 faceplate:** four square outside corners become R5; Q-M01 POM and every cut opening/position are unchanged. Nominal mass 0.394607 kg.
+- **R7 / R7-M01 radiator:** four outside corners increase R2 → R5; all fan/radiator holes, rack slots, R50 apertures and 10 ×2 notch are unchanged. Nominal mass 1.247067 kg.
+- Both preserve the held ±0.10 mm cut-size/coordinate specifications, raw finish and separate edge treatments. Fresh STEP/DXF/PDF, eleven Q inspection views, four studio views, seven radiator views and nine rack views replace current presentation outputs. No supplier upload.
