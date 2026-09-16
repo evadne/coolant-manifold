@@ -19,3 +19,7 @@ The long galleries were the principal CNC capability review item; the body now h
 Earlier P review files and O-M02 supplier ZIPs are historical. Do not mix their16 mm M4 threads/18 mm pilots or old countersunk plate details into Q-M01. R6-M01 is superseded by the explicit finish issue, with no radiator geometry change.
 
 Assembly, installation and performance studies are maintained separately; they are not fabrication instructions. See [Q assembly](assembly-Q.md), [radiator assembly](radiator-rack-plate.md) and [engineering retention study](Q-torque-and-creep.md).
+
+## Outer-corner inspection — 16 September 2026
+
+Direct inspection of the held-issue STEP and DXF confirms that **Q-M02 faceplate has four square outer corners**: its DXF perimeter is a four-vertex rectangle with zero bulges, and STEP has no outer corner cylindrical faces. **R6-M03 radiator has four R2 mm outer corners**, present in both STEP and DXF; the four STEP cylinders lie at X±239.3, Y2/442.5. The unchanged predecessor geometries have the same corners. These cut-profile radii are distinct from rounding the sheet's face edges or standard deburring. No geometry change was made during this inspection.
