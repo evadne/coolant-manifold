@@ -1,6 +1,6 @@
 # Q-M03 manifold faceplate submission guide
 
-Issued 16 September 2026. **RM10-Q-M03-FACEPLATE** supersedes Q-M02 with four R5 external outline corners; every opening and fixing position is retained; the POM body remains **RM10-Q-M01-BODY**, with its existing threads, positions and finishes.
+Issued 16 September 2026. **RM10-Q-M03-FACEPLATE** supersedes Q-M02 with four R5 external outline corners; every opening and fixing position is retained; the current companion POM body is **RM10-Q-M04-BODY**, which adds C0.5 slab-edge chamfers while retaining all threads and mating positions.
 
 Use `output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip` as one sheet-metal part. It contains matching-name STEP, DXF and two-sheet A3 PDF. The STEP/DXF model four R5.00 ±0.10 mm external outline corners. Compared with the submitted square-corner faceplate, only 42.920 mm³ is removed; no material is added. Nominal mass is 0.394607 kg. The minimum opening-to-outer-profile clearance remains 1.90 mm.
 

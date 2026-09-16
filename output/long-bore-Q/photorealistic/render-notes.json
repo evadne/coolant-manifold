@@ -1,5 +1,6 @@
 {
   "revision": "Q",
+  "body_issue": "Q-M04",
   "faceplate_issue": "Q-M03",
   "outer_corner_radius_mm": 5,
   "source_scene": "../product-views/assembled-unmarked.blend",

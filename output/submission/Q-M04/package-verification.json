@@ -1,0 +1,17 @@
+{
+  "issue": "Q-M04",
+  "checks": "PASS",
+  "pdf_pages": 3,
+  "scheduled_features": 40,
+  "zip_members": [
+    "RM10-Q-M04-BODY.step",
+    "RM10-Q-M04-BODY.pdf"
+  ],
+  "supplier_submission_performed": false,
+  "source_sha256": {
+    "scripts/draw_Q_production.py": "3aefcddaa07ef888643e316707a7b51ee52ce10bc04e1cc9bd2f78d654e75216",
+    "scripts/prepare_Q_body_issue.py": "3a12ea2a6f743bcb9de9a37cc2406606bedd8e8f54e9d21b183825cb849f35d6",
+    "scripts/package_Q_body_issue.py": "bf35042f77f0cd203e5b8ce8e403f559fc967ee61f8f653cb9990885892fcbee",
+    "cad/manufacturing/Q-M04.json": "cb4ea8ea1a9ab2e6c04144ac1e68169abea34058c241e8bd00ce9c2ddba8aff6"
+  }
+}

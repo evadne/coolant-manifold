@@ -1,10 +1,10 @@
 # Current three-part fabrication pack
 
-Held repeat-order pack: unchanged Q-M01 body plus revised Q-M03 faceplate and R7-M01 radiator. The operator selected these issues to record accepted dimensional tolerances for later submission if a repeat order is needed. Do not replace the current JLC order files; that order proceeds under the emailed acceptance. These steel issues have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
+Held repeat-order pack: Q-M04 body with C0.5 slab-edge chamfers plus Q-M03 faceplate and R7-M01 radiator. The operator selected these issues to record accepted dimensional tolerances for later submission if a repeat order is needed. Do not replace the current JLC order files; that order proceeds under the emailed acceptance. These revised issues have not been uploaded. [Live quotation status](../../../docs/jlc-quotation-2026-09-15.md) and [submitted archive hashes](../jlc-quotation-2026-09-15.json) are maintained separately from local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|
-| Q POM body | [RM10-Q-M01-BODY.zip](RM10-Q-M01-BODY.zip) | CNC milling, drilling and tapping; black unfilled declared POM-C or POM-H |
+| Q POM body | [RM10-Q-M04-BODY.zip](RM10-Q-M04-BODY.zip) | CNC milling, drilling and tapping; black unfilled declared POM-C or POM-H |
 | Q faceplate | [RM10-Q-M03-FACEPLATE.zip](RM10-Q-M03-FACEPLATE.zip) | 2 mm 304 flat sheet; plain holes and raw sheet finish on both faces |
 | R7 radiator plate | [SN1260-R7-M01-PLATE.zip](SN1260-R7-M01-PLATE.zip) | 2 mm 304 flat sheet; plain holes and raw sheet finish on both faces |
 

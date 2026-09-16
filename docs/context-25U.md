@@ -1,6 +1,6 @@
 # StarTech 25U installation and PVC routing
 
-The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **Q manifold body, Q faceplate and R7 radiator plate**. Eight RTX 5090 FE GPUs with Alphacool 5100182 block/active-backplate assemblies connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. The scene uses Q-M01 body, Q-M03 faceplate (four R5 outside corners) and R7 radiator, with four plugged rear ports and shorter M4 pilots; accepted hose routes and GPU geometry are retained.
+The current composite uses the **StarTech 4POSTRACK25U**, replacing the generic 24U rack. Approved custom parts remain **Q manifold body, Q faceplate and R7 radiator plate**. Eight RTX 5090 FE GPUs with Alphacool 5100182 block/active-backplate assemblies connect to front pairs 1–8, the 4U host uses pair 9 and pair 10 is spare. Infrastructure connects at the manifold's left side. The scene uses Q-M04 body, Q-M03 faceplate (four R5 outside corners) and R7 radiator, with four plugged rear ports and shorter M4 pilots; accepted hose routes and GPU geometry are retained.
 
 ![StarTech 25U composite](../output/context-25U/01-rack-context.png)
 

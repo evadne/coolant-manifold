@@ -184,7 +184,7 @@ for variant in (['bare','connected'] if args.variant=='all' else [args.variant])
             bpy.ops.render.render(write_still=True)
 if not args.preview:
     (OUT/'render-notes.json').write_text(json.dumps({
-        'revision':REV,'faceplate_issue':('Q-M03' if REV=='Q' else None),'outer_corner_radius_mm':(5 if REV=='Q' else None),'source_scene':'../product-views/assembled-unmarked.blend',
+        'revision':REV,'body_issue':'Q-M04' if REV=='Q' else 'P', 'faceplate_issue':('Q-M03' if REV=='Q' else None),'outer_corner_radius_mm':(5 if REV=='Q' else None),'source_scene':'../product-views/assembled-unmarked.blend',
         'boss_height_mm':BOSS*1000,'retention_screws':('12 x M4 x 10 ISO 7380-1; heads rendered, shanks omitted' if REV=='Q' else 'Historical hardware per source'),'brush_direction':'X / across rack width on both broad faces',
         'geometry_changes':'No manifold changes; converted millimetres to metres. Small shader-only edge rounding.',
         'bare':f'20 front, 4 side and {4 if REV == chr(81) else 0} rear ports unpopulated; body screws retained.',

@@ -1,6 +1,6 @@
 # Current product views
 
-## Accepted manifold Q / Q-M01 body / Q-M03 faceplate
+## Accepted manifold Q / Q-M04 body / Q-M03 faceplate
 
 The updated scenes use the40 mm slab,3 mm bosses,2 mm plate,28 G1/4 ports and shortened13 mm M4 pilots. Twelve ISO7380-1 button heads represent the selected M4×10 hardware; hidden screw shanks are omitted. No product markings are added.
 
@@ -15,7 +15,7 @@ The updated scenes use the40 mm slab,3 mm bosses,2 mm plate,28 G1/4 ports and sh
 
 [Connected studio Blender](../output/long-bore-Q/photorealistic/02-qd3-translucent-tubes.blend) · [bare studio Blender](../output/long-bore-Q/photorealistic/01-bare-ports.blend). Koolance source meshes and accepted inferred coupled placement are retained unscaled from the [P reference integration](koolance-qd3-studio-integration.md). Rear plugs are simple visual envelopes, not exact bought-in models. These existing studio shaders show horizontal satin grain; both production plates now specify raw sheet finish without brushing.
 
-The [unmarked review scene](../output/long-bore-Q/product-views/assembled-unmarked.blend) has eleven inspection views: rear assembly/elevation, front perspective/elevation, bare POM rear, left/right, top/bottom and [50% transparency with diagnostic gallery volumes](../output/long-bore-Q/product-views/05-POM-transparent-channels.png). [Separate transparent Blender file](../output/long-bore-Q/product-views/body-50-percent-transparent.blend). The [outside-corner detail](../output/long-bore-Q/product-views/11-R5-corner-detail.png) shows the new R5 faceplate profile. Actual POM is opaque. Review views expose rear ports intentionally; the connected studio and rack scenes close unused rear ports.
+The [unmarked review scene](../output/long-bore-Q/product-views/assembled-unmarked.blend) has twelve inspection views: rear assembly/elevation, front perspective/elevation, bare POM rear, left/right, top/bottom and [50% transparency with diagnostic gallery volumes](../output/long-bore-Q/product-views/05-POM-transparent-channels.png). [Separate transparent Blender file](../output/long-bore-Q/product-views/body-50-percent-transparent.blend). The [outside-corner detail](../output/long-bore-Q/product-views/11-R5-corner-detail.png) shows the new R5 faceplate profile. Actual POM is opaque. Review views expose rear ports intentionally; the connected studio and rack scenes close unused rear ports.
 
 ## R7 radiator / R7-M01 finish
 
@@ -24,3 +24,5 @@ The [unmarked review scene](../output/long-bore-Q/product-views/assembled-unmark
 The [StarTech25U composite](context-25U.md) combines Q/Q-M03 and R7 with official Noctua and Koolance references, the accepted GPU/host tube routes, corrected5090 block/power geometry and provisional pump support. Nine context views and the orbitable Blender file are refreshed. Desktop Blender is not needed to generate them and should remain closed when not being used.
 
 See [rebuild instructions](rebuild.md). Historical P studio files remain intact as source/acceptance evidence, not the current product.
+
+Q-M04 adds modelled C0.5 ×45° chamfers on the twelve POM slab edges. [POM corner close-up](../output/long-bore-Q/product-views/12-POM-chamfer-detail.png) is the twelfth inspection view. Current studio and rack scenes use this body; R7 radiator images are unchanged.

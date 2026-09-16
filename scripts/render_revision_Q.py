@@ -21,7 +21,8 @@ def load(name,path,material):
  bm=bmesh.new();bm.from_mesh(o.data);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-5)
  bmesh.ops.dissolve_limit(bm,angle_limit=1e-5,verts=list(bm.verts),edges=list(bm.edges),use_dissolve_boundaries=False)
  bm.to_mesh(o.data);bm.free();o.data.materials.clear();o.data.materials.append(material);return o
-body=load('body',MESH/'body.stl',pom)
+body_path=ROOT/'output/manufacturing/Q-M04/RM10-Q-M04-BODY.stl'
+body=load('body',body_path,pom)
 old_face=bpy.data.objects['faceplate'];steel=old_face.data.materials[0]
 bpy.data.objects.remove(old_face,do_unlink=True)
 plate_path=ROOT/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.stl'
@@ -57,6 +58,7 @@ bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'assembled-unmarked.blend'),compres
 for o in scene.objects:
  if o.type=='MESH' and o!=body:o.hide_render=True;o.hide_set(True)
 render('04-POM-rear',rear)
+render('12-POM-chamfer-detail',camera('POM C0.5 detail',(238,85,115),(201,38,84),22))
 # 50/50 surface transparency is an inspection aid, not real POM optics.
 trans=pom.copy();trans.name='Q POM inspection - 50 percent transparency';nt=trans.node_tree
 transparent=nt.nodes.new('ShaderNodeBsdfTransparent');mix=nt.nodes.new('ShaderNodeMixShader');mix.inputs[0].default_value=.5
@@ -67,4 +69,4 @@ for i,colour in enumerate(((.025,.35,.6,1),(.8,.19,.06,1)),1):
  load('Diagnostic fluid volume '+str(i),MESH/f'fluid-network-{i}.stl',mat)
 render('05-POM-transparent-channels',rear)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'body-50-percent-transparent.blend'),compress=True)
-(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png']+[v[0]+'.png' for v in extra_views],'faceplate_issue':'Q-M03','outer_corner_radius_mm':5,'M4_reference':'12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted','M4_pilot_depth_mm':13,'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,plate_path,ROOT/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step',ROOT/'output/long-bore-Q/cad/body.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M01 specifies M4x10 screws and 13 mm pilots.'},indent=2)+'\n')
+(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png','12-POM-chamfer-detail.png']+[v[0]+'.png' for v in extra_views],'body_issue':'Q-M04','perimeter_chamfer_mm':.5,'faceplate_issue':'Q-M03','outer_corner_radius_mm':5,'M4_reference':'12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted','M4_pilot_depth_mm':13,'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,plate_path,ROOT/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step',body_path,ROOT/'output/manufacturing/Q-M04/RM10-Q-M04-BODY.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M04 specifies M4x10 screws and 13 mm pilots.'},indent=2)+'\n')

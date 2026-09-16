@@ -10,7 +10,8 @@ R=Path(__file__).resolve().parents[1];OUT=R/'output/pdf';OUT.mkdir(exist_ok=True
 S=json.loads((R/'output/manufacturing/Q-M01/feature-schedule.json').read_text())['features']
 M=json.loads((R/'cad/manufacturing/Q-M01.json').read_text())
 parser=argparse.ArgumentParser();parser.add_argument('--faceplate-issue',choices=['Q-M01','Q-M02','Q-M03'],default='Q-M01');parser.add_argument('--faceplate-only',action='store_true')
-ARGS=parser.parse_args();FI=ARGS.faceplate_issue
+parser.add_argument('--body-issue',choices=['Q-M01','Q-M04'],default='Q-M01');parser.add_argument('--body-only',action='store_true')
+ARGS=parser.parse_args();FI=ARGS.faceplate_issue;BI=ARGS.body_issue
 FM=json.loads((R/f'cad/manufacturing/{FI}.json').read_text())
 SIZE_TOL='±0.10' if FI in ['Q-M02','Q-M03'] else '+0.10/0'
 CENTRE_TOL='±0.10' if FI in ['Q-M02','Q-M03'] else '±0.05'
@@ -35,7 +36,7 @@ def dv(x,y1,y2,label):
  c.saveState();c.translate((x-2)*mm,(y1+y2)/2*mm);c.rotate(90);t(0,0,label,2.5);c.restoreState()
 def page(n,total,title,material):
  rect(10,10,400,277);t(15,279,stem,5,True);t(15,270,title,3.2);ln(10,265,410,265)
- ln(10,30,410,30);t(15,23,material,2.8,True);t(15,16,(FI+' | 16 September 2026' if stem in ['RM10-Q-M02-FACEPLATE','RM10-Q-M03-FACEPLATE'] else 'Q-M01 | 15 September 2026')+' | Units mm | Dimensions at 20°C | Do not scale',2.5)
+ ln(10,30,410,30);t(15,23,material,2.8,True);t(15,16,(FI+' | 16 September 2026' if stem in ['RM10-Q-M02-FACEPLATE','RM10-Q-M03-FACEPLATE'] else BI+' | 16 September 2026' if stem=='RM10-Q-M04-BODY' else 'Q-M01 | 15 September 2026')+' | Units mm | Dimensions at 20°C | Do not scale',2.5)
  t(308,23,'SUPPLIER MANUFACTURING REVIEW',2.7,True);t(350,16,f'SHEET {n} / {total}',2.8)
 def table(x,y,headers,rows,widths):
  total=sum(widths);rh=5.8;rect(x,y-rh,total,rh,True)
@@ -50,6 +51,12 @@ def elevation(kind,ox,oy,scale,labels=True):
  def p(x,z):return ox+(-x if rev else x)*scale,oy+z*scale
  if kind=='plate' and FI=='Q-M03':
   c.setStrokeColor(ink);c.setFillColor(grey);c.roundRect((ox-width*scale/2)*mm,oy*mm,width*scale*mm,87*scale*mm,5*scale*mm,fill=1)
+ elif kind!='plate' and BI=='Q-M04':
+  left=ox-width*scale/2;right=ox+width*scale/2;top=oy+87*scale;cc=.5*scale
+  path=c.beginPath();path.moveTo((left+cc)*mm,oy*mm)
+  for xx,yy in [(right-cc,oy),(right,oy+cc),(right,top-cc),(right-cc,top),(left+cc,top),(left,top-cc),(left,oy+cc)]:path.lineTo(xx*mm,yy*mm)
+  path.close();c.setStrokeColor(ink);c.setFillColor(grey);c.drawPath(path,fill=1)
+  rect(left+cc,oy+cc,width*scale-2*cc,87*scale-2*cc)
  else:rect(ox-width*scale/2,oy,width*scale,87*scale,True)
  gs=['W','H','R'] if kind=='plate' else ['B'] if rev else ['P','F']
  for g in gs:
@@ -68,38 +75,39 @@ def elevation(kind,ox,oy,scale,labels=True):
  dh(ox-width*scale/2,ox+width*scale/2,oy-8,f'{width:.2f} ±0.10')
  dv(ox-width*scale/2-7,oy,oy+87*scale,'87.00 ±0.10')
  return p
-# FACEPLATE
-stem=f'RM10-{FI}-FACEPLATE';c=canvas.Canvas(str(OUT/f'{stem}.pdf'),pagesize=(420*mm,297*mm));c.setTitle(stem)
-page(1,2,'Flat rack faceplate - through features and finish','304 / EN 1.4301 stainless steel | 2.00 ±0.10 thick')
-elevation('plate',211,166,.75)
-t(25,251,'FRONT VIEW 3:4 - SAME COORDINATES AS BODY FRONT',2.7,True)
-t(25,149,'RAW STAINLESS SHEET FINISH - BOTH broad faces; no brushing or polishing.',2.9,True)
-lines(22,132,[f'W01-W20: 20x Ø32.00 {SIZE_TOL} THROUGH port windows.',
-f'H01-H12: 12x Ø4.50 {SIZE_TOL} THROUGH M4 retention holes.',
-f'R01-R12: 12x horizontal 10.00 ±0.10 ×7.00 {SIZE_TOL} THROUGH slots; R3.50 REF ends.',
-('Outer corners: 4x R5.00 ±0.10 in cut profile. NO TAPPED HOLES. NO COUNTERSINKS.' if FI=='Q-M03' else 'NO TAPPED HOLES. NO COUNTERSINKS. Flat plate; all openings through.'),
-'Coordinate origin: X0 derived width midplane, Z0 bottom edge; POM mating plane A at Y0.',
-'Sheet occupies Y-2 to Y0. All feature axes normal to the broad faces; coordinate schedule on sheet 2.',
-'Free-state flatness of mating plane A: 0.30 maximum. Dimensions apply after finishing.',
-('Standard grinding and deburring on both faces; no specified chamfer or edge-round size.' if FI in ['Q-M02','Q-M03'] else 'External deburr / edge break 0.10-0.20 max, both faces; maintain flat screw bearing seats.'),
-('Complete burr removal is not guaranteed. Nominal STEP/DXF profile has no face-edge breaks.' if FI in ['Q-M02','Q-M03'] else 'Edge breaks are finishing operations; nominal STEP/DXF cut profile has no face-edge breaks.'),
-'Laser-cut profile/windows/slots; drill or finish holes where required to achieve call-outs.',
-'No brushing, polishing, coating, paint, engraving, printing or other product markings.',
-('All non-reference cut dimensions and X/Z coordinates: ±0.10 mm; flatness specified separately.' if FI in ['Q-M02','Q-M03'] else 'General DIN ISO 2768-1 class m; H centres ±0.05; other centres ±0.10; specific limits override.'),
-'H01-H12: finished plain bores; preserve the specified full through diameter.',
-('Inspect sizes, coordinates, thickness and free-state flatness against this drawing.' if FI in ['Q-M02','Q-M03'] else 'Supplier must confirm unilateral hole sizes, flatness and specified edge finish before fabrication.')],step=6,size=2.8)
-c.showPage();page(2,2,'Coordinate schedules - all 44 through openings','304 / EN 1.4301 stainless steel | 2.00 ±0.10 thick')
-for x,g,title in [(18,'W','PORT WINDOWS'),(152,'H','BODY RETENTION'),(280,'R','OPTIONAL RACK SLOTS')]:
- t(x,254,title,3.2,True);table(x,247,['ID','X','Z'],[[v['id'],f"{v['xyz_mm'][0]:.3f}",f"{v['xyz_mm'][2]:.3f}"] for v in group(g)],[29,43,43])
-lines(18,109,[f'W diameter Ø32.00 {SIZE_TOL}; H diameter Ø4.50 {SIZE_TOL}; R dimensions 10.00 ±0.10 ×7.00 {SIZE_TOL}.',
-f'H01-H12 X/Z coordinates {CENTRE_TOL}; W/R coordinates ±0.10 from the stated origin. Do not accumulate chained pitch errors.',
-'Port pitch 40.00 REF horizontally and vertically. Rack column pitch 465.10 REF.',
-'Raw stainless sheet finish on both broad faces. No brushing, polishing or surface markings.'],step=7,size=2.8)
-c.save()
-if ARGS.faceplate_only:
- print(FI+': 2 faceplate sheets written; body files untouched');raise SystemExit(0)
+if not ARGS.body_only:
+ # FACEPLATE
+ stem=f'RM10-{FI}-FACEPLATE';c=canvas.Canvas(str(OUT/f'{stem}.pdf'),pagesize=(420*mm,297*mm));c.setTitle(stem)
+ page(1,2,'Flat rack faceplate - through features and finish','304 / EN 1.4301 stainless steel | 2.00 ±0.10 thick')
+ elevation('plate',211,166,.75)
+ t(25,251,'FRONT VIEW 3:4 - SAME COORDINATES AS BODY FRONT',2.7,True)
+ t(25,149,'RAW STAINLESS SHEET FINISH - BOTH broad faces; no brushing or polishing.',2.9,True)
+ lines(22,132,[f'W01-W20: 20x Ø32.00 {SIZE_TOL} THROUGH port windows.',
+ f'H01-H12: 12x Ø4.50 {SIZE_TOL} THROUGH M4 retention holes.',
+ f'R01-R12: 12x horizontal 10.00 ±0.10 ×7.00 {SIZE_TOL} THROUGH slots; R3.50 REF ends.',
+ ('Outer corners: 4x R5.00 ±0.10 in cut profile. NO TAPPED HOLES. NO COUNTERSINKS.' if FI=='Q-M03' else 'NO TAPPED HOLES. NO COUNTERSINKS. Flat plate; all openings through.'),
+ 'Coordinate origin: X0 derived width midplane, Z0 bottom edge; POM mating plane A at Y0.',
+ 'Sheet occupies Y-2 to Y0. All feature axes normal to the broad faces; coordinate schedule on sheet 2.',
+ 'Free-state flatness of mating plane A: 0.30 maximum. Dimensions apply after finishing.',
+ ('Standard grinding and deburring on both faces; no specified chamfer or edge-round size.' if FI in ['Q-M02','Q-M03'] else 'External deburr / edge break 0.10-0.20 max, both faces; maintain flat screw bearing seats.'),
+ ('Complete burr removal is not guaranteed. Nominal STEP/DXF profile has no face-edge breaks.' if FI in ['Q-M02','Q-M03'] else 'Edge breaks are finishing operations; nominal STEP/DXF cut profile has no face-edge breaks.'),
+ 'Laser-cut profile/windows/slots; drill or finish holes where required to achieve call-outs.',
+ 'No brushing, polishing, coating, paint, engraving, printing or other product markings.',
+ ('All non-reference cut dimensions and X/Z coordinates: ±0.10 mm; flatness specified separately.' if FI in ['Q-M02','Q-M03'] else 'General DIN ISO 2768-1 class m; H centres ±0.05; other centres ±0.10; specific limits override.'),
+ 'H01-H12: finished plain bores; preserve the specified full through diameter.',
+ ('Inspect sizes, coordinates, thickness and free-state flatness against this drawing.' if FI in ['Q-M02','Q-M03'] else 'Supplier must confirm unilateral hole sizes, flatness and specified edge finish before fabrication.')],step=6,size=2.8)
+ c.showPage();page(2,2,'Coordinate schedules - all 44 through openings','304 / EN 1.4301 stainless steel | 2.00 ±0.10 thick')
+ for x,g,title in [(18,'W','PORT WINDOWS'),(152,'H','BODY RETENTION'),(280,'R','OPTIONAL RACK SLOTS')]:
+  t(x,254,title,3.2,True);table(x,247,['ID','X','Z'],[[v['id'],f"{v['xyz_mm'][0]:.3f}",f"{v['xyz_mm'][2]:.3f}"] for v in group(g)],[29,43,43])
+ lines(18,109,[f'W diameter Ø32.00 {SIZE_TOL}; H diameter Ø4.50 {SIZE_TOL}; R dimensions 10.00 ±0.10 ×7.00 {SIZE_TOL}.',
+ f'H01-H12 X/Z coordinates {CENTRE_TOL}; W/R coordinates ±0.10 from the stated origin. Do not accumulate chained pitch errors.',
+ 'Port pitch 40.00 REF horizontally and vertically. Rack column pitch 465.10 REF.',
+ 'Raw stainless sheet finish on both broad faces. No brushing, polishing or surface markings.'],step=7,size=2.8)
+ c.save()
+ if ARGS.faceplate_only:
+  print(FI+': 2 faceplate sheets written; body files untouched');raise SystemExit(0)
 # BODY
-stem='RM10-Q-M01-BODY';c=canvas.Canvas(str(OUT/f'{stem}.pdf'),pagesize=(420*mm,297*mm));c.setTitle(stem)
+stem=f'RM10-{BI}-BODY';c=canvas.Canvas(str(OUT/f'{stem}.pdf'),pagesize=(420*mm,297*mm));c.setTitle(stem)
 material='Black unfilled POM-C or POM-H | Declare grade and machining-stock datasheet'
 page(1,3,'Front elevation and front-hole coordinates',material)
 elevation('front',210,181,.8);t(46,256,'FRONT VIEW 4:5 - VIEW ALONG +Y',2.7,True)
@@ -131,6 +139,13 @@ lines(191,81,['E01-E04: 4x G1/4 at longitudinal gallery ends.',
 'Rear pilot: Ø11.80 ×20.00 ±0.20 full diameter from rear face,',
 'plus 118° drill point; axis intersects the matching gallery.',
 'Each row is one continuous network. No internal row link.'],step=6,size=2.7)
+if BI=='Q-M04':
+ t(80,89,'D / SLAB EDGE DETAIL 10:1',2.8,True)
+ ln(82,69,82,77);ln(82,77,87,82);ln(87,82,122,82)
+ ln(82,82,87,82,.1);ln(82,77,82,82,.1)
+ t(92,72,'C0.50 ±0.10 ×45° ±1°',2.7,True)
+ t(80,63,'All 12 slab perimeter edges.',2.5)
+ t(80,56,'8 triangular corner flats per STEP.',2.5)
 c.showPage();page(3,3,'Port/retention sections and manufacturing requirements',material)
 # Longitudinal port drilling section at either outer front/rear aligned column: X fixed.
 t(19,255,'A-A / THROUGH ALIGNED FRONT AND REAR PORT (2:1)',2.8,True)
@@ -172,8 +187,8 @@ lines(210,151,['All seal lands: Ra ≤1.6 µm; local flatness ≤0.05.',
 'each side port Ø22 MIN flat land. No radial scratches.',
 'Seal-face perpendicularity to thread axis ≤0.05 across Ø22.',
 'Exterior POM Ra ≤3.2 µm; unthreaded bores Ra ≤6.3 µm.',
-'External edges: break 0.20 max unless otherwise specified.',
-'Protect sealing lands; no general rounding of seal faces.',
+('12 slab perimeter edges: C0.50 ±0.10 ×45° ±1°; see STEP.' if BI=='Q-M04' else 'External edges: break 0.20 max unless otherwise specified.'),
+('Other external edges: break 0.20 max; protect seal lands.' if BI=='Q-M04' else 'Protect sealing lands; no general rounding of seal faces.'),
 'NO INTERNAL BORE / CROSS-HOLE DEBURR OPERATION.',
 'Clean/flush loose chips; deliver dry, clean and unmarked.',
 'No polishing, coating, impregnation or adhesive repairs.'],step=5.7,size=2.75)
@@ -183,4 +198,4 @@ lines(18,86,['Two Ø11.80 +0.08/0 galleries THROUGH 410 mm. Opposed drilling per
 'Use sound black unfilled POM-C or POM-H stock; declare grade and supply datasheet before manufacture.',
 'Confirm long-bore tooling, thread process and functional finishes. Report proposed deviations before manufacture.',
 'Inspect finished threads, bore continuity, all datum dimensions, surface finishes and specified flatness.'],step=7.5,size=2.7)
-c.save();print('Q-M01: 2 faceplate sheets and 3 body sheets written')
+c.save();print(BI+': 3 body sheets written')

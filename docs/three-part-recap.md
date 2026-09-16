@@ -2,7 +2,7 @@
 
 Updated 16 September 2026. The operator approved radiator revision R6 after reducing its cable notch to 10 × 2 mm. This approval does not constitute supplier manufacturing acceptance or a tested assembly rating.
 
-The current design set is the Revision Q manifold body (Q-M01) and matching faceplate (Q-M03), plus the R7 radiator plate (R7-M01). Both steel issues use ±0.10 mm cut dimensions and coordinates; both plates now have four R5 external outline corners; all holes and other profiles are retained. These are three custom parts; fittings, plugs, screws, nuts, fans and the radiator are bought-in hardware. There is no manifold rear cover in this long-bore design.
+The current design set is the Revision Q manifold body (Q-M04) and matching faceplate (Q-M03), plus the R7 radiator plate (R7-M01). Both steel issues use ±0.10 mm cut dimensions and coordinates; both plates now have four R5 external outline corners; all holes and other profiles are retained. These are three custom parts; fittings, plugs, screws, nuts, fans and the radiator are bought-in hardware. There is no manifold rear cover in this long-bore design.
 
 ## 1. Manifold POM body - Revision Q
 
@@ -13,6 +13,7 @@ The current design set is the Revision Q manifold body (Q-M01) and matching face
 - Side- or rear-fed infrastructure makes all ten front pairs available to loads. A front-fed inlet/outlet pair leaves nine load pairs. Unused side/rear ports take G1/4 plugs with their own face seals.
 - Ø28 bosses, R1 roots and C0.5 outer lips. Each boss stands 1 mm above the matching 2 mm faceplate; fittings seal directly against POM.
 - Twelve M4 × 0.7 blind retention holes for the matching faceplate. Ø3.3 pilot cylinders are 13 mm deep plus a 118° drill point; minimum full-form thread depth is 10 mm after entry.
+- Twelve main-slab outside edges: C0.50 ±0.10 ×45° ±1°, modelled in STEP.
 - External deburring and internal chip cleaning/flushing; no internal cross-hole deburring operation specified.
 
 Duty remains formulated inhibited computer coolant, with approximately 50°C intended maximum liquid temperature. This is a duty assumption, not a tested product rating. The [coolant assessment](pom-coolant-assessment.md) and [Blitz overrun plan](blitz-overrun-qualification.md) continue to apply. Deep-drilling acceptance, exact stock grade and prototype checks remain supplier/engineering items.
@@ -42,6 +43,6 @@ The [current load summary](radiator-load-assessment.md) uses R4 structural calcu
 
 ## Production-file status
 
-The original Q-M01/R6-M02 packs were submitted for quotation/file review. Held repeat-order files are [Q-M03 faceplate](jlc-submission-Q-M03.md) and [R7-M01 radiator](jlc-submission-R7-M01.md); the operator selected them for later submission if a repeat order is needed; retain the existing supplier-order files. The [Q-M01 body](jlc-submission-Q-M01.md) is unchanged. Each ZIP contains matching STEP/PDF files; the steel packs also include DXF. The [JLC review](jlc-final-review.md) records process/material confirmation items and first-article checks. See the [submission record](jlc-quotation-2026-09-15.md); no payment was made.
+The original Q-M01/R6-M02 packs were submitted for quotation/file review. Held repeat-order files are [Q-M03 faceplate](jlc-submission-Q-M03.md) and [R7-M01 radiator](jlc-submission-R7-M01.md); the operator selected them for later submission if a repeat order is needed; retain the existing supplier-order files. The [Q-M04 body](jlc-submission-Q-M04.md) adds the explicit perimeter chamfers. Each ZIP contains matching STEP/PDF files; the steel packs also include DXF. The [JLC review](jlc-final-review.md) records process/material confirmation items and first-article checks. See the [submission record](jlc-quotation-2026-09-15.md); no payment was made.
 
 Use `output/submission/current-three-parts/` as the submission index. Older O-M02, P and R6-M01 files are historical. Q studio and StarTech25U scenes show the current parts; supplier Koolance geometry and accepted tubing routes remain. First assembly: M4×10, dry, without Loctite. The [torque/creep assessment](Q-torque-and-creep.md) records the unqualified trial setting and remaining actual-grade tests.

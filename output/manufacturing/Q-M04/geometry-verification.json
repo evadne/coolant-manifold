@@ -1,0 +1,126 @@
+{
+  "issue": "Q-M04",
+  "checks": "PASS",
+  "body_solid_count": 1,
+  "plate_solid_count": 1,
+  "G1_4_ports": 28,
+  "M4_threads": 12,
+  "plate_windows": 20,
+  "plate_retention_holes": 12,
+  "optional_rack_slots": 12,
+  "body_extent_mm": [
+    410,
+    43,
+    87
+  ],
+  "plate_extent_mm": [
+    482.6,
+    2,
+    87
+  ],
+  "body_volume_mm3": 1326122.4026618728,
+  "plate_volume_mm3": 49993.15947967292,
+  "plate_mass_kg": 0.3949459598894161,
+  "M4_pilot_full_diameter_mm": 13,
+  "M4_total_drilled_depth_mm": 13.991420021395474,
+  "M4_full_thread_after_entry_mm": 10,
+  "M4_reference_screw_length_mm": 10,
+  "M4_tip_to_full_pilot_bottom_mm": 5,
+  "M4_nominal_screw_to_hole_radial_clearance_mm": 0.25,
+  "M4_worst_coordinate_fit_margin_mm": 0.1085786437626905,
+  "boss_window_nominal_radial_clearance_mm": 2,
+  "root_window_worst_size_and_coordinate_clearance_mm": 0.5671572875253806,
+  "boss_projection_size_stack_mm": [
+    0.8500000000000001,
+    1.15
+  ],
+  "projection_note": "Size-only stack before flatness and assembled distortion",
+  "geometry": {
+    "revision": "Q",
+    "status": "Operator-approved Q geometry; supplier issue Q-M01",
+    "front_ports": 20,
+    "side_ports": 4,
+    "rear_ports": 4,
+    "total_G1_4_ports": 28,
+    "wet_networks": 2,
+    "rear_bosses": 0,
+    "rear_cover": false,
+    "body_slab_depth_mm": 40.0,
+    "overall_POM_depth_mm": 43.0,
+    "rear_port_details": [
+      {
+        "centre_xyz_mm": [
+          -180,
+          40.0,
+          23.5
+        ],
+        "thread_end_to_gallery_mm": 5.1
+      },
+      {
+        "centre_xyz_mm": [
+          -180,
+          40.0,
+          63.5
+        ],
+        "thread_end_to_gallery_mm": 5.1
+      },
+      {
+        "centre_xyz_mm": [
+          180,
+          40.0,
+          23.5
+        ],
+        "thread_end_to_gallery_mm": 5.1
+      },
+      {
+        "centre_xyz_mm": [
+          180,
+          40.0,
+          63.5
+        ],
+        "thread_end_to_gallery_mm": 5.1
+      }
+    ],
+    "rear_full_diameter_pilot_depth_mm": 20.0,
+    "rear_drill_tip_Y_mm": 16.454922347737394,
+    "M4_full_thread_after_entry_mm": 10,
+    "M4_pilot_full_diameter_depth_mm": 13,
+    "M4_reference_screw_length_mm": 10,
+    "M4_drill_tip_depth_mm": 13.991420021395474,
+    "full_thread_depth_after_entry_mm": 8,
+    "rear_thread_envelope_depth_from_face_mm": 9,
+    "removed_POM_volume_mm3": 6123.1493267857,
+    "minimum_M4_to_wet_network_mm": 9.795637398949019,
+    "rear_seal_land_edge_margin_min_mm": 9.5,
+    "rear_fitting_keepout_diameter_mm": 36,
+    "rear_keepout_to_side_elbow_envelope_min_mm": 13.038404810405298,
+    "rear_fitting_row_gap_mm": 4,
+    "plugged_equipment_width_mm": 418.0,
+    "faceplate_identical_to_P": true,
+    "checks": "PASS: valid solid; two isolated networks; four rear branches join corresponding galleries; dry M4s and seal lands; nominal fitting envelopes clear",
+    "scope": "Accepted layout; matching Q-M01 drawings specify machining. STEP thread cylinders are tap pilots. Fitting envelopes are nominal; exact hardware, hose bends and loads not qualified.",
+    "source_sha256": {
+      "cad/iterations/Q-rear-ports.json": "721d618a043d914624cbe7eaefae48c13cc0c9a79f2a25b916dd0f17c506e6f4",
+      "cad/iterations/P-long-bore.json": "b1dde89ed34e32123e4446173c12fb35f6cc8d42da1b5ff41fbffd1254abef1d",
+      "scripts/build_revision_Q.py": "5455a8f2a0933bcb945f706114652206685e6dcc57726132978d7eeeb8c6ed89",
+      "output/long-bore-P/cad/body.step": "d56b698fa4aee7f2f0fb3d013ffc96842d8b66fedb66e962e254b0214f294bf8",
+      "output/long-bore-P/cad/faceplate.step": "2726a5719c7133160e256fc9c38e7b84bd15c15b328d5b687e5acddda73e7c8d",
+      "output/long-bore-P/cad/fluid-network-1.step": "9250eac76c0e292e0bdf1ed7a16a70b3056db47451d88e3b9fcbd1e199b64f14",
+      "output/long-bore-P/cad/fluid-network-2.step": "5d534c5eceb4cff194d30e36b997f93d2f5a176bf82219f96515a2db54417f65",
+      "output/long-bore-P/cad/elbow-envelope-assembly.step": "081d6f8a3bff0087bda8792ac0c1b5a6ccd61da8a29f5486ccab613362f863aa"
+    }
+  },
+  "perimeter_chamfer_mm": 0.5,
+  "perimeter_chamfer_angle_degrees": 45,
+  "perimeter_edges": 12,
+  "removed_volume_mm3": 267.8333333335748,
+  "curved_faces_unchanged": true,
+  "sealing_lands_and_M4_bearing_areas_unchanged": true,
+  "geometry_change": "Only twelve main-slab outside edges chamfered C0.5 x45 degrees; intersecting corners meet as modelled",
+  "source_sha256": {
+    "output/manufacturing/Q-M01/RM10-Q-M01-BODY.step": "4d4158aa8de30eced120da93b9bd8b9f4500ce8b8a7822eb15e369e5869b893d",
+    "cad/manufacturing/Q-M04.json": "cb4ea8ea1a9ab2e6c04144ac1e68169abea34058c241e8bd00ce9c2ddba8aff6",
+    "scripts/prepare_Q_body_issue.py": "3a12ea2a6f743bcb9de9a37cc2406606bedd8e8f54e9d21b183825cb849f35d6",
+    "output/manufacturing/Q-M01/geometry-verification.json": "78f4b26b44084e6f10980f0111a1056ef5a102b4f2cb9674b65b719fccdabcc4"
+  }
+}

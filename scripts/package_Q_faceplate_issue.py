@@ -35,7 +35,7 @@ with zipfile.ZipFile(out/f'{stem}.zip') as z:
  for f in files:assert z.read(f.name)==f.read_bytes()
 for name in ['geometry-verification.json','feature-schedule.json']:shutil.copyfile(src/name,out/name)
 guide=(R/f'docs/jlc-submission-{ISSUE}.md').read_text()
-(out/'README.md').write_text(re.sub(r'\]\(([^:/)]+\.md)\)',r'](../../../docs/\1)',guide))
+(out/'README.md').write_text(re.sub(r'\]\(([^:/)]+\.md(?:#[^)]*)?)\)',r'](../../../docs/\1)',guide))
 shutil.copyfile(R/f'docs/jlc-Q-faceplate-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')
 inputs=[R/'scripts/draw_Q_production.py',R/'scripts/package_Q_faceplate_issue.py',R/'scripts/prepare_Q_faceplate_issue.py',R/f'cad/manufacturing/{ISSUE}.json']
 verification={'issue':ISSUE,'checks':'PASS','pdf_pages':2,'scheduled_features':44,'zip_members':[f.name for f in files],'nominal_geometry_unchanged':report['nominal_geometry_unchanged'],'upload_performed_by_packaging_script':False,'source_sha256':{str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}}

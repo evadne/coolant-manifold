@@ -11,8 +11,8 @@
   "nominal_geometry_unchanged": false,
   "upload_performed_by_packaging_script": false,
   "source_sha256": {
-    "scripts/draw_Q_production.py": "ab820b1c6c31e1dcf0e04083fbbff4390af30d9d7604b01147b2a8e7003f0413",
-    "scripts/package_Q_faceplate_issue.py": "552c8e2d617fad66708289a7086e3fc0b351ba4734ae0f34ac9b2dcd87e02c88",
+    "scripts/draw_Q_production.py": "3aefcddaa07ef888643e316707a7b51ee52ce10bc04e1cc9bd2f78d654e75216",
+    "scripts/package_Q_faceplate_issue.py": "f89e2c8d2261fd1b41145944e2bbe19a58824809521d7f711ed4e0765a3a1c75",
     "scripts/prepare_Q_faceplate_issue.py": "1c83ac60aadf98f1a967b275d92d9f9c1b164d367cae1918ec21b19413b53985",
     "cad/manufacturing/Q-M03.json": "8a7dde34a840b528651ed75e2143493ad2f0d9fa537af1f481fd8d729701644a"
   }

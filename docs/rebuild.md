@@ -29,7 +29,20 @@ python3 scripts/package_radiator_production.py --issue R7-M01
 # Render and inspect current presentations below before finalising the index.
 ```
 
-These commands do not upload. `finalise_three_part_pack.py` checks the unchanged body against its original submitted archive hash, the new steel files against their geometry sources and drawings, and the new five-sheet visual review. Refresh Q product/studio, R7 radiator and Q/R7 context renders before finalising. Refresh the visual-review hashes only after inspecting all five new PDF sheets and 31 presentation images; the three unchanged body sheets retain their prior review.
+These commands do not upload. `finalise_three_part_pack.py` checks the current body against its verified chamfered geometry and original source, the new steel files against their geometry sources and drawings, and the new five-sheet visual review. Refresh Q product/studio, R7 radiator and Q/R7 context renders before finalising. Refresh the visual-review hashes only after inspecting all three new body PDF sheets and 25 refreshed presentation images; the five steel sheets and seven radiator images retain their prior review.
+
+## Current POM body issue Q-M04
+
+After preparing the Q-M03 faceplate, run:
+
+```sh
+.venv/bin/python scripts/prepare_Q_body_issue.py
+python3 scripts/draw_Q_production.py --body-issue Q-M04 --body-only
+# Render and inspect the three new body sheets before packaging.
+python3 scripts/package_Q_body_issue.py
+```
+
+Q-M04 preserves the submitted Q-M01 source and adds only the twelve C0.5 ×45° slab-edge chamfers. It also refreshes the current assembly STEP; run this step after faceplate preparation. Current Q product/studio/context renderers load Q-M04. Do not overwrite submitted archives. The held pack is Q-M04 body + Q-M03 faceplate + R7-M01 radiator. Current review comprises three new body sheets, five unchanged steel sheets, 25 refreshed manifold/studio/context images and seven inherited radiator images. The tube equilibrium remains unchanged.
 
 ## Original manifold Q / Q-M01 reproduction
 
@@ -74,7 +87,7 @@ The package script reads the current submission writeup and supplier remarks, ve
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_radiator_plate.py -- --revision R7 --device METAL
 ```
 
-The Q renderer loads the Q-M03 faceplate explicitly. R7 produces seven views including the populated assembly, fasteners, notch and outside-corner detail. The Q inspection set has eleven views including an R5 detail; studio has four. Retain the existing tube equilibrium solution for this corner-only change.
+The Q renderer loads the Q-M03 faceplate explicitly. R7 produces seven views including the populated assembly, fasteners, notch and outside-corner detail. The Q inspection set has twelve views including R5 steel and C0.5 POM details; studio has four. Retain the existing tube equilibrium solution for this corner-only change.
 
 ## Composite StarTech25U scene
 

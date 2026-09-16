@@ -1,17 +1,17 @@
 # Output directory guide
 
-Current custom parts: Q-M01 manifold body, Q-M03 faceplate and R7/R7-M01 radiator; both steel plates have four R5 outside corners and ±0.10 cut tolerances. Held for repeat orders.
+Current custom parts: Q-M04 manifold body, Q-M03 faceplate and R7/R7-M01 radiator; both steel plates have four R5 outside corners and ±0.10 cut tolerances. Held for repeat orders.
 
 | Location | Purpose |
 |---|---|
 | `submission/current-three-parts/` | Current three-part ZIP index and final consistency manifest |
-| `submission/Q-M01/`, `submission/Q-M03/` | Body/faceplate supplier STEP/PDF ZIPs; DXF for steel; checks and remarks |
+| `submission/Q-M04/`, `submission/Q-M03/` | Body/faceplate supplier STEP/PDF ZIPs; DXF for steel; checks and remarks |
 | `submission/R7-M01/` | Radiator STEP/PDF/DXF ZIP; checks and remarks |
-| `manufacturing/Q-M01/`, `manufacturing/Q-M03/`, `manufacturing/R7-M01/` | Derived single-part solids and verified feature schedules |
-| `pdf/RM10-Q-M01-BODY.pdf`, `pdf/RM10-Q-M03-FACEPLATE.pdf`, `pdf/SN1260-R7-M01-PLATE.pdf` | Current technical fabrication drawings |
+| `manufacturing/Q-M04/`, `manufacturing/Q-M03/`, `manufacturing/R7-M01/` | Derived single-part solids and verified feature schedules |
+| `pdf/RM10-Q-M04-BODY.pdf`, `pdf/RM10-Q-M03-FACEPLATE.pdf`, `pdf/SN1260-R7-M01-PLATE.pdf` | Current technical fabrication drawings |
 | `assembly/Q/` | Separate reference assembly and selected M4×10 screw; not supplier part uploads |
-| `long-bore-Q/cad/` | Unchanged Q body and baseline geometry/checks; original faceplate/assembly retained as source history. Current plate is manufacturing/Q-M03; current assembly is assembly/Q |
-| `long-bore-Q/product-views/` | Current eleven review angles and unmarked/transparent Blender scenes |
+| `long-bore-Q/cad/` | Original Q-M01 body and baseline geometry/checks; original faceplate/assembly retained as source history. Current plate is manufacturing/Q-M03; current assembly is assembly/Q |
+| `long-bore-Q/product-views/` | Current twelve review angles and unmarked/transparent Blender scenes |
 | `long-bore-Q/photorealistic/` | Four refreshed studio images, bare/connected Blender scenes |
 | `long-bore-P/koolance-fit/` | Shared retained official fitting meshes and provenance |
 | `radiator-R7/` | Current radiator CAD, checks and seven refreshed plate/populated assembly/notch/R5 views |
