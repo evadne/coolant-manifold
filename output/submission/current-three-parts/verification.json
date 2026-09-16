@@ -34,8 +34,8 @@
       ]
     }
   ],
-  "release_status": "awaiting_operator_shipping_confirmation",
-  "operator_disposition": "Complete set accepted. Prepare a separate new order; confirm cheapest shipping with operator before final submission. Preserve original orders.",
+  "release_status": "submitted_for_file_review",
+  "operator_disposition": "Complete set accepted and separately submitted for file review with operator-confirmed UPS shipping. Preserve original orders. No payment authorised.",
   "fabrication_scope": "Each ZIP contains only one custom part STEP and its fabrication drawing/profile.",
   "assembly_guide": "docs/assembly-Q.md",
   "assembly_parameters": "cad/assembly/Q.json",
@@ -45,15 +45,15 @@
   "faceplate_worst_case_fit": "Operator accepted JLC capability; worst-case interchangeability is not guaranteed",
   "faceplate_M4_radial_margin_mm": -0.012132034355964078,
   "historical_submission_record": "output/submission/jlc-quotation-2026-09-15.json",
-  "supplier_submission_performed": false,
-  "submission_record": null,
+  "supplier_submission_performed": true,
+  "submission_record": "output/submission/jlc-order-2026-09-16.json",
   "remaining_supplier_review": [
     "POM stock grade",
     "Deep-gallery drilling process",
     "Specified tolerances, flatness and surface finishes"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "448d29b235714491b868b07bd37dcc240172fe010594eeea06a8745f4c1fa2d0",
+    "scripts/finalise_three_part_pack.py": "c5699880dee99ad9f7355536e0bb745185892c4ba867a7a093b6180ab4e5d829",
     "output/review/Q-M04-visual-review.json": "5fab710ae0860d71185b60f357febc4062e4c03f784f7a4105a0edb3f45d2a44",
     "scripts/draw_radiator_production.py": "0da7a28db322b77086a660daf79a62f303cf1ba36a5208a4eb1d06a29393068c",
     "scripts/package_radiator_production.py": "020cc583876759a5150894208b2d51f4db3e3adb927d04fc976477f40834a1e4",

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "status": "awaiting_operator_shipping_confirmation",
+  "status": "submitted_for_file_review",
   "operator_design_accepted": true,
   "accepted_design": "Q-M04 body including twelve C0.5 chamfers and eight triangular corner flats; Q-M03 faceplate; R7-M01 radiator",
   "quantity_each": 1,
@@ -8,8 +8,8 @@
   "interface": "Safari Computer Use",
   "reuse_metadata_from": "output/submission/jlc-quotation-2026-09-15.json",
   "shipping_instruction": "Compare all available shipping services, select the least expensive, and obtain operator confirmation before final submission.",
-  "shipping_confirmed": false,
-  "submitted": false,
+  "shipping_confirmed": true,
+  "submitted": true,
   "payment_authorised": false,
   "original_orders": "Preserve original Q-M01/R6-M02 orders and archives; create a separate new order.",
   "parts": [
@@ -61,7 +61,7 @@
       "process": "Sheet Metal"
     }
   ],
-  "ui_progress": "All three current bundles uploaded and configured through Safari. Checkout shows UPS Worldwide Express Saver and Review Before Payment. Final Submit Order not clicked.",
+  "ui_progress": "Submission success page verified after explicit shipping approval. Review Before Payment selected; no payment made.",
   "authentication": "Google OAuth; do not use system Keychain",
   "checkout_mode": "Review Before Payment",
   "automatic_payment_authorised": false,
@@ -98,5 +98,11 @@
     }
   ],
   "shipping_comparison": "All offered priced services checked by selecting each in checkout. Own freight account also offered without a supplier quote; not selected.",
-  "checkout_reference": "54283e9a42234314b0caaa6f457c11ab"
+  "checkout_reference": "54283e9a42234314b0caaa6f457c11ab",
+  "shipping_confirmation": "Operator: Confirm UPS; submit for review only.",
+  "submitted_at_utc": "2026-09-16T15:20:00Z",
+  "timestamp_precision": "minute; success page observed before 15:20:49 UTC",
+  "payment_made": false,
+  "confirmation_text": "Your order has been submitted.",
+  "confirmation_url": "https://jlccnc.com/checkout/orderSuccess?systemType=order_merge&spm=Jlcpcb.Confirmorder.1001"
 }

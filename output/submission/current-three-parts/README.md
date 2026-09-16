@@ -1,6 +1,6 @@
 # Current three-part fabrication pack
 
-Accepted new-order pack: Q-M04 body with C0.5 slab-edge chamfers and eight corner flats, Q-M03 faceplate and R7-M01 radiator. A separate new order is authorised, subject to operator confirmation of the cheapest available shipping option before final submission. Preserve the original supplier orders and files. [New-order status](../../../docs/jlc-order-2026-09-16.md) records UI progress separately from these local packaging checks. No payment is performed by these scripts.
+Accepted new-order pack: Q-M04 body with C0.5 slab-edge chamfers and eight corner flats, Q-M03 faceplate and R7-M01 radiator. A separate new order was submitted for file review after the operator confirmed UPS, the cheapest quoted shipping option. Preserve the original supplier orders and files. [New-order status](../../../docs/jlc-order-2026-09-16.md) records UI progress separately from these local packaging checks. No payment is performed by these scripts.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|
