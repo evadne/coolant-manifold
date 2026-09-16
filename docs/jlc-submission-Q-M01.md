@@ -1,6 +1,6 @@
 # Q-M01 manifold submission guide
 
-Historical submitted body issue Q-M01. Current held body is [Q-M04](jlc-submission-Q-M04.md), with explicit perimeter chamfers. The original faceplate section below records the submitted issue; use [Q-M03](jlc-submission-Q-M03.md) for the current held repeat-order faceplate.
+Historical submitted body issue Q-M01. Current body is [Q-M04](jlc-submission-Q-M04.md), with explicit perimeter chamfers. The original faceplate section below records the submitted issue; use [Q-M03](jlc-submission-Q-M03.md) for the current faceplate.
 
 Q is the accepted 28-port parallel manifold. During manufacturing review the operator requested shorter M4 tapping and pilots . The current body has **10 mm full M4 thread after the entry and 13 mm full-diameter pilots**, plus drill points. Twenty front bosses remain3 mm high above the40 mm slab; the stainless plate remains2 mm. All28 G1/4 ports retain8 mm full thread after1 mm entry.
 

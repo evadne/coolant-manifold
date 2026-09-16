@@ -26,7 +26,7 @@ The addition needs four short rear drilling/tapping operations and a rear-facing
 
 ## Checks and review files
 
-The generated solid is valid and the two fluid networks remain separate. All four rear branches intersect only their intended gallery. The minimum M4 envelope-to-wet-network distance is **9.796 mm**. Four Ø36 × 80 mm rear hardware keep-outs clear the retained side-elbow reference solids by at least **13.038 mm**, with 4 mm between the two keep-outs in each rear pair. These are conservative nominal layout envelopes, not exact fitting or hand-access qualification. The original Q faceplate STEP was copied from P. Current Q-M03 changes only its four outside corners to R5; its STEP and drawings are in the held production pack.
+The generated solid is valid and the two fluid networks remain separate. All four rear branches intersect only their intended gallery. The minimum M4 envelope-to-wet-network distance is **9.796 mm**. Four Ø36 × 80 mm rear hardware keep-outs clear the retained side-elbow reference solids by at least **13.038 mm**, with 4 mm between the two keep-outs in each rear pair. These are conservative nominal layout envelopes, not exact fitting or hand-access qualification. The original Q faceplate STEP was copied from P. Current Q-M03 changes only its four outside corners to R5; its STEP and drawings are in the current production pack.
 
 - [Rear layout and port call-outs](../output/long-bore-Q/rear-port-layout.svg)
 - [POM body STEP](../output/long-bore-Q/cad/body.step)

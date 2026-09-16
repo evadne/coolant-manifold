@@ -94,10 +94,10 @@ check_sources(visual)
 assert visual['pdf_sheets_reviewed'] == 3 and visual['unchanged_steel_sheets_inherited'] == 5
 assert visual['presentation_images_reviewed'] == 25 and visual['unchanged_radiator_images_inherited'] == 7
 
-submission_path = ROOT / 'output/submission/jlc-quotation-2026-09-15.json'
-submission = json.loads(submission_path.read_text()) if submission_path.exists() else None
-submitted = bool(submission and submission['status'] == 'submitted_for_file_review' and len(submission['parts']) == len(parts) and all(
-    any(p['part'] == sent['part'] and p['sha256'] == sent['sha256'] for p in parts)
+submission_path = ROOT / 'output/submission/jlc-order-2026-09-16.json'
+submission = json.loads(submission_path.read_text())
+submitted = bool(submission.get('submitted') and len(submission['parts']) == len(parts) and all(
+    any(p['part'] == sent['part'] and p['sha256'] == sent.get('sha256') for p in parts)
     for sent in submission['parts']))
 
 manifest = {
@@ -114,7 +114,7 @@ manifest = {
     'faceplate_M4_radial_margin_mm': face['worst_case_M4_radial_margin_mm'],
     'historical_submission_record': 'output/submission/jlc-quotation-2026-09-15.json',
     'supplier_submission_performed': submitted,
-    'submission_record': 'output/submission/jlc-quotation-2026-09-15.json' if submitted else None,
+    'submission_record': 'output/submission/jlc-order-2026-09-16.json' if submitted else None,
     'remaining_supplier_review': ['POM stock grade', 'Deep-gallery drilling process',
                                    'Specified tolerances, flatness and surface finishes'],
     'source_sha256': {str(p): sha(p) for p in [

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "status": "preparing_new_order",
+  "status": "awaiting_operator_shipping_confirmation",
   "operator_design_accepted": true,
   "accepted_design": "Q-M04 body including twelve C0.5 chamfers and eight triangular corner flats; Q-M03 faceplate; R7-M01 radiator",
   "quantity_each": 1,
@@ -16,17 +16,87 @@
     {
       "part": "RM10-Q-M04-BODY",
       "archive": "output/submission/Q-M04/RM10-Q-M04-BODY.zip",
-      "quantity": 1
+      "quantity": 1,
+      "sha256": "699a2a0bc5bc1a903e00e94bfad6d5d2cd445495360754556012212c078f5b65",
+      "supplier_part_reference": "CNC2609165007659-6347288A",
+      "pre_review_estimate_USD": 128.12,
+      "material_selection": "POM(Black)",
+      "surface_finish_selection": "No surface finish",
+      "goods_description": "Plastic coolant manifold",
+      "remarks_entered": "Q-M04 PDF governs.12 edges C0.50+/-0.10 x45deg+/-1deg;8 corner flats per STEP.Declare black unfilled POM-C/H.28 G1/4+12 M4 threads;STEP pilots.External deburr only;flush chips.Confirm D11.8x410 galleries/deviations.",
+      "uploaded": true,
+      "tolerance_selection": "+/-0.05 mm",
+      "threads": true,
+      "additional_tolerance_pdf_uploaded": true,
+      "process": "CNC machining"
     },
     {
       "part": "RM10-Q-M03-FACEPLATE",
       "archive": "output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip",
-      "quantity": 1
+      "quantity": 1,
+      "sha256": "3c80e7e8aa76f7f0c491d85baca623d7600ec8d7f56c1f24999eb6ccaaeb3664",
+      "supplier_part_reference": "SMS2609163002842-6347288A",
+      "pre_review_estimate_USD": 9.86,
+      "material_selection": "Stainless Steel 304",
+      "surface_finish_selection": "No surface finish",
+      "goods_description": "Stainless steel Rectangular Plate - HS Code 732690",
+      "remarks_entered": "Q-M03 PDF/DXF govern. Raw 304 both faces; no brushing/polishing. Cut sizes/coordinates +/-0.10mm; four R5 corners; plain holes. Standard grinding/deburring accepted; no complete burr-removal guarantee. Flatness 0.30mm max.",
+      "uploaded": true,
+      "threads": false,
+      "process": "Sheet Metal"
     },
     {
       "part": "SN1260-R7-M01-PLATE",
       "archive": "output/submission/R7-M01/SN1260-R7-M01-PLATE.zip",
-      "quantity": 1
+      "quantity": 1,
+      "sha256": "e5c4d85cf3fe5049dddc34ca8609f049415fbc364f7fac4732a83c5faca875fd",
+      "supplier_part_reference": "SMS2609163002832-6347288A",
+      "pre_review_estimate_USD": 29.82,
+      "material_selection": "Stainless Steel 304",
+      "surface_finish_selection": "No surface finish",
+      "goods_description": "Stainless steel Rectangular Plate - HS Code 732690",
+      "remarks_entered": "R7-M01 PDF/DXF govern. Raw 304 both faces; no brushing/polishing. Cut sizes/coordinates +/-0.10mm; four R5 corners; plain holes. Flatness 0.50mm max. External edge finishing incl cable-contact rounds per PDF.",
+      "uploaded": true,
+      "threads": false,
+      "process": "Sheet Metal"
     }
-  ]
+  ],
+  "ui_progress": "All three current bundles uploaded and configured through Safari. Checkout shows UPS Worldwide Express Saver and Review Before Payment. Final Submit Order not clicked.",
+  "authentication": "Google OAuth; do not use system Keychain",
+  "checkout_mode": "Review Before Payment",
+  "automatic_payment_authorised": false,
+  "merchandise_total_USD": 167.8,
+  "selected_shipping": "UPS Worldwide Express Saver",
+  "shipping_USD": 71.99,
+  "checkout_total_USD": 239.79,
+  "shipping_terms": "CPT: duty, tax and carrier clearance handling fees collected at destination",
+  "shipping_options": [
+    {
+      "carrier": "UPS Worldwide Express Saver",
+      "price_USD": 71.99,
+      "business_days": "3-5",
+      "terms": "CPT"
+    },
+    {
+      "carrier": "FedEx Express",
+      "price_USD": 76.33,
+      "business_days": "4-7",
+      "terms": "CPT"
+    },
+    {
+      "carrier": "DHL Express",
+      "price_USD": 122.79,
+      "business_days": "2-4",
+      "terms": "CPT"
+    },
+    {
+      "carrier": "DHL Express (DDP)",
+      "price_USD": 125.12,
+      "duties_taxes_USD": 66.8,
+      "business_days": "2-4",
+      "terms": "DDP"
+    }
+  ],
+  "shipping_comparison": "All offered priced services checked by selecting each in checkout. Own freight account also offered without a supplier quote; not selected.",
+  "checkout_reference": "54283e9a42234314b0caaa6f457c11ab"
 }
