@@ -34,6 +34,10 @@ The radiator details retain the full submitted remark, explicitly asking confirm
 
 Displayed merchandise total is **$236.96**, shipping **$119.99**, combined **$356.95**. The body has increased from the original automatic estimate of $128.74 to $197.26; both steel prices are unchanged. These are the current displayed figures, not payment authorisation, a landed-cost guarantee or a finalised batch while the faceplate remains pending. The historical submission record and original prices remain intact.
 
+## Follow-up fit assessment
+
+The operator requested a check of the unchanged nominal faceplate at JLC capability. The [calculated assessment](Q-faceplate-as-drawn-capability.md) finds ample boss-root clearance and marginal worst-case M4 clearance if nominal Ø4.5 is permitted to fall to Ø4.4. Retaining Ø4.5 minimum passes with plate positions ±0.1 and existing POM positions ±0.05. No supplier concession or geometry change has been made.
+
 ## Scope retained
 
 Keep the submitted Q-M01/R6-M02 ZIPs intact while discussing alternatives. The existing [tolerance-relaxation assessment](tolerance-relaxation-review.md) can inform a later change, but accepting ±0.1 everywhere on the existing geometry is not yet approved. No supplier reply, acceptance, replacement upload or payment was sent by the assistant during this investigation.

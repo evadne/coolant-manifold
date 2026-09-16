@@ -2,6 +2,8 @@
 
 Assessment only; submitted Q-M01/R6-M02 drawings and supplier instructions remain unchanged. Yes, the design can be adapted to looser fabrication tolerances. The submitted requirements include conservative choices; a lower-cost specification should retain functional controls and provide clearance at mechanical interfaces, rather than loosen every value uniformly. Actual price benefit requires the supplier's review.
 
+For the subsequent question about **unchanged geometry with only the plate at JLC capability**, see the [specific Q faceplate assessment](Q-faceplate-as-drawn-capability.md). It retains the POM at ±0.05; it does not relax both parts as in the illustrative examples below.
+
 ## Manifold retention example
 
 Assume a conservative 4.00 mm screw envelope, parallel axes and rigid parts. With independent X and Z coordinate limits ±t on each mating part, worst relative radial offset is sqrt((2t)^2 + (2t)^2). Multiple holes mean arbitrary errors cannot all be removed by translating the plate. This is a size/position check, not a complete joint or thermal qualification.
