@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "status": "submitted_for_file_review",
+  "status": "approved_awaiting_payment",
   "operator_design_accepted": true,
   "accepted_design": "Q-M04 body including twelve C0.5 chamfers and eight triangular corner flats; Q-M03 faceplate; R7-M01 radiator",
   "quantity_each": 1,
@@ -28,7 +28,9 @@
       "tolerance_selection": "+/-0.05 mm",
       "threads": true,
       "additional_tolerance_pdf_uploaded": true,
-      "process": "CNC machining"
+      "process": "CNC machining",
+      "review_status": "Approved",
+      "approval_timestamp_displayed": "2026-09-17 06:56:34"
     },
     {
       "part": "RM10-Q-M03-FACEPLATE",
@@ -43,7 +45,9 @@
       "remarks_entered": "Q-M03 PDF/DXF govern. Raw 304 both faces; no brushing/polishing. Cut sizes/coordinates +/-0.10mm; four R5 corners; plain holes. Standard grinding/deburring accepted; no complete burr-removal guarantee. Flatness 0.30mm max.",
       "uploaded": true,
       "threads": false,
-      "process": "Sheet Metal"
+      "process": "Sheet Metal",
+      "review_status": "Approved",
+      "approval_timestamp_displayed": "2026-09-17 08:08:51"
     },
     {
       "part": "SN1260-R7-M01-PLATE",
@@ -58,7 +62,9 @@
       "remarks_entered": "R7-M01 PDF/DXF govern. Raw 304 both faces; no brushing/polishing. Cut sizes/coordinates +/-0.10mm; four R5 corners; plain holes. Flatness 0.50mm max. External edge finishing incl cable-contact rounds per PDF.",
       "uploaded": true,
       "threads": false,
-      "process": "Sheet Metal"
+      "process": "Sheet Metal",
+      "review_status": "Approved",
+      "approval_timestamp_displayed": null
     }
   ],
   "ui_progress": "Submission success page verified after explicit shipping approval. Review Before Payment selected; no payment made.",
@@ -124,5 +130,16 @@
     "reason": "Redundant original order; no further cancellation action required.",
     "source": "Operator message, 16 September 2026",
     "independently_verified": false
+  },
+  "supplier_approval_observation": {
+    "date": "2026-09-17",
+    "source": "Operator-supplied JLC timeline screenshot",
+    "evidence": "docs/references/jlc/2026-09-17-approved.png",
+    "independent_live_portal_check": false,
+    "batch_status": "All orders have been reviewed, waiting for payment now.",
+    "displayed_batch_timestamp": "2026-09-17 08:08:51",
+    "timezone": "not established",
+    "review_comments_visible": false,
+    "final_reviewed_prices_verified": false
   }
 }

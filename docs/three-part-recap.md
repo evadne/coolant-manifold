@@ -1,6 +1,6 @@
 # Current three-part design recap
 
-Updated 16 September 2026. The operator approved radiator revision R6 after reducing its cable notch to 10 × 2 mm. This approval does not constitute supplier manufacturing acceptance or a tested assembly rating.
+Updated 17 September 2026. The operator approved radiator revision R6 after reducing its cable notch to 10 × 2 mm. This approval does not constitute supplier manufacturing acceptance or a tested assembly rating.
 
 The current design set is the Revision Q manifold body (Q-M04) and matching faceplate (Q-M03), plus the R7 radiator plate (R7-M01). Both steel issues use ±0.10 mm cut dimensions and coordinates; both plates now have four R5 external outline corners; all holes and other profiles are retained. These are three custom parts; fittings, plugs, screws, nuts, fans and the radiator are bought-in hardware. There is no manifold rear cover in this long-bore design.
 
@@ -43,6 +43,6 @@ The [current load summary](radiator-load-assessment.md) uses R4 structural calcu
 
 ## Production-file status
 
-The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Submitted for file review on 16 September after explicit confirmation of UPS shipping at US$71.99. Prior material, finish and goods metadata were reused. No payment was made. The operator subsequently reported clearing the original order; preserve its fabrication archives. [New-order submission record](jlc-order-2026-09-16.md). Each fabrication ZIP contains a matching single-part STEP and PDF; both steel packs also include DXF.
+The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Submitted for file review on 16 September after explicit confirmation of UPS shipping at US$71.99. Prior material, finish and goods metadata were reused. No payment was made. The operator subsequently reported clearing the original order; preserve its fabrication archives. [New-order submission record](jlc-order-2026-09-16.md). On 17 September 2026, the operator supplied a JLC timeline screenshot showing all three current parts Approved and the batch awaiting payment. No review comments are shown. The screenshot does not establish the final reviewed prices or machining route. See [approval record](jlc-order-2026-09-16.md#supplier-approval--17-september-2026). Each fabrication ZIP contains a matching single-part STEP and PDF; both steel packs also include DXF.
 
 Use `output/submission/current-three-parts/` as the submission index. Older O-M02, P and R6-M01 files are historical. Q studio and StarTech25U scenes show the current parts; supplier Koolance geometry and accepted tubing routes remain. First assembly: M4×10, dry, without Loctite. The [torque/creep assessment](Q-torque-and-creep.md) records the unqualified trial setting and remaining actual-grade tests.
