@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "status": "approved_awaiting_payment",
+  "status": "steel_awaiting_carrier_pickup_pom_in_production",
   "operator_design_accepted": true,
   "accepted_design": "Q-M04 body including twelve C0.5 chamfers and eight triangular corner flats; Q-M03 faceplate; R7-M01 radiator",
   "quantity_each": 1,
@@ -30,7 +30,10 @@
       "additional_tolerance_pdf_uploaded": true,
       "process": "CNC machining",
       "review_status": "Approved",
-      "approval_timestamp_displayed": "2026-09-17 06:56:34"
+      "approval_timestamp_displayed": "2026-09-17 06:56:34",
+      "displayed_price_USD_2026_09_22": 197.26,
+      "displayed_build_days_2026_09_22": 8,
+      "production_status_2026_09_22": "Production Progress 23.08%; Approved"
     },
     {
       "part": "RM10-Q-M03-FACEPLATE",
@@ -47,7 +50,10 @@
       "threads": false,
       "process": "Sheet Metal",
       "review_status": "Approved",
-      "approval_timestamp_displayed": "2026-09-17 08:08:51"
+      "approval_timestamp_displayed": "2026-09-17 08:08:51",
+      "displayed_price_USD_2026_09_22": 9.86,
+      "displayed_build_days_2026_09_22": 2,
+      "production_status_2026_09_22": "Awaiting carrier pickup"
     },
     {
       "part": "SN1260-R7-M01-PLATE",
@@ -64,7 +70,10 @@
       "threads": false,
       "process": "Sheet Metal",
       "review_status": "Approved",
-      "approval_timestamp_displayed": null
+      "approval_timestamp_displayed": null,
+      "displayed_price_USD_2026_09_22": 29.82,
+      "displayed_build_days_2026_09_22": 2,
+      "production_status_2026_09_22": "Awaiting carrier pickup"
     }
   ],
   "ui_progress": "Submission success page verified after explicit shipping approval. Review Before Payment selected; no payment made.",
@@ -141,5 +150,85 @@
     "timezone": "not established",
     "review_comments_visible": false,
     "final_reviewed_prices_verified": false
+  },
+  "payment_record_scope": "Existing payment_made/payment_authorised fields describe agent actions; operator payment details are not established by the production screenshots.",
+  "production_observation_2026_09_22": {
+    "source": "Operator-supplied screenshots; no live portal recheck",
+    "evidence": [
+      "docs/references/jlc/2026-09-22-parts-status.png",
+      "docs/references/jlc/2026-09-22-pom-production.png"
+    ],
+    "pom_progress_percent": 23.08,
+    "timezone": "not established",
+    "stages": [
+      {
+        "label": "Data Processing",
+        "marked_complete": true,
+        "completion_time_displayed": "2026-09-18 02:29:31"
+      },
+      {
+        "label": "Programming",
+        "marked_complete": true,
+        "completion_time_displayed": "2026-09-19 16:12:49"
+      },
+      {
+        "label": "Blanking",
+        "marked_complete": true,
+        "completion_time_displayed": "2026-09-20 04:05:44"
+      },
+      {
+        "label": "Secondary rough machining",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "A-side machining",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "B-side machining",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "Lateral side machining",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "Internal check",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "Post-processing milling machine",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "Post processing-fitter",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "Post processing-sanding",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "QC",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      },
+      {
+        "label": "Package",
+        "marked_complete": false,
+        "completion_time_displayed": null
+      }
+    ],
+    "displayed_part_prices_sum_USD": 236.94,
+    "current_shipping_and_order_total_verified": false,
+    "note": "Percentage is consistent with 3 of 13 completed stages; not elapsed machining time. No machine-axis or detailed CAM evidence."
   }
 }
