@@ -22,8 +22,8 @@ REV=args.iteration
 OUT = ROOT / (f'output/long-bore-{REV}/product-views' if LONG else 'output/product-views')
 OUT.mkdir(parents=True, exist_ok=True)
 P = json.loads((ROOT/(f'cad/iterations/{REV}-long-bore.json' if LONG else 'cad/parameters.json')).read_text())
-S = json.loads((ROOT/(f'tmp/scene-long-bore-{REV}.json' if LONG else 'tmp/scene.json')).read_text())
-MESH=ROOT/(f'tmp/mesh-long-bore-{REV}' if LONG else 'tmp/mesh')
+S = json.loads((ROOT/(f'output/long-bore-{REV}/render-scene.json' if LONG else 'output/render-scene.json')).read_text())
+MESH=ROOT/(f'output/long-bore-{REV}/meshes' if LONG else 'output/meshes')
 assert S['parameters']['revision'] == P['revision']
 assert S['parameters']['mounting'] == 'faceplate'
 for key in P:
@@ -34,7 +34,7 @@ if args.manufacturing:
     P['port_boss_height'] = detail['boss_height']
     OUT = ROOT/'output/manufacturing/O-M02/product-views'
     OUT.mkdir(parents=True, exist_ok=True)
-    MESH = ROOT/'tmp/mesh-O-M02'
+    MESH = ROOT/'output/manufacturing/O-M02/meshes'
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 scene = bpy.context.scene

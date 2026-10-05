@@ -15,7 +15,7 @@ For PDF generation/packaging, install `reportlab` and `pypdf` into your selected
 
 The existing PDF generators register Arial from `/System/Library/Fonts/Supplemental/` and therefore assume macOS font locations. The example Blender executable path and METAL setting are also host-specific. A different OS needs font/runtime adaptation and fresh visual review; exact cross-platform rebuilds have not been demonstrated. Existing ZIPs can be ordered without installing any of this. Use a checkout copy for regeneration: byte hashes of newly exported CAD/PDFs may differ, and the received fabrication archives should remain immutable.
 
-[Temporary-work guidance](temporary-work.md) documents the ignored cache inputs. Before running `render_revision_Q.py` on a fresh clone, prepare the two `tmp/mesh-long-bore-Q/fluid-network-*.stl` files using that guide. This can be done from tracked STEP files without rerunning historical production builders.
+Render meshes and scene descriptions are tracked beside the matching revision under `output/`. The Q inspection renderer reads its two gallery meshes from `output/long-bore-Q/meshes/` and its finished solids from `output/manufacturing/`; no preliminary cache preparation is needed.
 
 For a read-only check of current download selection, hashes and navigation, run:
 
@@ -123,3 +123,13 @@ Operator confirmation, 15 September 2026: increasing Clip Start made the live vi
 ## Final three-part consistency record
 
 After the current files and fresh visual checks exist, run `python3 scripts/finalise_three_part_pack.py`. This checks part ZIPs, source hashes and current Q/R7 context; it creates the submission index without uploading. Assembly instructions remain in `docs/assembly-Q.md`, outside the fabrication ZIPs.
+
+## Reading retained structural studies
+
+The original solver decks, results and node/load metadata are tracked together, compressed, in each study's output directory. With the FEA Python dependencies installed, `review_radiator_fea.py`, `review_radiator_expanded_load.py`, `review_radiator_R2.py` and `review_radiator_R4.py` can recalculate reports/plots directly from those files without running CalculiX again.
+
+For a new solver run, `radiator_plate_fea.py` writes the plain `.inp` deck and compressed metadata into the corresponding study directory (R1: `output/radiator-FEA/`; expanded label: `output/radiator-expanded-load/`; R2/R4: their `analysis/` directories). Run CalculiX with that directory as the working directory and retain the resulting `.dat` there. The review script prefers these plain fresh results, then archives the decks/results as gzip. Once archived, remove the redundant plain decks/results. Midsurface geometry is an automatically disposed intermediate. Do not rerun a historical study merely to select files for manufacture.
+
+The preserved scene-specific checks in `scripts/archive/` apply only to their named historical scenes. They are not current-design acceptance checks.
+
+Run `python scripts/check_publication.py` for read-only bundle, navigation and retained-input checks. `python scripts/check_retained_inputs.py` can also check the renderer meshes, scene descriptions, all sixteen complete solver cases and the explicit source-maintenance records independently. Neither command needs Blender or CalculiX.

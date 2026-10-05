@@ -1,0 +1,35 @@
+[
+  {
+    "slab_depth_mm": 40,
+    "overall_POM_depth_mm": 46,
+    "gallery_axis_y_mm": 26,
+    "front_ligament_mm": 20.1,
+    "rear_ligament_mm": 8.1,
+    "side_seal_land_min_edge_mm": 3,
+    "M4_14mm_envelope_to_gallery_mm": 12.92153022471871,
+    "front_thread_end_to_gallery_mm": 18.1,
+    "gross_front_back_bending_stiffness_ratio": 1.0
+  },
+  {
+    "slab_depth_mm": 35,
+    "overall_POM_depth_mm": 41,
+    "gallery_axis_y_mm": 20,
+    "front_ligament_mm": 14.1,
+    "rear_ligament_mm": 9.1,
+    "side_seal_land_min_edge_mm": 4,
+    "M4_14mm_envelope_to_gallery_mm": 9.792354826475215,
+    "front_thread_end_to_gallery_mm": 12.1,
+    "gross_front_back_bending_stiffness_ratio": 0.669921875
+  },
+  {
+    "slab_depth_mm": 30,
+    "overall_POM_depth_mm": 36,
+    "gallery_axis_y_mm": 15,
+    "front_ligament_mm": 9.1,
+    "rear_ligament_mm": 9.1,
+    "side_seal_land_min_edge_mm": 4,
+    "M4_14mm_envelope_to_gallery_mm": 8.634441853748633,
+    "front_thread_end_to_gallery_mm": 7.1,
+    "gross_front_back_bending_stiffness_ratio": 0.421875
+  }
+]

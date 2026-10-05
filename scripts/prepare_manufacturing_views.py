@@ -7,7 +7,7 @@ import cadquery as cq
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output/manufacturing/O-M02'
-MESH = ROOT / 'tmp/mesh-O-M02'
+MESH = ROOT / 'output/manufacturing/O-M02/meshes'
 MESH.mkdir(parents=True, exist_ok=True)
 body = cq.importers.importStep(str(OUT / 'RM10-O-M02-BODY.step'))
 plate = cq.importers.importStep(str(OUT / 'RM10-O-M02-FACEPLATE.step'))
@@ -24,7 +24,7 @@ for i in (1, 2):
     assert abs(wet.val().BoundingBox().ymin + 4) < 1e-6
     cq.exporters.export(wet, str(MESH / f'fluid-network-{i}.stl'), tolerance=.04, angularTolerance=.10)
 for pattern in ('side_plug_*.stl', 'elbow-reference-*.stl'):
-    for path in (ROOT / 'tmp/mesh-long-bore-O').glob(pattern):
+    for path in (ROOT / 'output/long-bore-O/meshes').glob(pattern):
         shutil.copyfile(path, MESH / path.name)
 assert len(list(MESH.glob('*.stl'))) == 13
 report = {

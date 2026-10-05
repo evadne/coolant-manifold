@@ -4,12 +4,12 @@ Optional dependencies: gmsh==4.15.2 and existing CadQuery/numpy.
 Solver: CalculiX 2.23. Units N, mm, s, tonne. No changes to issued CAD.
 """
 from pathlib import Path
-import argparse,json,math
+import argparse,json,math,tempfile,gzip
+from radiator_fea_files import case_directory
 import numpy as np
 import cadquery as cq
 import gmsh
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'tmp/radiator-fea';OUT.mkdir(parents=True,exist_ok=True)
 parser=argparse.ArgumentParser();parser.add_argument('--size',type=float,default=6)
 parser.add_argument('--thickness',type=float,default=2)
 parser.add_argument('--supports',type=int,choices=[4,8,40],default=8)
@@ -23,6 +23,7 @@ a=parser.parse_args();P=json.loads((ROOT/f'cad/radiator/{a.revision}.json').read
 name=f'plate-t{t:g}-h{a.size:g}-s{a.supports}-{a.load}' if not a.benchmark else f'benchmark-h{a.size:g}'
 if a.label:name=a.label+'-'+name
 elif a.revision!='R1':name=a.revision+'-'+name
+OUT=case_directory(name);OUT.mkdir(parents=True,exist_ok=True)
 gmsh.initialize();gmsh.option.setNumber('General.Terminal',0)
 if a.benchmark:
  gmsh.model.occ.addRectangle(0,0,0,100,20)
@@ -30,8 +31,10 @@ else:
  body=cq.importers.importStep(str(ROOT/f'output/radiator-{a.revision}/rack-plate-{a.revision}.step')).val()
  face=max([f for f in body.Faces() if abs(f.Center().z)<1e-6],key=lambda f:f.Area())
  assert abs(face.Area()-body.Volume()/P['thickness'])<1e-4
- cq.exporters.export(face,str(OUT/'plate-midsurface.step'))
- gmsh.model.occ.importShapes(str(OUT/'plate-midsurface.step'))
+ with tempfile.TemporaryDirectory(prefix='radiator-fea-') as scratch:
+  midsurface=Path(scratch)/'plate-midsurface.step'
+  cq.exporters.export(face,str(midsurface))
+  gmsh.model.occ.importShapes(str(midsurface))
 gmsh.model.occ.synchronize()
 gmsh.option.setNumber('Mesh.MeshSizeMax',a.size)
 gmsh.option.setNumber('Mesh.MeshSizeMin',min(.8,a.size/4))
@@ -42,7 +45,6 @@ ids,coords,_=gmsh.model.mesh.getNodes();coords=coords.reshape(-1,3)
 types,els,conns=gmsh.model.mesh.getElements(2)
 assert list(types)==[9],types
 elements=np.array(els[0]);connectivity=np.array(conns[0]).reshape(-1,6)
-gmsh.write(str(OUT/(name+'.msh')))
 gmsh.finalize()
 xyz={int(n):v for n,v in zip(ids,coords)}
 loads={};supports=set();mounts=[]
@@ -126,5 +128,5 @@ metadata={'name':name,'thickness_mm':t,'mesh_size_mm':a.size,'nodes':len(ids),'e
  'node_ids':list(map(int,ids)),'coordinates':coords.tolist(),'elements_connectivity':connectivity.astype(int).tolist(),
  'support_nodes':sorted(supports),
  'benchmark_expected_tip_mm':10*100**3/(3*200000*(20*2**3/12)) if a.benchmark else None}
-(OUT/(name+'.json')).write_text(json.dumps(metadata)+'\n')
+(OUT/(name+'.json.gz')).write_bytes(gzip.compress((json.dumps(metadata)+'\n').encode(),mtime=0))
 print(name,len(ids),'nodes;',len(elements),'S6 elements')

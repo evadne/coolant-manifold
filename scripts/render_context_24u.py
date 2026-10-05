@@ -238,6 +238,7 @@ scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_
 scene.render.resolution_x=1700;scene.render.resolution_y=2000;scene.render.resolution_percentage=50 if args.preview else 100
 for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,180,625),1570),('02-front-layout',(0,-2600,625),(0,0,625),1400),('04-rear-cooling-assembly',(1800,2100,1250),(0,170,610),1570),('05-pump-reservoir-detail',(-300,1250,650),(0,155,rad_z),650)]:
     bpy.ops.object.camera_add(location=loc);o=bpy.context.object;o.name=name;o.data.type='ORTHO';o.data.ortho_scale=scale;o.data.clip_end=10000;o.rotation_euler=(Vector(target)-o.location).to_track_quat('-Z','Y').to_euler();scene.camera=o
+    if args.preview:(ROOT/'tmp').mkdir(exist_ok=True)
     scene.render.filepath=str(ROOT/f'tmp/context-{name}.png' if args.preview else OUT/f'{name}.png');bpy.ops.render.render(write_still=True)
     if args.preview:break
 scene.camera=bpy.data.objects['01-rack-context']

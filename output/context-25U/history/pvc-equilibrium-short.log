@@ -1,0 +1,75 @@
+Branch pair gap 6.49818872333156
+{
+  "GPU 1 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 1 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "GPU 2 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 2 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "GPU 3 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 3 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "GPU 4 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 4 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "GPU 5 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 5 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "GPU 6 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 6 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "GPU 7 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 7 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "GPU 8 parallel coolant 0": {
+    "maximum_downward_shift_mm": 12.39492824668443,
+    "minimum_radius_mm": 53.80805982805778
+  },
+  "GPU 8 parallel coolant 1": {
+    "maximum_downward_shift_mm": 9.40894006984135,
+    "minimum_radius_mm": 52.733926475729454
+  },
+  "Host coolant branch 0": {
+    "maximum_downward_shift_mm": 20.10232487016831,
+    "minimum_radius_mm": 49.32659515448281
+  },
+  "Host coolant branch 1": {
+    "maximum_downward_shift_mm": 20.213653584218324,
+    "minimum_radius_mm": 42.61472141040568
+  }
+}

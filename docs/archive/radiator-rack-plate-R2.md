@@ -60,4 +60,4 @@ Generate FEA decks:
 .venv/bin/python scripts/radiator_plate_fea.py --revision R2 --supports 40 --size 6 --payload-kg 15 --cg-mm 150 --label R2
 ```
 
-Solve with CalculiX2.23, return DAT files to `tmp/radiator-fea/`, then run `review_radiator_R2.py`. The solver/runtime is unchanged from the earlier study. No supplier upload or order has been made.
+Solve with CalculiX2.23, return DAT files to `output/radiator-R2/analysis/`, then run `review_radiator_R2.py`. The solver/runtime is unchanged from the earlier study. No supplier upload or order has been made.

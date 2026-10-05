@@ -6,7 +6,7 @@ import json, math
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
 p=json.loads((ROOT/'cad/iterations/P-long-bore.json').read_text());f=p['faceplate_fastener']
-out=ROOT/'output/long-bore-P/cad';mesh=ROOT/'tmp/mesh-long-bore-P'
+out=ROOT/'output/long-bore-P/cad';mesh=ROOT/'output/long-bore-P/meshes'
 body=cq.importers.importStep(str(out/'body.step')).val();plate=cq.importers.importStep(str(out/'faceplate.step')).val()
 # ISO 7380 supplier external dimensions. Dome is a visual approximation;
 # head underside at Y0, shank towards +Y. No decorative markings.

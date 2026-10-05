@@ -170,6 +170,7 @@ for variant in (['bare','connected'] if args.variant=='all' else [args.variant])
     for o in connected:o.hide_render=variant=='bare';o.hide_set(variant=='bare')
     stem='01-bare-ports' if variant=='bare' else '02-qd3-translucent-tubes'
     camera.location=(.45,-1.15,.48);camera.rotation_euler=(Vector((0,-.032,.044))-camera.location).to_track_quat('-Z','Y').to_euler()
+    if args.preview:(ROOT/'tmp').mkdir(exist_ok=True)
     scene.render.filepath=str(ROOT/f'tmp/{REV}-{variant}-preview.png' if args.preview else OUT/f'{stem}.png')
     bpy.ops.render.render(write_still=True)
     if not args.preview:

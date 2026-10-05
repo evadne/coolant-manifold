@@ -6,7 +6,7 @@ from pathlib import Path
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
 p=json.loads((ROOT/'cad/iterations/Q-rear-ports.json').read_text())
-base=ROOT/'output/long-bore-P/cad';out=ROOT/'output/long-bore-Q/cad';mesh=ROOT/'tmp/mesh-long-bore-Q'
+base=ROOT/'output/long-bore-P/cad';out=ROOT/'output/long-bore-Q/cad';mesh=ROOT/'output/long-bore-Q/meshes'
 out.mkdir(parents=True,exist_ok=True);mesh.mkdir(parents=True,exist_ok=True)
 parent=json.loads((ROOT/'cad/iterations/P-long-bore.json').read_text())
 W,D,H=(parent[k] for k in ('body_width','body_depth','body_height'))

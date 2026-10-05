@@ -4,7 +4,7 @@ import json,gzip
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.tri as mtri
-from review_radiator_fea import read_case,WORK
+from review_radiator_fea import read_case,case_bytes
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'output/radiator-R4/analysis';OUT.mkdir(exist_ok=True)
 names=['R4-plate-t2-h6-s40-distributed','R4-plate-t2-h3-s40-distributed','R4-plate-t2-h3-s8-distributed']
 reports=[];raws=[]
@@ -33,5 +33,6 @@ fig.suptitle('R4: same 444.5 mm / 10U / 2 mm plate in both cases\n15 kg payload 
 fig.savefig(OUT/'fixing-comparison.png',dpi=180);plt.close(fig)
 for name in names:
  for ext in ['inp','dat']:
-  with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write((WORK/(name+'.'+ext)).read_bytes())
+  evidence=case_bytes(name,ext)
+  with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write(evidence)
 print(json.dumps(report,indent=2))

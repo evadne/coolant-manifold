@@ -4,7 +4,7 @@ import json,gzip
 import matplotlib.pyplot as plt
 import matplotlib.tri as mtri
 import numpy as np
-from review_radiator_fea import read_case, WORK
+from review_radiator_fea import read_case, case_bytes
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/radiator-expanded-load';OUT.mkdir(exist_ok=True)
 plate_mass=json.loads((ROOT/'output/radiator-R1/verification.json').read_text())['plate_mass_kg']*2/3
@@ -58,5 +58,6 @@ fig.suptitle('15 kg payload + 1.131 kg plate; 300 mm effective CG offset\nFour r
 fig.savefig(OUT/'expanded-load-analysis.png',dpi=180);plt.close(fig)
 for name in names:
  for ext in ['inp','dat']:
-  with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write((WORK/(name+'.'+ext)).read_bytes())
+  evidence=case_bytes(name,ext)
+  with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write(evidence)
 print(json.dumps({k:v for k,v in summary.items() if k not in ['mass_budget','limits','sources']},indent=2))

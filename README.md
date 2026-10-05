@@ -61,7 +61,6 @@ These are prototype designs with physical manifold fit verification, not qualifi
 | Assemble the manifold | [Assembly guide](docs/assembly-Q.md) |
 | Find engineering evidence and history | [Documentation index](docs/README.md) |
 | Rebuild CAD, PDFs or Blender scenes | [Rebuild guide](docs/rebuild.md) |
-| Understand `tmp/` and local caches | [Temporary-work guide](docs/temporary-work.md) |
 | Read the project retrospective | [Astra's commentary](docs/astra-commentary.md) |
 | Contribute changes | [Working rules](AGENTS.md) |
 

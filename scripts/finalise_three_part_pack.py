@@ -4,6 +4,7 @@ import hashlib
 import json
 import shutil
 import zipfile
+from source_integrity import source_matches
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output/submission/current-three-parts'
@@ -17,7 +18,7 @@ def sha(path):
 
 def check_sources(record):
     for path, expected in record.get('source_sha256', {}).items():
-        assert sha(path) == expected, f'Stale source: {path}'
+        assert source_matches(ROOT, path, expected), f'Stale source: {path}'
 
 q = read('output/manufacturing/Q-M04/geometry-verification.json')
 r = read('output/manufacturing/R7-M01/geometry-verification.json')
@@ -117,6 +118,8 @@ manifest = {
     'assembly_parameters': 'cad/assembly/Q.json',
     'geometry_and_coordinate_checks': 'PASS',
     'current_context_sources': 'PASS',
+    'source_maintenance': 'cad/source-maintenance.json',
+    'review_scope': 'Retained artefacts and original review evidence; source maintenance reconciled explicitly; no new render or solver approval.',
     'visual_review_record': 'output/review/Q-M04-visual-review.json',
     'faceplate_worst_case_fit': face['fit_status'],
     'faceplate_M4_radial_margin_mm': face['worst_case_M4_radial_margin_mm'],
@@ -128,6 +131,8 @@ manifest = {
     'source_sha256': {str(p): sha(p) for p in [
         Path('scripts/finalise_three_part_pack.py'),
         Path('cad/current-release.json'),
+        Path('cad/source-maintenance.json'),
+        Path('scripts/source_integrity.py'),
         Path('output/review/Q-M04-visual-review.json'),
         Path('scripts/draw_radiator_production.py'),
         Path('scripts/package_radiator_production.py'),

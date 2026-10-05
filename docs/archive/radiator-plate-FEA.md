@@ -54,7 +54,7 @@ Use **2 mm as the next radiator plate design thickness**, retaining the present 
 
 Files:
 
-- `scripts/radiator_plate_fea.py`: generate shell solver decks and working meshes in `tmp/radiator-fea/`.
+- `scripts/radiator_plate_fea.py`: generate shell solver decks and node metadata in `output/radiator-FEA/`.
 - `scripts/review_radiator_fea.py`: parse DAT files, check the benchmark/equilibrium/convergence and produce the plot and summary.
 - `requirements-fea.txt`: optional local dependencies in addition to the project's CAD requirements.
 - `output/radiator-FEA/results.json`: results and numerical checks.

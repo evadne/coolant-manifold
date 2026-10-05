@@ -10,7 +10,7 @@ P=json.loads((ROOT/'cad/parameters.json').read_text())
 P['mounting']=args.mounting
 BASE=ROOT/'output'/('backplate' if BACK else '')
 OUT=BASE/'cad'; OUT.mkdir(parents=True,exist_ok=True)
-MESH=ROOT/'tmp'/('mesh-backplate' if BACK else 'mesh'); MESH.mkdir(parents=True,exist_ok=True)
+MESH=BASE/'meshes'; MESH.mkdir(parents=True,exist_ok=True)
 W,D,H=P['body_width'],P['body_depth'],P['body_height']
 xs=[(i-P['branch_count']/2)*P['port_pitch'] for i in range(P['branch_count']+1)]
 rows=P['port_rows_z']
@@ -217,5 +217,5 @@ report={'revision':P['revision'],'model':'RM8-2U','mounting':args.mounting,'vali
  'checks':['valid solids','single solid per manufactured part','two separate connected wet networks','all 18 bores connected to intended gallery','thread-major port circles fully inside gallery openings','seal compression and fill after nominal stretch','at least 1 mm nominal cover thread-envelope to groove land','groove inside end radius at least three maximum review cord diameters','no manufactured part overlap','cover and body-mount screws outside galleries and seal grooves','unobstructed POM sealing faces' if BACK else '36 mm fitting overhang and raised POM seals clear faceplate','no intersecting cover/mount screw bores','2U envelope','12 mm minimum conservative fitting gap']+([] if BACK else ['both specified M4 bearing cones clear steel','head envelope contained within plate','blind M4 nominal thread and pilot depth budget','0.2 mm proud heads remain outside 36 mm port hardware keep-outs']),
  'limitations':['No pressure or structural rating established','Threads represented by pilot bores, not helices','QD envelopes and release travel require physical trial']}
 (OUT/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
-(ROOT/'tmp'/('scene-backplate.json' if BACK else 'scene.json')).write_text(json.dumps({'parameters':P,'ports_x':xs,'cover_bolts':bolts,'faceplate_mounts':mounts}))
+(BASE/'render-scene.json').write_text(json.dumps({'parameters':P,'ports_x':xs,'cover_bolts':bolts,'faceplate_mounts':mounts}))
 print(json.dumps(report,indent=2))

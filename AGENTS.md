@@ -18,7 +18,7 @@
 - Preserve the approved rack-scene tube routes, GPU/power geometry, fitting registration and original unscaled reference meshes. Use the specialised context/physics documents linked in [docs/README.md](docs/README.md) before editing them.
 - Keep unresolved physical-fit concerns explicit; do not promote simplified clearance envelopes, FEA or visual acceptance to qualified ratings.
 - Use headless Blender for scripted changes. Close a stale desktop session without saving over regenerated scenes. Preserve 5 mm viewport near clipping in the rack scene.
-- Use [temporary-work guidance](docs/temporary-work.md); do not make ignored scratch files undocumented build dependencies.
+- Track required build inputs and retained evidence beside their owning revision or study. Temporary files must be disposable, with their directories created by the operation that uses them.
 - For changed geometry, run relevant checks and inspect the affected drawings/renders before packaging. Do not refresh review hashes without actually reviewing the corresponding images or sheets.
 - After changing canonical selection or packaging, run `python3 scripts/check_publication.py`; run `python3 scripts/finalise_three_part_pack.py` when regenerating the verified index. Neither command submits an order.
 - Check local documentation links and preserve provenance when editing navigation. Update generator templates as well as generated indexes.

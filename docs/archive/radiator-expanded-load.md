@@ -64,4 +64,4 @@ Generate with `scripts/radiator_plate_fea.py`:
 .venv/bin/python scripts/radiator_plate_fea.py --size 3 --payload-kg 15 --cg-mm 300 --supports 4 --load top --label expanded
 ```
 
-Run the three `expanded-*.inp` decks with CalculiX2.23 (same Debian runtime as the original study); return corresponding `.dat` files to `tmp/radiator-fea/`. Run `.venv/bin/python scripts/review_radiator_expanded_load.py`. The old 6.225 kg cases and results are preserved; default generator loads are unchanged.
+Run the three `expanded-*.inp` decks with CalculiX2.23 (same Debian runtime as the original study); return corresponding `.dat` files to `output/radiator-expanded-load/`. Run `.venv/bin/python scripts/review_radiator_expanded_load.py`. The old 6.225 kg cases and results are preserved; default generator loads are unchanged.

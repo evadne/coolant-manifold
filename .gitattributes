@@ -8,3 +8,6 @@
 *.stp binary
 # Preserve supplier reference text and its Windows line endings.
 docs/references/noctua-nf-a20/README.txt whitespace=cr-at-eol
+# Preserve retrieved source pages/manual text byte-for-byte, including whitespace.
+docs/references/alphacool-supernova/*.html -text -whitespace
+docs/references/calculix/ccx-2.23-manual.txt -text -whitespace

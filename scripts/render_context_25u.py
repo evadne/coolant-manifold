@@ -269,6 +269,7 @@ scene.render.image_settings.file_format='PNG';scene.render.image_settings.color_
 scene.render.resolution_x=1700;scene.render.resolution_y=2000;scene.render.resolution_percentage=50 if args.preview else 100
 for name,loc,target,scale in [('01-rack-context',(1500,-2450,1630),(0,220,660),1700),('02-front-layout',(0,-2600,660),(0,0,660),1480),('04-rear-cooling-assembly',(1800,2100,1250),(0,220,660),1700),('05-pump-reservoir-detail',(-350,1350,700),(0,285,rad_z),750),('06-front-tube-routing',(1050,-1700,1100),(0,-65,manifold+40),790),('07-side-tube-routing',(1350,-350,1000),(0,-110,manifold+35),740),('08-front-tube-detail',(0,-2000,manifold+35),(0,0,manifold+35),620),('09-GPU-block-detail',(-150,-800,gpu+350),(-40,130,gpu+130),550),('10-GPU-power-detail',(-225,-100,gpu+295),(-172,67,gpu+183),100)]:
     bpy.ops.object.camera_add(location=loc);o=bpy.context.object;o.name=name;o.data.type='ORTHO';o.data.ortho_scale=scale;o.data.clip_end=10000;o.rotation_euler=(Vector(target)-o.location).to_track_quat('-Z','Y').to_euler();scene.camera=o
+    if args.preview:(ROOT/'tmp').mkdir(exist_ok=True)
     scene.render.filepath=str(ROOT/f'tmp/context25-{name}.png' if args.preview else OUT/f'{name}.png')
     if not args.check_only:bpy.ops.render.render(write_still=True)
     if args.preview:break

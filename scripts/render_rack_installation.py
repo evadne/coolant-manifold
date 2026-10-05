@@ -85,7 +85,7 @@ for x in (-232.55,232.55):
 
 # Four elbows/compression assemblies reuse the supplied-drawing reference envelopes.
 for i in range(4):
-    bpy.ops.wm.stl_import(filepath=str(ROOT/f'tmp/mesh-long-bore-I/elbow-reference-{i}.stl'))
+    bpy.ops.wm.stl_import(filepath=str(ROOT/f'output/long-bore-I/meshes/elbow-reference-{i}.stl'))
     o=bpy.context.object;o.location.z+=mount_z;finish(o,f'Side rotary elbow and 10-16 compression reference {i+1}',metal)
 
 # Swept annular tubes: OD16 / ID10, straight into the socket then R80 bends downward.

@@ -1,0 +1,48 @@
+[
+  {
+    "file": "output/long-bore-P/photorealistic/01-bare-ports.blend",
+    "part_counts": {
+      "male": 40,
+      "female": 60,
+      "tubes": 20,
+      "screws": 12
+    },
+    "fittings_visible": false,
+    "dimensions_xyz_mm": {
+      "body": [
+        410.0000262260437,
+        43.00000285729766,
+        87.00000494718552
+      ],
+      "faceplate": [
+        482.60003328323364,
+        2.0000000949949026,
+        87.00000494718552
+      ]
+    },
+    "surface_text_objects": 0
+  },
+  {
+    "file": "output/long-bore-P/photorealistic/02-qd3-translucent-tubes.blend",
+    "part_counts": {
+      "male": 40,
+      "female": 60,
+      "tubes": 20,
+      "screws": 12
+    },
+    "fittings_visible": true,
+    "dimensions_xyz_mm": {
+      "body": [
+        410.0000262260437,
+        43.00000285729766,
+        87.00000494718552
+      ],
+      "faceplate": [
+        482.60003328323364,
+        2.0000000949949026,
+        87.00000494718552
+      ]
+    },
+    "surface_text_objects": 0
+  }
+]

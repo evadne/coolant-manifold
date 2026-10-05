@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 import zipfile
+from check_retained_inputs import check as check_inputs
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -53,11 +54,11 @@ def check():
         require(digest(ROOT / path) == expected, f'Stale index source: {path}')
 
     # Deliberately check maintained entry points, not every snapshot's old links.
-    docs = ['README.md', 'AGENTS.md', 'LICENSING.md', 'output/README.md', 'tmp/README.md',
+    docs = ['README.md', 'AGENTS.md', 'LICENSING.md', 'output/README.md',
             'output/submission/current-three-parts/README.md', 'docs/README.md',
             'docs/order-from-jlc.md', 'docs/jlc-first-article.md', 'docs/manufacturing.md',
             'docs/design.md', 'docs/iterations.md',
-            'docs/three-part-recap.md', 'docs/temporary-work.md', 'docs/rebuild.md',
+            'docs/three-part-recap.md', 'docs/rebuild.md',
             'docs/publication-review.md', 'docs/astra-commentary.md',
             'docs/archive/working-notes-2026-09-16.md',
             'docs/archive/manufacturing-status-through-2026-10-05.md']
@@ -77,6 +78,7 @@ def check():
             links += 1
     return {'checks': 'PASS', 'canonical_parts': len(names), 'navigation_documents': len(docs),
             'local_links_checked': links,
+            'retained_inputs': check_inputs(),
             'scope': 'Bundle/member hashes, index checksums/source hashes, local link targets; read-only'}
 
 

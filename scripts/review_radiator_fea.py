@@ -7,13 +7,14 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.tri as mtri
 ROOT=Path(__file__).resolve().parents[1]
-WORK=ROOT/'tmp/radiator-fea'; OUT=ROOT/'output/radiator-FEA';OUT.mkdir(exist_ok=True)
+from radiator_fea_files import case_bytes
+OUT=ROOT/'output/radiator-FEA';OUT.mkdir(exist_ok=True)
 def vm(s):
  xx,yy,zz,xy,xz,yz=s
  return math.sqrt(((xx-yy)**2+(yy-zz)**2+(zz-xx)**2)/2+3*(xy*xy+xz*xz+yz*yz))
 def read_case(name):
- meta=json.loads((WORK/(name+'.json')).read_text());u={};stress={};reaction=None;reactions={};mode=''
- for line in (WORK/(name+'.dat')).read_text().splitlines():
+ meta=json.loads(case_bytes(name,'json').decode());u={};stress={};reaction=None;reactions={};mode=''
+ for line in case_bytes(name,'dat').decode().splitlines():
   if 'displacements (' in line:mode='u';continue
   if 'forces (' in line:mode='r';continue
   if 'total force (' in line:mode='total';continue
@@ -63,7 +64,7 @@ def read_case(name):
   assert report['overturning_moment_balance_relative_error']<.001
  # Get the original element ordering from the solver deck.
  einput=[];reading=False
- for line in (WORK/(name+'.inp')).read_text().splitlines():
+ for line in case_bytes(name,'inp').decode().splitlines():
   if line.startswith('*ELEMENT'):reading=True;continue
   if line.startswith('*'):reading=False
   if reading:einput.append(list(map(int,line.split(','))))
@@ -102,9 +103,9 @@ if __name__=='__main__':
  fig.suptitle('6.225 kg payload + plate weight; 75 mm eccentricity; eight secured rack fixings\n'
   'Undeformed outline shown. Idealised supports and distributed radiator loads.',fontsize=12)
  fig.savefig(OUT/'2mm-plate-analysis.png',dpi=180);plt.close(fig)
- # Retain compressed input and result evidence; meshes and full coordinate JSON
- # remain regenerable working files rather than duplicating them in git.
+ # Retain compressed decks/results alongside the node metadata needed to read them.
  for name in names:
   for ext in ('inp','dat'):
-   with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write((WORK/(name+'.'+ext)).read_bytes())
+   evidence=case_bytes(name,ext)
+   with gzip.GzipFile(filename=str(OUT/(name+'.'+ext+'.gz')),mode='wb',mtime=0) as f:f.write(evidence)
  print(json.dumps(summary,indent=2))

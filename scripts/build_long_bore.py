@@ -15,7 +15,7 @@ parser.add_argument('--iteration',choices=('H','I','J','K','L','M','N','O','P'),
 args=parser.parse_args();REV=args.iteration
 P=json.loads((ROOT/f'cad/iterations/{REV}-long-bore.json').read_text())
 OUT=ROOT/f'output/long-bore-{REV}/cad';OUT.mkdir(parents=True,exist_ok=True)
-MESH=ROOT/f'tmp/mesh-long-bore-{REV}';MESH.mkdir(parents=True,exist_ok=True)
+MESH=ROOT/f'output/long-bore-{REV}/meshes';MESH.mkdir(parents=True,exist_ok=True)
 W,D,H=P['body_width'],P['body_depth'],P['body_height']
 T=P['faceplate_thickness'];BH=P['port_boss_height'];F=P['faceplate_fastener']
 R=P['gallery_diameter']/2;Y=P['gallery_axis_y'];rows=P['port_rows_z']
@@ -203,5 +203,5 @@ if REV in ('I','J','K','L','M','N','O','P'):
  E=P['side_fitting_clearance'];projection=max(E['elbow_base_height']+E['elbow_head_height'],E['elbow_outlet_axis_from_seat_inferred']+E['compression_diameter']/2)
  report['side_fitting_review']={'equipment_width_assumption_mm':E['equipment_width_assumption'],'body_width_mm':W,'reserved_per_side_mm':(E['equipment_width_assumption']-W)/2,'drawing_inferred_projection_mm':projection,'fitted_body_width_nominal_mm':W+2*projection,'nominal_margin_each_side_mm':(E['equipment_width_assumption']-W)/2-projection,'plugged_body_width_mm':W+2*plug_spec['head_projection'],'rearward_fitting_extent_y_mm':Y+E['elbow_diameter']/2+E['compression_projection'],'front_pull_ring_gap_mm':P['port_pitch']-P['qd_female_diameter_reference'],'body_with_30mm_side_allowances_mm':W+60,'straight_insertion_exceeds_assumed_opening_with_plugs':W+2*plug_spec['head_projection']>E['equipment_width_assumption'],'mount_positions_xz_mm':P['faceplate_mounts_xz'],'status':'Nominal envelope only; rack rails, hose bends and fitting tolerances unverified'}
 (OUT/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
-(ROOT/f'tmp/scene-long-bore-{REV}.json').write_text(json.dumps({'parameters':dict(P,mounting='faceplate'),'ports_x':xs,'cover_bolts':[],'faceplate_mounts':P['faceplate_mounts_xz'],'side_plugs':side_ports},indent=2)+'\n')
+(ROOT/f'output/long-bore-{REV}/render-scene.json').write_text(json.dumps({'parameters':dict(P,mounting='faceplate'),'ports_x':xs,'cover_bolts':[],'faceplate_mounts':P['faceplate_mounts_xz'],'side_plugs':side_ports},indent=2)+'\n')
 print(json.dumps(report,indent=2))

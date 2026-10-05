@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="de-DE" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+
+    <title>AlphaCool 3D Viewer</title>
+    <link rel="stylesheet" type="text/css" href="/css/meshy/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+
+    <style>
+
+        @font-face { font-family: 'DIN2014';
+            src: url('/css/meshy/DIN2014-Regular.ttf') format('truetype'); }
+
+        @font-face { font-family: 'Rajdhani';
+            src: url('/css/meshy/Rajdhani-Regular.ttf') format('truetype'); }
+
+        * {
+            overscroll-behavior: none;
+            font-family: Rajdhani,sans-serif;
+            outline: none;
+        }
+
+        .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+        }
+
+
+        #lengthResult {
+            font-size: 36px;
+            font-weight: bold;
+            color: #149ED9;
+            text-align: center;
+            pointer-events: none;
+            font-family: DIN2014, sans-serif;
+            display: none;
+        }
+
+        #newControls {
+            position:absolute;
+            bottom: 1vh;
+            left: 0;
+            width:100vw;
+            font-size: 20px;
+            color:#000;
+            text-align:center;
+            /*font-family: Lato, sans-serif;*/
+            pointer-events: none;
+
+        }
+
+        #viewControls {
+            position:absolute;
+            top: 0px;
+            left: 0px;
+            text-align:center;
+            width:100vw;
+        }
+
+        #viewControls button {
+            font-size: 10px;
+            background-color:#fff;
+            color:#000;
+            width:24vw;
+            text-align:center;
+            /*font-family: Lato, sans-serif;*/
+            border: 1px solid #000;
+            border-radius: 10px;
+            display:none;
+        }
+
+        #newControls button,#newControls a {
+            padding: 10px 10px 10px 10px;
+            font-size: 15px;
+            /*background-color:transparent;*/
+            color:#fff;
+            text-align:center;
+            /*font-family: Lato, sans-serif;*/
+            width: 202px;
+            height: 56px;
+            /*border: 4px solid #fff;*/
+            border: 0;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            pointer-events: all;
+
+
+
+            background-image: linear-gradient(286.23deg,#00a4e0,#3dbff8 50%);
+            background-position: 100% 50%;
+            background-size: 200% 200%;
+            filter: drop-shadow(0 0 0 rgba(61,192,248,0));
+            transition: filter .5s cubic-bezier(.16,.97,.22,.98),background-position .5s cubic-bezier(.16,.97,.22,.98);
+            font-weight: 700;
+
+        }
+
+        #newControls button:hover {
+            /*background-color:#fff;*/
+            /*color: #112740;*/
+
+            background-position: 0 50%;
+            filter: drop-shadow(0 .25rem 1rem rgba(61,192,248,.4));
+
+
+        }
+
+
+
+
+        #newControls button.ctrlMess, #newControls button.ctrlMessEnd {
+            margin-bottom: 1vh;
+        }
+
+        #newControls button.ctrlFS {
+            margin-top:35px;
+        }
+
+
+        #newControls button.ctrlCenter {
+            margin: 0 40px;
+        }
+
+        #messbutton {
+            animation-name: buttonFadeinFadeout;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes buttonFadeinFadeout {
+            0%   {background-color: #a4becc;}
+            50%  {background-color: #58a4cc;}
+            100%  {background-color: #a4becc;}
+        }
+
+        #licenseText {
+            position:absolute;
+            bottom: 0vh;
+            left: 0vw;
+            font-size: 14px;
+            /*font-family: Lato, sans-serif;*/
+            z-index: 100;
+            color: #23527c;
+            cursor: pointer;
+        }
+
+        #productName {
+            position:absolute;
+            top: 2vh;
+            left: 20vw;
+            width: 60vw;
+            font-size: 18px;
+            /*font-family: Lato, sans-serif;*/
+            z-index: 100;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        #variations {
+            position:absolute;
+            top: 2vh;
+            left: 2vw;
+            font-size: 18px;
+            z-index: 100;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        #variations div {
+            height: 20px;
+        }
+
+        #variations div.active {
+            background-image: url("media/eye.svg");
+            background-repeat: no-repeat;
+            background-size: 20px;
+            height: 20px;
+            padding-left: 24px;
+            background-position: center left;
+            margin-left: -24px;
+        }
+
+        #container {
+            background: #112740;
+            background: #010104;
+            background: #1E2429;
+            background-image: url("media/background_25.png");
+            background-size: cover;
+        }
+
+
+        /* IE10 */
+        progress {
+            color: #3397CC;
+            background-color: #DDDDDD;
+            height: 10px;
+            width: 25vw;
+            border: 3px solid #DDDDDD;
+            border-radius: 3px;
+        }
+
+        /* Firefox */
+        progress::-moz-progress-bar {
+            background: #3397CC;
+        }
+
+        /* Chrome */
+        progress {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        progress::-webkit-progress-value{
+            background: #3397CC;
+        }
+        progress::-webkit-progress-bar {
+            background-color: #DDDDDD;
+        }
+
+        #loader {
+            display: block;
+            position: absolute;
+            z-index: 1000;
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #112740;
+            background-image: url("media/background.png");
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        #loaderInner {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .loaderImg {
+            width: 34vw;
+            margin-bottom: 5vh;
+        }
+
+        .loading {
+            font-size: 18px;
+            font-family: DIN2014, sans-serif;
+            font-weight: 800;
+            text-align: center;
+            width: 100vw;
+        }
+
+        .loading span {
+            display: inline-block;
+            /*margin: 0 -.05em;*/
+            font-family: DIN2014, sans-serif;
+        }
+
+        .loading01 span {
+            animation: loading01 1.4s infinite alternate;
+        }
+
+        .loading01 span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .loading01 span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .loading01 span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .loading01 span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .loading01 span:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .loading01 span:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .loading01 span:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes loading01 {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        @media only screen and (max-width: 767px) {
+
+            /*html {overflow: hidden;width: 100vw;}body {height: 100vh;position: fixed;overflow-y: scroll;-webkit-overflow-scrolling: touch;}*/
+
+
+
+            #newControls button {
+                font-size: 10px;
+                background-color:#fff;
+                color:#000;
+                text-align:center;
+                width:24vw;
+                border: 1px solid #000;
+                border-radius: 5px;
+                bottom:0;
+                height: 35px !important;
+                margin: 0 !important;
+            }
+
+
+            #newControls .ctrlCenter{
+                display: none;
+            }
+
+            #newControls button.ctrlFS{
+                display: none;
+            }
+
+            #newControls {
+                position:fixed;
+                top: initial;
+                bottom: 8em;
+                left: 0;
+                width:100vw;
+                text-align:center;
+                /*font-family: Lato, sans-serif;*/
+            }
+
+
+            #viewControls button {
+                display: initial;
+                height: 25px;
+
+                font-size: 10px;
+                /*background-color:#fff;*/
+                /*color:#000;*/
+                text-align:center;
+                width:24vw;
+                border: 1px solid #000;
+                border-radius: 5px;
+                bottom:0;
+                /*height: 35px !important;*/
+                margin: 0 !important;
+
+            }
+
+
+            #lengthResult {
+                position: absolute;
+                width: 100vw;
+                top: -2em;
+                font-size: 20px;
+                color: #149ED9;
+                text-align: center;
+            }
+
+            #newControls button.ctrlMess, #newControls button.ctrlMessEnd {
+                position: absolute;
+                top: 0;
+                left: 5vw;
+                width: 40vw;
+            }
+
+            #newControls button.ctrlDownload {
+                position: absolute;
+                top: 0;
+                right: 5vw;
+                width: 40vw;
+            }
+
+
+
+
+            #productName {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 56px;
+                width: initial;
+                font-size: 12px;
+                text-align: right;
+                color: #ffffff;
+            }
+
+
+            #variations {
+                top:54px;
+                left: 10px;
+            }
+
+            #variations div.active {
+                background-position: center right;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            #variations div.active {
+                background-position: center right;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+
+        }
+    </style>
+
+</head>
+
+<body unselectable="on" style="background-color: black;">
+<div id="page" class="site">
+
+    <div id="content" class="site-content">
+
+        <div id="intro" class="inactive">
+
+            <p id="licenseTextInner" style="float:right;color: #3397CC; cursor: pointer;">
+                close
+            </p>
+
+            <p>
+                This is Meshy.
+            </p>
+
+            <h3>
+                Dependencies:
+            </h3>
+
+            <ul>
+
+                <li>
+                    <a href="https://threejs.org/">three.js</a>
+                </li>
+
+                <li>
+                    a slightly enhanced version of <a href="https://github.com/dataarts/dat.gui">dat.gui</a> (added functions
+                    for adding title text to controllers and folders, added a function to set display precision, and set the CSS
+                    to cut off overflowing text with an ellipsis)
+                </li>
+
+                <li>
+                    Adam Hooper's <a href="https://github.com/adamhooper/js-priority-queue">js-priority-queue</a>
+                </li>
+
+                <li>
+                    Vadim Graboys's <a href="https://github.com/vadimg/js_bintrees">js-bintrees</a>, specifically red-black
+                    trees
+                </li>
+
+            </ul>
+
+            <p>
+                dat.gui is distributed under Apache 2.0. The others are distributed under the MIT license. Meshy and all of its
+                modules written by me are available under the MIT license.
+            </p>
+
+            <p>
+                Thanks to 0x00019913 for creating <a href="https://github.com/0x00019913/meshy" target="_blank">meshy</a>!
+            </p>
+        </div>
+
+        <div height="100%" width="100%" style="height: 100%; width: 100%;" id="container"></div>
+        <div id="loader">
+
+            <div id="loaderInner">
+
+                <img class="loaderImg" src="media/loading_logo.svg">
+                <div class="loading loading01">
+                    <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+                </div>
+                <progress id="progress" class="xp" value="0"></progress>
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <div id="viewControls">
+            <button class="ctrlCenter">recenter</button> <button id="zoomMinus">zoom +</button> <button id="zoomPlus">zoom -</button> <button class="ctrlFS">Fullscreen</button><br>
+            <button id="panUp">&#9650;</button> <button id="panDown">&#9660;</button> <button id="panLeft">&#9664;</button> <button id="panRight">&#9654;</button>
+        </div>
+
+        <div id="newControls">
+            <div id="lengthResult">0.00mm</div>
+            <button class="ctrlMess">Measure</button><button id="messbutton" class="ctrlMessEnd">Stop Measure</button>
+<!--            <button class="ctrlBuild">buildroom</button>-->
+<!--            <button class="ctrlGizmo">3D cursor</button>-->
+<!--            <button class="ctrlWire">wireframe</button>-->
+            <button class="ctrlCenter">Center Model</button>
+
+
+            <button class="ctrlDownload" style="margin: 0 40px 0 0;" onclick="download('stl/14351_0.stp')">Download Model (.STP)</button>
+
+<!--            <form style="display: inline; margin-right: 40px;" method="GET" action="">-->
+<!--                <button>Download Model</button>-->
+<!--            </form>-->
+
+
+<!--            <a class="ctrlDownload" style="margin: 0 40px 0 20px;display: inline-block;box-sizing: border-box;" href="stl/--><!--">Download Model</a>-->
+            <button class="ctrlFS">Fullscreen</button>
+        </div>
+
+        <div id="licenseText">
+            Lizenzen/Licenses
+        </div>
+
+        <div id="productName">
+            Alphacool NexXxoS XT45 Full Copper 1260mm SuperNova Radiator        </div>
+
+
+        <div id="variations">
+                    </div>
+
+
+
+
+        <script src="js/meshy/jquery-3.3.1.min.js"></script>
+        <script src="js/meshy/Detector.js"></script>
+        <script type="text/javascript" src='js/meshy/dat.gui.min.js'></script>
+        <script src="js/meshy/three.min.js"></script>
+        <script src="js/meshy/screenfull.js"></script>
+        <script src="js/meshy/gizmo.js"></script>
+        <script src="js/meshy/OBJLoader.js"></script>
+        <script src="js/meshy/STLLoader.js"></script>
+        <script src="js/meshy/fileLoader.js"></script>
+        <script src="js/meshy/pipeGeometry.js"></script>
+        <script src="js/meshy/chevronGeometry.js"></script>
+        <script src="js/meshy/priority-queue.min.js"></script>
+        <script src="js/meshy/rbtree.min.js"></script>
+        <script src="js/meshy/gpu.js"></script>
+        <script src="js/meshy/debug.js"></script>
+        <script src="js/meshy/units.js"></script>
+        <script src="js/meshy/utils.js"></script>
+        <script src="js/meshy/calculate.js"></script>
+        <script src="js/meshy/exporter.js"></script>
+
+        <script src="js/meshy/mcg/mcg.js"></script>
+        <script src="js/meshy/mcg/context.js"></script>
+        <script src="js/meshy/mcg/vector.js"></script>
+        <script src="js/meshy/mcg/math.js"></script>
+        <script src="js/meshy/mcg/segment.js"></script>
+        <script src="js/meshy/mcg/polygon.js"></script>
+        <script src="js/meshy/mcg/adjacencyMap.js"></script>
+        <script src="js/meshy/mcg/geometrySet.js"></script>
+        <script src="js/meshy/mcg/segmentSet.js"></script>
+        <script src="js/meshy/mcg/polygonSet.js"></script>
+        <script src="js/meshy/mcg/infill.js"></script>
+        <script src="js/meshy/mcg/sweepEvent.js"></script>
+        <script src="js/meshy/mcg/sweepOperations.js"></script>
+        <script src="js/meshy/mcg/sweep.js"></script>
+        <script src="js/meshy/mcg/boolean.js"></script>
+
+        <script src="js/meshy/printout.js"></script>
+        <script src="js/meshy/HDS.js"></script>
+        <script src="js/meshy/octree.js"></script>
+        <script src="js/meshy/gcodeExporter.js"></script>
+        <script src="js/meshy/slicer.js"></script>
+        <script src="js/meshy/supportGenerator.js"></script>
+        <script src="js/meshy/repair.js"></script>
+        <script src="js/meshy/model.js"></script>
+        <script src="js/meshy/controls.js"></script>
+        <script src="js/meshy/infoBox.js"></script>
+        <script src="js/meshy/axisWidget.js"></script>
+        <script src="js/meshy/transform.js"></script>
+        <script src="js/meshy/markers.js"></script>
+        <script src="js/meshy/pointer.js"></script>
+        <script src="js/meshy/measurement.js"></script>
+        <script src="js/meshy/meshy.js"></script>
+        <script src="js/meshy/main.js"></script>
+        <script>
+
+
+            function download(url) {
+                const a = document.createElement('a')
+                a.href = url
+                a.download = url.split('/').pop()
+                document.body.appendChild(a)
+                a.click()
+                document.body.removeChild(a)
+            }
+
+            function lenghtOutput(val) {
+                val = val.toFixed(2)+'mm';
+                $('#lengthResult').text(val);
+            }
+
+            // function toggleFullScreen() {
+            //     if (!document.fullscreenElement) {
+            //         document.documentElement.requestFullscreen();
+            //     } else if (document.exitFullscreen) {
+            //         document.exitFullscreen();
+            //     }
+            // }
+            //
+
+
+            // function toggleFullScreen() {
+            //     if (!parent.document.fullscreenElement) {
+            //         parent.document.documentElement.requestFullscreen();
+            //     } else if (parent.document.exitFullscreen) {
+            //         parent.document.exitFullscreen();
+            //     }
+            // }
+
+
+            $(document).ready(function () {
+
+                $('div#printout').remove();
+                $('div.axes').remove();
+                $('div.dg').remove();
+                $('#infobox').remove();
+
+
+                $('#newControls .ctrlMessEnd').hide();
+
+                $('#viewControls .ctrlFS, #newControls .ctrlFS').on('click', event => {
+                    // if (screenfull.enabled) {
+                    //     screenfull.toggle();
+                    // }
+
+
+                    // toggleFullScreen();
+
+                    // parent.document.toggleFullScreen();
+
+
+                    parent.postMessage("fullscreen","*");
+
+
+
+                });
+
+                $('#newControls .ctrlClose').click(function() {
+                    parent.close3D();
+                });
+
+                $('#newControls .ctrlMess').click(function() {
+                    meshy.measureLength();
+                    $('#newControls .ctrlMess').hide();
+                    $('#newControls .ctrlMessEnd').show();
+                    $('#lengthResult').show();
+                });
+
+                $('#newControls .ctrlMessEnd').click(function() {
+                    meshy.endMeasurement();
+                    $('#newControls .ctrlMessEnd').hide();
+                    $('#newControls .ctrlMess').show();
+                    $('#lengthResult').hide();
+                });
+
+                $('#newControls .ctrlBuild').click(function() {
+                    meshy.toggleBuildVolume();
+                });
+                $('#newControls .ctrlGizmo').click(function() {
+                    meshy.toggleGizmo();
+                });
+                $('#newControls .ctrlWire').click(function() {
+                    meshy.toggleWireframe();
+                });
+
+                $('#newControls .ctrlCenter').click(function() {
+                    meshy.cameraToModel();
+                });
+
+                $('#viewControls .ctrlCenter').click(function() {
+                    meshy.cameraToModel();
+                });
+
+                var pathToModel = 'stl/14351_0.stl';
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var type = typeof this.response;
+                        var blob = this.response;
+                        blob.lastModifiedDate = new Date();
+                        blob.name = pathToModel;
+                        meshy.handleFile(blob);
+
+                        setTimeout(function(){
+                            meshy.toggleAxisWidget();
+                            meshy.toggleBuildVolume();
+                            $('#loader').fadeOut( "slow" );
+                        }, 1000);
+
+                    }
+                }
+
+                var progressBar = document.getElementById("progress");
+
+                xhr.onprogress = function(e) {
+                    if (e.lengthComputable) {
+                        progressBar.max = e.total;
+                        progressBar.value = e.loaded;
+                    }
+                };
+                xhr.onloadstart = function(e) {
+                    progressBar.value = 0;
+                };
+                xhr.onloadend = function(e) {
+                    progressBar.value = e.loaded;
+
+
+                    if (e.total == 0) {
+                        $('#loader .loading').html( "LOADING FAILED!<br><a href=\".\">BACK TO MODEL SELECTION</a>" );
+                    } else {
+                        $('#loader .loading').html( "PROCESSING..." );
+                    }
+
+
+
+
+
+
+
+                };
+
+                xhr.open('GET', pathToModel, true);
+                xhr.responseType = 'blob';
+                xhr.send();
+            });
+        </script>
+
+
+    </div><!-- #content -->
+
+
+
+</body>
+</html>

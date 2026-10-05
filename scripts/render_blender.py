@@ -7,8 +7,8 @@ parser=argparse.ArgumentParser();parser.add_argument('--mounting',choices=('face
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
 BACK=args.mounting=='backplate'
 BASE=ROOT/'output'/('backplate' if BACK else '');(BASE/'images').mkdir(parents=True,exist_ok=True)
-MESH=ROOT/'tmp'/('mesh-backplate' if BACK else 'mesh')
-S=json.loads((ROOT/'tmp'/('scene-backplate.json' if BACK else 'scene.json')).read_text());P=S['parameters']
+MESH=BASE/'meshes'
+S=json.loads((BASE/'render-scene.json').read_text());P=S['parameters']
 BH=0 if BACK else P['port_boss_height']
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=.001

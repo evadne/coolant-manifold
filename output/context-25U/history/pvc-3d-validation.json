@@ -1,0 +1,10 @@
+{
+  "uncontacted_GPU_lateral_extent_mm": 8.000068524138502e-10,
+  "mirror_symmetry_max_difference_mm": 0.0,
+  "refinement_101_to_201_max_difference_mm": 0.18511776725383214,
+  "refined_minimum_radii_mm": [
+    73.24832872108736,
+    70.28733538348703
+  ],
+  "fixed_end_length_preserved": true
+}

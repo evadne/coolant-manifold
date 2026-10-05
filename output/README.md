@@ -29,3 +29,7 @@ A directory labelled `long-bore-Q` is not enough to choose a supplier file: its 
 No Git LFS migration or historical asset removal has been performed. Large scenes and solver outputs are intentionally retained. Use [the publication review](../docs/publication-review.md) for size/provenance decisions, not a renderer's defaults.
 
 Some frozen source JSONs and historical verification records contain status text from the day of issue (for example “held” or “submitted”). Do not edit them merely to update live status: their hashes are part of fabrication provenance. The canonical manifest selects the parts; [manufacturing status](../docs/manufacturing.md) describes their current physical disposition.
+
+Renderer inputs are retained beside the owning revision: `meshes/` contains tessellations and `render-scene.json` contains placement parameters. The unversioned G inputs live directly under `output/`; its alternative mounting uses `backplate/`. O-M02 presentation meshes live under `manufacturing/O-M02/meshes/`. Q's gallery meshes are diagnostic void volumes; current part surfaces still come from Q-M04/Q-M03.
+
+Structural studies retain compressed `.inp.gz` solver decks, `.dat.gz` results and `.json.gz` node/load metadata together under `radiator-FEA/`, `radiator-expanded-load/`, `radiator-R2/analysis/` and `radiator-R4/analysis/`. Review scripts read these directly. `context-24U/history/`, `context-25U/history/` and `analysis/historical-body-depth-assessment.json` hold earlier exploratory evidence, not current acceptance results.
