@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-05",
+  "selection_status": "canonical_delivered_first_article",
+  "geometry": {
+    "manifold": "Q",
+    "radiator": "R7"
+  },
+  "parts": [
+    {
+      "part": "RM10-Q-M04-BODY",
+      "issue": "Q-M04",
+      "quantity": 1,
+      "source": "cad/manufacturing/Q-M04.json",
+      "bundle": "output/submission/current-three-parts/RM10-Q-M04-BODY.zip",
+      "issue_bundle": "output/submission/Q-M04/RM10-Q-M04-BODY.zip",
+      "sha256": "699a2a0bc5bc1a903e00e94bfad6d5d2cd445495360754556012212c078f5b65",
+      "drawing": "output/pdf/RM10-Q-M04-BODY.pdf",
+      "step": "output/manufacturing/Q-M04/RM10-Q-M04-BODY.step",
+      "dxf": null,
+      "pdf_sheets": 3,
+      "jlc": {
+        "category": "CNC machining",
+        "material": "POM(Black)",
+        "finish": "No surface finish",
+        "threads": true,
+        "remarks": "Q-M04 PDF governs.12 edges C0.50+/-0.10 x45deg+/-1deg;8 corner flats per STEP.Declare black unfilled POM-C/H.28 G1/4+12 M4 threads;STEP pilots.External deburr only;flush chips.Confirm D11.8x410 galleries/deviations."
+      }
+    },
+    {
+      "part": "RM10-Q-M03-FACEPLATE",
+      "issue": "Q-M03",
+      "quantity": 1,
+      "source": "cad/manufacturing/Q-M03.json",
+      "bundle": "output/submission/current-three-parts/RM10-Q-M03-FACEPLATE.zip",
+      "issue_bundle": "output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip",
+      "sha256": "3c80e7e8aa76f7f0c491d85baca623d7600ec8d7f56c1f24999eb6ccaaeb3664",
+      "drawing": "output/pdf/RM10-Q-M03-FACEPLATE.pdf",
+      "step": "output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step",
+      "dxf": "output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.dxf",
+      "pdf_sheets": 2,
+      "jlc": {
+        "category": "Sheet Metal",
+        "material": "Stainless Steel 304",
+        "finish": "No surface finish",
+        "threads": false,
+        "remarks": "Q-M03 PDF/DXF govern. Raw 304 both faces; no brushing/polishing. Cut sizes/coordinates +/-0.10mm; four R5 corners; plain holes. Standard grinding/deburring accepted; no complete burr-removal guarantee. Flatness 0.30mm max."
+      }
+    },
+    {
+      "part": "SN1260-R7-M01-PLATE",
+      "issue": "R7-M01",
+      "quantity": 1,
+      "source": "cad/manufacturing/R7-M01.json",
+      "bundle": "output/submission/current-three-parts/SN1260-R7-M01-PLATE.zip",
+      "issue_bundle": "output/submission/R7-M01/SN1260-R7-M01-PLATE.zip",
+      "sha256": "e5c4d85cf3fe5049dddc34ca8609f049415fbc364f7fac4732a83c5faca875fd",
+      "drawing": "output/pdf/SN1260-R7-M01-PLATE.pdf",
+      "step": "output/manufacturing/R7-M01/SN1260-R7-M01-PLATE.step",
+      "dxf": "output/manufacturing/R7-M01/SN1260-R7-M01-PLATE.dxf",
+      "pdf_sheets": 3,
+      "jlc": {
+        "category": "Sheet Metal",
+        "material": "Stainless Steel 304",
+        "finish": "No surface finish",
+        "threads": false,
+        "remarks": "R7-M01 PDF/DXF govern. Raw 304 both faces; no brushing/polishing. Cut sizes/coordinates +/-0.10mm; four R5 corners; plain holes. Flatness 0.50mm max. External edge finishing incl cable-contact rounds per PDF."
+      }
+    }
+  ],
+  "order_guide": "docs/order-from-jlc.md",
+  "assembly_guides": [
+    "docs/assembly-Q.md",
+    "docs/radiator-rack-plate.md"
+  ],
+  "verification": "output/submission/current-three-parts/verification.json",
+  "operator_verification": {
+    "manifold_body_and_faceplate": "dimensions and POM M4/G1/4 interfaces verified",
+    "radiator_plate": "delivered; operator-unverified",
+    "steel_finish": "JLCCNC batch slight sharpness finding open",
+    "leak_test": "not reported"
+  },
+  "historical_outputs": "Retained in place; not current fabrication selections. Some remain build dependencies.",
+  "licence": "undecided"
+}

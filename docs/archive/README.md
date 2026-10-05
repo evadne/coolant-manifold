@@ -49,3 +49,8 @@ Historical CAD, images and solver evidence remain at their original revision-spe
 - [jlc-radiator-remarks-R5-M01.txt](jlc-radiator-remarks-R5-M01.txt)
 
 Do not upload archived O-M02/R4-M01/R5-M01 packages as current P/R6 parts. Archived values and findings retain their original scope, including references to now-superseded “current” or “next” designs.
+
+## Publication grooming snapshots
+
+- [Former mixed working notes](working-notes-2026-09-16.md): previous AGENTS content, historical and not operative.
+- [Manufacturing status narrative](manufacturing-status-through-2026-10-05.md): detailed prior issue/inspection chronology.

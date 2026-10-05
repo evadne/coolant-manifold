@@ -1,5 +1,6 @@
 .venv/
 __pycache__/
-tmp/
+/tmp/*
+!/tmp/README.md
 .DS_Store
 *.blend1

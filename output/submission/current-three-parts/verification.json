@@ -34,8 +34,9 @@
       ]
     }
   ],
-  "release_status": "submitted_for_file_review",
-  "operator_disposition": "Complete set accepted and separately submitted for file review with operator-confirmed UPS shipping. Original order cleared by operator; preserve fabrication archives. No payment authorised.",
+  "release_status": "all_parts_delivered_manifold_fit_verified_radiator_operator_unverified_steel_finish_finding_open",
+  "operator_disposition": "Canonical delivered fabrication issues; current physical findings and order history are separate from bundle-integrity checks.",
+  "canonical_selection": "cad/current-release.json",
   "fabrication_scope": "Each ZIP contains only one custom part STEP and its fabrication drawing/profile.",
   "assembly_guide": "docs/assembly-Q.md",
   "assembly_parameters": "cad/assembly/Q.json",
@@ -47,13 +48,15 @@
   "historical_submission_record": "output/submission/jlc-quotation-2026-09-15.json",
   "supplier_submission_performed": true,
   "submission_record": "output/submission/jlc-order-2026-09-16.json",
-  "remaining_supplier_review": [
-    "POM stock grade",
-    "Deep-gallery drilling process",
-    "Specified tolerances, flatness and surface finishes"
+  "unverified_or_open_items": [
+    "Exact supplied POM grade and actual deep-drilling route",
+    "Leak-test result",
+    "Radiator physical fit",
+    "JLCCNC steel edge-finish finding"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "99381df2316ef1545b596f880ac9726ad7153d40beeace6e2870a11c09809054",
+    "scripts/finalise_three_part_pack.py": "05e1fd6b3ea2fb779907b62209a9bd7797f5952511bbec3d7b210cbbdbe2b66a",
+    "cad/current-release.json": "ad49264f3977fe49abd2136f398b80bc42d3e71a1e21396b3ef80935181361df",
     "output/review/Q-M04-visual-review.json": "5fab710ae0860d71185b60f357febc4062e4c03f784f7a4105a0edb3f45d2a44",
     "scripts/draw_radiator_production.py": "0da7a28db322b77086a660daf79a62f303cf1ba36a5208a4eb1d06a29393068c",
     "scripts/package_radiator_production.py": "020cc583876759a5150894208b2d51f4db3e3adb927d04fc976477f40834a1e4",

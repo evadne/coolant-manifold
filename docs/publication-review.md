@@ -1,0 +1,45 @@
+# Repository publication review
+
+Review date: 5 October 2026. The repository has been prepared for readers to identify the current design, order its three parts and understand the evidence. No GitHub remote is configured, no push or publication has been performed, and the operator has deferred the licence decision. Repository size and retrieved assets are retained deliberately; no history rewriting, censorship, redaction or LFS conversion is part of this cleanup.
+
+## Changes made for readers
+
+- README introduces the product with an angled assembled render, a connected render, a first-article photograph and a radiator render. It links directly to the current fabrication files.
+- [Repeat-order instructions](order-from-jlc.md) give the exact three ZIPs, quantities, CNC/sheet-metal categories, material/finish choices and original manufacturing remarks. They separate historical prices from a fresh quotation.
+- [Canonical selection](../cad/current-release.json) gives machine-readable issues, paths and hashes. Historical geometry and supplier issues remain in their original locations, with their roles explained in [the output guide](../output/README.md).
+- AGENTS contains working procedures. Former mixed notes and manufacturing chronology are preserved as explicitly historical documents. Current status, design specifications, vendor experience and project reflection have separate homes.
+- [JLCCNC first-article findings](jlc-first-article.md) name the supplier and batch. Slight steel-edge sharpness is not presented as a universal property of the design or raw stainless steel.
+- `tmp/README.md` and [the temporary-work guide](temporary-work.md) explain ignored scratch data and the Q renderer's diagnostic mesh prerequisite.
+- The generated fabrication index and its generator now use the same public ordering path. A read-only [publication checker](../scripts/check_publication.py) checks bundle identity, archive contents, index hashes and maintained local navigation links.
+
+## Size and retention
+
+At the start of this review, Git tracked 916 files containing 1,502,294,509 bytes (about 1.50 GB). Local `.git` occupied approximately 2.4 GB; local `output/` 1.7 GB and ignored `tmp/` 1.3 GB. These are different measurements: untracked working files and history account for the differences. Documentation added by this review slightly changes the tracked count.
+
+The largest tracked file is the approximately 92.7 MiB StarTech25U Blender scene. The current tree contains no file above 100 MiB; a scan of all reachable Git blobs also found none above 100 MiB. Several files exceed 50 MiB. GitHub documents warnings above 50 MiB, a normal-Git block above 100 MiB and a preference for smaller repositories. [GitHub file and repository guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
+
+The operator explicitly accepts a large repository and will decide the push strategy later. No asset movement or removal is required by this review. LFS or release attachments remain possible future choices, not changes silently applied now. The current `.gitattributes` marks CAD/media binary; that does not itself enable LFS.
+
+## Provenance and information exposure
+
+The operator explicitly requests retaining Koolance and other retrieved models, supplier records and full history without redaction. [LICENSING.md](../LICENSING.md) identifies original work, reference assets, manufacturer notices and composite scenes. No blanket reuse grant or comprehensive third-party rights clearance is claimed. The project's original-work licence remains undecided by the operator's choice.
+
+Publishing the retained history also exposes supplier order references, a recorded checkout reference, portal screenshots, local workspace paths and Git author metadata. These are retained knowingly under that direction; the public order guide does not require another user's account data. A targeted scan of 364 then-tracked text files found no matches for the selected high-confidence private-key/GitHub-token/AWS-key-ID/OpenAI-key patterns. This was not an exhaustive secret audit, OCR scan or scan of every historical text blob. The five first-article JPEGs have no GPS EXIF field; their original files were retained unchanged.
+
+No credentials, supplier accounts or payment actions were accessed during this publication review. No files were removed or redacted to produce a misleadingly clean history.
+
+## Reproduction limits
+
+The delivered fabrication ZIPs are usable without rebuilding the project. Their hashes and extracted members are checked against the issue-specific originals and current STEP/PDF/DXF files. They have not changed during this cleanup.
+
+A full source rebuild still has host assumptions: the drawing scripts register macOS Arial paths, Blender examples use a macOS application path and Metal, some scripts require historical retained solids/scenes, and optional FEA needs a separate solver. The root Python requirements do not pin every document/physics dependency. [Rebuild instructions](rebuild.md) now disclose these limits and the cache prerequisite. This review does not claim a clean Linux or Windows rebuild or re-run physical simulations.
+
+The existing final pack verifier passed against the retained geometry, eight drawing sheets and recorded 32-image review evidence. This checks existing review provenance; no fresh visual approval of all those artefacts is claimed. The README's angled assembled render was visually inspected during this review. Local Markdown target checks do not establish identical rendering in GitHub's UI.
+
+## Decisions before public release
+
+1. Select the original-work licence and retain the separate third-party provenance treatment.
+2. Choose the GitHub repository/destination and push strategy for the intentionally large history.
+3. Review the final README in GitHub's renderer once a remote preview exists; confirm the images and download links there.
+
+These are publication decisions. They do not reopen the operator's manifold fit acceptance or change the delivered design. The radiator remains delivered but operator-unverified; no leak-test result has been reported. [Astra's commentary](astra-commentary.md) records the significance of moving from models and supplier drawings to physical objects without promoting those observations into unperformed tests.

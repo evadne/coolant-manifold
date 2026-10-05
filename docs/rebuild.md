@@ -11,7 +11,17 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-Use the available document runtime for ReportLab/pypdf if the CAD environment lacks them. Do not overwrite a working environment just to reproduce unchanged outputs.
+For PDF generation/packaging, install `reportlab` and `pypdf` into your selected Python environment. NumPy/SciPy are needed for the optional hose-equilibrium work; gmsh, matplotlib and a separate CalculiX executable are used for the historical FEA. The root requirements files do not constitute a complete portable environment lock. Do not overwrite a working environment just to reproduce unchanged outputs.
+
+The existing PDF generators register Arial from `/System/Library/Fonts/Supplemental/` and therefore assume macOS font locations. The example Blender executable path and METAL setting are also host-specific. A different OS needs font/runtime adaptation and fresh visual review; exact cross-platform rebuilds have not been demonstrated. Existing ZIPs can be ordered without installing any of this. Use a checkout copy for regeneration: byte hashes of newly exported CAD/PDFs may differ, and the received fabrication archives should remain immutable.
+
+[Temporary-work guidance](temporary-work.md) documents the ignored cache inputs. Before running `render_revision_Q.py` on a fresh clone, prepare the two `tmp/mesh-long-bore-Q/fluid-network-*.stl` files using that guide. This can be done from tracked STEP files without rerunning historical production builders.
+
+For a read-only check of current download selection, hashes and navigation, run:
+
+```sh
+python3 scripts/check_publication.py
+```
 
 ## Current steel specification issues: Q-M03 / R7-M01
 

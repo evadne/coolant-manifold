@@ -1,6 +1,6 @@
 # Revision register
 
-**Current:** Q-M04 manifold body, Q-M03 faceplate and radiator R7 / R7-M01. Both steel plates have four R5 outside corners and retain ±0.10 mm cut dimensions/coordinates. All other geometry is retained. The operator accepted the complete set and authorised a separate new order, with shipping confirmation required before submission; original supplier-order files stay unchanged.
+**Current:** Q-M04 manifold body, Q-M03 faceplate and radiator R7 / R7-M01. Both steel plates have four R5 outside corners and retain ±0.10 mm cut dimensions/coordinates. All other geometry is retained. All three current parts are delivered; the manifold dimensions and threads are operator-verified, while the radiator is operator-unverified. Use [the canonical manifest](../cad/current-release.json) and [repeat-order guide](order-from-jlc.md). Dated sections below describe historical events, not pending actions.
 
 ## Manifold history
 
@@ -29,7 +29,8 @@ P's official Koolance studio fitting update and operator acceptance are presenta
 | R3 | Added tapped M4 fan holes and R50 aperture corners | Historical unselected alternative |
 | R4 / R4-M01 | Plain fan holes and nuts; accepted assembly sequence | Superseded geometry/pack; its final load analysis remains baseline evidence |
 | R5 / R5-M01 | 10 ×5 mm cable notch | Historical deeper-notch version |
-| **R6 / R6-M02** | **10 ×2 mm rounded cable notch**, same fan/fixing pattern | Historical submitted geometry; M02 specifies raw sheet finish |
+| R6 / R6-M02 | 10 ×2 mm rounded cable notch, same fan/fixing pattern | Historical submitted geometry; M02 specifies raw sheet finish |
+| **R7 / R7-M01** | **R5 outside corners**, retained 10 ×2 notch and raw finish | **Canonical fabricated radiator issue; delivered, operator-unverified** |
 
 ## Archive policy
 

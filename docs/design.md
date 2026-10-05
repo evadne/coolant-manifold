@@ -1,6 +1,6 @@
 # Current manifold design — Revision Q
 
-Q is operator-approved. [Q-M01](jlc-submission-Q-M01.md) adds the shorter M4 manufacturing detail requested during final review. Q-M04 adds twelve C0.5 ×45° main-slab edge chamfers. The current Q-M03 faceplate adds four R5 outside outline corners and retains all original openings/positions.
+Canonical delivered manifold issues are [Q-M04 body](jlc-submission-Q-M04.md) and [Q-M03 faceplate](jlc-submission-Q-M03.md). Q-M04 retains the shorter M4 detail introduced in historical Q-M01 and adds twelve C0.5 ×45° main-slab edge chamfers. Q-M03 adds four R5 outside outline corners and retains all original openings/positions. Use the [repeat-order guide](order-from-jlc.md) for the exact files.
 
 The RM10-2U manifold provides a common supply gallery and a separate common return gallery for parallel loads. It has no internal grouping, partitions, bypass or supply-to-return connection. The current manufactured parts are one POM body and one dry stainless front rack plate. There is no rear plate.
 
@@ -34,7 +34,7 @@ The 410 mm body leaves 20 mm per side inside an assumed 450 mm equipment opening
 
 Use black unfilled POM-C or POM-H of an identified machining-stock grade; Delrin branding is optional. Intended duty is formulated inhibited computer coolant at approximately 50°C maximum liquid temperature, with Blitz Part 2 maintenance as described in the [material assessment](pom-coolant-assessment.md). These are design assumptions, not tested ratings.
 
-The body uses opposed long-bore drilling, external milling and direct tapped ports. External deburring only; clean/flush loose internal chips without specifying internal cross-hole deburring. Long-hole alignment and vendor capability remain DFM items. The dry 2 mm faceplate has plain through holes, no countersinks and no threads. Fitting retention and body-to-rack retention are separate functions.
+The body uses long-bore drilling, external milling and direct tapped ports. Drilling from one end or from opposed ends is a process choice; JLC’s actual route has not been established. See the [machining-route assessment](Q-M04-machining-route.md). External deburring only; clean/flush loose internal chips without specifying internal cross-hole deburring. Long-hole alignment and vendor capability remain DFM items. The dry 2 mm faceplate has plain through holes, no countersinks and no threads. Fitting retention and body-to-rack retention are separate functions.
 
 Parallel topology does not enforce equal flow. Required flow, gallery losses, plastic thread retention, thermal cycling and assembled leak performance remain engineering work. The current geometry and screw checks are detailed in [Revision Q](revision-Q-rear-ports.md); [manufacturing status](manufacturing.md) distinguishes review files from supplier issues.
 
