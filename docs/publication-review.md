@@ -1,6 +1,6 @@
 # Repository publication review
 
-Review date: 5 October 2026. The repository has been prepared for readers to identify the current design, order its three parts and understand the evidence. The operator has authorised public release at `evadne/coolant-manifold` and selected CERN-OHL-W-2.0 for original project material. Publication verification will be recorded below once the push completes. Repository size and retrieved assets are retained deliberately; no history rewriting, censorship, redaction or LFS conversion is part of this cleanup.
+Review date: 5 October 2026. The repository has been prepared for readers to identify the current design, order its three parts and understand the evidence. The operator has authorised public release at `evadne/coolant-manifold` and selected CERN-OHL-W-2.0 for original project material. Publication verification is recorded below. Repository size and retrieved assets are retained deliberately; no history rewriting, censorship, redaction or LFS conversion is part of this cleanup.
 
 ## Changes made for readers
 
@@ -48,6 +48,16 @@ No speculative Linux work or general-purpose CAD framework was added. Contributo
 
 On 5 October 2026 the operator authorised public publication at `evadne/coolant-manifold` under CERN-OHL-W-2.0. The GitHub CLI initially used `evadne-feg`; it was switched to the already authenticated `evadne` account and the active identity was verified before repository creation.
 
-Pending publication checks: successful push, public visibility, licence recognition and README image/download links.
+Published at **[evadne/coolant-manifold](https://github.com/evadne/coolant-manifold)** on 5 October 2026. Default branch: `main`. The initial public push contains licence commit `9c57e66` and the full existing history, with all eight revision tags. GitHub accepted the ordinary Git push, issuing advisory warnings for files over 50 MiB; no file removal, LFS conversion or history rewriting was needed.
+
+Verification completed:
+
+- GitHub reports public visibility, owner `evadne`, default branch `main` and recognised licence `CERN-OHL-W-2.0`.
+- Remote `main` matched the local licence commit; the downloaded root `LICENSE` matched the local file byte-for-byte.
+- The public README was inspected in GitHub's browser renderer. All four embedded product/first-article images loaded; the canonical fabrication table and licence navigation rendered correctly.
+- All three canonical ZIPs were downloaded without authentication and matched the manifest's SHA-256 hashes.
+- Local publication checks passed for three fabrication bundles, 207 navigation links, 140 retained meshes, eleven scene descriptions and sixteen solver cases.
+
+The local `design/initial-manifold` branch is retained and tracks `origin/main`. The publication record is committed and pushed after these checks. GitHub authentication remains on `evadne`; no account was signed out.
 
 These are publication decisions. They do not reopen the operator's manifold fit acceptance or change the delivered design. The radiator remains delivered but operator-unverified; no leak-test result has been reported. [Astra's commentary](astra-commentary.md) records the significance of moving from models and supplier drawings to physical objects without promoting those observations into unperformed tests.
