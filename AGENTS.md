@@ -10,6 +10,8 @@
 
 ## Change and verify
 
+- For a new issue, follow [the contributor workflow](docs/new-revision.md). Keep draft configurations, geometry, drawings and outputs separate; use `scripts/release.py` for new quotation packs. The historical finaliser selects the delivered set only.
+- Support macOS/Python 3.12/Blender as the authoring baseline; address other-platform failures when reported rather than adding speculative adaptations.
 - Follow [rebuild instructions](docs/rebuild.md), using explicit revisions; older script defaults are not current build commands.
 - Preserve submitted fabrication bundles and source references. Make fabrication changes as new issues with matching STEP, PDF and steel DXF; do not silently amend a received part's issue.
 - Keep fabrication documents limited to manufacture and inspection. Put bought-in hardware, plugs, tightening, threadlocker and installation in assembly guides.

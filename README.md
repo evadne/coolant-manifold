@@ -62,6 +62,8 @@ These are prototype designs with physical manifold fit verification, not qualifi
 | Find engineering evidence and history | [Documentation index](docs/README.md) |
 | Rebuild CAD, PDFs or Blender scenes | [Rebuild guide](docs/rebuild.md) |
 | Read the project retrospective | [Astra's commentary](docs/astra-commentary.md) |
+| Make and order a new revision | [Contributor workflow](docs/new-revision.md) |
+| Set up macOS authoring tools | [Environment setup](docs/rebuild.md#environment) |
 | Contribute changes | [Working rules](AGENTS.md) |
 
 The repository retains substantial CAD, Blender and analysis history. The [publication review](docs/publication-review.md) records repository size, retained supplier records, third-party assets and portability limits. **The project licence is not yet selected**; see [licensing and provenance](LICENSING.md). No blanket reuse grant is implied for manufacturer reference models.

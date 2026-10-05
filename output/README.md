@@ -4,6 +4,7 @@ Current custom parts: Q-M04 manifold body, Q-M03 faceplate and R7/R7-M01 radiato
 
 | Location | Purpose |
 |---|---|
+| `submission/releases/<name>/` | Independently reviewed quotation packs from `scripts/release.py`; these do not automatically change the canonical delivered selection |
 | `submission/current-three-parts/` | Current three-part ZIP index and final consistency manifest |
 | `submission/Q-M04/`, `submission/Q-M03/` | Body/faceplate supplier STEP/PDF ZIPs; DXF for steel; checks and remarks |
 | `submission/R7-M01/` | Radiator STEP/PDF/DXF ZIP; checks and remarks |

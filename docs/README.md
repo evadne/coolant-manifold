@@ -12,6 +12,7 @@ For another order, use [Order the current parts from JLC](order-from-jlc.md). Fo
 | Coolant assumptions | [POM compatibility](pom-coolant-assessment.md), [Blitz overrun targets](blitz-overrun-qualification.md), [pump pressure](d5-pressure.md) |
 | Product presentation | [Views](product-views.md), [Koolance references](koolance-qd3-studio-integration.md), [25U rack](context-25U.md) |
 | Rack model details | [PVC equilibrium](pvc-routing-physics.md), [GPU geometry](gpu-5090fe-context.md) |
+| New designs | [Create, check and package a revision](new-revision.md) |
 | Reproduction | [Rebuild guide](rebuild.md), [output map](../output/README.md) |
 | History and reflection | [Revision register](iterations.md), [archive](archive/README.md), [Astra's commentary](astra-commentary.md) |
 | Publication | [Review](publication-review.md), [licensing/provenance](../LICENSING.md) |

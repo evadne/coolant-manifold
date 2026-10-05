@@ -1,3 +1,8 @@
+# Supported authoring environment: Python 3.12 on macOS; Blender is installed separately.
 cadquery==2.8.0
 pillow==12.3.0
-ezdxf==2.9.0
+ezdxf==1.4.4
+reportlab==4.4.9
+pypdf==6.10.0
+numpy==2.5.3
+scipy==1.18.1

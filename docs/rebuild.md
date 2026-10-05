@@ -4,23 +4,34 @@ Use millimetres and explicit revision flags. Several shared/legacy scripts defau
 
 ## Environment
 
-CAD uses Python with the pinned dependencies in `requirements.txt` (CadQuery, Pillow and ezdxf). PDF generation additionally needs ReportLab; packaging needs pypdf. The drawing scripts use their configured fonts. Optional FEA dependencies are in `requirements-fea.txt`. Blender is available locally at `/Applications/Blender.app/Contents/MacOS/Blender`.
+The supported authoring environment is **macOS and Python 3.12**, with Blender installed separately. Blender 5.2.1 LTS is the version used for the latest checks. The standard requirements cover CAD, DXF, PDF generation/packaging and the existing tube-equilibrium tools. The drawing programs use macOS Arial fonts; Blender examples use its normal application path. Where a renderer accepts `--device METAL`, omit that option to use its CPU default if needed. Other-platform failures will be investigated when reported; no Linux-specific adaptation has been added pre-emptively.
 
 ```sh
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python scripts/check_environment.py
+.venv/bin/python scripts/check_publication.py
 ```
 
-For PDF generation/packaging, install `reportlab` and `pypdf` into your selected Python environment. NumPy/SciPy are needed for the optional hose-equilibrium work; gmsh, matplotlib and a separate CalculiX executable are used for the historical FEA. The root requirements files do not constitute a complete portable environment lock. Do not overwrite a working environment just to reproduce unchanged outputs.
+`check_environment.py` checks the declared package versions/imports, Arial, Blender startup and small STEP/DXF/PDF round trips. Use `--blender /path/to/Blender` if installed elsewhere. These are tested top-level dependency pins, not a promise of byte-identical exports across every future transitive dependency. The publication check verifies the retained fabrication pack and inputs without regenerating them.
 
-The existing PDF generators register Arial from `/System/Library/Fonts/Supplemental/` and therefore assume macOS font locations. The example Blender executable path and METAL setting are also host-specific. A different OS needs font/runtime adaptation and fresh visual review; exact cross-platform rebuilds have not been demonstrated. Existing ZIPs can be ordered without installing any of this. Use a checkout copy for regeneration: byte hashes of newly exported CAD/PDFs may differ, and the received fabrication archives should remain immutable.
+For the optional historical structural-analysis tools:
+
+```sh
+.venv/bin/python -m pip install -r requirements-fea.txt
+.venv/bin/python scripts/check_environment.py --fea
+```
+
+A separate CalculiX 2.23 executable is only needed to solve new structural cases; reading the retained results does not require it. The original solver ran on Linux; this does not change the macOS CAD/Blender baseline.
+
+**To make a new revision, follow [the contributor workflow](new-revision.md).** The commands below reproduce existing issues into their existing paths. Run them only in a disposable checkout for reproduction checks; do not overwrite issued archives in your working branch. For a new issue, copy/adapt the relevant generators to new output paths and use the separate release helper. Ordering existing parts needs none of these installations.
 
 Render meshes and scene descriptions are tracked beside the matching revision under `output/`. The Q inspection renderer reads its two gallery meshes from `output/long-bore-Q/meshes/` and its finished solids from `output/manufacturing/`; no preliminary cache preparation is needed.
 
 For a read-only check of current download selection, hashes and navigation, run:
 
 ```sh
-python3 scripts/check_publication.py
+.venv/bin/python scripts/check_publication.py
 ```
 
 ## Current steel specification issues: Q-M03 / R7-M01
@@ -31,15 +42,15 @@ Preserve the submitted Q-M01 body and original supplier archives. To rebuild the
 .venv/bin/python scripts/prepare_Q_faceplate_issue.py --issue Q-M03
 .venv/bin/python scripts/build_radiator_plate.py --revision R7
 .venv/bin/python scripts/prepare_radiator_production.py --issue R7-M01
-# Use the ReportLab/pypdf runtime; inspect both PDFs (five sheets) before packaging.
-python3 scripts/draw_Q_production.py --faceplate-issue Q-M03 --faceplate-only
-python3 scripts/draw_radiator_production.py --issue R7-M01
-python3 scripts/package_Q_faceplate_issue.py --issue Q-M03
-python3 scripts/package_radiator_production.py --issue R7-M01
+# Inspect both PDFs (five sheets) before packaging.
+.venv/bin/python scripts/draw_Q_production.py --faceplate-issue Q-M03 --faceplate-only
+.venv/bin/python scripts/draw_radiator_production.py --issue R7-M01
+.venv/bin/python scripts/package_Q_faceplate_issue.py --issue Q-M03
+.venv/bin/python scripts/package_radiator_production.py --issue R7-M01
 # Render and inspect current presentations below before finalising the index.
 ```
 
-These commands do not upload. `finalise_three_part_pack.py` checks the current body against its verified chamfered geometry and original source, the new steel files against their geometry sources and drawings, and the new five-sheet visual review. Refresh Q product/studio, R7 radiator and Q/R7 context renders before finalising. Refresh the visual-review hashes only after inspecting all three new body PDF sheets and 25 refreshed presentation images; the five steel sheets and seven radiator images retain their prior review.
+These commands do not upload. Regenerating an existing issue may change file bytes and invalidate the original source/review hashes even when the nominal design is unchanged. Inspect regenerated drawings and presentations in the disposable checkout; retain the delivered archives and their historical review records in the project. For new issues, use the new-revision workflow rather than changing those historical hashes.
 
 ## Current POM body issue Q-M04
 
@@ -47,9 +58,9 @@ After preparing the Q-M03 faceplate, run:
 
 ```sh
 .venv/bin/python scripts/prepare_Q_body_issue.py
-python3 scripts/draw_Q_production.py --body-issue Q-M04 --body-only
+.venv/bin/python scripts/draw_Q_production.py --body-issue Q-M04 --body-only
 # Render and inspect the three new body sheets before packaging.
-python3 scripts/package_Q_body_issue.py
+.venv/bin/python scripts/package_Q_body_issue.py
 ```
 
 Q-M04 preserves the submitted Q-M01 source and adds only the twelve C0.5 ×45° slab-edge chamfers. It also refreshes the current assembly STEP; run this step after faceplate preparation. Current Q product/studio/context renderers load Q-M04. Do not overwrite submitted archives. The accepted new-order pack is Q-M04 body + Q-M03 faceplate + R7-M01 radiator. Current review comprises three new body sheets, five unchanged steel sheets, 25 refreshed manifold/studio/context images and seven inherited radiator images. The tube equilibrium remains unchanged.
@@ -64,9 +75,9 @@ Q derives from the retained P solids and source-fitting library. Do not rebuild 
 .venv/bin/python scripts/assess_Q_retention.py
 .venv/bin/python scripts/assess_Q_torque.py
 .venv/bin/python scripts/draw_revision_Q.py
-# Use ReportLab/pypdf Python for the following; inspect all PDF sheets before packaging:
-python3 scripts/draw_Q_production.py
-python3 scripts/package_Q_production.py
+# Inspect all PDF sheets before packaging:
+.venv/bin/python scripts/draw_Q_production.py
+.venv/bin/python scripts/package_Q_production.py
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_revision_Q.py
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_photoreal_product.py -- --iteration Q --device METAL
 ```
@@ -78,10 +89,10 @@ Original supplier files are Q-M01; current faceplate specification is Q-M03. Do 
 ```sh
 .venv/bin/python scripts/build_radiator_plate.py --revision R6
 .venv/bin/python scripts/prepare_radiator_production.py --issue R6-M02
-# Use ReportLab, then inspect all three rendered PDF sheets:
-python3 scripts/draw_radiator_production.py --issue R6-M02
-# Use pypdf after visual inspection:
-python3 scripts/package_radiator_production.py --issue R6-M02
+# Inspect all three rendered PDF sheets:
+.venv/bin/python scripts/draw_radiator_production.py --issue R6-M02
+# Package after visual inspection:
+.venv/bin/python scripts/package_radiator_production.py --issue R6-M02
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_radiator_plate.py -- --revision R6 --plate-only --device METAL
 ```
 
@@ -101,7 +112,7 @@ The Q renderer loads the Q-M03 faceplate explicitly. R7 produces seven views inc
 
 ## Composite StarTech25U scene
 
-After the current Q/R7 source scenes and official fitting meshes exist (run `python3 scripts/assess_manifold_side_clearance.py` for the separate40/45/50mm envelope assessment):
+After the current Q/R7 source scenes and official fitting meshes exist (run `.venv/bin/python scripts/assess_manifold_side_clearance.py` for the separate40/45/50mm envelope assessment):
 
 ```sh
 # Only rerun these preparation checks when tubing inputs change:
@@ -122,7 +133,7 @@ Operator confirmation, 15 September 2026: increasing Clip Start made the live vi
 
 ## Final three-part consistency record
 
-After the current files and fresh visual checks exist, run `python3 scripts/finalise_three_part_pack.py`. This checks part ZIPs, source hashes and current Q/R7 context; it creates the submission index without uploading. Assembly instructions remain in `docs/assembly-Q.md`, outside the fabrication ZIPs.
+Run `.venv/bin/python scripts/finalise_three_part_pack.py` to verify/recreate the delivered Q/R7 index from its retained files and review records. It is specific to that set and does not promote a new revision. The separate `release.py` workflow packages new reviewed issues without modifying this index. Assembly instructions remain outside fabrication ZIPs.
 
 ## Reading retained structural studies
 
@@ -132,4 +143,4 @@ For a new solver run, `radiator_plate_fea.py` writes the plain `.inp` deck and c
 
 The preserved scene-specific checks in `scripts/archive/` apply only to their named historical scenes. They are not current-design acceptance checks.
 
-Run `python scripts/check_publication.py` for read-only bundle, navigation and retained-input checks. `python scripts/check_retained_inputs.py` can also check the renderer meshes, scene descriptions, all sixteen complete solver cases and the explicit source-maintenance records independently. Neither command needs Blender or CalculiX.
+Run `.venv/bin/python scripts/check_publication.py` for read-only bundle, navigation and retained-input checks. `.venv/bin/python scripts/check_retained_inputs.py` can also check the renderer meshes, scene descriptions, all sixteen complete solver cases and the explicit source-maintenance records independently. Neither command needs Blender or CalculiX.

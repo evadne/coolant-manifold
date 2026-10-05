@@ -58,7 +58,7 @@ def check():
             'output/submission/current-three-parts/README.md', 'docs/README.md',
             'docs/order-from-jlc.md', 'docs/jlc-first-article.md', 'docs/manufacturing.md',
             'docs/design.md', 'docs/iterations.md',
-            'docs/three-part-recap.md', 'docs/rebuild.md',
+            'docs/three-part-recap.md', 'docs/rebuild.md', 'docs/new-revision.md',
             'docs/publication-review.md', 'docs/astra-commentary.md',
             'docs/archive/working-notes-2026-09-16.md',
             'docs/archive/manufacturing-status-through-2026-10-05.md']

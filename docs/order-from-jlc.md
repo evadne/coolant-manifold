@@ -2,6 +2,8 @@
 
 This guide reproduces the **Q-M04 body, Q-M03 faceplate and R7-M01 radiator plate** fabricated for this project. Use one of each unless you deliberately want another quantity. You do not need to run the generators or obtain the historical project revisions.
 
+For changed designs, first follow [the new-revision workflow](new-revision.md). Its generated release README supplies the new ZIPs and per-part metadata; the upload/account/shipping process below still applies.
+
 ## Download exactly these bundles
 
 | Part | Download | JLC category | Material | Finish | Threads |
