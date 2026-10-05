@@ -1,7 +1,7 @@
 {
-  "issue": "R6-M03",
+  "manufacturing_revision": "R6-M03",
   "part_number": "SN1260-R6-M03-PLATE",
-  "issue_date": "2026-09-16",
+  "manufacturing_revision_date": "2026-09-16",
   "geometry_revision": "R6",
   "status": "Unchanged R6 geometry; all cut dimensions and coordinates \u00b10.10 mm; prepared locally for revised submission",
   "material": "304 stainless steel / EN 1.4301 (JLC SUS304)",

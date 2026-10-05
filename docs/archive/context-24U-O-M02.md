@@ -3,7 +3,7 @@
 > **Historical reference — superseded.** This page describes an earlier design or assessment. Its recommendations and “current” labels apply only to that snapshot. Use the [current project guide](../../README.md) and [three-part recap](../three-part-recap.md) for P / R6.
 
 
-This use-case study places the issued manifold in a short-depth open frame, above a separate host computer and below an exposed eight-GPU tray. It is an illustration of a modular riser-based workstation, not a proprietary eight-GPU server. O-M02 manufacturing files remain unchanged.
+This use-case study places the released manifold in a short-depth open frame, above a separate host computer and below an exposed eight-GPU tray. It is an illustration of a modular riser-based workstation, not a proprietary eight-GPU server. O-M02 manufacturing files remain unchanged.
 
 ## Racking order
 
@@ -21,7 +21,7 @@ The illustrative frame is 600 mm deep overall, with 500 mm between rail planes. 
 
 The lower radiator allocation is **10U = 444.5 mm**. The model shows a custom 440 mm-wide ×440 mm-high radiator body with an approximately 110 mm front-to-back envelope and nine illustrative 120 mm fans. Rack ears extend to the 19-inch mounting positions. These are space-study dimensions, not the specification of a selected stock MO-RA product; core size, fan arrangement and structural mounting remain open. The radiator face is at the rack front, with its depth extending mostly into the rack and open space behind it. The tank is now on the radiator's narrow connection side, with its window and D5 facing outwards, following the MO-RA IV mounting reference. It attaches through the upper direct port adapter and a compact lower retainer; the previous rear-offset carrier and long radiator-to-reservoir hose were incorrect and have been removed. Two fill plugs are on top. The Tank 200 body reference is 275 mm high ×84 mm across the side ×49 mm projection; the D5 envelope is approximate.
 
-**Packaging consequence:** with the existing 440 mm-wide custom radiator body, the side-facing pump reaches X+336 mm, about 69 mm beyond the illustrative rack post's outer side. The radiator is recessed a further 60 mm on short rack stand-offs so the tank clears the front post. The 10U vertical allocation is retained, but this is an outboard pump/tank arrangement, not a width-contained rack package. A narrower/custom cooling core or a different mounting orientation would need a separate packaging decision. Do not relocate the tank behind the fins simply to conceal this issue. See the [mounting reference review](../references/mo-ra-tank-mounting.md).
+**Packaging consequence:** with the existing 440 mm-wide custom radiator body, the side-facing pump reaches X+336 mm, about 69 mm beyond the illustrative rack post's outer side. The radiator is recessed a further 60 mm on short rack stand-offs so the tank clears the front post. The 10U vertical allocation is retained, but this is an outboard pump/tank arrangement, not a width-contained rack package. A narrower/custom cooling core or a different mounting orientation would need a separate packaging decision. Do not relocate the tank behind the fins simply to conceal this clearance problem. See the [mounting reference review](../references/mo-ra-tank-mounting.md).
 
 The server, manifold and GPU shelf move upwards by 2U together; their relative spacing and coolant branches remain the same. This reduces the top reserve from 4U to 2U.
 
@@ -54,7 +54,7 @@ The Blender renders are the primary presentation from this point onwards. Update
 
 The original composite, images, layout data and sketch prompts described here are recoverable from Git commit `0ec11be` under `output/context-24U/`, with the corresponding `scripts/render_context_24u.py`. The active paths now contain the current P/R6 scene; use `git archive 0ec11be output/context-24U scripts/render_context_24u.py` to retrieve the historical assets separately. Obsolete generated sketches and the old side-tank detail were removed from the active output folder during grooming.
 
-The manifold uses the issued O-M02 CAD meshes: 410 mm body, 40 mm slab, 4 mm bosses, 3 mm faceplate, twenty front ports at 40 ×40 mm pitch and four end ports. No surface text, lines or other markings are added to the manifold. Context equipment, hoses and fittings are illustrative. The context views use CAD-derived manifold meshes; the O-M02 manufacturing package controls the actual manifold geometry.
+The manifold uses the released O-M02 CAD meshes: 410 mm body, 40 mm slab, 4 mm bosses, 3 mm faceplate, twenty front ports at 40 ×40 mm pitch and four end ports. No surface text, lines or other markings are added to the manifold. Context equipment, hoses and fittings are illustrative. The context views use CAD-derived manifold meshes; the O-M02 manufacturing package controls the actual manifold geometry.
 
 Sources checked 15 September 2026. No purchases, enquiries or changes to the finalised JLC package were made.
 

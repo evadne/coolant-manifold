@@ -1,6 +1,6 @@
-# Q-M04 POM body fabrication issue
+# Q-M04 POM body fabrication revision
 
-Issued 16 September 2026. Part **RM10-Q-M04-BODY** supersedes Q-M01 for the accepted new-order pack. Its twelve main-block outside edges have **C0.50 ±0.10 mm ×45° ±1° chamfers**, modelled in STEP. The eight triangular corner flats follow the model. All other geometry and manufacturing requirements are retained.
+released 16 September 2026. Part **RM10-Q-M04-BODY** supersedes Q-M01 for the accepted new-order pack. Its twelve main-block outside edges have **C0.50 ±0.10 mm ×45° ±1° chamfers**, modelled in STEP. The eight triangular corner flats follow the model. All other geometry and manufacturing requirements are retained.
 
 Use `output/submission/Q-M04/RM10-Q-M04-BODY.zip`: one single-part STEP and matching three-sheet A3 PDF. Thread cylinders represent tapping pilots; the PDF specifies finished threads. This is a CNC part, not sheet metal.
 
@@ -13,6 +13,6 @@ Use `output/submission/Q-M04/RM10-Q-M04-BODY.zip`: one single-part STEP and matc
 
 STEP comparison confirms only the slab-perimeter chamfers remove material: 267.833 mm³ total. Every curved face, hole and boss feature is unchanged, and the specified sealing lands and M4 bearing areas are outside the removed volume. Finished solid is valid; no material is added. The drawing includes an enlarged edge detail and explicit perimeter call-out.
 
-Rebuild using `.venv/bin/python scripts/prepare_Q_body_issue.py`, then `python3 scripts/draw_Q_production.py --body-issue Q-M04 --body-only` with ReportLab. Render and inspect all three PDF sheets, then run `python3 scripts/package_Q_body_issue.py` with pypdf. The body preparation also refreshes the separate reference assembly with the current Q-M03 faceplate; run it after faceplate preparation.
+Rebuild using `.venv/bin/python scripts/prepare_Q_body_manufacturing_revision.py`, then `python3 scripts/draw_Q_production.py --body-manufacturing-revision Q-M04 --body-only` with ReportLab. Render and inspect all three PDF sheets, then run `python3 scripts/package_Q_body_manufacturing_revision.py` with pypdf. The body preparation also refreshes the separate reference assembly with the current Q-M03 faceplate; run it after faceplate preparation.
 
 The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Submitted for file review on 16 September after explicit confirmation of UPS shipping at US$71.99. Prior material, finish and goods metadata were reused. No payment was made. The operator subsequently reported clearing the original order; preserve its fabrication archives. [New-order submission record](jlc-order-2026-09-16.md). On 17 September 2026, the operator supplied a JLC timeline screenshot showing all three current parts Approved and the batch awaiting payment. No review comments are shown. The screenshot does not establish the final reviewed prices or machining route. See [approval record](jlc-order-2026-09-16.md#supplier-approval--17-september-2026). Assembly instructions remain outside the fabrication ZIP.

@@ -7,7 +7,7 @@ import argparse
 import copy
 from datetime import date
 import hashlib
-import json
+import revision_json as json
 import re
 import shutil
 import zipfile
@@ -63,32 +63,32 @@ def initialise(root, name, changes):
     rows, configs = [], {}
     for role, original in selected.items():
         part = {k:copy.deepcopy(original[k]) for k in
-                ('part', 'issue', 'source', 'step', 'drawing', 'dxf', 'pdf_sheets', 'jlc', 'quantity')}
+                ('part', 'manufacturing_revision', 'source', 'step', 'drawing', 'dxf', 'pdf_sheets', 'jlc', 'quantity')}
         part.update(role=role, changed=role in changes, review_images=[], verification=None)
         if role in changes:
-            issue = changes[role]
-            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', issue), f'Invalid issue: {issue}')
-            stem = original['part'].replace(original['issue'], issue)
-            config_path = root / f'cad/manufacturing/{issue}.json'
-            require(not config_path.exists() and config_path not in configs, f'Issue already exists: {issue}')
-            require(not (root / f'output/manufacturing/{issue}').exists(), f'Output issue already exists: {issue}')
+            manufacturing_revision = changes[role]
+            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', manufacturing_revision), f'Invalid revision: {manufacturing_revision}')
+            stem = original['part'].replace(original['manufacturing_revision'], manufacturing_revision)
+            config_path = root / f'cad/manufacturing/{manufacturing_revision}.json'
+            require(not config_path.exists() and config_path not in configs, f'Manufacturing revision already exists: {manufacturing_revision}')
+            require(not (root / f'output/manufacturing/{manufacturing_revision}').exists(), f'Output revision already exists: {manufacturing_revision}')
             config = read(file(root, original['source']))
-            config.update(issue=issue, part_number=stem, issue_date=date.today().isoformat(),
-                          source_issue=original['issue'], status='Draft; not reviewed or submitted',
+            config.update(manufacturing_revision=manufacturing_revision, part_number=stem, manufacturing_revision_date=date.today().isoformat(),
+                          source_manufacturing_revision=original['manufacturing_revision'], status='Draft; not reviewed or submitted',
                           scope='Draft starting values; update geometry and fabrication requirements')
             for key in ('geometry_change', 'nominal_geometry_unchanged'):
                 config.pop(key, None)
             for key in ('submission_performed', 'supplier_submission_performed'):
                 if key in config:config[key] = False
             configs[config_path] = config
-            part.update(part=stem, issue=issue, source=f'cad/manufacturing/{issue}.json',
-                        step=f'output/manufacturing/{issue}/{stem}.step',
+            part.update(part=stem, manufacturing_revision=manufacturing_revision, source=f'cad/manufacturing/{manufacturing_revision}.json',
+                        step=f'output/manufacturing/{manufacturing_revision}/{stem}.step',
                         drawing=f'output/pdf/{stem}.pdf',
-                        dxf=f'output/manufacturing/{issue}/{stem}.dxf' if original['dxf'] else None,
-                        verification=f'output/manufacturing/{issue}/geometry-verification.json')
-            part['jlc']['remarks'] = 'TODO: write manufacturing-only remarks for this issue'
+                        dxf=f'output/manufacturing/{manufacturing_revision}/{stem}.dxf' if original['dxf'] else None,
+                        verification=f'output/manufacturing/{manufacturing_revision}/geometry-verification.json')
+            part['jlc']['remarks'] = 'TODO: write manufacturing-only remarks for this revision'
         rows.append(part)
-    value = dict(schema_version=1, name=name, status='draft', parts=rows,
+    value = dict(schema_version=2, name=name, status='draft', parts=rows,
                  note='Starting configurations only; adapt builders/checks/drawings before review. Current delivered selection is unchanged.')
     # Validate every destination before writing anything.
     for path, config in configs.items():write_new(path, config)
@@ -120,28 +120,28 @@ def inputs(root, manifest):
                 require(part[field] is None, 'Body uses STEP/PDF only');continue
             require(Path(part[field]).name == f"{part['part']}.{ext}", f'Mismatched {field} filename')
         if not part['changed']:
-            for key in ('part','issue','source','step','drawing','dxf','pdf_sheets','jlc'):
-                require(part[key] == old[key], f'Unchanged {role} differs in {key}; allocate a new issue')
-            require(sha(file(root, old['issue_bundle'])) == old['sha256'], 'Changed original archive')
-            with zipfile.ZipFile(file(root, old['issue_bundle'])) as archive:
+            for key in ('part','manufacturing_revision','source','step','drawing','dxf','pdf_sheets','jlc'):
+                require(part[key] == old[key], f'Unchanged {role} differs in {key}; allocate a new revision')
+            require(sha(file(root, old['manufacturing_revision_bundle'])) == old['sha256'], 'Changed original archive')
+            with zipfile.ZipFile(file(root, old['manufacturing_revision_bundle'])) as archive:
                 for field in ('step','drawing','dxf'):
                     if old[field]:require(archive.read(Path(old[field]).name) == file(root, old[field]).read_bytes(),
-                                          f'Unchanged {role} no longer matches its issued ZIP')
-            paths.add(old['issue_bundle'])
+                                          f'Unchanged {role} no longer matches its released ZIP')
+            paths.add(old['manufacturing_revision_bundle'])
         else:
-            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', part['issue']), 'Invalid issue')
-            require(part['part'] == old['part'].replace(old['issue'],part['issue']) and part['issue'] != old['issue'],
-                    'Changed parts need a new issue and matching part number')
+            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', part['manufacturing_revision']), 'Invalid revision')
+            require(part['part'] == old['part'].replace(old['manufacturing_revision'],part['manufacturing_revision']) and part['manufacturing_revision'] != old['manufacturing_revision'],
+                    'Changed parts need a new revision and matching part number')
             for field in ('source','step','drawing','dxf','verification'):
                 if part[field]:require(part[field] not in protected, f'Cannot reuse delivered {field}')
-            require(part['source'] == f"cad/manufacturing/{part['issue']}.json", 'Unexpected source configuration')
+            require(part['source'] == f"cad/manufacturing/{part['manufacturing_revision']}.json", 'Unexpected source configuration')
             for field in ('step','dxf','verification'):
-                if part[field]:require(Path(part[field]).parent == Path(f"output/manufacturing/{part['issue']}"),
-                                       f'Keep {field} inside the new issue directory')
+                if part[field]:require(Path(part[field]).parent == Path(f"output/manufacturing/{part['manufacturing_revision']}"),
+                                       f'Keep {field} inside the new revision directory')
             config = read(file(root,part['source']))
-            require(config['issue']==part['issue'] and config['part_number']==part['part'], 'Source issue mismatch')
+            require(config['manufacturing_revision']==part['manufacturing_revision'] and config['part_number']==part['part'], 'Source revision mismatch')
             verification = read(file(root, part['verification']))
-            require(verification['checks']=='PASS' and verification['issue']==part['issue'], 'Geometry checks must pass for this issue')
+            require(verification['checks']=='PASS' and verification['manufacturing_revision']==part['manufacturing_revision'], 'Geometry checks must pass for this revision')
             hashes = verification.get('source_sha256',{})
             require(part['source'] in hashes, 'Geometry verification must cover the source configuration')
             for path, expected_hash in hashes.items():
@@ -188,7 +188,7 @@ def package(root, manifest):
                 with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED) as archive:
                     for field in ('step','drawing','dxf'):
                         if part[field]:archive.write(file(root,part[field]),Path(part[field]).name)
-            else:shutil.copyfile(file(root,base[part['role']]['issue_bundle']),bundle)
+            else:shutil.copyfile(file(root,base[part['role']]['manufacturing_revision_bundle']),bundle)
             with zipfile.ZipFile(bundle) as archive:
                 expected={Path(part[k]).name:file(root,part[k]).read_bytes() for k in ('step','drawing','dxf') if part[k]}
                 require(archive.testzip() is None and set(archive.namelist())==set(expected),'Invalid ZIP contents')
@@ -215,14 +215,14 @@ def package(root, manifest):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     sub=parser.add_subparsers(dest='command',required=True)
-    init=sub.add_parser('init');init.add_argument('name');init.add_argument('--change',action='append',required=True,metavar='ROLE=ISSUE')
+    init=sub.add_parser('init');init.add_argument('name');init.add_argument('--change',action='append',required=True,metavar='ROLE=REVISION')
     for name in ('check','snapshot','package'):
         sub.add_parser(name).add_argument('manifest',type=Path)
     args=parser.parse_args()
     try:
         if args.command=='init':
             pairs=[v.split('=',1) for v in args.change]
-            require(all(len(p)==2 for p in pairs),'Use ROLE=ISSUE')
+            require(all(len(p)==2 for p in pairs),'Use ROLE=REVISION')
             require(len({p[0] for p in pairs})==len(pairs),'Duplicate changed role')
             result=initialise(ROOT,args.name,dict(pairs))
         else:

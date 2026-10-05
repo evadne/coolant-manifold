@@ -1,7 +1,7 @@
 {
-  "issue": "R4-M01",
+  "manufacturing_revision": "R4-M01",
   "part_number": "SN1260-R4-M01-PLATE",
-  "issue_date": "2026-09-15",
+  "manufacturing_revision_date": "2026-09-15",
   "geometry_revision": "R4",
   "status": "Production drawing pack for quotation and supplier manufacturing review; operator-approved R4 geometry",
   "material": "304 stainless steel / EN 1.4301 (JLC SUS304)",

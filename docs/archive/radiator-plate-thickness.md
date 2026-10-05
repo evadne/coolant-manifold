@@ -3,7 +3,7 @@
 > **Historical reference — superseded.** This page describes an earlier design or assessment. Its recommendations and “current” labels apply only to that snapshot. Use the [current project guide](../../README.md) and [three-part recap](../three-part-recap.md) for P / R6.
 
 
-The operator is willing to reduce sheet thickness if strength is retained. **2 mm 304 stainless is the proposed next prototype candidate**, keeping R1's outline, twelve radiator attachment points, cross web and rack fixings. This assessment does not replace the issued 3 mm R1 CAD/drawing or establish a qualified minimum thickness.
+The operator is willing to reduce sheet thickness if strength is retained. **2 mm 304 stainless is the proposed next prototype candidate**, keeping R1's outline, twelve radiator attachment points, cross web and rack fixings. This assessment does not replace the released 3 mm R1 CAD/drawing or establish a qualified minimum thickness.
 
 | Thickness | Plate mass | Saving against 3 mm | Total rack mass, including 6.225 kg payload | Relative bending stiffness |
 |---|---:|---:|---:|---:|

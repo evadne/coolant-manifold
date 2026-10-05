@@ -66,7 +66,7 @@ side=[s for s in side_assembly if s.BoundingBox().xlen<60]
 assert len(side)==4
 side_gap=min(r.distance(s) for r in rear_keepouts for s in side)
 assert side_gap>0
-report=dict(revision='Q',status='Operator-approved Q geometry; supplier issue Q-M01',front_ports=20,side_ports=4,rear_ports=4,total_G1_4_ports=28,
+report=dict(revision='Q',status='Operator-approved Q geometry; supplier revision Q-M01',front_ports=20,side_ports=4,rear_ports=4,total_G1_4_ports=28,
  wet_networks=2,rear_bosses=0,rear_cover=False,body_slab_depth_mm=D,overall_POM_depth_mm=D+parent['port_boss_height'],
  rear_port_details=checks,rear_full_diameter_pilot_depth_mm=D-parent['gallery_axis_y'],rear_drill_tip_Y_mm=parent['gallery_axis_y']-point,
  M4_full_thread_after_entry_mm=10,M4_pilot_full_diameter_depth_mm=new_depth,M4_reference_screw_length_mm=10,M4_drill_tip_depth_mm=new_depth+m4point,

@@ -27,7 +27,7 @@ Historical original-order statuses and the operator’s emailed acceptance remai
 
 The long galleries were the principal CNC capability review item; the submitted Q-M01 body had Approved status at the last check; Q-M04 is also Approved in the 17 September screenshot, although no separate detailed gallery/stock declaration is shown. Black unfilled declared POM-C or POM-H is accepted in principle; JLC must identify its offered stock. Both2 mm stainless plates use sheet-metal fabrication and matching raw sheet finish. The current body retains M4 hole coordinates ±0.05; the Q-M03 faceplate specifies ±0.10 for every cut size and X/Z position, including Ø4.50 ±0.10 holes. This replaces the original faceplate’s tighter call-outs with the accepted capability. POM requirements are retained except for the new explicit perimeter chamfers. All20 boss roots retain positive nominal/tolerance clearance to the windows.
 
-Earlier P review files and O-M02 supplier ZIPs are historical. Do not mix their16 mm M4 threads/18 mm pilots or old countersunk plate details into Q-M01. R6-M01 is superseded by the explicit finish issue, with no radiator geometry change.
+Earlier P review files and O-M02 supplier ZIPs are historical. Do not mix their16 mm M4 threads/18 mm pilots or old countersunk plate details into Q-M01. R6-M01 is superseded by the explicit finish revision, with no radiator geometry change.
 
 Assembly, installation and performance studies are maintained separately; they are not fabrication instructions. See [Q assembly](../assembly-Q.md), [radiator assembly](../radiator-rack-plate.md) and [engineering retention study](../Q-torque-and-creep.md).
 
@@ -37,11 +37,11 @@ The operator requested C0.5 ×45° on all twelve outside edges of the main block
 
 ## R5 outside-corner revision — 16 September 2026
 
-At the operator’s request, the held issues are now Q-M03 and R7-M01. Both STEP/DXF profiles and PDFs specify four R5.00 ±0.10 mm outside corners. This is a cut-profile feature, distinct from face-edge deburring. Q-M01 POM and all steel holes/slots/notch/air apertures remain unchanged. Product, studio, radiator and StarTech25U renders use the new geometry. Original supplier-order archives remain intact.
+At the operator’s request, the held revisions are now Q-M03 and R7-M01. Both STEP/DXF profiles and PDFs specify four R5.00 ±0.10 mm outside corners. This is a cut-profile feature, distinct from face-edge deburring. Q-M01 POM and all steel holes/slots/notch/air apertures remain unchanged. Product, studio, radiator and StarTech25U renders use the new geometry. Original supplier-order archives remain intact.
 
 ## Historical outer-corner inspection — 16 September 2026
 
-Direct inspection of the held-issue STEP and DXF confirms that **Q-M02 faceplate has four square outer corners**: its DXF perimeter is a four-vertex rectangle with zero bulges, and STEP has no outer corner cylindrical faces. **R6-M03 radiator has four R2 mm outer corners**, present in both STEP and DXF; the four STEP cylinders lie at X±239.3, Y2/442.5. The unchanged predecessor geometries have the same corners. These cut-profile radii are distinct from rounding the sheet's face edges or standard deburring. No geometry change was made during this inspection.
+Direct inspection of the held-revision STEP and DXF confirms that **Q-M02 faceplate has four square outer corners**: its DXF perimeter is a four-vertex rectangle with zero bulges, and STEP has no outer corner cylindrical faces. **R6-M03 radiator has four R2 mm outer corners**, present in both STEP and DXF; the four STEP cylinders lie at X±239.3, Y2/442.5. The unchanged predecessor geometries have the same corners. These cut-profile radii are distinct from rounding the sheet's face edges or standard deburring. No geometry change was made during this inspection.
 
 ## Historical POM edge inspection — 16 September 2026
 

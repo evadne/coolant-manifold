@@ -1,7 +1,7 @@
 {
-  "issue": "R7-M01",
+  "manufacturing_revision": "R7-M01",
   "part_number": "SN1260-R7-M01-PLATE",
-  "issue_date": "2026-09-16",
+  "manufacturing_revision_date": "2026-09-16",
   "geometry_revision": "R7",
   "status": "Operator-requested R5 external corners; held for repeat orders",
   "material": "304 stainless steel / EN 1.4301 (JLC SUS304)",

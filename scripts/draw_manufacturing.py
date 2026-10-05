@@ -1,8 +1,9 @@
-"""A3 manufacturing sheets and A4 supplier review for approved O / detail issue O-M02.
+"""A3 manufacturing sheets and A4 supplier review for approved O / detail revision O-M02.
 Run using the bundled Python with reportlab and pypdf. Geometry comes from JSON.
 """
 from pathlib import Path
-import json,math,datetime
+import math, datetime
+import revision_json as json
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -16,7 +17,7 @@ p=json.loads((ROOT/'cad/iterations/O-long-bore.json').read_text())
 f=json.loads((ROOT/'cad/manufacturing/O-M02.json').read_text())
 schedule=json.loads((ROOT/'output/manufacturing/O-M02/feature-schedule.json').read_text())
 OUT=ROOT/'output/pdf';OUT.mkdir(exist_ok=True)
-DATE=f['issue_date']
+DATE=f['manufacturing_revision_date']
 H=f['boss_height']
 D=40+H
 PILOT=20+H
@@ -82,14 +83,14 @@ def sheet(code,title,index,total,material,scale='AS SHOWN'):
     C.setPageSize(landscape(A3));C.setTitle(code);C.setAuthor('Coolant manifold rackmount project')
     rect(10,10,400,277)
     text(15,279,code,5,True);text(15,271,title,3.6)
-    text(405,280,'LAYOUT O • DETAIL ISSUE O-M02',3,True,align='right')
+    text(405,280,'LAYOUT O • DETAIL REVISION O-M02',3,True,align='right')
     text(405,273,'Single-part machining drawing',2.8,align='right')
     rect(10,10,400,27)
     for x in (135,265,345):line(x,10,x,37)
     text(14,31,material,3,True);text(14,24,'Units: mm • DIN ISO 2768-1 m unless stated',2.55)
     text(14,17,'Dimensions at 20 °C • Do not scale drawing',2.55)
     text(140,31,'Geometry: approved Revision O',3)
-    text(140,24,'Detail issue: O-M02 • '+DATE,2.7)
+    text(140,24,'Detail revision: O-M02 • '+DATE,2.7)
     text(140,17,'No tapped holes; six countersinks only' if 'FACEPLATE' in code else 'Unmodelled helices: machine threads to this drawing',2.55)
     text(270,31,'Scale: '+scale,3);text(270,24,'Third-angle; views labelled',2.55)
     text(270,17,'No product markings',2.55)
@@ -315,7 +316,7 @@ notes(220,180,['DATUMS / FUNCTIONAL SURFACES',
 text(15,79,'SUPPLIER DFM HOLD POINT: confirm long-bore process, alignment inspection and material grade before cutting.',2.9,True)
 notes(15,67,['STEP contains nominal tapping pilots, not thread helices. General external edge deburring is not explicitly modelled.',
  'Boss lip chamfers, port-entry cones and M4 pilot drill points are modelled in the matching O-M02 STEP.',
- 'Operator approval applies to layout O. This issue uses 4 mm bosses and edge / drill details; no pressure or structural rating is claimed.'],2.75)
+ 'Operator approval applies to layout O. This revision uses 4 mm bosses and edge / drill details; no pressure or structural rating is claimed.'],2.75)
 C.showPage();C.save()
 
 # ---------- SUPPLIER REVIEW (A4) ----------
@@ -358,7 +359,7 @@ for t in [
  'Please review the two-part fit and report any proposed geometry, tolerance or material changes before proceeding.'
 ]:para('• '+t)
 para('Remaining design limits','SubA')
-para('The approved rack pattern retains 1.9 mm nominal metal at the outermost slot edges; washer overhang there remains a builder-hardware issue. The previous 2 mm elbow/nut gap uses illustrative envelopes. Actual hardware, temperature, clamp preload, creep and assembled leak/pressure behaviour have not been qualified. These findings do not prevent requesting a manual manufacturing review.')
+para('The approved rack pattern retains 1.9 mm nominal metal at the outermost slot edges; washer overhang there remains a builder-hardware concern. The previous 2 mm elbow/nut gap uses illustrative envelopes. Actual hardware, temperature, clamp preload, creep and assembled leak/pressure behaviour have not been qualified. These findings do not prevent requesting a manual manufacturing review.')
 doc=SimpleDocTemplate(str(OUT/'RM10-O-M02-DFM.pdf'),pagesize=A4,leftMargin=17*mm,rightMargin=17*mm,topMargin=16*mm,bottomMargin=16*mm)
 def footer(c,doc):
     c.setFont('Arial',8);c.drawString(17*mm,9*mm,'RM10-O-M02 • Supplier review • '+DATE);c.drawRightString(193*mm,9*mm,str(doc.page))

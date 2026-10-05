@@ -1,8 +1,8 @@
-> Historical issue: superseded by [R6-M02](jlc-submission-R6-M02.md), which adds explicit brush direction without changing geometry.
+> Historical revision: superseded by [R6-M02](jlc-submission-R6-M02.md), which adds explicit brush direction without changing geometry.
 
 # R6-M01 radiator plate production pack
 
-Issued 15 September 2026. R6 operator-approved on 15 September 2026. Part **SN1260-R6-M01-PLATE** adds the requested shallow 10 × 2 mm rounded cable notch to the operator-approved, non-tapped R4 radiator plate. It supersedes R5-M01 for fabrication; the earlier R4 and 10 × 5 mm R5 packs are preserved. The manifold package remains separate.
+released 15 September 2026. R6 operator-approved on 15 September 2026. Part **SN1260-R6-M01-PLATE** adds the requested shallow 10 × 2 mm rounded cable notch to the operator-approved, non-tapped R4 radiator plate. It supersedes R5-M01 for fabrication; the earlier R4 and 10 × 5 mm R5 packs are preserved. The manifold package remains separate.
 
 ## Upload files
 
@@ -50,6 +50,6 @@ Use the current R6 assembly notes (`docs/radiator-rack-plate.md` in the project)
 
 The shallow notch supersedes the previous 5 mm depth; its floor is Y442.500.
 
-Build geometry first with `scripts/build_radiator_plate.py --revision R6`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R6-M01`, then `scripts/draw_radiator_production.py --issue R6-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R6-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R6-M01/`; the upload bundle and supplier remarks are in `output/submission/R6-M01/`.
+Build geometry first with `scripts/build_radiator_plate.py --revision R6`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--manufacturing-revision R6-M01`, then `scripts/draw_radiator_production.py --manufacturing-revision R6-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --manufacturing-revision R6-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R6-M01/`; the upload bundle and supplier remarks are in `output/submission/R6-M01/`.
 
-This issue prepares the files only. No supplier upload, quotation acceptance or order has been made.
+This revision prepares the files only. No supplier upload, quotation acceptance or order has been made.

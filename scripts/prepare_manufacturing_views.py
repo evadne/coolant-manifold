@@ -1,7 +1,7 @@
-"""Tessellate the issued supplier STEP files for O-M02 review, preserving O."""
+"""Tessellate the released supplier STEP files for O-M02 review, preserving O."""
 from pathlib import Path
 import hashlib
-import json
+import revision_json as json
 import shutil
 import cadquery as cq
 
@@ -28,7 +28,7 @@ for pattern in ('side_plug_*.stl', 'elbow-reference-*.stl'):
         shutil.copyfile(path, MESH / path.name)
 assert len(list(MESH.glob('*.stl'))) == 13
 report = {
-    'issue': 'O-M02', 'source': 'Issued manufacturing STEP solids',
+    'manufacturing_revision': 'O-M02', 'source': 'released manufacturing STEP solids',
     'boss_height_mm': 4, 'slab_depth_mm': 40, 'boss_projection_mm': 1,
     'body_depth_mm': 44, 'body_valid': True, 'plate_valid': True,
     'source_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest()

@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "as_of": "2026-10-05",
   "selection_status": "canonical_delivered_first_article",
   "geometry": {
@@ -9,11 +9,11 @@
   "parts": [
     {
       "part": "RM10-Q-M04-BODY",
-      "issue": "Q-M04",
+      "manufacturing_revision": "Q-M04",
       "quantity": 1,
       "source": "cad/manufacturing/Q-M04.json",
       "bundle": "output/submission/current-three-parts/RM10-Q-M04-BODY.zip",
-      "issue_bundle": "output/submission/Q-M04/RM10-Q-M04-BODY.zip",
+      "manufacturing_revision_bundle": "output/submission/Q-M04/RM10-Q-M04-BODY.zip",
       "sha256": "699a2a0bc5bc1a903e00e94bfad6d5d2cd445495360754556012212c078f5b65",
       "drawing": "output/pdf/RM10-Q-M04-BODY.pdf",
       "step": "output/manufacturing/Q-M04/RM10-Q-M04-BODY.step",
@@ -29,11 +29,11 @@
     },
     {
       "part": "RM10-Q-M03-FACEPLATE",
-      "issue": "Q-M03",
+      "manufacturing_revision": "Q-M03",
       "quantity": 1,
       "source": "cad/manufacturing/Q-M03.json",
       "bundle": "output/submission/current-three-parts/RM10-Q-M03-FACEPLATE.zip",
-      "issue_bundle": "output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip",
+      "manufacturing_revision_bundle": "output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip",
       "sha256": "3c80e7e8aa76f7f0c491d85baca623d7600ec8d7f56c1f24999eb6ccaaeb3664",
       "drawing": "output/pdf/RM10-Q-M03-FACEPLATE.pdf",
       "step": "output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step",
@@ -49,11 +49,11 @@
     },
     {
       "part": "SN1260-R7-M01-PLATE",
-      "issue": "R7-M01",
+      "manufacturing_revision": "R7-M01",
       "quantity": 1,
       "source": "cad/manufacturing/R7-M01.json",
       "bundle": "output/submission/current-three-parts/SN1260-R7-M01-PLATE.zip",
-      "issue_bundle": "output/submission/R7-M01/SN1260-R7-M01-PLATE.zip",
+      "manufacturing_revision_bundle": "output/submission/R7-M01/SN1260-R7-M01-PLATE.zip",
       "sha256": "e5c4d85cf3fe5049dddc34ca8609f049415fbc364f7fac4732a83c5faca875fd",
       "drawing": "output/pdf/SN1260-R7-M01-PLATE.pdf",
       "step": "output/manufacturing/R7-M01/SN1260-R7-M01-PLATE.step",

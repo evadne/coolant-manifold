@@ -1,13 +1,14 @@
 """Package the selected plate with its checked production drawing, not an assembly."""
 from pathlib import Path
-import hashlib,json,shutil,zipfile,argparse,re
+import hashlib, shutil, zipfile, argparse, re
+import revision_json as json
 from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
-ISSUE=parser.parse_args().issue
-M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
-stem=M['part_number'];src=ROOT/f'output/manufacturing/{ISSUE}'
-out=ROOT/f'output/submission/{ISSUE}';out.mkdir(parents=True,exist_ok=True)
+parser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
+MANUFACTURING_REVISION=parser.parse_args().manufacturing_revision
+M=json.loads((ROOT/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text());REV=M['geometry_revision']
+stem=M['part_number'];src=ROOT/f'output/manufacturing/{MANUFACTURING_REVISION}'
+out=ROOT/f'output/submission/{MANUFACTURING_REVISION}';out.mkdir(parents=True,exist_ok=True)
 report=json.loads((src/'geometry-verification.json').read_text())
 assert report['checks']=='PASS' and report['nominal_geometry_unchanged']
 schedule=json.loads((src/'feature-schedule.json').read_text())['features']
@@ -25,11 +26,11 @@ if REV in ['R5','R6','R7']:
  throat=n['mouth_width']-2*n['mouth_radius'];floor=throat-2*n['bottom_radius']
  for phrase in (f"{n['mouth_width']:.2f}",f"{n['depth']:.2f}",f"R{n['mouth_radius']:.2f}",f"R{n['bottom_radius']:.2f}",'R0.30-0.50',f'{throat:.2f} REF',f'{floor:.2f} REF'):
   assert phrase in pages[2],phrase
-if ISSUE in ['R6-M02','R6-M03','R7-M01']:
- for phrase in ('RAW SHEET FINISH: BOTH FACES', ISSUE.split('-')[-1]):assert phrase in txt,phrase
+if MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01']:
+ for phrase in ('RAW SHEET FINISH: BOTH FACES', MANUFACTURING_REVISION.split('-')[-1]):assert phrase in txt,phrase
  for phrase in ('M4 ×40', 'screws + nuts', 'assembly order', 'loctite'):
   assert phrase.lower() not in txt.lower(),f'Assembly instruction in fabrication PDF: {phrase}'
-if ISSUE in ['R6-M03','R7-M01']:
+if MANUFACTURING_REVISION in ['R6-M03','R7-M01']:
  for obsolete in ['±0.15','+0.15/0','+0 / -0.15','±0.05']:
   assert obsolete not in txt,obsolete
  assert '±0.10' in txt
@@ -42,12 +43,12 @@ with zipfile.ZipFile(zpath,'w',zipfile.ZIP_DEFLATED) as z:
 with zipfile.ZipFile(zpath) as z:
  assert z.testzip() is None and set(z.namelist())=={f.name for f in files}
  for f in files:assert z.read(f.name)==f.read_bytes()
-guide_dir=ROOT/('docs' if ISSUE in ['R6-M02','R6-M03','R7-M01'] else 'docs/archive')
-guide=(guide_dir/f'jlc-submission-{ISSUE}.md').read_text()
+guide_dir=ROOT/('docs' if MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01'] else 'docs/archive')
+guide=(guide_dir/f'jlc-submission-{MANUFACTURING_REVISION}.md').read_text()
 (out/'README.md').write_text(re.sub(r'\]\(([^:/)]+\.md)\)', r'](../../../docs/\1)', guide))
-shutil.copyfile(guide_dir/f'jlc-radiator-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')
+shutil.copyfile(guide_dir/f'jlc-radiator-remarks-{MANUFACTURING_REVISION}.txt',out/'supplier-remarks.txt')
 shutil.copyfile(src/'geometry-verification.json',out/'geometry-verification.json')
-report={'issue':M['issue'],'checks':'PASS','pdf_pages':len(pages),'scheduled_features':len(schedule),
+report={'manufacturing_revision':M['manufacturing_revision'],'checks':'PASS','pdf_pages':len(pages),'scheduled_features':len(schedule),
  'round_holes':28,'rack_slots':40,'air_apertures':4,'edge_notches':int(REV in ['R5','R6','R7']),'zip_members':[f.name for f in files],
  'pdf_identifier_and_coordinate_coverage':'PASS','zip_integrity':'PASS',
  'upload_performed_by_packaging_script':False}

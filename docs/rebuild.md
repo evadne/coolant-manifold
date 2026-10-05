@@ -24,7 +24,7 @@ For the optional historical structural-analysis tools:
 
 A separate CalculiX 2.23 executable is only needed to solve new structural cases; reading the retained results does not require it. The original solver ran on Linux; this does not change the macOS CAD/Blender baseline.
 
-**To make a new revision, follow [the contributor workflow](new-revision.md).** The commands below reproduce existing issues into their existing paths. Run them only in a disposable checkout for reproduction checks; do not overwrite issued archives in your working branch. For a new issue, copy/adapt the relevant generators to new output paths and use the separate release helper. Ordering existing parts needs none of these installations.
+**To make a new revision, follow [the contributor workflow](new-revision.md).** The commands below reproduce existing revisions into their existing paths. Run them only in a disposable checkout for reproduction checks; do not overwrite released archives in your working branch. For a new revision, copy/adapt the relevant generators to new output paths and use the separate release helper. Ordering existing parts needs none of these installations.
 
 Render meshes and scene descriptions are tracked beside the matching revision under `output/`. The Q inspection renderer reads its two gallery meshes from `output/long-bore-Q/meshes/` and its finished solids from `output/manufacturing/`; no preliminary cache preparation is needed.
 
@@ -34,33 +34,33 @@ For a read-only check of current download selection, hashes and navigation, run:
 .venv/bin/python scripts/check_publication.py
 ```
 
-## Current steel specification issues: Q-M03 / R7-M01
+## Current steel specification revisions: Q-M03 / R7-M01
 
-Preserve the submitted Q-M01 body and original supplier archives. To rebuild the current R5-corner steel issues, retaining accepted ±0.10 mm cut tolerances:
+Preserve the submitted Q-M01 body and original supplier archives. To rebuild the current R5-corner steel revisions, retaining accepted ±0.10 mm cut tolerances:
 
 ```sh
-.venv/bin/python scripts/prepare_Q_faceplate_issue.py --issue Q-M03
+.venv/bin/python scripts/prepare_Q_faceplate_manufacturing_revision.py --manufacturing-revision Q-M03
 .venv/bin/python scripts/build_radiator_plate.py --revision R7
-.venv/bin/python scripts/prepare_radiator_production.py --issue R7-M01
+.venv/bin/python scripts/prepare_radiator_production.py --manufacturing-revision R7-M01
 # Inspect both PDFs (five sheets) before packaging.
-.venv/bin/python scripts/draw_Q_production.py --faceplate-issue Q-M03 --faceplate-only
-.venv/bin/python scripts/draw_radiator_production.py --issue R7-M01
-.venv/bin/python scripts/package_Q_faceplate_issue.py --issue Q-M03
-.venv/bin/python scripts/package_radiator_production.py --issue R7-M01
+.venv/bin/python scripts/draw_Q_production.py --faceplate-manufacturing-revision Q-M03 --faceplate-only
+.venv/bin/python scripts/draw_radiator_production.py --manufacturing-revision R7-M01
+.venv/bin/python scripts/package_Q_faceplate_manufacturing_revision.py --manufacturing-revision Q-M03
+.venv/bin/python scripts/package_radiator_production.py --manufacturing-revision R7-M01
 # Render and inspect current presentations below before finalising the index.
 ```
 
-These commands do not upload. Regenerating an existing issue may change file bytes and invalidate the original source/review hashes even when the nominal design is unchanged. Inspect regenerated drawings and presentations in the disposable checkout; retain the delivered archives and their historical review records in the project. For new issues, use the new-revision workflow rather than changing those historical hashes.
+These commands do not upload. Regenerating an existing revision may change file bytes and invalidate the original source/review hashes even when the nominal design is unchanged. Inspect regenerated drawings and presentations in the disposable checkout; retain the delivered archives and their historical review records in the project. For new revisions, use the new-revision workflow rather than changing those historical hashes.
 
-## Current POM body issue Q-M04
+## Current POM body revision Q-M04
 
 After preparing the Q-M03 faceplate, run:
 
 ```sh
-.venv/bin/python scripts/prepare_Q_body_issue.py
-.venv/bin/python scripts/draw_Q_production.py --body-issue Q-M04 --body-only
+.venv/bin/python scripts/prepare_Q_body_manufacturing_revision.py
+.venv/bin/python scripts/draw_Q_production.py --body-manufacturing-revision Q-M04 --body-only
 # Render and inspect the three new body sheets before packaging.
-.venv/bin/python scripts/package_Q_body_issue.py
+.venv/bin/python scripts/package_Q_body_manufacturing_revision.py
 ```
 
 Q-M04 preserves the submitted Q-M01 source and adds only the twelve C0.5 ×45° slab-edge chamfers. It also refreshes the current assembly STEP; run this step after faceplate preparation. Current Q product/studio/context renderers load Q-M04. Do not overwrite submitted archives. The accepted new-order pack is Q-M04 body + Q-M03 faceplate + R7-M01 radiator. Current review comprises three new body sheets, five unchanged steel sheets, 25 refreshed manifold/studio/context images and seven inherited radiator images. The tube equilibrium remains unchanged.
@@ -88,11 +88,11 @@ Original supplier files are Q-M01; current faceplate specification is Q-M03. Do 
 
 ```sh
 .venv/bin/python scripts/build_radiator_plate.py --revision R6
-.venv/bin/python scripts/prepare_radiator_production.py --issue R6-M02
+.venv/bin/python scripts/prepare_radiator_production.py --manufacturing-revision R6-M02
 # Inspect all three rendered PDF sheets:
-.venv/bin/python scripts/draw_radiator_production.py --issue R6-M02
+.venv/bin/python scripts/draw_radiator_production.py --manufacturing-revision R6-M02
 # Package after visual inspection:
-.venv/bin/python scripts/package_radiator_production.py --issue R6-M02
+.venv/bin/python scripts/package_radiator_production.py --manufacturing-revision R6-M02
 /Applications/Blender.app/Contents/MacOS/Blender -b --python scripts/render_radiator_plate.py -- --revision R6 --plate-only --device METAL
 ```
 
@@ -133,7 +133,7 @@ Operator confirmation, 15 September 2026: increasing Clip Start made the live vi
 
 ## Final three-part consistency record
 
-Run `.venv/bin/python scripts/finalise_three_part_pack.py` to verify/recreate the delivered Q/R7 index from its retained files and review records. It is specific to that set and does not promote a new revision. The separate `release.py` workflow packages new reviewed issues without modifying this index. Assembly instructions remain outside fabrication ZIPs.
+Run `.venv/bin/python scripts/finalise_three_part_pack.py` to verify/recreate the delivered Q/R7 index from its retained files and review records. It is specific to that set and does not promote a new revision. The separate `release.py` workflow packages new reviewed revisions without modifying this index. Assembly instructions remain outside fabrication ZIPs.
 
 ## Reading retained structural studies
 
@@ -144,3 +144,9 @@ For a new solver run, `radiator_plate_fea.py` writes the plain `.inp` deck and c
 The preserved scene-specific checks in `scripts/archive/` apply only to their named historical scenes. They are not current-design acceptance checks.
 
 Run `.venv/bin/python scripts/check_publication.py` for read-only bundle, navigation and retained-input checks. `.venv/bin/python scripts/check_retained_inputs.py` can also check the renderer meshes, scene descriptions, all sixteen complete solver cases and the explicit source-maintenance records independently. Neither command needs Blender or CalculiX.
+
+## Manufacturing revision terminology
+
+The command options are `--manufacturing-revision`, `--body-manufacturing-revision` and `--faceplate-manufacturing-revision`. The four Q preparation/packaging scripts use `_manufacturing_revision.py` filenames. The canonical selection and new release manifests use schema version 2. Configuration and new verification metadata use `manufacturing_revision` (and explicit body/faceplate variants), distinct from `geometry_revision`.
+
+Retained supplier archives, drawings, render manifests and quoted correspondence preserve the wording used when released. Their legacy `issue` fields mean manufacturing revision. `scripts/revision_json.py` translates those fields when reading them; it rejects conflicting old/new values. Exact source-maintenance records account for terminology and filename changes without changing submitted artefacts or claiming a fresh review of their geometry.

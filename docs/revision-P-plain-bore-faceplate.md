@@ -29,7 +29,7 @@ The M4 major-diameter envelope including the drill-tip depth remains approximate
 - `output/long-bore-P/product-views/`: eleven unmarked review angles/configurations and editable scene.
 - `output/long-bore-P/photorealistic/`: bare-port and QD/tube studio views. No product surface markings. QDs and tube tails remain visual references, not a routed loop.
 
-Reproduce with `build_long_bore.py --iteration P`, then `prepare_revision_P.py`, then `draw_revision_P.py` using the PDF runtime. Blender: `render_product.py -- --iteration P`. Prepare official fitting meshes with `prepare_koolance_qd3.py`, then run Blender `render_photoreal_product.py -- --iteration P` (optional `--device METAL` on a supported Mac). Preserve older issues. P needs its own supplier manufacturing issue; do not combine its 2 mm plate with the old screw-depth call-outs.
+Reproduce with `build_long_bore.py --iteration P`, then `prepare_revision_P.py`, then `draw_revision_P.py` using the PDF runtime. Blender: `render_product.py -- --iteration P`. Prepare official fitting meshes with `prepare_koolance_qd3.py`, then run Blender `render_photoreal_product.py -- --iteration P` (optional `--device METAL` on a supported Mac). Preserve older revisions. P needs its own supplier manufacturing revision; do not combine its 2 mm plate with the old screw-depth call-outs.
 
 ## Rendition refresh - 15 September 2026
 

@@ -1,7 +1,7 @@
 """Verify current fabrication bundles and reviewed presentations; create a local index."""
 from pathlib import Path
 import hashlib
-import json
+import revision_json as json
 import shutil
 import zipfile
 from source_integrity import source_matches
@@ -46,15 +46,15 @@ for old_name in ['RM10-Q-M01-BODY.zip', 'RM10-Q-M01-FACEPLATE.zip', 'SN1260-R6-M
     (OUT/old_name).unlink(missing_ok=True)
 
 parts = []
-for issue, stem, pages in [
+for manufacturing_revision, stem, pages in [
     ('Q-M04', 'RM10-Q-M04-BODY', 3),
     ('Q-M03', 'RM10-Q-M03-FACEPLATE', 2),
     ('R7-M01', 'SN1260-R7-M01-PLATE', 3),
 ]:
-    directory = Path('output/submission') / issue
+    directory = Path('output/submission') / manufacturing_revision
     verification = read(directory / 'package-verification.json')
     assert verification['checks'] == 'PASS'
-    if issue == 'Q-M01':
+    if manufacturing_revision == 'Q-M01':
         # Preserve historical generator hashes: verify the untouched body bundle against
         # its actual submission record instead of requiring old scripts to remain frozen.
         original = read('output/submission/jlc-quotation-2026-09-15.json')
@@ -71,7 +71,7 @@ for issue, stem, pages in [
         assert archive.testzip() is None
         assert set(archive.namelist()) == {f'{stem}.{ext}' for ext in extensions}
         for ext in extensions:
-            origin = Path('output/pdf') if ext == 'pdf' else Path('output/manufacturing') / issue
+            origin = Path('output/pdf') if ext == 'pdf' else Path('output/manufacturing') / manufacturing_revision
             assert archive.read(f'{stem}.{ext}') == (ROOT / origin / f'{stem}.{ext}').read_bytes()
     shutil.copyfile(ROOT / bundle, OUT / bundle.name)
     parts.append({'part': stem, 'zip': bundle.name, 'sha256': sha(bundle),
@@ -82,8 +82,8 @@ context = read('output/context-25U/layout.json')
 studio = read('output/long-bore-Q/photorealistic/render-notes.json')
 assert product['revision'] == studio['revision'] == context['manifold_revision'] == 'Q'
 assert context['radiator_plate_revision'] == 'R7'
-assert product['body_issue'] == studio['body_issue'] == context['manifold_body_issue'] == 'Q-M04'
-assert product['faceplate_issue'] == studio['faceplate_issue'] == context['manifold_faceplate_issue'] == 'Q-M03'
+assert product['body_manufacturing_revision'] == studio['body_manufacturing_revision'] == context['manifold_body_manufacturing_revision'] == 'Q-M04'
+assert product['faceplate_manufacturing_revision'] == studio['faceplate_manufacturing_revision'] == context['manifold_faceplate_manufacturing_revision'] == 'Q-M03'
 assert r['outer_corner_radius_mm'] == product['outer_corner_radius_mm'] == context['outer_corner_radius_mm'] == 5
 check_sources(product)
 check_sources(context)
@@ -111,7 +111,7 @@ for selected in release['parts']:
 manifest = {
     'checks': 'PASS', 'parts': parts,
     'release_status': read('output/submission/jlc-order-2026-09-16.json')['status'],
-    'operator_disposition': 'Canonical delivered fabrication issues; current physical findings and order history are separate from bundle-integrity checks.',
+    'operator_disposition': 'Canonical delivered fabrication revisions; current physical findings and order history are separate from bundle-integrity checks.',
     'canonical_selection': 'cad/current-release.json',
     'fabrication_scope': 'Each ZIP contains only one custom part STEP and its fabrication drawing/profile.',
     'assembly_guide': 'docs/assembly-Q.md',
@@ -142,7 +142,7 @@ manifest = {
 (OUT / 'verification.json').write_text(json.dumps(manifest, indent=2) + '\n')
 (OUT / 'README.md').write_text('''# Current three-part fabrication pack
 
-**Canonical delivered issues: Q-M04 body, Q-M03 faceplate and R7-M01 radiator.** To reproduce the order, download the three ZIPs below and follow [the JLC order guide](../../../docs/order-from-jlc.md). These are byte-identical copies of the issue-specific bundles. [The canonical manifest](../../../cad/current-release.json) selects their paths and hashes. Older outputs remain historical unless explicitly identified as shared dependencies. This index verifies files; it does not submit or pay for an order.
+**Canonical delivered revisions: Q-M04 body, Q-M03 faceplate and R7-M01 radiator.** To reproduce the order, download the three ZIPs below and follow [the JLC order guide](../../../docs/order-from-jlc.md). These are byte-identical copies of the revision-specific bundles. [The canonical manifest](../../../cad/current-release.json) selects their paths and hashes. Older outputs remain historical unless explicitly identified as shared dependencies. This index verifies files; it does not submit or pay for an order.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|

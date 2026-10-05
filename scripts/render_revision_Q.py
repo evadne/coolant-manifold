@@ -1,8 +1,9 @@
 """Unmarked accepted Q views, with a separate diagnostic transparency file."""
-import bpy,bmesh,json,sys,math,hashlib
+import bpy, bmesh, sys, math, hashlib
 from pathlib import Path
 from mathutils import Vector,Matrix
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
+import revision_json as json
 from context_viewport import configure_context_viewports
 from source_integrity import source_matches
 OUT=ROOT/'output/long-bore-Q/product-views';OUT.mkdir(parents=True,exist_ok=True)
@@ -70,4 +71,4 @@ for i,colour in enumerate(((.025,.35,.6,1),(.8,.19,.06,1)),1):
  load('Diagnostic fluid volume '+str(i),MESH/f'fluid-network-{i}.stl',mat)
 render('05-POM-transparent-channels',rear)
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'body-50-percent-transparent.blend'),compress=True)
-(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png','12-POM-chamfer-detail.png']+[v[0]+'.png' for v in extra_views],'body_issue':'Q-M04','perimeter_chamfer_mm':.5,'faceplate_issue':'Q-M03','outer_corner_radius_mm':5,'M4_reference':'12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted','M4_pilot_depth_mm':13,'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,plate_path,ROOT/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step',body_path,ROOT/'output/manufacturing/Q-M04/RM10-Q-M04-BODY.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M04 specifies M4x10 screws and 13 mm pilots.'},indent=2)+'\n')
+(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png','12-POM-chamfer-detail.png']+[v[0]+'.png' for v in extra_views],'body_manufacturing_revision':'Q-M04','perimeter_chamfer_mm':.5,'faceplate_manufacturing_revision':'Q-M03','outer_corner_radius_mm':5,'M4_reference':'12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted','M4_pilot_depth_mm':13,'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,plate_path,ROOT/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step',body_path,ROOT/'output/manufacturing/Q-M04/RM10-Q-M04-BODY.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M04 specifies M4x10 screws and 13 mm pilots.'},indent=2)+'\n')

@@ -1,6 +1,7 @@
 """Re-import supplier solids and compare machined features with the drawing schedule."""
 from pathlib import Path
-import json, math
+import math
+import revision_json as json
 import cadquery as cq
 import ezdxf
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,7 +52,7 @@ extents = [bbox.extents([e]) for e in polys]
 for slot in schedule['rack_slots']:
     assert any(near(b.center.x, slot['x']) and near(b.center.y, slot['z'])
                and near(b.size.x, 10) and near(b.size.y, 7) for b in extents)
-report = {'issue': 'O-M02', 'status': 'PASS', 'method': 'Independent STEP re-import and DXF entity inspection',
+report = {'manufacturing_revision': 'O-M02', 'status': 'PASS', 'method': 'Independent STEP re-import and DXF entity inspection',
           'checks': ['valid single solids and overall sizes', 'no nominal body/plate overlap',
                      '20 boss lips and 20 front port entries at scheduled positions',
                      'four side port entries', 'six M4 entries and drill points',

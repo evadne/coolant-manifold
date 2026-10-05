@@ -6,7 +6,7 @@ As of 5 October 2026, the canonical fabricated set is **Q-M04 body, Q-M03 facepl
 
 Use [the repeat-order guide](order-from-jlc.md) for another quotation, [the fabrication index](../output/submission/current-three-parts/README.md) for downloads, and [the canonical manifest](../cad/current-release.json) for machine-readable paths and hashes. Do not choose files by a historical directory's “current” label.
 
-| Part | Issue guide | Fabrication definition |
+| Part | Manufacturing revision guide | Fabrication definition |
 |---|---|---|
 | Manifold POM body | [Q-M04](jlc-submission-Q-M04.md) | Chamfered slab; 28 G1/4 ports; 12 M4 threads; two long galleries |
 | Manifold faceplate | [Q-M03](jlc-submission-Q-M03.md) | Raw 2 mm 304; R5 outside corners; plain holes; ±0.10 mm cut dimensions/coordinates |
@@ -27,6 +27,6 @@ Dimensional/fit acceptance does not imply recorded leak testing or qualification
 - [Q-M04 machining route](Q-M04-machining-route.md): three-axis feasibility with deep-drilling capability; not JLC's actual CAM.
 - [Latest order and delivery chronology](jlc-order-2026-09-16.md): approval, prices, manufacture, delivery and operator reports.
 - [Original order](jlc-quotation-2026-09-15.md) and [faceplate concession](jlc-feedback-2026-09-16.md#operator-acceptance): superseded order, retained unchanged files and order-specific feedback.
-- [Earlier status narrative](archive/manufacturing-status-through-2026-10-05.md): historical inspections and manufacturing issue changes.
+- [Earlier status narrative](archive/manufacturing-status-through-2026-10-05.md): historical inspections and manufacturing revision changes.
 
 The original order was cleared by the operator. The current parts came from the subsequent order. Neither this status record nor the repeat-order guide authorises payment or submission by an automated agent.

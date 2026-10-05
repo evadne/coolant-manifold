@@ -18,8 +18,8 @@ Historical CAD, images and solver evidence remain at their original revision-spe
 - [Revision H — long-bore galleries with plugged ends](long-bore-H.md)
 - [Can the manifold faceplate also use 2 mm steel?](manifold-plate-thickness.md)
 - [RM8-2U revision G — manufacturing notes for DFM](manufacturing-G.md)
-- [Revision O: manufacturing issue O-M01](manufacturing-O-M01.md)
-- [Revision O: manufacturing issue O-M02](manufacturing-O-M02.md)
+- [Revision O: manufacturing revision O-M01](manufacturing-O-M01.md)
+- [Revision O: manufacturing revision O-M02](manufacturing-O-M02.md)
 - [Assembled manifold — unmarked revision G](product-views-G.md)
 - [Rack-fixing slot edge review — Revision K](rack-slot-edge-review.md)
 - [Expanded radiator equipment load](radiator-expanded-load.md)
@@ -53,4 +53,4 @@ Do not upload archived O-M02/R4-M01/R5-M01 packages as current P/R6 parts. Archi
 ## Publication grooming snapshots
 
 - [Former mixed working notes](working-notes-2026-09-16.md): previous AGENTS content, historical and not operative.
-- [Manufacturing status narrative](manufacturing-status-through-2026-10-05.md): detailed prior issue/inspection chronology.
+- [Manufacturing status narrative](manufacturing-status-through-2026-10-05.md): detailed prior revision/inspection chronology.

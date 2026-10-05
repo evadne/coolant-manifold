@@ -1,4 +1,4 @@
-"""Issue matched R3 tapped / R4 clearance fan plate review drawings."""
+"""Create matching R3 tapped / R4 clearance fan plate review drawings."""
 from pathlib import Path
 import json
 from reportlab.pdfgen import canvas

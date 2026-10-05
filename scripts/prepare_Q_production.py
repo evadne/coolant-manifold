@@ -1,6 +1,7 @@
 """Derive Q-M01 supplier solids/schedules and independently inspect critical geometry."""
 from pathlib import Path
-import json,shutil,hashlib,math
+import shutil, hashlib, math
+import revision_json as json
 import cadquery as cq
 from source_integrity import source_matches
 from OCP.BRepAdaptor import BRepAdaptor_Surface
@@ -24,7 +25,7 @@ add('F',mount,thread='M4 x 0.7 - 6H',full_thread_after_entry=10,pilot_full_depth
 add('W',[(x,0,z) for x,y,z in front],diameter=32)
 add('H',mount,diameter=4.5)
 add('R',[(x,0,z) for x in (-232.55,232.55) for z in P['rack_slot_centres_z']],length=10,width=7)
-(O/'feature-schedule.json').write_text(json.dumps({'issue':'Q-M01','datum':'A POM front Y0; B width midplane X0; C bottom Z0; rear view reverses X on page','features':features},indent=2)+'\n')
+(O/'feature-schedule.json').write_text(json.dumps({'manufacturing_revision':'Q-M01','datum':'A POM front Y0; B width midplane X0; C bottom Z0; rear view reverses X on page','features':features},indent=2)+'\n')
 for part in ('body','faceplate'):
  dest=O/f'RM10-Q-M01-{part.upper()}.step';shutil.copyfile(S/f'{part}.step',dest)
  shape=cq.importers.importStep(str(dest)).val();assert shape.isValid() and len(shape.Solids())==1
@@ -67,7 +68,7 @@ assy=cq.Assembly(name='Q_M01_REFERENCE_not_a_supplier_part');assy.add(body,name=
 for i,(x,y,z) in enumerate(mount):
  s=screw.translate(cq.Vector(x,-2,z));assert s.intersect(body).Volume()<1e-6 and s.intersect(plate).Volume()<1e-6;assy.add(s,name=f'REFERENCE_M4x10_{i+1}')
 assy.export(str(AOUT/'REFERENCE-assembled-with-screws.step'))
-report=dict(issue='Q-M01',checks='PASS',body_solid_count=1,plate_solid_count=1,G1_4_ports=28,M4_threads=12,plate_windows=20,plate_retention_holes=12,optional_rack_slots=12,
+report=dict(manufacturing_revision='Q-M01',checks='PASS',body_solid_count=1,plate_solid_count=1,G1_4_ports=28,M4_threads=12,plate_windows=20,plate_retention_holes=12,optional_rack_slots=12,
  body_extent_mm=[410,43,87],plate_extent_mm=[482.6,2,87],body_volume_mm3=body.Volume(),plate_volume_mm3=plate.Volume(),plate_mass_kg=plate.Volume()*7.9e-6,
  M4_pilot_full_diameter_mm=13,M4_total_drilled_depth_mm=13+1.65/math.tan(math.radians(59)),M4_full_thread_after_entry_mm=10,M4_reference_screw_length_mm=10,M4_tip_to_full_pilot_bottom_mm=5,
  M4_nominal_screw_to_hole_radial_clearance_mm=.25,M4_worst_coordinate_fit_margin_mm=.25-math.hypot(.1,.1),

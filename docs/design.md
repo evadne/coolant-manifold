@@ -1,6 +1,6 @@
 # Current manifold design — Revision Q
 
-Canonical delivered manifold issues are [Q-M04 body](jlc-submission-Q-M04.md) and [Q-M03 faceplate](jlc-submission-Q-M03.md). Q-M04 retains the shorter M4 detail introduced in historical Q-M01 and adds twelve C0.5 ×45° main-slab edge chamfers. Q-M03 adds four R5 outside outline corners and retains all original openings/positions. Use the [repeat-order guide](order-from-jlc.md) for the exact files.
+Canonical delivered manifold revisions are [Q-M04 body](jlc-submission-Q-M04.md) and [Q-M03 faceplate](jlc-submission-Q-M03.md). Q-M04 retains the shorter M4 detail introduced in historical Q-M01 and adds twelve C0.5 ×45° main-slab edge chamfers. Q-M03 adds four R5 outside outline corners and retains all original openings/positions. Use the [repeat-order guide](order-from-jlc.md) for the exact files.
 
 The RM10-2U manifold provides a common supply gallery and a separate common return gallery for parallel loads. It has no internal grouping, partitions, bypass or supply-to-return connection. The current manufactured parts are one POM body and one dry stainless front rack plate. There is no rear plate.
 
@@ -36,6 +36,6 @@ Use black unfilled POM-C or POM-H of an identified machining-stock grade; Delrin
 
 The body uses long-bore drilling, external milling and direct tapped ports. Drilling from one end or from opposed ends is a process choice; JLC’s actual route has not been established. See the [machining-route assessment](Q-M04-machining-route.md). External deburring only; clean/flush loose internal chips without specifying internal cross-hole deburring. Long-hole alignment and vendor capability remain DFM items. The dry 2 mm faceplate has plain through holes, no countersinks and no threads. Fitting retention and body-to-rack retention are separate functions.
 
-Parallel topology does not enforce equal flow. Required flow, gallery losses, plastic thread retention, thermal cycling and assembled leak performance remain engineering work. The current geometry and screw checks are detailed in [Revision Q](revision-Q-rear-ports.md); [manufacturing status](manufacturing.md) distinguishes review files from supplier issues.
+Parallel topology does not enforce equal flow. Required flow, gallery losses, plastic thread retention, thermal cycling and assembled leak performance remain engineering work. The current geometry and screw checks are detailed in [Revision Q](revision-Q-rear-ports.md); [manufacturing status](manufacturing.md) distinguishes review files from supplier revisions.
 
 Q-M01 retention:10 mm full M4 thread after entry,13 mm pilot plus118° point. First assembly dry, no Loctite. Both stainless plates: raw stainless sheet finish on both broad faces, with no brushing or polishing. See [torque/creep assessment](Q-torque-and-creep.md).

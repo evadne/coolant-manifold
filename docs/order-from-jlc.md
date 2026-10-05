@@ -12,7 +12,7 @@ For changed designs, first follow [the new-revision workflow](new-revision.md). 
 | Manifold faceplate | [RM10-Q-M03-FACEPLATE.zip](../output/submission/current-three-parts/RM10-Q-M03-FACEPLATE.zip) | Sheet Metal | Stainless Steel 304 | No surface finish; raw both faces | No |
 | Radiator plate | [SN1260-R7-M01-PLATE.zip](../output/submission/current-three-parts/SN1260-R7-M01-PLATE.zip) | Sheet Metal | Stainless Steel 304 | No surface finish; raw both faces | No |
 
-These direct links select the delivered fabrication issues, not the original order that was superseded. [Machine-readable selection and hashes](../cad/current-release.json) and [pack checksums](../output/submission/current-three-parts/SHA256SUMS.txt) identify the same files. On GitHub, open each file and use Download raw file; do not save its HTML preview as a ZIP.
+These direct links select the delivered fabrication revisions, not the original order that was superseded. [Machine-readable selection and hashes](../cad/current-release.json) and [pack checksums](../output/submission/current-three-parts/SHA256SUMS.txt) identify the same files. On GitHub, open each file and use Download raw file; do not save its HTML preview as a ZIP.
 
 ## Submit for quotation
 
@@ -49,7 +49,7 @@ R7-M01 PDF/DXF govern. Raw 304 both faces; no brushing/polishing. Cut sizes/coor
 
 ## What this order reproduces
 
-The JLCCNC first article passed the operator's manifold dimensional/thread fit checks. The delivered steel has slight sharpness; its edge-finish adequacy remains an open finding. **Ordering the same pack repeats the existing finish requirement, not a newly improved deburring specification.** The faceplate concession does not waive the radiator's separate cable-contact rounding. If you want a different edge finish, agree and document the changed requirement rather than silently treating it as part of these issued files. See [the JLCCNC report](jlc-first-article.md).
+The JLCCNC first article passed the operator's manifold dimensional/thread fit checks. The delivered steel has slight sharpness; its edge-finish adequacy remains an open finding. **Ordering the same pack repeats the existing finish requirement, not a newly improved deburring specification.** The faceplate concession does not waive the radiator's separate cable-contact rounding. If you want a different edge finish, agree and document the changed requirement rather than silently treating it as part of these released files. See [the JLCCNC report](jlc-first-article.md).
 
 The radiator plate is delivered but not yet checked against a spare Supernova. Bought-in fittings, plugs, screws, fans and radiator are excluded from these three custom-part ZIPs. Use the separate [manifold](assembly-Q.md) and [radiator](radiator-rack-plate.md) assembly guides.
 

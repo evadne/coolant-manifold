@@ -17,7 +17,7 @@
   "unused_ports": "Every unused port requires a G1/4 face-sealing plug or suitable self-closing coupling",
   "deburring": "External only; clean/flush internal bores; no internal cross-hole deburring operation",
   "topology": "Two isolated continuous galleries; rear ports duplicate their aligned front-row connection; no grouping or cross-link",
-  "drawing_status": "Q-M01 supplier review issue; no submission performed",
+  "drawing_status": "Q-M01 supplier review revision; no submission performed",
   "M4_retention": {
     "thread": "M4 x 0.7 - 6H",
     "full_thread_min_after_entry_mm": 10,

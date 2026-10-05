@@ -3,7 +3,7 @@
 > **Historical reference — superseded.** This page describes an earlier design or assessment. Its recommendations and “current” labels apply only to that snapshot. Use the [current project guide](../../README.md) and [three-part recap](../three-part-recap.md) for P / R6.
 
 
-Issued 15 September 2026. Part **SN1260-R5-M01-PLATE** adds the requested rounded cable notch to the operator-approved, non-tapped R4 radiator plate. It supersedes R4-M01 for fabrication; the R4 pack is preserved. The manifold package remains separate.
+released 15 September 2026. Part **SN1260-R5-M01-PLATE** adds the requested rounded cable notch to the operator-approved, non-tapped R4 radiator plate. It supersedes R4-M01 for fabrication; the R4 pack is preserved. The manifold package remains separate.
 
 ## Upload files
 
@@ -49,6 +49,6 @@ Use the existing R4 assembly notes for hardware details. If using the X-Splitter
 
 ## Reproduction and records
 
-Build geometry first with `scripts/build_radiator_plate.py --revision R5`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R5-M01`, then `scripts/draw_radiator_production.py --issue R5-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R5-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R5-M01/`; the upload bundle and supplier remarks are in `output/submission/R5-M01/`.
+Build geometry first with `scripts/build_radiator_plate.py --revision R5`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--manufacturing-revision R5-M01`, then `scripts/draw_radiator_production.py --manufacturing-revision R5-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --manufacturing-revision R5-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R5-M01/`; the upload bundle and supplier remarks are in `output/submission/R5-M01/`.
 
-This issue prepares the files only. No supplier upload, quotation acceptance or order has been made.
+This revision prepares the files only. No supplier upload, quotation acceptance or order has been made.

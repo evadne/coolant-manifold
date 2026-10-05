@@ -1,4 +1,4 @@
-"""Two-sheet revision P review drawing; no change to O-M02 supplier issue."""
+"""Two-sheet revision P review drawing; no change to O-M02 supplier revision."""
 from pathlib import Path
 import json
 from reportlab.pdfgen import canvas
@@ -76,7 +76,7 @@ notes=[
 for i,n in enumerate(notes):txt(18,147-i*7,n,9)
 txt(18,65,'SEALING, FINISH AND REVIEW SCOPE',12,True)
 notes=[
-'Flat fitting seal lands on boss ends and side faces; retain O-M02 surface requirements: refer to that issue for finish details.',
+'Flat fitting seal lands on boss ends and side faces; retain O-M02 surface requirements: refer to that revision for finish details.',
 'External deburr only; no internal/cross-hole deburring operation. Clean and flush out all loose swarf.',
 'No rear plate or perimeter seals. End plugs/fittings require their own face seals. Two independent continuous galleries.',
 'G1/4 and M4 threads are pilot representations in STEP, not plain finished holes. Tap to the drawing call-outs.',

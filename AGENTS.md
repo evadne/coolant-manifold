@@ -10,10 +10,10 @@
 
 ## Change and verify
 
-- For a new issue, follow [the contributor workflow](docs/new-revision.md). Keep draft configurations, geometry, drawings and outputs separate; use `scripts/release.py` for new quotation packs. The historical finaliser selects the delivered set only.
+- For a new revision, follow [the contributor workflow](docs/new-revision.md). Keep draft configurations, geometry, drawings and outputs separate; use `scripts/release.py` for new quotation packs. The historical finaliser selects the delivered set only.
 - Support macOS/Python 3.12/Blender as the authoring baseline; address other-platform failures when reported rather than adding speculative adaptations.
 - Follow [rebuild instructions](docs/rebuild.md), using explicit revisions; older script defaults are not current build commands.
-- Preserve submitted fabrication bundles and source references. Make fabrication changes as new issues with matching STEP, PDF and steel DXF; do not silently amend a received part's issue.
+- Preserve submitted fabrication bundles and source references. Make fabrication changes as new revisions with matching STEP, PDF and steel DXF; do not silently amend a received part's revision.
 - Keep fabrication documents limited to manufacture and inspection. Put bought-in hardware, plugs, tightening, threadlocker and installation in assembly guides.
 - Keep material and finish selections consistent across CAD, drawings, remarks and supplier options. Treat render shaders as illustrative, not fabrication specifications.
 - Maintain two isolated continuous galleries; do not add internal grouping or cross-links without a requested design change.
@@ -24,6 +24,11 @@
 - For changed geometry, run relevant checks and inspect the affected drawings/renders before packaging. Do not refresh review hashes without actually reviewing the corresponding images or sheets.
 - After changing canonical selection or packaging, run `python3 scripts/check_publication.py`; run `python3 scripts/finalise_three_part_pack.py` when regenerating the verified index. Neither command submits an order.
 - Check local documentation links and preserve provenance when editing navigation. Update generator templates as well as generated indexes.
+
+## Terminology
+
+- Use **geometry revision** for design versions (Q/R7) and **manufacturing revision** for part/drawing specifications (Q-M04/Q-M03/R7-M01). Use **GitHub issue** only for a tracker entry; describe other difficulties as problems, concerns or limitations.
+- Keep submitted artefacts and quoted supplier wording unchanged. Read their older metadata through `scripts/revision_json.py`; new metadata and commands use explicit manufacturing-revision names.
 
 ## Records and repository hygiene
 

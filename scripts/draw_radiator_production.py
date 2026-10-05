@@ -1,6 +1,7 @@
 """A3 production sheets for the selected flat plate, including the R5 notch detail."""
 from pathlib import Path
-import json,math,argparse
+import math, argparse
+import revision_json as json
 from radiator_notch import outline
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
@@ -8,14 +9,14 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
-ISSUE=parser.parse_args().issue
-M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
+parser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
+MANUFACTURING_REVISION=parser.parse_args().manufacturing_revision
+M=json.loads((ROOT/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2
 PROFILE=f"±{M['profile_tolerance_mm']:.2f}"
-HOLE_TOL='±0.10' if ISSUE in ['R6-M03','R7-M01'] else '+0.15/0'
-HEIGHT_TOL='±0.10' if ISSUE in ['R6-M03','R7-M01'] else '+0 / -0.15'
-S=json.loads((ROOT/f'output/manufacturing/{ISSUE}/feature-schedule.json').read_text())['features']
+HOLE_TOL='±0.10' if MANUFACTURING_REVISION in ['R6-M03','R7-M01'] else '+0.15/0'
+HEIGHT_TOL='±0.10' if MANUFACTURING_REVISION in ['R6-M03','R7-M01'] else '+0 / -0.15'
+S=json.loads((ROOT/f'output/manufacturing/{MANUFACTURING_REVISION}/feature-schedule.json').read_text())['features']
 STEM=M['part_number'];OUT=ROOT/'output/pdf'/f'{STEM}.pdf'
 pdfmetrics.registerFont(TTFont('Arial','/System/Library/Fonts/Supplemental/Arial.ttf'))
 pdfmetrics.registerFont(TTFont('Arial-Bold','/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
@@ -56,11 +57,11 @@ def table(x,y,width,headers,rows,weights=None,rh=5.6):
  return bottom
 def sheet(n,title):
  rect(10,10,400,277);text(15,279,STEM,4.9,True);text(15,271,title,3.3)
- text(405,280,(f'{REV} CABLE NOTCH / ISSUE {ISSUE.split(chr(45))[-1]}' if NOTCH else 'R4 APPROVED / ISSUE M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
+ text(405,280,(f'{REV} CABLE NOTCH / REVISION {MANUFACTURING_REVISION.split(chr(45))[-1]}' if NOTCH else 'R4 APPROVED / REVISION M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')
  line(10,267,410,267);rect(10,10,400,20)
  for x in (145,283,352):line(x,10,x,30)
  lines(14,24,['304 / EN 1.4301 stainless steel; thickness 2.00 ±0.10','Units: mm; dimensions at 20°C; do not scale'],2.55,7)
- lines(149,24,['Geometry '+REV+'; '+M['issue_date'],'Production drawing / quotation and supplier review'],2.55,7)
+ lines(149,24,['Geometry '+REV+'; '+M['manufacturing_revision_date'],'Production drawing / quotation and supplier review'],2.55,7)
  lines(287,24,['No threads or countersinks','Scale as stated'],2.55,7)
  text(357,23,f'SHEET {n} / {N}',3.8,True);text(357,16,'No product markings',2.5)
 def draw_profile(points,ox,oy,scale):
@@ -124,11 +125,11 @@ lines(x,176,['1. One flat 2 mm sheet; no bends or welds.',
  '   Other edges: break 0.20-0.30; E01 see sheet 3.' if NOTCH else '   All other cut edges: deburr / break 0.20-0.30.',
  '   Edge breaks are not modelled in STEP.',
  '6. Flatness: 0.50 max, free state, whole plate.',
- ('7. Raw sheet finish; no brushing or polishing,' if ISSUE in ['R6-M02','R6-M03','R7-M01'] else '7. Uniform satin brushed finish; no coating,' ),
+ ('7. Raw sheet finish; no brushing or polishing,' if MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01'] else '7. Uniform satin brushed finish; no coating,' ),
  '   coating, engraving, printing or markings.',
  '8. Confirm specified tolerances and flatness',
  '   before fabrication; report discrepancies.'],2.6,5.2)
-if ISSUE in ['R6-M02','R6-M03','R7-M01']:
+if MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01']:
  text(40,259,'RAW SHEET FINISH: BOTH FACES',2.3,True)
 text(x,97,'COORDINATES AND TOLERANCES',3.2,True)
 lines(x,89,['Origin O: width centreline at bottom edge.',
@@ -173,8 +174,8 @@ lines(302,111,['All feature axes perpendicular to broad faces.',
  'No countersink angle applies to this part.',
  'Permitted small edge breaks: see sheet 1.',
  'Free-state flatness 0.50 max over whole plate.'],2.5,5.8)
-text(302,78,'ISSUE CONTROL',3,True)
-lines(302,70,['Geometry '+REV+'; manufacturing issue '+ISSUE.split('-')[-1]+'.',
+text(302,78,'REVISION CONTROL',3,True)
+lines(302,70,['Geometry '+REV+'; manufacturing revision '+MANUFACTURING_REVISION.split('-')[-1]+'.',
  'Quote / manufacture this single plate only.',
  'All specified holes are through the plate.',
  'Drawing tolerances require supplier acceptance.'],2.5,5.8)

@@ -1,6 +1,6 @@
 # Output directory guide
 
-Current custom parts: Q-M04 manifold body, Q-M03 faceplate and R7/R7-M01 radiator; both steel plates have four R5 outside corners and ±0.10 cut tolerances. These are the delivered first-article issues. Start with [the repeat-order guide](../docs/order-from-jlc.md) or [machine-readable selection](../cad/current-release.json).
+Current custom parts: Q-M04 manifold body, Q-M03 faceplate and R7/R7-M01 radiator; both steel plates have four R5 outside corners and ±0.10 cut tolerances. These are the delivered first-article revisions. Start with [the repeat-order guide](../docs/order-from-jlc.md) or [machine-readable selection](../cad/current-release.json).
 
 | Location | Purpose |
 |---|---|
@@ -23,13 +23,13 @@ Earlier P/O, Q-M01 and R6 manufacturer/review files are historical; do not submi
 
 ## Authority and dependencies
 
-Only the three ZIPs selected by `cad/current-release.json` are canonical fabrication uploads. The current index contains byte-identical copies of the issue-specific archives. PDFs plus STEP/DXF define fabrication; STL and Blender files are display/assembly aids. The original files are retained in place rather than renamed, because historical scripts and current reference scenes still depend on some of them.
+Only the three ZIPs selected by `cad/current-release.json` are canonical fabrication uploads. The current index contains byte-identical copies of the revision-specific archives. PDFs plus STEP/DXF define fabrication; STL and Blender files are display/assembly aids. The original files are retained in place rather than renamed, because historical scripts and current reference scenes still depend on some of them.
 
 A directory labelled `long-bore-Q` is not enough to choose a supplier file: its `cad/` subdirectory retains baseline Q-M01 solids, while current presentation scripts load the finished Q-M04/Q-M03 parts explicitly. `long-bore-P/koolance-fit/` is a shared current reference dependency despite its older revision name. The [revision register](../docs/iterations.md) describes the progression.
 
 No Git LFS migration or historical asset removal has been performed. Large scenes and solver outputs are intentionally retained. Use [the publication review](../docs/publication-review.md) for size/provenance decisions, not a renderer's defaults.
 
-Some frozen source JSONs and historical verification records contain status text from the day of issue (for example “held” or “submitted”). Do not edit them merely to update live status: their hashes are part of fabrication provenance. The canonical manifest selects the parts; [manufacturing status](../docs/manufacturing.md) describes their current physical disposition.
+Some frozen source JSONs and historical verification records contain status text from the release date (for example “held” or “submitted”). Do not edit them merely to update live status: their hashes are part of fabrication provenance. The canonical manifest selects the parts; [manufacturing status](../docs/manufacturing.md) describes their current physical disposition.
 
 Renderer inputs are retained beside the owning revision: `meshes/` contains tessellations and `render-scene.json` contains placement parameters. The unversioned G inputs live directly under `output/`; its alternative mounting uses `backplate/`. O-M02 presentation meshes live under `manufacturing/O-M02/meshes/`. Q's gallery meshes are diagnostic void volumes; current part surfaces still come from Q-M04/Q-M03.
 

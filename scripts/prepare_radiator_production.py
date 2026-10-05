@@ -1,15 +1,16 @@
-"""Verify the selected radiator revision and derive a single-part production issue without changing its solid."""
+"""Verify the selected radiator revision and derive a single-part production revision without changing its solid."""
 from pathlib import Path
-import json,shutil,hashlib,math,argparse
+import shutil, hashlib, math, argparse
+import revision_json as json
 import cadquery as cq
 import ezdxf
 from OCP.BRepAdaptor import BRepAdaptor_Surface
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
-ISSUE=parser.parse_args().issue
-M=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']
+parser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])
+MANUFACTURING_REVISION=parser.parse_args().manufacturing_revision
+M=json.loads((ROOT/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text());REV=M['geometry_revision']
 P=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())
-OUT=ROOT/f'output/manufacturing/{ISSUE}';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/f'output/manufacturing/{MANUFACTURING_REVISION}';OUT.mkdir(parents=True,exist_ok=True)
 source=ROOT/f'output/radiator-{REV}';stem=M['part_number'];H=P['height'];notched=bool(P.get('cable_notch'))
 build_report=json.loads((source/'verification.json').read_text())
 assert build_report['revision']==REV and build_report['geometry_checks']=='PASS'
@@ -69,9 +70,9 @@ for r in rows:
 report={'part_number':stem,'source_revision':REV,'checks':'PASS','solid_count':1,'extent_mm':[bb.xlen,bb.ylen,bb.zlen],
  'volume_mm3':solid.Volume(),'net_mass_kg_at_7900_kg_m3':solid.Volume()*7.9e-6,
  'plain_fan_holes':16,'plain_radiator_holes':12,'rack_slots':40,'air_apertures':4,'front_face_boundary_wires':73,'through_wall_cylinders':len(cyl),'edge_notches':int(notched),
- 'drawing_has_unmodelled_edge_breaks':True,'nominal_geometry_unchanged':True,'outer_corner_radius_mm':P['outer_radius'],'geometry_comparison_basis':'Production issue matches selected geometry revision',
+ 'drawing_has_unmodelled_edge_breaks':True,'nominal_geometry_unchanged':True,'outer_corner_radius_mm':P['outer_radius'],'geometry_comparison_basis':'Production revision matches selected geometry revision',
  'source_step_sha256':hashlib.sha256((source/f'rack-plate-{REV}.step').read_bytes()).hexdigest(),
  'production_step_sha256':hashlib.sha256((OUT/f'{stem}.step').read_bytes()).hexdigest(),
- 'DFM':'Flatness and specified edge finishes require supplier acceptance; size/position tolerances follow the selected issue drawing.'}
+ 'DFM':'Flatness and specified edge finishes require supplier acceptance; size/position tolerances follow the selected revision drawing.'}
 assert report['source_step_sha256']==report['production_step_sha256']
 (OUT/'geometry-verification.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

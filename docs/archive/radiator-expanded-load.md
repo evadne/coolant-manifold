@@ -52,7 +52,7 @@ Retain **2 mm** as the radiator plate candidate for the stationary rack, using e
 
 The deliberately unfavourable four-fixing / 300 mm case still predicts stresses below proof strength, but its reserve is much smaller. Do not turn that case into a general 16 kg handling rating. For such a long cantilever or transport duty, revise the support arrangement, add rear support, or reassess thickness and dynamic loads.
 
-The simulation excludes bolt preload/contact, slot/washer slip, radiator M3 thread/rail pull-out, pump vibration and rack flexibility. It does not credit radiator reinforcement. It checks the plate rather than certifying the bought-in radiator mounting interfaces. R1's issued 3 mm CAD remains unchanged pending a distinct 2 mm manufacturing issue.
+The simulation excludes bolt preload/contact, slot/washer slip, radiator M3 thread/rail pull-out, pump vibration and rack flexibility. It does not credit radiator reinforcement. It checks the plate rather than certifying the bought-in radiator mounting interfaces. R1's released 3 mm CAD remains unchanged pending a distinct 2 mm manufacturing revision.
 
 ## Reproduction
 

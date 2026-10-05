@@ -1,6 +1,6 @@
 {
-  "issue": "Q-M04",
-  "issue_date": "2026-09-16",
+  "manufacturing_revision": "Q-M04",
+  "manufacturing_revision_date": "2026-09-16",
   "geometry_revision": "Q",
   "status": "Held for future repeat order; not submitted",
   "body_material": "Black unfilled declared POM-C or POM-H machining stock; grade datasheet required; Delrin branding optional",
@@ -26,7 +26,7 @@
   "submission_performed": false,
   "M4_mating_coordinate_tolerance_mm": 0.05,
   "part_number": "RM10-Q-M04-BODY",
-  "source_issue": "Q-M01",
+  "source_manufacturing_revision": "Q-M01",
   "scope": "POM body only; twelve main-slab outer edges C0.5 x45 degrees",
   "perimeter_chamfer_mm": 0.5,
   "perimeter_chamfer_tolerance_mm": 0.1,

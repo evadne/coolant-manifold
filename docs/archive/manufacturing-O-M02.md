@@ -1,13 +1,13 @@
-# Revision O: manufacturing issue O-M02
+# Revision O: manufacturing revision O-M02
 
 > **Historical reference — superseded.** This page describes an earlier design or assessment. Its recommendations and “current” labels apply only to that snapshot. Use the [current project guide](../../README.md) and [three-part recap](../three-part-recap.md) for P / R6.
 
 
-The operator-approved O layout is preserved at `980b4d4`. O-M02 implements the subsequent operator request: bosses are 4 mm high, equal to the 3 mm faceplate plus 1 mm. The 40 mm main slab, port pitch, gallery positions, faceplate and fixing locations remain as approved. The earlier 6 mm boss issue is preserved in [O-M01](manufacturing-O-M01.md). It is prepared for supplier quotation and engineering review; it is not an accepted supplier order or a pressure-rated release.
+The operator-approved O layout is preserved at `980b4d4`. O-M02 implements the subsequent operator request: bosses are 4 mm high, equal to the 3 mm faceplate plus 1 mm. The 40 mm main slab, port pitch, gallery positions, faceplate and fixing locations remain as approved. The earlier 6 mm boss revision is preserved in [O-M01](manufacturing-O-M01.md). It is prepared for supplier quotation and engineering review; it is not an accepted supplier order or a pressure-rated release.
 
 ## Files for quotation
 
-The final [JLC submission handover](jlc-submission-O-M02.md) includes separate upload ZIPs, ready-to-paste part remarks and checksums. Updated [bare](../../output/manufacturing/O-M02/photorealistic/01-bare-ports.png) and [connected](../../output/manufacturing/O-M02/photorealistic/02-qd3-translucent-tubes.png) studio renders use the issued O-M02 STEP geometry and new sealing plane.
+The final [JLC submission handover](jlc-submission-O-M02.md) includes separate upload ZIPs, ready-to-paste part remarks and checksums. Updated [bare](../../output/manufacturing/O-M02/photorealistic/01-bare-ports.png) and [connected](../../output/manufacturing/O-M02/photorealistic/02-qd3-translucent-tubes.png) studio renders use the released O-M02 STEP geometry and new sealing plane.
 
 | Part | Drawing | Upload bundle |
 |---|---|---|
@@ -63,4 +63,4 @@ Rebuild in order:
 4. Render and visually inspect all changed PDF sheets.
 5. Run `scripts/package_manufacturing.py` with Python containing pypdf.
 
-Parameters are in `cad/manufacturing/O-M02.json`; dimensional layout remains in `cad/iterations/O-long-bore.json`. The issue date is fixed in the manufacturing parameters so rebuilds retain the same drawing issue.
+Parameters are in `cad/manufacturing/O-M02.json`; dimensional layout remains in `cad/iterations/O-long-bore.json`. The revision date is fixed in the manufacturing parameters so rebuilds retain the same drawing revision.

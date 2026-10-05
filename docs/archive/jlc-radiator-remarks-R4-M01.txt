@@ -1,4 +1,4 @@
-Part SN1260-R4-M01-PLATE, revision R4 / manufacturing issue M01.
+Part SN1260-R4-M01-PLATE, revision R4 / manufacturing revision M01.
 One flat 304 / EN 1.4301 stainless steel plate, 2.00 +/-0.10 mm thick, uniform satin brushed finish. No coating or product markings. See the matching two-sheet PDF for all dimensions and tolerances; STEP and DXF define nominal geometry.
 16 plain diameter 4.50 +0.15/0 fan holes, 12 plain diameter 3.60 +0.15/0 radiator holes, 40 horizontal 10.00 +/-0.15 x 7.00 +0.15/0 slots, four 188-square R50 apertures. All through. No tapping, countersinks, counterbores, bends, welding, rivet nuts or supplier assembly.
 Laser cutting is suitable where finished drawing tolerances are achieved; drill/finish round holes where necessary. Hole/slot centre coordinates +/-0.10 mm. Overall height 444.50 +0/-0.15 mm. Free-state whole-plate flatness 0.50 mm maximum. Please confirm these tolerances and flatness before manufacture and flag discrepancies.

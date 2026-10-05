@@ -1,6 +1,6 @@
 {
   "date": "2026-10-05",
-  "scope": "Asset location and preview-directory maintenance; retained geometry, drawings, rendered pixels and original review records are unchanged. No new visual approval or solver run. Exact before/after source checks below reconcile the retained provenance with these reviewed code edits.",
+  "scope": "Asset-location, preview-directory and terminology maintenance only. Retained delivered geometry, PDFs, ZIPs, rendered pixels and original review records are unchanged. Exact reversible edits preserve historical source verification; no new design approval or solver run.",
   "files": {
     "scripts/build_cad.py": {
       "before_sha256": "2f2bdbcbcf049e46af5910a92ba0250cadd40e488e532b7210c99e5b2607b36c",
@@ -32,11 +32,15 @@
     },
     "scripts/build_revision_Q.py": {
       "before_sha256": "5455a8f2a0933bcb945f706114652206685e6dcc57726132978d7eeeb8c6ed89",
-      "after_sha256": "c2d10c3337945fa0e0d645d93251313c78a0c3426d0c30232e85d64972ff9c24",
+      "after_sha256": "7be6e64cfe3c1ee7ac436ef10371d67a8dce02e94c7838ff4c8e5087c91d50c4",
       "replacements": [
         {
           "before": "tmp/mesh-long-bore-Q",
           "after": "output/long-bore-Q/meshes"
+        },
+        {
+          "before": "side_gap=min(r.distance(s) for r in rear_keepouts for s in side)\nassert side_gap>0\nreport=dict(revision='Q',status='Operator-approved Q geometry; supplier issue Q-M01',front_ports=20,side_ports=4,rear_ports=4,total_G1_4_ports=28,\n wet_networks=2,rear_bosses=0,rear_cover=False,body_slab_depth_mm=D,overall_POM_depth_mm=D+parent['port_boss_height'],\n rear_port_details=checks,rear_full_diameter_pilot_depth_mm=D-parent['gallery_axis_y'],rear_drill_tip_Y_mm=parent['gallery_axis_y']-point,\n",
+          "after": "side_gap=min(r.distance(s) for r in rear_keepouts for s in side)\nassert side_gap>0\nreport=dict(revision='Q',status='Operator-approved Q geometry; supplier revision Q-M01',front_ports=20,side_ports=4,rear_ports=4,total_G1_4_ports=28,\n wet_networks=2,rear_bosses=0,rear_cover=False,body_slab_depth_mm=D,overall_POM_depth_mm=D+parent['port_boss_height'],\n rear_port_details=checks,rear_full_diameter_pilot_depth_mm=D-parent['gallery_axis_y'],rear_drill_tip_Y_mm=parent['gallery_axis_y']-point,\n"
         }
       ]
     },
@@ -78,7 +82,7 @@
     },
     "scripts/render_revision_Q.py": {
       "before_sha256": "39a0fc6de3f185630de04ff0d9166a80f43d325e592217fd3a472a4523790fa3",
-      "after_sha256": "27b1e6bcec08cfee741f532cacac5583cbb9e2902e9adb3c5d8d54df8b08a6f0",
+      "after_sha256": "1f0050fa7f330704f948d3548260bf22c49579441733195e92b992b5f3d5ac27",
       "replacements": [
         {
           "before": "tmp/mesh-long-bore-Q",
@@ -91,6 +95,14 @@
         {
           "before": "hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==h",
           "after": "source_matches(ROOT,p,h)"
+        },
+        {
+          "before": "\"\"\"Unmarked accepted Q views, with a separate diagnostic transparency file.\"\"\"\nimport bpy,bmesh,json,sys,math,hashlib\nfrom pathlib import Path\nfrom mathutils import Vector,Matrix\nROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))\nfrom context_viewport import configure_context_viewports\nfrom source_integrity import source_matches\n",
+          "after": "\"\"\"Unmarked accepted Q views, with a separate diagnostic transparency file.\"\"\"\nimport bpy, bmesh, sys, math, hashlib\nfrom pathlib import Path\nfrom mathutils import Vector,Matrix\nROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))\nimport revision_json as json\nfrom context_viewport import configure_context_viewports\nfrom source_integrity import source_matches\n"
+        },
+        {
+          "before": "render('05-POM-transparent-channels',rear)\nbpy.ops.wm.save_as_mainfile(filepath=str(OUT/'body-50-percent-transparent.blend'),compress=True)\n(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png','12-POM-chamfer-detail.png']+[v[0]+'.png' for v in extra_views],'body_issue':'Q-M04','perimeter_chamfer_mm':.5,'faceplate_issue':'Q-M03','outer_corner_radius_mm':5,'M4_reference':'12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted','M4_pilot_depth_mm':13,'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,plate_path,ROOT/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step',body_path,ROOT/'output/manufacturing/Q-M04/RM10-Q-M04-BODY.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M04 specifies M4x10 screws and 13 mm pilots.'},indent=2)+'\\n')\n",
+          "after": "render('05-POM-transparent-channels',rear)\nbpy.ops.wm.save_as_mainfile(filepath=str(OUT/'body-50-percent-transparent.blend'),compress=True)\n(OUT/'render-manifest.json').write_text(json.dumps({'revision':'Q','surface_markings':False,'views':['01-rear-assembled.png','02-rear-elevation.png','03-front-unchanged.png','04-POM-rear.png','05-POM-transparent-channels.png','12-POM-chamfer-detail.png']+[v[0]+'.png' for v in extra_views],'body_manufacturing_revision':'Q-M04','perimeter_chamfer_mm':.5,'faceplate_manufacturing_revision':'Q-M03','outer_corner_radius_mm':5,'M4_reference':'12 x M4 x 10 ISO 7380-1, heads shown; shanks omitted','M4_pilot_depth_mm':13,'rear_G1_4_ports':4,'diagnostic_transparency':.5,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,plate_path,ROOT/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step',body_path,ROOT/'output/manufacturing/Q-M04/RM10-Q-M04-BODY.step',ROOT/'scripts/render_revision_Q.py',ROOT/'output/long-bore-Q/cad/verification.json']},'scope':'Pilot-cylinder threads; transparent POM and coloured channel voids for inspection only; Q is accepted; manufacturing detail Q-M04 specifies M4x10 screws and 13 mm pilots.'},indent=2)+'\\n')\n"
         }
       ]
     },
@@ -106,7 +118,7 @@
     },
     "scripts/prepare_manufacturing_views.py": {
       "before_sha256": "5b1d652719fabbd2808f3547195ba44902cd12ae6c6bd5b5ad4e51b4072fc7f9",
-      "after_sha256": "c214f3a05bfe925b7774b0e0795d843c1eb5e8c0b394629c4711059cb6d3d5c4",
+      "after_sha256": "0278eee480e158c27583833c6b3f70844860719e95ca8954916a4e50f65baf96",
       "replacements": [
         {
           "before": "tmp/mesh-long-bore-O",
@@ -115,16 +127,36 @@
         {
           "before": "tmp/mesh-O-M02",
           "after": "output/manufacturing/O-M02/meshes"
+        },
+        {
+          "before": "\"\"\"Tessellate the issued supplier STEP files for O-M02 review, preserving O.\"\"\"\nfrom pathlib import Path\nimport hashlib\nimport json\nimport shutil\nimport cadquery as cq\n",
+          "after": "\"\"\"Tessellate the released supplier STEP files for O-M02 review, preserving O.\"\"\"\nfrom pathlib import Path\nimport hashlib\nimport revision_json as json\nimport shutil\nimport cadquery as cq\n"
+        },
+        {
+          "before": "assert len(list(MESH.glob('*.stl'))) == 13\nreport = {\n    'issue': 'O-M02', 'source': 'Issued manufacturing STEP solids',\n    'boss_height_mm': 4, 'slab_depth_mm': 40, 'boss_projection_mm': 1,\n    'body_depth_mm': 44, 'body_valid': True, 'plate_valid': True,\n",
+          "after": "assert len(list(MESH.glob('*.stl'))) == 13\nreport = {\n    'manufacturing_revision': 'O-M02', 'source': 'released manufacturing STEP solids',\n    'boss_height_mm': 4, 'slab_depth_mm': 40, 'boss_projection_mm': 1,\n    'body_depth_mm': 44, 'body_valid': True, 'plate_valid': True,\n"
         }
       ]
     },
     "scripts/render_photoreal_product.py": {
       "before_sha256": "5cf57249f41aed0107caddd7af50f7799fa67a3a83e9c216a05f02b13d412222",
-      "after_sha256": "9fc598f8a727bd2ac7923438ab15cd62ed52249e48ea13c14c988a94185116eb",
+      "after_sha256": "b34fa4f015da1ffa70925b3dcc786831a2136f8e64fd7ebcc81d8b91328b2c6b",
       "replacements": [
         {
           "before": "    scene.render.filepath=str(ROOT/f'tmp/{REV}-{variant}-preview.png' if args.preview else OUT/f'{stem}.png')",
           "after": "    if args.preview:(ROOT/'tmp').mkdir(exist_ok=True)\n    scene.render.filepath=str(ROOT/f'tmp/{REV}-{variant}-preview.png' if args.preview else OUT/f'{stem}.png')"
+        },
+        {
+          "before": "\"\"\"\nfrom pathlib import Path\nimport argparse,json,math,sys\nimport bpy\nimport bmesh\nfrom mathutils import Vector,Matrix\nROOT=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--variant',choices=['all','bare','connected'],default='all')\nparser.add_argument('--manufacturing', choices=['O-M02'])\n",
+          "after": "\"\"\"\nfrom pathlib import Path\nimport argparse, math, sys\nimport bpy\nimport bmesh\nfrom mathutils import Vector,Matrix\nROOT=Path(__file__).resolve().parents[1]\nsys.path.insert(0,str(ROOT/'scripts'))\nimport revision_json as json\nparser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--variant',choices=['all','bare','connected'],default='all')\nparser.add_argument('--manufacturing', choices=['O-M02'])\n"
+        },
+        {
+          "before": "parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')\nargs=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])\nassert not (args.iteration and args.manufacturing), 'Select either a layout iteration or a manufacturing issue'\nREV=args.iteration or args.manufacturing or 'M'\nBASE=ROOT/(f'output/long-bore-{REV}' if args.iteration else 'output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')\n",
+          "after": "parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')\nargs=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])\nassert not (args.iteration and args.manufacturing), 'Select either a layout iteration or a manufacturing revision'\nREV=args.iteration or args.manufacturing or 'M'\nBASE=ROOT/(f'output/long-bore-{REV}' if args.iteration else 'output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')\n"
+        },
+        {
+          "before": "if not args.preview:\n    (OUT/'render-notes.json').write_text(json.dumps({\n        'revision':REV,'body_issue':'Q-M04' if REV=='Q' else 'P', 'faceplate_issue':('Q-M03' if REV=='Q' else None),'outer_corner_radius_mm':(5 if REV=='Q' else None),'source_scene':'../product-views/assembled-unmarked.blend',\n        'boss_height_mm':BOSS*1000,'retention_screws':('12 x M4 x 10 ISO 7380-1; heads rendered, shanks omitted' if REV=='Q' else 'Historical hardware per source'),'brush_direction':'X / across rack width on both broad faces',\n        'geometry_changes':'No manifold changes; converted millimetres to metres. Small shader-only edge rounding.',\n",
+          "after": "if not args.preview:\n    (OUT/'render-notes.json').write_text(json.dumps({\n        'revision':REV,'body_manufacturing_revision':'Q-M04' if REV=='Q' else 'P', 'faceplate_manufacturing_revision':('Q-M03' if REV=='Q' else None),'outer_corner_radius_mm':(5 if REV=='Q' else None),'source_scene':'../product-views/assembled-unmarked.blend',\n        'boss_height_mm':BOSS*1000,'retention_screws':('12 x M4 x 10 ISO 7380-1; heads rendered, shanks omitted' if REV=='Q' else 'Historical hardware per source'),'brush_direction':'X / across rack width on both broad faces',\n        'geometry_changes':'No manifold changes; converted millimetres to metres. Small shader-only edge rounding.',\n"
         }
       ]
     },
@@ -140,17 +172,25 @@
     },
     "scripts/render_context_25u.py": {
       "before_sha256": "7a99307eb2b96f77b8aa6be5d2617f511f3fd6efe80debf779c45fac813f343b",
-      "after_sha256": "9bb69479bdbfed805856d61229f85c727bbacb972f119118b989014368b74b36",
+      "after_sha256": "ca46da437de4c9c18b38d2dc75fd2719ed130018469808885927b391c62ede3a",
       "replacements": [
         {
           "before": "    scene.render.filepath=str(ROOT/f'tmp/context25-{name}.png' if args.preview else OUT/f'{name}.png')",
           "after": "    if args.preview:(ROOT/'tmp').mkdir(exist_ok=True)\n    scene.render.filepath=str(ROOT/f'tmp/context25-{name}.png' if args.preview else OUT/f'{name}.png')"
+        },
+        {
+          "before": "\"\"\"StarTech 25U open-frame use-case study. Current Q manifold and R7 plate; bought-in context envelopes noted.\"\"\"\nfrom pathlib import Path\nimport bpy, math, json, hashlib, argparse, sys\nfrom mathutils import Vector\nROOT=Path(__file__).resolve().parents[1]\nsys.path.insert(0,str(ROOT/'scripts'))\nfrom context_viewport import configure_context_viewports\nfrom context_startech25 import build_rack, RACK_U_DATUM, RAIL_DEPTH\n",
+          "after": "\"\"\"StarTech 25U open-frame use-case study. Current Q manifold and R7 plate; bought-in context envelopes noted.\"\"\"\nfrom pathlib import Path\nimport bpy, math, hashlib, argparse, sys\nfrom mathutils import Vector\nROOT=Path(__file__).resolve().parents[1]\nsys.path.insert(0,str(ROOT/'scripts'))\nimport revision_json as json\nfrom context_viewport import configure_context_viewports\nfrom context_startech25 import build_rack, RACK_U_DATUM, RAIL_DEPTH\n"
+        },
+        {
+          "before": "    def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()\n    report=dict(rack_U=25,rack_model='StarTech 4POSTRACK25U',rack_depth_overall_mm=661.8,rail_spacing_depth_mm=RAIL_DEPTH,rack_width_mm=600,rack_height_casters_mm=1288.34,rack_U_datum_mm=RACK_U_DATUM,depth_setting='22in / 0 and 0',\n      manifold_revision='Q',manifold_body_issue='Q-M04',manifold_faceplate_issue='Q-M03',radiator_plate_revision='R7',outer_corner_radius_mm=5,\n      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R7 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='Q parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],\n      radiator=dict(plate_dimensions_mm=[482.6,444.5,2],body_envelope_mm=[422,48,441],fans=8,fan_model='Official Noctua NF-A20 integration meshes',port_orientation='Downwards into reserved U1; radiator begins at U2',rack_screws_populated=8,cable_notch_mm=[10,2],plate_aperture_radius_mm=50),\n",
+          "after": "    def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()\n    report=dict(rack_U=25,rack_model='StarTech 4POSTRACK25U',rack_depth_overall_mm=661.8,rail_spacing_depth_mm=RAIL_DEPTH,rack_width_mm=600,rack_height_casters_mm=1288.34,rack_U_datum_mm=RACK_U_DATUM,depth_setting='22in / 0 and 0',\n      manifold_revision='Q',manifold_body_manufacturing_revision='Q-M04',manifold_faceplate_manufacturing_revision='Q-M03',radiator_plate_revision='R7',outer_corner_radius_mm=5,\n      rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R7 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='Q parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],\n      radiator=dict(plate_dimensions_mm=[482.6,444.5,2],body_envelope_mm=[422,48,441],fans=8,fan_model='Official Noctua NF-A20 integration meshes',port_orientation='Downwards into reserved U1; radiator begins at U2',rack_screws_populated=8,cable_notch_mm=[10,2],plate_aperture_radius_mm=50),\n"
         }
       ]
     },
     "scripts/prepare_Q_production.py": {
       "before_sha256": "430db7160deac0a6674ce7f5cbff314ba091bea229850152b8149cee942c00aa",
-      "after_sha256": "663102352d0c9b67f811530a9102ce4a24db11a07597595026e8742d473e77bc",
+      "after_sha256": "2c422dcbe30ff495d1419ed5e810b32977489e06052f485459a6afdfbbb4a5b6",
       "replacements": [
         {
           "before": "import cadquery as cq",
@@ -159,22 +199,42 @@
         {
           "before": "hashlib.sha256((R/f).read_bytes()).hexdigest()==h",
           "after": "source_matches(R,f,h)"
+        },
+        {
+          "before": "\"\"\"Derive Q-M01 supplier solids/schedules and independently inspect critical geometry.\"\"\"\nfrom pathlib import Path\nimport json,shutil,hashlib,math\nimport cadquery as cq\nfrom source_integrity import source_matches\n",
+          "after": "\"\"\"Derive Q-M01 supplier solids/schedules and independently inspect critical geometry.\"\"\"\nfrom pathlib import Path\nimport shutil, hashlib, math\nimport revision_json as json\nimport cadquery as cq\nfrom source_integrity import source_matches\n"
+        },
+        {
+          "before": "add('H',mount,diameter=4.5)\nadd('R',[(x,0,z) for x in (-232.55,232.55) for z in P['rack_slot_centres_z']],length=10,width=7)\n(O/'feature-schedule.json').write_text(json.dumps({'issue':'Q-M01','datum':'A POM front Y0; B width midplane X0; C bottom Z0; rear view reverses X on page','features':features},indent=2)+'\\n')\nfor part in ('body','faceplate'):\n dest=O/f'RM10-Q-M01-{part.upper()}.step';shutil.copyfile(S/f'{part}.step',dest)\n",
+          "after": "add('H',mount,diameter=4.5)\nadd('R',[(x,0,z) for x in (-232.55,232.55) for z in P['rack_slot_centres_z']],length=10,width=7)\n(O/'feature-schedule.json').write_text(json.dumps({'manufacturing_revision':'Q-M01','datum':'A POM front Y0; B width midplane X0; C bottom Z0; rear view reverses X on page','features':features},indent=2)+'\\n')\nfor part in ('body','faceplate'):\n dest=O/f'RM10-Q-M01-{part.upper()}.step';shutil.copyfile(S/f'{part}.step',dest)\n"
+        },
+        {
+          "before": " s=screw.translate(cq.Vector(x,-2,z));assert s.intersect(body).Volume()<1e-6 and s.intersect(plate).Volume()<1e-6;assy.add(s,name=f'REFERENCE_M4x10_{i+1}')\nassy.export(str(AOUT/'REFERENCE-assembled-with-screws.step'))\nreport=dict(issue='Q-M01',checks='PASS',body_solid_count=1,plate_solid_count=1,G1_4_ports=28,M4_threads=12,plate_windows=20,plate_retention_holes=12,optional_rack_slots=12,\n body_extent_mm=[410,43,87],plate_extent_mm=[482.6,2,87],body_volume_mm3=body.Volume(),plate_volume_mm3=plate.Volume(),plate_mass_kg=plate.Volume()*7.9e-6,\n M4_pilot_full_diameter_mm=13,M4_total_drilled_depth_mm=13+1.65/math.tan(math.radians(59)),M4_full_thread_after_entry_mm=10,M4_reference_screw_length_mm=10,M4_tip_to_full_pilot_bottom_mm=5,\n",
+          "after": " s=screw.translate(cq.Vector(x,-2,z));assert s.intersect(body).Volume()<1e-6 and s.intersect(plate).Volume()<1e-6;assy.add(s,name=f'REFERENCE_M4x10_{i+1}')\nassy.export(str(AOUT/'REFERENCE-assembled-with-screws.step'))\nreport=dict(manufacturing_revision='Q-M01',checks='PASS',body_solid_count=1,plate_solid_count=1,G1_4_ports=28,M4_threads=12,plate_windows=20,plate_retention_holes=12,optional_rack_slots=12,\n body_extent_mm=[410,43,87],plate_extent_mm=[482.6,2,87],body_volume_mm3=body.Volume(),plate_volume_mm3=plate.Volume(),plate_mass_kg=plate.Volume()*7.9e-6,\n M4_pilot_full_diameter_mm=13,M4_total_drilled_depth_mm=13+1.65/math.tan(math.radians(59)),M4_full_thread_after_entry_mm=10,M4_reference_screw_length_mm=10,M4_tip_to_full_pilot_bottom_mm=5,\n"
         }
       ]
     },
     "scripts/package_Q_production.py": {
       "before_sha256": "d8502ef624d42208333a257d6c4c35f0f24923f42d4c17420cf73e9f01789012",
-      "after_sha256": "41c5a42dcff6a5f018595f08dc0d354aaf2319a98770c901993f6c4a8b3b3b20",
+      "after_sha256": "11451ce3c06bccf17ef80f082cc9a55d4ba06562cf86f38f570e8225a4126aa5",
       "replacements": [
         {
           "before": "for p,h in r['source_sha256'].items():assert hashlib.sha256((R/p).read_bytes()).hexdigest()==h,p",
           "after": "from source_integrity import source_matches\nfor p,h in r['source_sha256'].items():assert source_matches(R,p,h),p"
+        },
+        {
+          "before": "\"\"\"Check PDF feature coverage and package each Q-M01 part separately; never upload.\"\"\"\nfrom pathlib import Path\nimport json,hashlib,zipfile,shutil,re\nfrom pypdf import PdfReader\nR=Path(__file__).resolve().parents[1];src=R/'output/manufacturing/Q-M01';out=R/'output/submission/Q-M01';out.mkdir(parents=True,exist_ok=True)\n",
+          "after": "\"\"\"Check PDF feature coverage and package each Q-M01 part separately; never upload.\"\"\"\nfrom pathlib import Path\nimport hashlib, zipfile, shutil, re\nimport revision_json as json\nfrom pypdf import PdfReader\nR=Path(__file__).resolve().parents[1];src=R/'output/manufacturing/Q-M01';out=R/'output/submission/Q-M01';out.mkdir(parents=True,exist_ok=True)\n"
+        },
+        {
+          "before": "(out/'README.md').write_text(re.sub(r'\\]\\(([^:/)]+\\.md)\\)', r'](../../../docs/\\1)', guide))\nfor name in ['body','faceplate']:shutil.copyfile(R/f'docs/jlc-Q-{name}-remarks.txt',out/f'{name}-supplier-remarks.txt')\n(out/'package-verification.json').write_text(json.dumps(dict(issue='Q-M01',checks='PASS',parts=results,source_sha256={str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [R/'scripts/draw_Q_production.py',R/'scripts/package_Q_production.py']},upload_performed_by_packaging_script=False),indent=2)+'\\n')\nfiles=sorted(p for p in out.iterdir() if p.is_file() and p.name!='SHA256SUMS.txt');(out/'SHA256SUMS.txt').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\\n' for p in files));print(json.dumps(results,indent=2))\n",
+          "after": "(out/'README.md').write_text(re.sub(r'\\]\\(([^:/)]+\\.md)\\)', r'](../../../docs/\\1)', guide))\nfor name in ['body','faceplate']:shutil.copyfile(R/f'docs/jlc-Q-{name}-remarks.txt',out/f'{name}-supplier-remarks.txt')\n(out/'package-verification.json').write_text(json.dumps(dict(manufacturing_revision='Q-M01',checks='PASS',parts=results,source_sha256={str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [R/'scripts/draw_Q_production.py',R/'scripts/package_Q_production.py']},upload_performed_by_packaging_script=False),indent=2)+'\\n')\nfiles=sorted(p for p in out.iterdir() if p.is_file() and p.name!='SHA256SUMS.txt');(out/'SHA256SUMS.txt').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\\n' for p in files));print(json.dumps(results,indent=2))\n"
         }
       ]
     },
     "scripts/finalise_three_part_pack.py": {
       "before_sha256": "05e1fd6b3ea2fb779907b62209a9bd7797f5952511bbec3d7b210cbbdbe2b66a",
-      "after_sha256": "130d0658825c37c9d7dcd1299e125d35942e2b067dd8abe73c11291247772b40",
+      "after_sha256": "5a0ad8c4bea3ba8c769677643e9f67e869fca11bec5e5bc2d1e89bbda75dc1ef",
       "replacements": [
         {
           "before": "import zipfile",
@@ -191,8 +251,534 @@
         {
           "before": "Path('cad/current-release.json'),",
           "after": "Path('cad/current-release.json'),\n        Path('cad/source-maintenance.json'),\n        Path('scripts/source_integrity.py'),"
+        },
+        {
+          "before": "from pathlib import Path\nimport hashlib\nimport json\nimport shutil\nimport zipfile\n",
+          "after": "from pathlib import Path\nimport hashlib\nimport revision_json as json\nimport shutil\nimport zipfile\n"
+        },
+        {
+          "before": "\nparts = []\nfor issue, stem, pages in [\n    ('Q-M04', 'RM10-Q-M04-BODY', 3),\n    ('Q-M03', 'RM10-Q-M03-FACEPLATE', 2),\n    ('R7-M01', 'SN1260-R7-M01-PLATE', 3),\n]:\n    directory = Path('output/submission') / issue\n    verification = read(directory / 'package-verification.json')\n    assert verification['checks'] == 'PASS'\n    if issue == 'Q-M01':\n        # Preserve historical generator hashes: verify the untouched body bundle against\n        # its actual submission record instead of requiring old scripts to remain frozen.\n",
+          "after": "\nparts = []\nfor manufacturing_revision, stem, pages in [\n    ('Q-M04', 'RM10-Q-M04-BODY', 3),\n    ('Q-M03', 'RM10-Q-M03-FACEPLATE', 2),\n    ('R7-M01', 'SN1260-R7-M01-PLATE', 3),\n]:\n    directory = Path('output/submission') / manufacturing_revision\n    verification = read(directory / 'package-verification.json')\n    assert verification['checks'] == 'PASS'\n    if manufacturing_revision == 'Q-M01':\n        # Preserve historical generator hashes: verify the untouched body bundle against\n        # its actual submission record instead of requiring old scripts to remain frozen.\n"
+        },
+        {
+          "before": "        assert set(archive.namelist()) == {f'{stem}.{ext}' for ext in extensions}\n        for ext in extensions:\n            origin = Path('output/pdf') if ext == 'pdf' else Path('output/manufacturing') / issue\n            assert archive.read(f'{stem}.{ext}') == (ROOT / origin / f'{stem}.{ext}').read_bytes()\n    shutil.copyfile(ROOT / bundle, OUT / bundle.name)\n",
+          "after": "        assert set(archive.namelist()) == {f'{stem}.{ext}' for ext in extensions}\n        for ext in extensions:\n            origin = Path('output/pdf') if ext == 'pdf' else Path('output/manufacturing') / manufacturing_revision\n            assert archive.read(f'{stem}.{ext}') == (ROOT / origin / f'{stem}.{ext}').read_bytes()\n    shutil.copyfile(ROOT / bundle, OUT / bundle.name)\n"
+        },
+        {
+          "before": "assert product['revision'] == studio['revision'] == context['manifold_revision'] == 'Q'\nassert context['radiator_plate_revision'] == 'R7'\nassert product['body_issue'] == studio['body_issue'] == context['manifold_body_issue'] == 'Q-M04'\nassert product['faceplate_issue'] == studio['faceplate_issue'] == context['manifold_faceplate_issue'] == 'Q-M03'\nassert r['outer_corner_radius_mm'] == product['outer_corner_radius_mm'] == context['outer_corner_radius_mm'] == 5\ncheck_sources(product)\n",
+          "after": "assert product['revision'] == studio['revision'] == context['manifold_revision'] == 'Q'\nassert context['radiator_plate_revision'] == 'R7'\nassert product['body_manufacturing_revision'] == studio['body_manufacturing_revision'] == context['manifold_body_manufacturing_revision'] == 'Q-M04'\nassert product['faceplate_manufacturing_revision'] == studio['faceplate_manufacturing_revision'] == context['manifold_faceplate_manufacturing_revision'] == 'Q-M03'\nassert r['outer_corner_radius_mm'] == product['outer_corner_radius_mm'] == context['outer_corner_radius_mm'] == 5\ncheck_sources(product)\n"
+        },
+        {
+          "before": "    'checks': 'PASS', 'parts': parts,\n    'release_status': read('output/submission/jlc-order-2026-09-16.json')['status'],\n    'operator_disposition': 'Canonical delivered fabrication issues; current physical findings and order history are separate from bundle-integrity checks.',\n    'canonical_selection': 'cad/current-release.json',\n    'fabrication_scope': 'Each ZIP contains only one custom part STEP and its fabrication drawing/profile.',\n",
+          "after": "    'checks': 'PASS', 'parts': parts,\n    'release_status': read('output/submission/jlc-order-2026-09-16.json')['status'],\n    'operator_disposition': 'Canonical delivered fabrication revisions; current physical findings and order history are separate from bundle-integrity checks.',\n    'canonical_selection': 'cad/current-release.json',\n    'fabrication_scope': 'Each ZIP contains only one custom part STEP and its fabrication drawing/profile.',\n"
+        },
+        {
+          "before": "(OUT / 'README.md').write_text('''# Current three-part fabrication pack\n\n**Canonical delivered issues: Q-M04 body, Q-M03 faceplate and R7-M01 radiator.** To reproduce the order, download the three ZIPs below and follow [the JLC order guide](../../../docs/order-from-jlc.md). These are byte-identical copies of the issue-specific bundles. [The canonical manifest](../../../cad/current-release.json) selects their paths and hashes. Older outputs remain historical unless explicitly identified as shared dependencies. This index verifies files; it does not submit or pay for an order.\n\n| Part | Fabrication bundle | Process |\n",
+          "after": "(OUT / 'README.md').write_text('''# Current three-part fabrication pack\n\n**Canonical delivered revisions: Q-M04 body, Q-M03 faceplate and R7-M01 radiator.** To reproduce the order, download the three ZIPs below and follow [the JLC order guide](../../../docs/order-from-jlc.md). These are byte-identical copies of the revision-specific bundles. [The canonical manifest](../../../cad/current-release.json) selects their paths and hashes. Older outputs remain historical unless explicitly identified as shared dependencies. This index verifies files; it does not submit or pay for an order.\n\n| Part | Fabrication bundle | Process |\n"
         }
       ]
+    },
+    "cad/current-release.json": {
+      "before_sha256": "22f412fc8c2729a773af8e34212eae862305a528c62dfef81d21fde71b1b1191",
+      "replacements": [
+        {
+          "before": "{\n  \"schema_version\": 1,\n  \"as_of\": \"2026-10-05\",\n  \"selection_status\": \"canonical_delivered_first_article\",\n",
+          "after": "{\n  \"schema_version\": 2,\n  \"as_of\": \"2026-10-05\",\n  \"selection_status\": \"canonical_delivered_first_article\",\n"
+        },
+        {
+          "before": "    {\n      \"part\": \"RM10-Q-M04-BODY\",\n      \"issue\": \"Q-M04\",\n      \"quantity\": 1,\n      \"source\": \"cad/manufacturing/Q-M04.json\",\n      \"bundle\": \"output/submission/current-three-parts/RM10-Q-M04-BODY.zip\",\n      \"issue_bundle\": \"output/submission/Q-M04/RM10-Q-M04-BODY.zip\",\n      \"sha256\": \"699a2a0bc5bc1a903e00e94bfad6d5d2cd445495360754556012212c078f5b65\",\n      \"drawing\": \"output/pdf/RM10-Q-M04-BODY.pdf\",\n",
+          "after": "    {\n      \"part\": \"RM10-Q-M04-BODY\",\n      \"manufacturing_revision\": \"Q-M04\",\n      \"quantity\": 1,\n      \"source\": \"cad/manufacturing/Q-M04.json\",\n      \"bundle\": \"output/submission/current-three-parts/RM10-Q-M04-BODY.zip\",\n      \"manufacturing_revision_bundle\": \"output/submission/Q-M04/RM10-Q-M04-BODY.zip\",\n      \"sha256\": \"699a2a0bc5bc1a903e00e94bfad6d5d2cd445495360754556012212c078f5b65\",\n      \"drawing\": \"output/pdf/RM10-Q-M04-BODY.pdf\",\n"
+        },
+        {
+          "before": "    {\n      \"part\": \"RM10-Q-M03-FACEPLATE\",\n      \"issue\": \"Q-M03\",\n      \"quantity\": 1,\n      \"source\": \"cad/manufacturing/Q-M03.json\",\n      \"bundle\": \"output/submission/current-three-parts/RM10-Q-M03-FACEPLATE.zip\",\n      \"issue_bundle\": \"output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip\",\n      \"sha256\": \"3c80e7e8aa76f7f0c491d85baca623d7600ec8d7f56c1f24999eb6ccaaeb3664\",\n      \"drawing\": \"output/pdf/RM10-Q-M03-FACEPLATE.pdf\",\n",
+          "after": "    {\n      \"part\": \"RM10-Q-M03-FACEPLATE\",\n      \"manufacturing_revision\": \"Q-M03\",\n      \"quantity\": 1,\n      \"source\": \"cad/manufacturing/Q-M03.json\",\n      \"bundle\": \"output/submission/current-three-parts/RM10-Q-M03-FACEPLATE.zip\",\n      \"manufacturing_revision_bundle\": \"output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip\",\n      \"sha256\": \"3c80e7e8aa76f7f0c491d85baca623d7600ec8d7f56c1f24999eb6ccaaeb3664\",\n      \"drawing\": \"output/pdf/RM10-Q-M03-FACEPLATE.pdf\",\n"
+        },
+        {
+          "before": "    {\n      \"part\": \"SN1260-R7-M01-PLATE\",\n      \"issue\": \"R7-M01\",\n      \"quantity\": 1,\n      \"source\": \"cad/manufacturing/R7-M01.json\",\n      \"bundle\": \"output/submission/current-three-parts/SN1260-R7-M01-PLATE.zip\",\n      \"issue_bundle\": \"output/submission/R7-M01/SN1260-R7-M01-PLATE.zip\",\n      \"sha256\": \"e5c4d85cf3fe5049dddc34ca8609f049415fbc364f7fac4732a83c5faca875fd\",\n      \"drawing\": \"output/pdf/SN1260-R7-M01-PLATE.pdf\",\n",
+          "after": "    {\n      \"part\": \"SN1260-R7-M01-PLATE\",\n      \"manufacturing_revision\": \"R7-M01\",\n      \"quantity\": 1,\n      \"source\": \"cad/manufacturing/R7-M01.json\",\n      \"bundle\": \"output/submission/current-three-parts/SN1260-R7-M01-PLATE.zip\",\n      \"manufacturing_revision_bundle\": \"output/submission/R7-M01/SN1260-R7-M01-PLATE.zip\",\n      \"sha256\": \"e5c4d85cf3fe5049dddc34ca8609f049415fbc364f7fac4732a83c5faca875fd\",\n      \"drawing\": \"output/pdf/SN1260-R7-M01-PLATE.pdf\",\n"
+        }
+      ],
+      "after_sha256": "5e8a1fbf8ed7e0ea9761e42e4312630a3ac50003e8d913d25b264fc16cdc45d1"
+    },
+    "cad/iterations/Q-rear-ports.json": {
+      "before_sha256": "721d618a043d914624cbe7eaefae48c13cc0c9a79f2a25b916dd0f17c506e6f4",
+      "replacements": [
+        {
+          "before": "  \"deburring\": \"External only; clean/flush internal bores; no internal cross-hole deburring operation\",\n  \"topology\": \"Two isolated continuous galleries; rear ports duplicate their aligned front-row connection; no grouping or cross-link\",\n  \"drawing_status\": \"Q-M01 supplier review issue; no submission performed\",\n  \"M4_retention\": {\n    \"thread\": \"M4 x 0.7 - 6H\",\n",
+          "after": "  \"deburring\": \"External only; clean/flush internal bores; no internal cross-hole deburring operation\",\n  \"topology\": \"Two isolated continuous galleries; rear ports duplicate their aligned front-row connection; no grouping or cross-link\",\n  \"drawing_status\": \"Q-M01 supplier review revision; no submission performed\",\n  \"M4_retention\": {\n    \"thread\": \"M4 x 0.7 - 6H\",\n"
+        }
+      ],
+      "after_sha256": "3afd2fcc9035d870ea10dceb60240a50c6f188e8010a17b967984f3440445e34"
+    },
+    "cad/manufacturing/O-M01.json": {
+      "before_sha256": "1d38a1db072151de71ef285946e4e0154897af29ea81173179d3111d0eb46ec5",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"O-M01\",\n  \"approved_layout\": \"O\",\n  \"approved_layout_commit\": \"980b4d4\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"O-M01\",\n  \"approved_layout\": \"O\",\n  \"approved_layout_commit\": \"980b4d4\",\n"
+        },
+        {
+          "before": "  \"opposed_bore_step_max\": 0.3,\n  \"inspection_reference_temperature_C\": 20,\n  \"status\": \"Operator-approved O layout; manufacturing detail issue for supplier quotation and DFM\",\n  \"internal_deburring_required\": false,\n  \"external_deburring_required\": true,\n  \"internal_cleaning\": \"Remove loose machining chips by cleaning/flushing; no internal edge-deburring operation required.\",\n  \"issue_date\": \"2026-09-14\"\n}\n",
+          "after": "  \"opposed_bore_step_max\": 0.3,\n  \"inspection_reference_temperature_C\": 20,\n  \"status\": \"Operator-approved O layout; manufacturing detail revision for supplier quotation and DFM\",\n  \"internal_deburring_required\": false,\n  \"external_deburring_required\": true,\n  \"internal_cleaning\": \"Remove loose machining chips by cleaning/flushing; no internal edge-deburring operation required.\",\n  \"manufacturing_revision_date\": \"2026-09-14\"\n}\n"
+        }
+      ],
+      "after_sha256": "c304e888699a7e3e86e9f46d03d6d158f206a0d9e836f421b4f7fe282aec1e42"
+    },
+    "cad/manufacturing/O-M02.json": {
+      "before_sha256": "39b5800c8a24a145576ee03c2214fdd0fd9e8fa8b9352d57eca4a51218650475",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"O-M02\",\n  \"approved_layout\": \"O\",\n  \"approved_layout_commit\": \"980b4d4\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"O-M02\",\n  \"approved_layout\": \"O\",\n  \"approved_layout_commit\": \"980b4d4\",\n"
+        },
+        {
+          "before": "  \"external_deburring_required\": true,\n  \"internal_cleaning\": \"Remove loose machining chips by cleaning/flushing; no internal edge-deburring operation required.\",\n  \"issue_date\": \"2026-09-15\",\n  \"boss_height\": 4.0,\n  \"boss_projection_above_plate\": 1.0,\n  \"previous_detail_issue\": \"O-M01\"\n}\n",
+          "after": "  \"external_deburring_required\": true,\n  \"internal_cleaning\": \"Remove loose machining chips by cleaning/flushing; no internal edge-deburring operation required.\",\n  \"manufacturing_revision_date\": \"2026-09-15\",\n  \"boss_height\": 4.0,\n  \"boss_projection_above_plate\": 1.0,\n  \"previous_detail_manufacturing_revision\": \"O-M01\"\n}\n"
+        }
+      ],
+      "after_sha256": "497d8310975bf2d90db9e7b4b1917e0d19f410ac72f2af4faed67af0f5adc4ec"
+    },
+    "cad/manufacturing/Q-M01.json": {
+      "before_sha256": "d02cd991288f26c514f1d695672bb41652dbae28f86c89ce58e83a555c9cca2d",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"Q-M01\",\n  \"issue_date\": \"2026-09-15\",\n  \"geometry_revision\": \"Q\",\n  \"status\": \"Operator-approved Q geometry; shorter M4 retention detail following thread-depth review; supplier review only\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"Q-M01\",\n  \"manufacturing_revision_date\": \"2026-09-15\",\n  \"geometry_revision\": \"Q\",\n  \"status\": \"Operator-approved Q geometry; shorter M4 retention detail following thread-depth review; supplier review only\",\n"
+        }
+      ],
+      "after_sha256": "2177626e1d94b32cc4d72c728d7270416d0979dcc35662a94ac4f49bd3a0b8fe"
+    },
+    "cad/manufacturing/Q-M02.json": {
+      "before_sha256": "1fb9ee353a7e8abf92eb9abdb957181cd0a02f1f9e31e45bbd5c8dac3c0107c0",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"Q-M02\",\n  \"part_number\": \"RM10-Q-M02-FACEPLATE\",\n  \"issue_date\": \"2026-09-16\",\n  \"geometry_revision\": \"Q\",\n  \"scope\": \"Faceplate only; body remains Q-M01\",\n  \"source_issue\": \"Q-M01\",\n  \"material\": \"304 stainless steel / EN 1.4301\",\n  \"thickness_mm\": 2.0,\n",
+          "after": "{\n  \"manufacturing_revision\": \"Q-M02\",\n  \"part_number\": \"RM10-Q-M02-FACEPLATE\",\n  \"manufacturing_revision_date\": \"2026-09-16\",\n  \"geometry_revision\": \"Q\",\n  \"scope\": \"Faceplate only; body remains Q-M01\",\n  \"source_manufacturing_revision\": \"Q-M01\",\n  \"material\": \"304 stainless steel / EN 1.4301\",\n  \"thickness_mm\": 2.0,\n"
+        }
+      ],
+      "after_sha256": "e2816550c7aa2da5640e22fdfd9b77722d38d8785aad3f9fb6fa1a504d820884"
+    },
+    "cad/manufacturing/Q-M03.json": {
+      "before_sha256": "8a7dde34a840b528651ed75e2143493ad2f0d9fa537af1f481fd8d729701644a",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"Q-M03\",\n  \"part_number\": \"RM10-Q-M03-FACEPLATE\",\n  \"issue_date\": \"2026-09-16\",\n  \"geometry_revision\": \"Q\",\n  \"scope\": \"Faceplate only; body remains Q-M01\",\n  \"source_issue\": \"Q-M02\",\n  \"material\": \"304 stainless steel / EN 1.4301\",\n  \"thickness_mm\": 2.0,\n",
+          "after": "{\n  \"manufacturing_revision\": \"Q-M03\",\n  \"part_number\": \"RM10-Q-M03-FACEPLATE\",\n  \"manufacturing_revision_date\": \"2026-09-16\",\n  \"geometry_revision\": \"Q\",\n  \"scope\": \"Faceplate only; body remains Q-M01\",\n  \"source_manufacturing_revision\": \"Q-M02\",\n  \"material\": \"304 stainless steel / EN 1.4301\",\n  \"thickness_mm\": 2.0,\n"
+        }
+      ],
+      "after_sha256": "01b515c9b4519a69ffa44e130b1441d0a0aab7d3579c5ad741a13f78a0f54f74"
+    },
+    "cad/manufacturing/Q-M04.json": {
+      "before_sha256": "cb4ea8ea1a9ab2e6c04144ac1e68169abea34058c241e8bd00ce9c2ddba8aff6",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"Q-M04\",\n  \"issue_date\": \"2026-09-16\",\n  \"geometry_revision\": \"Q\",\n  \"status\": \"Held for future repeat order; not submitted\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"Q-M04\",\n  \"manufacturing_revision_date\": \"2026-09-16\",\n  \"geometry_revision\": \"Q\",\n  \"status\": \"Held for future repeat order; not submitted\",\n"
+        },
+        {
+          "before": "  \"M4_mating_coordinate_tolerance_mm\": 0.05,\n  \"part_number\": \"RM10-Q-M04-BODY\",\n  \"source_issue\": \"Q-M01\",\n  \"scope\": \"POM body only; twelve main-slab outer edges C0.5 x45 degrees\",\n  \"perimeter_chamfer_mm\": 0.5,\n",
+          "after": "  \"M4_mating_coordinate_tolerance_mm\": 0.05,\n  \"part_number\": \"RM10-Q-M04-BODY\",\n  \"source_manufacturing_revision\": \"Q-M01\",\n  \"scope\": \"POM body only; twelve main-slab outer edges C0.5 x45 degrees\",\n  \"perimeter_chamfer_mm\": 0.5,\n"
+        }
+      ],
+      "after_sha256": "4471e3757b9bf5e57df82b576cfe5e551099eabaf0980a4552b6fa759a7e15fc"
+    },
+    "cad/manufacturing/R4-M01.json": {
+      "before_sha256": "6a1b6bd55fcea663576a1128f37b3dded54ff1cbd188ca55291ef0a3fc27960f",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"R4-M01\",\n  \"part_number\": \"SN1260-R4-M01-PLATE\",\n  \"issue_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R4\",\n  \"status\": \"Production drawing pack for quotation and supplier manufacturing review; operator-approved R4 geometry\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"R4-M01\",\n  \"part_number\": \"SN1260-R4-M01-PLATE\",\n  \"manufacturing_revision_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R4\",\n  \"status\": \"Production drawing pack for quotation and supplier manufacturing review; operator-approved R4 geometry\",\n"
+        }
+      ],
+      "after_sha256": "aeecd36c7f1daf26f46367e7d1a562ed1e401b39c3811089caa4e3008fdc946c"
+    },
+    "cad/manufacturing/R5-M01.json": {
+      "before_sha256": "871035b91ce73370ac8e3e043c1a591f2a33cbe5f9dbc11348d7483978c82067",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"R5-M01\",\n  \"part_number\": \"SN1260-R5-M01-PLATE\",\n  \"issue_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R5\",\n  \"status\": \"Production drawing pack; R4 plus operator-requested rounded cable notch\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"R5-M01\",\n  \"part_number\": \"SN1260-R5-M01-PLATE\",\n  \"manufacturing_revision_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R5\",\n  \"status\": \"Production drawing pack; R4 plus operator-requested rounded cable notch\",\n"
+        }
+      ],
+      "after_sha256": "904e2b5773884373a67c69a3d5ae498c356231c7508fe65d4adbec21137d6bf2"
+    },
+    "cad/manufacturing/R6-M01.json": {
+      "before_sha256": "59b1adc6e522b307380a15b885a294da7cb3c1def80e805eb38954bf461ae9e8",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"R6-M01\",\n  \"part_number\": \"SN1260-R6-M01-PLATE\",\n  \"issue_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R6\",\n  \"status\": \"Operator-approved R6 geometry; production pack for supplier quotation and manufacturing review\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"R6-M01\",\n  \"part_number\": \"SN1260-R6-M01-PLATE\",\n  \"manufacturing_revision_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R6\",\n  \"status\": \"Operator-approved R6 geometry; production pack for supplier quotation and manufacturing review\",\n"
+        }
+      ],
+      "after_sha256": "82125e1d0cea4cbd21f5308a251574481fe221ac1f947baaf44b0d294fb0b9ab"
+    },
+    "cad/manufacturing/R6-M02.json": {
+      "before_sha256": "23ae7afc8c77ad50cca85f467a0386caef132a0619dd9b9ab6f8a3127792deda",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"R6-M02\",\n  \"part_number\": \"SN1260-R6-M02-PLATE\",\n  \"issue_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R6\",\n  \"status\": \"Operator-approved R6 geometry; production pack for supplier quotation and manufacturing review\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"R6-M02\",\n  \"part_number\": \"SN1260-R6-M02-PLATE\",\n  \"manufacturing_revision_date\": \"2026-09-15\",\n  \"geometry_revision\": \"R6\",\n  \"status\": \"Operator-approved R6 geometry; production pack for supplier quotation and manufacturing review\",\n"
+        }
+      ],
+      "after_sha256": "92c17dba7053b0d852b34c6d2fdfb0738032b152ae5fe7e243988533a7c0641f"
+    },
+    "cad/manufacturing/R6-M03.json": {
+      "before_sha256": "5703419b0649561373a550e7796e8f48698983141c56790fe23145bde460d0d1",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"R6-M03\",\n  \"part_number\": \"SN1260-R6-M03-PLATE\",\n  \"issue_date\": \"2026-09-16\",\n  \"geometry_revision\": \"R6\",\n  \"status\": \"Unchanged R6 geometry; all cut dimensions and coordinates \\u00b10.10 mm; prepared locally for revised submission\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"R6-M03\",\n  \"part_number\": \"SN1260-R6-M03-PLATE\",\n  \"manufacturing_revision_date\": \"2026-09-16\",\n  \"geometry_revision\": \"R6\",\n  \"status\": \"Unchanged R6 geometry; all cut dimensions and coordinates \\u00b10.10 mm; prepared locally for revised submission\",\n"
+        }
+      ],
+      "after_sha256": "3b582275740715ca8e2f35c4cf1c124147c37a8d2c638b255df6e9516368d358"
+    },
+    "cad/manufacturing/R7-M01.json": {
+      "before_sha256": "ae285903faaf13c9b252f665f97877a475ffeaa776525e49d6da0182c99ab30a",
+      "replacements": [
+        {
+          "before": "{\n  \"issue\": \"R7-M01\",\n  \"part_number\": \"SN1260-R7-M01-PLATE\",\n  \"issue_date\": \"2026-09-16\",\n  \"geometry_revision\": \"R7\",\n  \"status\": \"Operator-requested R5 external corners; held for repeat orders\",\n",
+          "after": "{\n  \"manufacturing_revision\": \"R7-M01\",\n  \"part_number\": \"SN1260-R7-M01-PLATE\",\n  \"manufacturing_revision_date\": \"2026-09-16\",\n  \"geometry_revision\": \"R7\",\n  \"status\": \"Operator-requested R5 external corners; held for repeat orders\",\n"
+        }
+      ],
+      "after_sha256": "911804ce8b0b19eaf6b169bd19a649f05b54bcdff018dc1f6e33bc7b40ee624e"
+    },
+    "scripts/archive/check-O-M02-scenes.py": {
+      "before_sha256": "dd70a3409290bd22b11c9be25096b9fa41dd72e038b9848460115f7a1bc70062",
+      "replacements": [
+        {
+          "before": "    assert not any(o.type=='FONT' for o in scene.objects)\n    results.append(dict(variant=variant,body_depth_mm=(hi-lo)*1000,boss_seal_plane_y_mm=lo*1000,retention_heads=6,visible_QD_pairs=0 if bare else 20,visible_tubes=0 if bare else 20,surface_markings=False))\nreport=dict(issue='O-M02',status='PASS',method='Reopen saved Blender scenes; inspect actual mesh bounds, QD placement and visibility',scenes=results)\n(base/'render-scene-verification.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps(report,indent=2))\n",
+          "after": "    assert not any(o.type=='FONT' for o in scene.objects)\n    results.append(dict(variant=variant,body_depth_mm=(hi-lo)*1000,boss_seal_plane_y_mm=lo*1000,retention_heads=6,visible_QD_pairs=0 if bare else 20,visible_tubes=0 if bare else 20,surface_markings=False))\nreport=dict(manufacturing_revision='O-M02',status='PASS',method='Reopen saved Blender scenes; inspect actual mesh bounds, QD placement and visibility',scenes=results)\n(base/'render-scene-verification.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps(report,indent=2))\n"
+        }
+      ],
+      "after_sha256": "308455c5b365e42a0ee3d4368a305cb1c33c85e8be240af8a0c13a36447d91f2"
+    },
+    "scripts/assess_manifold_plate_thickness.py": {
+      "before_sha256": "f3566de6ba763fc3d22358febeecd992251f6916b2a31f7cb1437fc2adf29c1f",
+      "replacements": [
+        {
+          "before": "assert abs(rows[-1]['mass_kg']-.3951615713202164)<1e-9\nreport={'scope':'Dimensional and mass assessment only; no separate manifold structural simulation.',\n 'reference':'Issued O-M02 geometry unchanged; 7900 kg/m3 stainless density.',\n 'worst_case_stack':'Thickness -0.10; countersink diameter +0.10; included angle -1 degree; through-hole at minimum 4.50.',\n 'important':'A thin cylindrical land is not itself proof of inadequate strength. Nominal conical seating geometry remains present.',\n",
+          "after": "assert abs(rows[-1]['mass_kg']-.3951615713202164)<1e-9\nreport={'scope':'Dimensional and mass assessment only; no separate manifold structural simulation.',\n 'reference':'released O-M02 geometry unchanged; 7900 kg/m3 stainless density.',\n 'worst_case_stack':'Thickness -0.10; countersink diameter +0.10; included angle -1 degree; through-hole at minimum 4.50.',\n 'important':'A thin cylindrical land is not itself proof of inadequate strength. Nominal conical seating geometry remains present.',\n"
+        }
+      ],
+      "after_sha256": "36a2ec62479891d7bdec09df02bba2fdadf5b879564a977bb2a8e956b910cd45"
+    },
+    "scripts/assess_radiator_plate_thickness.py": {
+      "before_sha256": "d23c2e2b72edf7ec2d836a94f33237adbf82c6384fcdcadffdce3b2181974d56",
+      "replacements": [
+        {
+          "before": "\nNot FEA: it does not establish complete assembly strength or deflection.\nRun with standard Python. Leaves the issued R1 geometry untouched.\n\"\"\"\nfrom pathlib import Path\n",
+          "after": "\nNot FEA: it does not establish complete assembly strength or deflection.\nRun with standard Python. Leaves the released R1 geometry untouched.\n\"\"\"\nfrom pathlib import Path\n"
+        }
+      ],
+      "after_sha256": "f93ba4ece917706255bc15808bfa6fc89196bb0f3e055e3a84bad48d3516795a"
+    },
+    "scripts/check_environment.py": {
+      "before_sha256": "93f879a71ad491385c19ee97ea76443ce4cb039fa5f0de1c8eafb03996157e8a",
+      "replacements": [
+        {
+          "before": "    parser.add_argument('--fea',action='store_true',help='Also check optional Gmsh/Matplotlib imports')\n    args=parser.parse_args();errors=[]\n    if platform.system()!='Darwin':errors.append('Supported authoring baseline is macOS; report other-platform issues when encountered.')\n    if sys.version_info[:2]!=(3,12):errors.append('Use Python 3.12 for the tested dependency set.')\n    requirements=['requirements.txt']+(['requirements-fea.txt'] if args.fea else [])\n",
+          "after": "    parser.add_argument('--fea',action='store_true',help='Also check optional Gmsh/Matplotlib imports')\n    args=parser.parse_args();errors=[]\n    if platform.system()!='Darwin':errors.append('Supported authoring baseline is macOS; report other-platform problems when encountered.')\n    if sys.version_info[:2]!=(3,12):errors.append('Use Python 3.12 for the tested dependency set.')\n    requirements=['requirements.txt']+(['requirements-fea.txt'] if args.fea else [])\n"
+        }
+      ],
+      "after_sha256": "60945061949c21efb12e0733f6c729d2f1499e76d2febdd2e1bbe0b938ac70b1"
+    },
+    "scripts/check_publication.py": {
+      "before_sha256": "14bfa9a1a2ebc73e8fc10f013984059bcff37835b2ec9e0367c9469f2b11f132",
+      "replacements": [
+        {
+          "before": "from pathlib import Path\nimport hashlib\nimport json\nimport re\nimport zipfile\n",
+          "after": "from pathlib import Path\nimport hashlib\nimport revision_json as json\nimport re\nimport zipfile\n"
+        },
+        {
+          "before": "        require(part['part'] not in names, 'Duplicate selected part')\n        names.add(part['part'])\n        for field in ('source', 'bundle', 'issue_bundle', 'drawing', 'step'):\n            require((ROOT / part[field]).is_file(), f'Missing {field}: {part[field]}')\n        for field in ('bundle', 'issue_bundle'):\n            require(digest(ROOT / part[field]) == part['sha256'], f'Hash mismatch: {part[field]}')\n        originals = {'step': ROOT / part['step'], 'pdf': ROOT / part['drawing']}\n",
+          "after": "        require(part['part'] not in names, 'Duplicate selected part')\n        names.add(part['part'])\n        for field in ('source', 'bundle', 'manufacturing_revision_bundle', 'drawing', 'step'):\n            require((ROOT / part[field]).is_file(), f'Missing {field}: {part[field]}')\n        for field in ('bundle', 'manufacturing_revision_bundle'):\n            require(digest(ROOT / part[field]) == part['sha256'], f'Hash mismatch: {part[field]}')\n        originals = {'step': ROOT / part['step'], 'pdf': ROOT / part['drawing']}\n"
+        }
+      ],
+      "after_sha256": "f2896012b50bea11da5ad3dca56345b0edcde2821ec80e8557517068949ea72a"
+    },
+    "scripts/check_rack_slot_edges.py": {
+      "before_sha256": "90e7bd65eb8495a3b5a25279bccb0cd3c8685a69720a02c6ed46967b606b60f8",
+      "replacements": [
+        {
+          "before": "nuts=[cq.Workplane('XY').box(10,6,10).translate((x,6,z)).val() for x in [-232.55,232.55] for z in new]\ngap=min(f.distance(n) for f in fits for n in nuts);assert gap>0\nreport={'revision_checked':'K','plate_height_mm':H,'plate_thickness_mm':3,'rack_slots':slots,'slot_size_mm':[10,7],'current_centres_z_mm':old,'current_minimum_vertical_edge_ligament_mm':1.9,'current_side_edge_ligament_mm':p['rack_width']/2-p['rack_hole_pitch']/2-5,'washer_reference':{'manufacturer':'Penn Elcom','part':'S1940','outer_diameter_mm':15,'url':'https://www.penn-elcom.com/slim-m6-black-plastic-cup-washer-s1940','current_panel_overhang_mm':7.5-old[0],'nominal_overlap_of_two_identical_washers_across_adjacent_U_boundary_mm':15-12.7},'alternative_middle_holes':{'centres_z_mm':new,'vertical_bolt_spacing_mm':new[1]-new[0],'vertical_slot_edge_ligament_mm':new[0]-3.5,'washer_to_vertical_panel_edge_mm':new[0]-7.5,'minimum_new_corner_nut_to_K_elbow_reference_mm':gap},'status':'Assessment only; existing K CAD unchanged. Edge/washer issue confirmed; no structural failure load inferred. Alternative nuts use illustrative 10x6x10 envelopes at Y6; actual clips and screw tails require checking.'}\n(OUT/'assessment.json').write_text(json.dumps(report,indent=2)+'\\n')\n# Comparison of the right-hand panel end, with washer envelopes on the front face.\n",
+          "after": "nuts=[cq.Workplane('XY').box(10,6,10).translate((x,6,z)).val() for x in [-232.55,232.55] for z in new]\ngap=min(f.distance(n) for f in fits for n in nuts);assert gap>0\nreport={'revision_checked':'K','plate_height_mm':H,'plate_thickness_mm':3,'rack_slots':slots,'slot_size_mm':[10,7],'current_centres_z_mm':old,'current_minimum_vertical_edge_ligament_mm':1.9,'current_side_edge_ligament_mm':p['rack_width']/2-p['rack_hole_pitch']/2-5,'washer_reference':{'manufacturer':'Penn Elcom','part':'S1940','outer_diameter_mm':15,'url':'https://www.penn-elcom.com/slim-m6-black-plastic-cup-washer-s1940','current_panel_overhang_mm':7.5-old[0],'nominal_overlap_of_two_identical_washers_across_adjacent_U_boundary_mm':15-12.7},'alternative_middle_holes':{'centres_z_mm':new,'vertical_bolt_spacing_mm':new[1]-new[0],'vertical_slot_edge_ligament_mm':new[0]-3.5,'washer_to_vertical_panel_edge_mm':new[0]-7.5,'minimum_new_corner_nut_to_K_elbow_reference_mm':gap},'status':'Assessment only; existing K CAD unchanged. Edge/washer concern confirmed; no structural failure load inferred. Alternative nuts use illustrative 10x6x10 envelopes at Y6; actual clips and screw tails require checking.'}\n(OUT/'assessment.json').write_text(json.dumps(report,indent=2)+'\\n')\n# Comparison of the right-hand panel end, with washer envelopes on the front face.\n"
+        }
+      ],
+      "after_sha256": "db11544693284cc3b44adbbc41f926f90a66af71dea3af4b91d1f3122c7c9914"
+    },
+    "scripts/draw_Q_production.py": {
+      "before_sha256": "3aefcddaa07ef888643e316707a7b51ee52ce10bc04e1cc9bd2f78d654e75216",
+      "replacements": [
+        {
+          "before": "\"\"\"Self-contained A3 supplier drawings for Q-M01, mm, tap-pilot STEP convention.\"\"\"\nfrom pathlib import Path\nimport json,math,argparse\nfrom reportlab.pdfgen import canvas\nfrom reportlab.pdfbase import pdfmetrics\n",
+          "after": "\"\"\"Self-contained A3 supplier drawings for Q-M01, mm, tap-pilot STEP convention.\"\"\"\nfrom pathlib import Path\nimport math, argparse\nimport revision_json as json\nfrom reportlab.pdfgen import canvas\nfrom reportlab.pdfbase import pdfmetrics\n"
+        },
+        {
+          "before": "S=json.loads((R/'output/manufacturing/Q-M01/feature-schedule.json').read_text())['features']\nM=json.loads((R/'cad/manufacturing/Q-M01.json').read_text())\nparser=argparse.ArgumentParser();parser.add_argument('--faceplate-issue',choices=['Q-M01','Q-M02','Q-M03'],default='Q-M01');parser.add_argument('--faceplate-only',action='store_true')\nparser.add_argument('--body-issue',choices=['Q-M01','Q-M04'],default='Q-M01');parser.add_argument('--body-only',action='store_true')\nARGS=parser.parse_args();FI=ARGS.faceplate_issue;BI=ARGS.body_issue\nFM=json.loads((R/f'cad/manufacturing/{FI}.json').read_text())\nSIZE_TOL='\u00b10.10' if FI in ['Q-M02','Q-M03'] else '+0.10/0'\n",
+          "after": "S=json.loads((R/'output/manufacturing/Q-M01/feature-schedule.json').read_text())['features']\nM=json.loads((R/'cad/manufacturing/Q-M01.json').read_text())\nparser=argparse.ArgumentParser();parser.add_argument('--faceplate-manufacturing-revision',choices=['Q-M01','Q-M02','Q-M03'],default='Q-M01');parser.add_argument('--faceplate-only',action='store_true')\nparser.add_argument('--body-manufacturing-revision',choices=['Q-M01','Q-M04'],default='Q-M01');parser.add_argument('--body-only',action='store_true')\nARGS=parser.parse_args();FI=ARGS.faceplate_manufacturing_revision;BI=ARGS.body_manufacturing_revision\nFM=json.loads((R/f'cad/manufacturing/{FI}.json').read_text())\nSIZE_TOL='\u00b10.10' if FI in ['Q-M02','Q-M03'] else '+0.10/0'\n"
+        }
+      ],
+      "after_sha256": "e01d730f24b138234430af6c3d0550593ed4c8c3d763c2ee79a4d111493cd3c9"
+    },
+    "scripts/draw_manufacturing.py": {
+      "before_sha256": "8d1ff163e4530c8ab4be19a07881306a72d299140e4752a689581d47667e8bf8",
+      "replacements": [
+        {
+          "before": "\"\"\"A3 manufacturing sheets and A4 supplier review for approved O / detail issue O-M02.\nRun using the bundled Python with reportlab and pypdf. Geometry comes from JSON.\n\"\"\"\nfrom pathlib import Path\nimport json,math,datetime\nfrom reportlab.pdfgen import canvas\nfrom reportlab.pdfbase import pdfmetrics\n",
+          "after": "\"\"\"A3 manufacturing sheets and A4 supplier review for approved O / detail revision O-M02.\nRun using the bundled Python with reportlab and pypdf. Geometry comes from JSON.\n\"\"\"\nfrom pathlib import Path\nimport math, datetime\nimport revision_json as json\nfrom reportlab.pdfgen import canvas\nfrom reportlab.pdfbase import pdfmetrics\n"
+        },
+        {
+          "before": "schedule=json.loads((ROOT/'output/manufacturing/O-M02/feature-schedule.json').read_text())\nOUT=ROOT/'output/pdf';OUT.mkdir(exist_ok=True)\nDATE=f['issue_date']\nH=f['boss_height']\nD=40+H\n",
+          "after": "schedule=json.loads((ROOT/'output/manufacturing/O-M02/feature-schedule.json').read_text())\nOUT=ROOT/'output/pdf';OUT.mkdir(exist_ok=True)\nDATE=f['manufacturing_revision_date']\nH=f['boss_height']\nD=40+H\n"
+        },
+        {
+          "before": "    rect(10,10,400,277)\n    text(15,279,code,5,True);text(15,271,title,3.6)\n    text(405,280,'LAYOUT O \u2022 DETAIL ISSUE O-M02',3,True,align='right')\n    text(405,273,'Single-part machining drawing',2.8,align='right')\n    rect(10,10,400,27)\n",
+          "after": "    rect(10,10,400,277)\n    text(15,279,code,5,True);text(15,271,title,3.6)\n    text(405,280,'LAYOUT O \u2022 DETAIL REVISION O-M02',3,True,align='right')\n    text(405,273,'Single-part machining drawing',2.8,align='right')\n    rect(10,10,400,27)\n"
+        },
+        {
+          "before": "    text(14,17,'Dimensions at 20 \u00b0C \u2022 Do not scale drawing',2.55)\n    text(140,31,'Geometry: approved Revision O',3)\n    text(140,24,'Detail issue: O-M02 \u2022 '+DATE,2.7)\n    text(140,17,'No tapped holes; six countersinks only' if 'FACEPLATE' in code else 'Unmodelled helices: machine threads to this drawing',2.55)\n    text(270,31,'Scale: '+scale,3);text(270,24,'Third-angle; views labelled',2.55)\n",
+          "after": "    text(14,17,'Dimensions at 20 \u00b0C \u2022 Do not scale drawing',2.55)\n    text(140,31,'Geometry: approved Revision O',3)\n    text(140,24,'Detail revision: O-M02 \u2022 '+DATE,2.7)\n    text(140,17,'No tapped holes; six countersinks only' if 'FACEPLATE' in code else 'Unmodelled helices: machine threads to this drawing',2.55)\n    text(270,31,'Scale: '+scale,3);text(270,24,'Third-angle; views labelled',2.55)\n"
+        },
+        {
+          "before": "notes(15,67,['STEP contains nominal tapping pilots, not thread helices. General external edge deburring is not explicitly modelled.',\n 'Boss lip chamfers, port-entry cones and M4 pilot drill points are modelled in the matching O-M02 STEP.',\n 'Operator approval applies to layout O. This issue uses 4 mm bosses and edge / drill details; no pressure or structural rating is claimed.'],2.75)\nC.showPage();C.save()\n\n",
+          "after": "notes(15,67,['STEP contains nominal tapping pilots, not thread helices. General external edge deburring is not explicitly modelled.',\n 'Boss lip chamfers, port-entry cones and M4 pilot drill points are modelled in the matching O-M02 STEP.',\n 'Operator approval applies to layout O. This revision uses 4 mm bosses and edge / drill details; no pressure or structural rating is claimed.'],2.75)\nC.showPage();C.save()\n\n"
+        },
+        {
+          "before": "]:para('\u2022 '+t)\npara('Remaining design limits','SubA')\npara('The approved rack pattern retains 1.9 mm nominal metal at the outermost slot edges; washer overhang there remains a builder-hardware issue. The previous 2 mm elbow/nut gap uses illustrative envelopes. Actual hardware, temperature, clamp preload, creep and assembled leak/pressure behaviour have not been qualified. These findings do not prevent requesting a manual manufacturing review.')\ndoc=SimpleDocTemplate(str(OUT/'RM10-O-M02-DFM.pdf'),pagesize=A4,leftMargin=17*mm,rightMargin=17*mm,topMargin=16*mm,bottomMargin=16*mm)\ndef footer(c,doc):\n",
+          "after": "]:para('\u2022 '+t)\npara('Remaining design limits','SubA')\npara('The approved rack pattern retains 1.9 mm nominal metal at the outermost slot edges; washer overhang there remains a builder-hardware concern. The previous 2 mm elbow/nut gap uses illustrative envelopes. Actual hardware, temperature, clamp preload, creep and assembled leak/pressure behaviour have not been qualified. These findings do not prevent requesting a manual manufacturing review.')\ndoc=SimpleDocTemplate(str(OUT/'RM10-O-M02-DFM.pdf'),pagesize=A4,leftMargin=17*mm,rightMargin=17*mm,topMargin=16*mm,bottomMargin=16*mm)\ndef footer(c,doc):\n"
+        }
+      ],
+      "after_sha256": "0b5e6fb4d6cc8945a26bfb70c35871c8c20d47bdbad9085c7fdd309e99f42ccf"
+    },
+    "scripts/draw_radiator_fan_plates.py": {
+      "before_sha256": "25cd035662dfa8e70af5bd8a9c341430822beec55d4a62c765f98b5dbecc7f23",
+      "replacements": [
+        {
+          "before": "\"\"\"Issue matched R3 tapped / R4 clearance fan plate review drawings.\"\"\"\nfrom pathlib import Path\nimport json\n",
+          "after": "\"\"\"Create matching R3 tapped / R4 clearance fan plate review drawings.\"\"\"\nfrom pathlib import Path\nimport json\n"
+        }
+      ],
+      "after_sha256": "21b1ab31c86001d203e0ba84212711ee6887b1e6cbda274e67191c3dc0a44e5f"
+    },
+    "scripts/draw_radiator_production.py": {
+      "before_sha256": "0da7a28db322b77086a660daf79a62f303cf1ba36a5208a4eb1d06a29393068c",
+      "replacements": [
+        {
+          "before": "\"\"\"A3 production sheets for the selected flat plate, including the R5 notch detail.\"\"\"\nfrom pathlib import Path\nimport json,math,argparse\nfrom radiator_notch import outline\nfrom reportlab.pdfgen import canvas\n",
+          "after": "\"\"\"A3 production sheets for the selected flat plate, including the R5 notch detail.\"\"\"\nfrom pathlib import Path\nimport math, argparse\nimport revision_json as json\nfrom radiator_notch import outline\nfrom reportlab.pdfgen import canvas\n"
+        },
+        {
+          "before": "from reportlab.lib import colors\nROOT=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])\nISSUE=parser.parse_args().issue\nM=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']\nP=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2\nPROFILE=f\"\u00b1{M['profile_tolerance_mm']:.2f}\"\nHOLE_TOL='\u00b10.10' if ISSUE in ['R6-M03','R7-M01'] else '+0.15/0'\nHEIGHT_TOL='\u00b10.10' if ISSUE in ['R6-M03','R7-M01'] else '+0 / -0.15'\nS=json.loads((ROOT/f'output/manufacturing/{ISSUE}/feature-schedule.json').read_text())['features']\nSTEM=M['part_number'];OUT=ROOT/'output/pdf'/f'{STEM}.pdf'\npdfmetrics.registerFont(TTFont('Arial','/System/Library/Fonts/Supplemental/Arial.ttf'))\n",
+          "after": "from reportlab.lib import colors\nROOT=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])\nMANUFACTURING_REVISION=parser.parse_args().manufacturing_revision\nM=json.loads((ROOT/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text());REV=M['geometry_revision']\nP=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text());NOTCH=P.get('cable_notch');N=3 if NOTCH else 2\nPROFILE=f\"\u00b1{M['profile_tolerance_mm']:.2f}\"\nHOLE_TOL='\u00b10.10' if MANUFACTURING_REVISION in ['R6-M03','R7-M01'] else '+0.15/0'\nHEIGHT_TOL='\u00b10.10' if MANUFACTURING_REVISION in ['R6-M03','R7-M01'] else '+0 / -0.15'\nS=json.loads((ROOT/f'output/manufacturing/{MANUFACTURING_REVISION}/feature-schedule.json').read_text())['features']\nSTEM=M['part_number'];OUT=ROOT/'output/pdf'/f'{STEM}.pdf'\npdfmetrics.registerFont(TTFont('Arial','/System/Library/Fonts/Supplemental/Arial.ttf'))\n"
+        },
+        {
+          "before": "def sheet(n,title):\n rect(10,10,400,277);text(15,279,STEM,4.9,True);text(15,271,title,3.3)\n text(405,280,(f'{REV} CABLE NOTCH / ISSUE {ISSUE.split(chr(45))[-1]}' if NOTCH else 'R4 APPROVED / ISSUE M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')\n line(10,267,410,267);rect(10,10,400,20)\n for x in (145,283,352):line(x,10,x,30)\n lines(14,24,['304 / EN 1.4301 stainless steel; thickness 2.00 \u00b10.10','Units: mm; dimensions at 20\u00b0C; do not scale'],2.55,7)\n lines(149,24,['Geometry '+REV+'; '+M['issue_date'],'Production drawing / quotation and supplier review'],2.55,7)\n lines(287,24,['No threads or countersinks','Scale as stated'],2.55,7)\n text(357,23,f'SHEET {n} / {N}',3.8,True);text(357,16,'No product markings',2.5)\n",
+          "after": "def sheet(n,title):\n rect(10,10,400,277);text(15,279,STEM,4.9,True);text(15,271,title,3.3)\n text(405,280,(f'{REV} CABLE NOTCH / REVISION {MANUFACTURING_REVISION.split(chr(45))[-1]}' if NOTCH else 'R4 APPROVED / REVISION M01'),3.1,True,'right');text(405,273,'Single flat plate - all features through',2.6,False,'right')\n line(10,267,410,267);rect(10,10,400,20)\n for x in (145,283,352):line(x,10,x,30)\n lines(14,24,['304 / EN 1.4301 stainless steel; thickness 2.00 \u00b10.10','Units: mm; dimensions at 20\u00b0C; do not scale'],2.55,7)\n lines(149,24,['Geometry '+REV+'; '+M['manufacturing_revision_date'],'Production drawing / quotation and supplier review'],2.55,7)\n lines(287,24,['No threads or countersinks','Scale as stated'],2.55,7)\n text(357,23,f'SHEET {n} / {N}',3.8,True);text(357,16,'No product markings',2.5)\n"
+        },
+        {
+          "before": " '   Edge breaks are not modelled in STEP.',\n '6. Flatness: 0.50 max, free state, whole plate.',\n ('7. Raw sheet finish; no brushing or polishing,' if ISSUE in ['R6-M02','R6-M03','R7-M01'] else '7. Uniform satin brushed finish; no coating,' ),\n '   coating, engraving, printing or markings.',\n '8. Confirm specified tolerances and flatness',\n '   before fabrication; report discrepancies.'],2.6,5.2)\nif ISSUE in ['R6-M02','R6-M03','R7-M01']:\n text(40,259,'RAW SHEET FINISH: BOTH FACES',2.3,True)\ntext(x,97,'COORDINATES AND TOLERANCES',3.2,True)\n",
+          "after": " '   Edge breaks are not modelled in STEP.',\n '6. Flatness: 0.50 max, free state, whole plate.',\n ('7. Raw sheet finish; no brushing or polishing,' if MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01'] else '7. Uniform satin brushed finish; no coating,' ),\n '   coating, engraving, printing or markings.',\n '8. Confirm specified tolerances and flatness',\n '   before fabrication; report discrepancies.'],2.6,5.2)\nif MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01']:\n text(40,259,'RAW SHEET FINISH: BOTH FACES',2.3,True)\ntext(x,97,'COORDINATES AND TOLERANCES',3.2,True)\n"
+        },
+        {
+          "before": " 'Permitted small edge breaks: see sheet 1.',\n 'Free-state flatness 0.50 max over whole plate.'],2.5,5.8)\ntext(302,78,'ISSUE CONTROL',3,True)\nlines(302,70,['Geometry '+REV+'; manufacturing issue '+ISSUE.split('-')[-1]+'.',\n 'Quote / manufacture this single plate only.',\n 'All specified holes are through the plate.',\n",
+          "after": " 'Permitted small edge breaks: see sheet 1.',\n 'Free-state flatness 0.50 max over whole plate.'],2.5,5.8)\ntext(302,78,'REVISION CONTROL',3,True)\nlines(302,70,['Geometry '+REV+'; manufacturing revision '+MANUFACTURING_REVISION.split('-')[-1]+'.',\n 'Quote / manufacture this single plate only.',\n 'All specified holes are through the plate.',\n"
+        }
+      ],
+      "after_sha256": "ac9839e10eadfb1657251f364a0073f9b877a50cc682d13bbec8ab8b9b1fb1e6"
+    },
+    "scripts/draw_revision_P.py": {
+      "before_sha256": "7d42075bd9148c6b012f1c2671c76dca3b8a72c1c908818da8f6fa864fc140e8",
+      "replacements": [
+        {
+          "before": "\"\"\"Two-sheet revision P review drawing; no change to O-M02 supplier issue.\"\"\"\nfrom pathlib import Path\nimport json\n",
+          "after": "\"\"\"Two-sheet revision P review drawing; no change to O-M02 supplier revision.\"\"\"\nfrom pathlib import Path\nimport json\n"
+        },
+        {
+          "before": "txt(18,65,'SEALING, FINISH AND REVIEW SCOPE',12,True)\nnotes=[\n'Flat fitting seal lands on boss ends and side faces; retain O-M02 surface requirements: refer to that issue for finish details.',\n'External deburr only; no internal/cross-hole deburring operation. Clean and flush out all loose swarf.',\n'No rear plate or perimeter seals. End plugs/fittings require their own face seals. Two independent continuous galleries.',\n",
+          "after": "txt(18,65,'SEALING, FINISH AND REVIEW SCOPE',12,True)\nnotes=[\n'Flat fitting seal lands on boss ends and side faces; retain O-M02 surface requirements: refer to that revision for finish details.',\n'External deburr only; no internal/cross-hole deburring operation. Clean and flush out all loose swarf.',\n'No rear plate or perimeter seals. End plugs/fittings require their own face seals. Two independent continuous galleries.',\n"
+        }
+      ],
+      "after_sha256": "cc9d4f590b913a674bedc10f5c21c20f6f6190110469d9ea9448f275f8b0b7d8"
+    },
+    "scripts/package_Q_body_issue.py": {
+      "before_sha256": "bf35042f77f0cd203e5b8ce8e403f559fc967ee61f8f653cb9990885892fcbee",
+      "replacements": [
+        {
+          "before": "\"\"\"Package the checked Q-M04 POM body only; never submit or replace original Q-M01.\"\"\"\nfrom pathlib import Path\nimport json,hashlib,zipfile,shutil\nfrom pypdf import PdfReader\nR=Path(__file__).resolve().parents[1];issue='Q-M04';stem=f'RM10-{issue}-BODY';src=R/f'output/manufacturing/{issue}';out=R/f'output/submission/{issue}';out.mkdir(parents=True,exist_ok=True)\ndef sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\nr=json.loads((src/'geometry-verification.json').read_text());assert r['checks']=='PASS' and r['perimeter_edges']==12\n",
+          "after": "\"\"\"Package the checked Q-M04 POM body only; never submit or replace original Q-M01.\"\"\"\nfrom pathlib import Path\nimport hashlib, zipfile, shutil\nimport revision_json as json\nfrom pypdf import PdfReader\nR=Path(__file__).resolve().parents[1];manufacturing_revision='Q-M04';stem=f'RM10-{manufacturing_revision}-BODY';src=R/f'output/manufacturing/{manufacturing_revision}';out=R/f'output/submission/{manufacturing_revision}';out.mkdir(parents=True,exist_ok=True)\ndef sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\nr=json.loads((src/'geometry-verification.json').read_text());assert r['checks']=='PASS' and r['perimeter_edges']==12\n"
+        },
+        {
+          "before": "for name in ['geometry-verification.json','feature-schedule.json']:shutil.copyfile(src/name,out/name)\nshutil.copyfile(R/'docs/jlc-submission-Q-M04.md',out/'README.md');shutil.copyfile(R/'docs/jlc-Q-body-remarks-Q-M04.txt',out/'supplier-remarks.txt')\ninputs=[R/'scripts/draw_Q_production.py',R/'scripts/prepare_Q_body_issue.py',R/'scripts/package_Q_body_issue.py',R/'cad/manufacturing/Q-M04.json']\nr=dict(issue=issue,checks='PASS',pdf_pages=3,scheduled_features=40,zip_members=[p.name for p in files],supplier_submission_performed=False,source_sha256={str(p.relative_to(R)):sha(p) for p in inputs})\n(out/'package-verification.json').write_text(json.dumps(r,indent=2)+'\\n')\n(out/'SHA256SUMS.txt').write_text(''.join(f'{sha(p)}  {p.name}\\n' for p in sorted(out.iterdir()) if p.is_file() and p.name!='SHA256SUMS.txt'))\n",
+          "after": "for name in ['geometry-verification.json','feature-schedule.json']:shutil.copyfile(src/name,out/name)\nshutil.copyfile(R/'docs/jlc-submission-Q-M04.md',out/'README.md');shutil.copyfile(R/'docs/jlc-Q-body-remarks-Q-M04.txt',out/'supplier-remarks.txt')\ninputs=[R/'scripts/draw_Q_production.py',R/'scripts/prepare_Q_body_manufacturing_revision.py',R/'scripts/package_Q_body_manufacturing_revision.py',R/'cad/manufacturing/Q-M04.json']\nr=dict(manufacturing_revision=manufacturing_revision,checks='PASS',pdf_pages=3,scheduled_features=40,zip_members=[p.name for p in files],supplier_submission_performed=False,source_sha256={str(p.relative_to(R)):sha(p) for p in inputs})\n(out/'package-verification.json').write_text(json.dumps(r,indent=2)+'\\n')\n(out/'SHA256SUMS.txt').write_text(''.join(f'{sha(p)}  {p.name}\\n' for p in sorted(out.iterdir()) if p.is_file() and p.name!='SHA256SUMS.txt'))\n"
+        }
+      ],
+      "after_sha256": "8bf2777a379ec8f3b81ddcd6d49bb3370a6f2084d196c725b2cd2137a3ff20a4",
+      "current_path": "scripts/package_Q_body_manufacturing_revision.py"
+    },
+    "scripts/package_Q_faceplate_issue.py": {
+      "before_sha256": "f89e2c8d2261fd1b41145944e2bbe19a58824809521d7f711ed4e0765a3a1c75",
+      "replacements": [
+        {
+          "before": "\"\"\"Verify and package Q-M02 faceplate only; preserve the submitted Q-M01 body/plate packs.\"\"\"\nfrom pathlib import Path\nimport json, hashlib, shutil, zipfile, re, argparse\nfrom pypdf import PdfReader\nR=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--issue',choices=['Q-M02','Q-M03'],default='Q-M02')\nISSUE=parser.parse_args().issue\nsrc=R/f'output/manufacturing/{ISSUE}';out=R/f'output/submission/{ISSUE}';out.mkdir(parents=True,exist_ok=True)\nstem=f'RM10-{ISSUE}-FACEPLATE'\nreport=json.loads((src/'geometry-verification.json').read_text())\nassert report['checks']=='PASS'\nif ISSUE=='Q-M03':assert report['outer_corner_radius_mm']==5 and report['minimum_opening_to_outer_profile_mm']>1.89\nelse:assert report['nominal_geometry_unchanged']\nfor path,h in report['source_sha256'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h,path\n",
+          "after": "\"\"\"Verify and package Q-M02 faceplate only; preserve the submitted Q-M01 body/plate packs.\"\"\"\nfrom pathlib import Path\nimport hashlib, shutil, zipfile, re, argparse\nimport revision_json as json\nfrom pypdf import PdfReader\nR=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',choices=['Q-M02','Q-M03'],default='Q-M02')\nMANUFACTURING_REVISION=parser.parse_args().manufacturing_revision\nsrc=R/f'output/manufacturing/{MANUFACTURING_REVISION}';out=R/f'output/submission/{MANUFACTURING_REVISION}';out.mkdir(parents=True,exist_ok=True)\nstem=f'RM10-{MANUFACTURING_REVISION}-FACEPLATE'\nreport=json.loads((src/'geometry-verification.json').read_text())\nassert report['checks']=='PASS'\nif MANUFACTURING_REVISION=='Q-M03':assert report['outer_corner_radius_mm']==5 and report['minimum_opening_to_outer_profile_mm']>1.89\nelse:assert report['nominal_geometry_unchanged']\nfor path,h in report['source_sha256'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h,path\n"
+        },
+        {
+          "before": " assert f['id'] in pages[1]\n for i in [0,2]:assert f\"{f['xyz_mm'][i]:.3f}\" in pages[1],f['id']\nfor required in ['\u00d832.00 \u00b10.10','\u00d84.50 \u00b10.10','\u00d77.00 \u00b10.10','coordinates \u00b10.10','Standard grinding and deburring','Complete burr removal is not guaranteed','NO COUNTERSINKS','NO TAPPED','0.30','2.00 \u00b10.10',ISSUE]:\n assert required in text,required\nfor obsolete in ['\u00b10.05','+0.10/0','unilateral','0.10-0.20','ISO 2768','unused ports','loctite','tighten']:\n assert obsolete.lower() not in text.lower(),obsolete\nfiles=[src/f'{stem}.step',src/f'{stem}.dxf',pdf]\nif ISSUE=='Q-M03':assert '4x R5.00 \u00b10.10' in text\nfor ext in ([] if ISSUE=='Q-M03' else ['step','dxf']):\n assert (src/f'{stem}.{ext}').read_bytes()==(R/f'output/manufacturing/Q-M01/RM10-Q-M01-FACEPLATE.{ext}').read_bytes()\nfor f in files:shutil.copyfile(f,out/f.name)\n",
+          "after": " assert f['id'] in pages[1]\n for i in [0,2]:assert f\"{f['xyz_mm'][i]:.3f}\" in pages[1],f['id']\nfor required in ['\u00d832.00 \u00b10.10','\u00d84.50 \u00b10.10','\u00d77.00 \u00b10.10','coordinates \u00b10.10','Standard grinding and deburring','Complete burr removal is not guaranteed','NO COUNTERSINKS','NO TAPPED','0.30','2.00 \u00b10.10',MANUFACTURING_REVISION]:\n assert required in text,required\nfor obsolete in ['\u00b10.05','+0.10/0','unilateral','0.10-0.20','ISO 2768','unused ports','loctite','tighten']:\n assert obsolete.lower() not in text.lower(),obsolete\nfiles=[src/f'{stem}.step',src/f'{stem}.dxf',pdf]\nif MANUFACTURING_REVISION=='Q-M03':assert '4x R5.00 \u00b10.10' in text\nfor ext in ([] if MANUFACTURING_REVISION=='Q-M03' else ['step','dxf']):\n assert (src/f'{stem}.{ext}').read_bytes()==(R/f'output/manufacturing/Q-M01/RM10-Q-M01-FACEPLATE.{ext}').read_bytes()\nfor f in files:shutil.copyfile(f,out/f.name)\n"
+        },
+        {
+          "before": " for f in files:assert z.read(f.name)==f.read_bytes()\nfor name in ['geometry-verification.json','feature-schedule.json']:shutil.copyfile(src/name,out/name)\nguide=(R/f'docs/jlc-submission-{ISSUE}.md').read_text()\n(out/'README.md').write_text(re.sub(r'\\]\\(([^:/)]+\\.md(?:#[^)]*)?)\\)',r'](../../../docs/\\1)',guide))\nshutil.copyfile(R/f'docs/jlc-Q-faceplate-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')\ninputs=[R/'scripts/draw_Q_production.py',R/'scripts/package_Q_faceplate_issue.py',R/'scripts/prepare_Q_faceplate_issue.py',R/f'cad/manufacturing/{ISSUE}.json']\nverification={'issue':ISSUE,'checks':'PASS','pdf_pages':2,'scheduled_features':44,'zip_members':[f.name for f in files],'nominal_geometry_unchanged':report['nominal_geometry_unchanged'],'upload_performed_by_packaging_script':False,'source_sha256':{str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}}\n(out/'package-verification.json').write_text(json.dumps(verification,indent=2)+'\\n')\nfiles=sorted(p for p in out.iterdir() if p.is_file() and p.name!='SHA256SUMS.txt')\n",
+          "after": " for f in files:assert z.read(f.name)==f.read_bytes()\nfor name in ['geometry-verification.json','feature-schedule.json']:shutil.copyfile(src/name,out/name)\nguide=(R/f'docs/jlc-submission-{MANUFACTURING_REVISION}.md').read_text()\n(out/'README.md').write_text(re.sub(r'\\]\\(([^:/)]+\\.md(?:#[^)]*)?)\\)',r'](../../../docs/\\1)',guide))\nshutil.copyfile(R/f'docs/jlc-Q-faceplate-remarks-{MANUFACTURING_REVISION}.txt',out/'supplier-remarks.txt')\ninputs=[R/'scripts/draw_Q_production.py',R/'scripts/package_Q_faceplate_manufacturing_revision.py',R/'scripts/prepare_Q_faceplate_manufacturing_revision.py',R/f'cad/manufacturing/{MANUFACTURING_REVISION}.json']\nverification={'manufacturing_revision':MANUFACTURING_REVISION,'checks':'PASS','pdf_pages':2,'scheduled_features':44,'zip_members':[f.name for f in files],'nominal_geometry_unchanged':report['nominal_geometry_unchanged'],'upload_performed_by_packaging_script':False,'source_sha256':{str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs}}\n(out/'package-verification.json').write_text(json.dumps(verification,indent=2)+'\\n')\nfiles=sorted(p for p in out.iterdir() if p.is_file() and p.name!='SHA256SUMS.txt')\n"
+        }
+      ],
+      "after_sha256": "b4e2a9631688a30ea3310a6faab98a0a8a8b1a0052943f6f18db7c54198bb9a0",
+      "current_path": "scripts/package_Q_faceplate_manufacturing_revision.py"
+    },
+    "scripts/package_radiator_production.py": {
+      "before_sha256": "020cc583876759a5150894208b2d51f4db3e3adb927d04fc976477f40834a1e4",
+      "replacements": [
+        {
+          "before": "\"\"\"Package the selected plate with its checked production drawing, not an assembly.\"\"\"\nfrom pathlib import Path\nimport hashlib,json,shutil,zipfile,argparse,re\nfrom pypdf import PdfReader\nROOT=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])\nISSUE=parser.parse_args().issue\nM=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']\nstem=M['part_number'];src=ROOT/f'output/manufacturing/{ISSUE}'\nout=ROOT/f'output/submission/{ISSUE}';out.mkdir(parents=True,exist_ok=True)\nreport=json.loads((src/'geometry-verification.json').read_text())\nassert report['checks']=='PASS' and report['nominal_geometry_unchanged']\n",
+          "after": "\"\"\"Package the selected plate with its checked production drawing, not an assembly.\"\"\"\nfrom pathlib import Path\nimport hashlib, shutil, zipfile, argparse, re\nimport revision_json as json\nfrom pypdf import PdfReader\nROOT=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])\nMANUFACTURING_REVISION=parser.parse_args().manufacturing_revision\nM=json.loads((ROOT/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text());REV=M['geometry_revision']\nstem=M['part_number'];src=ROOT/f'output/manufacturing/{MANUFACTURING_REVISION}'\nout=ROOT/f'output/submission/{MANUFACTURING_REVISION}';out.mkdir(parents=True,exist_ok=True)\nreport=json.loads((src/'geometry-verification.json').read_text())\nassert report['checks']=='PASS' and report['nominal_geometry_unchanged']\n"
+        },
+        {
+          "before": " for phrase in (f\"{n['mouth_width']:.2f}\",f\"{n['depth']:.2f}\",f\"R{n['mouth_radius']:.2f}\",f\"R{n['bottom_radius']:.2f}\",'R0.30-0.50',f'{throat:.2f} REF',f'{floor:.2f} REF'):\n  assert phrase in pages[2],phrase\nif ISSUE in ['R6-M02','R6-M03','R7-M01']:\n for phrase in ('RAW SHEET FINISH: BOTH FACES', ISSUE.split('-')[-1]):assert phrase in txt,phrase\n for phrase in ('M4 \u00d740', 'screws + nuts', 'assembly order', 'loctite'):\n  assert phrase.lower() not in txt.lower(),f'Assembly instruction in fabrication PDF: {phrase}'\nif ISSUE in ['R6-M03','R7-M01']:\n for obsolete in ['\u00b10.15','+0.15/0','+0 / -0.15','\u00b10.05']:\n  assert obsolete not in txt,obsolete\n",
+          "after": " for phrase in (f\"{n['mouth_width']:.2f}\",f\"{n['depth']:.2f}\",f\"R{n['mouth_radius']:.2f}\",f\"R{n['bottom_radius']:.2f}\",'R0.30-0.50',f'{throat:.2f} REF',f'{floor:.2f} REF'):\n  assert phrase in pages[2],phrase\nif MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01']:\n for phrase in ('RAW SHEET FINISH: BOTH FACES', MANUFACTURING_REVISION.split('-')[-1]):assert phrase in txt,phrase\n for phrase in ('M4 \u00d740', 'screws + nuts', 'assembly order', 'loctite'):\n  assert phrase.lower() not in txt.lower(),f'Assembly instruction in fabrication PDF: {phrase}'\nif MANUFACTURING_REVISION in ['R6-M03','R7-M01']:\n for obsolete in ['\u00b10.15','+0.15/0','+0 / -0.15','\u00b10.05']:\n  assert obsolete not in txt,obsolete\n"
+        },
+        {
+          "before": " assert z.testzip() is None and set(z.namelist())=={f.name for f in files}\n for f in files:assert z.read(f.name)==f.read_bytes()\nguide_dir=ROOT/('docs' if ISSUE in ['R6-M02','R6-M03','R7-M01'] else 'docs/archive')\nguide=(guide_dir/f'jlc-submission-{ISSUE}.md').read_text()\n(out/'README.md').write_text(re.sub(r'\\]\\(([^:/)]+\\.md)\\)', r'](../../../docs/\\1)', guide))\nshutil.copyfile(guide_dir/f'jlc-radiator-remarks-{ISSUE}.txt',out/'supplier-remarks.txt')\nshutil.copyfile(src/'geometry-verification.json',out/'geometry-verification.json')\nreport={'issue':M['issue'],'checks':'PASS','pdf_pages':len(pages),'scheduled_features':len(schedule),\n 'round_holes':28,'rack_slots':40,'air_apertures':4,'edge_notches':int(REV in ['R5','R6','R7']),'zip_members':[f.name for f in files],\n 'pdf_identifier_and_coordinate_coverage':'PASS','zip_integrity':'PASS',\n",
+          "after": " assert z.testzip() is None and set(z.namelist())=={f.name for f in files}\n for f in files:assert z.read(f.name)==f.read_bytes()\nguide_dir=ROOT/('docs' if MANUFACTURING_REVISION in ['R6-M02','R6-M03','R7-M01'] else 'docs/archive')\nguide=(guide_dir/f'jlc-submission-{MANUFACTURING_REVISION}.md').read_text()\n(out/'README.md').write_text(re.sub(r'\\]\\(([^:/)]+\\.md)\\)', r'](../../../docs/\\1)', guide))\nshutil.copyfile(guide_dir/f'jlc-radiator-remarks-{MANUFACTURING_REVISION}.txt',out/'supplier-remarks.txt')\nshutil.copyfile(src/'geometry-verification.json',out/'geometry-verification.json')\nreport={'manufacturing_revision':M['manufacturing_revision'],'checks':'PASS','pdf_pages':len(pages),'scheduled_features':len(schedule),\n 'round_holes':28,'rack_slots':40,'air_apertures':4,'edge_notches':int(REV in ['R5','R6','R7']),'zip_members':[f.name for f in files],\n 'pdf_identifier_and_coordinate_coverage':'PASS','zip_integrity':'PASS',\n"
+        }
+      ],
+      "after_sha256": "ca84f25153fbf411f394145b3b8723da2782e8c46b46b5b9fd961d48910557d4"
+    },
+    "scripts/prepare_Q_body_issue.py": {
+      "before_sha256": "3a12ea2a6f743bcb9de9a37cc2406606bedd8e8f54e9d21b183825cb849f35d6",
+      "replacements": [
+        {
+          "before": "\"\"\"Derive Q-M04 with twelve C0.5 perimeter chamfers; preserve submitted Q-M01.\"\"\"\nfrom pathlib import Path\nimport json,hashlib,math\nimport cadquery as cq\nR=Path(__file__).resolve().parents[1];issue='Q-M04';out=R/f'output/manufacturing/{issue}';out.mkdir(parents=True,exist_ok=True)\nM=json.loads((R/f'cad/manufacturing/{issue}.json').read_text())\nsource=R/'output/manufacturing/Q-M01/RM10-Q-M01-BODY.step'\nold=cq.importers.importStep(str(source)).val()\n",
+          "after": "\"\"\"Derive Q-M04 with twelve C0.5 perimeter chamfers; preserve submitted Q-M01.\"\"\"\nfrom pathlib import Path\nimport hashlib, math\nimport revision_json as json\nimport cadquery as cq\nR=Path(__file__).resolve().parents[1];manufacturing_revision='Q-M04';out=R/f'output/manufacturing/{manufacturing_revision}';out.mkdir(parents=True,exist_ok=True)\nM=json.loads((R/f'cad/manufacturing/{manufacturing_revision}.json').read_text())\nsource=R/'output/manufacturing/Q-M01/RM10-Q-M01-BODY.step'\nold=cq.importers.importStep(str(source)).val()\n"
+        },
+        {
+          "before": "corner_planes=[f for f in planes if sum(abs(v)>1e-6 for v in f.normalAt().toTuple())==3]\nassert len(edge_planes)==12 and len(corner_planes)==8\nstem=f'RM10-{issue}-BODY';cq.exporters.export(body,str(out/f'{stem}.step'));cq.exporters.export(body,str(out/f'{stem}.stl'),tolerance=.025,angularTolerance=.06)\nS['issue']=issue;(out/'feature-schedule.json').write_text(json.dumps(S,indent=2)+'\\n')\nface=cq.importers.importStep(str(R/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step')).val()\nassert body.intersect(face).Volume()<1e-6\n",
+          "after": "corner_planes=[f for f in planes if sum(abs(v)>1e-6 for v in f.normalAt().toTuple())==3]\nassert len(edge_planes)==12 and len(corner_planes)==8\nstem=f'RM10-{manufacturing_revision}-BODY';cq.exporters.export(body,str(out/f'{stem}.step'));cq.exporters.export(body,str(out/f'{stem}.stl'),tolerance=.025,angularTolerance=.06)\nS['manufacturing_revision']=manufacturing_revision;(out/'feature-schedule.json').write_text(json.dumps(S,indent=2)+'\\n')\nface=cq.importers.importStep(str(R/'output/manufacturing/Q-M03/RM10-Q-M03-FACEPLATE.step')).val()\nassert body.intersect(face).Volume()<1e-6\n"
+        },
+        {
+          "before": "prior=json.loads((R/'output/manufacturing/Q-M01/geometry-verification.json').read_text())\nreport={k:v for k,v in prior.items() if k!='source_sha256'}\nreport.update(issue=issue,body_volume_mm3=body.Volume(),perimeter_chamfer_mm=.5,perimeter_chamfer_angle_degrees=45,perimeter_edges=12,removed_volume_mm3=removed.Volume(),curved_faces_unchanged=True,sealing_lands_and_M4_bearing_areas_unchanged=True,geometry_change='Only twelve main-slab outside edges chamfered C0.5 x45 degrees; intersecting corners meet as modelled',source_sha256={str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,R/f'cad/manufacturing/{issue}.json',R/'scripts/prepare_Q_body_issue.py',R/'output/manufacturing/Q-M01/geometry-verification.json']})\n(out/'geometry-verification.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps({k:report[k] for k in ['issue','checks','perimeter_edges','removed_volume_mm3','curved_faces_unchanged','sealing_lands_and_M4_bearing_areas_unchanged']},indent=2))\n",
+          "after": "prior=json.loads((R/'output/manufacturing/Q-M01/geometry-verification.json').read_text())\nreport={k:v for k,v in prior.items() if k!='source_sha256'}\nreport.update(manufacturing_revision=manufacturing_revision,body_volume_mm3=body.Volume(),perimeter_chamfer_mm=.5,perimeter_chamfer_angle_degrees=45,perimeter_edges=12,removed_volume_mm3=removed.Volume(),curved_faces_unchanged=True,sealing_lands_and_M4_bearing_areas_unchanged=True,geometry_change='Only twelve main-slab outside edges chamfered C0.5 x45 degrees; intersecting corners meet as modelled',source_sha256={str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [source,R/f'cad/manufacturing/{manufacturing_revision}.json',R/'scripts/prepare_Q_body_manufacturing_revision.py',R/'output/manufacturing/Q-M01/geometry-verification.json']})\n(out/'geometry-verification.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps({k:report[k] for k in ['manufacturing_revision','checks','perimeter_edges','removed_volume_mm3','curved_faces_unchanged','sealing_lands_and_M4_bearing_areas_unchanged']},indent=2))\n"
+        }
+      ],
+      "after_sha256": "c6ccb46637260c526968974657694638a159ad91a173272fa60ed826b5d302f1",
+      "current_path": "scripts/prepare_Q_body_manufacturing_revision.py"
+    },
+    "scripts/prepare_Q_faceplate_issue.py": {
+      "before_sha256": "1c83ac60aadf98f1a967b275d92d9f9c1b164d367cae1918ec21b19413b53985",
+      "replacements": [
+        {
+          "before": "\"\"\"Prepare the Q-M02 specification-only faceplate issue from submitted Q-M01 geometry.\"\"\"\nfrom pathlib import Path\nimport hashlib\nimport json\nimport shutil\nimport math, argparse\n\nR = Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--issue',choices=['Q-M02','Q-M03'],default='Q-M02')\nISSUE=parser.parse_args().issue\nM = json.loads((R/f'cad/manufacturing/{ISSUE}.json').read_text())\nsource = R/'output/manufacturing/Q-M01'\nout = R/f'output/manufacturing/{ISSUE}'\nout.mkdir(parents=True, exist_ok=True)\nprior = json.loads((source/'geometry-verification.json').read_text())\n",
+          "after": "\"\"\"Prepare the Q-M02 specification-only faceplate revision from submitted Q-M01 geometry.\"\"\"\nfrom pathlib import Path\nimport hashlib\nimport revision_json as json\nimport shutil\nimport math, argparse\n\nR = Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',choices=['Q-M02','Q-M03'],default='Q-M02')\nMANUFACTURING_REVISION=parser.parse_args().manufacturing_revision\nM = json.loads((R/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text())\nsource = R/'output/manufacturing/Q-M01'\nout = R/f'output/manufacturing/{MANUFACTURING_REVISION}'\nout.mkdir(parents=True, exist_ok=True)\nprior = json.loads((source/'geometry-verification.json').read_text())\n"
+        },
+        {
+          "before": "        shutil.copyfile(old, out/f\"{M['part_number']}.{ext}\")\ncorner_report={}\nif ISSUE=='Q-M03':\n    import cadquery as cq\n    import ezdxf\n",
+          "after": "        shutil.copyfile(old, out/f\"{M['part_number']}.{ext}\")\ncorner_report={}\nif MANUFACTURING_REVISION=='Q-M03':\n    import cadquery as cq\n    import ezdxf\n"
+        },
+        {
+          "before": "assert len(features) == 44\n(out/'feature-schedule.json').write_text(json.dumps({'part_number':M['part_number'], 'features':features}, indent=2)+'\\n')\ninputs = [R/f'cad/manufacturing/{ISSUE}.json', source/'geometry-verification.json', source/'feature-schedule.json']\ninputs += [source/f'RM10-Q-M01-FACEPLATE.{ext}' for ext in ['step','dxf']]\nreport = {'issue':ISSUE,'checks':'PASS','nominal_geometry_unchanged':ISSUE=='Q-M02',\n          'plate_solid_count':1,'extent_mm':prior['plate_extent_mm'],\n          'volume_mm3':prior['plate_volume_mm3'],'windows':20,'retention_holes':12,'rack_slots':12,\n",
+          "after": "assert len(features) == 44\n(out/'feature-schedule.json').write_text(json.dumps({'part_number':M['part_number'], 'features':features}, indent=2)+'\\n')\ninputs = [R/f'cad/manufacturing/{MANUFACTURING_REVISION}.json', source/'geometry-verification.json', source/'feature-schedule.json']\ninputs += [source/f'RM10-Q-M01-FACEPLATE.{ext}' for ext in ['step','dxf']]\nreport = {'manufacturing_revision':MANUFACTURING_REVISION,'checks':'PASS','nominal_geometry_unchanged':MANUFACTURING_REVISION=='Q-M02',\n          'plate_solid_count':1,'extent_mm':prior['plate_extent_mm'],\n          'volume_mm3':prior['plate_volume_mm3'],'windows':20,'retention_holes':12,'rack_slots':12,\n"
+        }
+      ],
+      "after_sha256": "7cac6ce28bca3538aa409552cd43109fc4cc1e475d818b6b2883599bbea20868",
+      "current_path": "scripts/prepare_Q_faceplate_manufacturing_revision.py"
+    },
+    "scripts/prepare_manufacturing.py": {
+      "before_sha256": "075f6be084695604a92a9a128b231ed6cb35c2ba83e1e9a8449051cf7fb9f38b",
+      "replacements": [
+        {
+          "before": "\"\"\"\nfrom pathlib import Path\nimport json,math,shutil,hashlib\nimport cadquery as cq\nROOT=Path(__file__).resolve().parents[1]\n",
+          "after": "\"\"\"\nfrom pathlib import Path\nimport math, shutil, hashlib\nimport revision_json as json\nimport cadquery as cq\nROOT=Path(__file__).resolve().parents[1]\n"
+        },
+        {
+          "before": "ends=[dict(id=f'E{i+1}',side=side,x=x,y=20,z=z,thread='G 1/4 ISO 228-1',full_thread_length_min=8) for i,(side,x,z) in enumerate((side,x,z) for side,x in [('LEFT',-205),('RIGHT',205)] for z in p['port_rows_z'])]\nslots=[dict(id=f'R{i+1:02d}',x=x,z=z,length=10,width=7) for i,(x,z) in enumerate((x,z) for x in (-232.55,232.55) for z in p['rack_slot_centres_z'])]\nschedule=dict(issue='O-M02',datums='A: POM mounting plane Y0 / plate POM-side plane Y0; B: width midplane X0; C: bottom Z0',front_ports=ports,body_fixings=mounts,end_ports=ends,rack_slots=slots)\n(out/'feature-schedule.json').write_text(json.dumps(schedule,indent=2)+'\\n')\n# Worst-size root fit, with \u00b10.10 coordinate deviations independently in X and Z on each part.\n",
+          "after": "ends=[dict(id=f'E{i+1}',side=side,x=x,y=20,z=z,thread='G 1/4 ISO 228-1',full_thread_length_min=8) for i,(side,x,z) in enumerate((side,x,z) for side,x in [('LEFT',-205),('RIGHT',205)] for z in p['port_rows_z'])]\nslots=[dict(id=f'R{i+1:02d}',x=x,z=z,length=10,width=7) for i,(x,z) in enumerate((x,z) for x in (-232.55,232.55) for z in p['rack_slot_centres_z'])]\nschedule=dict(manufacturing_revision='O-M02',datums='A: POM mounting plane Y0 / plate POM-side plane Y0; B: width midplane X0; C: bottom Z0',front_ports=ports,body_fixings=mounts,end_ports=ends,rack_slots=slots)\n(out/'feature-schedule.json').write_text(json.dumps(schedule,indent=2)+'\\n')\n# Worst-size root fit, with \u00b10.10 coordinate deviations independently in X and Z on each part.\n"
+        },
+        {
+          "before": "root_gap=(32-root_max)/2-coordinate_offset\nassert root_gap>.5\nreport=dict(issue='O-M02',approved_source_sha256=hashlib.sha256((source/'body.step').read_bytes()).hexdigest(),\n    boss_height_mm=height,boss_projection_above_plate_mm=height-3,modified_body_valid=True,body_volume_mm3=body.val().Volume(),boss_chamfers=20,m4_entry_chamfers=6,m4_drill_points=6,\n    m4_total_pilot_depth_mm=14+point,conservative_M4_envelope_to_wet_network_mm=clearance,\n",
+          "after": "root_gap=(32-root_max)/2-coordinate_offset\nassert root_gap>.5\nreport=dict(manufacturing_revision='O-M02',approved_source_sha256=hashlib.sha256((source/'body.step').read_bytes()).hexdigest(),\n    boss_height_mm=height,boss_projection_above_plate_mm=height-3,modified_body_valid=True,body_volume_mm3=body.val().Volume(),boss_chamfers=20,m4_entry_chamfers=6,m4_drill_points=6,\n    m4_total_pilot_depth_mm=14+point,conservative_M4_envelope_to_wet_network_mm=clearance,\n"
+        }
+      ],
+      "after_sha256": "6ec9c71ac92cbce41a87a50174bcb36127cecf6ac81ae316f5af0de14e9a0028"
+    },
+    "scripts/prepare_radiator_production.py": {
+      "before_sha256": "7f6966f7f4947372ce69585fb794b9b45eb4f5b2a9c4842bd00378eb1ab8880a",
+      "replacements": [
+        {
+          "before": "\"\"\"Verify the selected radiator revision and derive a single-part production issue without changing its solid.\"\"\"\nfrom pathlib import Path\nimport json,shutil,hashlib,math,argparse\nimport cadquery as cq\nimport ezdxf\nfrom OCP.BRepAdaptor import BRepAdaptor_Surface\nROOT=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--issue',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])\nISSUE=parser.parse_args().issue\nM=json.loads((ROOT/f'cad/manufacturing/{ISSUE}.json').read_text());REV=M['geometry_revision']\nP=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())\nOUT=ROOT/f'output/manufacturing/{ISSUE}';OUT.mkdir(parents=True,exist_ok=True)\nsource=ROOT/f'output/radiator-{REV}';stem=M['part_number'];H=P['height'];notched=bool(P.get('cable_notch'))\nbuild_report=json.loads((source/'verification.json').read_text())\n",
+          "after": "\"\"\"Verify the selected radiator revision and derive a single-part production revision without changing its solid.\"\"\"\nfrom pathlib import Path\nimport shutil, hashlib, math, argparse\nimport revision_json as json\nimport cadquery as cq\nimport ezdxf\nfrom OCP.BRepAdaptor import BRepAdaptor_Surface\nROOT=Path(__file__).resolve().parents[1]\nparser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])\nMANUFACTURING_REVISION=parser.parse_args().manufacturing_revision\nM=json.loads((ROOT/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text());REV=M['geometry_revision']\nP=json.loads((ROOT/f'cad/radiator/{REV}.json').read_text())\nOUT=ROOT/f'output/manufacturing/{MANUFACTURING_REVISION}';OUT.mkdir(parents=True,exist_ok=True)\nsource=ROOT/f'output/radiator-{REV}';stem=M['part_number'];H=P['height'];notched=bool(P.get('cable_notch'))\nbuild_report=json.loads((source/'verification.json').read_text())\n"
+        },
+        {
+          "before": " 'volume_mm3':solid.Volume(),'net_mass_kg_at_7900_kg_m3':solid.Volume()*7.9e-6,\n 'plain_fan_holes':16,'plain_radiator_holes':12,'rack_slots':40,'air_apertures':4,'front_face_boundary_wires':73,'through_wall_cylinders':len(cyl),'edge_notches':int(notched),\n 'drawing_has_unmodelled_edge_breaks':True,'nominal_geometry_unchanged':True,'outer_corner_radius_mm':P['outer_radius'],'geometry_comparison_basis':'Production issue matches selected geometry revision',\n 'source_step_sha256':hashlib.sha256((source/f'rack-plate-{REV}.step').read_bytes()).hexdigest(),\n 'production_step_sha256':hashlib.sha256((OUT/f'{stem}.step').read_bytes()).hexdigest(),\n 'DFM':'Flatness and specified edge finishes require supplier acceptance; size/position tolerances follow the selected issue drawing.'}\nassert report['source_step_sha256']==report['production_step_sha256']\n(OUT/'geometry-verification.json').write_text(json.dumps(report,indent=2)+'\\n');print(json.dumps(report,indent=2))\n",
+          "after": " 'volume_mm3':solid.Volume(),'net_mass_kg_at_7900_kg_m3':solid.Volume()*7.9e-6,\n 'plain_fan_holes':16,'plain_radiator_holes':12,'rack_slots':40,'air_apertures':4,'front_face_boundary_wires':73,'through_wall_cylinders':len(cyl),'edge_notches':int(notched),\n 'drawing_has_unmodelled_edge_breaks':True,'nominal_geometry_unchanged':True,'outer_corner_radius_mm':P['outer_radius'],'geometry_comparison_basis':'Production revision matches selected geometry revision',\n 'source_step_sha256':hashlib.sha256((source/f'rack-plate-{REV}.step').read_bytes()).hexdigest(),\n 'production_step_sha256':hashlib.sha256((OUT/f'{stem}.step').read_bytes()).hexdigest(),\n 'DFM':'Flatness and specified edge finishes require supplier acceptance; size/position tolerances follow the selected revision drawing.'}\nassert report['source_step_sha256']==report['production_step_sha256']\n(OUT/'geometry-verification.json').write_text(json.dumps(report,indent=2)+'\\n');print(json.dumps(report,indent=2))\n"
+        }
+      ],
+      "after_sha256": "4d064558a5c74f3d3391fa5c42b7c63c4215a224b147f8aff3b6ce46e32f51eb"
+    },
+    "scripts/radiator_plate_fea.py": {
+      "before_sha256": "1809a100e18162439e7d14fed9a1172c2fbab5897197d49f578e722b2d8d086c",
+      "replacements": [
+        {
+          "before": "\nOptional dependencies: gmsh==4.15.2 and existing CadQuery/numpy.\nSolver: CalculiX 2.23. Units N, mm, s, tonne. No changes to issued CAD.\n\"\"\"\nfrom pathlib import Path\n",
+          "after": "\nOptional dependencies: gmsh==4.15.2 and existing CadQuery/numpy.\nSolver: CalculiX 2.23. Units N, mm, s, tonne. No changes to released CAD.\n\"\"\"\nfrom pathlib import Path\n"
+        }
+      ],
+      "after_sha256": "d681e6e6605bcf7a63781911183a0f8e4c648369aa66ab07fd87fb479c1b1478"
+    },
+    "scripts/release.py": {
+      "before_sha256": "99b9eefe5246dd6ffa20a08cd34f79ab2bc81d204fb50a4be1e09a17eb3726dd",
+      "replacements": [
+        {
+          "before": "from datetime import date\nimport hashlib\nimport json\nimport re\nimport shutil\n",
+          "after": "from datetime import date\nimport hashlib\nimport revision_json as json\nimport re\nimport shutil\n"
+        },
+        {
+          "before": "    for role, original in selected.items():\n        part = {k:copy.deepcopy(original[k]) for k in\n                ('part', 'issue', 'source', 'step', 'drawing', 'dxf', 'pdf_sheets', 'jlc', 'quantity')}\n        part.update(role=role, changed=role in changes, review_images=[], verification=None)\n        if role in changes:\n            issue = changes[role]\n            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', issue), f'Invalid issue: {issue}')\n            stem = original['part'].replace(original['issue'], issue)\n            config_path = root / f'cad/manufacturing/{issue}.json'\n            require(not config_path.exists() and config_path not in configs, f'Issue already exists: {issue}')\n            require(not (root / f'output/manufacturing/{issue}').exists(), f'Output issue already exists: {issue}')\n            config = read(file(root, original['source']))\n            config.update(issue=issue, part_number=stem, issue_date=date.today().isoformat(),\n                          source_issue=original['issue'], status='Draft; not reviewed or submitted',\n                          scope='Draft starting values; update geometry and fabrication requirements')\n            for key in ('geometry_change', 'nominal_geometry_unchanged'):\n",
+          "after": "    for role, original in selected.items():\n        part = {k:copy.deepcopy(original[k]) for k in\n                ('part', 'manufacturing_revision', 'source', 'step', 'drawing', 'dxf', 'pdf_sheets', 'jlc', 'quantity')}\n        part.update(role=role, changed=role in changes, review_images=[], verification=None)\n        if role in changes:\n            manufacturing_revision = changes[role]\n            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', manufacturing_revision), f'Invalid revision: {manufacturing_revision}')\n            stem = original['part'].replace(original['manufacturing_revision'], manufacturing_revision)\n            config_path = root / f'cad/manufacturing/{manufacturing_revision}.json'\n            require(not config_path.exists() and config_path not in configs, f'Manufacturing revision already exists: {manufacturing_revision}')\n            require(not (root / f'output/manufacturing/{manufacturing_revision}').exists(), f'Output revision already exists: {manufacturing_revision}')\n            config = read(file(root, original['source']))\n            config.update(manufacturing_revision=manufacturing_revision, part_number=stem, manufacturing_revision_date=date.today().isoformat(),\n                          source_manufacturing_revision=original['manufacturing_revision'], status='Draft; not reviewed or submitted',\n                          scope='Draft starting values; update geometry and fabrication requirements')\n            for key in ('geometry_change', 'nominal_geometry_unchanged'):\n"
+        },
+        {
+          "before": "                if key in config:config[key] = False\n            configs[config_path] = config\n            part.update(part=stem, issue=issue, source=f'cad/manufacturing/{issue}.json',\n                        step=f'output/manufacturing/{issue}/{stem}.step',\n                        drawing=f'output/pdf/{stem}.pdf',\n                        dxf=f'output/manufacturing/{issue}/{stem}.dxf' if original['dxf'] else None,\n                        verification=f'output/manufacturing/{issue}/geometry-verification.json')\n            part['jlc']['remarks'] = 'TODO: write manufacturing-only remarks for this issue'\n        rows.append(part)\n    value = dict(schema_version=1, name=name, status='draft', parts=rows,\n                 note='Starting configurations only; adapt builders/checks/drawings before review. Current delivered selection is unchanged.')\n    # Validate every destination before writing anything.\n",
+          "after": "                if key in config:config[key] = False\n            configs[config_path] = config\n            part.update(part=stem, manufacturing_revision=manufacturing_revision, source=f'cad/manufacturing/{manufacturing_revision}.json',\n                        step=f'output/manufacturing/{manufacturing_revision}/{stem}.step',\n                        drawing=f'output/pdf/{stem}.pdf',\n                        dxf=f'output/manufacturing/{manufacturing_revision}/{stem}.dxf' if original['dxf'] else None,\n                        verification=f'output/manufacturing/{manufacturing_revision}/geometry-verification.json')\n            part['jlc']['remarks'] = 'TODO: write manufacturing-only remarks for this revision'\n        rows.append(part)\n    value = dict(schema_version=2, name=name, status='draft', parts=rows,\n                 note='Starting configurations only; adapt builders/checks/drawings before review. Current delivered selection is unchanged.')\n    # Validate every destination before writing anything.\n"
+        },
+        {
+          "before": "            require(Path(part[field]).name == f\"{part['part']}.{ext}\", f'Mismatched {field} filename')\n        if not part['changed']:\n            for key in ('part','issue','source','step','drawing','dxf','pdf_sheets','jlc'):\n                require(part[key] == old[key], f'Unchanged {role} differs in {key}; allocate a new issue')\n            require(sha(file(root, old['issue_bundle'])) == old['sha256'], 'Changed original archive')\n            with zipfile.ZipFile(file(root, old['issue_bundle'])) as archive:\n                for field in ('step','drawing','dxf'):\n                    if old[field]:require(archive.read(Path(old[field]).name) == file(root, old[field]).read_bytes(),\n                                          f'Unchanged {role} no longer matches its issued ZIP')\n            paths.add(old['issue_bundle'])\n        else:\n            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', part['issue']), 'Invalid issue')\n            require(part['part'] == old['part'].replace(old['issue'],part['issue']) and part['issue'] != old['issue'],\n                    'Changed parts need a new issue and matching part number')\n            for field in ('source','step','drawing','dxf','verification'):\n                if part[field]:require(part[field] not in protected, f'Cannot reuse delivered {field}')\n            require(part['source'] == f\"cad/manufacturing/{part['issue']}.json\", 'Unexpected source configuration')\n            for field in ('step','dxf','verification'):\n                if part[field]:require(Path(part[field]).parent == Path(f\"output/manufacturing/{part['issue']}\"),\n                                       f'Keep {field} inside the new issue directory')\n            config = read(file(root,part['source']))\n            require(config['issue']==part['issue'] and config['part_number']==part['part'], 'Source issue mismatch')\n            verification = read(file(root, part['verification']))\n            require(verification['checks']=='PASS' and verification['issue']==part['issue'], 'Geometry checks must pass for this issue')\n            hashes = verification.get('source_sha256',{})\n            require(part['source'] in hashes, 'Geometry verification must cover the source configuration')\n",
+          "after": "            require(Path(part[field]).name == f\"{part['part']}.{ext}\", f'Mismatched {field} filename')\n        if not part['changed']:\n            for key in ('part','manufacturing_revision','source','step','drawing','dxf','pdf_sheets','jlc'):\n                require(part[key] == old[key], f'Unchanged {role} differs in {key}; allocate a new revision')\n            require(sha(file(root, old['manufacturing_revision_bundle'])) == old['sha256'], 'Changed original archive')\n            with zipfile.ZipFile(file(root, old['manufacturing_revision_bundle'])) as archive:\n                for field in ('step','drawing','dxf'):\n                    if old[field]:require(archive.read(Path(old[field]).name) == file(root, old[field]).read_bytes(),\n                                          f'Unchanged {role} no longer matches its released ZIP')\n            paths.add(old['manufacturing_revision_bundle'])\n        else:\n            require(re.fullmatch(r'[A-Z][A-Z0-9]*-M[0-9]{2}', part['manufacturing_revision']), 'Invalid revision')\n            require(part['part'] == old['part'].replace(old['manufacturing_revision'],part['manufacturing_revision']) and part['manufacturing_revision'] != old['manufacturing_revision'],\n                    'Changed parts need a new revision and matching part number')\n            for field in ('source','step','drawing','dxf','verification'):\n                if part[field]:require(part[field] not in protected, f'Cannot reuse delivered {field}')\n            require(part['source'] == f\"cad/manufacturing/{part['manufacturing_revision']}.json\", 'Unexpected source configuration')\n            for field in ('step','dxf','verification'):\n                if part[field]:require(Path(part[field]).parent == Path(f\"output/manufacturing/{part['manufacturing_revision']}\"),\n                                       f'Keep {field} inside the new revision directory')\n            config = read(file(root,part['source']))\n            require(config['manufacturing_revision']==part['manufacturing_revision'] and config['part_number']==part['part'], 'Source revision mismatch')\n            verification = read(file(root, part['verification']))\n            require(verification['checks']=='PASS' and verification['manufacturing_revision']==part['manufacturing_revision'], 'Geometry checks must pass for this revision')\n            hashes = verification.get('source_sha256',{})\n            require(part['source'] in hashes, 'Geometry verification must cover the source configuration')\n"
+        },
+        {
+          "before": "                    for field in ('step','drawing','dxf'):\n                        if part[field]:archive.write(file(root,part[field]),Path(part[field]).name)\n            else:shutil.copyfile(file(root,base[part['role']]['issue_bundle']),bundle)\n            with zipfile.ZipFile(bundle) as archive:\n                expected={Path(part[k]).name:file(root,part[k]).read_bytes() for k in ('step','drawing','dxf') if part[k]}\n",
+          "after": "                    for field in ('step','drawing','dxf'):\n                        if part[field]:archive.write(file(root,part[field]),Path(part[field]).name)\n            else:shutil.copyfile(file(root,base[part['role']]['manufacturing_revision_bundle']),bundle)\n            with zipfile.ZipFile(bundle) as archive:\n                expected={Path(part[k]).name:file(root,part[k]).read_bytes() for k in ('step','drawing','dxf') if part[k]}\n"
+        },
+        {
+          "before": "    parser=argparse.ArgumentParser(description=__doc__)\n    sub=parser.add_subparsers(dest='command',required=True)\n    init=sub.add_parser('init');init.add_argument('name');init.add_argument('--change',action='append',required=True,metavar='ROLE=ISSUE')\n    for name in ('check','snapshot','package'):\n        sub.add_parser(name).add_argument('manifest',type=Path)\n",
+          "after": "    parser=argparse.ArgumentParser(description=__doc__)\n    sub=parser.add_subparsers(dest='command',required=True)\n    init=sub.add_parser('init');init.add_argument('name');init.add_argument('--change',action='append',required=True,metavar='ROLE=REVISION')\n    for name in ('check','snapshot','package'):\n        sub.add_parser(name).add_argument('manifest',type=Path)\n"
+        },
+        {
+          "before": "        if args.command=='init':\n            pairs=[v.split('=',1) for v in args.change]\n            require(all(len(p)==2 for p in pairs),'Use ROLE=ISSUE')\n            require(len({p[0] for p in pairs})==len(pairs),'Duplicate changed role')\n            result=initialise(ROOT,args.name,dict(pairs))\n",
+          "after": "        if args.command=='init':\n            pairs=[v.split('=',1) for v in args.change]\n            require(all(len(p)==2 for p in pairs),'Use ROLE=REVISION')\n            require(len({p[0] for p in pairs})==len(pairs),'Duplicate changed role')\n            result=initialise(ROOT,args.name,dict(pairs))\n"
+        }
+      ],
+      "after_sha256": "c935b38fcdd8377459ec5071e9fe48e7648183fb1e03b158d6ae35055a3814ce"
+    },
+    "scripts/verify_manufacturing.py": {
+      "before_sha256": "6e511aeaf6bd58d34dfd217dbe7127e4e3b291380b65cb2cfbce0305a0469176",
+      "replacements": [
+        {
+          "before": "\"\"\"Re-import supplier solids and compare machined features with the drawing schedule.\"\"\"\nfrom pathlib import Path\nimport json, math\nimport cadquery as cq\nimport ezdxf\n",
+          "after": "\"\"\"Re-import supplier solids and compare machined features with the drawing schedule.\"\"\"\nfrom pathlib import Path\nimport math\nimport revision_json as json\nimport cadquery as cq\nimport ezdxf\n"
+        },
+        {
+          "before": "    assert any(near(b.center.x, slot['x']) and near(b.center.y, slot['z'])\n               and near(b.size.x, 10) and near(b.size.y, 7) for b in extents)\nreport = {'issue': 'O-M02', 'status': 'PASS', 'method': 'Independent STEP re-import and DXF entity inspection',\n          'checks': ['valid single solids and overall sizes', 'no nominal body/plate overlap',\n                     '20 boss lips and 20 front port entries at scheduled positions',\n",
+          "after": "    assert any(near(b.center.x, slot['x']) and near(b.center.y, slot['z'])\n               and near(b.size.x, 10) and near(b.size.y, 7) for b in extents)\nreport = {'manufacturing_revision': 'O-M02', 'status': 'PASS', 'method': 'Independent STEP re-import and DXF entity inspection',\n          'checks': ['valid single solids and overall sizes', 'no nominal body/plate overlap',\n                     '20 boss lips and 20 front port entries at scheduled positions',\n"
+        }
+      ],
+      "after_sha256": "a40d97effb20a6cce1ce685a8223902f36f974dbb0fa472d98a59b2ced0c1e27"
     }
   }
 }

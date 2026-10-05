@@ -1,6 +1,6 @@
 {
-  "issue": "Q-M01",
-  "issue_date": "2026-09-15",
+  "manufacturing_revision": "Q-M01",
+  "manufacturing_revision_date": "2026-09-15",
   "geometry_revision": "Q",
   "status": "Operator-approved Q geometry; shorter M4 retention detail following thread-depth review; supplier review only",
   "body_material": "Black unfilled declared POM-C or POM-H machining stock; grade datasheet required; Delrin branding optional",

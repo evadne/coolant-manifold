@@ -1,6 +1,6 @@
 # Current three-part fabrication pack
 
-**Canonical delivered issues: Q-M04 body, Q-M03 faceplate and R7-M01 radiator.** To reproduce the order, download the three ZIPs below and follow [the JLC order guide](../../../docs/order-from-jlc.md). These are byte-identical copies of the issue-specific bundles. [The canonical manifest](../../../cad/current-release.json) selects their paths and hashes. Older outputs remain historical unless explicitly identified as shared dependencies. This index verifies files; it does not submit or pay for an order.
+**Canonical delivered revisions: Q-M04 body, Q-M03 faceplate and R7-M01 radiator.** To reproduce the order, download the three ZIPs below and follow [the JLC order guide](../../../docs/order-from-jlc.md). These are byte-identical copies of the revision-specific bundles. [The canonical manifest](../../../cad/current-release.json) selects their paths and hashes. Older outputs remain historical unless explicitly identified as shared dependencies. This index verifies files; it does not submit or pay for an order.
 
 | Part | Fabrication bundle | Process |
 |---|---|---|

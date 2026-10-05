@@ -25,7 +25,7 @@ for t in (3.,2.5,2.):
 assert abs(depth-1.75)<1e-10
 assert abs(rows[-1]['mass_kg']-.3951615713202164)<1e-9
 report={'scope':'Dimensional and mass assessment only; no separate manifold structural simulation.',
- 'reference':'Issued O-M02 geometry unchanged; 7900 kg/m3 stainless density.',
+ 'reference':'released O-M02 geometry unchanged; 7900 kg/m3 stainless density.',
  'worst_case_stack':'Thickness -0.10; countersink diameter +0.10; included angle -1 degree; through-hole at minimum 4.50.',
  'important':'A thin cylindrical land is not itself proof of inadequate strength. Nominal conical seating geometry remains present.',
  'comparison':rows}

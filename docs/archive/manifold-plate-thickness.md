@@ -7,7 +7,7 @@
 
 ## Countersink geometry
 
-The issued holes are Ø4.5 +0.10/0, countersunk Ø8 +0.10/0 at 90° ±1°. For a nominal 90° countersink, depth = (8 -4.5)/2 =1.75 mm.
+The released holes are Ø4.5 +0.10/0, countersunk Ø8 +0.10/0 at 90° ±1°. For a nominal 90° countersink, depth = (8 -4.5)/2 =1.75 mm.
 
 | Sheet | Calculated plate mass | Weight saving | Nominal straight land below countersink | Minimum land before edge breaking, stated tolerance stack |
 |---|---:|---:|---:|---:|
@@ -15,7 +15,7 @@ The issued holes are Ø4.5 +0.10/0, countersunk Ø8 +0.10/0 at 90° ±1°. For a
 | 2.5 mm | 0.494 kg | 0.099 kg | 0.75 mm | 0.568 mm |
 | 2.0 mm | 0.395 kg | 0.198 kg | 0.25 mm | 0.068 mm |
 
-The stack uses sheet thickness at nominal minus 0.10 mm, countersink mouth 8.10 mm, through-hole 4.50 mm and included angle 89°. The deepest countersink is 1.8317 mm. On 1.90 mm actual sheet that leaves 0.0683 mm before the current general 0.10-0.20 mm edge-breaking operation. A 2 mm issue therefore needs an explicit back-edge treatment at these six holes instead of silently carrying across the general note.
+The stack uses sheet thickness at nominal minus 0.10 mm, countersink mouth 8.10 mm, through-hole 4.50 mm and included angle 89°. The deepest countersink is 1.8317 mm. On 1.90 mm actual sheet that leaves 0.0683 mm before the current general 0.10-0.20 mm edge-breaking operation. A 2 mm revision therefore needs an explicit back-edge treatment at these six holes instead of silently carrying across the general note.
 
 Do not interpret the 0.25 mm nominal land as the full remaining bearing thickness, or as proof of failure. The conical seat still exists and its nominal bearing surface is not reduced merely by removing material behind it. Equally, a nominally fitting cone is not a pull-through or preload calculation.
 
@@ -23,7 +23,7 @@ The [specified Westfield M4 hex socket head](https://www.westfieldfasteners.co.u
 
 ## Assembly and structural consequences
 
-- Existing 4 mm POM bosses would project 2 mm above a 2 mm plate. To preserve the operator's faceplate-plus-1-mm relationship, shorten bosses to 3 mm in a new body issue and update G1/4 entry/sealing-plane dimensions together. Extra boss projection alone does not prevent the fitting from seating on POM.
+- Existing 4 mm POM bosses would project 2 mm above a 2 mm plate. To preserve the operator's faceplate-plus-1-mm relationship, shorten bosses to 3 mm in a new body revision and update G1/4 entry/sealing-plane dimensions together. Extra boss projection alone does not prevent the fitting from seating on POM.
 - M4 ×12 screws would reach nominally 10 mm from the POM face instead of 9 mm, before head recess/tolerance. The existing 14 mm pilot provides nominal tip space, so automatically shortening the screws is not necessary; actual engagement and alternative-head seating still need checking.
 - The manifold face is 87 mm high, with twenty Ø32 windows, 7.5 mm top/bottom ligaments beside the windows and 8 mm webs between adjacent windows. Its screw/support pattern differs substantially from the radiator.
 - Coupling insertion, release, tube pull and fitting torque act through the POM body. The 40 mm slab can stiffen the assembly, but its discrete screw attachment, contact with the faceplate and POM creep need appropriate treatment in a manifold model. Neither the radiator's load sharing nor its calculated 0.043 mm displacement transfers to this assembly.

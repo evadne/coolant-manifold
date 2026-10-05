@@ -2,17 +2,19 @@
 No CAD changes; millimetre model converted to metres for lighting/material scale.
 """
 from pathlib import Path
-import argparse,json,math,sys
+import argparse, math, sys
 import bpy
 import bmesh
 from mathutils import Vector,Matrix
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'scripts'))
+import revision_json as json
 parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');parser.add_argument('--variant',choices=['all','bare','connected'],default='all')
 parser.add_argument('--manufacturing', choices=['O-M02'])
 parser.add_argument('--iteration',choices=['P','Q'])
 parser.add_argument('--device',choices=['CPU','METAL'],default='CPU')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-assert not (args.iteration and args.manufacturing), 'Select either a layout iteration or a manufacturing issue'
+assert not (args.iteration and args.manufacturing), 'Select either a layout iteration or a manufacturing revision'
 REV=args.iteration or args.manufacturing or 'M'
 BASE=ROOT/(f'output/long-bore-{REV}' if args.iteration else 'output/manufacturing/O-M02' if args.manufacturing else 'output/long-bore-M')
 OUT=BASE/'photorealistic';OUT.mkdir(parents=True,exist_ok=True)
@@ -185,7 +187,7 @@ for variant in (['bare','connected'] if args.variant=='all' else [args.variant])
             bpy.ops.render.render(write_still=True)
 if not args.preview:
     (OUT/'render-notes.json').write_text(json.dumps({
-        'revision':REV,'body_issue':'Q-M04' if REV=='Q' else 'P', 'faceplate_issue':('Q-M03' if REV=='Q' else None),'outer_corner_radius_mm':(5 if REV=='Q' else None),'source_scene':'../product-views/assembled-unmarked.blend',
+        'revision':REV,'body_manufacturing_revision':'Q-M04' if REV=='Q' else 'P', 'faceplate_manufacturing_revision':('Q-M03' if REV=='Q' else None),'outer_corner_radius_mm':(5 if REV=='Q' else None),'source_scene':'../product-views/assembled-unmarked.blend',
         'boss_height_mm':BOSS*1000,'retention_screws':('12 x M4 x 10 ISO 7380-1; heads rendered, shanks omitted' if REV=='Q' else 'Historical hardware per source'),'brush_direction':'X / across rack width on both broad faces',
         'geometry_changes':'No manifold changes; converted millimetres to metres. Small shader-only edge rounding.',
         'bare':f'20 front, 4 side and {4 if REV == chr(81) else 0} rear ports unpopulated; body screws retained.',

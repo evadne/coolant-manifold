@@ -1,10 +1,10 @@
 {
-  "issue": "Q-M02",
+  "manufacturing_revision": "Q-M02",
   "part_number": "RM10-Q-M02-FACEPLATE",
-  "issue_date": "2026-09-16",
+  "manufacturing_revision_date": "2026-09-16",
   "geometry_revision": "Q",
   "scope": "Faceplate only; body remains Q-M01",
-  "source_issue": "Q-M01",
+  "source_manufacturing_revision": "Q-M01",
   "material": "304 stainless steel / EN 1.4301",
   "thickness_mm": 2.0,
   "linear_tolerance_mm": 0.1,

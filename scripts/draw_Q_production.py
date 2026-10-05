@@ -1,6 +1,7 @@
 """Self-contained A3 supplier drawings for Q-M01, mm, tap-pilot STEP convention."""
 from pathlib import Path
-import json,math,argparse
+import math, argparse
+import revision_json as json
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
@@ -9,9 +10,9 @@ from reportlab.lib import colors
 R=Path(__file__).resolve().parents[1];OUT=R/'output/pdf';OUT.mkdir(exist_ok=True)
 S=json.loads((R/'output/manufacturing/Q-M01/feature-schedule.json').read_text())['features']
 M=json.loads((R/'cad/manufacturing/Q-M01.json').read_text())
-parser=argparse.ArgumentParser();parser.add_argument('--faceplate-issue',choices=['Q-M01','Q-M02','Q-M03'],default='Q-M01');parser.add_argument('--faceplate-only',action='store_true')
-parser.add_argument('--body-issue',choices=['Q-M01','Q-M04'],default='Q-M01');parser.add_argument('--body-only',action='store_true')
-ARGS=parser.parse_args();FI=ARGS.faceplate_issue;BI=ARGS.body_issue
+parser=argparse.ArgumentParser();parser.add_argument('--faceplate-manufacturing-revision',choices=['Q-M01','Q-M02','Q-M03'],default='Q-M01');parser.add_argument('--faceplate-only',action='store_true')
+parser.add_argument('--body-manufacturing-revision',choices=['Q-M01','Q-M04'],default='Q-M01');parser.add_argument('--body-only',action='store_true')
+ARGS=parser.parse_args();FI=ARGS.faceplate_manufacturing_revision;BI=ARGS.body_manufacturing_revision
 FM=json.loads((R/f'cad/manufacturing/{FI}.json').read_text())
 SIZE_TOL='±0.10' if FI in ['Q-M02','Q-M03'] else '+0.10/0'
 CENTRE_TOL='±0.10' if FI in ['Q-M02','Q-M03'] else '±0.05'

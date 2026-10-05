@@ -1,4 +1,4 @@
-# Revision O: manufacturing issue O-M01
+# Revision O: manufacturing revision O-M01
 
 > **Historical reference — superseded.** This page describes an earlier design or assessment. Its recommendations and “current” labels apply only to that snapshot. Use the [current project guide](../../README.md) and [three-part recap](../three-part-recap.md) for P / R6.
 
@@ -57,4 +57,4 @@ Rebuild in order:
 4. Render and visually inspect all changed PDF sheets.
 5. Run `scripts/package_manufacturing.py` with Python containing pypdf.
 
-Parameters are in `cad/manufacturing/O-M01.json`; dimensional layout remains in `cad/iterations/O-long-bore.json`. The issue date is fixed in the manufacturing parameters so rebuilds retain the same drawing issue.
+Parameters are in `cad/manufacturing/O-M01.json`; dimensional layout remains in `cad/iterations/O-long-bore.json`. The revision date is fixed in the manufacturing parameters so rebuilds retain the same drawing revision.

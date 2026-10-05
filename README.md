@@ -10,7 +10,7 @@ A ten-pair coolant manifold and a radiator mounting plate for 19-inch open racks
 
 ## Canonical fabrication files
 
-Current set: **Q-M04 POM body + Q-M03 faceplate + R7-M01 radiator plate**. These are the issues used for the delivered first articles. Geometry revisions Q/R7 and manufacturing issue suffixes are distinct; an older Q-M01 body is not the current Q-M04 body.
+Current set: **Q-M04 POM body + Q-M03 faceplate + R7-M01 radiator plate**. These are the revisions used for the delivered first articles. Geometry revisions Q/R7 and manufacturing revisions Q-M04/Q-M03/R7-M01 are distinct; an older Q-M01 body is not the current Q-M04 body.
 
 | Part | Main dimensions in mm | Download for manufacture | Technical drawing |
 |---|---|---|---|
@@ -20,7 +20,7 @@ Current set: **Q-M04 POM body + Q-M03 faceplate + R7-M01 radiator plate**. These
 
 Each ZIP contains one part's STEP and fabrication PDF; steel ZIPs also contain a DXF. **STEP holes are tapping pilots: the accompanying PDF defines the finished G1/4 and M4 threads.** Assembly models, STL meshes and renders are not substitutes for the fabrication bundles.
 
-For tools and AI readers, [cad/current-release.json](cad/current-release.json) lists the canonical issues, paths and SHA-256 hashes. [The output guide](output/README.md) explains historical and shared dependencies. Earlier versions remain in their original locations.
+For tools and AI readers, [cad/current-release.json](cad/current-release.json) lists the canonical revisions, paths and SHA-256 hashes. [The output guide](output/README.md) explains historical and shared dependencies. Earlier versions remain in their original locations.
 
 ## What the manifold provides
 

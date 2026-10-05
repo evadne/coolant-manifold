@@ -1,4 +1,4 @@
-"""Exercise issue isolation, review freshness and actual ZIP/PDF handling."""
+"""Exercise revision isolation, review freshness and actual ZIP/PDF handling."""
 from datetime import date
 import json
 from pathlib import Path
@@ -27,13 +27,13 @@ class ReleaseTest(unittest.TestCase):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name)
         rows=[]
         for role,part in [('body','RM10-Q-M04-BODY'),('faceplate','RM10-Q-M03-FACEPLATE'),('radiator','SN1260-R7-M01-PLATE')]:
-            issue=part.split('-',1)[1].rsplit('-',1)[0]
-            row=dict(part=part,issue=issue,source=f'cad/manufacturing/{issue}.json',
-                     step=f'output/manufacturing/{issue}/{part}.step',drawing=f'output/pdf/{part}.pdf',
-                     dxf=None if role=='body' else f'output/manufacturing/{issue}/{part}.dxf',
+            manufacturing_revision=part.split('-',1)[1].rsplit('-',1)[0]
+            row=dict(part=part,manufacturing_revision=manufacturing_revision,source=f'cad/manufacturing/{manufacturing_revision}.json',
+                     step=f'output/manufacturing/{manufacturing_revision}/{part}.step',drawing=f'output/pdf/{part}.pdf',
+                     dxf=None if role=='body' else f'output/manufacturing/{manufacturing_revision}/{part}.dxf',
                      pdf_sheets=1,quantity=1,jlc=dict(category='CNC machining' if role=='body' else 'Sheet Metal',
                      material='POM' if role=='body' else '304',finish='Raw',remarks='Test fixture',threads=role=='body'))
-            put(self.root/row['source'],dict(issue=issue,part_number=part,geometry_revision='Q'))
+            put(self.root/row['source'],dict(manufacturing_revision=manufacturing_revision,part_number=part,geometry_revision='Q'))
             step=self.root/row['step'];step.parent.mkdir(parents=True,exist_ok=True);step.write_text('ISO-10303-21;\nTEST FIXTURE ONLY\n')
             drawing(self.root/row['drawing'],part)
             if row['dxf']:(self.root/row['dxf']).write_text('TEST FIXTURE ONLY')
@@ -41,9 +41,26 @@ class ReleaseTest(unittest.TestCase):
             with zipfile.ZipFile(bundle,'w') as z:
                 for key in ('step','drawing','dxf'):
                     if row[key]:z.write(self.root/row[key],Path(row[key]).name)
-            row.update(issue_bundle=str(bundle.relative_to(self.root)),sha256=release.sha(bundle));rows.append(row)
+            row.update(manufacturing_revision_bundle=str(bundle.relative_to(self.root)),sha256=release.sha(bundle));rows.append(row)
         put(self.root/'cad/current-release.json',dict(parts=rows))
         self.original={str(p.relative_to(self.root)):p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
+
+    def test_legacy_selection_creates_explicit_schema_two_revision(self):
+        import revision_json
+        reverse={new:old for old,new in revision_json.LEGACY_KEYS.items()}
+        def legacy(value):
+            if isinstance(value,list):return [legacy(x) for x in value]
+            if isinstance(value,dict):return {reverse.get(k,k):legacy(v) for k,v in value.items()}
+            return value
+        for path in (self.root/'cad').rglob('*.json'):
+            put(path,legacy(json.loads(path.read_text())))
+        manifest=release.initialise(self.root,'legacy-study',{'body':'Q-M05'})
+        data=json.loads(manifest.read_text())
+        self.assertEqual(data['schema_version'],2)
+        self.assertEqual(data['parts'][0]['manufacturing_revision'],'Q-M05')
+        self.assertNotIn('issue',data['parts'][0])
+        config=json.loads((self.root/data['parts'][0]['source']).read_text())
+        self.assertEqual(config['source_manufacturing_revision'],'Q-M04')
 
     def candidate(self):
         manifest=release.initialise(self.root,'study',{'body':'Q-M05'})
@@ -53,7 +70,7 @@ class ReleaseTest(unittest.TestCase):
         image=self.root/part['review_images'][0];image.parent.mkdir(parents=True,exist_ok=True)
         from PIL import Image
         Image.new('RGB',(8,8),'white').save(image)
-        put(self.root/part['verification'],dict(issue=part['issue'],checks='PASS',
+        put(self.root/part['verification'],dict(manufacturing_revision=part['manufacturing_revision'],checks='PASS',
             source_sha256={part['source']:release.sha(self.root/part['source'])}))
         put(manifest,data);return manifest
 
@@ -69,12 +86,12 @@ class ReleaseTest(unittest.TestCase):
         self.assertEqual(len(report['parts']),3)
         originals=release.canonical(self.root)
         for role in ('faceplate','radiator'):
-            p=originals[role];self.assertEqual((out/(p['part']+'.zip')).read_bytes(),(self.root/p['issue_bundle']).read_bytes())
+            p=originals[role];self.assertEqual((out/(p['part']+'.zip')).read_bytes(),(self.root/p['manufacturing_revision_bundle']).read_bytes())
         with zipfile.ZipFile(out/'RM10-Q-M05-BODY.zip') as z:
             self.assertEqual(set(z.namelist()),{'RM10-Q-M05-BODY.step','RM10-Q-M05-BODY.pdf'})
         with self.assertRaises(FileExistsError):release.package(self.root,manifest)
 
-    def test_existing_issue_and_duplicate_destinations_refused_without_writes(self):
+    def test_existing_manufacturing_revision_and_duplicate_destinations_refused_without_writes(self):
         with self.assertRaises(ValueError):release.initialise(self.root,'bad',{'body':'Q-M04'})
         with self.assertRaises(ValueError):release.initialise(self.root,'bad',{'body':'Q-M05','faceplate':'Q-M05'})
         self.assertFalse((self.root/'cad/manufacturing/Q-M05.json').exists())
@@ -93,7 +110,7 @@ class ReleaseTest(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,'since the review'):release.package(self.root,m)
                 p.write_bytes(original)
 
-    def test_stale_geometry_check_and_wrong_pdf_issue_rejected(self):
+    def test_stale_geometry_check_and_wrong_pdf_manufacturing_revision_rejected(self):
         m=self.candidate();part=release.read(m)['parts'][0]
         config=self.root/part['source'];before=config.read_bytes();config.write_text(config.read_text()+' ')
         with self.assertRaisesRegex(ValueError,'Stale geometry'):release.inputs(self.root,m)

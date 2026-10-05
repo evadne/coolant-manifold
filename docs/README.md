@@ -6,7 +6,7 @@ For another order, use [Order the current parts from JLC](order-from-jlc.md). Fo
 |---|---|
 | Design and interfaces | [Three-part recap](three-part-recap.md), [design](design.md), [Q rear ports](revision-Q-rear-ports.md) |
 | Delivered parts and supplier experience | [Manufacturing status](manufacturing.md), [JLCCNC first article](jlc-first-article.md), [order chronology](jlc-order-2026-09-16.md) |
-| Manufacture again | [JLC guide](order-from-jlc.md), [body issue](jlc-submission-Q-M04.md), [faceplate issue](jlc-submission-Q-M03.md), [radiator issue](jlc-submission-R7-M01.md) |
+| Manufacture again | [JLC guide](order-from-jlc.md), [body revision](jlc-submission-Q-M04.md), [faceplate revision](jlc-submission-Q-M03.md), [radiator revision](jlc-submission-R7-M01.md) |
 | Assembly | [Manifold](assembly-Q.md), [radiator](radiator-rack-plate.md), [fan splitter](radiator-x-splitter-fit.md) |
 | Engineering evidence | [Machining route](Q-M04-machining-route.md), [M4 sizing](Q-retention-sizing.md), [torque/creep](Q-torque-and-creep.md), [radiator loads](radiator-load-assessment.md) |
 | Coolant assumptions | [POM compatibility](pom-coolant-assessment.md), [Blitz overrun targets](blitz-overrun-qualification.md), [pump pressure](d5-pressure.md) |

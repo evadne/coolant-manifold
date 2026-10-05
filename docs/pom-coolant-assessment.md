@@ -6,7 +6,7 @@ The operator expects formulated computer coolant, such as Koolance LIQ-705 or co
 
 ## Conclusion
 
-Both black unfilled POM-C and POM-H remain acceptable material candidates for this duty. There is no demonstrated coolant-compatibility reason to reject POM-H solely because it is a homopolymer. The earlier general preference for POM-C gave excessive weight to resistance in aggressive chemical environments that do not apply here. Retain both materials for Revision P, with an identified grade and stock form in its forthcoming supplier issue.
+Both black unfilled POM-C and POM-H remain acceptable material candidates for this duty. There is no demonstrated coolant-compatibility reason to reject POM-H solely because it is a homopolymer. The earlier general preference for POM-C gave excessive weight to resistance in aggressive chemical environments that do not apply here. Retain both materials for Revision P, with an identified grade and stock form in its forthcoming supplier revision.
 
 POM-C offers established low-porosity machining-stock options. POM-H offers generally higher stiffness, strength and creep resistance. Choose between actual available grades and sound stock rather than treating either polymer family as automatically superior for this application. No geometry or supplier PDF change is needed for this conclusion.
 
@@ -21,11 +21,11 @@ POM-C offers established low-porosity machining-stock options. POM-H offers gene
 
 Neither material has a general temperature-based exclusion at the proposed 50°C coolant temperature. Both soften progressively with temperature and can creep under sustained fastener/fitting loads. Room-temperature tensile values and dry-air service-temperature ratings must not be used as an assembled pressure or thread-torque rating.
 
-Stock integrity, sealing-land finish, thread quality, fitting loads, differential expansion against the steel plate and leak performance are more useful selection/verification issues for this design than resistance to strong chemicals. Centreline porosity is stock/process dependent; do not label all POM-C void-free or all POM-H porous. MCAM offers a specifically porosity-free copolymer stock grade and documents the mechanical benefits of its homopolymer grade. [Acetron GP / Ertacetal C](https://www.mcam.com/en/products/shapes/engineering/acetron-ertacetal/acetron-gp-pom-c), [Ertacetal H datasheet](https://www.mcam.com/mam/datasheets/GEP-Ertacetal%C2%AE%20H%20POM-H_en_US.pdf)
+Stock integrity, sealing-land finish, thread quality, fitting loads, differential expansion against the steel plate and leak performance are more useful selection and verification considerations for this design than resistance to strong chemicals. Centreline porosity is stock/process dependent; do not label all POM-C void-free or all POM-H porous. MCAM offers a specifically porosity-free copolymer stock grade and documents the mechanical benefits of its homopolymer grade. [Acetron GP / Ertacetal C](https://www.mcam.com/en/products/shapes/engineering/acetron-ertacetal/acetron-gp-pom-c), [Ertacetal H datasheet](https://www.mcam.com/mam/datasheets/GEP-Ertacetal%C2%AE%20H%20POM-H_en_US.pdf)
 
 Practical selection: accept the supplier's identified, sound unfilled POM-C or POM-H machining stock if it meets the drawing and the selected coolant's compatibility requirements. Prototype leak/thermal testing remains part of assembly qualification, not grounds to reject either polymer family at this stage.
 
-Operator decision, 15 September 2026: retain both POM families and finalise the quotation package. The operator reports cleaning an EK Pro manifold with Blitz Part 2, followed by long satisfactory service. This is relevant field experience supporting the maintenance choice; the exact EK resin grade and exposure conditions remain unspecified. Further C/H comparison does not hold up preparation of the P supplier issue; the earlier O-M02 package remains historical.
+Operator decision, 15 September 2026: retain both POM families and finalise the quotation package. The operator reports cleaning an EK Pro manifold with Blitz Part 2, followed by long satisfactory service. This is relevant field experience supporting the maintenance choice; the exact EK resin grade and exposure conditions remain unspecified. Further C/H comparison does not hold up preparation of the P supplier revision; the earlier O-M02 package remains historical.
 
 ## Mayhems Blitz Part 2 / Blitz System cleaning
 

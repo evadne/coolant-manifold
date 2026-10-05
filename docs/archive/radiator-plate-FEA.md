@@ -3,7 +3,7 @@
 > **Historical reference — superseded.** This page describes an earlier design or assessment. Its recommendations and “current” labels apply only to that snapshot. Use the [current project guide](../../README.md) and [three-part recap](../three-part-recap.md) for P / R6.
 
 
-**The full-plate static calculation supports using 2 mm stainless steel for the specified load and fixing arrangement.** The earlier strip calculation was only a local estimate. This study uses the complete R1 cut profile, including the four openings, twelve radiator holes and twelve rack slots, and varies the sheet thickness without changing the issued 3 mm CAD.
+**The full-plate static calculation supports using 2 mm stainless steel for the specified load and fixing arrangement.** The earlier strip calculation was only a local estimate. This study uses the complete R1 cut profile, including the four openings, twelve radiator holes and twelve rack slots, and varies the sheet thickness without changing the released 3 mm CAD.
 
 ## What is being calculated
 
@@ -50,7 +50,7 @@ A thin folded channel or angle can be very stiff because the cross-section place
 
 ## Design conclusion and reproducibility
 
-Use **2 mm as the next radiator plate design thickness**, retaining the present border, cross web and fixing arrangement. The mathematical result supports that choice for the stated static duty. A fit check still needs to verify the radiator's own attachment capacity and screw engagement; reducing plate thickness without changing screw length adds 1 mm of insertion. This analysis is not a reason to require a thicker sheet solely because the full assembly has not been physically tested. Preserve the 3 mm R1 files as the baseline; a 2 mm issue should carry its own revision and updated screw-length note.
+Use **2 mm as the next radiator plate design thickness**, retaining the present border, cross web and fixing arrangement. The mathematical result supports that choice for the stated static duty. A fit check still needs to verify the radiator's own attachment capacity and screw engagement; reducing plate thickness without changing screw length adds 1 mm of insertion. This analysis is not a reason to require a thicker sheet solely because the full assembly has not been physically tested. Preserve the 3 mm R1 files as the baseline; a 2 mm revision should carry its own revision and updated screw-length note.
 
 Files:
 

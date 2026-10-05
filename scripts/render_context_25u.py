@@ -1,9 +1,10 @@
 """StarTech 25U open-frame use-case study. Current Q manifold and R7 plate; bought-in context envelopes noted."""
 from pathlib import Path
-import bpy, math, json, hashlib, argparse, sys
+import bpy, math, hashlib, argparse, sys
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
+import revision_json as json
 from context_viewport import configure_context_viewports
 from context_startech25 import build_rack, RACK_U_DATUM, RAIL_DEPTH
 from context_tubing import Route, branch_route, make_tube, assess_routes
@@ -280,7 +281,7 @@ if not args.preview:
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'25U-StarTech-context.blend'),compress=True)
     def digest(path):return hashlib.sha256((ROOT/path).read_bytes()).hexdigest()
     report=dict(rack_U=25,rack_model='StarTech 4POSTRACK25U',rack_depth_overall_mm=661.8,rail_spacing_depth_mm=RAIL_DEPTH,rack_width_mm=600,rack_height_casters_mm=1288.34,rack_U_datum_mm=RACK_U_DATUM,depth_setting='22in / 0 and 0',
-      manifold_revision='Q',manifold_body_issue='Q-M04',manifold_faceplate_issue='Q-M03',radiator_plate_revision='R7',outer_corner_radius_mm=5,
+      manifold_revision='Q',manifold_body_manufacturing_revision='Q-M04',manifold_faceplate_manufacturing_revision='Q-M03',radiator_plate_revision='R7',outer_corner_radius_mm=5,
       rack_units_bottom_to_top=[dict(U='1',use='Radiator bottom fitting and plumbing clearance'),dict(U='2-11',use='SuperNova 1260 / R7 plate, eight NF-A20 fans; provisional pump/reservoir behind'),dict(U='12-15',use='4U host with front PCIe coolant bracket'),dict(U='16-17',use='Q parallel manifold'),dict(U='18-23',use='Eight RTX 5090 FE / Alphacool 5100182 assemblies and conceptual PCIe switch'),dict(U='24-25',use='Service space')],
       radiator=dict(plate_dimensions_mm=[482.6,444.5,2],body_envelope_mm=[422,48,441],fans=8,fan_model='Official Noctua NF-A20 integration meshes',port_orientation='Downwards into reserved U1; radiator begins at U2',rack_screws_populated=8,cable_notch_mm=[10,2],plate_aperture_radius_mm=50),
       pump_reservoir=dict(selection='Provisional ULTITUBE 200 / D5 NEXT envelopes',glass_length_mm=200,glass_od_mm=65,glass_wall_mm=5,position_xy_mm=[pump_x,pump_y],mounting='Illustrative independent rack shelf/support behind rear fans; not an engineered bracket or final product selection',reason='Eight A20s occupy both fan banks. Do not invent a 140 mm adapter interface on the retained 200 mm fan plate.'),

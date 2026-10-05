@@ -1,6 +1,6 @@
 # R7-M01 radiator plate production pack
 
-Issued 16 September 2026. **SN1260-R7-M01-PLATE** supersedes R6-M03 with four external outline corners increased from R2 to **R5.00 ±0.10 mm**. All fixing holes, slots, R50 airflow apertures and the rounded 10 × 2 mm cable notch remain in their accepted positions. Cut sizes and coordinates retain ±0.10 mm. The manifold package remains separate.
+released 16 September 2026. **SN1260-R7-M01-PLATE** supersedes R6-M03 with four external outline corners increased from R2 to **R5.00 ±0.10 mm**. All fixing holes, slots, R50 airflow apertures and the rounded 10 × 2 mm cable notch remain in their accepted positions. Cut sizes and coordinates retain ±0.10 mm. The manifold package remains separate.
 
 ## Upload files
 
@@ -43,11 +43,11 @@ Assembly instructions are maintained separately in [the radiator assembly guide]
 
 The shallow notch supersedes the previous 5 mm depth; its floor is Y442.500.
 
-Build geometry first with `scripts/build_radiator_plate.py --revision R7`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R7-M01`, then `scripts/draw_radiator_production.py --issue R7-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R7-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R7-M01/`; the upload bundle and supplier remarks are in `output/submission/R7-M01/`.
+Build geometry first with `scripts/build_radiator_plate.py --revision R7`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--manufacturing-revision R7-M01`, then `scripts/draw_radiator_production.py --manufacturing-revision R7-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --manufacturing-revision R7-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R7-M01/`; the upload bundle and supplier remarks are in `output/submission/R7-M01/`.
 
 The generation scripts prepare local files only; the separate quotation status below records the authorised supplier submission. This revised package is selected for a separate new order; it does not replace files on the original order.
 
-R7-M01 supersedes the held R6-M03 issue. Both steel parts retain raw sheet finish with no brushing or polishing. STEP/DXF contain the new R5 outside corners; all other geometry is retained. See [current three-part JLC review](jlc-final-review.md).
+R7-M01 supersedes the held R6-M03 revision. Both steel parts retain raw sheet finish with no brushing or polishing. STEP/DXF contain the new R5 outside corners; all other geometry is retained. See [current three-part JLC review](jlc-final-review.md).
 
 ## Quotation status
 

@@ -14,7 +14,7 @@
 | M | Six POM retainers at balanced X−120/0/+120 columns | Historical; tag `revision-m-before-centred-depth` |
 | N | 35 mm slab and centred galleries | Historical rejected depth candidate; tag `revision-n-35mm-centred` |
 | O | Restored 40 mm slab, galleries at Y20 | Historical operator-approved predecessor; tag `revision-o-operator-approved` |
-| O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier issues; `cad/manufacturing/` and `output/manufacturing/`; do not submit as Q |
+| O-M01 / O-M02 | Manufacturing details, then 4 mm bosses above a 3 mm countersunk plate | Superseded supplier revisions; `cad/manufacturing/` and `output/manufacturing/`; do not submit as Q |
 | **P** | 2 mm plain-hole plate, twelve M4 ×16 button screws, 3 mm bosses, revised M4 depths | Historical predecessor, `cad/iterations/P-long-bore.json`, `output/long-bore-P/`; [detail](revision-P-plain-bore-faceplate.md) |
 | **Q** | Four rear G1/4 ports aligned with outer front pairs; P front geometry retained | **Current operator-approved geometry / Q-M04 body, Q-M03 faceplate**, `cad/iterations/Q-rear-ports.json`, `output/long-bore-Q/`; [detail](revision-Q-rear-ports.md). M4: 10 mm full thread, 13 mm pilot. |
 
@@ -22,7 +22,7 @@ P's official Koolance studio fitting update and operator acceptance are presenta
 
 ## Radiator history
 
-| Revision / issue | Main change | Status |
+| Geometry / manufacturing revision | Main change | Status |
 |---|---|---|
 | R1 | 3 mm flat rack plate | Historical; early thickness/FEA studies also evaluated thinner versions of this profile |
 | R2 | 2 mm, integral 10U, forty optional rack slots | Historical |
@@ -30,7 +30,7 @@ P's official Koolance studio fitting update and operator acceptance are presenta
 | R4 / R4-M01 | Plain fan holes and nuts; accepted assembly sequence | Superseded geometry/pack; its final load analysis remains baseline evidence |
 | R5 / R5-M01 | 10 ×5 mm cable notch | Historical deeper-notch version |
 | R6 / R6-M02 | 10 ×2 mm rounded cable notch, same fan/fixing pattern | Historical submitted geometry; M02 specifies raw sheet finish |
-| **R7 / R7-M01** | **R5 outside corners**, retained 10 ×2 notch and raw finish | **Canonical fabricated radiator issue; delivered, operator-unverified** |
+| **R7 / R7-M01** | **R5 outside corners**, retained 10 ×2 notch and raw finish | **Canonical fabricated radiator revision; delivered, operator-unverified** |
 
 ## Archive policy
 
@@ -42,13 +42,13 @@ Git preserves all earlier revisions, recaps and README/AGENTS history. Retrieve 
 
 The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in mounting depth, reserves lowerU1 for radiator plumbing and uses Q/R7. Front PVC routes use the accepted shortened free-XYZ rod/contact solution; infrastructure retains geometric65 mm bends. See [current context](context-25U.md). This is an installation iteration, not a new custom-part revision.
 
-## 16 September steel tolerance issues
+## 16 September steel tolerance revisions
 
 - **Q-M02 faceplate:** all cut sizes and X/Z coordinates ±0.10; standard grinding/deburring, no dimensioned face-edge break. Q-M04 body unchanged.
 - **R6-M03 radiator:** all cut sizes, profile radii and X/Y coordinates ±0.10; separate flatness and edge finishes unchanged.
-- STEP/DXF geometry byte-identical to previous issues. Original submitted archives preserved; current local index selects the two new issues.
+- STEP/DXF geometry byte-identical to previous revisions. Original submitted archives preserved; current local index selects the two new revisions.
 
-## R5 outside-corner issues — 16 September 2026
+## R5 outside-corner revisions — 16 September 2026
 
 - **Q-M03 faceplate:** four square outside corners become R5; Q-M04 POM and every cut opening/position are unchanged. Nominal mass 0.394607 kg.
 - **R7 / R7-M01 radiator:** four outside corners increase R2 → R5; all fan/radiator holes, rack slots, R50 apertures and 10 ×2 notch are unchanged. Nominal mass 1.247067 kg.
@@ -56,7 +56,7 @@ The composite now uses the manufacturer-informed4POSTRACK25U at minimum22in moun
 
 ## Q-M04 body — 16 September 2026
 
-Twelve main-slab outside edges gain C0.50 ±0.10 ×45° ±1° chamfers with modelled corner junctions. All functional geometry is retained. Held body issue replaces Q-M01 locally; submitted originals are untouched. Steel remains Q-M03 / R7-M01. Three new body drawing sheets and 25 affected renders refreshed; total current presentation set 32 images.
+Twelve main-slab outside edges gain C0.50 ±0.10 ×45° ±1° chamfers with modelled corner junctions. All functional geometry is retained. Held body revision replaces Q-M01 locally; submitted originals are untouched. Steel remains Q-M03 / R7-M01. Three new body drawing sheets and 25 affected renders refreshed; total current presentation set 32 images.
 
 ## Operator acceptance and new-order authority — 16 September 2026
 

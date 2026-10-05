@@ -35,7 +35,7 @@
     }
   ],
   "release_status": "all_parts_delivered_manifold_fit_verified_radiator_operator_unverified_steel_finish_finding_open",
-  "operator_disposition": "Canonical delivered fabrication issues; current physical findings and order history are separate from bundle-integrity checks.",
+  "operator_disposition": "Canonical delivered fabrication revisions; current physical findings and order history are separate from bundle-integrity checks.",
   "canonical_selection": "cad/current-release.json",
   "fabrication_scope": "Each ZIP contains only one custom part STEP and its fabrication drawing/profile.",
   "assembly_guide": "docs/assembly-Q.md",
@@ -57,13 +57,13 @@
     "JLCCNC steel edge-finish finding"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "130d0658825c37c9d7dcd1299e125d35942e2b067dd8abe73c11291247772b40",
-    "cad/current-release.json": "22f412fc8c2729a773af8e34212eae862305a528c62dfef81d21fde71b1b1191",
-    "cad/source-maintenance.json": "5803c033d6ae2b50c1e8929937fdadaa9b2b823a1aea95ac6ffb4e3590b257d6",
-    "scripts/source_integrity.py": "93d24ca6d57f1baa8fa9889954180d0648716730a607e5308519702610edc87a",
+    "scripts/finalise_three_part_pack.py": "5a0ad8c4bea3ba8c769677643e9f67e869fca11bec5e5bc2d1e89bbda75dc1ef",
+    "cad/current-release.json": "5e8a1fbf8ed7e0ea9761e42e4312630a3ac50003e8d913d25b264fc16cdc45d1",
+    "cad/source-maintenance.json": "73cabc0005f93d217ad149a69a7dba58619fdeddbee49135a8c8a72c32a5d5f0",
+    "scripts/source_integrity.py": "191f044e85dd871039df37b477e16b6843fd598a86ef888eba457d711e71b653",
     "output/review/Q-M04-visual-review.json": "5fab710ae0860d71185b60f357febc4062e4c03f784f7a4105a0edb3f45d2a44",
-    "scripts/draw_radiator_production.py": "0da7a28db322b77086a660daf79a62f303cf1ba36a5208a4eb1d06a29393068c",
-    "scripts/package_radiator_production.py": "020cc583876759a5150894208b2d51f4db3e3adb927d04fc976477f40834a1e4",
-    "cad/manufacturing/R7-M01.json": "ae285903faaf13c9b252f665f97877a475ffeaa776525e49d6da0182c99ab30a"
+    "scripts/draw_radiator_production.py": "ac9839e10eadfb1657251f364a0073f9b877a50cc682d13bbec8ab8b9b1fb1e6",
+    "scripts/package_radiator_production.py": "ca84f25153fbf411f394145b3b8723da2782e8c46b46b5b9fd961d48910557d4",
+    "cad/manufacturing/R7-M01.json": "911804ce8b0b19eaf6b169bd19a649f05b54bcdff018dc1f6e33bc7b40ee624e"
   }
 }

@@ -2,7 +2,7 @@
 
 Updated 5 October 2026. Canonical fabrication selection: [Q-M04 / Q-M03 / R7-M01](../cad/current-release.json). All three parts are delivered; the operator has verified the manifold dimensions and threads. The radiator plate is operator-unverified. [JLCCNC batch observations](jlc-first-article.md) are separate from the specifications below.
 
-The current design set is the Revision Q manifold body (Q-M04) and matching faceplate (Q-M03), plus the R7 radiator plate (R7-M01). Both steel issues use ±0.10 mm cut dimensions and coordinates; both plates now have four R5 external outline corners; all holes and other profiles are retained. These are three custom parts; fittings, plugs, screws, nuts, fans and the radiator are bought-in hardware. There is no manifold rear cover in this long-bore design.
+The current design set is the Revision Q manifold body (Q-M04) and matching faceplate (Q-M03), plus the R7 radiator plate (R7-M01). Both steel revisions use ±0.10 mm cut dimensions and coordinates; both plates now have four R5 external outline corners; all holes and other profiles are retained. These are three custom parts; fittings, plugs, screws, nuts, fans and the radiator are bought-in hardware. There is no manifold rear cover in this long-bore design.
 
 ## 1. Manifold POM body - Revision Q
 

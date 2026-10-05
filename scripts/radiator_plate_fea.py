@@ -1,7 +1,7 @@
 """Generate reproducible CalculiX S6 shell studies from the R1 CAD face.
 
 Optional dependencies: gmsh==4.15.2 and existing CadQuery/numpy.
-Solver: CalculiX 2.23. Units N, mm, s, tonne. No changes to issued CAD.
+Solver: CalculiX 2.23. Units N, mm, s, tonne. No changes to released CAD.
 """
 from pathlib import Path
 import argparse,json,math,tempfile,gzip

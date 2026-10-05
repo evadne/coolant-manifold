@@ -1,16 +1,16 @@
-"""Prepare the Q-M02 specification-only faceplate issue from submitted Q-M01 geometry."""
+"""Prepare the Q-M02 specification-only faceplate revision from submitted Q-M01 geometry."""
 from pathlib import Path
 import hashlib
-import json
+import revision_json as json
 import shutil
 import math, argparse
 
 R = Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--issue',choices=['Q-M02','Q-M03'],default='Q-M02')
-ISSUE=parser.parse_args().issue
-M = json.loads((R/f'cad/manufacturing/{ISSUE}.json').read_text())
+parser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',choices=['Q-M02','Q-M03'],default='Q-M02')
+MANUFACTURING_REVISION=parser.parse_args().manufacturing_revision
+M = json.loads((R/f'cad/manufacturing/{MANUFACTURING_REVISION}.json').read_text())
 source = R/'output/manufacturing/Q-M01'
-out = R/f'output/manufacturing/{ISSUE}'
+out = R/f'output/manufacturing/{MANUFACTURING_REVISION}'
 out.mkdir(parents=True, exist_ok=True)
 prior = json.loads((source/'geometry-verification.json').read_text())
 assert prior['checks'] == 'PASS' and prior['plate_solid_count'] == 1
@@ -24,7 +24,7 @@ with zipfile.ZipFile(R/sent['archive']) as archive:
         assert old.read_bytes() == archive.read(old.name)
         shutil.copyfile(old, out/f"{M['part_number']}.{ext}")
 corner_report={}
-if ISSUE=='Q-M03':
+if MANUFACTURING_REVISION=='Q-M03':
     import cadquery as cq
     import ezdxf
     from OCP.BRepAdaptor import BRepAdaptor_Surface
@@ -68,9 +68,9 @@ if ISSUE=='Q-M03':
 features = [f for f in json.loads((source/'feature-schedule.json').read_text())['features'] if f['group'] in 'WHR']
 assert len(features) == 44
 (out/'feature-schedule.json').write_text(json.dumps({'part_number':M['part_number'], 'features':features}, indent=2)+'\n')
-inputs = [R/f'cad/manufacturing/{ISSUE}.json', source/'geometry-verification.json', source/'feature-schedule.json']
+inputs = [R/f'cad/manufacturing/{MANUFACTURING_REVISION}.json', source/'geometry-verification.json', source/'feature-schedule.json']
 inputs += [source/f'RM10-Q-M01-FACEPLATE.{ext}' for ext in ['step','dxf']]
-report = {'issue':ISSUE,'checks':'PASS','nominal_geometry_unchanged':ISSUE=='Q-M02',
+report = {'manufacturing_revision':MANUFACTURING_REVISION,'checks':'PASS','nominal_geometry_unchanged':MANUFACTURING_REVISION=='Q-M02',
           'plate_solid_count':1,'extent_mm':prior['plate_extent_mm'],
           'volume_mm3':prior['plate_volume_mm3'],'windows':20,'retention_holes':12,'rack_slots':12,
           'linear_and_coordinate_tolerance_mm':0.1,'POM_M4_coordinate_tolerance_mm':0.05,

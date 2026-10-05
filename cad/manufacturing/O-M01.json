@@ -1,5 +1,5 @@
 {
-  "issue": "O-M01",
+  "manufacturing_revision": "O-M01",
   "approved_layout": "O",
   "approved_layout_commit": "980b4d4",
   "body_material": "Black unfilled POM; POM-C or POM-H acceptable. Declare grade and supply datasheet; material shall conform to its declared grade.",
@@ -26,9 +26,9 @@
   "gallery_axis_deviation_max": 0.3,
   "opposed_bore_step_max": 0.3,
   "inspection_reference_temperature_C": 20,
-  "status": "Operator-approved O layout; manufacturing detail issue for supplier quotation and DFM",
+  "status": "Operator-approved O layout; manufacturing detail revision for supplier quotation and DFM",
   "internal_deburring_required": false,
   "external_deburring_required": true,
   "internal_cleaning": "Remove loose machining chips by cleaning/flushing; no internal edge-deburring operation required.",
-  "issue_date": "2026-09-14"
+  "manufacturing_revision_date": "2026-09-14"
 }

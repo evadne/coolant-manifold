@@ -1,7 +1,7 @@
 {
-  "issue": "R6-M01",
+  "manufacturing_revision": "R6-M01",
   "part_number": "SN1260-R6-M01-PLATE",
-  "issue_date": "2026-09-15",
+  "manufacturing_revision_date": "2026-09-15",
   "geometry_revision": "R6",
   "status": "Operator-approved R6 geometry; production pack for supplier quotation and manufacturing review",
   "material": "304 stainless steel / EN 1.4301 (JLC SUS304)",

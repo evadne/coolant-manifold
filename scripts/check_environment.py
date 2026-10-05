@@ -16,7 +16,7 @@ def main():
     parser.add_argument('--blender',type=Path,default=Path('/Applications/Blender.app/Contents/MacOS/Blender'))
     parser.add_argument('--fea',action='store_true',help='Also check optional Gmsh/Matplotlib imports')
     args=parser.parse_args();errors=[]
-    if platform.system()!='Darwin':errors.append('Supported authoring baseline is macOS; report other-platform issues when encountered.')
+    if platform.system()!='Darwin':errors.append('Supported authoring baseline is macOS; report other-platform problems when encountered.')
     if sys.version_info[:2]!=(3,12):errors.append('Use Python 3.12 for the tested dependency set.')
     requirements=['requirements.txt']+(['requirements-fea.txt'] if args.fea else [])
     modules={'pillow':'PIL','cadquery':'cadquery','reportlab':'reportlab','pypdf':'pypdf',

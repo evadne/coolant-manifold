@@ -5,7 +5,7 @@ existence, not manufacturability, render appearance, licences or external URLs.
 """
 from pathlib import Path
 import hashlib
-import json
+import revision_json as json
 import re
 import zipfile
 from check_retained_inputs import check as check_inputs
@@ -30,9 +30,9 @@ def check():
     for part in release['parts']:
         require(part['part'] not in names, 'Duplicate selected part')
         names.add(part['part'])
-        for field in ('source', 'bundle', 'issue_bundle', 'drawing', 'step'):
+        for field in ('source', 'bundle', 'manufacturing_revision_bundle', 'drawing', 'step'):
             require((ROOT / part[field]).is_file(), f'Missing {field}: {part[field]}')
-        for field in ('bundle', 'issue_bundle'):
+        for field in ('bundle', 'manufacturing_revision_bundle'):
             require(digest(ROOT / part[field]) == part['sha256'], f'Hash mismatch: {part[field]}')
         originals = {'step': ROOT / part['step'], 'pdf': ROOT / part['drawing']}
         if part['dxf']:

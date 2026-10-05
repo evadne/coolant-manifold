@@ -36,7 +36,7 @@ The approved layout uses 4 mm bosses, projecting 1 mm above the faceplate, a 40 
 
 The existing seven PDF pages have been visually checked again. STEP/DXF verification checks the body and plate solids, 24 port entries, six M4 pilots, twenty windows, six countersinks and twelve rack slots. The per-part ZIPs are checked against the exact source files and have SHA-256 checksums.
 
-Fresh images under `output/manufacturing/O-M02/product-views/` and `photorealistic/` use meshes from the issued O-M02 STEP files. Both bare and QD-populated studio views use the new sealing plane. QD3 pairs and translucent 10/13 tubes are visual approximations. The 50%-transparent image is an internal-channel inspection view; real black POM is opaque. Images are review aids, not machining drawings.
+Fresh images under `output/manufacturing/O-M02/product-views/` and `photorealistic/` use meshes from the released O-M02 STEP files. Both bare and QD-populated studio views use the new sealing plane. QD3 pairs and translucent 10/13 tubes are visual approximations. The 50%-transparent image is an internal-channel inspection view; real black POM is opaque. Images are review aids, not machining drawings.
 
 Both POM-C and POM-H are accepted for the current quotation. The operator reports long successful service of an EK Pro manifold after Blitz Part 2 cleaning; this supports the intended maintenance choice, without identifying EK's resin subtype. Further material-family research is not a condition of preparing this package. Physical prototype qualification remains separate from supplier machining acceptance.
 

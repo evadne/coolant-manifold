@@ -1,8 +1,9 @@
 """Package the checked Q-M04 POM body only; never submit or replace original Q-M01."""
 from pathlib import Path
-import json,hashlib,zipfile,shutil
+import hashlib, zipfile, shutil
+import revision_json as json
 from pypdf import PdfReader
-R=Path(__file__).resolve().parents[1];issue='Q-M04';stem=f'RM10-{issue}-BODY';src=R/f'output/manufacturing/{issue}';out=R/f'output/submission/{issue}';out.mkdir(parents=True,exist_ok=True)
+R=Path(__file__).resolve().parents[1];manufacturing_revision='Q-M04';stem=f'RM10-{manufacturing_revision}-BODY';src=R/f'output/manufacturing/{manufacturing_revision}';out=R/f'output/submission/{manufacturing_revision}';out.mkdir(parents=True,exist_ok=True)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 r=json.loads((src/'geometry-verification.json').read_text());assert r['checks']=='PASS' and r['perimeter_edges']==12
 for p,h in r['source_sha256'].items():assert sha(R/p)==h,p
@@ -25,8 +26,8 @@ with zipfile.ZipFile(out/f'{stem}.zip') as z:
  for p in files:assert z.read(p.name)==p.read_bytes()
 for name in ['geometry-verification.json','feature-schedule.json']:shutil.copyfile(src/name,out/name)
 shutil.copyfile(R/'docs/jlc-submission-Q-M04.md',out/'README.md');shutil.copyfile(R/'docs/jlc-Q-body-remarks-Q-M04.txt',out/'supplier-remarks.txt')
-inputs=[R/'scripts/draw_Q_production.py',R/'scripts/prepare_Q_body_issue.py',R/'scripts/package_Q_body_issue.py',R/'cad/manufacturing/Q-M04.json']
-r=dict(issue=issue,checks='PASS',pdf_pages=3,scheduled_features=40,zip_members=[p.name for p in files],supplier_submission_performed=False,source_sha256={str(p.relative_to(R)):sha(p) for p in inputs})
+inputs=[R/'scripts/draw_Q_production.py',R/'scripts/prepare_Q_body_manufacturing_revision.py',R/'scripts/package_Q_body_manufacturing_revision.py',R/'cad/manufacturing/Q-M04.json']
+r=dict(manufacturing_revision=manufacturing_revision,checks='PASS',pdf_pages=3,scheduled_features=40,zip_members=[p.name for p in files],supplier_submission_performed=False,source_sha256={str(p.relative_to(R)):sha(p) for p in inputs})
 (out/'package-verification.json').write_text(json.dumps(r,indent=2)+'\n')
 (out/'SHA256SUMS.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in sorted(out.iterdir()) if p.is_file() and p.name!='SHA256SUMS.txt'))
 print(json.dumps(r,indent=2))

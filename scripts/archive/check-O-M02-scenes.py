@@ -23,6 +23,6 @@ for variant in ['01-bare-ports','02-qd3-translucent-tubes']:
     assert all(o.hide_render==bare for o in shoulders+tubes)
     assert not any(o.type=='FONT' for o in scene.objects)
     results.append(dict(variant=variant,body_depth_mm=(hi-lo)*1000,boss_seal_plane_y_mm=lo*1000,retention_heads=6,visible_QD_pairs=0 if bare else 20,visible_tubes=0 if bare else 20,surface_markings=False))
-report=dict(issue='O-M02',status='PASS',method='Reopen saved Blender scenes; inspect actual mesh bounds, QD placement and visibility',scenes=results)
+report=dict(manufacturing_revision='O-M02',status='PASS',method='Reopen saved Blender scenes; inspect actual mesh bounds, QD placement and visibility',scenes=results)
 (base/'render-scene-verification.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

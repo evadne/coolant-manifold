@@ -1,7 +1,7 @@
 """R1 thickness comparison and explicitly simplified local strip screening.
 
 Not FEA: it does not establish complete assembly strength or deflection.
-Run with standard Python. Leaves the issued R1 geometry untouched.
+Run with standard Python. Leaves the released R1 geometry untouched.
 """
 from pathlib import Path
 import json

@@ -1,6 +1,6 @@
 # Q-M03 manifold faceplate submission guide
 
-Issued 16 September 2026. **RM10-Q-M03-FACEPLATE** supersedes Q-M02 with four R5 external outline corners; every opening and fixing position is retained; the current companion POM body is **RM10-Q-M04-BODY**, which adds C0.5 slab-edge chamfers while retaining all threads and mating positions.
+released 16 September 2026. **RM10-Q-M03-FACEPLATE** supersedes Q-M02 with four R5 external outline corners; every opening and fixing position is retained; the current companion POM body is **RM10-Q-M04-BODY**, which adds C0.5 slab-edge chamfers while retaining all threads and mating positions.
 
 Use `output/submission/Q-M03/RM10-Q-M03-FACEPLATE.zip` as one sheet-metal part. It contains matching-name STEP, DXF and two-sheet A3 PDF. The STEP/DXF model four R5.00 ±0.10 mm external outline corners. Compared with the submitted square-corner faceplate, only 42.920 mm³ is removed; no material is added. Nominal mass is 0.394607 kg. The minimum opening-to-outer-profile clearance remains 1.90 mm.
 
@@ -15,4 +15,4 @@ The twelve hole positions and all nominal diameters remain unchanged. The earlie
 
 The operator accepted the complete Q-M04/Q-M03/R7-M01 set on 16 September 2026 and authorised a **separate new JLC order**, superseding the earlier hold. Submitted for file review on 16 September after explicit confirmation of UPS shipping at US$71.99. Prior material, finish and goods metadata were reused. No payment was made. The operator subsequently reported clearing the original order; preserve its fabrication archives. [New-order submission record](jlc-order-2026-09-16.md). Assembly instructions remain outside the fabrication ZIP.
 
-Rebuild: `.venv/bin/python scripts/prepare_Q_faceplate_issue.py --issue Q-M03`, then `python3 scripts/draw_Q_production.py --faceplate-issue Q-M03 --faceplate-only`. Render and inspect both sheets, then run `python3 scripts/package_Q_faceplate_issue.py --issue Q-M03`. Use a Python runtime with ReportLab/pypdf for the final two commands.
+Rebuild: `.venv/bin/python scripts/prepare_Q_faceplate_manufacturing_revision.py --manufacturing-revision Q-M03`, then `python3 scripts/draw_Q_production.py --faceplate-manufacturing-revision Q-M03 --faceplate-only`. Render and inspect both sheets, then run `python3 scripts/package_Q_faceplate_manufacturing_revision.py --manufacturing-revision Q-M03`. Use a Python runtime with ReportLab/pypdf for the final two commands.
