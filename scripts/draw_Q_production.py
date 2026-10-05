@@ -1,7 +1,7 @@
 """Self-contained A3 supplier drawings for Q-M01, mm, tap-pilot STEP convention."""
 from pathlib import Path
 import math, argparse
-import revision_json as json
+import json
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont

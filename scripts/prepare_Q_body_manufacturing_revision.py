@@ -1,7 +1,7 @@
 """Derive Q-M04 with twelve C0.5 perimeter chamfers; preserve submitted Q-M01."""
 from pathlib import Path
 import hashlib, math
-import revision_json as json
+import json
 import cadquery as cq
 R=Path(__file__).resolve().parents[1];manufacturing_revision='Q-M04';out=R/f'output/manufacturing/{manufacturing_revision}';out.mkdir(parents=True,exist_ok=True)
 M=json.loads((R/f'cad/manufacturing/{manufacturing_revision}.json').read_text())

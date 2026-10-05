@@ -1,7 +1,7 @@
 """Prepare the Q-M02 specification-only faceplate revision from submitted Q-M01 geometry."""
 from pathlib import Path
 import hashlib
-import revision_json as json
+import json
 import shutil
 import math, argparse
 

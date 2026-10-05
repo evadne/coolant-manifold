@@ -48,6 +48,6 @@ Use the current R6 assembly notes (`docs/radiator-rack-plate.md` in the project)
 
 The shallow notch supersedes the previous 5 mm depth; its floor is Y442.500.
 
-Build geometry first with `scripts/build_radiator_plate.py --revision R6`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R6-M01`, then `scripts/draw_radiator_production.py --issue R6-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R6-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R6-M01/`; the upload bundle and supplier remarks are in `output/submission/R6-M01/`.
+Build geometry first with `scripts/build_radiator_plate.py --revision R6`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--manufacturing-revision R6-M01`, then `scripts/draw_radiator_production.py --manufacturing-revision R6-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --manufacturing-revision R6-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R6-M01/`; the upload bundle and supplier remarks are in `output/submission/R6-M01/`.
 
 This issue prepares the files only. No supplier upload, quotation acceptance or order has been made.

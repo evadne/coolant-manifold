@@ -1,5 +1,5 @@
 {
-  "issue": "Q-M01",
+  "manufacturing_revision": "Q-M01",
   "checks": "PASS",
   "parts": [
     {
@@ -25,8 +25,8 @@
     }
   ],
   "source_sha256": {
-    "scripts/draw_Q_production.py": "670a5fbe56a877c3056695f9e9932e22813f2e3321404f409ad31ca51a803a1e",
-    "scripts/package_Q_production.py": "d8502ef624d42208333a257d6c4c35f0f24923f42d4c17420cf73e9f01789012"
+    "scripts/draw_Q_production.py": "b52879fdfc596dc53f9c2c9ce4cfa200bd4a2c31750c6b1145934046b77279c1",
+    "scripts/package_Q_production.py": "d6bf33d6ff643b678f42e9e2ea64c981df236effc3a106edb0683deaf248fec9"
   },
   "upload_performed_by_packaging_script": false
 }

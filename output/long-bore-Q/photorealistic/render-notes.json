@@ -1,7 +1,7 @@
 {
   "revision": "Q",
-  "body_issue": "Q-M04",
-  "faceplate_issue": "Q-M03",
+  "body_manufacturing_revision": "Q-M04",
+  "faceplate_manufacturing_revision": "Q-M03",
   "outer_corner_radius_mm": 5,
   "source_scene": "../product-views/assembled-unmarked.blend",
   "boss_height_mm": 3.0,

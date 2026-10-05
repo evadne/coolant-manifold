@@ -1,5 +1,5 @@
 {
-  "issue": "Q-M02",
+  "manufacturing_revision": "Q-M02",
   "checks": "PASS",
   "nominal_geometry_unchanged": true,
   "plate_solid_count": 1,
@@ -17,9 +17,9 @@
   "worst_case_M4_radial_margin_mm": -0.012132034355964078,
   "fit_status": "Operator accepted JLC capability; worst-case interchangeability is not guaranteed",
   "source_sha256": {
-    "cad/manufacturing/Q-M02.json": "1fb9ee353a7e8abf92eb9abdb957181cd0a02f1f9e31e45bbd5c8dac3c0107c0",
-    "output/manufacturing/Q-M01/geometry-verification.json": "78f4b26b44084e6f10980f0111a1056ef5a102b4f2cb9674b65b719fccdabcc4",
-    "output/manufacturing/Q-M01/feature-schedule.json": "a4be10382ba871b8af1198d06cdb7f9f50f02ca8642c9dd1edcc9b8c842a594a",
+    "cad/manufacturing/Q-M02.json": "e2816550c7aa2da5640e22fdfd9b77722d38d8785aad3f9fb6fa1a504d820884",
+    "output/manufacturing/Q-M01/geometry-verification.json": "590df6da7617f4af22d93e3baf66f047639eccef84458817191f7bbe7bb7ba22",
+    "output/manufacturing/Q-M01/feature-schedule.json": "5a6e586ea43a919c258f474c68e94497ea5f8e57b8d30ba980232536cddb934c",
     "output/manufacturing/Q-M01/RM10-Q-M01-FACEPLATE.step": "2726a5719c7133160e256fc9c38e7b84bd15c15b328d5b687e5acddda73e7c8d",
     "output/manufacturing/Q-M01/RM10-Q-M01-FACEPLATE.dxf": "ca54266f74d63b23434f06d968af2223b0f77ffcec7cb8e27150034b49c7e931"
   }

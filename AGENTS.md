@@ -28,7 +28,7 @@
 ## Terminology
 
 - Use **geometry revision** for design versions (Q/R7) and **manufacturing revision** for part/drawing specifications (Q-M04/Q-M03/R7-M01). Use **GitHub issue** only for a tracker entry; describe other difficulties as problems, concerns or limitations.
-- Keep submitted artefacts and quoted supplier wording unchanged. Read their older metadata through `scripts/revision_json.py`; new metadata and commands use explicit manufacturing-revision names.
+- Keep submitted fabrication files and quoted supplier wording unchanged. Update project metadata and its consumers together to use explicit manufacturing-revision names; use standard JSON and direct hash checks, without legacy-field or source-path fallbacks.
 
 ## Records and repository hygiene
 

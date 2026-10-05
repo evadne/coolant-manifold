@@ -1,7 +1,7 @@
 """Tessellate the released supplier STEP files for O-M02 review, preserving O."""
 from pathlib import Path
 import hashlib
-import revision_json as json
+import json
 import shutil
 import cadquery as cq
 

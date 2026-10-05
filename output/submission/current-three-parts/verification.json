@@ -42,8 +42,7 @@
   "assembly_parameters": "cad/assembly/Q.json",
   "geometry_and_coordinate_checks": "PASS",
   "current_context_sources": "PASS",
-  "source_maintenance": "cad/source-maintenance.json",
-  "review_scope": "Retained artefacts and original review evidence; source maintenance reconciled explicitly; no new render or solver approval.",
+  "review_scope": "Retained artefacts and original review evidence; metadata uses current names and direct source hashes; no new render or solver approval.",
   "visual_review_record": "output/review/Q-M04-visual-review.json",
   "faceplate_worst_case_fit": "Operator accepted JLC capability; worst-case interchangeability is not guaranteed",
   "faceplate_M4_radial_margin_mm": -0.012132034355964078,
@@ -57,13 +56,11 @@
     "JLCCNC steel edge-finish finding"
   ],
   "source_sha256": {
-    "scripts/finalise_three_part_pack.py": "5a0ad8c4bea3ba8c769677643e9f67e869fca11bec5e5bc2d1e89bbda75dc1ef",
+    "scripts/finalise_three_part_pack.py": "ca738739628a54a1845100bbc7fcbc8b1ccb4ef695caedd57eeb6e11eea5f639",
     "cad/current-release.json": "5e8a1fbf8ed7e0ea9761e42e4312630a3ac50003e8d913d25b264fc16cdc45d1",
-    "cad/source-maintenance.json": "73cabc0005f93d217ad149a69a7dba58619fdeddbee49135a8c8a72c32a5d5f0",
-    "scripts/source_integrity.py": "191f044e85dd871039df37b477e16b6843fd598a86ef888eba457d711e71b653",
     "output/review/Q-M04-visual-review.json": "5fab710ae0860d71185b60f357febc4062e4c03f784f7a4105a0edb3f45d2a44",
-    "scripts/draw_radiator_production.py": "ac9839e10eadfb1657251f364a0073f9b877a50cc682d13bbec8ab8b9b1fb1e6",
-    "scripts/package_radiator_production.py": "ca84f25153fbf411f394145b3b8723da2782e8c46b46b5b9fd961d48910557d4",
+    "scripts/draw_radiator_production.py": "6d89db0f4394f840e2c28cae30afc2d1e8479186e83b38e43c84cc13ca808ba1",
+    "scripts/package_radiator_production.py": "02a40235efb164d64975b43682c6e453e4ba2c59b32e642f1cd0655c48a8765f",
     "cad/manufacturing/R7-M01.json": "911804ce8b0b19eaf6b169bd19a649f05b54bcdff018dc1f6e33bc7b40ee624e"
   }
 }

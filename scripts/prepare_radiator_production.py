@@ -1,7 +1,7 @@
 """Verify the selected radiator revision and derive a single-part production revision without changing its solid."""
 from pathlib import Path
 import shutil, hashlib, math, argparse
-import revision_json as json
+import json
 import cadquery as cq
 import ezdxf
 from OCP.BRepAdaptor import BRepAdaptor_Surface

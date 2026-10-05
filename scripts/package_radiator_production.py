@@ -1,7 +1,7 @@
 """Package the selected plate with its checked production drawing, not an assembly."""
 from pathlib import Path
 import hashlib, shutil, zipfile, argparse, re
-import revision_json as json
+import json
 from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',default='R6-M02',choices=['R4-M01','R5-M01','R6-M01','R6-M02','R6-M03','R7-M01'])

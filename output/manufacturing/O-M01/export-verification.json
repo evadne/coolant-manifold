@@ -1,5 +1,5 @@
 {
-  "issue": "O-M01",
+  "manufacturing_revision": "O-M01",
   "status": "PASS",
   "method": "Independent STEP re-import and DXF entity inspection",
   "checks": [

@@ -45,20 +45,11 @@ class ReleaseTest(unittest.TestCase):
         put(self.root/'cad/current-release.json',dict(parts=rows))
         self.original={str(p.relative_to(self.root)):p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
 
-    def test_legacy_selection_creates_explicit_schema_two_revision(self):
-        import revision_json
-        reverse={new:old for old,new in revision_json.LEGACY_KEYS.items()}
-        def legacy(value):
-            if isinstance(value,list):return [legacy(x) for x in value]
-            if isinstance(value,dict):return {reverse.get(k,k):legacy(v) for k,v in value.items()}
-            return value
-        for path in (self.root/'cad').rglob('*.json'):
-            put(path,legacy(json.loads(path.read_text())))
-        manifest=release.initialise(self.root,'legacy-study',{'body':'Q-M05'})
+    def test_new_selection_uses_explicit_schema_two_revision(self):
+        manifest=release.initialise(self.root,'new-study',{'body':'Q-M05'})
         data=json.loads(manifest.read_text())
         self.assertEqual(data['schema_version'],2)
         self.assertEqual(data['parts'][0]['manufacturing_revision'],'Q-M05')
-        self.assertNotIn('issue',data['parts'][0])
         config=json.loads((self.root/data['parts'][0]['source']).read_text())
         self.assertEqual(config['source_manufacturing_revision'],'Q-M04')
 

@@ -5,7 +5,7 @@ existence, not manufacturability, render appearance, licences or external URLs.
 """
 from pathlib import Path
 import hashlib
-import revision_json as json
+import json
 import re
 import zipfile
 from check_retained_inputs import check as check_inputs

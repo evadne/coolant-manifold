@@ -63,9 +63,9 @@
   "checks": "PASS: valid solid; two isolated networks; four rear branches join corresponding galleries; dry M4s and seal lands; nominal fitting envelopes clear",
   "scope": "Accepted layout; matching Q-M01 drawings specify machining. STEP thread cylinders are tap pilots. Fitting envelopes are nominal; exact hardware, hose bends and loads not qualified.",
   "source_sha256": {
-    "cad/iterations/Q-rear-ports.json": "721d618a043d914624cbe7eaefae48c13cc0c9a79f2a25b916dd0f17c506e6f4",
+    "cad/iterations/Q-rear-ports.json": "3afd2fcc9035d870ea10dceb60240a50c6f188e8010a17b967984f3440445e34",
     "cad/iterations/P-long-bore.json": "b1dde89ed34e32123e4446173c12fb35f6cc8d42da1b5ff41fbffd1254abef1d",
-    "scripts/build_revision_Q.py": "5455a8f2a0933bcb945f706114652206685e6dcc57726132978d7eeeb8c6ed89",
+    "scripts/build_revision_Q.py": "7be6e64cfe3c1ee7ac436ef10371d67a8dce02e94c7838ff4c8e5087c91d50c4",
     "output/long-bore-P/cad/body.step": "d56b698fa4aee7f2f0fb3d013ffc96842d8b66fedb66e962e254b0214f294bf8",
     "output/long-bore-P/cad/faceplate.step": "2726a5719c7133160e256fc9c38e7b84bd15c15b328d5b687e5acddda73e7c8d",
     "output/long-bore-P/cad/fluid-network-1.step": "9250eac76c0e292e0bdf1ed7a16a70b3056db47451d88e3b9fcbd1e199b64f14",

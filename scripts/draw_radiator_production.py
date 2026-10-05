@@ -1,7 +1,7 @@
 """A3 production sheets for the selected flat plate, including the R5 notch detail."""
 from pathlib import Path
 import math, argparse
-import revision_json as json
+import json
 from radiator_notch import outline
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics

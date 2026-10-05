@@ -143,10 +143,12 @@ For a new solver run, `radiator_plate_fea.py` writes the plain `.inp` deck and c
 
 The preserved scene-specific checks in `scripts/archive/` apply only to their named historical scenes. They are not current-design acceptance checks.
 
-Run `.venv/bin/python scripts/check_publication.py` for read-only bundle, navigation and retained-input checks. `.venv/bin/python scripts/check_retained_inputs.py` can also check the renderer meshes, scene descriptions, all sixteen complete solver cases and the explicit source-maintenance records independently. Neither command needs Blender or CalculiX.
+Run `.venv/bin/python scripts/check_publication.py` for read-only bundle, navigation and retained-input checks. `.venv/bin/python scripts/check_retained_inputs.py` can also check the renderer meshes, scene descriptions and all sixteen complete solver cases independently. Neither command needs Blender or CalculiX.
 
 ## Manufacturing revision terminology
 
 The command options are `--manufacturing-revision`, `--body-manufacturing-revision` and `--faceplate-manufacturing-revision`. The four Q preparation/packaging scripts use `_manufacturing_revision.py` filenames. The canonical selection and new release manifests use schema version 2. Configuration and new verification metadata use `manufacturing_revision` (and explicit body/faceplate variants), distinct from `geometry_revision`.
 
-Retained supplier archives, drawings, render manifests and quoted correspondence preserve the wording used when released. Their legacy `issue` fields mean manufacturing revision. `scripts/revision_json.py` translates those fields when reading them; it rejects conflicting old/new values. Exact source-maintenance records account for terminology and filename changes without changing submitted artefacts or claiming a fresh review of their geometry.
+Project metadata uses the current field names and source paths directly, read with Python’s standard `json` module. Source checks compare SHA-256 hashes directly with current files. There is no field translation, path aliasing or historical-hash fallback. Update payloads and consumers together when changing this format.
+
+The 5 October 2026 metadata migration refreshed source references/checksums after terminology-only changes. It did not regenerate or alter submitted STEP/PDF/DXF/ZIP files, images or Blender scenes, and is not a new geometry or visual approval. Original generation records remain available in Git at `533c2bc`; the current metadata describes the maintained checkout.

@@ -1,15 +1,14 @@
 """Derive Q-M01 supplier solids/schedules and independently inspect critical geometry."""
 from pathlib import Path
 import shutil, hashlib, math
-import revision_json as json
+import json
 import cadquery as cq
-from source_integrity import source_matches
 from OCP.BRepAdaptor import BRepAdaptor_Surface
 import ezdxf
 R=Path(__file__).resolve().parents[1];S=R/'output/long-bore-Q/cad';O=R/'output/manufacturing/Q-M01';O.mkdir(parents=True,exist_ok=True)
 P=json.loads((R/'cad/iterations/P-long-bore.json').read_text());M=json.loads((R/'cad/manufacturing/Q-M01.json').read_text());Q=json.loads((R/'cad/iterations/Q-rear-ports.json').read_text())
 r=json.loads((S/'verification.json').read_text())
-for f,h in r['source_sha256'].items():assert source_matches(R,f,h),f
+for f,h in r['source_sha256'].items():assert hashlib.sha256((R/f).read_bytes()).hexdigest()==h,f
 assert r['M4_pilot_full_diameter_depth_mm']==M['M4_pilot_full_diameter_depth_mm']==13
 features=[]
 def add(group,points,**kwargs):

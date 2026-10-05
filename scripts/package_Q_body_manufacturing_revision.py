@@ -1,7 +1,7 @@
 """Package the checked Q-M04 POM body only; never submit or replace original Q-M01."""
 from pathlib import Path
 import hashlib, zipfile, shutil
-import revision_json as json
+import json
 from pypdf import PdfReader
 R=Path(__file__).resolve().parents[1];manufacturing_revision='Q-M04';stem=f'RM10-{manufacturing_revision}-BODY';src=R/f'output/manufacturing/{manufacturing_revision}';out=R/f'output/submission/{manufacturing_revision}';out.mkdir(parents=True,exist_ok=True)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()

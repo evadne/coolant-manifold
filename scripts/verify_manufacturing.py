@@ -1,7 +1,7 @@
 """Re-import supplier solids and compare machined features with the drawing schedule."""
 from pathlib import Path
 import math
-import revision_json as json
+import json
 import cadquery as cq
 import ezdxf
 ROOT = Path(__file__).resolve().parents[1]

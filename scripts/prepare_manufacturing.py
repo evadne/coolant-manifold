@@ -4,7 +4,7 @@ Threads remain tapping pilots, per JLCCNC's upload instructions.
 """
 from pathlib import Path
 import math, shutil, hashlib
-import revision_json as json
+import json
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
 p=json.loads((ROOT/'cad/iterations/O-long-bore.json').read_text())

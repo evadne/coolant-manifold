@@ -1,5 +1,5 @@
 {
-  "issue": "Q-M03",
+  "manufacturing_revision": "Q-M03",
   "checks": "PASS",
   "pdf_pages": 2,
   "scheduled_features": 44,
@@ -11,9 +11,9 @@
   "nominal_geometry_unchanged": false,
   "upload_performed_by_packaging_script": false,
   "source_sha256": {
-    "scripts/draw_Q_production.py": "3aefcddaa07ef888643e316707a7b51ee52ce10bc04e1cc9bd2f78d654e75216",
-    "scripts/package_Q_faceplate_issue.py": "f89e2c8d2261fd1b41145944e2bbe19a58824809521d7f711ed4e0765a3a1c75",
-    "scripts/prepare_Q_faceplate_issue.py": "1c83ac60aadf98f1a967b275d92d9f9c1b164d367cae1918ec21b19413b53985",
-    "cad/manufacturing/Q-M03.json": "8a7dde34a840b528651ed75e2143493ad2f0d9fa537af1f481fd8d729701644a"
+    "scripts/draw_Q_production.py": "b52879fdfc596dc53f9c2c9ce4cfa200bd4a2c31750c6b1145934046b77279c1",
+    "scripts/package_Q_faceplate_manufacturing_revision.py": "3f5ebad957bbc5d1981b66ba8ef97036ff80b5dda1ba950796614ba857f2ee36",
+    "scripts/prepare_Q_faceplate_manufacturing_revision.py": "38b73850fffb8ddf7a835caabdf489a2bd082443504041d0c10bc68d0887405c",
+    "cad/manufacturing/Q-M03.json": "01b515c9b4519a69ffa44e130b1441d0a0aab7d3579c5ad741a13f78a0f54f74"
   }
 }

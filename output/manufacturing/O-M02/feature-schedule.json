@@ -1,5 +1,5 @@
 {
-  "issue": "O-M02",
+  "manufacturing_revision": "O-M02",
   "datums": "A: POM mounting plane Y0 / plate POM-side plane Y0; B: width midplane X0; C: bottom Z0",
   "front_ports": [
     {

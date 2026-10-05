@@ -4,7 +4,7 @@ import bpy, math, hashlib, argparse, sys
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
-import revision_json as json
+import json
 from context_viewport import configure_context_viewports
 from context_startech25 import build_rack, RACK_U_DATUM, RAIL_DEPTH
 from context_tubing import Route, branch_route, make_tube, assess_routes

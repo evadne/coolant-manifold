@@ -1,7 +1,7 @@
 """Verify and package Q-M02 faceplate only; preserve the submitted Q-M01 body/plate packs."""
 from pathlib import Path
 import hashlib, shutil, zipfile, re, argparse
-import revision_json as json
+import json
 from pypdf import PdfReader
 R=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--manufacturing-revision',choices=['Q-M02','Q-M03'],default='Q-M02')

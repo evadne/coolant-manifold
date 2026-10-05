@@ -43,7 +43,7 @@ Assembly instructions are maintained separately in [the radiator assembly guide]
 
 The shallow notch supersedes the previous 5 mm depth; its floor is Y442.500.
 
-Build geometry first with `scripts/build_radiator_plate.py --revision R7`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--issue R7-M01`, then `scripts/draw_radiator_production.py --issue R7-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --issue R7-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R7-M01/`; the upload bundle and supplier remarks are in `output/submission/R7-M01/`.
+Build geometry first with `scripts/build_radiator_plate.py --revision R7`. Run `scripts/prepare_radiator_production.py` with the CAD environment, with `--manufacturing-revision R7-M01`, then `scripts/draw_radiator_production.py --manufacturing-revision R7-M01` with ReportLab. Render and visually inspect all three PDF pages before running `scripts/package_radiator_production.py --manufacturing-revision R7-M01` with pypdf. The package script checks drawing coverage and ZIP integrity and records SHA-256 hashes. Geometry/source data stay in `output/manufacturing/R7-M01/`; the upload bundle and supplier remarks are in `output/submission/R7-M01/`.
 
 The generation scripts prepare local files only; the separate quotation status below records the authorised supplier submission. This revised package is held for a future repeat order; it is not a replacement upload for the current order.
 

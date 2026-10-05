@@ -13,6 +13,6 @@ Use `output/submission/Q-M04/RM10-Q-M04-BODY.zip`: one single-part STEP and matc
 
 STEP comparison confirms only the slab-perimeter chamfers remove material: 267.833 mm³ total. Every curved face, hole and boss feature is unchanged, and the specified sealing lands and M4 bearing areas are outside the removed volume. Finished solid is valid; no material is added. The drawing includes an enlarged edge detail and explicit perimeter call-out.
 
-Rebuild using `.venv/bin/python scripts/prepare_Q_body_issue.py`, then `python3 scripts/draw_Q_production.py --body-issue Q-M04 --body-only` with ReportLab. Render and inspect all three PDF sheets, then run `python3 scripts/package_Q_body_issue.py` with pypdf. The body preparation also refreshes the separate reference assembly with the current Q-M03 faceplate; run it after faceplate preparation.
+Rebuild using `.venv/bin/python scripts/prepare_Q_body_manufacturing_revision.py`, then `python3 scripts/draw_Q_production.py --body-manufacturing-revision Q-M04 --body-only` with ReportLab. Render and inspect all three PDF sheets, then run `python3 scripts/package_Q_body_manufacturing_revision.py` with pypdf. The body preparation also refreshes the separate reference assembly with the current Q-M03 faceplate; run it after faceplate preparation.
 
 **Held for a future repeat order.** Do not replace the current JLC order files; original Q-M01 submitted files remain intact. This issue has not been submitted. Assembly hardware, torque and installation instructions remain outside this fabrication ZIP.

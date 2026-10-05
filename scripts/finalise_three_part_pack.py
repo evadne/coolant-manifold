@@ -1,10 +1,9 @@
 """Verify current fabrication bundles and reviewed presentations; create a local index."""
 from pathlib import Path
 import hashlib
-import revision_json as json
+import json
 import shutil
 import zipfile
-from source_integrity import source_matches
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output/submission/current-three-parts'
@@ -18,7 +17,7 @@ def sha(path):
 
 def check_sources(record):
     for path, expected in record.get('source_sha256', {}).items():
-        assert source_matches(ROOT, path, expected), f'Stale source: {path}'
+        assert sha(path) == expected, f'Stale source: {path}'
 
 q = read('output/manufacturing/Q-M04/geometry-verification.json')
 r = read('output/manufacturing/R7-M01/geometry-verification.json')
@@ -54,14 +53,7 @@ for manufacturing_revision, stem, pages in [
     directory = Path('output/submission') / manufacturing_revision
     verification = read(directory / 'package-verification.json')
     assert verification['checks'] == 'PASS'
-    if manufacturing_revision == 'Q-M01':
-        # Preserve historical generator hashes: verify the untouched body bundle against
-        # its actual submission record instead of requiring old scripts to remain frozen.
-        original = read('output/submission/jlc-quotation-2026-09-15.json')
-        sent = next(p for p in original['parts'] if p['part'] == stem)
-        assert sha(sent['archive']) == sent['sha256']
-    else:
-        check_sources(verification)
+    check_sources(verification)
     for line in (ROOT / directory / 'SHA256SUMS.txt').read_text().splitlines():
         digest, name = line.split('  ', 1)
         assert sha(directory / name) == digest, f'Stale package: {name}'
@@ -118,8 +110,7 @@ manifest = {
     'assembly_parameters': 'cad/assembly/Q.json',
     'geometry_and_coordinate_checks': 'PASS',
     'current_context_sources': 'PASS',
-    'source_maintenance': 'cad/source-maintenance.json',
-    'review_scope': 'Retained artefacts and original review evidence; source maintenance reconciled explicitly; no new render or solver approval.',
+    'review_scope': 'Retained artefacts and original review evidence; metadata uses current names and direct source hashes; no new render or solver approval.',
     'visual_review_record': 'output/review/Q-M04-visual-review.json',
     'faceplate_worst_case_fit': face['fit_status'],
     'faceplate_M4_radial_margin_mm': face['worst_case_M4_radial_margin_mm'],
@@ -131,8 +122,6 @@ manifest = {
     'source_sha256': {str(p): sha(p) for p in [
         Path('scripts/finalise_three_part_pack.py'),
         Path('cad/current-release.json'),
-        Path('cad/source-maintenance.json'),
-        Path('scripts/source_integrity.py'),
         Path('output/review/Q-M04-visual-review.json'),
         Path('scripts/draw_radiator_production.py'),
         Path('scripts/package_radiator_production.py'),

@@ -7,7 +7,6 @@ import gzip
 import json
 import struct
 from radiator_fea_files import case_directory, case_bytes
-from source_integrity import source_matches
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -47,12 +46,8 @@ def check():
             assert b'displacements (' in gzip.decompress(path.read_bytes()), name
             cases.append(name)
     assert len(cases) == 16, cases
-    maintenance = json.loads((ROOT / 'cad/source-maintenance.json').read_text())
-    for path, change in maintenance['files'].items():
-        assert source_matches(ROOT, path, change['before_sha256']), path
-        assert not source_matches(ROOT, path, '0' * 64), path
     return {'checks': 'PASS', 'scene_descriptions': len(scenes), 'display_meshes': len(meshes),
-            'complete_solver_cases': len(cases), 'source_maintenance_records': len(maintenance['files'])}
+            'complete_solver_cases': len(cases)}
 
 
 if __name__ == '__main__':

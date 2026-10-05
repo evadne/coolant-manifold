@@ -7,7 +7,7 @@ import argparse
 import copy
 from datetime import date
 import hashlib
-import revision_json as json
+import json
 import re
 import shutil
 import zipfile

@@ -1,12 +1,11 @@
 """Check PDF feature coverage and package each Q-M01 part separately; never upload."""
 from pathlib import Path
 import hashlib, zipfile, shutil, re
-import revision_json as json
+import json
 from pypdf import PdfReader
 R=Path(__file__).resolve().parents[1];src=R/'output/manufacturing/Q-M01';out=R/'output/submission/Q-M01';out.mkdir(parents=True,exist_ok=True)
 r=json.loads((src/'geometry-verification.json').read_text());assert r['checks']=='PASS'
-from source_integrity import source_matches
-for p,h in r['source_sha256'].items():assert source_matches(R,p,h),p
+for p,h in r['source_sha256'].items():assert hashlib.sha256((R/p).read_bytes()).hexdigest()==h,p
 S=json.loads((src/'feature-schedule.json').read_text())['features'];results=[]
 for part,n,groups in [('BODY',3,'PEBF'),('FACEPLATE',2,'WHR')]:
  stem='RM10-Q-M01-'+part;pdf=R/'output/pdf'/f'{stem}.pdf';pages=[p.extract_text() for p in PdfReader(pdf).pages];text='\n'.join(pages);assert len(pages)==n

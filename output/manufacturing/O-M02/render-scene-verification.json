@@ -1,5 +1,5 @@
 {
-  "issue": "O-M02",
+  "manufacturing_revision": "O-M02",
   "status": "PASS",
   "method": "Reopen saved Blender scenes; inspect actual mesh bounds, QD placement and visibility",
   "scenes": [

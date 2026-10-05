@@ -38,7 +38,7 @@ Copy the relevant programs to new names directly under `scripts/` so their exist
 
 In particular, the existing body builder checks a literal C0.5 chamfer against a 410 × 40 × 87 slab, and drawings contain literal dimensions and revision-specific branches. Changing a JSON value alone is insufficient. Update the CAD operation, independent expected geometry and drawing together. Preserve unrelated checks; adjust a check because its requirement changed, not merely to make a failure disappear.
 
-The new geometry-verification JSON must identify the new `manufacturing_revision`, have `checks: "PASS"`, and include `source_sha256` covering its new configuration and the geometry generator/inputs used. Use the existing verification reports as examples. The release helper checks these hashes strictly. Do not extend the historical `cad/source-maintenance.json` exceptions to bless a design change.
+The new geometry-verification JSON must identify the new `manufacturing_revision`, have `checks: "PASS"`, and include `source_sha256` covering its new configuration and the geometry generator/inputs used. Use the existing verification reports as examples. The release helper checks these hashes strictly. Update metadata and its consumers together. Source hashes must match the files directly; no compatibility exceptions are supported.
 
 Protect released files by checking every output assignment in the copied programs, including `output/assembly/Q/`, `output/pdf/`, renderer manifests and source-hash paths. Use `git diff --name-only` after a build; changes to released files indicate a wrong destination. For exploratory runs of an original program, use a separate disposable checkout and copy back only deliberately selected new outputs.
 

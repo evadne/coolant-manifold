@@ -3,13 +3,12 @@ import bpy, bmesh, sys, math, hashlib
 from pathlib import Path
 from mathutils import Vector,Matrix
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
-import revision_json as json
+import json
 from context_viewport import configure_context_viewports
-from source_integrity import source_matches
 OUT=ROOT/'output/long-bore-Q/product-views';OUT.mkdir(parents=True,exist_ok=True)
 MESH=ROOT/'output/long-bore-Q/meshes'
 report=json.loads((ROOT/'output/long-bore-Q/cad/verification.json').read_text())
-for p,h in report['source_sha256'].items():assert source_matches(ROOT,p,h),p
+for p,h in report['source_sha256'].items():assert hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==h,p
 source=ROOT/'output/long-bore-P/product-views/assembled-unmarked.blend'
 bpy.ops.wm.open_mainfile(filepath=str(source));scene=bpy.context.scene
 for o in list(scene.objects):

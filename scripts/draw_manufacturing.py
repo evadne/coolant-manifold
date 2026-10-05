@@ -3,7 +3,7 @@ Run using the bundled Python with reportlab and pypdf. Geometry comes from JSON.
 """
 from pathlib import Path
 import math, datetime
-import revision_json as json
+import json
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
