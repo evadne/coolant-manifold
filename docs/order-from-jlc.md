@@ -16,14 +16,14 @@ These direct links select the delivered fabrication issues, not the original ord
 
 ## Submit for quotation
 
-1. Start a new quotation in your own JLC account. Upload the body under CNC machining and the two plates under Sheet Metal. The original process accepted a separate ZIP per part; if the interface instead requests separate files, extract and attach all members of that part's ZIP.
+1. Start a new JLC quotation. Upload the body under CNC machining and the two plates under Sheet Metal. The original process accepted a separate ZIP per part; if the interface instead requests separate files, extract and attach all members of that part's ZIP.
 2. Select the table's materials, finish and quantity. The body was quoted with threads enabled, Standard appearance and ±0.05 mm as the tightest tolerance selector; the attached PDF carries the actual feature-specific requirements. Both steel drawings specify ±0.10 mm cut dimensions/coordinates and separate flatness requirements. Do not mark either steel plate as tapped.
 3. Verify that the **matching PDF accompanies every STEP**. Attach the body PDF in the additional tolerance-drawing field when offered. Steel ZIPs also contain matching DXFs. STEP threads are represented by pilot cylinders: manufacturing the STEP as plain bores would not reproduce this part.
 4. Use the part remarks below. For goods metadata, the original body description was “Plastic coolant manifold”; steel was “Stainless steel Rectangular Plate”, HS 732690. Confirm the classifications offered for your own order and destination.
 5. Choose review before payment where offered. Have JLC assess the actual submitted PDFs, including the two Ø11.8 × 410 mm galleries and external finish requirements. Review any proposed deviation against the specific part drawing.
-6. Use your own delivery/contact details and compare current shipping charges. The historical UPS choice was destination- and date-specific; it is not a reusable shipping quotation. Inspect the reviewed price before paying.
+6. Compare current shipping charges. The historical UPS choice was destination- and date-specific; it is not a reusable shipping quotation. Inspect the reviewed price before paying.
 
-Portal labels and available options may change. This procedure records the successful September 2026 route, not a claim of live UI verification. No account, old order ID, saved address or checkout reference from this repository is needed.
+Portal labels and available options may change. This procedure records the successful September 2026 route, not a claim of live UI verification.
 
 ## Part remarks
 

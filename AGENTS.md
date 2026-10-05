@@ -39,6 +39,6 @@
 ## External actions
 
 - Require a user request for supplier orders, submissions or publication. Preparation of a package is not a payment instruction.
-- For an explicitly requested repeat JLC quotation, follow [the repeat-order guide](docs/order-from-jlc.md) and use the canonical ZIPs. Reuse design metadata, not another person's address, account, checkout or order references.
+- For an explicitly requested repeat JLC quotation, follow [the repeat-order guide](docs/order-from-jlc.md) and use the canonical ZIPs.
 - Preserve browser sign-in sessions; sign out only when account switching is expected. Use the established authentication method.
 - Follow the user's existing authority for cart management; do not add redundant approval prompts for reversible cart changes.
