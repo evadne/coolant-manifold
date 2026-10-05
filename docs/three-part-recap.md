@@ -1,8 +1,10 @@
 # Current three-part design recap
 
+**5 October 2026 — received manifold verified by the operator:** Q-M04 POM body and Q-M03 faceplate are dimensionally correct; all POM M4 screw holes and the G1/4 ports are correct. QD3 thread engagement is smooth, corner detail is accepted, covered holding marks are acceptable, and the 2 mm faceplate mounts without perceptible flex. See the [first-article observations](jlc-order-2026-09-16.md#first-article-observations--5-october-2026).
+
 **22 September 2026:** operator-supplied screenshots show both steel parts awaiting carrier pickup and the Q-M04 POM body at 23.08% production progress (data processing, programming and blanking complete). POM price is US$197.26 with an eight-day build; steel prices remain US$9.86/29.82. See the [production update](jlc-order-2026-09-16.md#production-update--22-september-2026).
 
-Updated 22 September 2026. The operator approved radiator revision R6 after reducing its cable notch to 10 × 2 mm. This approval does not constitute supplier manufacturing acceptance or a tested assembly rating.
+Updated 5 October 2026. The operator approved radiator revision R6 after reducing its cable notch to 10 × 2 mm. This approval does not constitute supplier manufacturing acceptance or a tested assembly rating.
 
 The current design set is the Revision Q manifold body (Q-M04) and matching faceplate (Q-M03), plus the R7 radiator plate (R7-M01). Both steel issues use ±0.10 mm cut dimensions and coordinates; both plates now have four R5 external outline corners; all holes and other profiles are retained. These are three custom parts; fittings, plugs, screws, nuts, fans and the radiator are bought-in hardware. There is no manifold rear cover in this long-bore design.
 

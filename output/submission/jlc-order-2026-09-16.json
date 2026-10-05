@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "status": "steel_awaiting_carrier_pickup_pom_in_production",
+  "status": "manifold_body_and_faceplate_received_operator_fit_verified_radiator_delivery_unconfirmed",
   "operator_design_accepted": true,
   "accepted_design": "Q-M04 body including twelve C0.5 chamfers and eight triangular corner flats; Q-M03 faceplate; R7-M01 radiator",
   "quantity_each": 1,
@@ -230,5 +230,34 @@
     "displayed_part_prices_sum_USD": 236.94,
     "current_shipping_and_order_total_verified": false,
     "note": "Percentage is consistent with 3 of 13 completed stages; not elapsed machining time. No machine-axis or detailed CAM evidence."
+  },
+  "first_article_observation_2026_10_05": {
+    "source": "Operator statements and photographs in conversation",
+    "parts": [
+      "RM10-Q-M04-BODY",
+      "RM10-Q-M03-FACEPLATE"
+    ],
+    "operator_verified": [
+      "manifold and faceplate dimensionally correct",
+      "all POM M4 screw holes correct",
+      "G1/4 ports correct"
+    ],
+    "operator_observations": [
+      "QD3 engagement smooth",
+      "corner detail good",
+      "covered holding marks acceptable",
+      "2 mm faceplate mounts without perceptible flex"
+    ],
+    "numerical_measurement_report_supplied": false,
+    "leak_test_result_reported": false,
+    "radiator_receipt_reported": false,
+    "archived_photos": [
+      "docs/references/first-article-2026-10-05/01-assembled-qd3.jpg",
+      "docs/references/first-article-2026-10-05/02-boss-detail.jpg",
+      "docs/references/first-article-2026-10-05/03-front-pom.jpg",
+      "docs/references/first-article-2026-10-05/04-rear-pom.jpg",
+      "docs/references/first-article-2026-10-05/05-corner-detail.jpg"
+    ],
+    "fabrication_changes": false
   }
 }
