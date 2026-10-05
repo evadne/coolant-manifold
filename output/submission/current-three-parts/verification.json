@@ -58,7 +58,7 @@
   ],
   "source_sha256": {
     "scripts/finalise_three_part_pack.py": "130d0658825c37c9d7dcd1299e125d35942e2b067dd8abe73c11291247772b40",
-    "cad/current-release.json": "ad49264f3977fe49abd2136f398b80bc42d3e71a1e21396b3ef80935181361df",
+    "cad/current-release.json": "22f412fc8c2729a773af8e34212eae862305a528c62dfef81d21fde71b1b1191",
     "cad/source-maintenance.json": "5803c033d6ae2b50c1e8929937fdadaa9b2b823a1aea95ac6ffb4e3590b257d6",
     "scripts/source_integrity.py": "93d24ca6d57f1baa8fa9889954180d0648716730a607e5308519702610edc87a",
     "output/review/Q-M04-visual-review.json": "5fab710ae0860d71185b60f357febc4062e4c03f784f7a4105a0edb3f45d2a44",

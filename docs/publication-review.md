@@ -1,6 +1,6 @@
 # Repository publication review
 
-Review date: 5 October 2026. The repository has been prepared for readers to identify the current design, order its three parts and understand the evidence. No GitHub remote is configured, no push or publication has been performed, and the operator has deferred the licence decision. Repository size and retrieved assets are retained deliberately; no history rewriting, censorship, redaction or LFS conversion is part of this cleanup.
+Review date: 5 October 2026. The repository has been prepared for readers to identify the current design, order its three parts and understand the evidence. The operator has authorised public release at `evadne/coolant-manifold` and selected CERN-OHL-W-2.0 for original project material. Publication verification will be recorded below once the push completes. Repository size and retrieved assets are retained deliberately; no history rewriting, censorship, redaction or LFS conversion is part of this cleanup.
 
 ## Changes made for readers
 
@@ -18,11 +18,11 @@ At the start of this review, Git tracked 916 files containing 1,502,294,509 byte
 
 The largest tracked file is the approximately 92.7 MiB StarTech25U Blender scene. The current tree contains no file above 100 MiB; a scan of all reachable Git blobs also found none above 100 MiB. Several files exceed 50 MiB. GitHub documents warnings above 50 MiB, a normal-Git block above 100 MiB and a preference for smaller repositories. [GitHub file and repository guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
 
-The operator explicitly accepts a large repository and will decide the push strategy later. Required assets have been placed in their owning directories; historical tracked outputs remain in place. LFS or release attachments remain possible future choices, not changes silently applied now. The current `.gitattributes` marks CAD/media binary; that does not itself enable LFS.
+The operator explicitly accepts a large repository. Publication uses ordinary Git with retained history and revision tags. Required assets have been placed in their owning directories; historical tracked outputs remain in place. LFS or release attachments remain possible future choices, not changes silently applied now. The current `.gitattributes` marks CAD/media binary; that does not itself enable LFS.
 
 ## Provenance and information exposure
 
-The operator explicitly requests retaining Koolance and other retrieved models, supplier records and full history without redaction. [LICENSING.md](../LICENSING.md) identifies original work, reference assets, manufacturer notices and composite scenes. No blanket reuse grant or comprehensive third-party rights clearance is claimed. The project's original-work licence remains undecided by the operator's choice.
+The operator explicitly requests retaining Koolance and other retrieved models, supplier records and full history without redaction. [LICENSING.md](../LICENSING.md) identifies original work, reference assets, manufacturer notices and composite scenes. No blanket reuse grant or comprehensive third-party rights clearance is claimed. Original project material is now licensed under [CERN-OHL-W-2.0](../LICENSE); third-party material retains its own terms.
 
 Publishing the retained history also exposes supplier order references, a recorded checkout reference, portal screenshots, local workspace paths and Git author metadata. These are retained knowingly under that direction; the public order guide does not require another user's account data. A targeted scan of 364 then-tracked text files found no matches for the selected high-confidence private-key/GitHub-token/AWS-key-ID/OpenAI-key patterns. This was not an exhaustive secret audit, OCR scan or scan of every historical text blob. The five first-article JPEGs have no GPS EXIF field; their original files were retained unchanged.
 
@@ -44,10 +44,10 @@ A new Python 3.12 virtual environment installed successfully from the declared r
 
 No speculative Linux work or general-purpose CAD framework was added. Contributors should report concrete failures with commands, versions and affected revisions.
 
-## Decisions before public release
+## Public release
 
-1. Select the original-work licence and retain the separate third-party provenance treatment.
-2. Choose the GitHub repository/destination and push strategy for the intentionally large history.
-3. Review the final README in GitHub's renderer once a remote preview exists; confirm the images and download links there.
+On 5 October 2026 the operator authorised public publication at `evadne/coolant-manifold` under CERN-OHL-W-2.0. The GitHub CLI initially used `evadne-feg`; it was switched to the already authenticated `evadne` account and the active identity was verified before repository creation.
+
+Pending publication checks: successful push, public visibility, licence recognition and README image/download links.
 
 These are publication decisions. They do not reopen the operator's manifold fit acceptance or change the delivered design. The radiator remains delivered but operator-unverified; no leak-test result has been reported. [Astra's commentary](astra-commentary.md) records the significance of moving from models and supplier drawings to physical objects without promoting those observations into unperformed tests.

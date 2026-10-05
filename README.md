@@ -66,4 +66,4 @@ These are prototype designs with physical manifold fit verification, not qualifi
 | Set up macOS authoring tools | [Environment setup](docs/rebuild.md#environment) |
 | Contribute changes | [Working rules](AGENTS.md) |
 
-The repository retains substantial CAD, Blender and analysis history. The [publication review](docs/publication-review.md) records repository size, retained supplier records, third-party assets and portability limits. **The project licence is not yet selected**; see [licensing and provenance](LICENSING.md). No blanket reuse grant is implied for manufacturer reference models.
+The repository retains substantial CAD, Blender and analysis history. The [publication review](docs/publication-review.md) records repository size, retained supplier records, third-party assets and portability limits. Original project material is licensed under **[CERN-OHL-W-2.0](LICENSE)**; see [licensing and provenance](LICENSING.md) for scope and third-party notices. No blanket reuse grant is implied for manufacturer reference models.

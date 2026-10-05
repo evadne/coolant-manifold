@@ -81,5 +81,5 @@
     "leak_test": "not reported"
   },
   "historical_outputs": "Retained in place; not current fabrication selections. Some remain build dependencies.",
-  "licence": "undecided"
+  "licence": "CERN-OHL-W-2.0"
 }
