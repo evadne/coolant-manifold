@@ -1,6 +1,6 @@
 {
   "date": "2026-09-16",
-  "status": "manifold_body_and_faceplate_received_operator_fit_verified_radiator_delivery_unconfirmed",
+  "status": "all_parts_delivered_manifold_fit_verified_radiator_operator_unverified_steel_finish_finding_open",
   "operator_design_accepted": true,
   "accepted_design": "Q-M04 body including twelve C0.5 chamfers and eight triangular corner flats; Q-M03 faceplate; R7-M01 radiator",
   "quantity_each": 1,
@@ -250,7 +250,7 @@
     ],
     "numerical_measurement_report_supplied": false,
     "leak_test_result_reported": false,
-    "radiator_receipt_reported": false,
+    "radiator_receipt_reported": true,
     "archived_photos": [
       "docs/references/first-article-2026-10-05/01-assembled-qd3.jpg",
       "docs/references/first-article-2026-10-05/02-boss-detail.jpg",
@@ -258,6 +258,17 @@
       "docs/references/first-article-2026-10-05/04-rear-pom.jpg",
       "docs/references/first-article-2026-10-05/05-corner-detail.jpg"
     ],
-    "fabrication_changes": false
+    "fabrication_changes": false,
+    "radiator_operator_verified": false,
+    "radiator_verification_deferred_reason": "No spare Supernova currently available; operator elects to leave plate as delivered and unverified.",
+    "steel_finish_finding": {
+      "status": "open",
+      "operator_observation": "Slight sharpness on steel; standard deburring may be inadequate.",
+      "supplier_nonconformance_established": false,
+      "specific_edges_and_severity": "not characterised",
+      "appearance_requirement": "Faceplate conceals POM holding marks and dominates perceived quality; control visible steel finish quality.",
+      "finish_or_geometry_change_selected": false,
+      "note": "Preserve faceplate deburring concession and separate radiator edge requirements. No supplier contact or rework performed."
+    }
   }
 }

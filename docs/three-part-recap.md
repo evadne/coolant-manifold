@@ -2,6 +2,8 @@
 
 **5 October 2026 — received manifold verified by the operator:** Q-M04 POM body and Q-M03 faceplate are dimensionally correct; all POM M4 screw holes and the G1/4 ports are correct. QD3 thread engagement is smooth, corner detail is accepted, covered holding marks are acceptable, and the 2 mm faceplate mounts without perceptible flex. See the [first-article observations](jlc-order-2026-09-16.md#first-article-observations--5-october-2026).
 
+The R7-M01 radiator plate is **delivered but operator-unverified**, pending access to a spare Supernova. The operator reports slight sharpness on the steel; edge-finish adequacy remains an open first-article finding. The faceplate conceals POM holding marks and is the principal visible surface, so its perceived finish quality needs control. This does not reopen the accepted dimensions or establish a supplier nonconformance.
+
 **22 September 2026:** operator-supplied screenshots show both steel parts awaiting carrier pickup and the Q-M04 POM body at 23.08% production progress (data processing, programming and blanking complete). POM price is US$197.26 with an eight-day build; steel prices remain US$9.86/29.82. See the [production update](jlc-order-2026-09-16.md#production-update--22-september-2026).
 
 Updated 5 October 2026. The operator approved radiator revision R6 after reducing its cable notch to 10 × 2 mm. This approval does not constitute supplier manufacturing acceptance or a tested assembly rating.
